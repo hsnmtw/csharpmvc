@@ -1,0 +1,133 @@
+﻿DROP TABLE Security_Profiles;
+DROP TABLE Security_Profile_entitlement;
+DROP TABLE Security_entitlements;
+DROP TABLE Security_users;
+
+create table Security_Audit(
+Id             AUTOINCREMENT NOT NULL PRIMARY KEY,
+User_Name      TEXT(50)      NOT NULL,
+Event_Date     DATETIME      NOT NULL DEFAULT NOW(),
+Event_Comments TEXT(255),
+Created_By     TEXT(50),
+Created_On     DATETIME,
+Updated_By     TEXT(50),
+Updated_On     DATETIME
+)
+
+CREATE TABLE Security_Profiles (
+    [Id]               AUTOINCREMENT  PRIMARY KEY,
+    [Profile_Name]     TEXT(50)     NOT NULL UNIQUE,
+	[Created_By]            TEXT(50)			        ,
+	[Created_On]            DATETIME			        ,
+	[Updated_By]            TEXT(50)			        ,
+	[Updated_On]            DATETIME
+);
+
+CREATE TABLE Security_Entitlements (
+    [Id]               AUTOINCREMENT   PRIMARY KEY,
+    [Entitlement_Name] TEXT(50)     NOT NULL UNIQUE,
+	[Created_By]            TEXT(50)			        ,
+	[Created_On]            DATETIME			        ,
+	[Updated_By]            TEXT(50)			        ,
+	[Updated_On]            DATETIME
+
+);
+
+CREATE TABLE Security_Profile_Entitlements (
+    [Id]               AUTOINCREMENT   UNIQUE,
+    [Profile_Name]       TEXT(50)          NOT NULL,
+    [Entitlement_Name]   TEXT(50)          NOT NULL,
+	[Created_By]            TEXT(50)			        ,
+	[Created_On]            DATETIME			        ,
+	[Updated_By]            TEXT(50)			        ,
+	[Updated_On]            DATETIME                    ,
+    PRIMARY KEY([Profile_Name],[Entitlement_Name])
+);
+
+CREATE TABLE Security_Users (
+    [Id]                    AUTOINCREMENT  PRIMARY KEY  ,
+    [User_Name]             TEXT(50)     NOT NULL UNIQUE,
+    [Full_Name]             TEXT(100)    NOT NULL       ,
+    [User_Password]         TEXT(100)    NOT NULL       ,
+    [Profile_Name]          TEXT(50)     NOT NULL       ,
+	[Is_Active]             YESNO				        ,
+	[Email]                 TEXT(100)			        ,
+	[Failed_Login_Attempts] NUMBER		 DEFAULT 0      ,
+	[Last_Login_Date]       DATETIME			        ,
+	[Last_Change_Password]  DATETIME			        ,
+	[Created_By]            TEXT(50)			        ,
+	[Created_On]            DATETIME			        ,
+	[Updated_By]            TEXT(50)			        ,
+	[Updated_On]            DATETIME
+);
+
+
+CREATE TABLE Customers_Nationalities (
+    [Id]               AUTOINCREMENT   UNIQUE,
+    [Nationality_Code]       TEXT(50)          NOT NULL,
+    [Nationality_Desc]       TEXT(100)          NOT NULL UNIQUE,
+	[Created_By]            TEXT(50)			        ,
+	[Created_On]            DATETIME			        ,
+	[Updated_By]            TEXT(50)			        ,
+	[Updated_On]            DATETIME                    ,
+    PRIMARY KEY([Nationality_Code])
+);
+
+TRANSFORM count(entitlement_name) 
+SELECT profile_name 
+FROM security_profile_entitlements
+GROUP BY profile_name
+PIVOT entitlement_name;
+
+TRANSFORM iif(count(pe.profile_name)>0,'✓',null) 
+SELECT e.id, e.entitlement_name 
+FROM security_profile_entitlements pe inner join security_entitlements e
+  ON pe.entitlement_name = e.entitlement_name
+GROUP BY e.id, e.entitlement_name
+ORDER BY e.entitlement_name
+PIVOT pe.profile_name;
+
+
+INSERT INTO Security_Profiles ([Profile_Name]) VALUES ('Admin');
+
+INSERT INTO Security_Users ([User_Name],[Full_Name],[User_Password],[Profile_Name]) VALUES ('Admin','Admin','{ENC}H4sIAAAAAAAEAJsS1rzhzR+NjwCZz56xCAAAAA==','Admin');
+
+	insert into security_entitlements (entitlement_name,created_on,created_by,updated_on,updated_by) values ('Rooms',now(),'Admin',now(),'Admin');
+	insert into security_entitlements (entitlement_name,created_on,created_by,updated_on,updated_by) values ('Buildings',now(),'Admin',now(),'Admin');
+	insert into security_entitlements (entitlement_name,created_on,created_by,updated_on,updated_by) values ('Compounds',now(),'Admin',now(),'Admin');
+	insert into security_entitlements (entitlement_name,created_on,created_by,updated_on,updated_by) values ('Accommodation Categories',now(),'Admin',now(),'Admin');
+	insert into security_entitlements (entitlement_name,created_on,created_by,updated_on,updated_by) values ('Residents',now(),'Admin',now(),'Admin');
+	insert into security_entitlements (entitlement_name,created_on,created_by,updated_on,updated_by) values ('Companies',now(),'Admin',now(),'Admin');
+	insert into security_entitlements (entitlement_name,created_on,created_by,updated_on,updated_by) values ('Projects',now(),'Admin',now(),'Admin');
+	insert into security_entitlements (entitlement_name,created_on,created_by,updated_on,updated_by) values ('Contracts',now(),'Admin',now(),'Admin');
+	insert into security_entitlements (entitlement_name,created_on,created_by,updated_on,updated_by) values ('Users',now(),'Admin',now(),'Admin');
+	insert into security_entitlements (entitlement_name,created_on,created_by,updated_on,updated_by) values ('Entitlements',now(),'Admin',now(),'Admin');
+	insert into security_entitlements (entitlement_name,created_on,created_by,updated_on,updated_by) values ('Profiles',now(),'Admin',now(),'Admin');
+	insert into security_entitlements (entitlement_name,created_on,created_by,updated_on,updated_by) values ('Residents Search',now(),'Admin',now(),'Admin');
+	insert into security_entitlements (entitlement_name,created_on,created_by,updated_on,updated_by) values ('New Check In',now(),'Admin',now(),'Admin');
+	insert into security_entitlements (entitlement_name,created_on,created_by,updated_on,updated_by) values ('SQL Viewer',now(),'Admin',now(),'Admin');
+	insert into security_entitlements (entitlement_name,created_on,created_by,updated_on,updated_by) values ('Bills',now(),'Admin',now(),'Admin');
+	insert into security_entitlements (entitlement_name,created_on,created_by,updated_on,updated_by) values ('Check In',now(),'Admin',now(),'Admin');
+	insert into security_entitlements (entitlement_name,created_on,created_by,updated_on,updated_by) values ('Check Out',now(),'Admin',now(),'Admin');
+	insert into security_entitlements (entitlement_name,created_on,created_by,updated_on,updated_by) values ('Room Movement',now(),'Admin',now(),'Admin');
+	insert into security_entitlements (entitlement_name,created_on,created_by,updated_on,updated_by) values ('Encryption Tool',now(),'Admin',now(),'Admin');
+
+insert into security_profile_entitlements (profile_name,entitlement_name,created_by,created_on,updated_by,updated_on) values ('Admin','Encryption Tool','Admin',now(),'Admin',now());
+insert into security_profile_entitlements (profile_name,entitlement_name,created_by,created_on,updated_by,updated_on) values ('Admin','Rooms','Admin',now(),'Admin',now());
+insert into security_profile_entitlements (profile_name,entitlement_name,created_by,created_on,updated_by,updated_on) values ('Admin','Buildings','Admin',now(),'Admin',now());
+insert into security_profile_entitlements (profile_name,entitlement_name,created_by,created_on,updated_by,updated_on) values ('Admin','Compounds','Admin',now(),'Admin',now());
+insert into security_profile_entitlements (profile_name,entitlement_name,created_by,created_on,updated_by,updated_on) values ('Admin','Accommodation Categories','Admin',now(),'Admin',now());
+insert into security_profile_entitlements (profile_name,entitlement_name,created_by,created_on,updated_by,updated_on) values ('Admin','Residents','Admin',now(),'Admin',now());
+insert into security_profile_entitlements (profile_name,entitlement_name,created_by,created_on,updated_by,updated_on) values ('Admin','Companies','Admin',now(),'Admin',now());
+insert into security_profile_entitlements (profile_name,entitlement_name,created_by,created_on,updated_by,updated_on) values ('Admin','Projects','Admin',now(),'Admin',now());
+insert into security_profile_entitlements (profile_name,entitlement_name,created_by,created_on,updated_by,updated_on) values ('Admin','Contracts','Admin',now(),'Admin',now());
+insert into security_profile_entitlements (profile_name,entitlement_name,created_by,created_on,updated_by,updated_on) values ('Admin','Users','Admin',now(),'Admin',now());
+insert into security_profile_entitlements (profile_name,entitlement_name,created_by,created_on,updated_by,updated_on) values ('Admin','Entitlements','Admin',now(),'Admin',now());
+insert into security_profile_entitlements (profile_name,entitlement_name,created_by,created_on,updated_by,updated_on) values ('Admin','Profiles','Admin',now(),'Admin',now());
+insert into security_profile_entitlements (profile_name,entitlement_name,created_by,created_on,updated_by,updated_on) values ('Admin','Residents Search','Admin',now(),'Admin',now());
+insert into security_profile_entitlements (profile_name,entitlement_name,created_by,created_on,updated_by,updated_on) values ('Admin','New Check In','Admin',now(),'Admin',now());
+insert into security_profile_entitlements (profile_name,entitlement_name,created_by,created_on,updated_by,updated_on) values ('Admin','SQL Viewer','Admin',now(),'Admin',now());
+insert into security_profile_entitlements (profile_name,entitlement_name,created_by,created_on,updated_by,updated_on) values ('Admin','Bills','Admin',now(),'Admin',now());
+insert into security_profile_entitlements (profile_name,entitlement_name,created_by,created_on,updated_by,updated_on) values ('Admin','Check In','Admin',now(),'Admin',now());
+insert into security_profile_entitlements (profile_name,entitlement_name,created_by,created_on,updated_by,updated_on) values ('Admin','Check Out','Admin',now(),'Admin',now());
+insert into security_profile_entitlements (profile_name,entitlement_name,created_by,created_on,updated_by,updated_on) values ('Admin','Room Movement','Admin',now(),'Admin',now());
