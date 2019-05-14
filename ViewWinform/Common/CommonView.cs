@@ -86,10 +86,6 @@ namespace ViewWinform.Common {
             if(this.OnSaveInvoked != null) this.OnSaveInvoked(); 
         }
 
-        private void TsbDelete_Click(object sender, EventArgs e) {
-            if (this.OnRecordOperationInvoked != null) this.OnRecordOperationInvoked(RecordOperation.Delete);
-            if(this.OnDeleteInvoked!=null) this.OnDeleteInvoked();
-        }
 
 
         private void TsbTableView_Click(object sender, EventArgs e) {
@@ -101,6 +97,11 @@ namespace ViewWinform.Common {
             if (this.OnRecordOperationInvoked != null) this.OnRecordOperationInvoked(RecordOperation.New);
             if(this.OnNewInvoked!=null) this.OnNewInvoked();
             this.tslRecordPosition.Text = "new record";
+        }
+
+        private void TsbDelete_Click_1(object sender, EventArgs e) {
+            if (this.OnRecordOperationInvoked != null) this.OnRecordOperationInvoked(RecordOperation.Delete);
+            if (this.OnDeleteInvoked != null) this.OnDeleteInvoked();
         }
     }
 }

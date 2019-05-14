@@ -33,7 +33,7 @@
             entitlementModel4.Created_By = null;
             entitlementModel4.Created_On = new System.DateTime(((long)(0)));
             entitlementModel4.Entitlement_Name = "";
-            entitlementModel4.Id = "";
+            entitlementModel4.Id = -1;
             entitlementModel4.Updated_By = null;
             entitlementModel4.Updated_On = new System.DateTime(((long)(0)));
             this.entitelmentFormView1.model = entitlementModel4;

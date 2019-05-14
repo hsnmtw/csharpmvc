@@ -36,11 +36,7 @@ namespace ControllerLibrary.Common {
                 for (int i = 0; i < reader.FieldCount; i++) {
                     string field = reader.GetName(i);
                     object value = reader.GetValue(i);
-                    if ("id".Equals(field.ToLower())) {
-                        typeof(M).GetProperty(field).SetValue(model, value.ToString());
-                    } else {
-                        typeof(M).GetProperty(field).SetValue(model, DBNull.Value.Equals( value ) ? null : value );
-                    }
+                    typeof(M).GetProperty(field).SetValue(model, DBNull.Value.Equals(value) ? null : value);
                 }
                 this.Current = model;
                 this.position++;

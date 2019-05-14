@@ -187,7 +187,7 @@
             this.nationalityFormView1.Location = new System.Drawing.Point(0, 0);
             nationalityModel1.Created_By = null;
             nationalityModel1.Created_On = new System.DateTime(((long)(0)));
-            nationalityModel1.Id = "";
+            nationalityModel1.Id = -1;
             nationalityModel1.Nationality_Arabic = "";
             nationalityModel1.Nationality_Code = "";
             nationalityModel1.Nationality_Desc = "";

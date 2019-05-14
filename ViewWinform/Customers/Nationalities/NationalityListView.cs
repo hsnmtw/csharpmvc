@@ -37,9 +37,8 @@ namespace ViewWinform.Customers.Nationalities {
         private void Go_Button_Click(object sender, EventArgs e)
         {
             //var controller = new NationalityController();
-            DataTable table = controller.search(new NationalityModel() { Nationality_Code=Search_TextBox.Text });
-            DataView view = new DataView(table);
-            view.Sort = "Nationality_Desc";
+            var table = controller.search(new NationalityModel() { Nationality_Code=Search_TextBox.Text }, "Nationality_Code".Split(','));
+            var view = (from row in table orderby row.Nationality_Desc select row);
             this.dataGridView1.DataSource = view;
         }
 
@@ -53,7 +52,7 @@ namespace ViewWinform.Customers.Nationalities {
             if (this.dataGridView1.SelectedRows.Count < 1) return;
             NationalityModel model = new NationalityModel();
             var row = dataGridView1.SelectedRows[0];
-            model.Id                 = row.Cells["Id"].Value.ToString();
+            model.Id                 = int.Parse(row.Cells["Id"].Value.ToString());
             model.Nationality_Code   = row.Cells["Nationality_Code"].Value.ToString();
             model.Nationality_Desc   = row.Cells["Nationality_Desc"].Value.ToString();
             model.Nationality_Arabic = row.Cells["Nationality_Arabic"].Value.ToString();

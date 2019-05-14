@@ -29,7 +29,10 @@ namespace ViewWinform.Security.Profiles {
         private void Go_Button_Click(object sender, EventArgs e)
         {
             var controller = new ProfileController();
-            this.dataGridView1.DataSource = controller.search(new ProfileModel() { Profile_Name=Search_TextBox.Text });
+            this.dataGridView1.DataSource = controller.search(
+                new ProfileModel() { Profile_Name=Search_TextBox.Text },
+                "Profile_Name".Split(',')
+            );
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -57,20 +60,11 @@ namespace ViewWinform.Security.Profiles {
         private void Button3_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count < 1) return;
-            string id = dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString();
+            int id = int.Parse(dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString());
 
             var form = new Form();// { Width = 550, Height = 450 };
             var prfform = new ProfilesFormView()
             {
-                //OnOKAction = delegate ()
-                //{
-                //    form.Close();
-                //    Button1_Click(null, null);
-                //},
-                //OnCancelAction = delegate ()
-                //{
-                //    form.Close();
-                //},
                 Dock = DockStyle.Fill
             };
             prfform.model = (new ProfileController().find(new ProfileModel() { Id = id }));
@@ -83,7 +77,7 @@ namespace ViewWinform.Security.Profiles {
         private void Button4_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count < 1) return;
-            string id = dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString();
+            int id = int.Parse(dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString());
             if (MessageBox.Show("Are you sure of deleting this record", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 new ProfileController().delete( new ProfileModel() { Id = id });

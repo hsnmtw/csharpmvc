@@ -42,7 +42,7 @@ namespace ViewWinform.Security.Users
             //form.Size = new System.Drawing.Size(userform.Width + 20, userform.Height + 120);
             //form.Controls.Add(userform);
             //form.ShowDialog();
-            new UserView("Id".Split(','), new UserModel() { Id = "-1" }) { MdiParent = this.ParentForm.MdiParent }.Show();
+            new UserView("Id".Split(','), new UserModel() { Id = -1 }) { MdiParent = this.ParentForm.MdiParent }.Show();
         }
 
         private void Button3_Click(object sender, EventArgs e)
@@ -64,17 +64,19 @@ namespace ViewWinform.Security.Users
             //form.Controls.Add(userform);
             //form.ShowDialog();
 
-            string id = this.dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString();
+            int id = int.Parse(this.dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString());
             new UserView("Id".Split(','), new UserModel() { Id = id }) { MdiParent=this.ParentForm.MdiParent }.Show();
         }
 
         private void Button4_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count < 1) return;
-            string id = dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString();
+            int id = int.Parse(dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString());
+            string name = dataGridView1.SelectedRows[0].Cells["User_Name"].Value.ToString();
+
             if (MessageBox.Show("Are you sure of deleting this record","Delete",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                new UserController().delete(new UserModel() { Id = id });
+                new UserController().delete(new UserModel() { Id = id, User_Name = name });
                 Button1_Click(null, null);
             }
         }
@@ -82,28 +84,33 @@ namespace ViewWinform.Security.Users
         private void Go_Button_Click(object sender, EventArgs e)
         {
             var controller = new UserController();
-            this.dataGridView1.DataSource = controller.search(new UserModel() { User_Name = Search_TextBox.Text });
+            this.dataGridView1.DataSource = controller.search(
+                new UserModel() { User_Name = Search_TextBox.Text },
+                "User_Name".Split(',')
+            );
         }
 
         private void Button5_Click(object sender, EventArgs e) {
             if (dataGridView1.SelectedRows.Count < 1) return;
-            string id = dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString();
+            int id = int.Parse(dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString());
+            string name = dataGridView1.SelectedRows[0].Cells["User_Name"].Value.ToString();
             UserController controller = new UserController();
-            controller.toggleActiveStatus(new UserModel() {Id = id});
+            controller.toggleActiveStatus(new UserModel() {Id = id,User_Name = name});
             Button1_Click(null, null);
         }
 
         private void Button6_Click(object sender, EventArgs e) {
             if (dataGridView1.SelectedRows.Count < 1) return;
-            string id = dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString();
+            int id = int.Parse(dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString());
+            string name = dataGridView1.SelectedRows[0].Cells["User_Name"].Value.ToString();
             UserController controller = new UserController();
-            controller.resetLoginCounter(new UserModel() { Id = id });
+            controller.resetLoginCounter(new UserModel() { Id = id, User_Name = name });
             Button1_Click(null, null);
         }
 
         private void Button7_Click(object sender, EventArgs e) {
             if (dataGridView1.SelectedRows.Count < 1) return;
-            string id = dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString();
+            int id = int.Parse(dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString());
             string username = dataGridView1.SelectedRows[0].Cells["User_Name"].Value.ToString();
 
             UserPasswordResetView userPasswordResetView = new Security.Users.UserPasswordResetView();

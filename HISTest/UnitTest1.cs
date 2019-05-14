@@ -39,7 +39,7 @@ namespace HISTest
             var all = controller.all();
             foreach (DataRow row in all.Rows)
             {
-                controller.delete(new UserModel() { Id = row["Id"].ToString() });
+                controller.delete(new UserModel() { Id = int.Parse(row["Id"].ToString()) });
             }
 
             Assert.AreEqual(0, controller.all().Rows.Count);

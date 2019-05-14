@@ -15,11 +15,6 @@ namespace ControllerLibrary.Security
     {
         public override string TABLE_NAME { get { return "Security_Profile_Entitlements"; } }
 
-        public override void updateMetaData() {
-            MetaData["Profile_Name"] = "TEXT(50)";
-            MetaData["Entitlement_Name"] = "TEXT(50)";
-        }
-
 
         public DataTable getEntitlementsByProfile(string profile)
         {
@@ -56,14 +51,5 @@ namespace ControllerLibrary.Security
                 db.execute(stmt);
             }
         }
-
-        public override DataTable search(Profile_EntitlementsModel model)
-        {
-            Statement statement = getSelectStatement();
-            statement.sql = string.Format("SELECT X0001.* FROM ({0}) AS X0001 WHERE ([Profile_Name]=? and [Entitlement_Name]=?) or [Id]=?", statement.sql);
-            statement.parameters = getParameters("Profile_Name,Entitlement_Name,Id".Split(','),model);
-            return db.query(statement);
-        }
-
     }
 }

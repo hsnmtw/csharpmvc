@@ -18,13 +18,13 @@ namespace ViewWinform.Housing.Compounds {
         private CompoundModel _model;
         public CompoundModel model {
             get {
-                _model.Id = this.Id_TextBox.Text;
+                _model.Id = int.Parse(this.Id_TextBox.Text);
                 _model.Compound_Name = this.Compound_Name_TextBox.Text;
                 return _model;
             }
             set {
                 _model = value;
-                this.Id_TextBox.Text = _model == null ? "" : _model.Id;
+                this.Id_TextBox.Text = _model == null ? "" : _model.Id.ToString();
                 this.Compound_Name_TextBox.Text = _model == null ? "" : _model.Compound_Name;
             }
         }

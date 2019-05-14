@@ -24,7 +24,7 @@ namespace ViewWinform.Security.Audit {
             set {
                 _model = value;
 
-                Id_TextBox.Text = _model == null ? "" : _model.Id;
+                Id_TextBox.Text = _model == null ? "" : _model.Id.ToString();
                 Event_Comments_TextBox.Text = _model == null ? "" : _model.Event_Comments;
                 Event_Date_TextBox.Text = _model == null ? "" : _model.Event_Date.ToString("yyyy-MM-dd HH:mm:ss");
                 User_Name_TextBox.Text = _model == null ? "" : _model.User_Name;

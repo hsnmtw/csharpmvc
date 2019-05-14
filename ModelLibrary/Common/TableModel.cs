@@ -38,11 +38,8 @@ namespace ModelLibrary.Common {
                 M model = Activator.CreateInstance<M>();
                 for (int i = 0; i < values.Length; i++) {
                     values[i] = row[i];
-                    if ("id".Equals(Columns[i].ColumnName.ToLower())) {
-                        typeof(M).GetProperty(Columns[i].ColumnName).SetValue(model, values[i].ToString());
-                    } else {
-                        typeof(M).GetProperty(Columns[i].ColumnName).SetValue(model, DBNull.Value.Equals( values[i] ) ? null : values[i]);
-                    }
+                    typeof(M).GetProperty(Columns[i].ColumnName).SetValue(model, DBNull.Value.Equals( values[i] ) ? null : values[i]);
+                    
                 }
                 this._modeles.Add(model);
                 this.Rows.Add(values);

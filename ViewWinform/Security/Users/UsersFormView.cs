@@ -18,7 +18,7 @@ namespace ViewWinform.Security.Users
         private UserModel _model = new UserModel();
         public UserModel model {
             get {
-                _model.Id = this.Id_TextBox.Text;
+                _model.Id = int.Parse(this.Id_TextBox.Text);
                 _model.User_Name = User_Name_TextBox.Text;
                 _model.Full_Name = Full_Name_TextBox.Text;
                 _model.Profile_Name = Profile_Id_ComboBox.Text;
@@ -28,7 +28,7 @@ namespace ViewWinform.Security.Users
             }
             set {
                 _model = value;
-                this.Id_TextBox.Text = _model==null?"":_model.Id;
+                this.Id_TextBox.Text = _model==null?"":_model.Id.ToString();
                 this.User_Name_TextBox.Text = _model==null?"":_model.User_Name;
                 this.Full_Name_TextBox.Text = _model==null?"":_model.Full_Name;
                 this.Profile_Id_ComboBox.Text = _model==null?"":_model.Profile_Name;

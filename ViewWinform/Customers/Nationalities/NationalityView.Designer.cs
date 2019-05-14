@@ -30,10 +30,10 @@
             // nationalityFormView1
             // 
             this.nationalityFormView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.nationalityFormView1.Location = new System.Drawing.Point(5, 30);
+            this.nationalityFormView1.Location = new System.Drawing.Point(5, 71);
             nationalityModel1.Created_By = null;
             nationalityModel1.Created_On = new System.DateTime(((long)(0)));
-            nationalityModel1.Id = "";
+            nationalityModel1.Id = -1;
             nationalityModel1.Nationality_Arabic = "";
             nationalityModel1.Nationality_Code = "";
             nationalityModel1.Nationality_Desc = "";
@@ -42,14 +42,14 @@
             this.nationalityFormView1.model = nationalityModel1;
             this.nationalityFormView1.Name = "nationalityFormView1";
             this.nationalityFormView1.Padding = new System.Windows.Forms.Padding(3);
-            this.nationalityFormView1.Size = new System.Drawing.Size(424, 240);
+            this.nationalityFormView1.Size = new System.Drawing.Size(286, 139);
             this.nationalityFormView1.TabIndex = 2;
             // 
             // NationalityView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 300);
+            this.ClientSize = new System.Drawing.Size(296, 240);
             this.Controls.Add(this.nationalityFormView1);
             this.Name = "NationalityView";
             this.Text = "NationalityView";

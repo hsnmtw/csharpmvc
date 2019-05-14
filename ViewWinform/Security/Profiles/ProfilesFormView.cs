@@ -21,13 +21,13 @@ namespace ViewWinform.Security.Profiles
         public ProfileModel model
         {
             get {
-                _model.Id = this.Id_TextBox.Text;
+                _model.Id = int.Parse( this.Id_TextBox.Text );
                 _model.Profile_Name = Profile_Name_TextBox.Text;
                 return _model;
             }
             set {
                 _model = value;
-                this.Id_TextBox.Text = _model == null ? "" : _model.Id;
+                this.Id_TextBox.Text = _model == null ? "" : _model.Id.ToString();
                 this.Profile_Name_TextBox.Text = _model == null ? "" : _model.Profile_Name;
                 this.advancedCheckedListBox1.setAll(false);
                 if (_model != null && _model.Id != null && !"".Equals(_model.Id)) {

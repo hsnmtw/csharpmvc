@@ -152,7 +152,8 @@ namespace ViewWinform
 
         private void NationalitiesToolStripMenuItem_Click(object sender, EventArgs e) {
             //Utils.FormsHelper.showView(this, new ViewWinform.Customers.Nationalities.NationalityListView());
-            new NationalityView() { MdiParent = this }.Show();
+            //new NationalityView() { MdiParent = this }.Show();
+            new NationalityForm() { MdiParent = this }.Show();
         }
 
         private void AuditToolStripMenuItem_Click(object sender, EventArgs e) {

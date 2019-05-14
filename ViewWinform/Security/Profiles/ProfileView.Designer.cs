@@ -33,7 +33,7 @@
             this.profilesFormView1.Location = new System.Drawing.Point(5, 30);
             profileModel2.Created_By = null;
             profileModel2.Created_On = new System.DateTime(((long)(0)));
-            profileModel2.Id = "";
+            profileModel2.Id = -1;
             profileModel2.Profile_Name = "";
             profileModel2.Updated_By = null;
             profileModel2.Updated_On = new System.DateTime(((long)(0)));

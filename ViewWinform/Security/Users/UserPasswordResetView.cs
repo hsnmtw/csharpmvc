@@ -27,14 +27,14 @@ namespace ViewWinform.Security.Users {
 
         public UserModel model {
             get {
-                _model.Id = this.Id_TextBox.Text;
+                _model.Id = int.Parse(this.Id_TextBox.Text,0);
                 _model.User_Name = this.UserName_TextBox.Text;
                 _model.User_Password = crypto.encrypt(this.Password_TextBox.Text);
                 return _model;
             }
             set {
                 _model = value;
-                this.Id_TextBox.Text = _model.Id;
+                this.Id_TextBox.Text = _model.Id.ToString();
                 this.UserName_TextBox.Text = _model.User_Name;
             }
         }

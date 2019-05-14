@@ -9,9 +9,9 @@ namespace ModelLibrary.Common
 {
     public abstract class BaseModel
     {       
-        public String Id           { get; set; }
-        public String Created_By   { get; set; }
-        public String Updated_By   { get; set; }
+        public int Id           { get; set; }
+        public string Created_By   { get; set; }
+        public string Updated_By   { get; set; }
         public DateTime Created_On { get; set; }
         public DateTime Updated_On { get; set; }       
     }

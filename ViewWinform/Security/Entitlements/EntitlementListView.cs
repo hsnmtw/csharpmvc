@@ -55,20 +55,11 @@ namespace ViewWinform.Security.Entitlements
         private void Button3_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count < 1) return;
-            string id = dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString();
+            int id = int.Parse(dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString());
 
             var form = new Form();// { Width = 400 };
             var prfform = new EntitelmentFormView()
             {
-                //OnOKAction = delegate ()
-                //{
-                //    form.Close();
-                //    Button1_Click(null, null);
-                //},
-                //OnCancelAction = delegate ()
-                //{
-                //    form.Close();
-                //},
                 Dock = DockStyle.Fill
             };
             prfform.model = (new EntitlementController().find(new EntitlementModel() { Id = id }));
@@ -81,7 +72,7 @@ namespace ViewWinform.Security.Entitlements
         private void Button4_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count < 1) return;
-            string id = dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString();
+            int id = int.Parse(dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString());
             //string name = dataGridView1.SelectedRows[0].Cells["Entitlement_Name"].Value.ToString();
             if (MessageBox.Show("Are you sure of deleting this record", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -93,7 +84,10 @@ namespace ViewWinform.Security.Entitlements
         private void Go_Button_Click_1(object sender, EventArgs e)
         {
             var controller = new EntitlementController();
-            this.dataGridView1.DataSource = controller.search(new EntitlementModel() { Entitlement_Name = Search_TextBox.Text });
+            this.dataGridView1.DataSource = controller.search(
+                new EntitlementModel() { Entitlement_Name = Search_TextBox.Text },
+                "Entitlement_Name".Split(',')
+            );
         }
     }
 }

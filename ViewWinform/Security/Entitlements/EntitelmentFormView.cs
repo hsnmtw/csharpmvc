@@ -18,13 +18,13 @@ namespace ViewWinform.Security.Entitlements
         private EntitlementModel _model = new EntitlementModel();
         public EntitlementModel model {
             get {
-                _model.Id = this.Id_TextBox.Text;
+                _model.Id = int.Parse(this.Id_TextBox.Text);
                 _model.Entitlement_Name = this.Entitlement_Name_TextBox.Text;
                 return _model;
             }
             set {
                 _model = value;
-                this.Id_TextBox.Text = _model == null ? "" : _model.Id;
+                this.Id_TextBox.Text = _model == null ? "" : _model.Id.ToString();
                 this.Entitlement_Name_TextBox.Text = _model == null ? "" : _model.Entitlement_Name;
                 //this.auditView1.setModel(_model);
             }

@@ -36,7 +36,7 @@
             userModel1.Email = "";
             userModel1.Failed_Login_Attempts = 0;
             userModel1.Full_Name = "";
-            userModel1.Id = "";
+            userModel1.Id = -1;
             userModel1.Is_Active = false;
             userModel1.Last_Change_Password = new System.DateTime(((long)(0)));
             userModel1.Last_Login_Date = new System.DateTime(((long)(0)));

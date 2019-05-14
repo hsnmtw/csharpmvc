@@ -16,12 +16,44 @@ namespace ControllerLibrary.Common
 {
 
     public abstract class AbstractController<M> where M : BaseModel {
+
+        public static Dictionary<Type, DbType> DataTypeMapping = new Dictionary<Type, DbType>() {
+            [typeof(string)]   = DbType.String,
+            [typeof(int)]      = DbType.Int32,
+            [typeof(double)]   = DbType.Double,
+            [typeof(DateTime)] = DbType.Date
+        };
+
+
         protected DBConnectionManager db = DBConnectionManager.Instance;
-        public abstract void updateMetaData();
-        public abstract DataTable search(M model);
+        //public abstract void updateMetaData();
+        //public abstract DataTable search(M model);
+
+
+        public List<M> search(M model,string[]whereFields) {
+            var reader = db.getReader(new DBManagerLibrary.Common.Statement() {
+                sql = string.Format(@"SELECT [{0}] 
+                                        FROM {1} 
+                                       WHERE {2} ", 
+                                       string.Join("],[", fields), 
+                                       this.TABLE_NAME,
+                                       string.Join(" AND ", (from wf in whereFields select string.Format("[{0}]=@{0}",wf)) )),
+                parameters = getParameters(whereFields, model)
+            });
+            var result = new List<M>();
+            while (reader.Read()) {
+                var m = Activator.CreateInstance<M>();
+                for (int i = 0; i < fields.Length; i++) {
+                    typeof(M).GetProperty(fields[i]).SetValue(m, DBNull.Value.Equals(reader.GetValue(i)) ? null : reader.GetValue(i) );
+                }
+                result.Add(m);
+            }
+            return result;
+        }
+
 
         public void save(M model) {
-            if (model.Id == null || "".Equals(model.Id)) insert(model);
+            if (model.Id == 0) insert(model);
             else update(model);
         }
 
@@ -29,7 +61,7 @@ namespace ControllerLibrary.Common
             db.execute(getInsertStatement(model));
             if(this.GetType().Equals(typeof(AuditController)) == false) {
                 new AuditController().registerEvent(new AuditModel() {
-                    User_Name = model.Updated_By,
+                    User_Name = Session.Instance.CurrentUser.User_Name,
                     Event_Comments = string.Format("insert new record into [{0}] fields [{1}]",this.TABLE_NAME, convertModelToString(model))
                 });
             }
@@ -38,7 +70,7 @@ namespace ControllerLibrary.Common
             db.execute(getUpdateStatement(model));
             if (this.GetType().Equals(typeof(AuditController)) == false) {
                 new AuditController().registerEvent(new AuditModel() {
-                    User_Name = model.Updated_By,
+                    User_Name = Session.Instance.CurrentUser.User_Name,
                     Event_Comments = string.Format("update record of [{0}] fields [{1}]", this.TABLE_NAME, convertModelToString(model))
                 });
             }
@@ -47,7 +79,7 @@ namespace ControllerLibrary.Common
             db.execute(getDeleteStatement(model));
             if (this.GetType().Equals(typeof(AuditController)) == false) {
                 new AuditController().registerEvent(new AuditModel() {
-                    User_Name = model.Updated_By,
+                    User_Name = Session.Instance.CurrentUser.User_Name,
                     Event_Comments = string.Format("delete record from [{0}] fields [{1}]", this.TABLE_NAME, convertModelToString(model))
                 });
             }
@@ -88,7 +120,14 @@ namespace ControllerLibrary.Common
         }
 
         public AbstractController(){
-            this.updateMetaData();
+            //this.updateMetaData();
+            //this.MetaData = new Dictionary<string, string>() {
+            //    ["Id"] = "TEXT(50)",
+            //    ["Created_By"] = "TEXT(50)",
+            //    ["Updated_By"] = "TEXT(50)",
+            //    ["Created_On"] = "DATETIME",
+            //    ["Updated_On"] = "DATETIME"
+            //};
         }
 
         public M find(M model) {
@@ -106,35 +145,15 @@ namespace ControllerLibrary.Common
             }
         }
 
-        public string[] fields { get { return (from key in MetaData.Keys select key ).ToArray<string>(); } }
+        public string[] fields { get { return (from property in typeof(M).GetProperties() select property.Name).ToArray<string>(); } }
 
-        public Dictionary<string, string> MetaData = new Dictionary<string, string>() {
-            ["Id"]         = "TEXT(50)",
-            ["Created_By"] = "TEXT(50)",
-            ["Updated_By"] = "TEXT(50)",
-            ["Created_On"] = "DATETIME",
-            ["Updated_On"] = "DATETIME"
-        };
-
-        public static IDbDataParameter getParameterObject(string datatype) {
-            switch (datatype.Split('(')[0]) {
-                case "TEXT":
-                    return DBConnectionManager.Instance.getDbDataParameter("?", DbType.String, 255, null);
-                case "YESNO":
-                    return DBConnectionManager.Instance.getDbDataParameter("?", DbType.Boolean,0,null);
-                case "NUMBER":
-                    return DBConnectionManager.Instance.getDbDataParameter("?", DbType.Double, 0, null);
-                case "INTEGER":
-                    return DBConnectionManager.Instance.getDbDataParameter("?", DbType.Int32, 0, null);
-                case "DATETIME":
-                    return DBConnectionManager.Instance.getDbDataParameter("?", DbType.Date, 0, null);
-            }
-            return null;
+        public static IDbDataParameter getParameterObject(Type datatype) {
+            return DBConnectionManager.Instance.getDbDataParameter("?", DataTypeMapping[datatype] , 255, null);        
         }
 
         public virtual Statement getSelectStatement() {
             return new Statement() {
-                sql = string.Format("SELECT {0} FROM {1} ORDER BY 1", string.Join(",", fields), TABLE_NAME),
+                sql = string.Format("SELECT [{0}] FROM {1} ORDER BY 1", string.Join("],[", fields), TABLE_NAME),
                 parameters = new IDataParameter[0]
             };
         }
@@ -142,8 +161,6 @@ namespace ControllerLibrary.Common
         public virtual Statement getInsertStatement(M model) {
             model.Created_On = DateTime.Now;
             model.Created_By = Session.Instance.CurrentUser == null ? "SYSTEM" : Session.Instance.CurrentUser.User_Name;
-            model.Updated_On = DateTime.Now;
-            model.Updated_By = model.Created_By;
 
             string[] fields_without_id = (from field in fields
                                           where !field.ToLower().Equals("id")
@@ -196,7 +213,7 @@ namespace ControllerLibrary.Common
             IDataParameter[] result = new IDataParameter[keys.Length];
             for(int i = 0; i < keys.Length; i++) {
                 string key = keys[i];
-                result[i] = getParameterObject(MetaData[key]);
+                result[i] = getParameterObject( typeof(M).GetProperty(key).PropertyType );
                 result[i].ParameterName = "@" + key;
                 result[i].Value = model.GetType().GetProperty(key).GetValue(model) ?? DBNull.Value;
             }

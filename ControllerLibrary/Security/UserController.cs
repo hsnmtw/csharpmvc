@@ -16,18 +16,6 @@ namespace ControllerLibrary.Security
     {
         public override string TABLE_NAME { get { return "Security_Users"; } }
 
-        public override void updateMetaData() {
-            MetaData["User_Name"] = "TEXT(50)";
-            MetaData["Full_Name"] = "TEXT(100)";
-            MetaData["User_Password"] = "TEXT(100)";
-            MetaData["Profile_Name"] = "TEXT(50)";
-            MetaData["Is_Active"] = "YESNO";
-            MetaData["Email"] = "TEXT(100)";
-            MetaData["Failed_Login_Attempts"] = "NUMBER";
-            MetaData["Last_Login_Date"] = "DATETIME";
-            MetaData["Last_Change_Password"] = "DATETIME";
-        }
-
         public bool autheniticate(UserModel model)
         {
             encryptPassword(ref model);
@@ -49,7 +37,7 @@ namespace ControllerLibrary.Security
             model.Is_Active = bool.Parse( is_active );
             model.Failed_Login_Attempts = int.Parse( failed_login_attempts.Equals("") ? "0" : failed_login_attempts );
             model.User_Password = result.Rows[0][2].ToString();
-            model.Id = result.Rows[0][3].ToString();
+            model.Id = int.Parse(result.Rows[0][3].ToString());
 
             bool authinticated = model.Is_Active && model.User_Password.Equals(pswd);
 
@@ -58,8 +46,9 @@ namespace ControllerLibrary.Security
             if (authinticated) {
                 db.execute(new Statement(@"UPDATE " + this.TABLE_NAME + @"
                                 SET [Last_Login_Date] = now()
-                              WHERE [Id] = @Id
-                        ", getParameters("Id".Split(','), model)));
+                              WHERE [Id]              = @Id
+                                 OR [User_Name]       = @User_Name
+                        ", getParameters("Id,User_Name".Split(','), model)));
 
                 new AuditController().registerEvent(new AuditModel() {
                     User_Name = model.User_Name,
@@ -73,6 +62,7 @@ namespace ControllerLibrary.Security
                 db.execute(new Statement(@"UPDATE " + this.TABLE_NAME + @"
                                 SET [Failed_Login_Attempts] = @Failed_Login_Attempts
                               WHERE [Id]                    = @Id
+                                 OR [User_Name]             = @User_Name
                         ", getParameters("Failed_Login_Attempts,Id".Split(','), model)));
 
                 if (model.Failed_Login_Attempts > 5) {
@@ -80,7 +70,8 @@ namespace ControllerLibrary.Security
                    db.execute(new Statement(@"UPDATE " + this.TABLE_NAME + @"
                                 SET [Is_Active]             = @Is_Active
                               WHERE [Id]                    = @Id
-                        ", getParameters("Is_Active,Id".Split(','), model)));
+                                 OR [User_Name]             = @User_Name
+                        ", getParameters("Is_Active,Id,User_Name".Split(','), model)));
                 }
             }
 
@@ -97,12 +88,14 @@ namespace ControllerLibrary.Security
             db.execute(new Statement() {
                 sql = @"UPDATE " + this.TABLE_NAME + @"
                            SET [Is_Active] = not [Is_Active]
-                         WHERE [Id]=@Id
+                         WHERE [Id]        = @Id
+                            OR [User_Name] = @User_Name
                 ",
-               parameters = getParameters("Id".Split(','),model)
+               parameters = getParameters("Id,User_Name".Split(','),model)
             });
 
             new AuditController().registerEvent(new AuditModel() {
+                User_Name = model.User_Name,
                 Event_Comments = "toggle active status for user : [" + model.User_Name + "] new status : " + model.Is_Active
             });
         }
@@ -112,10 +105,12 @@ namespace ControllerLibrary.Security
                 sql = @"UPDATE " + this.TABLE_NAME + @"
                            SET [Failed_Login_Attempts] = 0
                          WHERE [Id]=@Id
+                            OR [User_Name]=@User_Name
                 ",
-                parameters = getParameters("Id".Split(','), model)
+                parameters = getParameters("Id,User_Name".Split(','), model)
             });
             new AuditController().registerEvent(new AuditModel() {
+                User_Name = model.User_Name,
                 Event_Comments = "reset login counter : " + model.User_Name
             });
         }
@@ -124,21 +119,15 @@ namespace ControllerLibrary.Security
             db.execute(new Statement() {
                 sql = @"UPDATE " + this.TABLE_NAME + @"
                            SET [User_Password] = @User_Password
-                         WHERE [Id]=@Id
+                         WHERE [Id]            = @Id
+                            OR [User_Name]     = @User_Name
                 ",
-                parameters = getParameters("User_Password,Id".Split(','), model)
+                parameters = getParameters("User_Password,Id,User_Name".Split(','), model)
             });
             new AuditController().registerEvent(new AuditModel() {
+                User_Name = model.User_Name,
                 Event_Comments = "password reset for user : " + model.User_Name
             });
-        }
-
-        public override DataTable search(UserModel model)
-        {
-            return db.query(new Statement(@"SELECT *
-                                FROM "+ this.TABLE_NAME +@" 
-                               WHERE [User_Name] LIKE @User_Name 
-                                  OR [Id]=@Id", getParameters("User_Name,Id".Split(','),model)));
         }
 
 
