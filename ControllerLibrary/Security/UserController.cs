@@ -101,6 +101,10 @@ namespace ControllerLibrary.Security
                 ",
                parameters = getParameters("Id".Split(','),model)
             });
+
+            new AuditController().registerEvent(new AuditModel() {
+                Event_Comments = "toggle active status for user : [" + model.User_Name + "] new status : " + model.Is_Active
+            });
         }
 
         public void resetLoginCounter(UserModel model) {
@@ -111,6 +115,9 @@ namespace ControllerLibrary.Security
                 ",
                 parameters = getParameters("Id".Split(','), model)
             });
+            new AuditController().registerEvent(new AuditModel() {
+                Event_Comments = "reset login counter : " + model.User_Name
+            });
         }
 
         public void resetPassword(UserModel model) {
@@ -120,6 +127,9 @@ namespace ControllerLibrary.Security
                          WHERE [Id]=@Id
                 ",
                 parameters = getParameters("User_Password,Id".Split(','), model)
+            });
+            new AuditController().registerEvent(new AuditModel() {
+                Event_Comments = "password reset for user : " + model.User_Name
             });
         }
 

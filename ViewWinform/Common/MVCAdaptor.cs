@@ -15,7 +15,7 @@ namespace ViewWinform.Common {
 
         private System.Data.IDataParameter[] filters = { };
 
-        private string[] filterfield;
+        private string[] filterfield = { };
         private M filterModel;
 
         public int Count {
@@ -44,10 +44,14 @@ namespace ViewWinform.Common {
         }
 
         public void Requery() {
-
-            this.recordset = this.Controller.getRecordset(this.Controller.getParameters(this.filterfield, this.filterModel));
             this.Models = new List<M>();
-            this.Count = this.Controller.count(this.Controller.getParameters(this.filterfield, this.filterModel));
+            if (this.filterfield.Length > 0) {
+                this.recordset = this.Controller.getRecordset(this.Controller.getParameters(this.filterfield, this.filterModel));
+                this.Count = this.Controller.count(this.Controller.getParameters(this.filterfield, this.filterModel));
+            } else {
+                this.recordset = this.Controller.getRecordset();
+                this.Count = this.Controller.count();
+            }
         }
     }
 }

@@ -47,6 +47,7 @@
     <Compile Include="Common\Recordset.cs" />
     <Compile Include="Common\Session.cs" />
     <Compile Include="Customers\NationalityController.cs" />
+    <Compile Include="Housing\CompoundController.cs" />
     <Compile Include="Security\AuditController.cs" />
     <Compile Include="Security\EntitlementController.cs" />
     <Compile Include="Security\Profile_EntitlementsController.cs" />

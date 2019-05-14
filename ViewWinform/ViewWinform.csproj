@@ -78,6 +78,18 @@
     <Compile Include="Customers\Nationalities\NationalityView.Designer.cs">
       <DependentUpon>NationalityView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Housing\Compounds\CompoundFormView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Housing\Compounds\CompoundFormView.Designer.cs">
+      <DependentUpon>CompoundFormView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Housing\Compounds\CompoundView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Housing\Compounds\CompoundView.Designer.cs">
+      <DependentUpon>CompoundView.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +204,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Customers\Nationalities\NationalityView.resx">
       <DependentUpon>NationalityView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Housing\Compounds\CompoundFormView.resx">
+      <DependentUpon>CompoundFormView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Housing\Compounds\CompoundView.resx">
+      <DependentUpon>CompoundView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
@@ -345,5 +363,6 @@
   <ItemGroup>
     <None Include="Resources\paste.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

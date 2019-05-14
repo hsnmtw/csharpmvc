@@ -158,5 +158,13 @@ namespace ViewWinform
         private void AuditToolStripMenuItem_Click(object sender, EventArgs e) {
             new AuditView() { MdiParent = this }.Show();
         }
+
+        private void TableDesignerToolStripMenuItem_Click(object sender, EventArgs e) {
+            new DBManagerLibrary.Utils.TableDesigner.TableDesignerView() { MdiParent = this }.Show();
+        }
+
+        private void CompoundsToolStripMenuItem_Click(object sender, EventArgs e) {
+            new Housing.Compounds.CompoundView() { MdiParent = this }.Show();
+        }
     }
 }

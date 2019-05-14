@@ -1,4 +1,34 @@
-﻿DROP TABLE Security_Profiles;
+﻿0 : AnsiString
+1 : Binary
+2 : Byte
+3 : Boolean
+4 : Currency
+5 : Date
+6 : DateTime
+7 : Decimal
+8 : Double
+9 : Guid
+10 : Int16
+11 : Int32
+12 : Int64
+13 : Object
+14 : SByte
+15 : Single
+16 : String
+17 : Time
+18 : UInt16
+19 : UInt32
+20 : UInt64
+21 : VarNumeric
+22 : AnsiStringFixedLength
+23 : StringFixedLength
+25 : Xml
+26 : DateTime2
+27 : DateTimeOffset
+
+
+
+DROP TABLE Security_Profiles;
 DROP TABLE Security_Profile_entitlement;
 DROP TABLE Security_entitlements;
 DROP TABLE Security_users;

@@ -46,6 +46,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Customers\NationalityModel.cs" />
+    <Compile Include="Housing\CompoundModel.cs" />
     <Compile Include="Security\AuditModel.cs" />
     <Compile Include="Security\ProfileModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

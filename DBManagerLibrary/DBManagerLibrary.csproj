@@ -55,6 +55,18 @@
     <Compile Include="Utils\CustomDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Utils\TableDesigner\TableDesignerForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Utils\TableDesigner\TableDesignerForm.Designer.cs">
+      <DependentUpon>TableDesignerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\TableDesigner\TableDesignerView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\TableDesigner\TableDesignerView.Designer.cs">
+      <DependentUpon>TableDesignerView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database_Objects.txt" />
@@ -62,6 +74,12 @@
   <ItemGroup>
     <EmbeddedResource Include="SQLView.resx">
       <DependentUpon>SQLView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\TableDesigner\TableDesignerForm.resx">
+      <DependentUpon>TableDesignerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\TableDesigner\TableDesignerView.resx">
+      <DependentUpon>TableDesignerView.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
