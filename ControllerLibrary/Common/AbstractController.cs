@@ -31,20 +31,59 @@ namespace ControllerLibrary.Common
 
 
         public List<M> search(M model,string[]whereFields) {
+            return selectAsList(this.fields,model,whereFields);
+        }
+
+
+        public DataTable selectAsDataTable(string[] selectedFields, M model, string[] whereFields) {
+
+            string query = "";
+
+            if (whereFields.Length == 0) {
+                query = string.Format("SELECT [{0}] FROM {1} ORDER BY 1",
+                                        string.Join("],[", selectedFields),
+                                        this.TABLE_NAME);
+
+            } else {
+                query = string.Format("SELECT [{0}] FROM {1} WHERE {2} ORDER BY 1",
+                                        string.Join("],[", selectedFields),
+                                        this.TABLE_NAME,
+                                        string.Join(" AND ", (from string wf
+                                                                in whereFields
+                                                              select string.Format("[{0}]=@{0}", wf))));
+            }
+            
+            return db.query(new Statement(query, getParameters(whereFields, model)));
+        }
+
+
+
+        public List<M> selectAsList(string[] selectedFields, M model, string[] whereFields) {
+
+            string query = "";
+
+            if (whereFields.Length == 0) {
+                query = string.Format("SELECT [{0}] FROM {1} ORDER BY 1",
+                                        string.Join("],[", selectedFields),
+                                        this.TABLE_NAME);
+
+            } else {
+                query = string.Format("SELECT [{0}] FROM {1} WHERE {2} ORDER BY 1",
+                                        string.Join("],[", selectedFields),
+                                        this.TABLE_NAME,
+                                        string.Join(" AND ", (from string wf
+                                                                in whereFields
+                                                                select string.Format("[{0}]=@{0}", wf))));
+            }
             var reader = db.getReader(new DBManagerLibrary.Common.Statement() {
-                sql = string.Format(@"SELECT [{0}] 
-                                        FROM {1} 
-                                       WHERE {2} ", 
-                                       string.Join("],[", fields), 
-                                       this.TABLE_NAME,
-                                       string.Join(" AND ", (from wf in whereFields select string.Format("[{0}]=@{0}",wf)) )),
+                sql = query,
                 parameters = getParameters(whereFields, model)
             });
             var result = new List<M>();
             while (reader.Read()) {
                 var m = Activator.CreateInstance<M>();
-                for (int i = 0; i < fields.Length; i++) {
-                    typeof(M).GetProperty(fields[i]).SetValue(m, DBNull.Value.Equals(reader.GetValue(i)) ? null : reader.GetValue(i) );
+                for (int i = 0; i < selectedFields.Length; i++) {
+                    typeof(M).GetProperty(selectedFields[i]).SetValue(m, DBNull.Value.Equals(reader.GetValue(i)) ? null : reader.GetValue(i));
                 }
                 result.Add(m);
             }
@@ -211,6 +250,7 @@ namespace ControllerLibrary.Common
 
         public IDataParameter[] getParameters(string[] keys, M model) {
             IDataParameter[] result = new IDataParameter[keys.Length];
+            if (keys.Length == 0) return result;
             for(int i = 0; i < keys.Length; i++) {
                 string key = keys[i];
                 result[i] = getParameterObject( typeof(M).GetProperty(key).PropertyType );
