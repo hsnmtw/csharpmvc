@@ -22,7 +22,7 @@ namespace ControllerLibrary.Common
             [typeof(string)]   = DbType.String,
             [typeof(int)]      = DbType.Int32,
             [typeof(double)]   = DbType.Double,
-            [typeof(DateTime)] = DbType.Date
+            [typeof(DateTime)] = DbType.DateTime
         };
 
 
@@ -257,6 +257,9 @@ namespace ControllerLibrary.Common
                 result[i] = getParameterObject( typeof(M).GetProperty(key).PropertyType );
                 result[i].ParameterName = "@" + key;
                 result[i].Value = model.GetType().GetProperty(key).GetValue(model) ?? DBNull.Value;
+                if(result[i].DbType == DbType.DateTime && result[i].Value != DBNull.Value) {
+                    result[i].Value = ((DateTime)result[i].Value).ToString("yyyy-MM-dd HH:mm:ss");
+                }
             }
             return result;
         }

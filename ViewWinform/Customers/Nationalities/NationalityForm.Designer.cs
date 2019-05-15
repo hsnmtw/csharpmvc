@@ -56,9 +56,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(31, 97);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 13);
+            this.label4.Size = new System.Drawing.Size(91, 13);
             this.label4.TabIndex = 14;
-            this.label4.Text = "Nationality Ar";
+            this.label4.Text = "Nationality Arabic";
             // 
             // Nationality_Desc_TextBox
             // 
@@ -73,9 +73,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(31, 71);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 13);
+            this.label3.Size = new System.Drawing.Size(94, 13);
             this.label3.TabIndex = 15;
-            this.label3.Text = "Nationality En";
+            this.label3.Text = "Nationality English";
             // 
             // Nationality_Code_TextBox
             // 

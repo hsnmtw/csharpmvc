@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.Common;
+using System.Configuration;
 
 namespace DBManagerLibrary.Common
 {
@@ -12,7 +13,15 @@ namespace DBManagerLibrary.Common
     public class DBConnectionManager
     {
         //public const string DB_CONNECTION_STRING = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\96650\source\repos\HIS\DB\his_database.mdb";        
-        private DbProviderFactory dbFactory = DbProviderFactories.GetFactory("System.Data.OleDb");
+
+        public static string
+            DB_CONFIG_FACTORY   ,
+            DB_CONFIG_PROVIDER  ,
+            DB_CONFIG_SOURCE    ,
+            DB_CONFIG_USER      ,
+            DB_CONFIG_PASSWORD  ;
+
+        private DbProviderFactory dbFactory = DbProviderFactories.GetFactory(DB_CONFIG_FACTORY);
 
         //private string connectionString;
         private DbConnection connection;
@@ -20,23 +29,22 @@ namespace DBManagerLibrary.Common
         private DataSet dataSet;
         public DataTable SchemaTables { get { return this.connection.GetSchema("Tables"); } }
         public DataTable SchemaColumns { get; private set; }
+
+
         private DBConnectionManager()
         {
-            //this.connectionString = connectionString;
-
             DbConnectionStringBuilder csBuilder = dbFactory.CreateConnectionStringBuilder();
-            csBuilder["Provider"]                         = "Microsoft.Jet.OLEDB.4.0";
-            csBuilder["Data Source"]                      = @"C:\Users\96650\source\repos\HIS\DB\his_database.mdb";
-            csBuilder["User Id"]                          = "Admin";
-            csBuilder["Password"]                         = null;
-            csBuilder["Jet OLEDB:Database Locking Mode"]  = 1;
-            csBuilder["Jet OLEDB:Engine Type"]            = 5;
-            //csBuilder["Jet OLEDB:System Database"]        = @"C:\Users\96650\source\repos\HIS\DB\System.mdw";
-            //csBuilder["Jet OLEDB:Create System Database"] = true;
 
-            //DBEngine dbEngine = new DBEngine();
-            //Database db = dbEngine.OpenDatabase(csBuilder["Data Source"]);
-            //db.Execute("GRANT SELECT ON MSysObjects TO Admin;");
+            //csBuilder["Provider"]                         = "Microsoft.Jet.OLEDB.4.0";
+            //csBuilder["Data Source"]                      = @"C:\Users\96650\source\repos\HIS\DB\his_database.mdb";
+            //csBuilder["User Id"]                          = "Admin";
+            //csBuilder["Password"]                         = null;
+
+            csBuilder["Provider"]                         = DB_CONFIG_PROVIDER;
+            csBuilder["Data Source"]                      = DB_CONFIG_SOURCE;
+            csBuilder["User Id"]                          = DB_CONFIG_USER;
+            csBuilder["Password"]                         = DB_CONFIG_PASSWORD;
+
 
             this.connection = dbFactory.CreateConnection();
             this.connection.ConnectionString = csBuilder.ConnectionString;
@@ -56,12 +64,6 @@ namespace DBManagerLibrary.Common
             return parameter;
         }
 
-        //public void execute(string sql,IDataParameter[] parameters) {
-        //    this.execute(new Statement(sql,parameters));
-        //}
-        //{
-        //    execute(sql, new DbParameter[] { });
-        //}
 
         public void execute(Statement statement) //string sql,DbParameter[]parameters)
         {
@@ -79,15 +81,6 @@ namespace DBManagerLibrary.Common
             Console.WriteLine(sql);
             cmd.ExecuteNonQuery();
         }
-
-        //public DataTable query(string sql)
-        //{
-        //    return query(sql, new DbParameter[] { });
-        //}
-
-        //public DataTable query(string sql, IDataParameter[] parameters) {
-        //    return query(new Statement(sql, parameters));
-        //}
 
         public DbDataReader getReader(Statement statement) {
             var sql = statement.sql;//.Replace("WHERE 1=1 AND ORDER","ORDER");
