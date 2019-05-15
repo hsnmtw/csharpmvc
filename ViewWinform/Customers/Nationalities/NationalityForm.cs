@@ -17,25 +17,37 @@ namespace ViewWinform.Customers.Nationalities {
 
         public NationalityModel Model{
             get {
-                _model.Id = int.Parse(this.Id_TextBox.Text);
+                _model.Id = "".Equals(this.Id_TextBox.Text) ? 0 : int.Parse(this.Id_TextBox.Text);
                 _model.Nationality_Code = this.Nationality_Code_TextBox.Text;
                 _model.Nationality_Desc = this.Nationality_Desc_TextBox.Text;
                 _model.Nationality_Arabic = this.Nationality_Arabic_TextBox.Text;
+                _model.Created_By  = this.Created_By_TextBox.Text  ;
+                _model.Updated_By = this.Updated_By_TextBox.Text;
+                try {
+                    _model.Created_On = DateTime.Parse(this.Created_On_TextBox.Text);
+                    _model.Updated_On = DateTime.Parse(this.Updated_On_TextBox.Text);
+                } catch { }
                 return _model;
             }
             set {
                 this._model = value;
                 if (value == null) _model = new NationalityModel();
-                this.Id_TextBox.Text = value.Id.ToString();
+                this.Id_TextBox.Text = _model.Id.ToString();
                 this.Nationality_Code_TextBox.Text = _model.Nationality_Code;
                 this.Nationality_Desc_TextBox.Text = _model.Nationality_Desc;
                 this.Nationality_Arabic_TextBox.Text = _model.Nationality_Arabic;
+                this.Created_By_TextBox.Text = _model.Created_By;
+                this.Updated_By_TextBox.Text = _model.Updated_By;
+                this.Created_On_TextBox.Text = _model.Created_By == null || "".Equals(_model.Created_By) ? "" : _model.Created_On.ToString();
+                this.Updated_On_TextBox.Text = _model.Updated_By == null || "".Equals(_model.Updated_By) ? "" : _model.Updated_On.ToString();
+                
             }
         }
 
         public NationalityForm() {
             InitializeComponent();
             this.controller = new ControllerLibrary.Customers.NationalityController();
+            this.Model = new NationalityModel();
         }
 
         
@@ -46,16 +58,6 @@ namespace ViewWinform.Customers.Nationalities {
         }
 
         private void Nationality_Code_TextBox_Lostfocus(object sender, EventArgs e) {
-            //var search = controller.search(new ModelLibrary.Customers.NationalityModel() {
-            //    Nationality_Code = Nationality_Code_TextBox.Text
-            //}, "Nationality_Code".Split(','));
-
-            //if (search.Count == 1) {
-            //    this.models = search;
-            //    this.bindingSource1.DataSource = this.models;
-            //}
-            //this.bindingSource1.ResetCurrentItem();
-            //this.bindingSource1.MoveFirst();
         }
 
 
@@ -65,14 +67,20 @@ namespace ViewWinform.Customers.Nationalities {
 
         private void Button3_Click(object sender, EventArgs e) {
             this.controller.save(this.Model);
+            Utils.FormsHelper.successMessage("Successful");
+            this.Model = this.controller.selectAsList(this.controller.fields, new NationalityModel() {
+                Nationality_Code = this.Model.Nationality_Code,
+            }, "Nationality_Code".Split(','))[0];
         }
 
         private void Button4_Click(object sender, EventArgs e) {
             this.controller.delete(this.Model);
+            Utils.FormsHelper.successMessage("Successful");
+            this.Model = new NationalityModel();
         }
 
         private void Button1_Click(object sender, EventArgs e) {
-            var selectedFields = "Nationality_Code,Nationality_Desc,Nationality_Arabic,Id".Split(',');
+            var selectedFields = "Nationality_Code,Nationality_Desc".Split(',');
             var lookup = new Common.LookUp(this.controller.selectAsDataTable(
                 selectedFields,
                 new ModelLibrary.Customers.NationalityModel(),
@@ -80,12 +88,9 @@ namespace ViewWinform.Customers.Nationalities {
             ));
             if (lookup.ShowDialog() == DialogResult.OK) {
 
-                this.Model = new NationalityModel() {
+                this.Model = this.controller.selectAsList(this.controller.fields, new NationalityModel() {
                     Nationality_Code = lookup.SelectedValue[0],
-                    Nationality_Desc = lookup.SelectedValue[1],
-                    Nationality_Arabic = lookup.SelectedValue[2],
-                    Id = int.Parse(lookup.SelectedValue[3])
-                };
+                }, "Nationality_Code".Split(','))[0];
             }
         }
     }
