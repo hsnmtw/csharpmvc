@@ -11,6 +11,6 @@ namespace ModelLibrary.Security
     public class ProfileModel : BaseModel
     {
         public String Profile_Name { get; set; }
-
+        public String Profile_Desc { get; set; }
     }
 }

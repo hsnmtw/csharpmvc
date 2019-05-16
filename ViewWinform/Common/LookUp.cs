@@ -17,7 +17,9 @@ namespace ViewWinform.Common {
 
         public LookUp(DataTable source,params string[]shownColumns) {
             InitializeComponent();
-            this.dataGridView1.DataSource = new DataView(source).ToTable(false,shownColumns);
+            DataView dv = new DataView(source);
+            dv.Sort = string.Format("{0} ASC", shownColumns[0]);
+            this.dataGridView1.DataSource = dv.ToTable(false,shownColumns);
         }
 
         public string[] SelectedValue {

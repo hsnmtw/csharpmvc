@@ -27,6 +27,7 @@ namespace ViewWinform.Security.Profiles {
                 _model.Profile_Name = this.Profile_Name_TextBox.Text;
                 _model.Created_By = this.Created_By_TextBox.Text;
                 _model.Updated_By = this.Updated_By_TextBox.Text;
+                _model.Profile_Desc = this.Profile_Desc_TextBox.Text;
                 try {
                     _model.Created_On = DateTime.Parse(this.Created_On_TextBox.Text);
                     _model.Updated_On = DateTime.Parse(this.Updated_On_TextBox.Text);
@@ -40,6 +41,7 @@ namespace ViewWinform.Security.Profiles {
                 this.Profile_Name_TextBox.Text = _model.Profile_Name;
                 this.Created_By_TextBox.Text = _model.Created_By;
                 this.Updated_By_TextBox.Text = _model.Updated_By;
+                this.Profile_Desc_TextBox.Text = _model.Profile_Desc;
                 this.Created_On_TextBox.Text = _model.Created_By == null || "".Equals(_model.Created_By) ? "" : _model.Created_On.ToString();
                 this.Updated_On_TextBox.Text = _model.Updated_By == null || "".Equals(_model.Updated_By) ? "" : _model.Updated_On.ToString();
 
