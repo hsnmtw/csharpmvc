@@ -30,15 +30,11 @@ namespace ControllerLibrary.Common
             return selectModelsAsList(model,whereFields);
         }
 
-        public M CreateNewModel() {
-            return Activator.CreateInstance<M>();
+        public DataTable selectModelsAsDataTable() {
+            return this.selectModelsAsDataTable(Activator.CreateInstance<M>(), new string[] { });
         }
 
-        public DataTable selectModelsAsDataTable(IEnumerable<string> selectedFields) {
-            return this.selectModelsAsDataTable(selectedFields, Activator.CreateInstance<M>(), new string[] { });
-        }
-
-        public DataTable selectModelsAsDataTable(IEnumerable<string> selectedFields, M model, string[] whereFields) {
+        public DataTable selectModelsAsDataTable(M model, string[] whereFields) {
 
             string query = "";
 
@@ -53,9 +49,7 @@ namespace ControllerLibrary.Common
                                                               select string.Format("[{0}]=@{0}", wf))));
             }
             
-            DataTable dt = db.query(new Statement(this.Source,query, getParameters(whereFields, model)));
-            DataView dv = new DataView(dt);
-            return dv.ToTable(false, selectedFields.ToArray());
+            return db.query(new Statement(this.Source, query, getParameters(whereFields, model)));
         }
 
         public List<M> selectModelsAsList() {
@@ -131,13 +125,13 @@ namespace ControllerLibrary.Common
         }
 
         public int count() {
-            int cnt = (int)db.query_scalar(new Statement(this.Source,"SELECT COUNT(*) FROM " + this.Source));
+            int cnt = (int)db.queryScalar(new Statement(this.Source,"SELECT COUNT(*) FROM " + this.Source));
             return cnt;
         }
 
         public int count(IDataParameter[] parameters) {
             string WHERE = string.Join(" AND ", (from parameter in parameters select string.Format("[{0}]={0}", parameter.ParameterName))).Replace("[@", "[");
-            int cnt = (int)db.query_scalar(new Statement(this.Source) {
+            int cnt = (int)db.queryScalar(new Statement(this.Source) {
                 Sql = string.Format("SELECT COUNT(*) FROM {0} WHERE 1=1 AND {1}",this.Source,WHERE),
                 Parameters = parameters
             });
@@ -175,14 +169,14 @@ namespace ControllerLibrary.Common
             return DBConnectionManager.Instance.getDbDataParameter("?", DataTypeMapping[datatype] , 255, null);        
         }
 
-        public virtual Statement getSelectStatement() {
+        protected virtual Statement getSelectStatement() {
             return new Statement(this.Source) {
                 Sql = string.Format("SELECT * FROM {0} ORDER BY 1", this.Source),
                 Parameters = new IDataParameter[0]
             };
         }
 
-        public virtual Statement getInsertStatement(M model) {
+        protected virtual Statement getInsertStatement(M model) {
             model.Created_On = DateTime.Now;
             model.Created_By = Session.Instance.CurrentUser == null ? "SYSTEM" : Session.Instance.CurrentUser.User_Name;
 
@@ -200,7 +194,7 @@ namespace ControllerLibrary.Common
             };
         }
 
-        public virtual Statement getUpdateStatement(M model) {
+        protected virtual Statement getUpdateStatement(M model) {
             string[] fields_without_id = (from field in fields
                                           where !(
                                                     field.ToLower().Equals("id")         ||
@@ -220,7 +214,7 @@ namespace ControllerLibrary.Common
             };
         }
 
-        public virtual Statement getDeleteStatement(M model) {
+        protected virtual Statement getDeleteStatement(M model) {
             return new Statement(this.Source) {
                 Sql = string.Format("DELETE FROM {0} WHERE [Id]=@Id", Source),
                 Parameters = getParameters(new string[] { "Id" }, model)

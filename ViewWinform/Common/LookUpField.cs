@@ -44,7 +44,9 @@ namespace ViewWinform.Common {
             if(this.ShowFieldsInLookUp == null || this.ShowFieldsInLookUp.Count() == 0) {
                 return;
             }
-            var lookup = new Common.LookUp(this._controller.selectModelsAsDataTable(this.ShowFieldsInLookUp));
+
+            LookUp lookup = new Common.LookUp(this._controller.selectModelsAsDataTable(),this.ShowFieldsInLookUp.ToArray());
+            
             if (lookup.ShowDialog() == DialogResult.OK) {
                 this.Text = lookup.SelectedValue[this.SelectedFieldFromLookUp];
                 if (this.OnLookUpSelected != null) this.OnLookUpSelected(this.Text);

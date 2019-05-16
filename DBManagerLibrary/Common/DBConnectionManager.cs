@@ -5,7 +5,7 @@ using System.Data.Common;
 namespace DBManagerLibrary.Common
 {
 
-    public class DBConnectionManager
+    public class DBConnectionManager : IDBConnectionManager
     {
         public static string
             DB_CONFIG_FACTORY   ,
@@ -62,10 +62,11 @@ namespace DBManagerLibrary.Common
                 cmd.Prepare();
             }
             //Console.WriteLine(sql);
+
+            cmd.ExecuteNonQuery();
             if (this.dataSet.Tables.Contains(statement.TargetTable)) {
                 this.dataSet.Tables.Remove(statement.TargetTable);
             }
-            cmd.ExecuteNonQuery();
         }
 
         public DataTable query(Statement statement)
@@ -89,14 +90,16 @@ namespace DBManagerLibrary.Common
                 adaptor.SelectCommand = cmd;
                 adaptor.Fill(dt);
             }
-            DataTable cached = null; if (dataSet.Tables.Contains(dt.TableName)) { cached = dataSet.Tables[dt.TableName]; }
-            if(cached != null) this.dataSet.Tables.Remove(cached);
-            this.dataSet.Tables.Add(dt);  //save a cached copy
+            if (statement.Parameters.Length == 0) {
+                DataTable cached = null; if (dataSet.Tables.Contains(dt.TableName)) { cached = dataSet.Tables[dt.TableName]; }
+                if (cached != null) this.dataSet.Tables.Remove(cached);
+                this.dataSet.Tables.Add(dt);  //save a cached copy
+            }
             return dt;
         }
 
 
-        public object query_scalar(Statement statement) {
+        public object queryScalar(Statement statement) {
             var sql = statement.Sql;
             var parameters = statement.Parameters;
             

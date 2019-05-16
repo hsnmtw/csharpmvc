@@ -15,9 +15,9 @@ namespace ViewWinform.Common {
             InitializeComponent();
         }
 
-        public LookUp(DataTable source) {
+        public LookUp(DataTable source,params string[]shownColumns) {
             InitializeComponent();
-            this.dataGridView1.DataSource = source;
+            this.dataGridView1.DataSource = new DataView(source).ToTable(false,shownColumns);
         }
 
         public string[] SelectedValue {
