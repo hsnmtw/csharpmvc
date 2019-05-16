@@ -17,8 +17,8 @@ namespace ControllerLibrary.Security
 
         public DataTable getAllEntitlementsWithoutId()
         {
-            return db.query(new Statement() {
-                sql = @"SELECT [Entitlement_Name] 
+            return db.query(new Statement(this.Source) {
+                Sql = @"SELECT [Entitlement_Name] 
                                 FROM "+ this.Source +@" 
                             ORDER BY 1"
             });
@@ -26,7 +26,7 @@ namespace ControllerLibrary.Security
 
         //public override DataTable search(EntitlementModel model)
         //{
-        //    return db.query(new Statement() {
+        //    return db.query(new Statement(this.Source) {
         //        sql = @"PARAMETERS @Entitlement_Name TEXT,@Id NUMBER;
         //                 TRANSFORM IIF(count(pe.[Profile_Name])>0,'✓',NULL) 
         //                    SELECT e.[Id], e.[Entitlement_Name] 

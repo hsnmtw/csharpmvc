@@ -61,7 +61,7 @@ namespace ViewWinform.Housing.Compounds {
         }
 
         private void Compound_Code_TextBox_OnLookUpSelected(string value) {
-            this.Model = this.controller.selectModelsAsList(this.controller.fields, new CompoundModel() {
+            this.Model = this.controller.selectModelsAsList(new CompoundModel() {
                 Compound_Name = value,
             }, "Compound_Name".Split(','))[0];
         }

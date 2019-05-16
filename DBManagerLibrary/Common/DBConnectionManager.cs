@@ -51,8 +51,8 @@ namespace DBManagerLibrary.Common
 
         public void execute(Statement statement) 
         {
-            var sql = statement.sql;
-            var parameters = statement.parameters;
+            var sql = statement.Sql;
+            var parameters = statement.Parameters;
             var cmd = this.connection.CreateCommand();
             cmd.CommandText = sql;
             cmd.CommandType = CommandType.Text;
@@ -61,35 +61,27 @@ namespace DBManagerLibrary.Common
                 cmd.Parameters.AddRange(parameters);
                 cmd.Prepare();
             }
-            Console.WriteLine(sql);
-            cmd.ExecuteNonQuery();
-        }
-
-        public DbDataReader getReader(Statement statement) {
-            var sql = statement.sql;
-            var parameters = statement.parameters;
-            var cmd = this.connection.CreateCommand();
-            cmd.CommandText = sql;
-            cmd.CommandType = CommandType.Text;
-            if (parameters.Length > 0) {
-                cmd.Parameters.AddRange(parameters);
-                cmd.Prepare();
+            //Console.WriteLine(sql);
+            if (this.dataSet.Tables.Contains(statement.TargetTable)) {
+                this.dataSet.Tables.Remove(statement.TargetTable);
             }
-            return cmd.ExecuteReader();
+            cmd.ExecuteNonQuery();
         }
 
         public DataTable query(Statement statement)
         {
-            var sql = statement.sql;
-            var parameters = statement.parameters;
+            if (statement.Parameters.Length == 0 && this.dataSet.Tables.Contains(statement.TargetTable)) {
+                //return cached data
+                return this.dataSet.Tables[statement.TargetTable];
+            }
 
-            var dt = new DataTable(statement.name);
+            var dt = new DataTable(statement.TargetTable);
             var cmd = this.connection.CreateCommand();
-            cmd.CommandText = sql;
+            cmd.CommandText = statement.Sql;
             cmd.CommandType = CommandType.Text;
 
-            if (parameters.Length > 0){
-                cmd.Parameters.AddRange(parameters);
+            if (statement.Parameters.Length > 0){
+                cmd.Parameters.AddRange(statement.Parameters);
                 cmd.Prepare();
             }
 
@@ -97,13 +89,16 @@ namespace DBManagerLibrary.Common
                 adaptor.SelectCommand = cmd;
                 adaptor.Fill(dt);
             }
+            DataTable cached = null; if (dataSet.Tables.Contains(dt.TableName)) { cached = dataSet.Tables[dt.TableName]; }
+            if(cached != null) this.dataSet.Tables.Remove(cached);
+            this.dataSet.Tables.Add(dt);  //save a cached copy
             return dt;
         }
 
 
         public object query_scalar(Statement statement) {
-            var sql = statement.sql;
-            var parameters = statement.parameters;
+            var sql = statement.Sql;
+            var parameters = statement.Parameters;
             
             var cmd = this.connection.CreateCommand();
             cmd.CommandText = sql;
@@ -113,6 +108,7 @@ namespace DBManagerLibrary.Common
                 cmd.Parameters.AddRange(parameters);
                 cmd.Prepare();
             }
+
             return cmd.ExecuteScalar();
         }
 

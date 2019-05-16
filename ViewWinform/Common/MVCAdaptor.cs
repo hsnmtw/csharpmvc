@@ -10,13 +10,7 @@ using System.Threading;
 namespace ViewWinform.Common {
     class MVCAdaptor<C, M> where C : AbstractDBController<M> where M : BaseModel {
         public C Controller { get; private set; }
-        private Recordset<M> recordset { get; set; }
-        private List<M> Models { get; set; }
-
-        private System.Data.IDataParameter[] filters = { };
-
-        private string[] filterfield = { };
-        private M filterModel;
+        private List<M> recordset { get; set; }
 
         public int Count {
             get;
@@ -25,11 +19,7 @@ namespace ViewWinform.Common {
 
         public M this[int index]{
             get {
-                if (index < 0 || this.Models == null || Count == 0 || index >= Count) return null;
-                for(int i = this.Models.Count-1; i < index && recordset.MoveNext(); i++) {
-                    this.Models.Add(recordset.Current);
-                }
-                return this.Models[index];
+                return this.recordset[index];
             }
         }
 
@@ -37,21 +27,9 @@ namespace ViewWinform.Common {
             this.Controller = Activator.CreateInstance<C>();
         }
 
-        public MVCAdaptor(string[] fields, M model) {
-            this.Controller = Activator.CreateInstance<C>();
-            this.filterfield = fields;
-            this.filterModel = model;
-        }
-
         public void Requery() {
-            this.Models = new List<M>();
-            if (this.filterfield.Length > 0) {
-                this.recordset = this.Controller.getRecordset(this.Controller.getParameters(this.filterfield, this.filterModel));
-                this.Count = this.Controller.count(this.Controller.getParameters(this.filterfield, this.filterModel));
-            } else {
-                this.recordset = this.Controller.getRecordset();
-                this.Count = this.Controller.count();
-            }
+            this.recordset = this.Controller.selectModelsAsList();
+            this.Count = this.Controller.count();
         }
     }
 }

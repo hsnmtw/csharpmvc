@@ -69,11 +69,10 @@ namespace ViewWinform.Security.Profiles {
         }
 
         private void Profile_Code_TextBox_OnLookUpSelected(string value) {
-            this.Model = this.controller.selectModelsAsList(this.controller.fields, new ProfileModel() {
+            this.Model = this.controller.selectModelsAsList(new ProfileModel() {
                 Profile_Name = value,
             }, "Profile_Name".Split(','))[0];
             var selectedEntitlements = from model in this.profile_EntitlementsController.selectModelsAsList(
-                new string[] { "Entitlement_Name" },
                 new Profile_EntitlementsModel() { Profile_Name = value },
                 new string[] { "Profile_Name" }
             ) select model.Entitlement_Name;
@@ -93,7 +92,7 @@ namespace ViewWinform.Security.Profiles {
             this.controller = new ProfileController();
             this.Model = new ProfileModel();
             this.profile_EntitlementsController = new Profile_EntitlementsController();
-            this.entitlements = (from model in new EntitlementController().selectModelsAsList(new string[] { "Entitlement_Name" })
+            this.entitlements = (from model in new EntitlementController().selectModelsAsList()
                                 orderby model.Entitlement_Name
                                 select model.Entitlement_Name).ToList();
             Button2_Click(sender, e);

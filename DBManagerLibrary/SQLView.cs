@@ -42,7 +42,7 @@ namespace DBManagerLibrary
                         if (sql.Trim().Equals("")) continue;
                         this.tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100 / sqls.Length));
                         DataGridView grid = new Utils.CustomDataGridView();
-                        grid.DataSource = DBConnectionManager.Instance.query(new Statement(sql));
+                        grid.DataSource = DBConnectionManager.Instance.query(new Statement(sql,sql));
                         this.tableLayoutPanel1.Controls.Add(grid,1,i);
                     }
 
@@ -54,7 +54,7 @@ namespace DBManagerLibrary
                     {
                         sql = sqls[i];
                         if (sql.Trim().Equals("")) continue;
-                        DBConnectionManager.Instance.execute(new Statement(sql));
+                        DBConnectionManager.Instance.execute(new Statement(sql,sql));
                     }
                     MessageBox.Show("SQL was executed successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 

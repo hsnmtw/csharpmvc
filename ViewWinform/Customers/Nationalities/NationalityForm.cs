@@ -76,7 +76,7 @@ namespace ViewWinform.Customers.Nationalities {
         }
 
         private void Nationality_Code_TextBox_OnLookUpSelected(string value) {
-            this.Model = this.controller.selectModelsAsList(this.controller.fields, new NationalityModel() {
+            this.Model = this.controller.selectModelsAsList(new NationalityModel() {
                 Nationality_Code = value,
             }, "Nationality_Code".Split(','))[0];
         }

@@ -47,7 +47,7 @@ namespace DBManagerLibrary.Utils.TableDesigner {
                 dataGridView1.Rows.Add(row);
             }
             if((from n in DBConnectionManager.Instance.SchemaTables.Rows.Cast<DataRow>() where n["TABLE_NAME"].ToString().Equals(name) select n).Count() == 1){
-                this.dataGridView2.DataSource = DBConnectionManager.Instance.query(new Statement("SELECT * FROM " + name));
+                this.dataGridView2.DataSource = DBConnectionManager.Instance.query(new Statement(name,"SELECT * FROM " + name));
             }
         }
 
@@ -68,7 +68,7 @@ namespace DBManagerLibrary.Utils.TableDesigner {
 
         private void Button1_Click(object sender, EventArgs e) {
             generateSQL();
-            DBConnectionManager.Instance.execute(new Statement(this.textBox2.Text));
+            DBConnectionManager.Instance.execute(new Statement(this.textBox2.Text,this.textBox2.Text));
         }
     }
 }

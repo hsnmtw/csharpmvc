@@ -27,7 +27,7 @@ namespace ControllerLibrary.Common
         protected DBConnectionManager db = DBConnectionManager.Instance;
 
         public List<M> search(M model,string[]whereFields) {
-            return selectModelsAsList(this.fields,model,whereFields);
+            return selectModelsAsList(model,whereFields);
         }
 
         public M CreateNewModel() {
@@ -43,52 +43,50 @@ namespace ControllerLibrary.Common
             string query = "";
 
             if (whereFields.Length == 0) {
-                query = string.Format("SELECT [{0}] FROM {1} ORDER BY 1",
-                                        string.Join("],[", selectedFields),
-                                        this.Source);
+                query = string.Format("SELECT * FROM {0} ORDER BY 1", this.Source);
 
             } else {
-                query = string.Format("SELECT [{0}] FROM {1} WHERE {2} ORDER BY 1",
-                                        string.Join("],[", selectedFields),
+                query = string.Format("SELECT * FROM {0} WHERE {1} ORDER BY 1",
                                         this.Source,
                                         string.Join(" AND ", (from string wf
                                                                 in whereFields
                                                               select string.Format("[{0}]=@{0}", wf))));
             }
             
-            return db.query(new Statement(query, getParameters(whereFields, model)));
+            DataTable dt = db.query(new Statement(this.Source,query, getParameters(whereFields, model)));
+            DataView dv = new DataView(dt);
+            return dv.ToTable(false, selectedFields.ToArray());
         }
 
-        public List<M> selectModelsAsList(IEnumerable<string> selectedFields) {
-            return selectModelsAsList(selectedFields, Activator.CreateInstance<M>(), new string[] { });
+        public List<M> selectModelsAsList() {
+            return selectModelsAsList(Activator.CreateInstance<M>(), new string[] { });
         }
 
-        public List<M> selectModelsAsList(IEnumerable<string> selectedFields, M model, string[] whereFields) {
+        public List<M> selectModelsAsList(M model, string[] whereFields) {
 
             string query = "";
 
             if (whereFields.Length == 0) {
-                query = string.Format("SELECT [{0}] FROM {1} ORDER BY 1",
-                                        string.Join("],[", selectedFields),
-                                        this.Source);
-
+                query = string.Format("SELECT * FROM {0} ORDER BY 1", this.Source);
             } else {
-                query = string.Format("SELECT [{0}] FROM {1} WHERE {2} ORDER BY 1",
-                                        string.Join("],[", selectedFields),
+                query = string.Format("SELECT * FROM {0} WHERE {1} ORDER BY 1",
                                         this.Source,
                                         string.Join(" AND ", (from string wf
                                                                 in whereFields
                                                                 select string.Format("[{0}]=@{0}", wf))));
             }
-            var reader = db.getReader(new DBManagerLibrary.Common.Statement() {
-                sql = query,
-                parameters = getParameters(whereFields, model)
+            var dt = db.query(new Statement(this.Source) {
+                Sql = query,
+                Parameters = getParameters(whereFields, model)
             });
             var result = new List<M>();
-            while (reader.Read()) {
+            foreach (DataRow row in dt.Rows) {
                 var m = Activator.CreateInstance<M>();
-                for (int i = 0; i < selectedFields.Count(); i++) {
-                    typeof(M).GetProperty(selectedFields.ElementAt(i)).SetValue(m, DBNull.Value.Equals(reader.GetValue(i)) ? null : reader.GetValue(i));
+                for (int i = 0; i < dt.Columns.Count; i++) {
+                    typeof(M).GetProperty(dt.Columns[i].ColumnName).SetValue(
+                        m, 
+                        DBNull.Value.Equals(row[i]) ? null : row[i]
+                    );
                 }
                 result.Add(m);
             }
@@ -132,31 +130,16 @@ namespace ControllerLibrary.Common
             return db.query(getSelectStatement());
         }
 
-        public Recordset<M> getRecordset() {
-            return new Recordset<M>(db.getReader(new Statement() {
-                sql = string.Format("SELECT [{0}] FROM {1} ORDER BY [Id]", string.Join("],[", this.fields), this.Source),
-            }));
-        }
-
-        public Recordset<M> getRecordset(IDataParameter[]parameters) {
-            string WHERE = string.Join(" AND ", (from parameter in parameters select string.Format("[{0}]={0}", parameter.ParameterName))).Replace("[@","[");
-            return new Recordset<M>(db.getReader(new Statement() {
-                sql = string.Format("SELECT [{0}] FROM {1} WHERE 1=1 AND {2} ORDER BY [Id]", string.Join("],[", this.fields), this.Source, WHERE),
-                parameters = parameters
-            }));
-        }
-
-
         public int count() {
-            int cnt = (int)db.query_scalar(new Statement("SELECT COUNT(*) FROM " + this.Source));
+            int cnt = (int)db.query_scalar(new Statement(this.Source,"SELECT COUNT(*) FROM " + this.Source));
             return cnt;
         }
 
         public int count(IDataParameter[] parameters) {
             string WHERE = string.Join(" AND ", (from parameter in parameters select string.Format("[{0}]={0}", parameter.ParameterName))).Replace("[@", "[");
-            int cnt = (int)db.query_scalar(new Statement() {
-                sql = string.Format("SELECT COUNT(*) FROM {0} WHERE 1=1 AND {1}",this.Source,WHERE),
-                parameters = parameters
+            int cnt = (int)db.query_scalar(new Statement(this.Source) {
+                Sql = string.Format("SELECT COUNT(*) FROM {0} WHERE 1=1 AND {1}",this.Source,WHERE),
+                Parameters = parameters
             });
             return cnt;
         }
@@ -164,17 +147,25 @@ namespace ControllerLibrary.Common
         public AbstractDBController(){}
 
         public M find(M model) {
-            IDataReader reader = db.getReader(new Statement() {
-                sql = string.Format("SELECT [{0}] FROM {1} WHERE [Id]=@Id",string.Join("],[",this.fields),this.Source),
-                parameters = new IDataParameter[] {
+            var dt = db.query(new Statement(this.Source) {
+                Sql = string.Format("SELECT * FROM {0} WHERE [Id]=@Id",this.Source),
+                Parameters = new IDataParameter[] {
                     DBConnectionManager.Instance.getDbDataParameter("Id", DbType.Int32, 0, model.Id )
                 }
             });
-            var recordset = new Recordset<M>(reader);
-            if (recordset.MoveNext()) {
-                return recordset.Current;
-            } else {
+
+            if (dt.Rows.Count==0) {
                 return null;
+            } else {
+                M foundModel = Activator.CreateInstance<M>();
+                DataRow row = dt.Rows[0];
+                for (int i = 0; i < dt.Columns.Count; i++) {
+                    typeof(M).GetProperty(dt.Columns[i].ColumnName).SetValue(
+                        foundModel,
+                        DBNull.Value.Equals(row[i]) ? null : row[i]
+                    );
+                }
+                return foundModel;
             }
         }
 
@@ -185,9 +176,9 @@ namespace ControllerLibrary.Common
         }
 
         public virtual Statement getSelectStatement() {
-            return new Statement() {
-                sql = string.Format("SELECT [{0}] FROM {1} ORDER BY 1", string.Join("],[", fields), Source),
-                parameters = new IDataParameter[0]
+            return new Statement(this.Source) {
+                Sql = string.Format("SELECT * FROM {0} ORDER BY 1", this.Source),
+                Parameters = new IDataParameter[0]
             };
         }
 
@@ -199,13 +190,13 @@ namespace ControllerLibrary.Common
                                           where !field.ToLower().Equals("id")
                                           select field).ToArray<string>();
 
-            return new Statement() {
-                sql = string.Format("INSERT INTO {0} ([{1}]) VALUES ({2})",
+            return new Statement(this.Source) {
+                Sql = string.Format("INSERT INTO {0} ([{1}]) VALUES ({2})",
                     Source,
                     string.Join("],[", fields_without_id),
                     string.Join(",", (from field in fields where !field.ToLower().Equals("id") select "@"+field).ToArray())
                 ),
-                parameters = getParameters(fields_without_id, model)
+                Parameters = getParameters(fields_without_id, model)
             };
         }
 
@@ -220,19 +211,19 @@ namespace ControllerLibrary.Common
 
             model.Updated_On = DateTime.Now;
             model.Updated_By = Session.Instance.CurrentUser.User_Name;
-            return new Statement() {
-                sql = string.Format("UPDATE {0} SET {1} WHERE [Id]=@Id",
+            return new Statement(this.Source) {
+                Sql = string.Format("UPDATE {0} SET {1} WHERE [Id]=@Id",
                     Source,
                     string.Join(",", (from f in fields_without_id select string.Format("[{0}]=@{0}", f) ).ToArray())
                 ),
-                parameters = getParameters( fields_without_id.Concat(new string[] { "Id" }).ToArray(),model )
+                Parameters = getParameters( fields_without_id.Concat(new string[] { "Id" }).ToArray(),model )
             };
         }
 
         public virtual Statement getDeleteStatement(M model) {
-            return new Statement() {
-                sql = string.Format("DELETE FROM {0} WHERE [Id]=@Id", Source),
-                parameters = getParameters(new string[] { "Id" }, model)
+            return new Statement(this.Source) {
+                Sql = string.Format("DELETE FROM {0} WHERE [Id]=@Id", Source),
+                Parameters = getParameters(new string[] { "Id" }, model)
             };
         }
 

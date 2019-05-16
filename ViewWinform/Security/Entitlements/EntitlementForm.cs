@@ -62,7 +62,7 @@ namespace ViewWinform.Security.Entitlements {
         }
 
         private void Entitlement_Code_TextBox_OnLookUpSelected(string value) {
-            this.Model = this.controller.selectModelsAsList(this.controller.fields, new EntitlementModel() {
+            this.Model = this.controller.selectModelsAsList(new EntitlementModel() {
                 Entitlement_Name = value,
             }, "Entitlement_Name".Split(','))[0];
         }

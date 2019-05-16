@@ -6,22 +6,24 @@ using System.Threading.Tasks;
 
 namespace DBManagerLibrary.Common {
     public class Statement {
-        public string name { get; set; }
-        public string sql { get; set; }
-        public System.Data.IDataParameter[] parameters { get; set; }
+        public string TargetTable { get; set; }
+        public string Sql { get; set; }
+        public System.Data.IDataParameter[] Parameters { get; set; }
 
-        public Statement() {
-            this.parameters = new System.Data.IDataParameter[0];
+        public Statement(string targetTable) {
+            this.TargetTable = targetTable;
         }
 
-        public Statement(string sql) {
-            this.parameters = new System.Data.IDataParameter[0];
-            this.sql = sql;
+       public Statement(string targetTable,string sql) {
+            this.TargetTable = targetTable;
+            this.Parameters = new System.Data.IDataParameter[0];
+            this.Sql = sql;
         }
 
-        public Statement(string sql, System.Data.IDataParameter[] parameters) {
-            this.parameters = parameters;
-            this.sql = sql;
+        public Statement(string targetTable, string sql, System.Data.IDataParameter[] parameters) {
+            this.TargetTable = targetTable;
+            this.Parameters = parameters;
+            this.Sql = sql;
         }
 
     }

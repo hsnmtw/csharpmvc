@@ -18,13 +18,13 @@ namespace ControllerLibrary.Security
 
         public DataTable getEntitlementsByProfile(string profile)
         {
-            return db.query(new Statement() {
-                sql = @"select e.*
+            return db.query(new Statement(this.Source) {
+                Sql = @"select e.*
                           from "+ this.Source +@" pe
                     inner join "+ new EntitlementController().Source + @" e
                             on pe.[Entitlement_Name] = e.[Entitlement_Name]
                          where pe.[Profile_Name]=@Profile_Name",
-                parameters = new IDataParameter[] {
+                Parameters = new IDataParameter[] {
                     DBConnectionManager.Instance.getDbDataParameter("@Profile_Name", DbType.String,50,profile)
                 }
             });
@@ -32,9 +32,9 @@ namespace ControllerLibrary.Security
 
         public void clearEntitlementForProfile(string profile)
         {
-            db.execute(new Statement() {
-                sql = @"delete from "+this.Source+" where [Profile_Name]=@Profile_Name",
-                parameters = new IDataParameter[] {
+            db.execute(new Statement(this.Source) {
+                Sql = @"delete from "+this.Source+" where [Profile_Name]=@Profile_Name",
+                Parameters = new IDataParameter[] {
                     DBConnectionManager.Instance.getDbDataParameter("@Profile_Name", DbType.String,50,profile)
                 }
             });

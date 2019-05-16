@@ -84,7 +84,7 @@ namespace ViewWinform.Security.Users {
         }
 
         private void User_Code_TextBox_OnLookUpSelected(string value) {
-            this.Model = this.controller.selectModelsAsList(this.controller.fields, new UserModel() {
+            this.Model = this.controller.selectModelsAsList(new UserModel() {
                 User_Name = value,
             }, "User_Name".Split(','))[0];
         }
@@ -93,9 +93,7 @@ namespace ViewWinform.Security.Users {
             Utils.FormsHelper.registerEnterAsTab(this);
             this.controller = new UserController();
             this.Model = new UserModel();
-            this.profile_Entitlements = new Profile_EntitlementsController().selectModelsAsList(new string[] {
-                "Profile_Name","Entitlement_Name"
-            });
+            this.profile_Entitlements = new Profile_EntitlementsController().selectModelsAsList();
         }
 
         private void Button1_Click(object sender, EventArgs e) {

@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="Common\AbstractDBController.cs" />
     <Compile Include="Common\BaseController.cs" />
-    <Compile Include="Common\Recordset.cs" />
     <Compile Include="Common\Session.cs" />
     <Compile Include="Configurations\ConfigurationsController.cs" />
     <Compile Include="Customers\NationalityController.cs" />
