@@ -11,17 +11,17 @@ using ControllerLibrary.Common;
 
 namespace ControllerLibrary.Security
 {
-    public class Profile_EntitlementsController : AbstractController<Profile_EntitlementsModel>
+    public class Profile_EntitlementsController : AbstractDBController<Profile_EntitlementsModel>
     {
-        public override string TABLE_NAME { get { return "Security_Profile_Entitlements"; } }
+        public override string Source => "Security_Profile_Entitlements"; 
 
 
         public DataTable getEntitlementsByProfile(string profile)
         {
             return db.query(new Statement() {
                 sql = @"select e.*
-                          from "+ this.TABLE_NAME +@" pe
-                    inner join "+ new EntitlementController().TABLE_NAME + @" e
+                          from "+ this.Source +@" pe
+                    inner join "+ new EntitlementController().Source + @" e
                             on pe.[Entitlement_Name] = e.[Entitlement_Name]
                          where pe.[Profile_Name]=@Profile_Name",
                 parameters = new IDataParameter[] {
@@ -33,7 +33,7 @@ namespace ControllerLibrary.Security
         public void clearEntitlementForProfile(string profile)
         {
             db.execute(new Statement() {
-                sql = @"delete from "+this.TABLE_NAME+" where [Profile_Name]=@Profile_Name",
+                sql = @"delete from "+this.Source+" where [Profile_Name]=@Profile_Name",
                 parameters = new IDataParameter[] {
                     DBConnectionManager.Instance.getDbDataParameter("@Profile_Name", DbType.String,50,profile)
                 }

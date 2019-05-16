@@ -10,8 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ControllerLibrary.Security {
-    public class AuditController : AbstractController<AuditModel> {
-        public override string TABLE_NAME { get { return "Security_Audit"; } }
+    public class AuditController : AbstractDBController<AuditModel> {
+        public override string Source => "Security_Audit";
 
         public void registerEvent(AuditModel model) {
             model.Updated_By = "SYSTEM";

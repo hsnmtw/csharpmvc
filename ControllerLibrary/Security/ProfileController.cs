@@ -10,8 +10,8 @@ using ControllerLibrary.Common;
 
 namespace ControllerLibrary.Security
 {
-    public class ProfileController : AbstractController<ProfileModel>
+    public class ProfileController : AbstractDBController<ProfileModel>
     {
-        public override string TABLE_NAME { get { return "Security_Profiles"; } }
+        public override string Source => "Security_Profiles";
     }
 }

@@ -11,8 +11,8 @@ using DBManagerLibrary.Common;
 
 namespace ControllerLibrary.Housing
 {
-    public class CompoundController : AbstractController<CompoundModel>
+    public class CompoundController : AbstractDBController<CompoundModel>
     {
-        public override string TABLE_NAME { get { return "Housing_Compounds"; } }
+        public override string Source => "Housing_Compounds"; 
     }
 }

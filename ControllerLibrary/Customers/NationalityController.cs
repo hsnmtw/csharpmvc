@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ControllerLibrary.Customers {
-    public class NationalityController : AbstractController<NationalityModel> {
-        public override string TABLE_NAME { get{ return "Customers_Nationalities"; } }
+    public class NationalityController : AbstractDBController<NationalityModel> {
+        public override string Source => "Customers_Nationalities"; 
     }
 }

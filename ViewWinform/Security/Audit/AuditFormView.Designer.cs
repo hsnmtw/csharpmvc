@@ -95,7 +95,7 @@
             this.Event_Comments_TextBox.Multiline = true;
             this.Event_Comments_TextBox.Name = "Event_Comments_TextBox";
             this.Event_Comments_TextBox.ReadOnly = true;
-            this.Event_Comments_TextBox.Size = new System.Drawing.Size(421, 276);
+            this.Event_Comments_TextBox.Size = new System.Drawing.Size(421, 120);
             this.Event_Comments_TextBox.TabIndex = 3;
             // 
             // Event_Date_TextBox
@@ -120,7 +120,7 @@
             this.Controls.Add(this.Id_TextBox);
             this.Controls.Add(this.label1);
             this.Name = "AuditFormView";
-            this.Size = new System.Drawing.Size(546, 369);
+            this.Size = new System.Drawing.Size(546, 218);
             this.ResumeLayout(false);
             this.PerformLayout();
 

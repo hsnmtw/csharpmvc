@@ -27,11 +27,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.Nationality_Desc_TextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.Nationality_Code_TextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.Id_TextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -41,6 +39,7 @@
             this.Updated_By_TextBox = new System.Windows.Forms.TextBox();
             this.Created_On_TextBox = new System.Windows.Forms.TextBox();
             this.Updated_On_TextBox = new System.Windows.Forms.TextBox();
+            this.Nationality_Code_TextBox = new ViewWinform.Common.LookUpField();
             this.SuspendLayout();
             // 
             // Nationality_Arabic_TextBox
@@ -49,7 +48,7 @@
             this.Nationality_Arabic_TextBox.Location = new System.Drawing.Point(133, 91);
             this.Nationality_Arabic_TextBox.Name = "Nationality_Arabic_TextBox";
             this.Nationality_Arabic_TextBox.Size = new System.Drawing.Size(212, 20);
-            this.Nationality_Arabic_TextBox.TabIndex = 4;
+            this.Nationality_Arabic_TextBox.TabIndex = 3;
             // 
             // label4
             // 
@@ -66,7 +65,7 @@
             this.Nationality_Desc_TextBox.Location = new System.Drawing.Point(133, 65);
             this.Nationality_Desc_TextBox.Name = "Nationality_Desc_TextBox";
             this.Nationality_Desc_TextBox.Size = new System.Drawing.Size(212, 20);
-            this.Nationality_Desc_TextBox.TabIndex = 3;
+            this.Nationality_Desc_TextBox.TabIndex = 2;
             // 
             // label3
             // 
@@ -76,14 +75,6 @@
             this.label3.Size = new System.Drawing.Size(94, 13);
             this.label3.TabIndex = 15;
             this.label3.Text = "Nationality English";
-            // 
-            // Nationality_Code_TextBox
-            // 
-            this.Nationality_Code_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.Nationality_Code_TextBox.Location = new System.Drawing.Point(133, 39);
-            this.Nationality_Code_TextBox.Name = "Nationality_Code_TextBox";
-            this.Nationality_Code_TextBox.Size = new System.Drawing.Size(68, 20);
-            this.Nationality_Code_TextBox.TabIndex = 1;
             // 
             // label2
             // 
@@ -113,23 +104,12 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Id";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(204, 39);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(29, 20);
-            this.button1.TabIndex = 2;
-            this.button1.TabStop = false;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(269, 193);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 10;
+            this.button2.TabIndex = 9;
             this.button2.Text = "New";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
@@ -139,7 +119,7 @@
             this.button3.Location = new System.Drawing.Point(161, 193);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 9;
+            this.button3.TabIndex = 8;
             this.button3.Text = "Save";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Button3_Click);
@@ -149,7 +129,7 @@
             this.button4.Location = new System.Drawing.Point(53, 193);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 11;
+            this.button4.TabIndex = 10;
             this.button4.Text = "Delete";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.Button4_Click);
@@ -170,7 +150,7 @@
             this.Created_By_TextBox.Name = "Created_By_TextBox";
             this.Created_By_TextBox.ReadOnly = true;
             this.Created_By_TextBox.Size = new System.Drawing.Size(69, 20);
-            this.Created_By_TextBox.TabIndex = 5;
+            this.Created_By_TextBox.TabIndex = 4;
             this.Created_By_TextBox.TabStop = false;
             // 
             // label6
@@ -189,7 +169,7 @@
             this.Updated_By_TextBox.Name = "Updated_By_TextBox";
             this.Updated_By_TextBox.ReadOnly = true;
             this.Updated_By_TextBox.Size = new System.Drawing.Size(69, 20);
-            this.Updated_By_TextBox.TabIndex = 7;
+            this.Updated_By_TextBox.TabIndex = 6;
             this.Updated_By_TextBox.TabStop = false;
             // 
             // Created_On_TextBox
@@ -199,7 +179,7 @@
             this.Created_On_TextBox.Name = "Created_On_TextBox";
             this.Created_On_TextBox.ReadOnly = true;
             this.Created_On_TextBox.Size = new System.Drawing.Size(137, 20);
-            this.Created_On_TextBox.TabIndex = 6;
+            this.Created_On_TextBox.TabIndex = 5;
             this.Created_On_TextBox.TabStop = false;
             // 
             // Updated_On_TextBox
@@ -209,18 +189,30 @@
             this.Updated_On_TextBox.Name = "Updated_On_TextBox";
             this.Updated_On_TextBox.ReadOnly = true;
             this.Updated_On_TextBox.Size = new System.Drawing.Size(137, 20);
-            this.Updated_On_TextBox.TabIndex = 8;
+            this.Updated_On_TextBox.TabIndex = 7;
             this.Updated_On_TextBox.TabStop = false;
+            // 
+            // Nationality_Code_TextBox
+            // 
+            this.Nationality_Code_TextBox.Controller = ViewWinform.Common.DBControllers.Nationality;
+            this.Nationality_Code_TextBox.Location = new System.Drawing.Point(132, 38);
+            this.Nationality_Code_TextBox.Name = "Nationality_Code_TextBox";
+            this.Nationality_Code_TextBox.ShowFieldsInLookUp.Add("Nationality_Code");
+            this.Nationality_Code_TextBox.ShowFieldsInLookUp.Add("Nationality_Desc");
+            this.Nationality_Code_TextBox.Size = new System.Drawing.Size(104, 22);
+            this.Nationality_Code_TextBox.TabIndex = 1;
+            this.Nationality_Code_TextBox.TextBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Nationality_Code_TextBox.OnLookUpSelected += new ViewWinform.Common.LookUpField.LookUpSelectedHandler(this.Nationality_Code_TextBox_OnLookUpSelected);
             // 
             // NationalityForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 233);
+            this.ClientSize = new System.Drawing.Size(369, 230);
+            this.Controls.Add(this.Nationality_Code_TextBox);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.Updated_On_TextBox);
             this.Controls.Add(this.Updated_By_TextBox);
             this.Controls.Add(this.Nationality_Arabic_TextBox);
@@ -231,7 +223,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.Nationality_Desc_TextBox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.Nationality_Code_TextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Id_TextBox);
             this.Controls.Add(this.label1);
@@ -249,11 +240,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox Nationality_Desc_TextBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox Nationality_Code_TextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox Id_TextBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
@@ -263,5 +252,7 @@
         private System.Windows.Forms.TextBox Updated_By_TextBox;
         private System.Windows.Forms.TextBox Created_On_TextBox;
         private System.Windows.Forms.TextBox Updated_On_TextBox;
+        private Common.LookUpField lookUpField1;
+        private Common.LookUpField Nationality_Code_TextBox;
     }
 }

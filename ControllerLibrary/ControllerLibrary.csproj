@@ -43,9 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\AbstractController.cs" />
+    <Compile Include="Common\AbstractDBController.cs" />
+    <Compile Include="Common\BaseController.cs" />
     <Compile Include="Common\Recordset.cs" />
     <Compile Include="Common\Session.cs" />
+    <Compile Include="Configurations\ConfigurationsController.cs" />
     <Compile Include="Customers\NationalityController.cs" />
     <Compile Include="Housing\CompoundController.cs" />
     <Compile Include="Security\AuditController.cs" />

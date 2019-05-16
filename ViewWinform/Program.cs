@@ -19,17 +19,15 @@ namespace ViewWinform
         static void Main()
         {
 
-            CultureInfo cultureInfo = CultureInfo.CreateSpecificCulture(ConfigurationManager.AppSettings["Globalization_CultureInfo"]);
+            CultureInfo cultureInfo = CultureInfo.CreateSpecificCulture(ConfigurationManager.AppSettings["CultureInfo_Globalization"]);
 
             
-            cultureInfo.DateTimeFormat.ShortDatePattern = ConfigurationManager.AppSettings["DateTimeFormat_ShortDatePattern"];
-            cultureInfo.DateTimeFormat.LongDatePattern = ConfigurationManager.AppSettings["DateTimeFormat_LongDatePattern"];
-            cultureInfo.DateTimeFormat.DateSeparator = ConfigurationManager.AppSettings["DateTimeFormat_DateSeparator"];
-
-
-            cultureInfo.DateTimeFormat.ShortTimePattern = ConfigurationManager.AppSettings["DateTimeFormat_ShortTimePattern"];
-            cultureInfo.DateTimeFormat.LongTimePattern = ConfigurationManager.AppSettings["DateTimeFormat_LongTimePattern"];
-            cultureInfo.DateTimeFormat.TimeSeparator = ConfigurationManager.AppSettings["DateTimeFormat_TimeSeparator"];
+            cultureInfo.DateTimeFormat.ShortDatePattern = ConfigurationManager.AppSettings["CultureInfo_DateTimeFormat_ShortDatePattern"];
+            cultureInfo.DateTimeFormat.LongDatePattern  = ConfigurationManager.AppSettings["CultureInfo_DateTimeFormat_LongDatePattern"];
+            cultureInfo.DateTimeFormat.DateSeparator    = ConfigurationManager.AppSettings["CultureInfo_DateTimeFormat_DateSeparator"];
+            cultureInfo.DateTimeFormat.ShortTimePattern = ConfigurationManager.AppSettings["CultureInfo_DateTimeFormat_ShortTimePattern"];
+            cultureInfo.DateTimeFormat.LongTimePattern  = ConfigurationManager.AppSettings["CultureInfo_DateTimeFormat_LongTimePattern"];
+            cultureInfo.DateTimeFormat.TimeSeparator    = ConfigurationManager.AppSettings["CultureInfo_DateTimeFormat_TimeSeparator"];
 
 
             cultureInfo.DateTimeFormat.Calendar = new GregorianCalendar();

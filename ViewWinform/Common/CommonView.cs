@@ -25,15 +25,6 @@ namespace ViewWinform.Common {
         public event RecordSpecificOperationHandler OnDeleteInvoked;
         public event RecordSpecificOperationHandler OnTableInvoked;
 
-        public string ResponseMessage {
-            get {
-                return textBox1.Text;
-            }
-            set {
-                textBox1.Text = value;
-            }
-        }
-
         private int _position;
         private int _totalRecords = 0;
         public int TotalRecords {

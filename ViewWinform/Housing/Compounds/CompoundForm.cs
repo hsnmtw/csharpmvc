@@ -1,5 +1,5 @@
-﻿using ControllerLibrary.Customers;
-using ModelLibrary.Customers;
+﻿using ControllerLibrary.Housing;
+using ModelLibrary.Housing;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,25 +10,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ViewWinform.Customers.Nationalities {
-    public partial class NationalityForm : Form {
-
-        public NationalityForm() {
+namespace ViewWinform.Housing.Compounds {
+    public partial class CompoundForm : Form {
+        public CompoundForm() {
             InitializeComponent();
         }
 
+        private CompoundController controller;
+        private CompoundModel _model;
 
-        private NationalityController controller;
-        private NationalityModel _model;
-
-
-        public NationalityModel Model{
+        public CompoundModel Model {
             get {
                 _model.Id = "".Equals(this.Id_TextBox.Text) ? 0 : int.Parse(this.Id_TextBox.Text);
-                _model.Nationality_Code = this.Nationality_Code_TextBox.Text;
-                _model.Nationality_Desc = this.Nationality_Desc_TextBox.Text;
-                _model.Nationality_Arabic = this.Nationality_Arabic_TextBox.Text;
-                _model.Created_By  = this.Created_By_TextBox.Text  ;
+                _model.Compound_Name = this.Compound_Name_TextBox.Text;
+                _model.Created_By = this.Created_By_TextBox.Text;
                 _model.Updated_By = this.Updated_By_TextBox.Text;
                 try {
                     _model.Created_On = DateTime.Parse(this.Created_On_TextBox.Text);
@@ -38,47 +33,43 @@ namespace ViewWinform.Customers.Nationalities {
             }
             set {
                 this._model = value;
-                if (value == null) _model = new NationalityModel();
+                if (value == null) _model = new CompoundModel();
                 this.Id_TextBox.Text = _model.Id.ToString();
-                this.Nationality_Code_TextBox.Text = _model.Nationality_Code;
-                this.Nationality_Desc_TextBox.Text = _model.Nationality_Desc;
-                this.Nationality_Arabic_TextBox.Text = _model.Nationality_Arabic;
+                this.Compound_Name_TextBox.Text = _model.Compound_Name;
                 this.Created_By_TextBox.Text = _model.Created_By;
                 this.Updated_By_TextBox.Text = _model.Updated_By;
                 this.Created_On_TextBox.Text = _model.Created_By == null || "".Equals(_model.Created_By) ? "" : _model.Created_On.ToString();
                 this.Updated_On_TextBox.Text = _model.Updated_By == null || "".Equals(_model.Updated_By) ? "" : _model.Updated_On.ToString();
-                
+
             }
         }
 
-
-
-        private void NationalityForm_Load(object sender, EventArgs e) {
-            Utils.FormsHelper.registerEnterAsTab(this);
-            this.controller = new NationalityController();
-            this.Model = new NationalityModel();
-        }
-
         private void Button2_Click(object sender, EventArgs e) {
-            this.Model = new NationalityModel();
+            this.Model = new CompoundModel();
         }
 
         private void Button3_Click(object sender, EventArgs e) {
             this.controller.save(this.Model);
             Utils.FormsHelper.successMessage("Successfully saved ...");
-            Nationality_Code_TextBox_OnLookUpSelected(this.Model.Nationality_Code);
+            Compound_Code_TextBox_OnLookUpSelected(this.Model.Compound_Name);
         }
 
         private void Button4_Click(object sender, EventArgs e) {
             this.controller.delete(this.Model);
             Utils.FormsHelper.successMessage("Successfully deleted ...");
-            this.Model = new NationalityModel();
+            this.Model = new CompoundModel();
         }
 
-        private void Nationality_Code_TextBox_OnLookUpSelected(string value) {
-            this.Model = this.controller.selectModelsAsList(this.controller.fields, new NationalityModel() {
-                Nationality_Code = value,
-            }, "Nationality_Code".Split(','))[0];
+        private void Compound_Code_TextBox_OnLookUpSelected(string value) {
+            this.Model = this.controller.selectModelsAsList(this.controller.fields, new CompoundModel() {
+                Compound_Name = value,
+            }, "Compound_Name".Split(','))[0];
+        }
+
+        private void CompoundForm_Load_1(object sender, EventArgs e) {
+            Utils.FormsHelper.registerEnterAsTab(this);
+            this.controller = new CompoundController();
+            this.Model = new CompoundModel();
         }
     }
 }

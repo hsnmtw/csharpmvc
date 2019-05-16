@@ -53,11 +53,18 @@
     <Compile Include="Common\CommonView.Designer.cs">
       <DependentUpon>CommonView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\DBControllers.cs" />
     <Compile Include="Common\LookUp.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Common\LookUp.Designer.cs">
       <DependentUpon>LookUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\LookUpField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\LookUpField.Designer.cs">
+      <DependentUpon>LookUpField.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\MVCAdaptor.cs" />
     <Compile Include="Common\RecordsNavigator.cs">
@@ -66,41 +73,23 @@
     <Compile Include="Common\RecordsNavigator.Designer.cs">
       <DependentUpon>RecordsNavigator.cs</DependentUpon>
     </Compile>
+    <Compile Include="Configurations\ConfigurationsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Configurations\ConfigurationsForm.Designer.cs">
+      <DependentUpon>ConfigurationsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customers\Nationalities\NationalityForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Customers\Nationalities\NationalityForm.Designer.cs">
       <DependentUpon>NationalityForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Customers\Nationalities\NationalityListView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Customers\Nationalities\NationalityListView.Designer.cs">
-      <DependentUpon>NationalityListView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Customers\Nationalities\NationalityFormView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Customers\Nationalities\NationalityFormView.Designer.cs">
-      <DependentUpon>NationalityFormView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Customers\Nationalities\NationalityView.cs">
+    <Compile Include="Housing\Compounds\CompoundForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Customers\Nationalities\NationalityView.Designer.cs">
-      <DependentUpon>NationalityView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Housing\Compounds\CompoundFormView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Housing\Compounds\CompoundFormView.Designer.cs">
-      <DependentUpon>CompoundFormView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Housing\Compounds\CompoundView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Housing\Compounds\CompoundView.Designer.cs">
-      <DependentUpon>CompoundView.cs</DependentUpon>
+    <Compile Include="Housing\Compounds\CompoundForm.Designer.cs">
+      <DependentUpon>CompoundForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainView.cs">
       <SubType>Form</SubType>
@@ -122,47 +111,23 @@
     <Compile Include="Security\Audit\AuditView.Designer.cs">
       <DependentUpon>AuditView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Security\Entitlements\EntitelmentFormView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Security\Entitlements\EntitelmentFormView.Designer.cs">
-      <DependentUpon>EntitelmentFormView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Security\Entitlements\EntitlementListView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Security\Entitlements\EntitlementListView.Designer.cs">
-      <DependentUpon>EntitlementListView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Security\Entitlements\EntitlementsTabView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Security\Entitlements\EntitlementsTabView.Designer.cs">
-      <DependentUpon>EntitlementsTabView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Security\Entitlements\EntitlementView.cs">
+    <Compile Include="Security\Entitlements\EntitlementForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Security\Entitlements\EntitlementView.Designer.cs">
-      <DependentUpon>EntitlementView.cs</DependentUpon>
+    <Compile Include="Security\Entitlements\EntitlementForm.Designer.cs">
+      <DependentUpon>EntitlementForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Security\Profiles\ProfileView.cs">
+    <Compile Include="Security\Profiles\ProfileForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Security\Profiles\ProfileView.Designer.cs">
-      <DependentUpon>ProfileView.cs</DependentUpon>
+    <Compile Include="Security\Profiles\ProfileForm.Designer.cs">
+      <DependentUpon>ProfileForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Security\Profiles\ProfilesListView.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Security\Users\UserForm.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Security\Profiles\ProfilesListView.Designer.cs">
-      <DependentUpon>ProfilesListView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Security\Profiles\ProfilesFormView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Security\Profiles\ProfilesFormView.Designer.cs">
-      <DependentUpon>ProfilesFormView.cs</DependentUpon>
+    <Compile Include="Security\Users\UserForm.Designer.cs">
+      <DependentUpon>UserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Security\Users\UserPasswordResetView.cs">
       <SubType>UserControl</SubType>
@@ -170,29 +135,11 @@
     <Compile Include="Security\Users\UserPasswordResetView.Designer.cs">
       <DependentUpon>UserPasswordResetView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Security\Users\UsersFormView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Security\Users\UsersFormView.Designer.cs">
-      <DependentUpon>UsersFormView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Security\Users\UsersListView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Security\Users\UsersListView.Designer.cs">
-      <DependentUpon>UsersListView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Security\Users\UsersLoginView.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Security\Users\UsersLoginView.Designer.cs">
       <DependentUpon>UsersLoginView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Security\Users\UserView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Security\Users\UserView.Designer.cs">
-      <DependentUpon>UserView.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\AdvancedCheckedListBox.cs">
       <SubType>UserControl</SubType>
@@ -207,26 +154,20 @@
     <EmbeddedResource Include="Common\LookUp.resx">
       <DependentUpon>LookUp.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Common\LookUpField.resx">
+      <DependentUpon>LookUpField.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Common\RecordsNavigator.resx">
       <DependentUpon>RecordsNavigator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Configurations\ConfigurationsForm.resx">
+      <DependentUpon>ConfigurationsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Customers\Nationalities\NationalityForm.resx">
       <DependentUpon>NationalityForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Customers\Nationalities\NationalityListView.resx">
-      <DependentUpon>NationalityListView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Customers\Nationalities\NationalityFormView.resx">
-      <DependentUpon>NationalityFormView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Customers\Nationalities\NationalityView.resx">
-      <DependentUpon>NationalityView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Housing\Compounds\CompoundFormView.resx">
-      <DependentUpon>CompoundFormView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Housing\Compounds\CompoundView.resx">
-      <DependentUpon>CompoundView.cs</DependentUpon>
+    <EmbeddedResource Include="Housing\Compounds\CompoundForm.resx">
+      <DependentUpon>CompoundForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
@@ -247,41 +188,20 @@
     <EmbeddedResource Include="Security\Audit\AuditView.resx">
       <DependentUpon>AuditView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Security\Entitlements\EntitelmentFormView.resx">
-      <DependentUpon>EntitelmentFormView.cs</DependentUpon>
+    <EmbeddedResource Include="Security\Entitlements\EntitlementForm.resx">
+      <DependentUpon>EntitlementForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Security\Entitlements\EntitlementListView.resx">
-      <DependentUpon>EntitlementListView.cs</DependentUpon>
+    <EmbeddedResource Include="Security\Profiles\ProfileForm.resx">
+      <DependentUpon>ProfileForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Security\Entitlements\EntitlementsTabView.resx">
-      <DependentUpon>EntitlementsTabView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Security\Entitlements\EntitlementView.resx">
-      <DependentUpon>EntitlementView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Security\Profiles\ProfileView.resx">
-      <DependentUpon>ProfileView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Security\Profiles\ProfilesListView.resx">
-      <DependentUpon>ProfilesListView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Security\Profiles\ProfilesFormView.resx">
-      <DependentUpon>ProfilesFormView.cs</DependentUpon>
+    <EmbeddedResource Include="Security\Users\UserForm.resx">
+      <DependentUpon>UserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Security\Users\UserPasswordResetView.resx">
       <DependentUpon>UserPasswordResetView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Security\Users\UsersFormView.resx">
-      <DependentUpon>UsersFormView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Security\Users\UsersListView.resx">
-      <DependentUpon>UsersListView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Security\Users\UsersLoginView.resx">
       <DependentUpon>UsersLoginView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Security\Users\UserView.resx">
-      <DependentUpon>UserView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\AdvancedCheckedListBox.resx">
       <DependentUpon>AdvancedCheckedListBox.cs</DependentUpon>

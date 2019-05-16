@@ -61,17 +61,18 @@ namespace ViewWinform
 
         private void UsersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Utils.FormsHelper.showView(this, new UsersListView());
+            //Utils.FormsHelper.showView(this, new UsersListView());
+            new UserForm() { MdiParent = this }.Show();
         }
 
         private void ProfilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new ProfileView() { MdiParent = this }.Show();
+            new ProfileForm() { MdiParent = this }.Show();
         }
 
         private void EntitlementsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new EntitlementView() { MdiParent = this }.Show();
+            new EntitlementForm() { MdiParent = this }.Show();
         }
 
         private void PorfileEntitelmentsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -165,7 +166,33 @@ namespace ViewWinform
         }
 
         private void CompoundsToolStripMenuItem_Click(object sender, EventArgs e) {
-            new Housing.Compounds.CompoundView() { MdiParent = this }.Show();
+            new Housing.Compounds.CompoundForm() { MdiParent = this }.Show();
+        }
+
+        private void ConfigurationsToolStripMenuItem_Click(object sender, EventArgs e) {
+            new Configurations.ConfigurationsForm() { MdiParent = this }.Show();
+        }
+
+        private void CloseAllToolStripMenuItem_Click(object sender, EventArgs e) {
+            foreach(var child in this.MdiChildren) {
+                child.Close();
+            }
+        }
+
+        private void CascadeToolStripMenuItem_Click(object sender, EventArgs e) {
+            this.LayoutMdi(System.Windows.Forms.MdiLayout.Cascade);
+        }
+
+        private void TileVerticalToolStripMenuItem_Click(object sender, EventArgs e) {
+            this.LayoutMdi(System.Windows.Forms.MdiLayout.TileVertical);
+        }
+
+        private void TileHorizontalToolStripMenuItem_Click(object sender, EventArgs e) {
+            this.LayoutMdi(System.Windows.Forms.MdiLayout.TileHorizontal);
+        }
+
+        private void ArrangeIconsToolStripMenuItem_Click(object sender, EventArgs e) {
+            this.LayoutMdi(System.Windows.Forms.MdiLayout.ArrangeIcons);
         }
     }
 }

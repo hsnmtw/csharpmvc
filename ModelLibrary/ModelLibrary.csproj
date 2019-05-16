@@ -45,6 +45,7 @@
     <Compile Include="Common\TableModel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Configurations\ConfigurationModel.cs" />
     <Compile Include="Customers\NationalityModel.cs" />
     <Compile Include="Housing\CompoundModel.cs" />
     <Compile Include="Security\AuditModel.cs" />

@@ -46,12 +46,9 @@ namespace ViewWinform.Common {
             this.tsbLast = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -74,6 +71,7 @@ namespace ViewWinform.Common {
             // tsbSave
             // 
             this.tsbSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbSave.Enabled = false;
             this.tsbSave.Image = global::ViewWinform.Properties.Resources.ok;
             this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSave.Name = "tsbSave";
@@ -119,6 +117,7 @@ namespace ViewWinform.Common {
             // tsbTableView
             // 
             this.tsbTableView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbTableView.Enabled = false;
             this.tsbTableView.Image = global::ViewWinform.Properties.Resources.table;
             this.tsbTableView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbTableView.Name = "tsbTableView";
@@ -204,6 +203,7 @@ namespace ViewWinform.Common {
             // tsbNew
             // 
             this.tsbNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbNew.Enabled = false;
             this.tsbNew.Image = global::ViewWinform.Properties.Resources._new;
             this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNew.Name = "tsbNew";
@@ -211,31 +211,10 @@ namespace ViewWinform.Common {
             this.tsbNew.Text = "New";
             this.tsbNew.Click += new System.EventHandler(this.TsbNew_Click_1);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(5, 30);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBox1.Size = new System.Drawing.Size(346, 41);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(5, 18);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(336, 13);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TabStop = false;
-            // 
             // tsbDelete
             // 
             this.tsbDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbDelete.Enabled = false;
             this.tsbDelete.Image = global::ViewWinform.Properties.Resources.delete;
             this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDelete.Name = "tsbDelete";
@@ -248,7 +227,6 @@ namespace ViewWinform.Common {
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(356, 245);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip2);
             this.Controls.Add(this.toolStrip1);
             this.Name = "CommonView";
@@ -258,8 +236,6 @@ namespace ViewWinform.Common {
             this.toolStrip1.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -282,8 +258,6 @@ namespace ViewWinform.Common {
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripButton tsbNew;
         private ToolStripButton toolStripButton1;
-        private GroupBox groupBox1;
-        private TextBox textBox1;
         private ToolStripButton tsbDelete;
     }
 }

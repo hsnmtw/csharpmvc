@@ -11,15 +11,15 @@ using DBManagerLibrary.Common;
 
 namespace ControllerLibrary.Security
 {
-    public class EntitlementController : AbstractController<EntitlementModel>
+    public class EntitlementController : AbstractDBController<EntitlementModel>
     {
-        public override string TABLE_NAME { get { return "Security_Entitlements"; } }
+        public override string Source => "Security_Entitlements";
 
         public DataTable getAllEntitlementsWithoutId()
         {
             return db.query(new Statement() {
                 sql = @"SELECT [Entitlement_Name] 
-                                FROM "+ this.TABLE_NAME +@" 
+                                FROM "+ this.Source +@" 
                             ORDER BY 1"
             });
         }

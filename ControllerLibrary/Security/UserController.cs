@@ -12,16 +12,16 @@ using DBManagerLibrary.Common;
 
 namespace ControllerLibrary.Security
 {
-    public class UserController : AbstractController<UserModel>
+    public class UserController : AbstractDBController<UserModel>
     {
-        public override string TABLE_NAME { get { return "Security_Users"; } }
+        public override string Source => "Security_Users";
 
         public bool autheniticate(UserModel model)
         {
             encryptPassword(ref model);
             var pswd = model.User_Password;
             var result = db.query(new Statement(@"SELECT [Is_Active],[Failed_Login_Attempts],[User_Password],[Id]
-                                      FROM " + this.TABLE_NAME + @" 
+                                      FROM " + this.Source + @" 
                                      WHERE [User_Name]     = @User_Name 
                                      ",
                 getParameters("User_Name".Split(','), model)
@@ -44,7 +44,7 @@ namespace ControllerLibrary.Security
             
 
             if (authinticated) {
-                db.execute(new Statement(@"UPDATE " + this.TABLE_NAME + @"
+                db.execute(new Statement(@"UPDATE " + this.Source + @"
                                 SET [Last_Login_Date] = now()
                               WHERE [Id]              = @Id
                                  OR [User_Name]       = @User_Name
@@ -59,15 +59,15 @@ namespace ControllerLibrary.Security
 
             } else {
                 model.Failed_Login_Attempts += 1;
-                db.execute(new Statement(@"UPDATE " + this.TABLE_NAME + @"
+                db.execute(new Statement(@"UPDATE " + this.Source + @"
                                 SET [Failed_Login_Attempts] = @Failed_Login_Attempts
                               WHERE [Id]                    = @Id
                                  OR [User_Name]             = @User_Name
-                        ", getParameters("Failed_Login_Attempts,Id".Split(','), model)));
+                        ", getParameters("Failed_Login_Attempts,Id,User_Name".Split(','), model)));
 
                 if (model.Failed_Login_Attempts > 5) {
                     model.Is_Active = false;
-                   db.execute(new Statement(@"UPDATE " + this.TABLE_NAME + @"
+                   db.execute(new Statement(@"UPDATE " + this.Source + @"
                                 SET [Is_Active]             = @Is_Active
                               WHERE [Id]                    = @Id
                                  OR [User_Name]             = @User_Name
@@ -86,7 +86,7 @@ namespace ControllerLibrary.Security
 
         public void toggleActiveStatus(UserModel model) {
             db.execute(new Statement() {
-                sql = @"UPDATE " + this.TABLE_NAME + @"
+                sql = @"UPDATE " + this.Source + @"
                            SET [Is_Active] = not [Is_Active]
                          WHERE [Id]        = @Id
                             OR [User_Name] = @User_Name
@@ -102,7 +102,7 @@ namespace ControllerLibrary.Security
 
         public void resetLoginCounter(UserModel model) {
             db.execute(new Statement() {
-                sql = @"UPDATE " + this.TABLE_NAME + @"
+                sql = @"UPDATE " + this.Source + @"
                            SET [Failed_Login_Attempts] = 0
                          WHERE [Id]=@Id
                             OR [User_Name]=@User_Name
@@ -116,13 +116,15 @@ namespace ControllerLibrary.Security
         }
 
         public void resetPassword(UserModel model) {
+            model.Last_Change_Password = DateTime.Now;
             db.execute(new Statement() {
-                sql = @"UPDATE " + this.TABLE_NAME + @"
-                           SET [User_Password] = @User_Password
-                         WHERE [Id]            = @Id
-                            OR [User_Name]     = @User_Name
+                sql = @"UPDATE " + this.Source + @"
+                           SET [User_Password]        = @User_Password
+                             , [Last_Change_Password] = @Last_Change_Password
+                         WHERE [Id]                   = @Id
+                            OR [User_Name]            = @User_Name
                 ",
-                parameters = getParameters("User_Password,Id,User_Name".Split(','), model)
+                parameters = getParameters("User_Password,Last_Change_Password,Id,User_Name".Split(','), model)
             });
             new AuditController().registerEvent(new AuditModel() {
                 User_Name = model.User_Name,

@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database_Objects.txt" />
+    <Content Include="OleDbTypes.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SQLView.resx">

@@ -12,7 +12,7 @@ namespace ModelLibrary.Common
         public int Id           { get; set; }
         public string Created_By   { get; set; }
         public string Updated_By   { get; set; }
-        public DateTime Created_On { get; set; }
-        public DateTime Updated_On { get; set; }       
+        public DateTime? Created_On { get; set; }
+        public DateTime? Updated_On { get; set; }       
     }
 }

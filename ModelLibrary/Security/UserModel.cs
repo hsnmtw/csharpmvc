@@ -14,7 +14,7 @@ namespace ModelLibrary.Security
         public Boolean  Is_Active             { get; set; } 
         public String   Email                 { get; set; } 
         public Int32    Failed_Login_Attempts { get; set; } 
-        public DateTime Last_Login_Date       { get; set; } 
-        public DateTime Last_Change_Password  { get; set; } 
+        public DateTime? Last_Login_Date       { get; set; } 
+        public DateTime? Last_Change_Password  { get; set; } 
     }
 }
