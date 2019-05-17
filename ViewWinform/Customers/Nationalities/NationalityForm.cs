@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ViewWinform.Common;
 
 namespace ViewWinform.Customers.Nationalities {
     public partial class NationalityForm : Form {
@@ -24,7 +25,7 @@ namespace ViewWinform.Customers.Nationalities {
 
         public NationalityModel Model{
             get {
-                _model.Id = "".Equals(this.Id_TextBox.Text) ? 0 : int.Parse(this.Id_TextBox.Text);
+                _model.Id = int.Parse($"0{this.Id_TextBox.Text}");
                 _model.Nationality_Code = this.Nationality_Code_TextBox.Text;
                 _model.Nationality_Desc = this.Nationality_Desc_TextBox.Text;
                 _model.Nationality_Arabic = this.Nationality_Arabic_TextBox.Text;
@@ -66,7 +67,7 @@ namespace ViewWinform.Customers.Nationalities {
         private void Button3_Click(object sender, EventArgs e) {
             this.controller.save(this.Model);
             Utils.FormsHelper.successMessage("Successfully saved ...");
-            Nationality_Code_TextBox_OnLookUpSelected(this.Model.Nationality_Code);
+            Nationality_Code_TextBox_OnLookUpSelected(sender,new LookupEventArgs(this.Nationality_Code_TextBox.Text ));
         }
 
         private void Button4_Click(object sender, EventArgs e) {
@@ -75,9 +76,9 @@ namespace ViewWinform.Customers.Nationalities {
             this.Model = new NationalityModel();
         }
 
-        private void Nationality_Code_TextBox_OnLookUpSelected(string value) {
+        private void Nationality_Code_TextBox_OnLookUpSelected(object sender, EventArgs e) {
             this.Model = this.controller.selectModelsAsList(new NationalityModel() {
-                Nationality_Code = value,
+                Nationality_Code = ((LookupEventArgs)e).SelectedValueFromLookup,
             }, "Nationality_Code".Split(','))[0];
         }
     }

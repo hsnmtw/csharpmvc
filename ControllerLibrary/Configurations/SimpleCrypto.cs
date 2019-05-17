@@ -7,10 +7,8 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ControllerLibrary.Utils
-{
-    public class SimpleCrypto : ICrypto
-    {
+namespace ControllerLibrary.Configurations {
+    class SimpleCrypto : ICrypto {
 
         private static byte[] key = new byte[8] { 1,2,4,9,7,6,0,3 };
         private static byte[] iv  = new byte[8] { 2,3,5,1,8,6,7,1 };

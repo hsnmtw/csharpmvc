@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ModelLibrary.Security;
 using System.Data.Common;
-using ControllerLibrary.Utils;
+using ControllerLibrary.Configurations;
 using ControllerLibrary.Common;
 using DBManagerLibrary.Common;
 
@@ -16,10 +16,17 @@ namespace ControllerLibrary.Security
     {
         public override string Source => "Security_Users";
 
+        public override void save(UserModel model) {
+            if (model.User_Password.StartsWith("{ENC}") == false) {
+                model.User_Password = CryptoFactory.Encrypt(model.User_Password);
+            }
+            base.save(model);
+        }
+
+
         public bool autheniticate(UserModel model)
         {
-            encryptPassword(ref model);
-            var pswd = model.User_Password;
+            var pswd = CryptoFactory.Encrypt(model.User_Password);
             var result = db.query(new Statement(this.Source,@"SELECT [Is_Active],[Failed_Login_Attempts],[User_Password],[Id]
                                       FROM " + this.Source + @" 
                                      WHERE [User_Name]     = @User_Name 
@@ -78,12 +85,6 @@ namespace ControllerLibrary.Security
             return authinticated;
         }
 
-        public void encryptPassword(ref UserModel model)
-        {
-            if (model.User_Password.StartsWith("{ENC}")) return;
-            model.User_Password = new SimpleCrypto().encrypt(model.User_Password);
-        }
-
         public void toggleActiveStatus(UserModel model) {
             db.execute(new Statement(this.Source) {
                 Sql = @"UPDATE " + this.Source + @"
@@ -116,6 +117,8 @@ namespace ControllerLibrary.Security
         }
 
         public void resetPassword(UserModel model) {
+            if (model.User_Password.StartsWith("{ENC}")) throw new Exception("password must in plain text");
+            model.User_Password = CryptoFactory.Encrypt(model.User_Password);
             model.Last_Change_Password = DateTime.Now;
             db.execute(new Statement(this.Source) {
                 Sql = @"UPDATE " + this.Source + @"
@@ -131,7 +134,5 @@ namespace ControllerLibrary.Security
                 Event_Comments = "password reset for user : " + model.User_Name
             });
         }
-
-
     }
 }

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ViewWinform.Common;
 
 namespace ViewWinform.Housing.Compounds {
     public partial class CompoundForm : Form {
@@ -21,7 +22,7 @@ namespace ViewWinform.Housing.Compounds {
 
         public CompoundModel Model {
             get {
-                _model.Id = "".Equals(this.Id_TextBox.Text) ? 0 : int.Parse(this.Id_TextBox.Text);
+                _model.Id = int.Parse($"0{this.Id_TextBox.Text}");
                 _model.Compound_Name = this.Compound_Name_TextBox.Text;
                 _model.Created_By = this.Created_By_TextBox.Text;
                 _model.Updated_By = this.Updated_By_TextBox.Text;
@@ -51,7 +52,7 @@ namespace ViewWinform.Housing.Compounds {
         private void Button3_Click(object sender, EventArgs e) {
             this.controller.save(this.Model);
             Utils.FormsHelper.successMessage("Successfully saved ...");
-            Compound_Code_TextBox_OnLookUpSelected(this.Model.Compound_Name);
+            Compound_Name_LookupButton_OnLookUpSelected(sender,new LookupEventArgs(this.Model.Compound_Name));
         }
 
         private void Button4_Click(object sender, EventArgs e) {
@@ -60,16 +61,17 @@ namespace ViewWinform.Housing.Compounds {
             this.Model = new CompoundModel();
         }
 
-        private void Compound_Code_TextBox_OnLookUpSelected(string value) {
-            this.Model = this.controller.selectModelsAsList(new CompoundModel() {
-                Compound_Name = value,
-            }, "Compound_Name".Split(','))[0];
-        }
 
         private void CompoundForm_Load_1(object sender, EventArgs e) {
             Utils.FormsHelper.registerEnterAsTab(this);
             this.controller = new CompoundController();
             this.Model = new CompoundModel();
+        }
+
+        private void Compound_Name_LookupButton_OnLookUpSelected(object sender, EventArgs e) {
+            this.Model = this.controller.selectModelsAsList(new CompoundModel() {
+                Compound_Name = ((LookupEventArgs)e).SelectedValueFromLookup,
+            }, "Compound_Name".Split(','))[0];
         }
     }
 }

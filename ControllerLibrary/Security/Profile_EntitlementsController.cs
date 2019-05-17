@@ -33,7 +33,7 @@ namespace ControllerLibrary.Security
         public void clearEntitlementForProfile(string profile)
         {
             db.execute(new Statement(this.Source) {
-                Sql = @"delete from "+this.Source+" where [Profile_Name]=@Profile_Name",
+                Sql = $"delete from {this.Source} where [Profile_Name]=@Profile_Name",
                 Parameters = new IDataParameter[] {
                     DBConnectionManager.Instance.getDbDataParameter("@Profile_Name", DbType.String,50,profile)
                 }

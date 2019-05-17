@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ViewWinform.Common;
 
 namespace ViewWinform.Security.Profiles {
     public partial class ProfileForm : Form {
@@ -23,8 +24,8 @@ namespace ViewWinform.Security.Profiles {
 
         public ProfileModel Model {
             get {
-                _model.Id = "".Equals(this.Id_TextBox.Text) ? 0 : int.Parse(this.Id_TextBox.Text);
-                _model.Profile_Name = this.Profile_Name_TextBox.Text;
+                _model.Id = int.Parse($"0{this.Id_TextBox.Text}");
+                //_model.Profile_Name = this.Profile_Name_TextBox.Text;
                 _model.Created_By = this.Created_By_TextBox.Text;
                 _model.Updated_By = this.Updated_By_TextBox.Text;
                 _model.Profile_Desc = this.Profile_Desc_TextBox.Text;
@@ -38,7 +39,7 @@ namespace ViewWinform.Security.Profiles {
                 this._model = value;
                 if (value == null) _model = new ProfileModel();
                 this.Id_TextBox.Text = _model.Id.ToString();
-                this.Profile_Name_TextBox.Text = _model.Profile_Name;
+                //this.Profile_Name_TextBox.Text = _model.Profile_Name;
                 this.Created_By_TextBox.Text = _model.Created_By;
                 this.Updated_By_TextBox.Text = _model.Updated_By;
                 this.Profile_Desc_TextBox.Text = _model.Profile_Desc;
@@ -61,7 +62,7 @@ namespace ViewWinform.Security.Profiles {
             this.profile_EntitlementsController.updateEntitlementForProfile(this.Model.Profile_Name,
                 (from object entl in listBox2.Items select entl.ToString()).ToList());
             Utils.FormsHelper.successMessage("Successfully saved ...");
-            Profile_Code_TextBox_OnLookUpSelected(this.Model.Profile_Name);
+            this.Profile_Name_Lookup_OnLookUpSelected(e,new LookupEventArgs(this.Model.Profile_Name));
         }
 
         private void Button4_Click(object sender, EventArgs e) {
@@ -70,24 +71,6 @@ namespace ViewWinform.Security.Profiles {
             this.Model = new ProfileModel();
         }
 
-        private void Profile_Code_TextBox_OnLookUpSelected(string value) {
-            this.Model = this.controller.selectModelsAsList(new ProfileModel() {
-                Profile_Name = value,
-            }, "Profile_Name".Split(','))[0];
-            var selectedEntitlements = from model in this.profile_EntitlementsController.selectModelsAsList(
-                new Profile_EntitlementsModel() { Profile_Name = value },
-                new string[] { "Profile_Name" }
-            ) select model.Entitlement_Name;
-
-            var notselectedEntitlements = from model in entitlements
-                                          where !selectedEntitlements.Contains(model)
-                                          orderby model
-                                          select model;
-            this.listBox1.Items.Clear();
-            this.listBox2.Items.Clear();
-            this.listBox1.Items.AddRange(notselectedEntitlements.ToArray());
-            this.listBox2.Items.AddRange(selectedEntitlements.ToArray());
-        }
 
         private void ProfileForm_Load(object sender, EventArgs e) {
             Utils.FormsHelper.registerEnterAsTab(this);
@@ -122,12 +105,35 @@ namespace ViewWinform.Security.Profiles {
 
         private void Button8_Click(object sender, EventArgs e) {
             this.listBox1.Items.Clear();
+            this.listBox2.Items.Clear();
             this.listBox2.Items.AddRange(this.entitlements.ToArray());
         }
 
         private void Button7_Click(object sender, EventArgs e) {
+            this.listBox1.Items.Clear();
             this.listBox2.Items.Clear();
             this.listBox1.Items.AddRange(this.entitlements.ToArray());
+        }
+
+        private void Profile_Name_Lookup_OnLookUpSelected(object sender, EventArgs e) {
+            string value = ((LookupEventArgs)e).SelectedValueFromLookup;
+            this.Model = this.controller.selectModelsAsList(new ProfileModel() {
+                Profile_Name = value,
+            }, "Profile_Name".Split(','))[0];
+            var selectedEntitlements = from model in this.profile_EntitlementsController.selectModelsAsList(
+                new Profile_EntitlementsModel() { Profile_Name = value },
+                new string[] { "Profile_Name" }
+            )
+                                       select model.Entitlement_Name;
+
+            var notselectedEntitlements = from model in entitlements
+                                          where !selectedEntitlements.Contains(model)
+                                          orderby model
+                                          select model;
+            this.listBox1.Items.Clear();
+            this.listBox2.Items.Clear();
+            this.listBox1.Items.AddRange(notselectedEntitlements.ToArray());
+            this.listBox2.Items.AddRange(selectedEntitlements.ToArray());
         }
     }
 }

@@ -9,27 +9,24 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ModelLibrary.Security;
 using ControllerLibrary.Security;
-using ControllerLibrary.Utils;
 
 namespace ViewWinform.Security.Users {
     public partial class UserPasswordResetView : UserControl , BaseView<UserModel>{
         public UserPasswordResetView() {
             InitializeComponent();
             Utils.FormsHelper.registerEnterAsTab(this);
-            this.crypto = new SimpleCrypto();
         }
 
         public Action OnOKAction { get; set; }
         public Action OnCancelAction { get; set; }
 
         private UserModel _model;
-        private SimpleCrypto crypto;
 
         public UserModel model {
             get {
                 _model.Id = int.Parse(this.Id_TextBox.Text,0);
                 _model.User_Name = this.UserName_TextBox.Text;
-                _model.User_Password = crypto.encrypt(this.Password_TextBox.Text);
+                _model.User_Password = this.Password_TextBox.Text;
                 return _model;
             }
             set {
@@ -38,8 +35,6 @@ namespace ViewWinform.Security.Users {
                 this.UserName_TextBox.Text = _model.User_Name;
             }
         }
-
-
 
         private void Button1_Click(object sender, EventArgs e) {
             if (this.Password_TextBox.Text.Equals(this.Confirm_TextBox.Text)) {

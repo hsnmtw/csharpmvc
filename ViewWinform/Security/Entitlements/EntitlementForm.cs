@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ViewWinform.Common;
 
 namespace ViewWinform.Security.Entitlements {
     public partial class EntitlementForm : Form {
@@ -22,7 +23,7 @@ namespace ViewWinform.Security.Entitlements {
 
         public EntitlementModel Model {
             get {
-                _model.Id = "".Equals(this.Id_TextBox.Text) ? 0 : int.Parse(this.Id_TextBox.Text);
+                _model.Id = int.Parse($"0{this.Id_TextBox.Text}");
                 _model.Entitlement_Name = this.Entitlement_Name_TextBox.Text;
                 _model.Created_By = this.Created_By_TextBox.Text;
                 _model.Updated_By = this.Updated_By_TextBox.Text;
@@ -52,7 +53,7 @@ namespace ViewWinform.Security.Entitlements {
         private void Button3_Click(object sender, EventArgs e) {
             this.controller.save(this.Model);
             Utils.FormsHelper.successMessage("Successfully saved ...");
-            Entitlement_Code_TextBox_OnLookUpSelected(this.Model.Entitlement_Name);
+            this.Entitlement_Name_Lookup_OnLookUpSelected(sender,new LookupEventArgs(this.Model.Entitlement_Name));
         }
 
         private void Button4_Click(object sender, EventArgs e) {
@@ -61,16 +62,16 @@ namespace ViewWinform.Security.Entitlements {
             this.Model = new EntitlementModel();
         }
 
-        private void Entitlement_Code_TextBox_OnLookUpSelected(string value) {
-            this.Model = this.controller.selectModelsAsList(new EntitlementModel() {
-                Entitlement_Name = value,
-            }, "Entitlement_Name".Split(','))[0];
-        }
-
         private void EntitlementForm_Load(object sender, EventArgs e) {
             Utils.FormsHelper.registerEnterAsTab(this);
             this.controller = new EntitlementController();
             this.Model = new EntitlementModel();
+        }
+
+        private void Entitlement_Name_Lookup_OnLookUpSelected(object sender, EventArgs e) {
+            this.Model = this.controller.selectModelsAsList(new EntitlementModel() {
+                Entitlement_Name = ((LookupEventArgs)e).SelectedValueFromLookup,
+            }, "Entitlement_Name".Split(','))[0];
         }
     }
 }

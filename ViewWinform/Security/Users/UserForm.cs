@@ -23,7 +23,7 @@ namespace ViewWinform.Security.Users {
 
         public UserModel Model {
             get {
-                _model.Id = "".Equals(this.Id_TextBox.Text) ? 0 : int.Parse(this.Id_TextBox.Text);
+                _model.Id = int.Parse($"0{this.Id_TextBox.Text}");
                 _model.User_Name = this.User_Name_TextBox.Text;
 
 
@@ -58,7 +58,7 @@ namespace ViewWinform.Security.Users {
                 this.LastLoginDate_TextBox.Text = "";  if (_model.Last_Login_Date != null) this.LastLoginDate_TextBox.Text = _model.Last_Login_Date.ToString() ;
                 this.LastPasswordReset_TextBox.Text = "";  if(_model.Last_Change_Password != null) this.LastPasswordReset_TextBox.Text = _model.Last_Change_Password.ToString();
                 this.FailedLogins_TextBox.Text =_model.Failed_Login_Attempts.ToString();
-                this.User_Password_TextBox.Text = new ControllerLibrary.Utils.SimpleCrypto().decrypt(_model.User_Password);
+                this.User_Password_TextBox.Text = _model.User_Password;
                 this.Confirm_User_Password_TextBox.Text = this.User_Password_TextBox.Text;
             }
         }
@@ -101,14 +101,24 @@ namespace ViewWinform.Security.Users {
             this.FailedLogins_TextBox.Text = "0";
         }
 
-        private void Profile_Name_TextBox_ValueChanged(object sender, EventArgs e) {
+        private void Profile_Name_Lookup_OnLookUpSelected(object sender, EventArgs e) {
+
+        }
+
+        private void User_Name_Lookup_OnLookUpSelected(object sender, EventArgs e) {
+            this.Model = this.controller.selectModelsAsList(new UserModel() {
+                User_Name = this.User_Name_TextBox.Text 
+            }, new string[]{"User_Name"}).First();
+        }
+
+        private void Profile_Name_TextBox_TextChanged(object sender, EventArgs e) {
             this.listBox1.Items.Clear();
             this.listBox1.Items.AddRange((
                 from model in profile_Entitlements
                 where model.Profile_Name.Equals(Profile_Name_TextBox.Text)
                 orderby model.Entitlement_Name
                 select model.Entitlement_Name
-                ).ToArray());
+            ).ToArray());
         }
     }
 }

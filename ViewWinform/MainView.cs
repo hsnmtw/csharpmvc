@@ -129,10 +129,7 @@ namespace ViewWinform
 
         private void EncryptionToolToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ControllerLibrary.Utils.EncryptionView encryptionView = new ControllerLibrary.Utils.EncryptionView();
-            encryptionView.MdiParent = this;
-            encryptionView.WindowState = FormWindowState.Maximized;
-            encryptionView.Show();
+            new Configurations.CryptoForm() { MdiParent = this }.Show();
         }
 
         private void PasswordResetToolStripMenuItem_Click(object sender, EventArgs e) {

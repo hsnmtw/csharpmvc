@@ -49,24 +49,26 @@ namespace DBManagerLibrary.Common
         }
 
 
-        public void execute(Statement statement) 
+        public ResultSet execute(Statement statement) 
         {
+            
             var sql = statement.Sql;
             var parameters = statement.Parameters;
             var cmd = this.connection.CreateCommand();
             cmd.CommandText = sql;
             cmd.CommandType = CommandType.Text;
-            if (parameters.Length > 0)
-            {
+            if (parameters.Length > 0) {
                 cmd.Parameters.AddRange(parameters);
                 cmd.Prepare();
             }
             //Console.WriteLine(sql);
 
-            cmd.ExecuteNonQuery();
+            var result = cmd.ExecuteNonQuery();
             if (this.dataSet.Tables.Contains(statement.TargetTable)) {
                 this.dataSet.Tables.Remove(statement.TargetTable);
             }
+
+            return new ResultSet() { Status = true, ResponseMessage = result.ToString() };            
         }
 
         public DataTable query(Statement statement)

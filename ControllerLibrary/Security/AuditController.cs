@@ -18,8 +18,9 @@ namespace ControllerLibrary.Security {
             model.Created_By = "SYSTEM";
             model.Event_Date = DateTime.Now;
             model.Updated_On = DateTime.Now;
-            model.Created_On = DateTime.Now; 
-            insert(model);
+            model.Created_On = DateTime.Now;
+            model.Id = 0; // this makes the model new
+            save(model);
         }
     }
 }

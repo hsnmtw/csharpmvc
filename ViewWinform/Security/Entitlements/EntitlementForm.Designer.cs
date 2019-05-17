@@ -35,7 +35,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Id_TextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.Entitlement_Name_TextBox = new ViewWinform.Common.LookUpField();
+            this.Entitlement_Name_TextBox = new System.Windows.Forms.TextBox();
+            this.Entitlement_Name_Lookup = new ViewWinform.Common.LookUpButton();
             this.SuspendLayout();
             // 
             // button4
@@ -156,14 +157,23 @@
             // 
             // Entitlement_Name_TextBox
             // 
-            this.Entitlement_Name_TextBox.Controller = ViewWinform.Common.DBControllers.Entitlement;
-            this.Entitlement_Name_TextBox.Location = new System.Drawing.Point(158, 38);
+            this.Entitlement_Name_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Entitlement_Name_TextBox.Location = new System.Drawing.Point(159, 42);
             this.Entitlement_Name_TextBox.Name = "Entitlement_Name_TextBox";
-            this.Entitlement_Name_TextBox.ShowFieldsInLookUp.Add("Entitlement_Name");
-            this.Entitlement_Name_TextBox.Size = new System.Drawing.Size(104, 22);
-            this.Entitlement_Name_TextBox.TabIndex = 33;
-            this.Entitlement_Name_TextBox.TextBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.Entitlement_Name_TextBox.OnLookUpSelected += new ViewWinform.Common.LookUpField.LookUpSelectedHandler(this.Entitlement_Code_TextBox_OnLookUpSelected);
+            this.Entitlement_Name_TextBox.Size = new System.Drawing.Size(192, 20);
+            this.Entitlement_Name_TextBox.TabIndex = 1;
+            this.Entitlement_Name_TextBox.TabStop = false;
+            // 
+            // Entitlement_Name_Lookup
+            // 
+            this.Entitlement_Name_Lookup.AssociatedControl = "Entitlement_Name_TextBox";
+            this.Entitlement_Name_Lookup.Controller = ViewWinform.Common.DBControllers.Entitlement;
+            this.Entitlement_Name_Lookup.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.Entitlement_Name_Lookup.Location = new System.Drawing.Point(351, 41);
+            this.Entitlement_Name_Lookup.Name = "Entitlement_Name_Lookup";
+            this.Entitlement_Name_Lookup.Size = new System.Drawing.Size(22, 22);
+            this.Entitlement_Name_Lookup.TabIndex = 2;
+            this.Entitlement_Name_Lookup.OnLookUpSelected += new System.EventHandler(this.Entitlement_Name_Lookup_OnLookUpSelected);
             // 
             // EntitlementForm
             // 
@@ -171,6 +181,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(427, 229);
             this.Controls.Add(this.Entitlement_Name_TextBox);
+            this.Controls.Add(this.Entitlement_Name_Lookup);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -193,7 +204,7 @@
 
         #endregion
 
-        private Common.LookUpField Entitlement_Name_TextBox;
+        private Common.LookUpButton Entitlement_Name_Lookup;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
@@ -206,5 +217,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox Id_TextBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox Entitlement_Name_TextBox;
     }
 }

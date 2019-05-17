@@ -48,10 +48,5 @@ namespace ViewWinform.Security.Users
             }
             
         }
-
-        private void User_Name_TextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

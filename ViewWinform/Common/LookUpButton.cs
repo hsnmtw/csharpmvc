@@ -17,10 +17,17 @@ namespace ViewWinform.Common {
 
 
 
-    public partial class LookUpField : UserControl {
-        public delegate void LookUpSelectedHandler(string value);
-        public event LookUpSelectedHandler OnLookUpSelected;
-        public event EventHandler ValueChanged;
+    public partial class LookUpButton : UserControl {
+
+        public const string ARROW = "↓";
+
+        [Category("(Lookup)")]
+        [Description("This event is fired after the user selects an item from the lookup form.")]
+        public event EventHandler OnLookUpSelected;
+
+        private string valueFromLookup;
+        public string ValueFromLookup => valueFromLookup;
+
 
         private BaseController _controller = null;
 
@@ -32,29 +39,46 @@ namespace ViewWinform.Common {
             [DBControllers.Profile]     = typeof(ProfileController)
         };
 
-        public LookUpField() {
+        public LookUpButton() {
             InitializeComponent();
+            this.AssociatedControl = null;
+            this.button1.Text = ARROW;
+            this.Font = new Font("Consolas", 10, FontStyle.Bold);
             this.ShowFieldsInLookUp = new List<string>();
+            this.button1.Click += Button1_Click;
         }
 
         private void Button1_Click(object sender, EventArgs e) {
             if(this._controller == null) {
                 this._controller = (BaseController)Activator.CreateInstance(controllerMap[this.Controller]);
             }
-            if(this.ShowFieldsInLookUp == null || this.ShowFieldsInLookUp.Count() == 0) {
-                return;
-            }
 
-            LookUp lookup = new Common.LookUp(this._controller.selectModelsAsDataTable(),this.ShowFieldsInLookUp.ToArray());
+            LookUpForm lookup;
+
+            lookup = new Common.LookUpForm(this._controller.selectModelsAsDataTable(),this.ShowFieldsInLookUp.ToArray());
             
             if (lookup.ShowDialog() == DialogResult.OK) {
-                this.Text = lookup.SelectedValue[this.SelectedFieldFromLookUp];
-                if (this.OnLookUpSelected != null) this.OnLookUpSelected(this.Text);
+                valueFromLookup = lookup.SelectedValue[this.SelectedFieldFromLookUp];
+                if (this.AssociatedControl != null && !"".Equals(this.AssociatedControl)) {
+                    try {
+                        this.Parent.Controls.Find(this.AssociatedControl,true)[0].Text = valueFromLookup;
+                    }catch(Exception ex) {
+                        Console.WriteLine($"Exception : {ex.Message}");
+                    }
+                }
+                if (this.OnLookUpSelected != null) {
+                    this.OnLookUpSelected(sender, new LookupEventArgs(valueFromLookup));
+                }
             }
         }
 
+        [Category("(Lookup)")]
+        [Description("Associated control/textbox.")]
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        public string AssociatedControl { get; set; }
 
-        [Category("Appearance")]
+        [Category("(Lookup)")]
         [Description("The selected fields to be shown in the lookup.")]
         [Editor("System.Windows.Forms.Design.ListControlStringCollectionEditor, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
@@ -62,44 +86,21 @@ namespace ViewWinform.Common {
         [Localizable(true)]
         public List<string> ShowFieldsInLookUp { get; set; }
 
-        [Category("Appearance")]
+        [Category("(Lookup)")]
         [Description("The selected fields to be shown in the lookup.")]
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public int SelectedFieldFromLookUp { get; set; }
 
-
-        [Category("Appearance")]
+        [Category("(Lookup)")]
         [Description("The controller used to populate values in the lookup.")]
         [Browsable(true),DefaultValue(DBControllers.Compound), EditorBrowsable(EditorBrowsableState.Always)]
         public DBControllers Controller { get; set; }
 
+        public override string Text { get => button1.Text; set => button1.Text = value; }
 
+        private void Button1_Click_1(object sender, EventArgs e) {
 
-        [Category("Appearance")]
-        [Description("The text displayed by the control.")]
-        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        public override string Text {
-            get { return this.textBox1.Text; }
-            set { this.textBox1.Text = value; }
-        }
-
-        [Category("Appearance")]
-        [Description("The back color displayed by the control.")]
-        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        public Color TextBackColor {
-            get { return this.textBox1.BackColor; }
-            set { this.textBox1.BackColor = value; }
-        }
-
-        private void LookUpField_SizeChanged(object sender, EventArgs e) {
-            if(this.Height>22) this.Height = 22;
-        }
-
-        private void TextBox1_TextChanged(object sender, EventArgs e) {
-            if (this.ValueChanged != null) this.ValueChanged(sender, e);
         }
     }
 }

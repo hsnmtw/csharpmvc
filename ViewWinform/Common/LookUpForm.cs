@@ -9,17 +9,21 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ViewWinform.Common {
-    public partial class LookUp : Form {
+    public partial class LookUpForm : Form {
 
-        public LookUp() {
+        public LookUpForm() {
             InitializeComponent();
         }
 
-        public LookUp(DataTable source,params string[]shownColumns) {
+        public LookUpForm(DataTable source,params string[]shownColumns) {
             InitializeComponent();
+            if(shownColumns==null || shownColumns.Length == 0) {
+                shownColumns = (from DataColumn column in source.Columns select column.ColumnName).ToArray();
+            }
             DataView dv = new DataView(source);
             dv.Sort = string.Format("{0} ASC", shownColumns[0]);
             this.dataGridView1.DataSource = dv.ToTable(false,shownColumns);
+            this.dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
 
         public string[] SelectedValue {

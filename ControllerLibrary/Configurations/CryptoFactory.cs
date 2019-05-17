@@ -7,10 +7,9 @@ using System.IO;
 using System.Security.Cryptography;
 using System.IO.Compression;
 
-namespace ControllerLibrary.Utils
+namespace ControllerLibrary.Configurations
 {
-    public class CryptoFactory
-    {
+    class CryptoFactory {
         
         public static string Base64Encode(string plainText)
         {

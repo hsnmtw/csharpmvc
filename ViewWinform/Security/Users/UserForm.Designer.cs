@@ -52,11 +52,13 @@
             this.Is_Active_CheckBox = new System.Windows.Forms.CheckBox();
             this.label13 = new System.Windows.Forms.Label();
             this.Confirm_User_Password_TextBox = new System.Windows.Forms.TextBox();
-            this.Profile_Name_TextBox = new ViewWinform.Common.LookUpField();
-            this.User_Name_TextBox = new ViewWinform.Common.LookUpField();
             this.button1 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.User_Name_TextBox = new System.Windows.Forms.TextBox();
+            this.Profile_Name_TextBox = new System.Windows.Forms.TextBox();
+            this.Profile_Name_Lookup = new ViewWinform.Common.LookUpButton();
+            this.User_Name_Lookup = new ViewWinform.Common.LookUpButton();
             this.SuspendLayout();
             // 
             // button4
@@ -64,7 +66,7 @@
             this.button4.Location = new System.Drawing.Point(79, 424);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 18;
+            this.button4.TabIndex = 20;
             this.button4.Text = "Delete";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.Button4_Click);
@@ -74,7 +76,7 @@
             this.button3.Location = new System.Drawing.Point(187, 424);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 16;
+            this.button3.TabIndex = 18;
             this.button3.Text = "Save";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Button3_Click);
@@ -84,7 +86,7 @@
             this.button2.Location = new System.Drawing.Point(295, 424);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 17;
+            this.button2.TabIndex = 19;
             this.button2.Text = "New";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
@@ -96,17 +98,17 @@
             this.Updated_On_TextBox.Name = "Updated_On_TextBox";
             this.Updated_On_TextBox.ReadOnly = true;
             this.Updated_On_TextBox.Size = new System.Drawing.Size(137, 20);
-            this.Updated_On_TextBox.TabIndex = 15;
+            this.Updated_On_TextBox.TabIndex = 17;
             this.Updated_On_TextBox.TabStop = false;
             // 
             // Updated_By_TextBox
             // 
             this.Updated_By_TextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.Updated_By_TextBox.Location = new System.Drawing.Point(159, 369);
+            this.Updated_By_TextBox.Location = new System.Drawing.Point(158, 369);
             this.Updated_By_TextBox.Name = "Updated_By_TextBox";
             this.Updated_By_TextBox.ReadOnly = true;
             this.Updated_By_TextBox.Size = new System.Drawing.Size(69, 20);
-            this.Updated_By_TextBox.TabIndex = 14;
+            this.Updated_By_TextBox.TabIndex = 16;
             this.Updated_By_TextBox.TabStop = false;
             // 
             // label6
@@ -125,17 +127,17 @@
             this.Created_On_TextBox.Name = "Created_On_TextBox";
             this.Created_On_TextBox.ReadOnly = true;
             this.Created_On_TextBox.Size = new System.Drawing.Size(137, 20);
-            this.Created_On_TextBox.TabIndex = 13;
+            this.Created_On_TextBox.TabIndex = 15;
             this.Created_On_TextBox.TabStop = false;
             // 
             // Created_By_TextBox
             // 
             this.Created_By_TextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.Created_By_TextBox.Location = new System.Drawing.Point(159, 339);
+            this.Created_By_TextBox.Location = new System.Drawing.Point(158, 339);
             this.Created_By_TextBox.Name = "Created_By_TextBox";
             this.Created_By_TextBox.ReadOnly = true;
             this.Created_By_TextBox.Size = new System.Drawing.Size(69, 20);
-            this.Created_By_TextBox.TabIndex = 12;
+            this.Created_By_TextBox.TabIndex = 14;
             this.Created_By_TextBox.TabStop = false;
             // 
             // label5
@@ -158,7 +160,7 @@
             // 
             // Id_TextBox
             // 
-            this.Id_TextBox.Location = new System.Drawing.Point(159, 12);
+            this.Id_TextBox.Location = new System.Drawing.Point(158, 12);
             this.Id_TextBox.Name = "Id_TextBox";
             this.Id_TextBox.ReadOnly = true;
             this.Id_TextBox.Size = new System.Drawing.Size(68, 20);
@@ -186,29 +188,29 @@
             // 
             // FailedLogins_TextBox
             // 
-            this.FailedLogins_TextBox.Location = new System.Drawing.Point(159, 249);
+            this.FailedLogins_TextBox.Location = new System.Drawing.Point(158, 249);
             this.FailedLogins_TextBox.Name = "FailedLogins_TextBox";
             this.FailedLogins_TextBox.ReadOnly = true;
             this.FailedLogins_TextBox.Size = new System.Drawing.Size(156, 20);
-            this.FailedLogins_TextBox.TabIndex = 8;
+            this.FailedLogins_TextBox.TabIndex = 10;
             this.FailedLogins_TextBox.TabStop = false;
             // 
             // LastPasswordReset_TextBox
             // 
-            this.LastPasswordReset_TextBox.Location = new System.Drawing.Point(159, 279);
+            this.LastPasswordReset_TextBox.Location = new System.Drawing.Point(158, 279);
             this.LastPasswordReset_TextBox.Name = "LastPasswordReset_TextBox";
             this.LastPasswordReset_TextBox.ReadOnly = true;
             this.LastPasswordReset_TextBox.Size = new System.Drawing.Size(156, 20);
-            this.LastPasswordReset_TextBox.TabIndex = 10;
+            this.LastPasswordReset_TextBox.TabIndex = 12;
             this.LastPasswordReset_TextBox.TabStop = false;
             // 
             // LastLoginDate_TextBox
             // 
-            this.LastLoginDate_TextBox.Location = new System.Drawing.Point(159, 309);
+            this.LastLoginDate_TextBox.Location = new System.Drawing.Point(158, 309);
             this.LastLoginDate_TextBox.Name = "LastLoginDate_TextBox";
             this.LastLoginDate_TextBox.ReadOnly = true;
             this.LastLoginDate_TextBox.Size = new System.Drawing.Size(156, 20);
-            this.LastLoginDate_TextBox.TabIndex = 11;
+            this.LastLoginDate_TextBox.TabIndex = 13;
             this.LastLoginDate_TextBox.TabStop = false;
             // 
             // label10
@@ -240,17 +242,17 @@
             // 
             // Email_TextBox
             // 
-            this.Email_TextBox.Location = new System.Drawing.Point(159, 135);
+            this.Email_TextBox.Location = new System.Drawing.Point(158, 135);
             this.Email_TextBox.Name = "Email_TextBox";
             this.Email_TextBox.Size = new System.Drawing.Size(221, 20);
-            this.Email_TextBox.TabIndex = 4;
+            this.Email_TextBox.TabIndex = 6;
             // 
             // Full_Name_TextBox
             // 
-            this.Full_Name_TextBox.Location = new System.Drawing.Point(159, 74);
+            this.Full_Name_TextBox.Location = new System.Drawing.Point(158, 74);
             this.Full_Name_TextBox.Name = "Full_Name_TextBox";
             this.Full_Name_TextBox.Size = new System.Drawing.Size(221, 20);
-            this.Full_Name_TextBox.TabIndex = 2;
+            this.Full_Name_TextBox.TabIndex = 3;
             // 
             // label7
             // 
@@ -272,11 +274,11 @@
             // 
             // User_Password_TextBox
             // 
-            this.User_Password_TextBox.Location = new System.Drawing.Point(159, 165);
+            this.User_Password_TextBox.Location = new System.Drawing.Point(158, 165);
             this.User_Password_TextBox.Name = "User_Password_TextBox";
             this.User_Password_TextBox.PasswordChar = '●';
             this.User_Password_TextBox.Size = new System.Drawing.Size(157, 20);
-            this.User_Password_TextBox.TabIndex = 5;
+            this.User_Password_TextBox.TabIndex = 7;
             this.User_Password_TextBox.TabStop = false;
             // 
             // label8
@@ -300,10 +302,10 @@
             // Is_Active_CheckBox
             // 
             this.Is_Active_CheckBox.AutoSize = true;
-            this.Is_Active_CheckBox.Location = new System.Drawing.Point(159, 225);
+            this.Is_Active_CheckBox.Location = new System.Drawing.Point(158, 225);
             this.Is_Active_CheckBox.Name = "Is_Active_CheckBox";
             this.Is_Active_CheckBox.Size = new System.Drawing.Size(15, 14);
-            this.Is_Active_CheckBox.TabIndex = 7;
+            this.Is_Active_CheckBox.TabIndex = 9;
             this.Is_Active_CheckBox.UseVisualStyleBackColor = true;
             // 
             // label13
@@ -321,39 +323,15 @@
             this.Confirm_User_Password_TextBox.Name = "Confirm_User_Password_TextBox";
             this.Confirm_User_Password_TextBox.PasswordChar = '●';
             this.Confirm_User_Password_TextBox.Size = new System.Drawing.Size(157, 20);
-            this.Confirm_User_Password_TextBox.TabIndex = 6;
+            this.Confirm_User_Password_TextBox.TabIndex = 8;
             this.Confirm_User_Password_TextBox.TabStop = false;
-            // 
-            // Profile_Name_TextBox
-            // 
-            this.Profile_Name_TextBox.Controller = ViewWinform.Common.DBControllers.Profile;
-            this.Profile_Name_TextBox.Location = new System.Drawing.Point(159, 104);
-            this.Profile_Name_TextBox.Name = "Profile_Name_TextBox";
-            this.Profile_Name_TextBox.ShowFieldsInLookUp.Add("Profile_Name");
-            this.Profile_Name_TextBox.Size = new System.Drawing.Size(221, 22);
-            this.Profile_Name_TextBox.TabIndex = 3;
-            this.Profile_Name_TextBox.TextBackColor = System.Drawing.SystemColors.Window;
-            this.Profile_Name_TextBox.ValueChanged += new System.EventHandler(this.Profile_Name_TextBox_ValueChanged);
-            // 
-            // User_Name_TextBox
-            // 
-            this.User_Name_TextBox.Controller = ViewWinform.Common.DBControllers.User;
-            this.User_Name_TextBox.Location = new System.Drawing.Point(159, 42);
-            this.User_Name_TextBox.Name = "User_Name_TextBox";
-            this.User_Name_TextBox.ShowFieldsInLookUp.Add("User_Name");
-            this.User_Name_TextBox.ShowFieldsInLookUp.Add("Full_Name");
-            this.User_Name_TextBox.ShowFieldsInLookUp.Add("Profile_Name");
-            this.User_Name_TextBox.Size = new System.Drawing.Size(221, 22);
-            this.User_Name_TextBox.TabIndex = 1;
-            this.User_Name_TextBox.TextBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.User_Name_TextBox.OnLookUpSelected += new ViewWinform.Common.LookUpField.LookUpSelectedHandler(this.User_Code_TextBox_OnLookUpSelected);
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(325, 247);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(55, 23);
-            this.button1.TabIndex = 9;
+            this.button1.TabIndex = 11;
             this.button1.Text = "Reset";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
@@ -375,15 +353,59 @@
             this.label14.TabIndex = 64;
             this.label14.Text = "Entitlements";
             // 
+            // User_Name_TextBox
+            // 
+            this.User_Name_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.User_Name_TextBox.Location = new System.Drawing.Point(158, 42);
+            this.User_Name_TextBox.Name = "User_Name_TextBox";
+            this.User_Name_TextBox.Size = new System.Drawing.Size(199, 20);
+            this.User_Name_TextBox.TabIndex = 1;
+            // 
+            // Profile_Name_TextBox
+            // 
+            this.Profile_Name_TextBox.Location = new System.Drawing.Point(158, 104);
+            this.Profile_Name_TextBox.Name = "Profile_Name_TextBox";
+            this.Profile_Name_TextBox.ReadOnly = true;
+            this.Profile_Name_TextBox.Size = new System.Drawing.Size(199, 20);
+            this.Profile_Name_TextBox.TabIndex = 4;
+            this.Profile_Name_TextBox.TextChanged += new System.EventHandler(this.Profile_Name_TextBox_TextChanged);
+            // 
+            // Profile_Name_Lookup
+            // 
+            this.Profile_Name_Lookup.AssociatedControl = "Profile_Name_TextBox";
+            this.Profile_Name_Lookup.Controller = ViewWinform.Common.DBControllers.Profile;
+            this.Profile_Name_Lookup.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.Profile_Name_Lookup.Location = new System.Drawing.Point(359, 103);
+            this.Profile_Name_Lookup.Name = "Profile_Name_Lookup";
+            this.Profile_Name_Lookup.ShowFieldsInLookUp.Add("Profile_Name");
+            this.Profile_Name_Lookup.Size = new System.Drawing.Size(22, 22);
+            this.Profile_Name_Lookup.TabIndex = 5;
+            this.Profile_Name_Lookup.OnLookUpSelected += new System.EventHandler(this.Profile_Name_Lookup_OnLookUpSelected);
+            // 
+            // User_Name_Lookup
+            // 
+            this.User_Name_Lookup.AssociatedControl = "User_Name_TextBox";
+            this.User_Name_Lookup.Controller = ViewWinform.Common.DBControllers.User;
+            this.User_Name_Lookup.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.User_Name_Lookup.Location = new System.Drawing.Point(359, 41);
+            this.User_Name_Lookup.Name = "User_Name_Lookup";
+            this.User_Name_Lookup.ShowFieldsInLookUp.Add("User_Name");
+            this.User_Name_Lookup.Size = new System.Drawing.Size(22, 22);
+            this.User_Name_Lookup.TabIndex = 2;
+            this.User_Name_Lookup.OnLookUpSelected += new System.EventHandler(this.User_Name_Lookup_OnLookUpSelected);
+            // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(611, 468);
+            this.Controls.Add(this.Profile_Name_Lookup);
+            this.Controls.Add(this.Profile_Name_TextBox);
+            this.Controls.Add(this.User_Name_Lookup);
+            this.Controls.Add(this.User_Name_TextBox);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.Profile_Name_TextBox);
             this.Controls.Add(this.Is_Active_CheckBox);
             this.Controls.Add(this.Confirm_User_Password_TextBox);
             this.Controls.Add(this.label13);
@@ -401,7 +423,6 @@
             this.Controls.Add(this.Full_Name_TextBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.User_Name_TextBox);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -423,8 +444,6 @@
         }
 
         #endregion
-
-        private Common.LookUpField User_Name_TextBox;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
@@ -454,9 +473,12 @@
         private System.Windows.Forms.CheckBox Is_Active_CheckBox;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox Confirm_User_Password_TextBox;
-        private Common.LookUpField Profile_Name_TextBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label14;
+        private Common.LookUpButton User_Name_Lookup;
+        private System.Windows.Forms.TextBox User_Name_TextBox;
+        private System.Windows.Forms.TextBox Profile_Name_TextBox;
+        private Common.LookUpButton Profile_Name_Lookup;
     }
 }

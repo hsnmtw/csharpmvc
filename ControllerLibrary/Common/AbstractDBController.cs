@@ -30,11 +30,11 @@ namespace ControllerLibrary.Common
             return selectModelsAsList(model,whereFields);
         }
 
-        public DataTable selectModelsAsDataTable() {
+        public virtual DataTable selectModelsAsDataTable() {
             return this.selectModelsAsDataTable(Activator.CreateInstance<M>(), new string[] { });
         }
 
-        public DataTable selectModelsAsDataTable(M model, string[] whereFields) {
+        public virtual DataTable selectModelsAsDataTable(M model, string[] whereFields) {
 
             string query = "";
 
@@ -88,12 +88,12 @@ namespace ControllerLibrary.Common
         }
 
 
-        public void save(M model) {
+        public virtual void save(M model) {
             if (model.Id == 0) insert(model);
             else update(model);
         }
 
-        public void insert(M model) {
+        private void insert(M model) {
             db.execute(getInsertStatement(model));
             if(this.GetType().Equals(typeof(AuditController)) == false) {
                 new AuditController().registerEvent(new AuditModel() {
@@ -102,7 +102,7 @@ namespace ControllerLibrary.Common
                 });
             }
         }
-        public void update(M model) {
+        private void update(M model) {
             db.execute(getUpdateStatement(model));
             if (this.GetType().Equals(typeof(AuditController)) == false) {
                 new AuditController().registerEvent(new AuditModel() {
@@ -111,7 +111,7 @@ namespace ControllerLibrary.Common
                 });
             }
         }
-        public void delete(M model) {
+        public virtual void delete(M model) {
             db.execute(getDeleteStatement(model));
             if (this.GetType().Equals(typeof(AuditController)) == false) {
                 new AuditController().registerEvent(new AuditModel() {
@@ -124,12 +124,12 @@ namespace ControllerLibrary.Common
             return db.query(getSelectStatement());
         }
 
-        public int count() {
+        public virtual int count() {
             int cnt = (int)db.queryScalar(new Statement(this.Source,"SELECT COUNT(*) FROM " + this.Source));
             return cnt;
         }
 
-        public int count(IDataParameter[] parameters) {
+        public virtual int count(IDataParameter[] parameters) {
             string WHERE = string.Join(" AND ", (from parameter in parameters select string.Format("[{0}]={0}", parameter.ParameterName))).Replace("[@", "[");
             int cnt = (int)db.queryScalar(new Statement(this.Source) {
                 Sql = string.Format("SELECT COUNT(*) FROM {0} WHERE 1=1 AND {1}",this.Source,WHERE),

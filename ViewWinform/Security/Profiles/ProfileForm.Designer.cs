@@ -35,7 +35,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Id_TextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.Profile_Name_TextBox = new ViewWinform.Common.LookUpField();
             this.label3 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
@@ -45,6 +44,8 @@
             this.button8 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.Profile_Desc_TextBox = new System.Windows.Forms.TextBox();
+            this.Profile_Name_Lookup = new ViewWinform.Common.LookUpButton();
+            this.Profile_Name_TextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button4
@@ -52,7 +53,7 @@
             this.button4.Location = new System.Drawing.Point(79, 358);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 14;
+            this.button4.TabIndex = 15;
             this.button4.Text = "Delete";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.Button4_Click);
@@ -62,7 +63,7 @@
             this.button3.Location = new System.Drawing.Point(187, 358);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 12;
+            this.button3.TabIndex = 14;
             this.button3.Text = "Save";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Button3_Click);
@@ -72,7 +73,7 @@
             this.button2.Location = new System.Drawing.Point(295, 358);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 13;
+            this.button2.TabIndex = 16;
             this.button2.Text = "New";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
@@ -84,7 +85,7 @@
             this.Updated_On_TextBox.Name = "Updated_On_TextBox";
             this.Updated_On_TextBox.ReadOnly = true;
             this.Updated_On_TextBox.Size = new System.Drawing.Size(137, 20);
-            this.Updated_On_TextBox.TabIndex = 12;
+            this.Updated_On_TextBox.TabIndex = 13;
             this.Updated_On_TextBox.TabStop = false;
             // 
             // Updated_By_TextBox
@@ -94,7 +95,7 @@
             this.Updated_By_TextBox.Name = "Updated_By_TextBox";
             this.Updated_By_TextBox.ReadOnly = true;
             this.Updated_By_TextBox.Size = new System.Drawing.Size(69, 20);
-            this.Updated_By_TextBox.TabIndex = 11;
+            this.Updated_By_TextBox.TabIndex = 12;
             this.Updated_By_TextBox.TabStop = false;
             // 
             // label6
@@ -113,7 +114,7 @@
             this.Created_On_TextBox.Name = "Created_On_TextBox";
             this.Created_On_TextBox.ReadOnly = true;
             this.Created_On_TextBox.Size = new System.Drawing.Size(137, 20);
-            this.Created_On_TextBox.TabIndex = 10;
+            this.Created_On_TextBox.TabIndex = 11;
             this.Created_On_TextBox.TabStop = false;
             // 
             // Created_By_TextBox
@@ -123,7 +124,7 @@
             this.Created_By_TextBox.Name = "Created_By_TextBox";
             this.Created_By_TextBox.ReadOnly = true;
             this.Created_By_TextBox.Size = new System.Drawing.Size(69, 20);
-            this.Created_By_TextBox.TabIndex = 9;
+            this.Created_By_TextBox.TabIndex = 10;
             this.Created_By_TextBox.TabStop = false;
             // 
             // label5
@@ -163,17 +164,6 @@
             this.label1.TabIndex = 41;
             this.label1.Text = "Id";
             // 
-            // Profile_Name_TextBox
-            // 
-            this.Profile_Name_TextBox.Controller = ViewWinform.Common.DBControllers.Profile;
-            this.Profile_Name_TextBox.Location = new System.Drawing.Point(158, 38);
-            this.Profile_Name_TextBox.Name = "Profile_Name_TextBox";
-            this.Profile_Name_TextBox.ShowFieldsInLookUp.Add("Profile_Name");
-            this.Profile_Name_TextBox.Size = new System.Drawing.Size(104, 22);
-            this.Profile_Name_TextBox.TabIndex = 1;
-            this.Profile_Name_TextBox.TextBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.Profile_Name_TextBox.OnLookUpSelected += new ViewWinform.Common.LookUpField.LookUpSelectedHandler(this.Profile_Code_TextBox_OnLookUpSelected);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -190,7 +180,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBox1.Size = new System.Drawing.Size(182, 173);
-            this.listBox1.TabIndex = 3;
+            this.listBox1.TabIndex = 4;
             // 
             // listBox2
             // 
@@ -199,14 +189,14 @@
             this.listBox2.Name = "listBox2";
             this.listBox2.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBox2.Size = new System.Drawing.Size(182, 173);
-            this.listBox2.TabIndex = 8;
+            this.listBox2.TabIndex = 9;
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(346, 151);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(41, 23);
-            this.button1.TabIndex = 5;
+            this.button1.TabIndex = 6;
             this.button1.Text = ">";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
@@ -216,7 +206,7 @@
             this.button5.Location = new System.Drawing.Point(346, 191);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(41, 23);
-            this.button5.TabIndex = 6;
+            this.button5.TabIndex = 7;
             this.button5.Text = "<";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.Button5_Click);
@@ -226,7 +216,7 @@
             this.button7.Location = new System.Drawing.Point(346, 230);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(41, 23);
-            this.button7.TabIndex = 7;
+            this.button7.TabIndex = 8;
             this.button7.Text = "<<<";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.Button7_Click);
@@ -236,7 +226,7 @@
             this.button8.Location = new System.Drawing.Point(346, 108);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(41, 23);
-            this.button8.TabIndex = 4;
+            this.button8.TabIndex = 5;
             this.button8.Text = ">>>";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.Button8_Click);
@@ -255,21 +245,42 @@
             this.Profile_Desc_TextBox.Location = new System.Drawing.Point(159, 66);
             this.Profile_Desc_TextBox.Name = "Profile_Desc_TextBox";
             this.Profile_Desc_TextBox.Size = new System.Drawing.Size(416, 20);
-            this.Profile_Desc_TextBox.TabIndex = 2;
+            this.Profile_Desc_TextBox.TabIndex = 3;
             this.Profile_Desc_TextBox.TabStop = false;
+            // 
+            // Profile_Name_Lookup
+            // 
+            this.Profile_Name_Lookup.AssociatedControl = "Profile_Name_TextBox";
+            this.Profile_Name_Lookup.Controller = ViewWinform.Common.DBControllers.Profile;
+            this.Profile_Name_Lookup.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.Profile_Name_Lookup.Location = new System.Drawing.Point(359, 37);
+            this.Profile_Name_Lookup.Name = "Profile_Name_Lookup";
+            this.Profile_Name_Lookup.ShowFieldsInLookUp.Add("Profile_Name");
+            this.Profile_Name_Lookup.Size = new System.Drawing.Size(22, 22);
+            this.Profile_Name_Lookup.TabIndex = 2;
+            this.Profile_Name_Lookup.OnLookUpSelected += new System.EventHandler(this.Profile_Name_Lookup_OnLookUpSelected);
+            // 
+            // Profile_Name_TextBox
+            // 
+            this.Profile_Name_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Profile_Name_TextBox.Location = new System.Drawing.Point(158, 38);
+            this.Profile_Name_TextBox.Name = "Profile_Name_TextBox";
+            this.Profile_Name_TextBox.Size = new System.Drawing.Size(199, 20);
+            this.Profile_Name_TextBox.TabIndex = 1;
             // 
             // ProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(603, 395);
+            this.Controls.Add(this.Profile_Name_Lookup);
+            this.Controls.Add(this.Profile_Name_TextBox);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.Profile_Name_TextBox);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -294,8 +305,6 @@
         }
 
         #endregion
-
-        private Common.LookUpField Profile_Name_TextBox;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
@@ -317,5 +326,7 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox Profile_Desc_TextBox;
+        private Common.LookUpButton Profile_Name_Lookup;
+        private System.Windows.Forms.TextBox Profile_Name_TextBox;
     }
 }

@@ -54,17 +54,18 @@
       <DependentUpon>CommonView.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\DBControllers.cs" />
-    <Compile Include="Common\LookUp.cs">
+    <Compile Include="Common\LookupEventArgs.cs" />
+    <Compile Include="Common\LookUpForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Common\LookUp.Designer.cs">
-      <DependentUpon>LookUp.cs</DependentUpon>
+    <Compile Include="Common\LookUpForm.Designer.cs">
+      <DependentUpon>LookUpForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Common\LookUpField.cs">
+    <Compile Include="Common\LookUpButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Common\LookUpField.Designer.cs">
-      <DependentUpon>LookUpField.cs</DependentUpon>
+    <Compile Include="Common\LookUpButton.Designer.cs">
+      <DependentUpon>LookUpButton.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\MVCAdaptor.cs" />
     <Compile Include="Common\RecordsNavigator.cs">
@@ -78,6 +79,12 @@
     </Compile>
     <Compile Include="Configurations\ConfigurationsForm.Designer.cs">
       <DependentUpon>ConfigurationsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\CryptoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Configurations\CryptoForm.Designer.cs">
+      <DependentUpon>CryptoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Configurations\DBMaintenance.cs">
       <SubType>Form</SubType>
@@ -158,17 +165,20 @@
     <EmbeddedResource Include="Common\CommonView.resx">
       <DependentUpon>CommonView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Common\LookUp.resx">
-      <DependentUpon>LookUp.cs</DependentUpon>
+    <EmbeddedResource Include="Common\LookUpForm.resx">
+      <DependentUpon>LookUpForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Common\LookUpField.resx">
-      <DependentUpon>LookUpField.cs</DependentUpon>
+    <EmbeddedResource Include="Common\LookUpButton.resx">
+      <DependentUpon>LookUpButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Common\RecordsNavigator.resx">
       <DependentUpon>RecordsNavigator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Configurations\ConfigurationsForm.resx">
       <DependentUpon>ConfigurationsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Configurations\CryptoForm.resx">
+      <DependentUpon>CryptoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Configurations\DBMaintenance.resx">
       <DependentUpon>DBMaintenance.cs</DependentUpon>
@@ -309,6 +319,14 @@
   <ItemGroup>
     <None Include="Resources\paste.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\glyphicons-basic-427-square-triangle-down%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\glyphicons-halflings-181-square-triangle-down%402x_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chevron-thin-down.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

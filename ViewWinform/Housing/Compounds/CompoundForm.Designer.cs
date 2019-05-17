@@ -23,7 +23,6 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.Compound_Name_TextBox = new ViewWinform.Common.LookUpField();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -36,24 +35,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Id_TextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.Compound_Name_TextBox = new System.Windows.Forms.TextBox();
+            this.Compound_Name_LookupButton = new ViewWinform.Common.LookUpButton();
             this.SuspendLayout();
-            // 
-            // Compound_Name_TextBox
-            // 
-            this.Compound_Name_TextBox.Location = new System.Drawing.Point(119, 47);
-            this.Compound_Name_TextBox.Name = "Compound_Name_TextBox";
-            this.Compound_Name_TextBox.ShowFieldsInLookUp.Add("Compound_Name");
-            this.Compound_Name_TextBox.Size = new System.Drawing.Size(104, 22);
-            this.Compound_Name_TextBox.TabIndex = 17;
-            this.Compound_Name_TextBox.TextBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.Compound_Name_TextBox.OnLookUpSelected += new ViewWinform.Common.LookUpField.LookUpSelectedHandler(this.Compound_Code_TextBox_OnLookUpSelected);
             // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(40, 202);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 26;
+            this.button4.TabIndex = 9;
             this.button4.Text = "Delete";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.Button4_Click);
@@ -63,7 +54,7 @@
             this.button3.Location = new System.Drawing.Point(148, 202);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 24;
+            this.button3.TabIndex = 7;
             this.button3.Text = "Save";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Button3_Click);
@@ -73,7 +64,7 @@
             this.button2.Location = new System.Drawing.Point(256, 202);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 25;
+            this.button2.TabIndex = 8;
             this.button2.Text = "New";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
@@ -85,7 +76,7 @@
             this.Updated_On_TextBox.Name = "Updated_On_TextBox";
             this.Updated_On_TextBox.ReadOnly = true;
             this.Updated_On_TextBox.Size = new System.Drawing.Size(137, 20);
-            this.Updated_On_TextBox.TabIndex = 23;
+            this.Updated_On_TextBox.TabIndex = 6;
             this.Updated_On_TextBox.TabStop = false;
             // 
             // Updated_By_TextBox
@@ -95,7 +86,7 @@
             this.Updated_By_TextBox.Name = "Updated_By_TextBox";
             this.Updated_By_TextBox.ReadOnly = true;
             this.Updated_By_TextBox.Size = new System.Drawing.Size(69, 20);
-            this.Updated_By_TextBox.TabIndex = 22;
+            this.Updated_By_TextBox.TabIndex = 5;
             this.Updated_By_TextBox.TabStop = false;
             // 
             // label6
@@ -114,7 +105,7 @@
             this.Created_On_TextBox.Name = "Created_On_TextBox";
             this.Created_On_TextBox.ReadOnly = true;
             this.Created_On_TextBox.Size = new System.Drawing.Size(137, 20);
-            this.Created_On_TextBox.TabIndex = 21;
+            this.Created_On_TextBox.TabIndex = 4;
             this.Created_On_TextBox.TabStop = false;
             // 
             // Created_By_TextBox
@@ -124,7 +115,7 @@
             this.Created_By_TextBox.Name = "Created_By_TextBox";
             this.Created_By_TextBox.ReadOnly = true;
             this.Created_By_TextBox.Size = new System.Drawing.Size(69, 20);
-            this.Created_By_TextBox.TabIndex = 20;
+            this.Created_By_TextBox.TabIndex = 3;
             this.Created_By_TextBox.TabStop = false;
             // 
             // label5
@@ -151,7 +142,7 @@
             this.Id_TextBox.Name = "Id_TextBox";
             this.Id_TextBox.ReadOnly = true;
             this.Id_TextBox.Size = new System.Drawing.Size(68, 20);
-            this.Id_TextBox.TabIndex = 16;
+            this.Id_TextBox.TabIndex = 0;
             this.Id_TextBox.TabStop = false;
             this.Id_TextBox.Text = "0";
             // 
@@ -164,11 +155,31 @@
             this.label1.TabIndex = 27;
             this.label1.Text = "Id";
             // 
+            // Compound_Name_TextBox
+            // 
+            this.Compound_Name_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Compound_Name_TextBox.Location = new System.Drawing.Point(120, 51);
+            this.Compound_Name_TextBox.Name = "Compound_Name_TextBox";
+            this.Compound_Name_TextBox.Size = new System.Drawing.Size(154, 20);
+            this.Compound_Name_TextBox.TabIndex = 1;
+            // 
+            // Compound_Name_LookupButton
+            // 
+            this.Compound_Name_LookupButton.AssociatedControl = "Compound_Name_TextBox";
+            this.Compound_Name_LookupButton.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.Compound_Name_LookupButton.Location = new System.Drawing.Point(275, 50);
+            this.Compound_Name_LookupButton.Name = "Compound_Name_LookupButton";
+            this.Compound_Name_LookupButton.ShowFieldsInLookUp.Add("Compound_Name");
+            this.Compound_Name_LookupButton.Size = new System.Drawing.Size(22, 22);
+            this.Compound_Name_LookupButton.TabIndex = 2;
+            this.Compound_Name_LookupButton.OnLookUpSelected += new System.EventHandler(this.Compound_Name_LookupButton_OnLookUpSelected);
+            // 
             // CompoundForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(366, 237);
+            this.Controls.Add(this.Compound_Name_LookupButton);
             this.Controls.Add(this.Compound_Name_TextBox);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -191,8 +202,6 @@
         }
 
         #endregion
-
-        private Common.LookUpField Compound_Name_TextBox;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
@@ -205,5 +214,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox Id_TextBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox Compound_Name_TextBox;
+        private Common.LookUpButton Compound_Name_LookupButton;
     }
 }
