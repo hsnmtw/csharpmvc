@@ -154,6 +154,7 @@
       <DependentUpon>AdvancedCheckedListBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\FormsHelper.cs" />
+    <Compile Include="Utils\ReportTemplate.cs" />
     <EmbeddedResource Include="Common\CommonView.resx">
       <DependentUpon>CommonView.cs</DependentUpon>
     </EmbeddedResource>
