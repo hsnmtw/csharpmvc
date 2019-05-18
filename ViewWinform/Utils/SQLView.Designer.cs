@@ -1,4 +1,4 @@
-﻿namespace DBManagerLibrary
+﻿namespace ModelLibrary
 {
     partial class SQLView
     {

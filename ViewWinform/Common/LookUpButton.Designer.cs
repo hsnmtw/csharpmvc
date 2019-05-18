@@ -31,7 +31,7 @@
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(76, 25);
+            this.button1.Size = new System.Drawing.Size(175, 22);
             this.button1.TabIndex = 0;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
@@ -41,7 +41,7 @@
             // 
             this.Controls.Add(this.button1);
             this.Name = "LookUpButton";
-            this.Size = new System.Drawing.Size(76, 25);
+            this.Size = new System.Drawing.Size(175, 22);
             this.ResumeLayout(false);
 
         }

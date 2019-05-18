@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Globalization;
 using System.Configuration;
-using DBManagerLibrary.Common;
+using ModelLibrary.Common;
 
 namespace ViewWinform
 {

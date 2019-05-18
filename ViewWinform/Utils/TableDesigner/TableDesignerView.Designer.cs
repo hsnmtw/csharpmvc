@@ -1,4 +1,4 @@
-﻿namespace DBManagerLibrary.Utils.TableDesigner {
+﻿namespace ModelLibrary.Utils.TableDesigner {
     partial class TableDesignerView {
         /// <summary>
         /// Required designer variable.
@@ -23,7 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.tableDesignerForm1 = new DBManagerLibrary.Utils.TableDesigner.TableDesignerForm();
+            this.tableDesignerForm1 = new ModelLibrary.Utils.TableDesigner.TableDesignerForm();
             this.panel1 = new System.Windows.Forms.Panel();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();

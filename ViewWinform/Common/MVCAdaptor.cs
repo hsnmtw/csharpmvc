@@ -28,8 +28,8 @@ namespace ViewWinform.Common {
         }
 
         public void Requery() {
-            this.recordset = this.Controller.selectModelsAsList();
-            this.Count = this.Controller.count();
+            this.recordset = this.Controller.Read();
+            this.Count = this.recordset.Count;
         }
     }
 }

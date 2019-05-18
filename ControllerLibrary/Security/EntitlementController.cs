@@ -7,27 +7,27 @@ using System.Text;
 using System.Threading.Tasks;
 using ModelLibrary.Security;
 using ControllerLibrary.Common;
-using DBManagerLibrary.Common;
+using ModelLibrary.Common;
 using System.Windows.Forms;
 
 namespace ControllerLibrary.Security
 {
     public class EntitlementController : AbstractDBController<EntitlementModel>
     {
-        public override string Source => "Security_Entitlements";
+       // public override string Source => "Security_Entitlements";
 
         public DataTable getAllEntitlementsWithoutId()
         {
-            return db.query(new Statement(this.Source) {
-                Sql = $"SELECT [Entitlement_Name] FROM {this.Source} ORDER BY 1"
+            return database.Query(new Statement("E:ID") {
+                Sql = $"SELECT [Entitlement_Name] FROM {new EntitlementModel().GetSource()} ORDER BY 1"
             });
         }
 
-        public override DataTable selectModelsAsDataTable() {
+        public override DataTable GetTable() {
         
-            DataView dvE = new DataView(this.all());
-            DataView dvP = new DataView(new ProfileController().all());
-            DataTable dvPE = new Profile_EntitlementsController().all();
+            DataView dvE = new DataView(this.GetTable());
+            DataView dvP = new DataView(new ProfileController().GetTable());
+            DataTable dvPE = new ProfileEntitlementsController().GetTable();
 
             dvE.Sort = "Entitlement_Name ASC";
             dvP.Sort = "Profile_Name ASC";

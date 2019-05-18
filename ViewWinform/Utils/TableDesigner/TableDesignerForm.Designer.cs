@@ -1,4 +1,4 @@
-﻿namespace DBManagerLibrary.Utils.TableDesigner {
+﻿namespace ModelLibrary.Utils.TableDesigner {
     partial class TableDesignerForm {
         /// <summary>
         /// Required designer variable.
@@ -220,7 +220,7 @@
             this.KeyColumn.Items.AddRange(new object[] {
             " ",
             "PRIMARY KEY",
-            "UNIQUE KEY"});
+            "UNIQUE"});
             this.KeyColumn.Name = "KeyColumn";
             this.KeyColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.KeyColumn.Width = 120;

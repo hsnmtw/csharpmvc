@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
-using DBManagerLibrary.Common;
+using ModelLibrary.Common;
 using ModelLibrary.Common;
 using ControllerLibrary.Security;
 using ModelLibrary.Security;
@@ -12,73 +12,24 @@ using System.Reflection;
 namespace ControllerLibrary.Common
 {
 
-    public abstract class AbstractDBController<M> : BaseController where M : BaseModel {
-        public abstract string Source { get;  }
+    public abstract class AbstractDBController<M> : IDBController<M> where M : BaseModel {
 
-        public static Dictionary<Type, DbType> DataTypeMapping = new Dictionary<Type, DbType>() {
-            [typeof(string)]    = DbType.String,
-            [typeof(int)]       = DbType.Int32,
-            [typeof(double)]    = DbType.Double,
-            [typeof(DateTime)]  = DbType.DateTime,
-            [typeof(DateTime?)] = DbType.DateTime,
-            [typeof(Boolean)]   = DbType.Boolean
-        };
+        protected DBConnectionManager database = DBConnectionManager.Instance;
 
-        protected DBConnectionManager db = DBConnectionManager.Instance;
 
-        public List<M> search(M model,string[]whereFields) {
-            return selectModelsAsList(model,whereFields);
+        public List<M> Read() {
+            return Read(Activator.CreateInstance<M>(), new string[] { });
         }
 
-        public virtual DataTable selectModelsAsDataTable() {
-            return this.selectModelsAsDataTable(Activator.CreateInstance<M>(), new string[] { });
-        }
+        public List<M> Read(M model, string[] whereFields) {
 
-        public virtual DataTable selectModelsAsDataTable(M model, string[] whereFields) {
-
-            string query = "";
-
-            if (whereFields.Length == 0) {
-                query = string.Format("SELECT * FROM {0} ORDER BY 1", this.Source);
-
-            } else {
-                query = string.Format("SELECT * FROM {0} WHERE {1} ORDER BY 1",
-                                        this.Source,
-                                        string.Join(" AND ", (from string wf
-                                                                in whereFields
-                                                              select string.Format("[{0}]=@{0}", wf))));
-            }
-            
-            return db.query(new Statement(this.Source, query, getParameters(whereFields, model)));
-        }
-
-        public List<M> selectModelsAsList() {
-            return selectModelsAsList(Activator.CreateInstance<M>(), new string[] { });
-        }
-
-        public List<M> selectModelsAsList(M model, string[] whereFields) {
-
-            string query = "";
-
-            if (whereFields.Length == 0) {
-                query = string.Format("SELECT * FROM {0} ORDER BY 1", this.Source);
-            } else {
-                query = string.Format("SELECT * FROM {0} WHERE {1} ORDER BY 1",
-                                        this.Source,
-                                        string.Join(" AND ", (from string wf
-                                                                in whereFields
-                                                                select string.Format("[{0}]=@{0}", wf))));
-            }
-            var dt = db.query(new Statement(this.Source) {
-                Sql = query,
-                Parameters = getParameters(whereFields, model)
-            });
+            var dt = database.Query(model.GetSelectStatement(whereFields));
             var result = new List<M>();
             foreach (DataRow row in dt.Rows) {
                 var m = Activator.CreateInstance<M>();
                 for (int i = 0; i < dt.Columns.Count; i++) {
                     typeof(M).GetProperty(dt.Columns[i].ColumnName).SetValue(
-                        m, 
+                        m,
                         DBNull.Value.Equals(row[i]) ? null : row[i]
                     );
                 }
@@ -87,165 +38,48 @@ namespace ControllerLibrary.Common
             return result;
         }
 
-
-        public virtual void save(M model) {
-            if (model.Id == 0) insert(model);
-            else update(model);
+        public virtual DataTable GetTable(M model, string[] whereFields) {
+            return database.Query(Activator.CreateInstance<M>().GetSelectStatement(whereFields));
+        }
+        public virtual DataTable GetTable() {
+            return database.Query(Activator.CreateInstance<M>().GetSelectStatement());
         }
 
-        private void insert(M model) {
-            db.execute(getInsertStatement(model));
+        public virtual M Save(M model) {
+            if (model.Id == 0) { Create(model); } else { Update(model); }
+            return this.Read(model, new string[] { "Created_On" }).First();
+        }
+
+        private void Create(M model) {
+            model.Created_By = Session.Instance.CurrentUser.User_Name;
+            model.Created_On = DateTime.Now;
+            database.execute(model.GetInsertStatement());
             if(this.GetType().Equals(typeof(AuditController)) == false) {
                 new AuditController().registerEvent(new AuditModel() {
                     User_Name = Session.Instance.CurrentUser.User_Name,
-                    Event_Comments = string.Format("insert new record into [{0}] fields [{1}]",this.Source, convertModelToString(model))
+                    Event_Comments = $"insert new record into [{model.GetSource()}] fields [{model}]"
                 });
             }
         }
-        private void update(M model) {
-            db.execute(getUpdateStatement(model));
-            if (this.GetType().Equals(typeof(AuditController)) == false) {
-                new AuditController().registerEvent(new AuditModel() {
-                    User_Name = Session.Instance.CurrentUser.User_Name,
-                    Event_Comments = string.Format("update record of [{0}] fields [{1}]", this.Source, convertModelToString(model))
-                });
-            }
-        }
-        public virtual void delete(M model) {
-            db.execute(getDeleteStatement(model));
-            if (this.GetType().Equals(typeof(AuditController)) == false) {
-                new AuditController().registerEvent(new AuditModel() {
-                    User_Name = Session.Instance.CurrentUser.User_Name,
-                    Event_Comments = string.Format("delete record from [{0}] fields [{1}]", this.Source, convertModelToString(model))
-                });
-            }
-        }
-        public virtual DataTable all() {
-            return db.query(getSelectStatement());
-        }
-
-        public virtual int count() {
-            int cnt = (int)db.queryScalar(new Statement(this.Source,"SELECT COUNT(*) FROM " + this.Source));
-            return cnt;
-        }
-
-        public virtual int count(IDataParameter[] parameters) {
-            string WHERE = string.Join(" AND ", (from parameter in parameters select string.Format("[{0}]={0}", parameter.ParameterName))).Replace("[@", "[");
-            int cnt = (int)db.queryScalar(new Statement(this.Source) {
-                Sql = string.Format("SELECT COUNT(*) FROM {0} WHERE 1=1 AND {1}",this.Source,WHERE),
-                Parameters = parameters
-            });
-            return cnt;
-        }
-
-        public AbstractDBController(){}
-
-        public M find(M model) {
-            var dt = db.query(new Statement(this.Source) {
-                Sql = string.Format("SELECT * FROM {0} WHERE [Id]=@Id",this.Source),
-                Parameters = new IDataParameter[] {
-                    DBConnectionManager.Instance.getDbDataParameter("Id", DbType.Int32, 0, model.Id )
-                }
-            });
-
-            if (dt.Rows.Count==0) {
-                return null;
-            } else {
-                M foundModel = Activator.CreateInstance<M>();
-                DataRow row = dt.Rows[0];
-                for (int i = 0; i < dt.Columns.Count; i++) {
-                    typeof(M).GetProperty(dt.Columns[i].ColumnName).SetValue(
-                        foundModel,
-                        DBNull.Value.Equals(row[i]) ? null : row[i]
-                    );
-                }
-                return foundModel;
-            }
-        }
-
-        public string[] fields { get { return (from property in typeof(M).GetProperties() select property.Name).ToArray<string>(); } }
-
-        public static IDbDataParameter getParameterObject(Type datatype) {
-            return DBConnectionManager.Instance.getDbDataParameter("?", DataTypeMapping[datatype] , 255, null);        
-        }
-
-        protected virtual Statement getSelectStatement() {
-            return new Statement(this.Source) {
-                Sql = string.Format("SELECT * FROM {0} ORDER BY 1", this.Source),
-                Parameters = new IDataParameter[0]
-            };
-        }
-
-        protected virtual Statement getInsertStatement(M model) {
-            model.Created_On = DateTime.Now;
-            model.Created_By = Session.Instance.CurrentUser == null ? "SYSTEM" : Session.Instance.CurrentUser.User_Name;
-
-            string[] fields_without_id = (from field in fields
-                                          where !field.ToLower().Equals("id")
-                                          select field).ToArray<string>();
-
-            return new Statement(this.Source) {
-                Sql = string.Format("INSERT INTO {0} ([{1}]) VALUES ({2})",
-                    Source,
-                    string.Join("],[", fields_without_id),
-                    string.Join(",", (from field in fields where !field.ToLower().Equals("id") select "@"+field).ToArray())
-                ),
-                Parameters = getParameters(fields_without_id, model)
-            };
-        }
-
-        protected virtual Statement getUpdateStatement(M model) {
-            string[] fields_without_id = (from field in fields
-                                          where !(
-                                                    field.ToLower().Equals("id")         ||
-                                                    field.ToLower().Equals("created_by") ||
-                                                    field.ToLower().Equals("created_on")
-                                                 )
-                                          select field).ToArray<string>();
-
-            model.Updated_On = DateTime.Now;
+        private void Update(M model) {
             model.Updated_By = Session.Instance.CurrentUser.User_Name;
-            return new Statement(this.Source) {
-                Sql = string.Format("UPDATE {0} SET {1} WHERE [Id]=@Id",
-                    Source,
-                    string.Join(",", (from f in fields_without_id select string.Format("[{0}]=@{0}", f) ).ToArray())
-                ),
-                Parameters = getParameters( fields_without_id.Concat(new string[] { "Id" }).ToArray(),model )
-            };
-        }
-
-        protected virtual Statement getDeleteStatement(M model) {
-            return new Statement(this.Source) {
-                Sql = string.Format("DELETE FROM {0} WHERE [Id]=@Id", Source),
-                Parameters = getParameters(new string[] { "Id" }, model)
-            };
-        }
-
-        public IDataParameter[] getParameters(M model) {
-            return this.getParameters(this.fields, model);
-        }
-
-        public IDataParameter[] getParameters(string[] keys, M model) {
-            IDataParameter[] result = new IDataParameter[keys.Length];
-            if (keys.Length == 0) return result;
-            for(int i = 0; i < keys.Length; i++) {
-                string key = keys[i];
-                result[i] = getParameterObject( typeof(M).GetProperty(key).PropertyType );
-                result[i].ParameterName = "@" + key;
-                result[i].Value = model.GetType().GetProperty(key).GetValue(model) ?? DBNull.Value;
-                if(result[i].DbType == DbType.DateTime && result[i].Value != DBNull.Value) {
-                    result[i].Value = ((DateTime)result[i].Value).ToString("yyyy-MM-dd HH:mm:ss");
-                }
+            model.Updated_On = DateTime.Now;
+            database.execute(model.GetUpdateStatement());
+            if (this.GetType().Equals(typeof(AuditController)) == false) {
+                new AuditController().registerEvent(new AuditModel() {
+                    User_Name = Session.Instance.CurrentUser.User_Name,
+                    Event_Comments = $"update record of [{model.GetSource()}] with fields [{model}]"
+                });
             }
-            return result;
         }
-
-        public string convertModelToString(M model) {
-            StringBuilder sb = new StringBuilder();
-            foreach(PropertyInfo propertyInfo in model.GetType().GetProperties().OrderBy(p => p.Name)) {
-                sb.Append(string.Format("{0}={1},",propertyInfo.Name,propertyInfo.GetValue(model)));
+        public virtual void Delete(M model) {
+            database.execute(model.GetDeleteStatement());
+            if (this.GetType().Equals(typeof(AuditController)) == false) {
+                new AuditController().registerEvent(new AuditModel() {
+                    User_Name = Session.Instance.CurrentUser.User_Name,
+                    Event_Comments = $"delete record from [{model.GetSource()}] with fields [{model}]"
+                });
             }
-            return sb.ToString();
         }
     }
 }

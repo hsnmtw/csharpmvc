@@ -53,7 +53,6 @@
     <Compile Include="Common\CommonView.Designer.cs">
       <DependentUpon>CommonView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Common\DBControllers.cs" />
     <Compile Include="Common\LookupEventArgs.cs" />
     <Compile Include="Common\LookUpForm.cs">
       <SubType>Form</SubType>
@@ -98,11 +97,23 @@
     <Compile Include="Customers\Nationalities\NationalityForm.Designer.cs">
       <DependentUpon>NationalityForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Housing\Buildings\BuildingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Housing\Buildings\BuildingForm.Designer.cs">
+      <DependentUpon>BuildingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Housing\Compounds\CompoundForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Housing\Compounds\CompoundForm.Designer.cs">
       <DependentUpon>CompoundForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Housing\Rooms\RoomForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Housing\Rooms\RoomForm.Designer.cs">
+      <DependentUpon>RoomForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainView.cs">
       <SubType>Form</SubType>
@@ -160,8 +171,29 @@
     <Compile Include="Utils\AdvancedCheckedListBox.Designer.cs">
       <DependentUpon>AdvancedCheckedListBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\CustomDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Utils\FormsHelper.cs" />
     <Compile Include="Utils\ReportTemplate.cs" />
+    <Compile Include="Utils\SQLView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\SQLView.Designer.cs">
+      <DependentUpon>SQLView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\TableDesigner\TableDesignerForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Utils\TableDesigner\TableDesignerForm.Designer.cs">
+      <DependentUpon>TableDesignerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\TableDesigner\TableDesignerView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\TableDesigner\TableDesignerView.Designer.cs">
+      <DependentUpon>TableDesignerView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Common\CommonView.resx">
       <DependentUpon>CommonView.cs</DependentUpon>
     </EmbeddedResource>
@@ -186,8 +218,14 @@
     <EmbeddedResource Include="Customers\Nationalities\NationalityForm.resx">
       <DependentUpon>NationalityForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Housing\Buildings\BuildingForm.resx">
+      <DependentUpon>BuildingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Housing\Compounds\CompoundForm.resx">
       <DependentUpon>CompoundForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Housing\Rooms\RoomForm.resx">
+      <DependentUpon>RoomForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
@@ -226,6 +264,15 @@
     <EmbeddedResource Include="Utils\AdvancedCheckedListBox.resx">
       <DependentUpon>AdvancedCheckedListBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Utils\SQLView.resx">
+      <DependentUpon>SQLView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\TableDesigner\TableDesignerForm.resx">
+      <DependentUpon>TableDesignerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\TableDesigner\TableDesignerView.resx">
+      <DependentUpon>TableDesignerView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -243,10 +290,6 @@
     <ProjectReference Include="..\ControllerLibrary\ControllerLibrary.csproj">
       <Project>{175B593E-626E-499E-A288-B25B211924FE}</Project>
       <Name>ControllerLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DBManagerLibrary\DBManagerLibrary.csproj">
-      <Project>{01a3c210-78ba-4c4b-a044-545104836ba0}</Project>
-      <Name>DBManagerLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj">
       <Project>{7312C39A-27BE-4806-9FF7-CA78A156EC74}</Project>

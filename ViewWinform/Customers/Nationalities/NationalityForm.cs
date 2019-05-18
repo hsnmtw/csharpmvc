@@ -65,19 +65,19 @@ namespace ViewWinform.Customers.Nationalities {
         }
 
         private void Button3_Click(object sender, EventArgs e) {
-            this.controller.save(this.Model);
+            this.controller.Save(this.Model);
             Utils.FormsHelper.successMessage("Successfully saved ...");
             Nationality_Code_TextBox_OnLookUpSelected(sender,new LookupEventArgs(this.Nationality_Code_TextBox.Text ));
         }
 
         private void Button4_Click(object sender, EventArgs e) {
-            this.controller.delete(this.Model);
+            this.controller.Delete(this.Model);
             Utils.FormsHelper.successMessage("Successfully deleted ...");
             this.Model = new NationalityModel();
         }
 
         private void Nationality_Code_TextBox_OnLookUpSelected(object sender, EventArgs e) {
-            this.Model = this.controller.selectModelsAsList(new NationalityModel() {
+            this.Model = this.controller.Read(new NationalityModel() {
                 Nationality_Code = ((LookupEventArgs)e).SelectedValueFromLookup,
             }, "Nationality_Code".Split(','))[0];
         }

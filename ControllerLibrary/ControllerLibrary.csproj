@@ -45,14 +45,26 @@
   <ItemGroup>
     <Compile Include="Common\AbstractDBController.cs" />
     <Compile Include="Common\BaseController.cs" />
+    <Compile Include="Common\ControllersFactory.cs" />
+    <Compile Include="Common\ControllersRegistery.cs" />
+    <Compile Include="Common\DBControllersEnum.cs" />
+    <Compile Include="Common\IDBController.cs" />
     <Compile Include="Common\Session.cs" />
     <Compile Include="Configurations\ConfigurationsController.cs" />
     <Compile Include="Configurations\CryptoController.cs" />
     <Compile Include="Customers\NationalityController.cs" />
+    <Compile Include="Housing\BuildingController.cs" />
     <Compile Include="Housing\CompoundController.cs" />
+    <Compile Include="Housing\FakeRoomController.cs" />
+    <Compile Include="Housing\RoomController.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Security\AuditController.cs" />
     <Compile Include="Security\EntitlementController.cs" />
-    <Compile Include="Security\Profile_EntitlementsController.cs" />
+    <Compile Include="Security\ProfileEntitlementsController.cs" />
     <Compile Include="Configurations\CryptoFactory.cs" />
     <Compile Include="Common\ICrypto.cs" />
     <Compile Include="Security\ProfileController.cs" />
@@ -61,10 +73,6 @@
     <Compile Include="Security\UserController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DBManagerLibrary\DBManagerLibrary.csproj">
-      <Project>{01a3c210-78ba-4c4b-a044-545104836ba0}</Project>
-      <Name>DBManagerLibrary</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj">
       <Project>{7312c39a-27be-4806-9ff7-ca78a156ec74}</Project>
       <Name>ModelLibrary</Name>
@@ -72,6 +80,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Utils\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

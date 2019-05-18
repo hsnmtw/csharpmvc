@@ -42,6 +42,7 @@ namespace ViewWinform
         private void MainView_Load(object sender, EventArgs e)
         {
             LogOutToolStripMenuItem_Click(sender, e);
+            LogInToolStripMenuItem_Click(sender, e);
         }
 
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -102,11 +103,11 @@ namespace ViewWinform
             Form loginform = Utils.FormsHelper.showView(this, login);
             login.OnOKAction = delegate ()
             {
-                UserModel model = new UserController().find(login.model);
+                UserModel model = new UserController().Read(login.model,new string[] { "Id" }).First();
                 this.tsslCurrentUser.Text = model.Full_Name;
                 Session.Instance.CurrentUser = model;
-                Profile_EntitlementsController pec = new Profile_EntitlementsController();
-                var entitlements = pec.getEntitlementsByProfile(model.Profile_Name);
+                ProfileEntitlementsController pec = new ProfileEntitlementsController();
+                var entitlements = pec.GetEntitlementsByProfile(model.Profile_Name);
                 foreach(DataRow row in entitlements.Rows)
                 {
                     var Entitlement_Name = row["Entitlement_Name"].ToString();
@@ -120,7 +121,7 @@ namespace ViewWinform
 
         private void SQLViewerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DBManagerLibrary.SQLView sqlview = new DBManagerLibrary.SQLView();
+            ModelLibrary.SQLView sqlview = new ModelLibrary.SQLView();
             sqlview.MdiParent = this;
             //sqlview.WindowState = FormWindowState.Maximized;
             sqlview.Size = new Size(sqlview.Width + 20, sqlview.Height + 120);
@@ -159,7 +160,7 @@ namespace ViewWinform
         }
 
         private void TableDesignerToolStripMenuItem_Click(object sender, EventArgs e) {
-            new DBManagerLibrary.Utils.TableDesigner.TableDesignerView() { MdiParent = this }.Show();
+            new ModelLibrary.Utils.TableDesigner.TableDesignerView() { MdiParent = this }.Show();
         }
 
         private void CompoundsToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -190,6 +191,14 @@ namespace ViewWinform
 
         private void ArrangeIconsToolStripMenuItem_Click(object sender, EventArgs e) {
             this.LayoutMdi(System.Windows.Forms.MdiLayout.ArrangeIcons);
+        }
+
+        private void BuildingsToolStripMenuItem_Click(object sender, EventArgs e) {
+            new Housing.Buildings.BuildingForm() { MdiParent = this }.Show();
+        }
+
+        private void RoomsToolStripMenuItem_Click(object sender, EventArgs e) {
+            new Housing.Rooms.RoomForm() { MdiParent = this }.Show();
         }
     }
 }

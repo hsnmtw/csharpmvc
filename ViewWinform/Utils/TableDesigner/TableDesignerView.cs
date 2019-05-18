@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DBManagerLibrary.Utils.TableDesigner {
+namespace ModelLibrary.Utils.TableDesigner {
     public partial class TableDesignerView : Form {
         public TableDesignerView() {
             InitializeComponent();
@@ -17,7 +17,7 @@ namespace DBManagerLibrary.Utils.TableDesigner {
         private void TableDesignerForm1_Load(object sender, EventArgs e) {
             var tables =
                 from row
-                in DBManagerLibrary.Common.DBConnectionManager.Instance.SchemaTables.Rows.Cast<DataRow>()
+                in ModelLibrary.Common.DBConnectionManager.Instance.SchemaTables.Rows.Cast<DataRow>()
                 where !row["TABLE_NAME"].ToString().StartsWith("MSys")
                 orderby row["TABLE_NAME"]
                 select row["TABLE_NAME"]
@@ -47,7 +47,7 @@ namespace DBManagerLibrary.Utils.TableDesigner {
             //COLUMN_NAME,DATA_TYPE,CHARACTER_MAXIMUM_LENGTH,!IS_NULLABLE,key
             var columns =
                 (from row
-                in DBManagerLibrary.Common.DBConnectionManager.Instance.SchemaColumns.Rows.Cast<DataRow>()
+                in ModelLibrary.Common.DBConnectionManager.Instance.SchemaColumns.Rows.Cast<DataRow>()
                  where this.listBox1.SelectedItem.ToString().Equals(row["TABLE_NAME"])
                  orderby int.Parse(row["ORDINAL_POSITION"].ToString())
                  select new object[] {

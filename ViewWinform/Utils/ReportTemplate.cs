@@ -20,6 +20,8 @@ namespace ViewWinform.Reporting {
             this.PrintDocument = pd;
             this.PrintDocument.PrintPage += PrintDocument_PrintPage;
             this.Body = new List<string>();
+            this.Brush = Brushes.Black;
+            this.Font = new Font("Consolas", 12, FontStyle.Regular);
         }
 
 

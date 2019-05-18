@@ -42,20 +42,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\BaseModel.cs" />
-    <Compile Include="Common\TableModel.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Common\DBConnectionManager.cs" />
+    <Compile Include="Common\IDBConnectionManager.cs" />
+    <Compile Include="Common\IModel.cs" />
+    <Compile Include="Common\ResultSet.cs" />
+    <Compile Include="Common\Statement.cs" />
     <Compile Include="Configurations\ConfigurationModel.cs" />
     <Compile Include="Configurations\CryptoModel.cs" />
     <Compile Include="Customers\NationalityModel.cs" />
+    <Compile Include="Housing\BuildingModel.cs" />
     <Compile Include="Housing\CompoundModel.cs" />
+    <Compile Include="Housing\RoomModel.cs" />
     <Compile Include="Security\AuditModel.cs" />
     <Compile Include="Security\ProfileModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\EntitlementModel.cs" />
-    <Compile Include="Security\Profile_EntitlementsModel.cs" />
+    <Compile Include="Security\ProfileEntitlementsModel.cs" />
     <Compile Include="Security\UserModel.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Database_Objects.txt" />
+    <Content Include="OleDbTypes.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

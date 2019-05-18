@@ -1,4 +1,4 @@
-﻿using DBManagerLibrary.Common;
+﻿using ModelLibrary.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DBManagerLibrary.Utils.TableDesigner {
+namespace ModelLibrary.Utils.TableDesigner {
     public partial class TableDesignerForm : UserControl {
         public TableDesignerForm() {
             InitializeComponent();
@@ -47,7 +47,7 @@ namespace DBManagerLibrary.Utils.TableDesigner {
                 dataGridView1.Rows.Add(row);
             }
             if((from n in DBConnectionManager.Instance.SchemaTables.Rows.Cast<DataRow>() where n["TABLE_NAME"].ToString().Equals(name) select n).Count() == 1){
-                this.dataGridView2.DataSource = DBConnectionManager.Instance.query(new Statement(name,"SELECT * FROM " + name));
+                this.dataGridView2.DataSource = DBConnectionManager.Instance.Query(new Statement(name,"SELECT * FROM " + name));
             }
         }
 

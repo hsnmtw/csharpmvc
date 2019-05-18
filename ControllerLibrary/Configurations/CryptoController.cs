@@ -11,7 +11,7 @@ namespace ControllerLibrary.Configurations {
     public class CryptoController : BaseController {
         public string Source => throw new NotImplementedException();
 
-        public DataTable selectModelsAsDataTable() {
+        public DataTable GetTable() {
             throw new NotImplementedException();
         }
 

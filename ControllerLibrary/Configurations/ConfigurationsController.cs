@@ -39,6 +39,6 @@ namespace ControllerLibrary.Configurations {
             fs.Close();
         }
 
-        public DataTable selectModelsAsDataTable() => throw new NotImplementedException();
+        public DataTable GetTable() => throw new NotImplementedException();
     }
 }

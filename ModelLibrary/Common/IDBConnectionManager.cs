@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Data;
 
-namespace DBManagerLibrary.Common {
+namespace ModelLibrary.Common {
 
     public interface IDBConnectionManager {
-        IDbDataParameter getDbDataParameter(string name, DbType dbType, int size, object value);
+        IDbDataParameter GetDbDataParameter(string name, DbType dbType, int size, object value);
         ResultSet execute(Statement statement);
-        DataTable query(Statement statement);
+        DataTable Query(Statement statement);
         object queryScalar(Statement statement);
     }
 }

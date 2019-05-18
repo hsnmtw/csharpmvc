@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DBManagerLibrary.Common;
+using ModelLibrary.Common;
 
-namespace DBManagerLibrary
+namespace ModelLibrary
 {
     public partial class SQLView : Form
     {
@@ -42,7 +42,7 @@ namespace DBManagerLibrary
                         if (sql.Trim().Equals("")) continue;
                         this.tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100 / sqls.Length));
                         DataGridView grid = new Utils.CustomDataGridView();
-                        grid.DataSource = DBConnectionManager.Instance.query(new Statement(sql,sql));
+                        grid.DataSource = DBConnectionManager.Instance.Query(new Statement(sql,sql));
                         this.tableLayoutPanel1.Controls.Add(grid,1,i);
                     }
 
@@ -62,7 +62,7 @@ namespace DBManagerLibrary
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message + "=> " + sql, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"{ex.Message} => {sql}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

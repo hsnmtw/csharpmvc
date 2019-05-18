@@ -7,12 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using ModelLibrary.Housing;
 using ControllerLibrary.Common;
-using DBManagerLibrary.Common;
+using ModelLibrary.Common;
 
 namespace ControllerLibrary.Housing
 {
     public class CompoundController : AbstractDBController<CompoundModel>
     {
-        public override string Source => "Housing_Compounds"; 
+        //public override string Source => "Housing_Compounds"; 
     }
 }

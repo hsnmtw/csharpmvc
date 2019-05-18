@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DBManagerLibrary.Common {
+namespace ModelLibrary.Common {
     public class Statement {
         public string TargetTable { get; set; }
         public string Sql { get; set; }

@@ -12,16 +12,16 @@ namespace ControllerLibrary.Security
 {
     public class ProfileController : AbstractDBController<ProfileModel>
     {
-        public override string Source => "Security_Profiles";
+        //public override string Source => "Security_Profiles";
 
-        public override void save(ProfileModel model) {
-            var pec = new Profile_EntitlementsController();
-            base.save(model);
+        public override ProfileModel Save(ProfileModel model) {
+            var pec = new ProfileEntitlementsController();
+            return base.Save(model);
         }
 
-        public override void delete(ProfileModel model) {
-            new Profile_EntitlementsController().clearEntitlementForProfile(model.Profile_Name);
-            base.delete(model);
+        public override void Delete(ProfileModel model) {
+            new ProfileEntitlementsController().clearEntitlementForProfile(model.Profile_Name);
+            base.Delete(model);
         }
     }
 }

@@ -102,6 +102,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LookUpForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "LookUp";
             this.Load += new System.EventHandler(this.LookUp_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LookUp_KeyDown);

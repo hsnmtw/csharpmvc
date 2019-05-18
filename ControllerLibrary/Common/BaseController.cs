@@ -7,8 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ControllerLibrary.Common {
-    public interface BaseController { //<M> where M : BaseModel {
-        string Source { get; }
-        DataTable selectModelsAsDataTable();
+    public interface BaseController { 
+        DataTable GetTable();
     }
 }

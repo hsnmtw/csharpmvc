@@ -18,7 +18,7 @@ namespace ViewWinform.Configurations {
         }
 
         private void DBMaintenance_Load(object sender, EventArgs e) {
-            var configs = new ConfigurationsController().selectModelsAsDataTable();
+            var configs = new ConfigurationsController().GetTable();
         }
     }
 }

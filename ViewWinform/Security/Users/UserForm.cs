@@ -19,7 +19,7 @@ namespace ViewWinform.Security.Users {
 
         private UserController controller;
         private UserModel _model;
-        private List<Profile_EntitlementsModel> profile_Entitlements;
+        private List<ProfileEntitlementsModel> profile_Entitlements;
 
         public UserModel Model {
             get {
@@ -72,19 +72,19 @@ namespace ViewWinform.Security.Users {
                 Utils.FormsHelper.errorMessage("Password and confirmation don't match");
                 return;
             }
-            this.controller.save(this.Model);
+            this.controller.Save(this.Model);
             Utils.FormsHelper.successMessage("Successfully saved ...");
             User_Code_TextBox_OnLookUpSelected(this.Model.User_Name);
         }
 
         private void Button4_Click(object sender, EventArgs e) {
-            this.controller.delete(this.Model);
+            this.controller.Delete(this.Model);
             Utils.FormsHelper.successMessage("Successfully deleted ...");
             this.Model = new UserModel();
         }
 
         private void User_Code_TextBox_OnLookUpSelected(string value) {
-            this.Model = this.controller.selectModelsAsList(new UserModel() {
+            this.Model = this.controller.Read(new UserModel() {
                 User_Name = value,
             }, "User_Name".Split(','))[0];
         }
@@ -93,7 +93,7 @@ namespace ViewWinform.Security.Users {
             Utils.FormsHelper.registerEnterAsTab(this);
             this.controller = new UserController();
             this.Model = new UserModel();
-            this.profile_Entitlements = new Profile_EntitlementsController().selectModelsAsList();
+            this.profile_Entitlements = new ProfileEntitlementsController().Read();
         }
 
         private void Button1_Click(object sender, EventArgs e) {
@@ -106,7 +106,7 @@ namespace ViewWinform.Security.Users {
         }
 
         private void User_Name_Lookup_OnLookUpSelected(object sender, EventArgs e) {
-            this.Model = this.controller.selectModelsAsList(new UserModel() {
+            this.Model = this.controller.Read(new UserModel() {
                 User_Name = this.User_Name_TextBox.Text 
             }, new string[]{"User_Name"}).First();
         }

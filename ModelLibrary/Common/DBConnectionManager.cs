@@ -2,7 +2,7 @@
 using System.Data;
 using System.Data.Common;
 
-namespace DBManagerLibrary.Common
+namespace ModelLibrary.Common
 {
 
     public class DBConnectionManager : IDBConnectionManager
@@ -39,7 +39,7 @@ namespace DBManagerLibrary.Common
             this.SchemaColumns = this.connection.GetSchema("Columns");
         }
 
-        public IDbDataParameter getDbDataParameter(string name,DbType dbType,int size,object value) {
+        public IDbDataParameter GetDbDataParameter(string name,DbType dbType,int size,object value) {
             IDbDataParameter parameter = dbFactory.CreateParameter();
             parameter.ParameterName    = name;
             parameter.DbType           = dbType;
@@ -71,7 +71,7 @@ namespace DBManagerLibrary.Common
             return new ResultSet() { Status = true, ResponseMessage = result.ToString() };            
         }
 
-        public DataTable query(Statement statement)
+        public DataTable Query(Statement statement)
         {
             if (statement.Parameters.Length == 0 && this.dataSet.Tables.Contains(statement.TargetTable)) {
                 //return cached data

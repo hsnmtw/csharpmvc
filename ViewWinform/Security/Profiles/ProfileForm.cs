@@ -19,13 +19,13 @@ namespace ViewWinform.Security.Profiles {
 
         private List<string> entitlements;
         private ProfileController controller;
-        private Profile_EntitlementsController profile_EntitlementsController;
+        private ProfileEntitlementsController profile_EntitlementsController;
         private ProfileModel _model;
 
         public ProfileModel Model {
             get {
                 _model.Id = int.Parse($"0{this.Id_TextBox.Text}");
-                //_model.Profile_Name = this.Profile_Name_TextBox.Text;
+                _model.Profile_Name = this.Profile_Name_TextBox.Text;
                 _model.Created_By = this.Created_By_TextBox.Text;
                 _model.Updated_By = this.Updated_By_TextBox.Text;
                 _model.Profile_Desc = this.Profile_Desc_TextBox.Text;
@@ -39,7 +39,7 @@ namespace ViewWinform.Security.Profiles {
                 this._model = value;
                 if (value == null) _model = new ProfileModel();
                 this.Id_TextBox.Text = _model.Id.ToString();
-                //this.Profile_Name_TextBox.Text = _model.Profile_Name;
+                this.Profile_Name_TextBox.Text = _model.Profile_Name;
                 this.Created_By_TextBox.Text = _model.Created_By;
                 this.Updated_By_TextBox.Text = _model.Updated_By;
                 this.Profile_Desc_TextBox.Text = _model.Profile_Desc;
@@ -57,7 +57,7 @@ namespace ViewWinform.Security.Profiles {
         }
 
         private void Button3_Click(object sender, EventArgs e) {
-            this.controller.save(this.Model);
+            this.controller.Save(this.Model);
             this.profile_EntitlementsController.clearEntitlementForProfile(this.Model.Profile_Name);
             this.profile_EntitlementsController.updateEntitlementForProfile(this.Model.Profile_Name,
                 (from object entl in listBox2.Items select entl.ToString()).ToList());
@@ -66,7 +66,7 @@ namespace ViewWinform.Security.Profiles {
         }
 
         private void Button4_Click(object sender, EventArgs e) {
-            this.controller.delete(this.Model);
+            this.controller.Delete(this.Model);
             Utils.FormsHelper.successMessage("Successfully deleted ...");
             this.Model = new ProfileModel();
         }
@@ -76,8 +76,8 @@ namespace ViewWinform.Security.Profiles {
             Utils.FormsHelper.registerEnterAsTab(this);
             this.controller = new ProfileController();
             this.Model = new ProfileModel();
-            this.profile_EntitlementsController = new Profile_EntitlementsController();
-            this.entitlements = (from model in new EntitlementController().selectModelsAsList()
+            this.profile_EntitlementsController = new ProfileEntitlementsController();
+            this.entitlements = (from model in new EntitlementController().Read()
                                 orderby model.Entitlement_Name
                                 select model.Entitlement_Name).ToList();
             Button2_Click(sender, e);
@@ -117,11 +117,11 @@ namespace ViewWinform.Security.Profiles {
 
         private void Profile_Name_Lookup_OnLookUpSelected(object sender, EventArgs e) {
             string value = ((LookupEventArgs)e).SelectedValueFromLookup;
-            this.Model = this.controller.selectModelsAsList(new ProfileModel() {
+            this.Model = this.controller.Read(new ProfileModel() {
                 Profile_Name = value,
             }, "Profile_Name".Split(','))[0];
-            var selectedEntitlements = from model in this.profile_EntitlementsController.selectModelsAsList(
-                new Profile_EntitlementsModel() { Profile_Name = value },
+            var selectedEntitlements = from model in this.profile_EntitlementsController.Read(
+                new ProfileEntitlementsModel() { Profile_Name = value },
                 new string[] { "Profile_Name" }
             )
                                        select model.Entitlement_Name;

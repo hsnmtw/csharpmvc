@@ -50,13 +50,13 @@ namespace ViewWinform.Housing.Compounds {
         }
 
         private void Button3_Click(object sender, EventArgs e) {
-            this.controller.save(this.Model);
+            this.Model = this.controller.Save(this.Model);
             Utils.FormsHelper.successMessage("Successfully saved ...");
-            Compound_Name_LookupButton_OnLookUpSelected(sender,new LookupEventArgs(this.Model.Compound_Name));
+            //Compound_Name_LookupButton_OnLookUpSelected(sender,new LookupEventArgs(this.Model.Compound_Name));
         }
 
         private void Button4_Click(object sender, EventArgs e) {
-            this.controller.delete(this.Model);
+            this.controller.Delete(this.Model);
             Utils.FormsHelper.successMessage("Successfully deleted ...");
             this.Model = new CompoundModel();
         }
@@ -69,7 +69,7 @@ namespace ViewWinform.Housing.Compounds {
         }
 
         private void Compound_Name_LookupButton_OnLookUpSelected(object sender, EventArgs e) {
-            this.Model = this.controller.selectModelsAsList(new CompoundModel() {
+            this.Model = this.controller.Read(new CompoundModel() {
                 Compound_Name = ((LookupEventArgs)e).SelectedValueFromLookup,
             }, "Compound_Name".Split(','))[0];
         }

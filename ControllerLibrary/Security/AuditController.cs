@@ -1,5 +1,5 @@
 ﻿using ControllerLibrary.Common;
-using DBManagerLibrary.Common;
+using ModelLibrary.Common;
 using ModelLibrary.Security;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ControllerLibrary.Security {
     public class AuditController : AbstractDBController<AuditModel> {
-        public override string Source => "Security_Audit";
+       // public override string Source => "Security_Audit";
 
         public void registerEvent(AuditModel model) {
             model.Updated_By = "SYSTEM";
@@ -20,7 +20,7 @@ namespace ControllerLibrary.Security {
             model.Updated_On = DateTime.Now;
             model.Created_On = DateTime.Now;
             model.Id = 0; // this makes the model new
-            save(model);
+            Save(model);
         }
     }
 }

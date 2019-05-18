@@ -51,13 +51,13 @@ namespace ViewWinform.Security.Entitlements {
         }
 
         private void Button3_Click(object sender, EventArgs e) {
-            this.controller.save(this.Model);
+            this.controller.Save(this.Model);
             Utils.FormsHelper.successMessage("Successfully saved ...");
             this.Entitlement_Name_Lookup_OnLookUpSelected(sender,new LookupEventArgs(this.Model.Entitlement_Name));
         }
 
         private void Button4_Click(object sender, EventArgs e) {
-            this.controller.delete(this.Model);
+            this.controller.Delete(this.Model);
             Utils.FormsHelper.successMessage("Successfully deleted ...");
             this.Model = new EntitlementModel();
         }
@@ -69,7 +69,7 @@ namespace ViewWinform.Security.Entitlements {
         }
 
         private void Entitlement_Name_Lookup_OnLookUpSelected(object sender, EventArgs e) {
-            this.Model = this.controller.selectModelsAsList(new EntitlementModel() {
+            this.Model = this.controller.Read(new EntitlementModel() {
                 Entitlement_Name = ((LookupEventArgs)e).SelectedValueFromLookup,
             }, "Entitlement_Name".Split(','))[0];
         }

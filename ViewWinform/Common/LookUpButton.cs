@@ -31,12 +31,14 @@ namespace ViewWinform.Common {
 
         private BaseController _controller = null;
 
-        public static Dictionary<DBControllers, Type> controllerMap = new Dictionary<DBControllers, Type>() {
-            [DBControllers.Nationality] = typeof(NationalityController),
-            [DBControllers.Compound]    = typeof(CompoundController),
-            [DBControllers.User]        = typeof(UserController),
-            [DBControllers.Entitlement] = typeof(EntitlementController),
-            [DBControllers.Profile]     = typeof(ProfileController)
+        public static Dictionary<DBControllersEnum, Type> controllerMap = new Dictionary<DBControllersEnum, Type>() {
+            [DBControllersEnum.Nationality] = typeof(NationalityController),
+            [DBControllersEnum.Compound]    = typeof(CompoundController),
+            [DBControllersEnum.User]        = typeof(UserController),
+            [DBControllersEnum.Entitlement] = typeof(EntitlementController),
+            [DBControllersEnum.Profile]     = typeof(ProfileController),
+            [DBControllersEnum.Building]    = typeof(BuildingController),
+            [DBControllersEnum.Room]        = typeof(RoomController),
         };
 
         public LookUpButton() {
@@ -55,7 +57,7 @@ namespace ViewWinform.Common {
 
             LookUpForm lookup;
 
-            lookup = new Common.LookUpForm(this._controller.selectModelsAsDataTable(),this.ShowFieldsInLookUp.ToArray());
+            lookup = new Common.LookUpForm(this._controller.GetTable(),this.ShowFieldsInLookUp.ToArray());
             
             if (lookup.ShowDialog() == DialogResult.OK) {
                 valueFromLookup = lookup.SelectedValue[this.SelectedFieldFromLookUp];
@@ -94,8 +96,8 @@ namespace ViewWinform.Common {
 
         [Category("(Lookup)")]
         [Description("The controller used to populate values in the lookup.")]
-        [Browsable(true),DefaultValue(DBControllers.Compound), EditorBrowsable(EditorBrowsableState.Always)]
-        public DBControllers Controller { get; set; }
+        [Browsable(true),DefaultValue(DBControllersEnum.Compound), EditorBrowsable(EditorBrowsableState.Always)]
+        public DBControllersEnum Controller { get; set; }
 
         public override string Text { get => button1.Text; set => button1.Text = value; }
 

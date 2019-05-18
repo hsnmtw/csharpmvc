@@ -53,6 +53,7 @@
             this.Password_TextBox.PasswordChar = '●';
             this.Password_TextBox.Size = new System.Drawing.Size(222, 20);
             this.Password_TextBox.TabIndex = 2;
+            this.Password_TextBox.Text = "123";
             // 
             // label2
             // 
@@ -78,11 +79,12 @@
             this.User_Name_TextBox.Name = "User_Name_TextBox";
             this.User_Name_TextBox.Size = new System.Drawing.Size(199, 20);
             this.User_Name_TextBox.TabIndex = 0;
+            this.User_Name_TextBox.Text = "Admin";
             // 
             // User_Name_Lookup
             // 
             this.User_Name_Lookup.AssociatedControl = "User_Name_TextBox";
-            this.User_Name_Lookup.Controller = ViewWinform.Common.DBControllers.User;
+            this.User_Name_Lookup.Controller = ControllerLibrary.Common.DBControllersEnum.User;
             this.User_Name_Lookup.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.User_Name_Lookup.Location = new System.Drawing.Point(282, 12);
             this.User_Name_Lookup.Name = "User_Name_Lookup";

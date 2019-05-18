@@ -4,13 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ViewWinform.Common {
+namespace ControllerLibrary.Common {
     [Serializable]
-    public enum DBControllers {
+    public enum DBControllersEnum {
         Compound,
         Nationality,
         User,
         Entitlement,
-        Profile
+        Profile,
+        Building,
+        Room,
+        ProfileEntitlements,
     }
 }

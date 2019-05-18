@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ControllerLibrary.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="RoomController" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ControllerLibrary.Housing.RoomController</Value>
+    </Setting>
+    <Setting Name="BuildingController" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ControllerLibrary.Housing.BuildingController</Value>
+    </Setting>
+    <Setting Name="CompoundController" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ControllerLibrary.Housing.CompoundController</Value>
+    </Setting>
+    <Setting Name="UserController" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ControllerLibrary.Security.UserController</Value>
+    </Setting>
+    <Setting Name="EntitlementController" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ControllerLibrary.Security.EntitlementController</Value>
+    </Setting>
+    <Setting Name="ProfileController" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ControllerLibrary.Security.ProfileController</Value>
+    </Setting>
+    <Setting Name="ProfileEntitlementsController" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ControllerLibrary.Security.ProfileEntitlementsController</Value>
+    </Setting>
+    <Setting Name="NationalityController" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ControllerLibrary.Customers.NationalityController</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

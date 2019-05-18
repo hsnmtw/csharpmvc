@@ -196,7 +196,7 @@
             // Nationality_Code_LookupButton
             // 
             this.Nationality_Code_LookupButton.AssociatedControl = "Nationality_Code_TextBox";
-            this.Nationality_Code_LookupButton.Controller = ViewWinform.Common.DBControllers.Nationality;
+            this.Nationality_Code_LookupButton.Controller = ControllerLibrary.Common.DBControllersEnum.Nationality;
             this.Nationality_Code_LookupButton.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.Nationality_Code_LookupButton.Location = new System.Drawing.Point(213, 37);
             this.Nationality_Code_LookupButton.Name = "Nationality_Code_LookupButton";
