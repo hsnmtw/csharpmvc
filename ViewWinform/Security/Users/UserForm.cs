@@ -97,8 +97,12 @@ namespace ViewWinform.Security.Users {
         }
 
         private void Button1_Click(object sender, EventArgs e) {
-            this.controller.ResetLoginCounter(this.Model);
-            this.FailedLogins_TextBox.Text = "0";
+            if (this.controller.ResetLoginCounter(this.Model)) {
+                this.FailedLogins_TextBox.Text = "0";
+                Utils.FormsHelper.successMessage("Failed Login attempts counter has been reset");
+            } else {
+                Utils.FormsHelper.errorMessage("Something went wrong, please try again later...");
+            }
         }
 
         private void Profile_Name_Lookup_OnLookUpSelected(object sender, EventArgs e) {

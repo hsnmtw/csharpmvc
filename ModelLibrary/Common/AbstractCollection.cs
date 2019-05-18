@@ -97,7 +97,7 @@ namespace ModelLibrary.Common {
                 }
                 result.Add(newModel);
             }
-            if (result.Count < 1) throw new Exception();
+            //if (result.Count < 1) throw new Exception();
             return result;
         }
 
