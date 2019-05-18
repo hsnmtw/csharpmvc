@@ -68,7 +68,7 @@ namespace ModelLibrary.Utils.TableDesigner {
 
         private void Button1_Click(object sender, EventArgs e) {
             generateSQL();
-            DBConnectionManager.Instance.execute(new Statement(this.textBox2.Text,this.textBox2.Text));
+            DBConnectionManager.Instance.Execute(new Statement(this.textBox2.Text,this.textBox2.Text));
         }
     }
 }

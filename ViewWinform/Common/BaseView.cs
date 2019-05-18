@@ -7,8 +7,8 @@ using ModelLibrary.Common;
 
 namespace ViewWinform
 {
-    interface BaseView<T> where T: BaseModel
+    interface BaseView<M> where M: BaseModel
     {
-        T model { get; set; }
+        M Model { get; set; }
     }
 }

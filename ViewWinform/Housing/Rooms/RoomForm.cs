@@ -17,7 +17,7 @@ namespace ViewWinform.Housing.Rooms {
 
         //private RoomController controller = new RoomController();
 
-        private IDBController<RoomModel> controller = new RoomController();
+        private BaseController controller = new RoomController();
         private RoomModel _model = new RoomModel();
 
         public RoomModel Model {
@@ -64,7 +64,7 @@ namespace ViewWinform.Housing.Rooms {
         private void Button3_Click(object sender, EventArgs e) {
             this.controller.Save(this.Model);
             Utils.FormsHelper.successMessage("SUCCESS");
-            this.Model = controller.Read(this.Model, new string[] {
+            this.Model = (RoomModel)controller.Read(this.Model, new string[] {
                 "Room_Name"
             }).First();
         }
@@ -82,7 +82,7 @@ namespace ViewWinform.Housing.Rooms {
         private void LookUpButton1_OnLookUpSelected(object sender, EventArgs e) {
             string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
             this.txtRoomName.Text = selected;
-            this.Model = this.controller.Read(this.Model, new string[] { "Room_Name" }).First();
+            this.Model = (RoomModel)this.controller.Read(this.Model, new string[] { "Room_Name" }).First();
 
         }
 

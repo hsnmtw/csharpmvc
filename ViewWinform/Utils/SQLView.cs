@@ -54,7 +54,7 @@ namespace ModelLibrary
                     {
                         sql = sqls[i];
                         if (sql.Trim().Equals("")) continue;
-                        DBConnectionManager.Instance.execute(new Statement(sql,sql));
+                        DBConnectionManager.Instance.Execute(new Statement(sql,sql));
                     }
                     MessageBox.Show("SQL was executed successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 

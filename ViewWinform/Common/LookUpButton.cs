@@ -31,14 +31,14 @@ namespace ViewWinform.Common {
 
         private BaseController _controller = null;
 
-        public static Dictionary<DBControllersEnum, Type> controllerMap = new Dictionary<DBControllersEnum, Type>() {
-            [DBControllersEnum.Nationality] = typeof(NationalityController),
-            [DBControllersEnum.Compound]    = typeof(CompoundController),
-            [DBControllersEnum.User]        = typeof(UserController),
-            [DBControllersEnum.Entitlement] = typeof(EntitlementController),
-            [DBControllersEnum.Profile]     = typeof(ProfileController),
-            [DBControllersEnum.Building]    = typeof(BuildingController),
-            [DBControllersEnum.Room]        = typeof(RoomController),
+        public static Dictionary<ControllersEnum, Type> controllerMap = new Dictionary<ControllersEnum, Type>() {
+            [ControllersEnum.Nationality] = typeof(NationalityController),
+            [ControllersEnum.Compound]    = typeof(CompoundController),
+            [ControllersEnum.User]        = typeof(UserController),
+            [ControllersEnum.Entitlement] = typeof(EntitlementController),
+            [ControllersEnum.Profile]     = typeof(ProfileController),
+            [ControllersEnum.Building]    = typeof(BuildingController),
+            [ControllersEnum.Room]        = typeof(RoomController),
         };
 
         public LookUpButton() {
@@ -96,8 +96,8 @@ namespace ViewWinform.Common {
 
         [Category("(Lookup)")]
         [Description("The controller used to populate values in the lookup.")]
-        [Browsable(true),DefaultValue(DBControllersEnum.Compound), EditorBrowsable(EditorBrowsableState.Always)]
-        public DBControllersEnum Controller { get; set; }
+        [Browsable(true),DefaultValue(ControllersEnum.Compound), EditorBrowsable(EditorBrowsableState.Always)]
+        public ControllersEnum Controller { get; set; }
 
         public override string Text { get => button1.Text; set => button1.Text = value; }
 

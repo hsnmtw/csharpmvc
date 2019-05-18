@@ -12,15 +12,10 @@ using System.Windows.Forms;
 
 namespace ControllerLibrary.Security
 {
-    public class EntitlementController : AbstractDBController<EntitlementModel>
-    {
-       // public override string Source => "Security_Entitlements";
+    public class EntitlementController : AbstractController {
 
-        public DataTable getAllEntitlementsWithoutId()
-        {
-            return database.Query(new Statement("E:ID") {
-                Sql = $"SELECT [Entitlement_Name] FROM {new EntitlementModel().GetSource()} ORDER BY 1"
-            });
+        public EntitlementController() : base(new EntitlementCollection()) {
+
         }
 
         public override DataTable GetTable() {

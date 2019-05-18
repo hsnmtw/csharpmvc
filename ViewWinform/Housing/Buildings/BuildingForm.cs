@@ -1,4 +1,5 @@
-﻿using ControllerLibrary.Housing;
+﻿using ControllerLibrary.Common;
+using ControllerLibrary.Housing;
 using ModelLibrary.Housing;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ using ViewWinform.Common;
 namespace ViewWinform.Housing.Buildings {
     public partial class BuildingForm : Form {
 
-        private BuildingController controller = new BuildingController();
+        private BaseController controller = new BuildingController();
         private BuildingModel _model = new BuildingModel();
 
         public BuildingModel Model {
@@ -56,7 +57,7 @@ namespace ViewWinform.Housing.Buildings {
         private void Button3_Click(object sender, EventArgs e) {
             this.controller.Save(this.Model);
             Utils.FormsHelper.successMessage("SUCCESS");
-            this.Model = controller.Read(this.Model, new string[] {
+            this.Model = (BuildingModel)controller.Read(this.Model, new string[] {
                 "Building_Name"
             }).First();
         }
@@ -68,7 +69,7 @@ namespace ViewWinform.Housing.Buildings {
         private void LookUpButton1_OnLookUpSelected(object sender, EventArgs e) {
             string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
             this.txtBuildingName.Text = selected;
-            this.Model = this.controller.Read(this.Model, new string[] { "Building_Name" }).First();
+            this.Model = (BuildingModel)this.controller.Read(this.Model, new string[] { "Building_Name" }).First();
 
         }
     }

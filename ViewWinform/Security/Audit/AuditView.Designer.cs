@@ -30,7 +30,7 @@
             // 
             this.auditFormView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.auditFormView1.Location = new System.Drawing.Point(5, 30);
-            this.auditFormView1.model = null;
+            this.auditFormView1.Model = null;
             this.auditFormView1.Name = "auditFormView1";
             this.auditFormView1.Size = new System.Drawing.Size(612, 373);
             this.auditFormView1.TabIndex = 2;

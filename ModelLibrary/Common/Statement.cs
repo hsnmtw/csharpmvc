@@ -11,12 +11,13 @@ namespace ModelLibrary.Common {
         public System.Data.IDataParameter[] Parameters { get; set; }
 
         public Statement(string targetTable) {
+            this.Parameters = new System.Data.IDataParameter[] { };
             this.TargetTable = targetTable;
         }
 
        public Statement(string targetTable,string sql) {
             this.TargetTable = targetTable;
-            this.Parameters = new System.Data.IDataParameter[0];
+            this.Parameters = new System.Data.IDataParameter[] { };
             this.Sql = sql;
         }
 

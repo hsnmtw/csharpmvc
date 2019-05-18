@@ -19,7 +19,7 @@ namespace ViewWinform.Security.Users {
 
         private UserController controller;
         private UserModel _model;
-        private List<ProfileEntitlementsModel> profile_Entitlements;
+        private List<object> profile_Entitlements;
 
         public UserModel Model {
             get {
@@ -84,7 +84,7 @@ namespace ViewWinform.Security.Users {
         }
 
         private void User_Code_TextBox_OnLookUpSelected(string value) {
-            this.Model = this.controller.Read(new UserModel() {
+            this.Model = (UserModel)this.controller.Read(new UserModel() {
                 User_Name = value,
             }, "User_Name".Split(','))[0];
         }
@@ -97,7 +97,7 @@ namespace ViewWinform.Security.Users {
         }
 
         private void Button1_Click(object sender, EventArgs e) {
-            this.controller.resetLoginCounter(this.Model);
+            this.controller.ResetLoginCounter(this.Model);
             this.FailedLogins_TextBox.Text = "0";
         }
 
@@ -106,7 +106,7 @@ namespace ViewWinform.Security.Users {
         }
 
         private void User_Name_Lookup_OnLookUpSelected(object sender, EventArgs e) {
-            this.Model = this.controller.Read(new UserModel() {
+            this.Model = (UserModel)this.controller.Read(new UserModel() {
                 User_Name = this.User_Name_TextBox.Text 
             }, new string[]{"User_Name"}).First();
         }
@@ -114,7 +114,7 @@ namespace ViewWinform.Security.Users {
         private void Profile_Name_TextBox_TextChanged(object sender, EventArgs e) {
             this.listBox1.Items.Clear();
             this.listBox1.Items.AddRange((
-                from model in profile_Entitlements
+                from ProfileEntitlementsModel model in profile_Entitlements
                 where model.Profile_Name.Equals(Profile_Name_TextBox.Text)
                 orderby model.Entitlement_Name
                 select model.Entitlement_Name

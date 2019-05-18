@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 using System.Threading;
 
 namespace ViewWinform.Common {
-    class MVCAdaptor<C, M> where C : AbstractDBController<M> where M : BaseModel {
+    class MVCAdaptor<C> where C : AbstractController {
         public C Controller { get; private set; }
-        private List<M> recordset { get; set; }
+        private List<object> recordset { get; set; }
 
         public int Count {
             get;
             private set;
         }
 
-        public M this[int index]{
+        public object this[int index]{
             get {
                 return this.recordset[index];
             }

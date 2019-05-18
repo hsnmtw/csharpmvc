@@ -1,4 +1,5 @@
-﻿using ControllerLibrary.Customers;
+﻿using ControllerLibrary.Common;
+using ControllerLibrary.Customers;
 using ModelLibrary.Customers;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace ViewWinform.Customers.Nationalities {
         }
 
 
-        private NationalityController controller;
+        private BaseController controller;
         private NationalityModel _model;
 
 
@@ -58,6 +59,17 @@ namespace ViewWinform.Customers.Nationalities {
             Utils.FormsHelper.registerEnterAsTab(this);
             this.controller = new NationalityController();
             this.Model = new NationalityModel();
+
+            Label[] fieldsmarkers = { lblMetaData_Nationality_Arabic,lblMetaData_Nationality_Code,lblMetaData_Nationality_Desc };
+
+            foreach(var required in fieldsmarkers) {
+                string field = required.Name.Replace("lblMetaData_", "");
+                if (this.controller.GetMetaData().GetRequiredFields.Contains(field)) {
+                    required.Text = "*";
+                } else {
+                    required.Text = "";
+                }
+            }
         }
 
         private void Button2_Click(object sender, EventArgs e) {
@@ -77,7 +89,7 @@ namespace ViewWinform.Customers.Nationalities {
         }
 
         private void Nationality_Code_TextBox_OnLookUpSelected(object sender, EventArgs e) {
-            this.Model = this.controller.Read(new NationalityModel() {
+            this.Model = (NationalityModel)this.controller.Read(new NationalityModel() {
                 Nationality_Code = ((LookupEventArgs)e).SelectedValueFromLookup,
             }, "Nationality_Code".Split(','))[0];
         }

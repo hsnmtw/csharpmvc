@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ControllerLibrary.Housing {
 
-    public class FakeRoomController : IDBController<RoomModel> {
+    public class FakeRoomController : BaseController {
 
         //static DataTable dt = new DataTable();
         static Dictionary<string,RoomModel> listOfRooms = new Dictionary<string, RoomModel>();
@@ -46,32 +46,27 @@ namespace ControllerLibrary.Housing {
                 Number_Of_Windows = 3
             };
 
-            this.insert(Room1);
-            this.insert(Room2);
-            this.insert(Room3);
+            this.Insert(Room1);
+            this.Insert(Room2);
+            this.Insert(Room3);
 
         }
-
-        public string Source => "FakeRooms";
 
         public string[] fields { get { return (from property in typeof(RoomModel).GetProperties() select property.Name).ToArray<string>(); } }
 
         public DataTable GetTable() {
-            return List2DataTable(listOfRooms.Values.ToList(),fields);
+            return List2DataTable((from object item in listOfRooms.Values select item).ToList(),fields);
         }
 
-        public string convertModelToString(RoomModel model) {
-            return model.ToString();
-        }
-
-        public void Delete(RoomModel model) {
+        public void Delete(object _model) {
+            RoomModel model = (RoomModel)_model;
             if (listOfRooms.ContainsKey(model.Room_Name)) {
                 listOfRooms.Remove(model.Room_Name);
             }
         }
 
-        public void insert(RoomModel model) {
-            var copy = Clone(model);
+        private void Insert(RoomModel model) {
+            var copy = (RoomModel)model.Clone();
             if (copy.Id == 0) copy.Id = Math.Abs( random.Next(1000,2000) );
             copy.Created_By = Session.Instance.CurrentUser.User_Name;
             copy.Created_On = DateTime.Now;
@@ -79,58 +74,49 @@ namespace ControllerLibrary.Housing {
             Console.WriteLine("insert: {0,-20}  :  {1,-20}",  string.Join(",",listOfRooms.Keys.ToList())  , string.Join(",", from vsl in listOfRooms.Values select vsl.Room_Name));
         }
 
-        public RoomModel Save(RoomModel model) {
-            if (model.Id == 0) insert(model);
-            else update(model);
-            return Clone(listOfRooms[model.Room_Name]);
+        public object Save(object _model) {
+            RoomModel model = (RoomModel)_model;
+            if (model.Id == 0) Insert(model);
+            else Update(model);
+            return (RoomModel)listOfRooms[model.Room_Name].Clone();
         }
 
-        public DataTable GetTable(RoomModel model, string[] whereFields) {
+        public DataTable GetTable(object model, string[] whereFields) {
             Console.WriteLine("selectModelsAsDataTable: {0,-20}  :  {1,-20}",  string.Join(",",listOfRooms.Keys.ToList())  , string.Join(",", from vsl in listOfRooms.Values select vsl.Room_Name));
             return List2DataTable(Read(model,whereFields), fields);
         }
 
-        public List<RoomModel> Read() {
+        public List<object> Read() {
             return (from item
                       in listOfRooms.Values.ToList()
-                  select Clone(item)).ToList();
+                  select item.Clone()).ToList();
         }
 
-        public List<RoomModel> Read(RoomModel model, string[] whereFields) {
+        public List<object> Read(object model, string[] whereFields) {
            var propinfo = typeof(RoomModel).GetProperty(whereFields[0]);
-           var list = (from RoomModel item 
+           var list = (from item 
                      in listOfRooms.Values
                   where propinfo.GetValue(model).Equals( propinfo.GetValue(item) )
-                 select Clone(item)).ToList();
+                 select item.Clone()).ToList();
             return list;
         }
 
-        private static object[] Model2Object(RoomModel model,string[]fields) {
-            object[] objects = new object[fields.Length];
-            for (int i= 0;i<fields.Length;i++) {
-                var column = fields[i];
-                objects[i] = typeof(RoomModel).GetProperty(column).GetValue(model);
-            }
-            Console.WriteLine("Model2Object: {0,-20}  :  {1,-20}",  string.Join(",",listOfRooms.Keys.ToList())  , string.Join(",", from vsl in listOfRooms.Values select vsl.Room_Name));
-            return objects;
-        }
-
-        private static DataTable List2DataTable(List<RoomModel> list,string[]fields) {
+        private static DataTable List2DataTable(List<object> list,string[]fields) {
             var dt = new DataTable();
             foreach (string column in fields) {
                 dt.Columns.Add(column);
             }
             foreach(var item in list) {
-                dt.Rows.Add(Model2Object(item,fields));
+                dt.Rows.Add(((RoomModel)item).ToObjectArray(fields));
             }
             Console.WriteLine("List2DataTable: {0,-20}  :  {1,-20}",  string.Join(",",listOfRooms.Keys.ToList())  , string.Join(",", from vsl in listOfRooms.Values select vsl.Room_Name));
             return dt;
         }
 
-        public void update(RoomModel model) {
+        private void Update(RoomModel model) {
             Console.WriteLine("0.update: {0,-20}  :  {1,-20}",  string.Join(",",listOfRooms.Keys.ToList())  , string.Join(",", from vsl in listOfRooms.Values select vsl.Room_Name));
 
-            var copy = Clone(model);
+            var copy = (RoomModel)model.Clone();
             if (listOfRooms.ContainsKey(copy.Room_Name)) {
 
                 copy.Updated_By = Session.Instance.CurrentUser.User_Name;
@@ -143,12 +129,8 @@ namespace ControllerLibrary.Housing {
             }
         }
 
-        private static RoomModel Clone(RoomModel model) {
-            var copy = new RoomModel();
-            foreach (var pinfo in model.GetType().GetProperties()) {
-                pinfo.SetValue(copy, pinfo.GetValue(model));
-            }
-            return copy;
+        public MetaData GetMetaData() {
+            return new RoomCollection().MetaData;
         }
     }
 }

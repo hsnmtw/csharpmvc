@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 
 
 namespace ControllerLibrary.Housing {
-    public class BuildingController : AbstractDBController<BuildingModel> {
-        //public override string Source => "Housing_Building";
+    public class BuildingController : AbstractController {
+        public BuildingController() : base(new BuildingCollection()) {
+
+        }
     }
 }

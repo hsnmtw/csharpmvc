@@ -22,7 +22,7 @@ namespace ViewWinform.Security.Users {
 
         private UserModel _model;
 
-        public UserModel model {
+        public UserModel Model {
             get {
                 _model.Id = int.Parse(this.Id_TextBox.Text,0);
                 _model.User_Name = this.UserName_TextBox.Text;

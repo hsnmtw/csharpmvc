@@ -11,8 +11,9 @@ using ModelLibrary.Common;
 
 namespace ControllerLibrary.Housing
 {
-    public class CompoundController : AbstractDBController<CompoundModel>
-    {
-        //public override string Source => "Housing_Compounds"; 
+    public class CompoundController : AbstractController {
+        public CompoundController() : base(new CompoundCollection()) {
+
+        }
     }
 }

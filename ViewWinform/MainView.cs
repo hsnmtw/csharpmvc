@@ -99,14 +99,14 @@ namespace ViewWinform
 
         private void LogInToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UsersLoginView login = new Security.Users.UsersLoginView();
-            Form loginform = Utils.FormsHelper.showView(this, login);
+            var login = new Security.Users.UsersLoginView();
+            var loginform = Utils.FormsHelper.showView(this, login);
             login.OnOKAction = delegate ()
             {
-                UserModel model = new UserController().Read(login.model,new string[] { "Id" }).First();
+                var model = (UserModel)new UserController().Read(login.Model,new string[] { "Id" }).First();
                 this.tsslCurrentUser.Text = model.Full_Name;
                 Session.Instance.CurrentUser = model;
-                ProfileEntitlementsController pec = new ProfileEntitlementsController();
+                var pec = new ProfileEntitlementsController();
                 var entitlements = pec.GetEntitlementsByProfile(model.Profile_Name);
                 foreach(DataRow row in entitlements.Rows)
                 {
@@ -139,10 +139,10 @@ namespace ViewWinform
                 return;
             }
             UserPasswordResetView userPasswordResetView = new Security.Users.UserPasswordResetView();
-            userPasswordResetView.model = (Session.Instance.CurrentUser);
+            userPasswordResetView.Model = (Session.Instance.CurrentUser);
             Form pswdresetform = Utils.FormsHelper.showView(this, userPasswordResetView);
             userPasswordResetView.OnOKAction = delegate () {
-                new UserController().resetPassword(userPasswordResetView.model);
+                new UserController().ResetPassword(userPasswordResetView.Model);
                 Utils.FormsHelper.successMessage("Password has been reset");
                 pswdresetform.Close();
             };

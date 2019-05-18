@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ControllerLibrary.Common {
     public static class ControllersFactory<M> where M:BaseModel {
 
-        public static IDBController<M> CreateDBController(DBControllersEnum dBControllersEnum){
+        public static IDBController<M> CreateDBController(ControllersEnum dBControllersEnum){
             return null;
         }
 

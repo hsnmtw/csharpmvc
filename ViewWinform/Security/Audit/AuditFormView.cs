@@ -17,7 +17,7 @@ namespace ViewWinform.Security.Audit {
 
         }
         private AuditModel _model;
-        public AuditModel model {
+        public AuditModel Model {
             get {
                 return _model;
             }

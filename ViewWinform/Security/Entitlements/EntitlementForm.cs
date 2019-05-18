@@ -69,7 +69,7 @@ namespace ViewWinform.Security.Entitlements {
         }
 
         private void Entitlement_Name_Lookup_OnLookUpSelected(object sender, EventArgs e) {
-            this.Model = this.controller.Read(new EntitlementModel() {
+            this.Model = (EntitlementModel)this.controller.Read(new EntitlementModel() {
                 Entitlement_Name = ((LookupEventArgs)e).SelectedValueFromLookup,
             }, "Entitlement_Name".Split(','))[0];
         }

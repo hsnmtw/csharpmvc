@@ -7,7 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ControllerLibrary.Housing {
-    public class RoomController : AbstractDBController<RoomModel> {
-        //public override string Source => "Housing_Room";
+    public class RoomController : AbstractController {
+        public RoomController() : base(new RoomCollection()) {
+
+        }
     }
 }

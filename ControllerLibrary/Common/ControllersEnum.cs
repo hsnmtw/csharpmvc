@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ControllerLibrary.Common {
     [Serializable]
-    public enum DBControllersEnum {
+    public enum ControllersEnum {
         Compound,
         Nationality,
         User,

@@ -25,8 +25,8 @@ namespace ViewWinform.Security.Users
         public Action OnCancelAction { get; set; }
 
         private UserModel _model;
-        public UserModel model {
-            set => throw new NotImplementedException();
+        public UserModel Model {
+            set => _model = value;
             get {
                 _model.User_Name = User_Name_TextBox.Text;
                 _model.User_Password = Password_TextBox.Text;
@@ -37,9 +37,10 @@ namespace ViewWinform.Security.Users
         private void Button1_Click(object sender, EventArgs e)
         {
             UserController ucon = new UserController();
-            bool status = ucon.autheniticate(model);
-            if (status)
+            var  model = ucon.Autheniticate(this.Model);
+            if (model != null)
             {
+                this.Model = (UserModel)model;
                 this.OnOKAction();
             }
             else

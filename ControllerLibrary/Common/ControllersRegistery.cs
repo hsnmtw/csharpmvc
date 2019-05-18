@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ControllerLibrary.Common {
     public class ControllersRegistery {
-        private Dictionary<DBControllersEnum, string> controllerMap = new Dictionary<DBControllersEnum, string>();
+        private Dictionary<ControllersEnum, string> controllerMap = new Dictionary<ControllersEnum, string>();
         private static ControllersRegistery _instance = null;
         public static ControllersRegistery Instance {
             get {
@@ -20,18 +20,18 @@ namespace ControllerLibrary.Common {
 
         private ControllersRegistery() {
             //Housing
-            controllerMap[DBControllersEnum.Room] = Properties.Settings.Default.RoomController;
-            controllerMap[DBControllersEnum.Building] = Properties.Settings.Default.BuildingController;
-            controllerMap[DBControllersEnum.Compound] = Properties.Settings.Default.CompoundController;
+            controllerMap[ControllersEnum.Room]     = Properties.Settings.Default.RoomController;
+            controllerMap[ControllersEnum.Building] = Properties.Settings.Default.BuildingController;
+            controllerMap[ControllersEnum.Compound] = Properties.Settings.Default.CompoundController;
 
             //Security
-            controllerMap[DBControllersEnum.User] = Properties.Settings.Default.UserController;
-            controllerMap[DBControllersEnum.Entitlement] = Properties.Settings.Default.EntitlementController;
-            controllerMap[DBControllersEnum.Profile] = Properties.Settings.Default.ProfileController;
-            controllerMap[DBControllersEnum.ProfileEntitlements] = Properties.Settings.Default.ProfileEntitlementsController;
+            controllerMap[ControllersEnum.User]                = Properties.Settings.Default.UserController;
+            controllerMap[ControllersEnum.Entitlement]         = Properties.Settings.Default.EntitlementController;
+            controllerMap[ControllersEnum.Profile]             = Properties.Settings.Default.ProfileController;
+            controllerMap[ControllersEnum.ProfileEntitlements] = Properties.Settings.Default.ProfileEntitlementsController;
 
             //Customers
-            controllerMap[DBControllersEnum.Nationality] = Properties.Settings.Default.NationalityController;
+            controllerMap[ControllersEnum.Nationality]         = Properties.Settings.Default.NationalityController;
         }
 
         /// <summary>

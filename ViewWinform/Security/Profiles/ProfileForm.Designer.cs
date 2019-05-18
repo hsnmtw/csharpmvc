@@ -251,7 +251,7 @@
             // Profile_Name_Lookup
             // 
             this.Profile_Name_Lookup.AssociatedControl = "Profile_Name_TextBox";
-            this.Profile_Name_Lookup.Controller = ControllerLibrary.Common.DBControllersEnum.Profile;
+            this.Profile_Name_Lookup.Controller = ControllerLibrary.Common.ControllersEnum.Profile;
             this.Profile_Name_Lookup.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.Profile_Name_Lookup.Location = new System.Drawing.Point(359, 37);
             this.Profile_Name_Lookup.Name = "Profile_Name_Lookup";

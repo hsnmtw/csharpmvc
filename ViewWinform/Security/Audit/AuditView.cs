@@ -13,17 +13,17 @@ using System.Windows.Forms;
 
 namespace ViewWinform.Security.Audit {
     public partial class AuditView : Common.CommonView {
-        private MVCAdaptor<AuditController,AuditModel> adaptor;
+        private MVCAdaptor<AuditController> adaptor;
         public AuditView() {
             InitializeComponent();
-            this.adaptor = new MVCAdaptor<AuditController, AuditModel>();
+            this.adaptor = new MVCAdaptor<AuditController>();
             this.adaptor.Requery();
             this.TotalRecords = adaptor.Count;
             this.SetRecordPosition(1);
         }
 
         private void AuditView_OnRecordPositionChanged(int index) {
-            this.auditFormView1.model = this.adaptor[index];
+            this.auditFormView1.Model = (AuditModel)this.adaptor[index];
         }
 
         private void AuditView_OnRecordOperationInvoked(RecordOperation operation) {

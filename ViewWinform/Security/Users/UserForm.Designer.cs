@@ -373,7 +373,7 @@
             // Profile_Name_Lookup
             // 
             this.Profile_Name_Lookup.AssociatedControl = "Profile_Name_TextBox";
-            this.Profile_Name_Lookup.Controller = ControllerLibrary.Common.DBControllersEnum.Profile;
+            this.Profile_Name_Lookup.Controller = ControllerLibrary.Common.ControllersEnum.Profile;
             this.Profile_Name_Lookup.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.Profile_Name_Lookup.Location = new System.Drawing.Point(359, 103);
             this.Profile_Name_Lookup.Name = "Profile_Name_Lookup";
@@ -385,11 +385,14 @@
             // User_Name_Lookup
             // 
             this.User_Name_Lookup.AssociatedControl = "User_Name_TextBox";
-            this.User_Name_Lookup.Controller = ControllerLibrary.Common.DBControllersEnum.User;
+            this.User_Name_Lookup.Controller = ControllerLibrary.Common.ControllersEnum.User;
             this.User_Name_Lookup.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.User_Name_Lookup.Location = new System.Drawing.Point(359, 41);
             this.User_Name_Lookup.Name = "User_Name_Lookup";
             this.User_Name_Lookup.ShowFieldsInLookUp.Add("User_Name");
+            this.User_Name_Lookup.ShowFieldsInLookUp.Add("Full_Name");
+            this.User_Name_Lookup.ShowFieldsInLookUp.Add("Profile_Name");
+            this.User_Name_Lookup.ShowFieldsInLookUp.Add("Is_Active");
             this.User_Name_Lookup.Size = new System.Drawing.Size(22, 22);
             this.User_Name_Lookup.TabIndex = 2;
             this.User_Name_Lookup.OnLookUpSelected += new System.EventHandler(this.User_Name_Lookup_OnLookUpSelected);

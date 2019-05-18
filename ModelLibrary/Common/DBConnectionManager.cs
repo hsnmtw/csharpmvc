@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 
 namespace ModelLibrary.Common
 {
-
     public class DBConnectionManager : IDBConnectionManager
     {
         public static string
@@ -14,7 +14,7 @@ namespace ModelLibrary.Common
             DB_CONFIG_USER      ,
             DB_CONFIG_PASSWORD  ;
 
-        private DbProviderFactory dbFactory = DbProviderFactories.GetFactory(DB_CONFIG_FACTORY);
+        public DbProviderFactory dbFactory => DbProviderFactories.GetFactory(DB_CONFIG_FACTORY);
 
         private DbConnection connection;
         private static DBConnectionManager _instance = null;
@@ -27,10 +27,10 @@ namespace ModelLibrary.Common
         {
             DbConnectionStringBuilder csBuilder = dbFactory.CreateConnectionStringBuilder();
 
-            csBuilder["Provider"]       = DB_CONFIG_PROVIDER;
-            csBuilder["Data Source"]    = DB_CONFIG_SOURCE;
-            csBuilder["User Id"]        = DB_CONFIG_USER;
-            csBuilder["Password"]       = DB_CONFIG_PASSWORD;
+            csBuilder["Provider"]    = DB_CONFIG_PROVIDER;
+            csBuilder["Data Source"] = DB_CONFIG_SOURCE;
+            csBuilder["User Id"]     = DB_CONFIG_USER;
+            csBuilder["Password"]    = DB_CONFIG_PASSWORD;
 
             this.connection = dbFactory.CreateConnection();
             this.connection.ConnectionString = csBuilder.ConnectionString;
@@ -39,17 +39,7 @@ namespace ModelLibrary.Common
             this.SchemaColumns = this.connection.GetSchema("Columns");
         }
 
-        public IDbDataParameter GetDbDataParameter(string name,DbType dbType,int size,object value) {
-            IDbDataParameter parameter = dbFactory.CreateParameter();
-            parameter.ParameterName    = name;
-            parameter.DbType           = dbType;
-            parameter.Size             = size;
-            parameter.Value            = value;
-            return parameter;
-        }
-
-
-        public ResultSet execute(Statement statement) 
+        public ResultSet Execute(Statement statement) 
         {
             
             var sql = statement.Sql;
@@ -101,7 +91,9 @@ namespace ModelLibrary.Common
         }
 
 
-        public object queryScalar(Statement statement) {
+
+
+        public object QueryScalar(Statement statement) {
             var sql = statement.Sql;
             var parameters = statement.Parameters;
             

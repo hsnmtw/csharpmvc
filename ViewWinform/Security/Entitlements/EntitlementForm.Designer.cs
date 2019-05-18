@@ -167,7 +167,7 @@
             // Entitlement_Name_Lookup
             // 
             this.Entitlement_Name_Lookup.AssociatedControl = "Entitlement_Name_TextBox";
-            this.Entitlement_Name_Lookup.Controller = ControllerLibrary.Common.DBControllersEnum.Entitlement;
+            this.Entitlement_Name_Lookup.Controller = ControllerLibrary.Common.ControllersEnum.Entitlement;
             this.Entitlement_Name_Lookup.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.Entitlement_Name_Lookup.Location = new System.Drawing.Point(351, 41);
             this.Entitlement_Name_Lookup.Name = "Entitlement_Name_Lookup";

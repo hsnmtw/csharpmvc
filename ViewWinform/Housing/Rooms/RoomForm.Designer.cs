@@ -252,7 +252,7 @@
             // lookUpButton1
             // 
             this.lookUpButton1.AssociatedControl = "txtRoomName";
-            this.lookUpButton1.Controller = ControllerLibrary.Common.DBControllersEnum.Room;
+            this.lookUpButton1.Controller = ControllerLibrary.Common.ControllersEnum.Room;
             this.lookUpButton1.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButton1.Location = new System.Drawing.Point(291, 52);
             this.lookUpButton1.Name = "lookUpButton1";
@@ -268,7 +268,7 @@
             // lookupNationality
             // 
             this.lookupNationality.AssociatedControl = "txtNationalityCode";
-            this.lookupNationality.Controller = ControllerLibrary.Common.DBControllersEnum.Nationality;
+            this.lookupNationality.Controller = ControllerLibrary.Common.ControllersEnum.Nationality;
             this.lookupNationality.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookupNationality.Location = new System.Drawing.Point(291, 106);
             this.lookupNationality.Name = "lookupNationality";
@@ -281,7 +281,7 @@
             // lookupBuilding
             // 
             this.lookupBuilding.AssociatedControl = "txtBuildingName";
-            this.lookupBuilding.Controller = ControllerLibrary.Common.DBControllersEnum.Building;
+            this.lookupBuilding.Controller = ControllerLibrary.Common.ControllersEnum.Building;
             this.lookupBuilding.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookupBuilding.Location = new System.Drawing.Point(291, 80);
             this.lookupBuilding.Name = "lookupBuilding";

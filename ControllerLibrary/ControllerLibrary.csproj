@@ -43,11 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\AbstractDBController.cs" />
+    <Compile Include="Common\AbstractController.cs" />
     <Compile Include="Common\BaseController.cs" />
     <Compile Include="Common\ControllersFactory.cs" />
     <Compile Include="Common\ControllersRegistery.cs" />
-    <Compile Include="Common\DBControllersEnum.cs" />
+    <Compile Include="Common\ControllersEnum.cs" />
     <Compile Include="Common\IDBController.cs" />
     <Compile Include="Common\Session.cs" />
     <Compile Include="Configurations\ConfigurationsController.cs" />

@@ -9,6 +9,7 @@ using System.Configuration;
 using System.Xml;
 using System.IO;
 using System.Data;
+using ModelLibrary.Common;
 
 namespace ControllerLibrary.Configurations {
     public class ConfigurationsController : BaseController {       
@@ -40,5 +41,29 @@ namespace ControllerLibrary.Configurations {
         }
 
         public DataTable GetTable() => throw new NotImplementedException();
+
+        public DataTable GetTable(object model, string[] whereFields) {
+            throw new NotImplementedException();
+        }
+
+        public List<object> Read() {
+            throw new NotImplementedException();
+        }
+
+        public List<object> Read(object model, string[] whereFields) {
+            throw new NotImplementedException();
+        }
+
+        public object Save(object model) {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(object model) {
+            throw new NotImplementedException();
+        }
+
+        public MetaData GetMetaData() {
+            throw new NotImplementedException();
+        }
     }
 }

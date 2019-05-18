@@ -10,17 +10,15 @@ using ControllerLibrary.Common;
 
 namespace ControllerLibrary.Security
 {
-    public class ProfileController : AbstractDBController<ProfileModel>
-    {
-        //public override string Source => "Security_Profiles";
+    public class ProfileController : AbstractController{
+    
 
-        public override ProfileModel Save(ProfileModel model) {
-            var pec = new ProfileEntitlementsController();
-            return base.Save(model);
+        public ProfileController() : base(new ProfileCollection()) {
+
         }
 
-        public override void Delete(ProfileModel model) {
-            new ProfileEntitlementsController().clearEntitlementForProfile(model.Profile_Name);
+        public override void Delete(object model) {
+            new ProfileEntitlementsController().DeleteEntitlementForProfile(((ProfileModel)model).Profile_Name);
             base.Delete(model);
         }
     }
