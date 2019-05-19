@@ -1,4 +1,5 @@
 ﻿using ControllerLibrary.Common;
+using ModelLibrary.Common;
 using ModelLibrary.Customers;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ControllerLibrary.Customers {
     public class NationalityController : AbstractController {
-        public NationalityController() : base(new NationalityCollection()) {
+        public NationalityController() : base(CollectionsFactory.GetCollection(CollectionsEnum.Nationality)) {
 
         }
     }

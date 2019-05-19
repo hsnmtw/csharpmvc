@@ -15,7 +15,7 @@ using ViewWinform.Common;
 namespace ViewWinform.Housing.Buildings {
     public partial class BuildingForm : Form {
 
-        private BaseController controller = new BuildingController();
+        private BaseController controller = ControllersFactory.GetController(ControllersEnum.Building);
         private BuildingModel _model = new BuildingModel();
 
         public BuildingModel Model {

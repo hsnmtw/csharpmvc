@@ -16,6 +16,10 @@ namespace ControllerLibrary.Configurations {
             throw new NotImplementedException();
         }
 
+        public object Dispatch(string action, params object[] arguments) {
+            throw new NotImplementedException();
+        }
+
         public MetaData GetMetaData() {
             throw new NotImplementedException();
         }

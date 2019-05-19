@@ -14,7 +14,7 @@ namespace ControllerLibrary.Security
 {
     public class UserController : AbstractController { 
     
-        public UserController() : base(new UserCollection()) {
+        public UserController() : base(CollectionsFactory.GetCollection(CollectionsEnum.User)) {
 
         }
        

@@ -12,7 +12,7 @@ using ModelLibrary.Common;
 namespace ControllerLibrary.Housing
 {
     public class CompoundController : AbstractController {
-        public CompoundController() : base(new CompoundCollection()) {
+        public CompoundController() : base(CollectionsFactory.GetCollection(CollectionsEnum.Compound)) {
 
         }
     }

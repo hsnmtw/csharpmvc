@@ -1,4 +1,5 @@
 ﻿using ControllerLibrary.Common;
+using ModelLibrary.Common;
 using ModelLibrary.Housing;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ControllerLibrary.Housing {
     public class RoomController : AbstractController {
-        public RoomController() : base(new RoomCollection()) {
+        public RoomController() : base(CollectionsFactory.GetCollection(CollectionsEnum.Room)) {
 
         }
     }

@@ -373,7 +373,7 @@
             // Profile_Name_Lookup
             // 
             this.Profile_Name_Lookup.AssociatedControl = "Profile_Name_TextBox";
-            this.Profile_Name_Lookup.Controller = ControllerLibrary.Common.ControllersEnum.Profile;
+            this.Profile_Name_Lookup.Controller = "Profile";
             this.Profile_Name_Lookup.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.Profile_Name_Lookup.Location = new System.Drawing.Point(359, 103);
             this.Profile_Name_Lookup.Name = "Profile_Name_Lookup";
@@ -385,7 +385,7 @@
             // User_Name_Lookup
             // 
             this.User_Name_Lookup.AssociatedControl = "User_Name_TextBox";
-            this.User_Name_Lookup.Controller = ControllerLibrary.Common.ControllersEnum.User;
+            this.User_Name_Lookup.Controller = "User";
             this.User_Name_Lookup.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.User_Name_Lookup.Location = new System.Drawing.Point(359, 41);
             this.User_Name_Lookup.Name = "User_Name_Lookup";

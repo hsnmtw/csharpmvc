@@ -31,28 +31,22 @@ namespace ViewWinform.Common {
 
         private BaseController _controller = null;
 
-        public static Dictionary<ControllersEnum, Type> controllerMap = new Dictionary<ControllersEnum, Type>() {
-            [ControllersEnum.Nationality] = typeof(NationalityController),
-            [ControllersEnum.Compound]    = typeof(CompoundController),
-            [ControllersEnum.User]        = typeof(UserController),
-            [ControllersEnum.Entitlement] = typeof(EntitlementController),
-            [ControllersEnum.Profile]     = typeof(ProfileController),
-            [ControllersEnum.Building]    = typeof(BuildingController),
-            [ControllersEnum.Room]        = typeof(RoomController),
-        };
+
 
         public LookUpButton() {
             InitializeComponent();
-            this.AssociatedControl = null;
+            //this.AssociatedControl = null;
             this.button1.Text = ARROW;
             this.Font = new Font("Consolas", 10, FontStyle.Bold);
             this.ShowFieldsInLookUp = new List<string>();
-            this.button1.Click += Button1_Click;
+            //this.button1.Click += Button1_Click;
         }
 
         private void Button1_Click(object sender, EventArgs e) {
             if(this._controller == null) {
-                this._controller = (BaseController)Activator.CreateInstance(controllerMap[this.Controller]);
+                ControllersEnum num;
+                Enum.TryParse<ControllersEnum>(this.Controller,out num);
+                this._controller = ControllersFactory.GetController(num);
             }
 
             LookUpForm lookup;
@@ -96,13 +90,11 @@ namespace ViewWinform.Common {
 
         [Category("(Lookup)")]
         [Description("The controller used to populate values in the lookup.")]
-        [Browsable(true),DefaultValue(ControllersEnum.Compound), EditorBrowsable(EditorBrowsableState.Always)]
-        public ControllersEnum Controller { get; set; }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        [MergableProperty(false)]
+        public string Controller { get; set; }
 
         public override string Text { get => button1.Text; set => button1.Text = value; }
-
-        private void Button1_Click_1(object sender, EventArgs e) {
-
-        }
     }
 }

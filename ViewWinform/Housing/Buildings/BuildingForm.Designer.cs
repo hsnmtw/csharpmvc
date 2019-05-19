@@ -186,7 +186,7 @@
             // lookUpButton1
             // 
             this.lookUpButton1.AssociatedControl = null;
-            this.lookUpButton1.Controller = ControllerLibrary.Common.ControllersEnum.Building;
+            this.lookUpButton1.Controller = "Building";
             this.lookUpButton1.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButton1.Location = new System.Drawing.Point(334, 61);
             this.lookUpButton1.Name = "lookUpButton1";

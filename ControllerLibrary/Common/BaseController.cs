@@ -15,5 +15,6 @@ namespace ControllerLibrary.Common {
         List<object> Read(object model, string[] whereFields);
         object Save(object model);
         void Delete(object model);
+        object Dispatch(string action, params object[] arguments);
     }
 }

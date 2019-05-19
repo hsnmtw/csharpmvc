@@ -57,7 +57,7 @@ namespace ViewWinform.Customers.Nationalities {
 
         private void NationalityForm_Load(object sender, EventArgs e) {
             Utils.FormsHelper.registerEnterAsTab(this);
-            this.controller = new NationalityController();
+            this.controller = ControllersFactory.GetController(ControllersEnum.Nationality);
             this.Model = new NationalityModel();
 
             Label[] fieldsmarkers = { lblMetaData_Nationality_Arabic,lblMetaData_Nationality_Code,lblMetaData_Nationality_Desc };

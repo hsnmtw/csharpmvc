@@ -1,4 +1,5 @@
-﻿using ControllerLibrary.Common;
+﻿
+using ControllerLibrary.Common;
 using ModelLibrary.Common;
 using ModelLibrary.Security;
 using System;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 namespace ControllerLibrary.Security {
     public class AuditController : AbstractController {
        
-        public AuditController() : base(new AuditCollection()) {
+        public AuditController() : base(CollectionsFactory.GetCollection(CollectionsEnum.Audit)) {
 
         }
 

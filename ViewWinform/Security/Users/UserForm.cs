@@ -1,4 +1,5 @@
-﻿using ControllerLibrary.Security;
+﻿using ControllerLibrary.Common;
+using ControllerLibrary.Security;
 using ModelLibrary.Security;
 using System;
 using System.Collections.Generic;
@@ -91,7 +92,7 @@ namespace ViewWinform.Security.Users {
 
         private void UserForm_Load(object sender, EventArgs e) {
             Utils.FormsHelper.registerEnterAsTab(this);
-            this.controller = new UserController();
+            this.controller = (UserController)ControllersFactory.GetController(ControllersEnum.User);
             this.Model = new UserModel();
             this.profile_Entitlements = new ProfileEntitlementsController().Read();
         }

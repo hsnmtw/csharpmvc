@@ -13,7 +13,7 @@ namespace ControllerLibrary.Security
 {
     public class ProfileEntitlementsController : AbstractController { 
     
-        public ProfileEntitlementsController() : base(new ProfileEntitlementsCollection()) {
+        public ProfileEntitlementsController() : base(CollectionsFactory.GetCollection(CollectionsEnum.ProfileEntitlements)) {
 
         }
 

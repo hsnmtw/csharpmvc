@@ -31,7 +31,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsslCurrentUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.tsProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,6 +74,7 @@
             this.tableDesignerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
             this.encryptionToolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.controllersRegistryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.arrangeIconsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tileHorizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,7 +82,7 @@
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
-            this.controllersRegistryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tssLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -91,7 +92,8 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsslCurrentUser,
             this.toolStripStatusLabel2,
-            this.toolStripProgressBar1});
+            this.tsProgressBar,
+            this.tssLabelStatus});
             this.statusStrip1.Location = new System.Drawing.Point(0, 281);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(607, 22);
@@ -111,10 +113,10 @@
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(10, 17);
             this.toolStripStatusLabel2.Text = "|";
             // 
-            // toolStripProgressBar1
+            // tsProgressBar
             // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            this.tsProgressBar.Name = "tsProgressBar";
+            this.tsProgressBar.Size = new System.Drawing.Size(100, 16);
             // 
             // menuStrip1
             // 
@@ -151,46 +153,46 @@
             // logInToolStripMenuItem
             // 
             this.logInToolStripMenuItem.Name = "logInToolStripMenuItem";
-            this.logInToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logInToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.logInToolStripMenuItem.Text = "Log in";
             this.logInToolStripMenuItem.Click += new System.EventHandler(this.LogInToolStripMenuItem_Click);
             // 
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.logOutToolStripMenuItem.Text = "Log out";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.LogOutToolStripMenuItem_Click);
             // 
             // passwordResetToolStripMenuItem
             // 
             this.passwordResetToolStripMenuItem.Name = "passwordResetToolStripMenuItem";
-            this.passwordResetToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.passwordResetToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.passwordResetToolStripMenuItem.Text = "Password Reset";
             this.passwordResetToolStripMenuItem.Click += new System.EventHandler(this.PasswordResetToolStripMenuItem_Click);
             // 
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(152, 6);
             // 
             // configurationsToolStripMenuItem
             // 
             this.configurationsToolStripMenuItem.Name = "configurationsToolStripMenuItem";
-            this.configurationsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.configurationsToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.configurationsToolStripMenuItem.Text = "Configurations";
             this.configurationsToolStripMenuItem.Click += new System.EventHandler(this.ConfigurationsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -208,24 +210,24 @@
             // checkInToolStripMenuItem
             // 
             this.checkInToolStripMenuItem.Name = "checkInToolStripMenuItem";
-            this.checkInToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.checkInToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.checkInToolStripMenuItem.Text = "Check In";
             // 
             // checkOutToolStripMenuItem
             // 
             this.checkOutToolStripMenuItem.Name = "checkOutToolStripMenuItem";
-            this.checkOutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.checkOutToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.checkOutToolStripMenuItem.Text = "Check Out";
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(164, 6);
             // 
             // roomMovementToolStripMenuItem
             // 
             this.roomMovementToolStripMenuItem.Name = "roomMovementToolStripMenuItem";
-            this.roomMovementToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.roomMovementToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.roomMovementToolStripMenuItem.Text = "Room Movement";
             // 
             // billingToolStripMenuItem
@@ -410,28 +412,34 @@
             // sQLViewerToolStripMenuItem
             // 
             this.sQLViewerToolStripMenuItem.Name = "sQLViewerToolStripMenuItem";
-            this.sQLViewerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sQLViewerToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.sQLViewerToolStripMenuItem.Text = "SQL Viewer";
             this.sQLViewerToolStripMenuItem.Click += new System.EventHandler(this.SQLViewerToolStripMenuItem_Click);
             // 
             // tableDesignerToolStripMenuItem
             // 
             this.tableDesignerToolStripMenuItem.Name = "tableDesignerToolStripMenuItem";
-            this.tableDesignerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tableDesignerToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.tableDesignerToolStripMenuItem.Text = "Table Designer";
             this.tableDesignerToolStripMenuItem.Click += new System.EventHandler(this.TableDesignerToolStripMenuItem_Click);
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(174, 6);
             // 
             // encryptionToolToolStripMenuItem
             // 
             this.encryptionToolToolStripMenuItem.Name = "encryptionToolToolStripMenuItem";
-            this.encryptionToolToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.encryptionToolToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.encryptionToolToolStripMenuItem.Text = "Encryption Tool";
             this.encryptionToolToolStripMenuItem.Click += new System.EventHandler(this.EncryptionToolToolStripMenuItem_Click);
+            // 
+            // controllersRegistryToolStripMenuItem
+            // 
+            this.controllersRegistryToolStripMenuItem.Name = "controllersRegistryToolStripMenuItem";
+            this.controllersRegistryToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.controllersRegistryToolStripMenuItem.Text = "Controllers Registry";
             // 
             // windowToolStripMenuItem
             // 
@@ -486,11 +494,11 @@
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.Size = new System.Drawing.Size(148, 6);
             // 
-            // controllersRegistryToolStripMenuItem
+            // tssLabelStatus
             // 
-            this.controllersRegistryToolStripMenuItem.Name = "controllersRegistryToolStripMenuItem";
-            this.controllersRegistryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.controllersRegistryToolStripMenuItem.Text = "Controllers Registry";
+            this.tssLabelStatus.Name = "tssLabelStatus";
+            this.tssLabelStatus.Size = new System.Drawing.Size(62, 17);
+            this.tssLabelStatus.Text = "Loading ...";
             // 
             // MainView
             // 
@@ -528,7 +536,7 @@
         private System.Windows.Forms.ToolStripMenuItem searchForResidentsToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel tsslCurrentUser;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.ToolStripProgressBar tsProgressBar;
         private System.Windows.Forms.ToolStripMenuItem housingToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem roomsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buildingsToolStripMenuItem;
@@ -569,6 +577,7 @@
         private System.Windows.Forms.ToolStripMenuItem configurationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem arrangeIconsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem controllersRegistryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel tssLabelStatus;
     }
 }
 

@@ -7,13 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 using ModelLibrary.Security;
 using ControllerLibrary.Common;
+using ModelLibrary.Common;
 
 namespace ControllerLibrary.Security
 {
     public class ProfileController : AbstractController{
     
 
-        public ProfileController() : base(new ProfileCollection()) {
+        public ProfileController() : base(CollectionsFactory.GetCollection(CollectionsEnum.Profile)) {
 
         }
 

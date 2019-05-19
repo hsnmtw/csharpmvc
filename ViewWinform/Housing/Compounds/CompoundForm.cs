@@ -1,4 +1,5 @@
-﻿using ControllerLibrary.Housing;
+﻿using ControllerLibrary.Common;
+using ControllerLibrary.Housing;
 using ModelLibrary.Housing;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace ViewWinform.Housing.Compounds {
             InitializeComponent();
         }
 
-        private CompoundController controller;
+        private BaseController controller;
         private CompoundModel _model;
 
         public CompoundModel Model {
@@ -64,7 +65,7 @@ namespace ViewWinform.Housing.Compounds {
 
         private void CompoundForm_Load_1(object sender, EventArgs e) {
             Utils.FormsHelper.registerEnterAsTab(this);
-            this.controller = new CompoundController();
+            this.controller = ControllersFactory.GetController(ControllersEnum.Compound);
             this.Model = new CompoundModel();
         }
 
@@ -72,6 +73,10 @@ namespace ViewWinform.Housing.Compounds {
             this.Model = (CompoundModel)this.controller.Read(new CompoundModel() {
                 Compound_Name = ((LookupEventArgs)e).SelectedValueFromLookup,
             }, "Compound_Name".Split(',')).First();
+        }
+
+        private void LookUpButton1_Load(object sender, EventArgs e) {
+
         }
     }
 }

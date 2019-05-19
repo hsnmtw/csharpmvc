@@ -15,6 +15,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ModelLibrary.Common;
 
 namespace ViewWinform
 {
@@ -41,8 +42,25 @@ namespace ViewWinform
 
         private void MainView_Load(object sender, EventArgs e)
         {
+            tsProgressBar.Value = 0;
+
+            tssLabelStatus.Text = "Connecting to Database";
+            new UserController().Read(new UserModel(), new string[] { "Id" });
+            tsProgressBar.Value += 25;            
+
+            tssLabelStatus.Text = "Loading Collections"; 
+            CollectionsFactory.InitCollectionsMap();
+            tsProgressBar.Value += 25;
+
+            tssLabelStatus.Text = "Loading Controllers";
+            ControllersFactory.InitControllersMap();
+            tsProgressBar.Value += 25;
+
+
+            tssLabelStatus.Text = "Loading Menus";
             LogOutToolStripMenuItem_Click(sender, e);
             LogInToolStripMenuItem_Click(sender, e);
+            tsProgressBar.Value += 25;
         }
 
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)

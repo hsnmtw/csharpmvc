@@ -14,7 +14,7 @@ namespace ControllerLibrary.Security
 {
     public class EntitlementController : AbstractController {
 
-        public EntitlementController() : base(new EntitlementCollection()) {
+        public EntitlementController() : base(CollectionsFactory.GetCollection(CollectionsEnum.Entitlement)) {
 
         }
 

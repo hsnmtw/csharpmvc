@@ -132,5 +132,9 @@ namespace ControllerLibrary.Housing {
         public MetaData GetMetaData() {
             return new RoomCollection().MetaData;
         }
+
+        public object Dispatch(string action, params object[] arguments) {
+            throw new NotImplementedException();
+        }
     }
 }

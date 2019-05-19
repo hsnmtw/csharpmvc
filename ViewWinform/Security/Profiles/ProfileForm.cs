@@ -1,4 +1,5 @@
-﻿using ControllerLibrary.Security;
+﻿using ControllerLibrary.Common;
+using ControllerLibrary.Security;
 using ModelLibrary.Security;
 using System;
 using System.Collections.Generic;
@@ -18,8 +19,8 @@ namespace ViewWinform.Security.Profiles {
         }
 
         private List<string> entitlements;
-        private ProfileController controller;
-        private ProfileEntitlementsController profile_EntitlementsController;
+        private BaseController controller;
+        private BaseController peController;
         private ProfileModel _model;
 
         public ProfileModel Model {
@@ -58,8 +59,8 @@ namespace ViewWinform.Security.Profiles {
 
         private void Button3_Click(object sender, EventArgs e) {
             this.controller.Save(this.Model);
-            this.profile_EntitlementsController.DeleteEntitlementForProfile(this.Model.Profile_Name);
-            this.profile_EntitlementsController.UpdateEntitlementForProfile(this.Model.Profile_Name,
+            this.peController.Dispatch("DeleteEntitlementForProfile",this.Model.Profile_Name);
+            this.peController.Dispatch("UpdateEntitlementForProfile", this.Model.Profile_Name,
                 (from object entl in listBox2.Items select entl.ToString()).ToList());
             Utils.FormsHelper.successMessage("Successfully saved ...");
             this.Profile_Name_Lookup_OnLookUpSelected(e,new LookupEventArgs(this.Model.Profile_Name));
@@ -74,10 +75,10 @@ namespace ViewWinform.Security.Profiles {
 
         private void ProfileForm_Load(object sender, EventArgs e) {
             Utils.FormsHelper.registerEnterAsTab(this);
-            this.controller = new ProfileController();
+            this.controller = ControllersFactory.GetController(ControllersEnum.Profile);
             this.Model = new ProfileModel();
-            this.profile_EntitlementsController = new ProfileEntitlementsController();
-            this.entitlements = (from EntitlementModel model in new EntitlementController().Read()
+            this.peController = (ProfileEntitlementsController)ControllersFactory.GetController(ControllersEnum.ProfileEntitlements);
+            this.entitlements = (from EntitlementModel model in ControllersFactory.GetController(ControllersEnum.Entitlement).Read()
                                 orderby model.Entitlement_Name
                                 select model.Entitlement_Name).ToList();
             Button2_Click(sender, e);
@@ -120,7 +121,7 @@ namespace ViewWinform.Security.Profiles {
             this.Model = (ProfileModel)this.controller.Read(new ProfileModel() {
                 Profile_Name = value,
             }, "Profile_Name".Split(','))[0];
-            var selectedEntitlements = from ProfileEntitlementsModel model in this.profile_EntitlementsController.Read
+            var selectedEntitlements = from ProfileEntitlementsModel model in this.peController.Read
                                        (
                                             new ProfileEntitlementsModel() { Profile_Name = value },
                                             new string[] { "Profile_Name" }

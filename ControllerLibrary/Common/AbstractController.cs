@@ -32,5 +32,9 @@ namespace ControllerLibrary.Common {
         }
 
         public MetaData GetMetaData() => this.BaseCollection.MetaData;
+
+        public object Dispatch(string action, params object[] arguments) {
+            return this.GetType().GetMethod(action).Invoke(this,arguments);
+        }
     }
 }
