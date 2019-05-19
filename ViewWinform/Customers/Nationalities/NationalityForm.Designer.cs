@@ -207,6 +207,7 @@
             this.Nationality_Code_LookupButton.ShowFieldsInLookUp.Add("Nationality_Desc");
             this.Nationality_Code_LookupButton.Size = new System.Drawing.Size(22, 22);
             this.Nationality_Code_LookupButton.TabIndex = 2;
+            this.Nationality_Code_LookupButton.OnLookUpSelected += new System.EventHandler(this.Nationality_Code_TextBox_OnLookUpSelected);
             // 
             // Nationality_Code_TextBox
             // 

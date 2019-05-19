@@ -90,9 +90,7 @@ namespace ViewWinform.Common {
 
         [Category("(Lookup)")]
         [Description("The controller used to populate values in the lookup.")]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
-        [MergableProperty(false)]
         public string Controller { get; set; }
 
         public override string Text { get => button1.Text; set => button1.Text = value; }
