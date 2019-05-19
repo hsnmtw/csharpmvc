@@ -120,7 +120,8 @@ PIVOT pe.profile_name;
 
 INSERT INTO Security_Profiles ([Profile_Name]) VALUES ('Admin');
 
-INSERT INTO Security_Users ([User_Name],[Full_Name],[User_Password],[Profile_Name]) VALUES ('Admin','Admin','{ENC}H4sIAAAAAAAEAJsS1rzhzR+NjwCZz56xCAAAAA==','Admin');
+INSERT INTO Security_Users ([User_Name],[Full_Name],[User_Password],[Profile_Name],[Created_By],[Created_On],[Is_Active]) 
+VALUES ('Admin','Admin','{ENC}H4sIAAAAAAAEAJsS1rzhzR+NjwCZz56xCAAAAA==','Admin','SYSTEM',now(),true);
 
 	insert into security_entitlements (entitlement_name,created_on,created_by,updated_on,updated_by) values ('Rooms',now(),'Admin',now(),'Admin');
 	insert into security_entitlements (entitlement_name,created_on,created_by,updated_on,updated_by) values ('Buildings',now(),'Admin',now(),'Admin');

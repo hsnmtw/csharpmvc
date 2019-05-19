@@ -19,10 +19,25 @@ using ModelLibrary.Common;
 
 namespace ViewWinform
 {
-    public partial class MainView : Form
+    public partial class MainView : Form, IDisposable
     {
         private Dictionary<string, ToolStripMenuItem> menus = new Dictionary<string, ToolStripMenuItem>();
-        public MainView()
+
+        private static MainView _instance = null;
+        public static MainView Instance {
+            get {
+                if (_instance == null) _instance = new MainView();
+                return _instance;
+            }
+        }
+
+        public void setProgress(string message, int progress) {
+            this.tssLabelStatus.Text = message;
+            this.tsProgressBar.Value = progress;
+        }
+
+
+        private MainView()
         {
             InitializeComponent();
             foreach (ToolStripMenuItem mi in this.menuStrip1.Items)
@@ -40,13 +55,16 @@ namespace ViewWinform
             }
         }
 
+        
+
         private void MainView_Load(object sender, EventArgs e)
         {
             tsProgressBar.Value = 0;
 
-            tssLabelStatus.Text = "Connecting to Database";
-            new UserController().Read(new UserModel(), new string[] { "Id" });
-            tsProgressBar.Value += 25;            
+            tssLabelStatus.Text = "Connecting to database";
+            DBConnectionManager.Instance.Open();
+            tsProgressBar.Value += 25;
+
 
             tssLabelStatus.Text = "Loading Collections"; 
             CollectionsFactory.InitCollectionsMap();
@@ -102,7 +120,8 @@ namespace ViewWinform
         private void LogOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(Session.Instance.CurrentUser != null) {
-                new AuditController().registerEvent(new AuditModel() {
+                var audit = (AuditController)ControllersFactory.GetController(ControllersEnum.Audit);
+                audit.registerEvent(new AuditModel() {
                     User_Name = Session.Instance.CurrentUser.User_Name,
                     Event_Comments = "Logout ..."
                 });
@@ -121,10 +140,11 @@ namespace ViewWinform
             var loginform = Utils.FormsHelper.showView(this, login);
             login.OnOKAction = delegate ()
             {
-                var model = (UserModel)new UserController().Read(login.Model,new string[] { "Id" }).First();
+                var ucontroller = ControllersFactory.GetController(ControllersEnum.User);
+                var model = (UserModel)ucontroller.Read(login.Model,new string[] { "Id" }).First();
                 this.tsslCurrentUser.Text = model.Full_Name;
                 Session.Instance.CurrentUser = model;
-                var pec = new ProfileEntitlementsController();
+                var pec = (ProfileEntitlementsController)ControllersFactory.GetController(ControllersEnum.ProfileEntitlements);
                 var entitlements = pec.GetEntitlementsByProfile(model.Profile_Name);
                 foreach(DataRow row in entitlements.Rows)
                 {
@@ -139,7 +159,7 @@ namespace ViewWinform
 
         private void SQLViewerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ModelLibrary.SQLView sqlview = new ModelLibrary.SQLView();
+            var sqlview = new Utils.SQLView();
             sqlview.MdiParent = this;
             //sqlview.WindowState = FormWindowState.Maximized;
             sqlview.Size = new Size(sqlview.Width + 20, sqlview.Height + 120);
@@ -156,11 +176,12 @@ namespace ViewWinform
                 Utils.FormsHelper.errorMessage("Not logged in");
                 return;
             }
-            UserPasswordResetView userPasswordResetView = new Security.Users.UserPasswordResetView();
+            var userPasswordResetView = new Security.Users.UserPasswordResetView();
             userPasswordResetView.Model = (Session.Instance.CurrentUser);
-            Form pswdresetform = Utils.FormsHelper.showView(this, userPasswordResetView);
+            var pswdresetform = Utils.FormsHelper.showView(this, userPasswordResetView);
             userPasswordResetView.OnOKAction = delegate () {
-                new UserController().ResetPassword(userPasswordResetView.Model);
+                var ucontroller = (UserController)ControllersFactory.GetController(ControllersEnum.User);
+                ucontroller.ResetPassword(userPasswordResetView.Model);
                 Utils.FormsHelper.successMessage("Password has been reset");
                 pswdresetform.Close();
             };
@@ -221,6 +242,16 @@ namespace ViewWinform
 
         private void ControllersRegistryToolStripMenuItem_Click(object sender, EventArgs e) {
             new Configurations.ControllersSelectionForm() { MdiParent = this }.Show();
+        }
+
+        private void CompactAndRepairToolStripMenuItem_Click(object sender, EventArgs e) {
+            new Utils.CompactAndRepairForm() { MdiParent = this }.Show();
+        }
+
+        private void MainView_FormClosing(object sender, FormClosingEventArgs e) {
+            try {
+                DBConnectionManager.Instance.Close();
+            } catch { }
         }
     }
 }

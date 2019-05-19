@@ -76,6 +76,8 @@
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
             this.encryptionToolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.controllersRegistryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripSeparator();
+            this.compactAndRepairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.arrangeIconsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tileHorizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -410,7 +412,9 @@
             this.tableDesignerToolStripMenuItem,
             this.toolStripMenuItem7,
             this.encryptionToolToolStripMenuItem,
-            this.controllersRegistryToolStripMenuItem});
+            this.controllersRegistryToolStripMenuItem,
+            this.toolStripMenuItem9,
+            this.compactAndRepairToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
             this.toolsToolStripMenuItem.Text = "&Developer";
@@ -418,35 +422,47 @@
             // sQLViewerToolStripMenuItem
             // 
             this.sQLViewerToolStripMenuItem.Name = "sQLViewerToolStripMenuItem";
-            this.sQLViewerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sQLViewerToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.sQLViewerToolStripMenuItem.Text = "SQL Viewer";
             this.sQLViewerToolStripMenuItem.Click += new System.EventHandler(this.SQLViewerToolStripMenuItem_Click);
             // 
             // tableDesignerToolStripMenuItem
             // 
             this.tableDesignerToolStripMenuItem.Name = "tableDesignerToolStripMenuItem";
-            this.tableDesignerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tableDesignerToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.tableDesignerToolStripMenuItem.Text = "Table Designer";
             this.tableDesignerToolStripMenuItem.Click += new System.EventHandler(this.TableDesignerToolStripMenuItem_Click);
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(179, 6);
             // 
             // encryptionToolToolStripMenuItem
             // 
             this.encryptionToolToolStripMenuItem.Name = "encryptionToolToolStripMenuItem";
-            this.encryptionToolToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.encryptionToolToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.encryptionToolToolStripMenuItem.Text = "Encryption Tool";
             this.encryptionToolToolStripMenuItem.Click += new System.EventHandler(this.EncryptionToolToolStripMenuItem_Click);
             // 
             // controllersRegistryToolStripMenuItem
             // 
             this.controllersRegistryToolStripMenuItem.Name = "controllersRegistryToolStripMenuItem";
-            this.controllersRegistryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.controllersRegistryToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.controllersRegistryToolStripMenuItem.Text = "Controllers Registry";
             this.controllersRegistryToolStripMenuItem.Click += new System.EventHandler(this.ControllersRegistryToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem9
+            // 
+            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(179, 6);
+            // 
+            // compactAndRepairToolStripMenuItem
+            // 
+            this.compactAndRepairToolStripMenuItem.Name = "compactAndRepairToolStripMenuItem";
+            this.compactAndRepairToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.compactAndRepairToolStripMenuItem.Text = "Compact and Repair";
+            this.compactAndRepairToolStripMenuItem.Click += new System.EventHandler(this.CompactAndRepairToolStripMenuItem_Click);
             // 
             // windowToolStripMenuItem
             // 
@@ -512,6 +528,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainView";
             this.Text = "Housing Information System";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainView_FormClosing);
             this.Load += new System.EventHandler(this.MainView_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -579,6 +596,8 @@
         private System.Windows.Forms.ToolStripMenuItem arrangeIconsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem controllersRegistryToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel tssLabelStatus;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem9;
+        private System.Windows.Forms.ToolStripMenuItem compactAndRepairToolStripMenuItem;
     }
 }
 

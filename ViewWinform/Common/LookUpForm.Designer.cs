@@ -36,7 +36,8 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.tslPageSize = new System.Windows.Forms.ToolStripLabel();
+            this.tslRecordsCount = new System.Windows.Forms.ToolStripLabel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -116,7 +117,8 @@
             this.toolStripSeparator2,
             this.tsbNew,
             this.tsbDelete,
-            this.toolStripLabel1});
+            this.tslPageSize,
+            this.tslRecordsCount});
             this.toolStrip2.Location = new System.Drawing.Point(0, 290);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -203,11 +205,17 @@
             this.tsbDelete.Size = new System.Drawing.Size(23, 22);
             this.tsbDelete.Text = "Delete";
             // 
-            // toolStripLabel1
+            // tslPageSize
             // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(74, 22);
-            this.toolStripLabel1.Text = "Page Size: 10";
+            this.tslPageSize.Name = "tslPageSize";
+            this.tslPageSize.Size = new System.Drawing.Size(74, 22);
+            this.tslPageSize.Text = "Page Size: 10";
+            // 
+            // tslRecordsCount
+            // 
+            this.tslRecordsCount.Name = "tslRecordsCount";
+            this.tslRecordsCount.Size = new System.Drawing.Size(61, 22);
+            this.tslRecordsCount.Text = "Records: 0";
             // 
             // LookUpForm
             // 
@@ -250,6 +258,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton tsbNew;
         private System.Windows.Forms.ToolStripButton tsbDelete;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripLabel tslPageSize;
+        private System.Windows.Forms.ToolStripLabel tslRecordsCount;
     }
 }

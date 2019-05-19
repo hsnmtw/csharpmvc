@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ModelLibrary.Common;
 
-namespace ModelLibrary
+namespace ViewWinform.Utils
 {
     public partial class SQLView : Form
     {

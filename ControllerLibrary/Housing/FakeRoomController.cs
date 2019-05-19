@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ControllerLibrary.Housing {
     [ForControllerAttribute(ControllersEnum.Room, Enabled = false)]
-    public class FakeRoomController : BaseController {
+    public class FakeRoomController : RoomController,BaseController {
 
         //static DataTable dt = new DataTable();
         static Dictionary<string,RoomModel> listOfRooms = new Dictionary<string, RoomModel>();
@@ -54,11 +54,11 @@ namespace ControllerLibrary.Housing {
 
         public string[] fields { get { return (from property in typeof(RoomModel).GetProperties() select property.Name).ToArray<string>(); } }
 
-        public DataTable GetTable() {
+        public override DataTable GetTable() {
             return List2DataTable((from object item in listOfRooms.Values select item).ToList(),fields);
         }
 
-        public void Delete(object _model) {
+        public override void Delete(object _model) {
             RoomModel model = (RoomModel)_model;
             if (listOfRooms.ContainsKey(model.Room_Name)) {
                 listOfRooms.Remove(model.Room_Name);
@@ -74,25 +74,20 @@ namespace ControllerLibrary.Housing {
             Console.WriteLine("insert: {0,-20}  :  {1,-20}",  string.Join(",",listOfRooms.Keys.ToList())  , string.Join(",", from vsl in listOfRooms.Values select vsl.Room_Name));
         }
 
-        public object Save(object _model) {
+        public override object Save(object _model) {
             RoomModel model = (RoomModel)_model;
             if (model.Id == 0) Insert(model);
             else Update(model);
             return (RoomModel)listOfRooms[model.Room_Name].Clone();
         }
 
-        public DataTable GetTable(object model, string[] whereFields) {
-            Console.WriteLine("selectModelsAsDataTable: {0,-20}  :  {1,-20}",  string.Join(",",listOfRooms.Keys.ToList())  , string.Join(",", from vsl in listOfRooms.Values select vsl.Room_Name));
-            return List2DataTable(Read(model,whereFields), fields);
-        }
-
-        public List<object> Read() {
+        public override List<object> Read() {
             return (from item
                       in listOfRooms.Values.ToList()
                   select item.Clone()).ToList();
         }
 
-        public List<object> Read(object model, string[] whereFields) {
+        public override List<object> Read(object model, string[] whereFields) {
            var propinfo = typeof(RoomModel).GetProperty(whereFields[0]);
            var list = (from item 
                      in listOfRooms.Values
@@ -127,30 +122,6 @@ namespace ControllerLibrary.Housing {
                 listOfRooms[copy.Room_Name] = copy;
                 Console.WriteLine("2.update: {0,-20}  :  {1,-20}",  string.Join(",",listOfRooms.Keys.ToList())  , string.Join(",", from vsl in listOfRooms.Values select vsl.Room_Name));
             }
-        }
-
-        public MetaData GetMetaData() {
-            return new RoomCollection().MetaData;
-        }
-
-        public object Dispatch(string action, params object[] arguments) {
-            throw new NotImplementedException();
-        }
-
-        public DataTable GetTable(object model, string[] whereFields, int offset, int length) {
-            throw new NotImplementedException();
-        }
-
-        public object CreateNewModel() {
-            throw new NotImplementedException();
-        }
-
-        public DataTable GetTable(object model, string[] whereFields, bool like = false) {
-            throw new NotImplementedException();
-        }
-
-        public ResultSet GetTable(object model, string[] whereFields, bool like, int offset, int length) {
-            throw new NotImplementedException();
         }
     }
 }

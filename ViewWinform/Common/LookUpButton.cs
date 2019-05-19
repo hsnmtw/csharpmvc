@@ -49,6 +49,10 @@ namespace ViewWinform.Common {
                 this._controller = ControllersFactory.GetController(num);
             }
 
+            if(this.ShowFieldsInLookUp.Count == 0) {
+                this.ShowFieldsInLookUp.AddRange(this._controller.GetMetaData().GetUniqueKeyFields);
+            }
+
             LookUpForm lookup;
             lookup = new Common.LookUpForm( this._controller ,this.ShowFieldsInLookUp.ToArray());
             

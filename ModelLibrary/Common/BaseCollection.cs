@@ -11,7 +11,7 @@ namespace ModelLibrary.Common {
 
         DataTable GetTable(object model, string[] whereFields, bool like=false);
 
-        ResultSet GetTable(object model, string[] whereFields, bool like, int offset,int length);
+        ResultSet GetTable(object model, string[] whereFields, bool like, int page,int pagesize);
 
         DataTable GetTable();
 

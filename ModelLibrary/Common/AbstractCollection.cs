@@ -105,24 +105,35 @@ namespace ModelLibrary.Common {
             return result;
         }
 
-        public virtual ResultSet GetTable(object model, string[] whereFields, bool like, int offset, int length) {
+        public virtual ResultSet GetTable(object model, string[] whereFields, bool like, int page, int pagesize) {
+            
             DataTable table = GetTable(model, whereFields, like);
-            if (offset >= table.Rows.Count) return new ResultSet() {
-                AffectedRows = table.Rows.Count,
+            int rowcount = table.Rows.Count;
+            int _pagesize = pagesize;
+            int pages = (rowcount + _pagesize - 1) / _pagesize;
+            int offset = _pagesize * (page - 1);
+            if (offset >= rowcount) return new ResultSet {
+                RowsCount = rowcount,
+                Pages = pages,
+                PageSize = pagesize,
+                Page = page,
                 Table = table,
                 Status = true,
                 ResponseMessage = $"Data was retreived, but the offset [{offset}] is greater than row count [{table.Rows.Count}]"
             };
-            if (length < 1) length = table.Rows.Count;
-            if (offset + length > table.Rows.Count) length = table.Rows.Count - offset;
-            int rowcount = table.Rows.Count;
+            if (_pagesize < 1) _pagesize = table.Rows.Count;
+            if (offset + _pagesize > table.Rows.Count) _pagesize = table.Rows.Count - offset;
+            
 
-            table = table.AsEnumerable().Skip(offset).Take(length).CopyToDataTable();
-            return new ResultSet() {
-                AffectedRows = rowcount,
+            table = table.AsEnumerable().Skip(offset).Take(_pagesize).CopyToDataTable();
+            return new ResultSet {
+                RowsCount = rowcount,
+                Pages = pages,
+                Page = page,
+                PageSize = pagesize,
                 Table = table,
                 Status = true,
-                ResponseMessage = $"Data was retreived, offset [{offset}], length [{length}], row count [{rowcount}]"
+                ResponseMessage = $"Data was retreived, offset [{offset}], length [{_pagesize}], row count [{rowcount}]"
             };
         }
         public virtual DataTable GetTable(object model, string[] whereFields, bool like = false) {
@@ -137,8 +148,15 @@ namespace ModelLibrary.Common {
         }
 
         public virtual object Save(object model) {
-            if (((BaseModel)model).Id == 0) { Create(model); } else { Update(model); }
-            return this.Read(model, new string[] { "Created_On" }).First();
+            if (((BaseModel)model).Id == 0) {
+                Create(model);
+                return this.Read(model, new string[] { "Created_On" }).First();
+            } else {
+                Update(model);
+                return this.Read(model, new string[] { "Id" }).First();
+            }
+            
+            
         }
 
         private void Create(object model) {
@@ -146,7 +164,7 @@ namespace ModelLibrary.Common {
             //model.Created_On = DateTime.Now;
             database.Execute(GetInsertStatement(model));
             //if (this.GetType().Equals(typeof(AuditController)) == false) {
-            //    new AuditController().registerEvent(new AuditModel() {
+            //     ControllersFactory.GetController(ControllersEnum.Audit).registerEvent(new AuditModel() {
             //        User_Name = Session.Instance.CurrentUser.User_Name,
             //        Event_Comments = $"insert new record into [{model.GetSource()}] fields [{model}]"
             //    });
@@ -157,7 +175,7 @@ namespace ModelLibrary.Common {
             //model.Updated_On = DateTime.Now;
             database.Execute(GetUpdateStatement(model));
             //if (this.GetType().Equals(typeof(AuditController)) == false) {
-            //    new AuditController().registerEvent(new AuditModel() {
+            //     ControllersFactory.GetController(ControllersEnum.Audit).registerEvent(new AuditModel() {
             //        User_Name = Session.Instance.CurrentUser.User_Name,
             //        Event_Comments = $"update record of [{model.GetSource()}] with fields [{model}]"
             //    });
@@ -166,7 +184,7 @@ namespace ModelLibrary.Common {
         public virtual void Delete(object model) {
             database.Execute(GetDeleteStatement(model));
             //if (this.GetType().Equals(typeof(AuditController)) == false) {
-            //    new AuditController().registerEvent(new AuditModel() {
+            //     ControllersFactory.GetController(ControllersEnum.Audit).registerEvent(new AuditModel() {
             //        User_Name = Session.Instance.CurrentUser.User_Name,
             //        Event_Comments = $"delete record from [{model.GetSource()}] with fields [{model}]"
             //    });

@@ -177,6 +177,12 @@
     <Compile Include="Utils\AdvancedCheckedListBox.Designer.cs">
       <DependentUpon>AdvancedCheckedListBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\CompactAndRepairForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\CompactAndRepairForm.Designer.cs">
+      <DependentUpon>CompactAndRepairForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\CustomDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -272,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\AdvancedCheckedListBox.resx">
       <DependentUpon>AdvancedCheckedListBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\CompactAndRepairForm.resx">
+      <DependentUpon>CompactAndRepairForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\SQLView.resx">
       <DependentUpon>SQLView.cs</DependentUpon>
@@ -379,6 +388,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\chevron-thin-down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="DAO">
+      <Guid>{00025E01-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

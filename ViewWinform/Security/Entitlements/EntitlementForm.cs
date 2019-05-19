@@ -1,4 +1,5 @@
-﻿using ControllerLibrary.Security;
+﻿using ControllerLibrary.Common;
+using ControllerLibrary.Security;
 using ModelLibrary.Security;
 using System;
 using System.Collections.Generic;
@@ -64,7 +65,7 @@ namespace ViewWinform.Security.Entitlements {
 
         private void EntitlementForm_Load(object sender, EventArgs e) {
             Utils.FormsHelper.registerEnterAsTab(this);
-            this.controller = new EntitlementController();
+            this.controller = (EntitlementController)ControllersFactory.GetController(ControllersEnum.Entitlement);
             this.Model = new EntitlementModel();
         }
 

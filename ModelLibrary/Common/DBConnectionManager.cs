@@ -25,18 +25,6 @@ namespace ModelLibrary.Common
 
         private DBConnectionManager()
         {
-            DbConnectionStringBuilder csBuilder = dbFactory.CreateConnectionStringBuilder();
-
-            csBuilder["Provider"]    = DB_CONFIG_PROVIDER;
-            csBuilder["Data Source"] = DB_CONFIG_SOURCE;
-            csBuilder["User Id"]     = DB_CONFIG_USER;
-            csBuilder["Password"]    = DB_CONFIG_PASSWORD;
-
-            this.connection = dbFactory.CreateConnection();
-            this.connection.ConnectionString = csBuilder.ConnectionString;
-            this.connection.Open();
-            this.dataSet = new DataSet();
-            this.SchemaColumns = this.connection.GetSchema("Columns");
         }
 
         public ResultSet Execute(Statement statement) 
@@ -92,8 +80,6 @@ namespace ModelLibrary.Common
         }
 
 
-
-
         public object QueryScalar(Statement statement) {
             var sql = statement.Sql;
             var parameters = statement.Parameters;
@@ -108,6 +94,33 @@ namespace ModelLibrary.Common
             }
 
             return cmd.ExecuteScalar();
+        }
+
+        public void Open() {
+            if(!(this.connection == null || this.connection.State == ConnectionState.Closed)) {
+                throw new InvalidOperationException("database is already open");
+            }
+            DbConnectionStringBuilder csBuilder = dbFactory.CreateConnectionStringBuilder();
+
+            csBuilder["Provider"] = DB_CONFIG_PROVIDER;
+            csBuilder["Data Source"] = DB_CONFIG_SOURCE;
+            csBuilder["User Id"] = DB_CONFIG_USER;
+            csBuilder["Password"] = DB_CONFIG_PASSWORD;
+
+            this.connection = dbFactory.CreateConnection();
+            this.connection.ConnectionString = csBuilder.ConnectionString;
+            this.connection.Open();
+            this.dataSet = new DataSet();
+            this.SchemaColumns = this.connection.GetSchema("Columns");
+        }
+
+        public void Close() {
+            if (this.connection == null || this.connection.State == ConnectionState.Closed) {
+                throw new InvalidOperationException("database is null or already closed");
+            }
+            this.connection.Close();
+            this.connection.Dispose();
+            this.connection = null;
         }
 
         public static DBConnectionManager Instance { get {

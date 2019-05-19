@@ -15,15 +15,13 @@ namespace ControllerLibrary.Security
     [ForControllerAttribute(ControllersEnum.Entitlement, Enabled = true)]
     public class EntitlementController : AbstractController {
 
-        public EntitlementController() : base(CollectionsFactory.GetCollection(CollectionsEnum.Entitlement)) {
-
-        }
+        public EntitlementController() : base(CollectionsFactory.GetCollection(CollectionsEnum.Entitlement)) { }
 
         public override DataTable GetTable() {
         
             DataView dvE = new DataView(this.GetTable());
-            DataView dvP = new DataView(new ProfileController().GetTable());
-            DataTable dvPE = new ProfileEntitlementsController().GetTable();
+            DataView dvP = new DataView(ControllersFactory.GetController(ControllersEnum.Profile).GetTable());
+            DataTable dvPE = ControllersFactory.GetController(ControllersEnum.ProfileEntitlements).GetTable();
 
             dvE.Sort = "Entitlement_Name ASC";
             dvP.Sort = "Profile_Name ASC";

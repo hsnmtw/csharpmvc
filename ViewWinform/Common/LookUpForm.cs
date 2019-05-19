@@ -42,7 +42,10 @@ namespace ViewWinform.Common {
         }
         public int PageSize {
             get => _pagesize;
-            set => _pagesize = value;
+            set {
+                _pagesize = value;
+                this.tslPageSize.Text  = $"Page Size {value}";
+            }
         }
         
         public LookUpForm(BaseController controller,params string[]shownColumns) {
@@ -72,7 +75,7 @@ namespace ViewWinform.Common {
         public void Requery() {
             object model = this.Controller.CreateNewModel();
             model.GetType().GetProperty(shownColumns[0]).SetValue(model, $"%{label1.Text}%");
-            var result = this.Controller.GetTable(model,new string[] {shownColumns[0]},true,PageSize*(this.Page-1),PageSize);
+            var result = this.Controller.GetTable(model,new string[] {shownColumns[0]},true,this.Page,PageSize);
             var source = result.Table;
 
             if (shownColumns == null || shownColumns.Length == 0) {
@@ -80,8 +83,12 @@ namespace ViewWinform.Common {
             }
 
 
-            this.Pages = (result.AffectedRows+ this.PageSize-1) / this.PageSize;
-            
+            //this.Pages = (result.RowsCount+ this.PageSize-1) / this.PageSize;
+
+            this.Pages = result.Pages;
+            this.Page = result.Page;
+            this.PageSize = result.PageSize;
+            this.tslRecordsCount.Text = $"Records {result.RowsCount}";
 
             DataView view = new DataView(source);
             view.Sort = $"{shownColumns[0]} ASC";

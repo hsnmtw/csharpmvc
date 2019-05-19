@@ -13,10 +13,8 @@ using System.Threading.Tasks;
 namespace ControllerLibrary.Security {
     [ForControllerAttribute(ControllersEnum.Audit, Enabled = true)]
     public class AuditController : AbstractController {
-       
-        public AuditController() : base(CollectionsFactory.GetCollection(CollectionsEnum.Audit)) {
 
-        }
+        public AuditController() : base(CollectionsFactory.GetCollection(CollectionsEnum.Audit)) { }
 
         public void registerEvent(AuditModel model) {
             model.Updated_By = "SYSTEM";

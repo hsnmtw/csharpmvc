@@ -12,11 +12,9 @@ using ControllerLibrary.Common;
 namespace ControllerLibrary.Security
 {
     [ForControllerAttribute(ControllersEnum.ProfileEntitlements, Enabled = true)]
-    public class ProfileEntitlementsController : AbstractController { 
-    
-        public ProfileEntitlementsController() : base(CollectionsFactory.GetCollection(CollectionsEnum.ProfileEntitlements)) {
+    public class ProfileEntitlementsController : AbstractController {
 
-        }
+        public ProfileEntitlementsController() : base(CollectionsFactory.GetCollection(CollectionsEnum.ProfileEntitlements)) { }
 
         public DataTable GetEntitlementsByProfile(string profile)
         {

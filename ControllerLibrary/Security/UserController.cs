@@ -13,11 +13,9 @@ using ModelLibrary.Common;
 namespace ControllerLibrary.Security
 {
     [ForControllerAttribute(ControllersEnum.User, Enabled = true)]
-    public class UserController : AbstractController { 
-    
-        public UserController() : base(CollectionsFactory.GetCollection(CollectionsEnum.User)) {
+    public class UserController : AbstractController {
 
-        }
+        public UserController() : base(CollectionsFactory.GetCollection(CollectionsEnum.User)) { }
        
         public override object Save(object _model) {
             var model = (UserModel)_model;
@@ -25,6 +23,15 @@ namespace ControllerLibrary.Security
                 model.User_Password = CryptoFactory.Encrypt(model.User_Password);
             }
             return base.Save(model);
+        }
+
+        public override void Delete(object _model) {
+            var model = (UserModel)_model;
+            model = (UserModel)Read(model, new string[] { "Id" }).First();
+            if ("admin".Equals($"{model.User_Name}".ToLower())) {
+                throw new ArgumentException("You cannot delete Admin user");
+            }
+            base.Delete(model);
         }
 
         public override List<object> Read(object _model, string[] whereFields) {
@@ -39,6 +46,7 @@ namespace ControllerLibrary.Security
             var model = (UserModel)_model;
             if (model.User_Password.StartsWith("{ENC}")) return null;
 
+            var audit = (AuditController)ControllersFactory.GetController(ControllersEnum.Audit);
 
             model.Is_Active = true;
             var models = Read(model, new string[] { "User_Name", "User_Password", "Is_Active" });
@@ -52,7 +60,8 @@ namespace ControllerLibrary.Security
                         user.Is_Active = false;
                     }
                     Save(user);
-                    new AuditController().registerEvent(new AuditModel() {
+                    
+                    audit.registerEvent(new AuditModel() {
                         User_Name = model.User_Name,
                         Event_Comments = $"Login denied : {user}"
                     });
@@ -65,7 +74,7 @@ namespace ControllerLibrary.Security
             model.Last_Login_Date = DateTime.Now;
             Save(model);
 
-            new AuditController().registerEvent(new AuditModel() {
+            audit.registerEvent(new AuditModel() {
                 User_Name = model.User_Name,
                 Event_Comments = "Login successful"
             });
@@ -82,7 +91,8 @@ namespace ControllerLibrary.Security
             model.Failed_Login_Attempts = 0;
             this.Save(model);
 
-            new AuditController().registerEvent(new AuditModel() {
+            var audit = (AuditController)ControllersFactory.GetController(ControllersEnum.Audit);
+            audit.registerEvent(new AuditModel() {
                 User_Name = model.User_Name,
                 Event_Comments = $"reset login counter : {model.User_Name}"
             });
@@ -96,7 +106,8 @@ namespace ControllerLibrary.Security
             model.User_Password = password;
             model.Last_Change_Password = DateTime.Now;
             Save(model);
-            new AuditController().registerEvent(new AuditModel() {
+            var audit = (AuditController)ControllersFactory.GetController(ControllersEnum.Audit);
+            audit.registerEvent(new AuditModel() {
                 User_Name = model.User_Name,
                 Event_Comments = "password reset for user : " + model.User_Name
             });

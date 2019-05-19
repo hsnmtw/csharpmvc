@@ -17,7 +17,7 @@ namespace ViewWinform.Housing.Rooms {
 
         //private RoomController controller = new RoomController();
 
-        private BaseController controller = new RoomController();
+        private BaseController controller = ControllersFactory.GetController(ControllersEnum.Room);
         private RoomModel _model = new RoomModel();
 
         public RoomModel Model {

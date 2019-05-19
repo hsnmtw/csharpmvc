@@ -11,8 +11,6 @@ using System.Threading.Tasks;
 namespace ControllerLibrary.Customers {
     [ForControllerAttribute(ControllersEnum.Nationality, Enabled = true)]
     public class NationalityController : AbstractController {
-        public NationalityController() : base(CollectionsFactory.GetCollection(CollectionsEnum.Nationality)) {
-
-        }
+        public NationalityController() : base(CollectionsFactory.GetCollection(CollectionsEnum.Nationality)) {}
     }
 }

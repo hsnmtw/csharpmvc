@@ -13,14 +13,13 @@ namespace ControllerLibrary.Security
 {
     [ForControllerAttribute(ControllersEnum.Profile, Enabled = true)]
     public class ProfileController : AbstractController{
-    
 
-        public ProfileController() : base(CollectionsFactory.GetCollection(CollectionsEnum.Profile)) {
 
-        }
+        public ProfileController() : base(CollectionsFactory.GetCollection(CollectionsEnum.Profile)) { }
 
         public override void Delete(object model) {
-            new ProfileEntitlementsController().DeleteEntitlementForProfile(((ProfileModel)model).Profile_Name);
+            var controller = (ProfileEntitlementsController)ControllersFactory.GetController(ControllersEnum.ProfileEntitlements);
+            controller.DeleteEntitlementForProfile(((ProfileModel)model).Profile_Name);
             base.Delete(model);
         }
     }

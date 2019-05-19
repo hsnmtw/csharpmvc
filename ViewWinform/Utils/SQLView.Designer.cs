@@ -1,5 +1,4 @@
-﻿namespace ModelLibrary
-{
+﻿namespace ViewWinform.Utils {
     partial class SQLView
     {
         /// <summary>

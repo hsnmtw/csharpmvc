@@ -94,7 +94,7 @@ namespace ViewWinform.Security.Users {
             Utils.FormsHelper.registerEnterAsTab(this);
             this.controller = (UserController)ControllersFactory.GetController(ControllersEnum.User);
             this.Model = new UserModel();
-            this.profile_Entitlements = new ProfileEntitlementsController().Read();
+            this.profile_Entitlements = ControllersFactory.GetController(ControllersEnum.ProfileEntitlements).Read();
         }
 
         private void Button1_Click(object sender, EventArgs e) {
