@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Common\AbstractCollection.cs" />
     <Compile Include="Common\BaseModel.cs" />
+    <Compile Include="Common\CollectionsEnum.cs" />
+    <Compile Include="Common\CollectionsFactory.cs" />
     <Compile Include="Common\DBConnectionManager.cs" />
     <Compile Include="Common\BaseCollection.cs" />
     <Compile Include="Common\IDBConnectionManager.cs" />
