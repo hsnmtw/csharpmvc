@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 namespace ModelLibrary.Common {
     public abstract class AbstractCollection : BaseCollection {
 
+        private const string EQ = "=";
+        private const string LIKE = "LIKE";
+
         protected DBConnectionManager database = DBConnectionManager.Instance;
 
         public abstract MetaData MetaData { get; }
@@ -60,9 +63,9 @@ namespace ModelLibrary.Common {
             };
         }
 
-        public virtual Statement GetSelectStatement(object model, string[] whereFields) {
+        public virtual Statement GetSelectStatement(object model, string[] whereFields,bool like=false) {
             string query = "";
-
+            string OP = like ? LIKE : EQ;
             if (whereFields.Length == 0) {
                 query = $"SELECT * FROM [{MetaData.GetSource}] ORDER BY 1";
             } else {
@@ -70,7 +73,8 @@ namespace ModelLibrary.Common {
                                         MetaData.GetSource,
                                         string.Join(" AND ", (from string wf
                                                                 in whereFields
-                                                              select $"[{wf}]=@{wf}")));
+                                                              select $"[{wf}] {OP} @{wf}"
+                                                              )));
             }
             return new Statement(MetaData.GetSource) {
                 Sql = query,
@@ -85,7 +89,7 @@ namespace ModelLibrary.Common {
 
         public List<object> Read(object model, string[] whereFields) {
 
-            var dt = database.Query(GetSelectStatement(model,whereFields));
+            var dt = GetTable(model,whereFields);
             var result = new List<object>();
             foreach (DataRow row in dt.Rows) {
                 var newModel = CreateNew();
@@ -101,8 +105,28 @@ namespace ModelLibrary.Common {
             return result;
         }
 
-        public virtual DataTable GetTable(object model, string[] whereFields) {
-            return database.Query(GetSelectStatement(model,whereFields));
+        public virtual ResultSet GetTable(object model, string[] whereFields, bool like, int offset, int length) {
+            DataTable table = GetTable(model, whereFields, like);
+            if (offset >= table.Rows.Count) return new ResultSet() {
+                AffectedRows = table.Rows.Count,
+                Table = table,
+                Status = true,
+                ResponseMessage = $"Data was retreived, but the offset [{offset}] is greater than row count [{table.Rows.Count}]"
+            };
+            if (length < 1) length = table.Rows.Count;
+            if (offset + length > table.Rows.Count) length = table.Rows.Count - offset;
+            int rowcount = table.Rows.Count;
+
+            table = table.AsEnumerable().Skip(offset).Take(length).CopyToDataTable();
+            return new ResultSet() {
+                AffectedRows = rowcount,
+                Table = table,
+                Status = true,
+                ResponseMessage = $"Data was retreived, offset [{offset}], length [{length}], row count [{rowcount}]"
+            };
+        }
+        public virtual DataTable GetTable(object model, string[] whereFields, bool like = false) {
+            return database.Query(GetSelectStatement(model,whereFields,like));
         }
         public virtual DataTable GetTable() {
             return database.Query(GetSelectStatement());

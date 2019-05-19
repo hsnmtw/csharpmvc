@@ -11,6 +11,7 @@ using ModelLibrary.Common;
 
 namespace ControllerLibrary.Security
 {
+    [ForControllerAttribute(ControllersEnum.Profile, Enabled = true)]
     public class ProfileController : AbstractController{
     
 

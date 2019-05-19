@@ -32,6 +32,7 @@
             this.tsslCurrentUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.tssLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,7 +83,6 @@
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
-            this.tssLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -117,6 +117,12 @@
             // 
             this.tsProgressBar.Name = "tsProgressBar";
             this.tsProgressBar.Size = new System.Drawing.Size(100, 16);
+            // 
+            // tssLabelStatus
+            // 
+            this.tssLabelStatus.Name = "tssLabelStatus";
+            this.tssLabelStatus.Size = new System.Drawing.Size(62, 17);
+            this.tssLabelStatus.Text = "Loading ...";
             // 
             // menuStrip1
             // 
@@ -412,34 +418,35 @@
             // sQLViewerToolStripMenuItem
             // 
             this.sQLViewerToolStripMenuItem.Name = "sQLViewerToolStripMenuItem";
-            this.sQLViewerToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.sQLViewerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sQLViewerToolStripMenuItem.Text = "SQL Viewer";
             this.sQLViewerToolStripMenuItem.Click += new System.EventHandler(this.SQLViewerToolStripMenuItem_Click);
             // 
             // tableDesignerToolStripMenuItem
             // 
             this.tableDesignerToolStripMenuItem.Name = "tableDesignerToolStripMenuItem";
-            this.tableDesignerToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.tableDesignerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.tableDesignerToolStripMenuItem.Text = "Table Designer";
             this.tableDesignerToolStripMenuItem.Click += new System.EventHandler(this.TableDesignerToolStripMenuItem_Click);
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(174, 6);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(177, 6);
             // 
             // encryptionToolToolStripMenuItem
             // 
             this.encryptionToolToolStripMenuItem.Name = "encryptionToolToolStripMenuItem";
-            this.encryptionToolToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.encryptionToolToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.encryptionToolToolStripMenuItem.Text = "Encryption Tool";
             this.encryptionToolToolStripMenuItem.Click += new System.EventHandler(this.EncryptionToolToolStripMenuItem_Click);
             // 
             // controllersRegistryToolStripMenuItem
             // 
             this.controllersRegistryToolStripMenuItem.Name = "controllersRegistryToolStripMenuItem";
-            this.controllersRegistryToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.controllersRegistryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.controllersRegistryToolStripMenuItem.Text = "Controllers Registry";
+            this.controllersRegistryToolStripMenuItem.Click += new System.EventHandler(this.ControllersRegistryToolStripMenuItem_Click);
             // 
             // windowToolStripMenuItem
             // 
@@ -493,12 +500,6 @@
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.Size = new System.Drawing.Size(148, 6);
-            // 
-            // tssLabelStatus
-            // 
-            this.tssLabelStatus.Name = "tssLabelStatus";
-            this.tssLabelStatus.Size = new System.Drawing.Size(62, 17);
-            this.tssLabelStatus.Text = "Loading ...";
             // 
             // MainView
             // 

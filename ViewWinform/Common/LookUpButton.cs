@@ -50,8 +50,7 @@ namespace ViewWinform.Common {
             }
 
             LookUpForm lookup;
-
-            lookup = new Common.LookUpForm(this._controller.GetTable(),this.ShowFieldsInLookUp.ToArray());
+            lookup = new Common.LookUpForm( this._controller ,this.ShowFieldsInLookUp.ToArray());
             
             if (lookup.ShowDialog() == DialogResult.OK) {
                 valueFromLookup = lookup.SelectedValue[this.SelectedFieldFromLookUp];

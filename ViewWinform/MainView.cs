@@ -218,5 +218,9 @@ namespace ViewWinform
         private void RoomsToolStripMenuItem_Click(object sender, EventArgs e) {
             new Housing.Rooms.RoomForm() { MdiParent = this }.Show();
         }
+
+        private void ControllersRegistryToolStripMenuItem_Click(object sender, EventArgs e) {
+            new Configurations.ControllersSelectionForm() { MdiParent = this }.Show();
+        }
     }
 }

@@ -7,8 +7,11 @@ namespace ModelLibrary.Common {
         List<object> Read();
 
         List<object> Read(object model, string[] whereFields);
+        //List<object> Read(object model, string[] whereFields,int offset,int length);
 
-        DataTable GetTable(object model, string[] whereFields);
+        DataTable GetTable(object model, string[] whereFields, bool like=false);
+
+        ResultSet GetTable(object model, string[] whereFields, bool like, int offset,int length);
 
         DataTable GetTable();
 

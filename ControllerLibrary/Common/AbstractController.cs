@@ -14,9 +14,11 @@ namespace ControllerLibrary.Common {
             if (baseCollection == null) throw new ArgumentNullException("baseCollection");
             this.BaseCollection = baseCollection;
         }
+        public virtual object CreateNewModel() => this.BaseCollection.CreateNew();
         public virtual void Delete(object model) => this.BaseCollection.Delete(model);
-        public virtual DataTable GetTable() => this.BaseCollection.GetTable();
-        public virtual DataTable GetTable(object model, string[] whereFields) => this.BaseCollection.GetTable(model, whereFields);
+        public virtual DataTable GetTable() => GetTable(new object(),new string[] { });
+        public virtual DataTable GetTable(object model, string[] whereFields,bool like=false) => this.BaseCollection.GetTable(model, whereFields,like);
+        public virtual ResultSet GetTable(object model, string[] whereFields,bool like,int offset, int length) => this.BaseCollection.GetTable(model, whereFields,like,offset,length);
         public virtual List<object> Read() => BaseCollection.Read();
         public virtual List<object> Read(object model, string[] whereFields) => BaseCollection.Read(model, whereFields);
         public virtual object Save(object _model) {

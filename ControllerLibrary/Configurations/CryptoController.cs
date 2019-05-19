@@ -12,6 +12,10 @@ namespace ControllerLibrary.Configurations {
     public class CryptoController : BaseController {
         public string Source => throw new NotImplementedException();
 
+        public object CreateNewModel() {
+            throw new NotImplementedException();
+        }
+
         public void Delete(object model) {
             throw new NotImplementedException();
         }
@@ -29,6 +33,18 @@ namespace ControllerLibrary.Configurations {
         }
 
         public DataTable GetTable(object model, string[] whereFields) {
+            throw new NotImplementedException();
+        }
+
+        public DataTable GetTable(object model, string[] whereFields, int offset, int length) {
+            throw new NotImplementedException();
+        }
+
+        public DataTable GetTable(object model, string[] whereFields, bool like = false) {
+            throw new NotImplementedException();
+        }
+
+        public ResultSet GetTable(object model, string[] whereFields, bool like, int offset, int length) {
             throw new NotImplementedException();
         }
 

@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Common\AbstractController.cs" />
     <Compile Include="Common\BaseController.cs" />
+    <Compile Include="Common\ForControllerAttribute.cs" />
     <Compile Include="Common\ControllersFactory.cs" />
     <Compile Include="Common\ControllersRegistery.cs" />
     <Compile Include="Common\ControllersEnum.cs" />

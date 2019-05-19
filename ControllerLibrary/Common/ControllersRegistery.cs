@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ControllerLibrary.Common {
     public class ControllersRegistery {
-        private Dictionary<ControllersEnum, string> controllerMap = new Dictionary<ControllersEnum, string>();
+        private Dictionary<ControllersEnum, List<Type>> controllerMap = new Dictionary<ControllersEnum, List<Type>>();
         private static ControllersRegistery _instance = null;
         public static ControllersRegistery Instance {
             get {
@@ -18,31 +18,33 @@ namespace ControllerLibrary.Common {
             }
         }
 
-        private ControllersRegistery() {
-            //Housing
-            controllerMap[ControllersEnum.Room]     = Properties.Settings.Default.RoomController;
-            controllerMap[ControllersEnum.Building] = Properties.Settings.Default.BuildingController;
-            controllerMap[ControllersEnum.Compound] = Properties.Settings.Default.CompoundController;
-
-            //Security
-            controllerMap[ControllersEnum.User]                = Properties.Settings.Default.UserController;
-            controllerMap[ControllersEnum.Entitlement]         = Properties.Settings.Default.EntitlementController;
-            controllerMap[ControllersEnum.Profile]             = Properties.Settings.Default.ProfileController;
-            controllerMap[ControllersEnum.ProfileEntitlements] = Properties.Settings.Default.ProfileEntitlementsController;
-
-            //Customers
-            controllerMap[ControllersEnum.Nationality]         = Properties.Settings.Default.NationalityController;
-        }
-
-        /// <summary>
-        /// This method checks if the controllers are loadable
-        /// if a controller is missing, an exception should be 
-        /// thrown.
-        /// </summary>
-        public void Validate() {
-            foreach (var type in this.controllerMap.Values) {
-                Type.GetType(type);
+        public List<Type> this[ControllersEnum controllersEnum] {
+            get {
+                return this.controllerMap[controllersEnum];
             }
         }
+
+        private ControllersRegistery() {
+
+            foreach(ControllersEnum num in typeof(ControllersEnum).GetEnumValues()) {
+                controllerMap[num] = new List<Type>();
+            }
+
+            var type = typeof(BaseController);
+            var types = AppDomain.CurrentDomain.GetAssemblies()
+                        .SelectMany(s => s.GetTypes())
+                        .Where(p => type.IsAssignableFrom(p));
+
+            Console.WriteLine("--------------------------------------------------------");
+            foreach (var t in types) {
+                try {
+                    ForControllerAttribute FOR = (ForControllerAttribute)t.GetCustomAttributes(typeof(ForControllerAttribute), false).First();
+                    Console.WriteLine($"{FOR.ControllersEnum}\t{t}");
+                    controllerMap[FOR.ControllersEnum].Add(t);
+                } catch { }
+            }
+            Console.WriteLine("--------------------------------------------------------");
+        }
+
     }
 }

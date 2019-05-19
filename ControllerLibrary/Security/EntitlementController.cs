@@ -12,6 +12,7 @@ using System.Windows.Forms;
 
 namespace ControllerLibrary.Security
 {
+    [ForControllerAttribute(ControllersEnum.Entitlement, Enabled = true)]
     public class EntitlementController : AbstractController {
 
         public EntitlementController() : base(CollectionsFactory.GetCollection(CollectionsEnum.Entitlement)) {

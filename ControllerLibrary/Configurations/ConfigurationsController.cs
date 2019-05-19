@@ -69,5 +69,21 @@ namespace ControllerLibrary.Configurations {
         public object Dispatch(string action, params object[] arguments) {
             throw new NotImplementedException();
         }
+
+        public DataTable GetTable(object model, string[] whereFields, int offset, int length) {
+            throw new NotImplementedException();
+        }
+
+        public object CreateNewModel() {
+            throw new NotImplementedException();
+        }
+
+        public DataTable GetTable(object model, string[] whereFields, bool like = false) {
+            throw new NotImplementedException();
+        }
+
+        public ResultSet GetTable(object model, string[] whereFields, bool like, int offset, int length) {
+            throw new NotImplementedException();
+        }
     }
 }

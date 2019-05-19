@@ -79,6 +79,12 @@
     <Compile Include="Configurations\ConfigurationsForm.Designer.cs">
       <DependentUpon>ConfigurationsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Configurations\ControllersSelectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Configurations\ControllersSelectionForm.Designer.cs">
+      <DependentUpon>ControllersSelectionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Configurations\CryptoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Configurations\ConfigurationsForm.resx">
       <DependentUpon>ConfigurationsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Configurations\ControllersSelectionForm.resx">
+      <DependentUpon>ControllersSelectionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Configurations\CryptoForm.resx">
       <DependentUpon>CryptoForm.cs</DependentUpon>

@@ -7,17 +7,27 @@ using System.Threading;
 using System.Globalization;
 using System.Configuration;
 using ModelLibrary.Common;
+using ControllerLibrary.Common;
+using System.IO;
+using System.Runtime.InteropServices;
 
 namespace ViewWinform
 {
+
     static class Program
     {
+        [DllImport("kernel32.dll")]
+        static extern bool AttachConsole(int dwProcessId);
+        private const int ATTACH_PARENT_PROCESS = -1;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
+
+            AttachConsole(ATTACH_PARENT_PROCESS);
 
             CultureInfo cultureInfo = CultureInfo.CreateSpecificCulture(ConfigurationManager.AppSettings["CultureInfo_Globalization"]);
 
@@ -41,6 +51,8 @@ namespace ViewWinform
             DBConnectionManager.DB_CONFIG_SOURCE   = ConfigurationManager.AppSettings["Database_Source"];
             DBConnectionManager.DB_CONFIG_USER     = ConfigurationManager.AppSettings["Database_User_Id"];
             DBConnectionManager.DB_CONFIG_PASSWORD = ConfigurationManager.AppSettings["Database_Password"];
+
+
 
 
             Application.EnableVisualStyles();

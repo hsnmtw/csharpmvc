@@ -14,16 +14,29 @@ namespace ControllerLibrary.Common {
 
         public static void InitControllersMap(){
 		   ControllersMap = new Dictionary<ControllersEnum, BaseController>() {
-              [ControllersEnum.Nationality        ] = new NationalityController        ()
-            , [ControllersEnum.Compound           ] = new CompoundController           ()
-            , [ControllersEnum.User               ] = new UserController               ()
-            , [ControllersEnum.Entitlement        ] = new EntitlementController        ()
-            , [ControllersEnum.ProfileEntitlements] = new ProfileEntitlementsController()
-            , [ControllersEnum.Profile            ] = new ProfileController            ()
-            , [ControllersEnum.Building           ] = new BuildingController           ()
-            , [ControllersEnum.Room               ] = new RoomController               ()
-            , [ControllersEnum.Audit              ] = new AuditController              ()
+            //  [ControllersEnum.Nationality        ] = new NationalityController        ()
+            //, [ControllersEnum.Compound           ] = new CompoundController           ()
+            //, [ControllersEnum.User               ] = new UserController               ()
+            //, [ControllersEnum.Entitlement        ] = new EntitlementController        ()
+            //, [ControllersEnum.ProfileEntitlements] = new ProfileEntitlementsController()
+            //, [ControllersEnum.Profile            ] = new ProfileController            ()
+            //, [ControllersEnum.Building           ] = new BuildingController           ()
+            //, [ControllersEnum.Room               ] = new RoomController               ()
+            //, [ControllersEnum.Audit              ] = new AuditController              ()
            };
+
+           foreach(ControllersEnum num in typeof(ControllersEnum).GetEnumValues()) {
+                foreach(var type in ControllersRegistery.Instance[num]) {
+                    ForControllerAttribute forca = (ForControllerAttribute)type.GetCustomAttributes(true).First();
+                    if (forca.Enabled) {
+                        ControllersFactory.ControllersMap[num] = (BaseController)Activator.CreateInstance(type);
+                    }
+                }
+            }
+        }
+
+        public static BaseController GetController(string typeName) {
+            return (BaseController)Activator.CreateInstance(Type.GetType(typeName));
         }
 
         public static Dictionary<ControllersEnum, BaseController> GetControllersMap() {

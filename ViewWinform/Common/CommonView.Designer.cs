@@ -204,7 +204,7 @@ namespace ViewWinform.Common {
             // 
             this.tsbNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbNew.Enabled = false;
-            this.tsbNew.Image = global::ViewWinform.Properties.Resources._new;
+            this.tsbNew.Image = global::ViewWinform.Properties.Resources.plus;
             this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNew.Name = "tsbNew";
             this.tsbNew.Size = new System.Drawing.Size(23, 22);

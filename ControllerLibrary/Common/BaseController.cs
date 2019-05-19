@@ -10,11 +10,13 @@ namespace ControllerLibrary.Common {
     public interface BaseController {
         MetaData GetMetaData();
         DataTable GetTable();
-        DataTable GetTable(object model, string[] whereFields);
+        DataTable GetTable(object model, string[] whereFields,bool like=false);
+        ResultSet GetTable(object model, string[] whereFields,bool like,int offset,int length);
         List<object> Read();
         List<object> Read(object model, string[] whereFields);
         object Save(object model);
         void Delete(object model);
+        object CreateNewModel();
         object Dispatch(string action, params object[] arguments);
     }
 }

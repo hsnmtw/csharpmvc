@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ControllerLibrary.Housing {
-
+    [ForControllerAttribute(ControllersEnum.Room, Enabled = false)]
     public class FakeRoomController : BaseController {
 
         //static DataTable dt = new DataTable();
@@ -68,7 +68,7 @@ namespace ControllerLibrary.Housing {
         private void Insert(RoomModel model) {
             var copy = (RoomModel)model.Clone();
             if (copy.Id == 0) copy.Id = Math.Abs( random.Next(1000,2000) );
-            copy.Created_By = Session.Instance.CurrentUser.User_Name;
+            copy.Created_By = Session.Instance.CurrentUser==null? "" : Session.Instance.CurrentUser.User_Name;
             copy.Created_On = DateTime.Now;
             listOfRooms[copy.Room_Name] = copy;
             Console.WriteLine("insert: {0,-20}  :  {1,-20}",  string.Join(",",listOfRooms.Keys.ToList())  , string.Join(",", from vsl in listOfRooms.Values select vsl.Room_Name));
@@ -119,7 +119,7 @@ namespace ControllerLibrary.Housing {
             var copy = (RoomModel)model.Clone();
             if (listOfRooms.ContainsKey(copy.Room_Name)) {
 
-                copy.Updated_By = Session.Instance.CurrentUser.User_Name;
+                copy.Updated_By = Session.Instance.CurrentUser == null? "": Session.Instance.CurrentUser.User_Name;
                 copy.Updated_On = DateTime.Now;
 
                 Console.WriteLine("1.update: {0,-20}  :  {1,-20}",  string.Join(",",listOfRooms.Keys.ToList())  , string.Join(",", from vsl in listOfRooms.Values select vsl.Room_Name));
@@ -134,6 +134,22 @@ namespace ControllerLibrary.Housing {
         }
 
         public object Dispatch(string action, params object[] arguments) {
+            throw new NotImplementedException();
+        }
+
+        public DataTable GetTable(object model, string[] whereFields, int offset, int length) {
+            throw new NotImplementedException();
+        }
+
+        public object CreateNewModel() {
+            throw new NotImplementedException();
+        }
+
+        public DataTable GetTable(object model, string[] whereFields, bool like = false) {
+            throw new NotImplementedException();
+        }
+
+        public ResultSet GetTable(object model, string[] whereFields, bool like, int offset, int length) {
             throw new NotImplementedException();
         }
     }

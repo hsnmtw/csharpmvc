@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ControllerLibrary.Security {
+    [ForControllerAttribute(ControllersEnum.Audit, Enabled = true)]
     public class AuditController : AbstractController {
        
         public AuditController() : base(CollectionsFactory.GetCollection(CollectionsEnum.Audit)) {

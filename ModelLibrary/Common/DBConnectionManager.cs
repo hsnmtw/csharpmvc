@@ -79,6 +79,7 @@ namespace ModelLibrary.Common
             }
 
             using (var adaptor = dbFactory.CreateDataAdapter()){
+                
                 adaptor.SelectCommand = cmd;
                 adaptor.Fill(dt);
             }

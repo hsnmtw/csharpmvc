@@ -12,6 +12,7 @@ using ModelLibrary.Common;
 
 namespace ControllerLibrary.Security
 {
+    [ForControllerAttribute(ControllersEnum.User, Enabled = true)]
     public class UserController : AbstractController { 
     
         public UserController() : base(CollectionsFactory.GetCollection(CollectionsEnum.User)) {
