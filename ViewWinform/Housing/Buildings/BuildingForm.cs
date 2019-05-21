@@ -14,7 +14,7 @@ using System.Windows.Forms;
 using ViewWinform.Common;
 
 namespace ViewWinform.Housing.Buildings {
-    public partial class BuildingForm : Form {
+    public partial class BuildingForm : SingleForm {
 
         private BaseController roomCntrlr = ControllersFactory.GetController(Entities.Room);
         private BaseController controller = ControllersFactory.GetController(Entities.Building);
@@ -64,19 +64,17 @@ namespace ViewWinform.Housing.Buildings {
         private void Button3_Click(object sender, EventArgs e) {
             this.controller.Save(this.Model);
             Utils.FormsHelper.successMessage("SUCCESS");
-            this.Model = (BuildingModel)controller.Read(this.Model, new string[] {
-                "Building_Name"
-            }).First();
+            this.Model = (BuildingModel)controller.Read(this.Model, this.controller.GetMetaData().GetUniqueKeyFields).First();
         }
 
         private void Button2_Click(object sender, EventArgs e) {
             this.Model = new BuildingModel();
         }
 
-        private void LookUpButton1_OnLookUpSelected(object sender, EventArgs e) {
+        private void LookUpButton1_LookUpSelected(object sender, EventArgs e) {
             string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
             this.txtBuildingName.Text = selected;
-            this.Model = (BuildingModel)this.controller.Read(this.Model, new string[] { "Building_Name" }).First();
+            this.Model = (BuildingModel)this.controller.Read(this.Model, this.controller.GetMetaData().GetUniqueKeyFields).First();
 
         }
 

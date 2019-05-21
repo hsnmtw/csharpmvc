@@ -60,7 +60,7 @@ namespace ModelLibrary.Utils.TableDesigner {
                                       row.Cells[0].Value,
                                       row.Cells[1].Value,
                                       "".Equals(row.Cells[2].Value ?? "") ? null : string.Format("({0})", row.Cells[2].Value),
-                                      bool.Parse(row.Cells[3].Value.ToString()) ? "NOT NULL" : "",
+                                      bool.Parse($"{row.Cells[3].Value ?? false}") ? "NOT NULL" : "",
                                       row.Cells[4].Value)));
 
             this.textBox2.Text = string.Format("CREATE TABLE {0} (\r\n{1}\r\n);", this.textBox1.Text, FIELDS).Replace("\t()\t", "\t \t");

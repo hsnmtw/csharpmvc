@@ -14,7 +14,7 @@ using System.Windows.Forms;
 using ViewWinform.Common;
 
 namespace ViewWinform.Security.Entitlements {
-    public partial class EntitlementForm : Form {
+    public partial class EntitlementForm : SingleForm {
         public EntitlementForm() {
             InitializeComponent();
         }
@@ -44,6 +44,7 @@ namespace ViewWinform.Security.Entitlements {
                 this.Updated_By_TextBox.Text = _model.Updated_By;
                 this.Created_On_TextBox.Text = _model.Created_By == null || "".Equals(_model.Created_By) ? "" : _model.Created_On.ToString();
                 this.Updated_On_TextBox.Text = _model.Updated_By == null || "".Equals(_model.Updated_By) ? "" : _model.Updated_On.ToString();
+
                 this.Entitlement_Name_TextBox.Select();
                 this.Entitlement_Name_TextBox.Focus();
             }
@@ -56,7 +57,7 @@ namespace ViewWinform.Security.Entitlements {
         private void Button3_Click(object sender, EventArgs e) {
             this.controller.Save(this.Model);
             Utils.FormsHelper.successMessage("Successfully saved ...");
-            this.Entitlement_Name_Lookup_OnLookUpSelected(sender,new LookupEventArgs(this.Model.Entitlement_Name));
+            this.Entitlement_Name_Lookup_LookUpSelected(sender,new LookupEventArgs(this.Model.Entitlement_Name));
         }
 
         private void Button4_Click(object sender, EventArgs e) {
@@ -71,10 +72,8 @@ namespace ViewWinform.Security.Entitlements {
             this.Model = new EntitlementModel();
         }
 
-        private void Entitlement_Name_Lookup_OnLookUpSelected(object sender, EventArgs e) {
-            this.Model = (EntitlementModel)this.controller.Read(new EntitlementModel() {
-                Entitlement_Name = ((LookupEventArgs)e).SelectedValueFromLookup,
-            }, "Entitlement_Name".Split(','))[0];
+        private void Entitlement_Name_Lookup_LookUpSelected(object sender, EventArgs e) {
+            this.Model = (EntitlementModel)this.controller.Read(this.Model, this.controller.GetMetaData().GetUniqueKeyFields).First();
         }
     }
 }

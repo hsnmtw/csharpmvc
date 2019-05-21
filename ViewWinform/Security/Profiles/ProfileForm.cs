@@ -14,7 +14,7 @@ using System.Windows.Forms;
 using ViewWinform.Common;
 
 namespace ViewWinform.Security.Profiles {
-    public partial class ProfileForm : Form {
+    public partial class ProfileForm : SingleForm {
         public ProfileForm() {
             InitializeComponent();
         }
@@ -50,6 +50,7 @@ namespace ViewWinform.Security.Profiles {
                 this.Profile_Desc_TextBox.Text = _model.Profile_Desc;
                 this.Created_On_TextBox.Text = _model.Created_By == null || "".Equals(_model.Created_By) ? "" : _model.Created_On.ToString();
                 this.Updated_On_TextBox.Text = _model.Updated_By == null || "".Equals(_model.Updated_By) ? "" : _model.Updated_On.ToString();
+
                 this.Profile_Name_TextBox.Select();
                 this.Profile_Name_TextBox.Focus();
             }
@@ -68,7 +69,7 @@ namespace ViewWinform.Security.Profiles {
             this.peController.Dispatch("UpdateEntitlementForProfile", this.Model.Profile_Name,
                 (from object entl in listBox2.Items select entl.ToString()).ToList());
             Utils.FormsHelper.successMessage("Successfully saved ...");
-            this.Profile_Name_Lookup_OnLookUpSelected(e,new LookupEventArgs(this.Model.Profile_Name));
+            this.Profile_Name_Lookup_LookUpSelected(e,new LookupEventArgs(this.Model.Profile_Name));
         }
 
         private void Button4_Click(object sender, EventArgs e) {
@@ -121,11 +122,11 @@ namespace ViewWinform.Security.Profiles {
             this.listBox1.Items.AddRange(this.entitlements.ToArray());
         }
 
-        private void Profile_Name_Lookup_OnLookUpSelected(object sender, EventArgs e) {
+        private void Profile_Name_Lookup_LookUpSelected(object sender, EventArgs e) {
             string value = ((LookupEventArgs)e).SelectedValueFromLookup;
-            this.Model = (ProfileModel)this.controller.Read(new ProfileModel() {
-                Profile_Name = value,
-            }, "Profile_Name".Split(','))[0];
+
+            this.Model = (ProfileModel)this.controller.Read(this.Model, this.controller.GetMetaData().GetUniqueKeyFields).First();
+
             var selectedEntitlements = from ProfileEntitlementsModel model in this.peController.Read
                                        (
                                             new ProfileEntitlementsModel() { Profile_Name = value },

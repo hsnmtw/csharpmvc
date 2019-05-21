@@ -25,6 +25,10 @@ namespace ModelLibrary.Common {
             , [Entities.BuildingType       ] = new BuildingTypeCollection       ()
             , [Entities.ClientType         ] = new ClientTypeCollection         ()
             , [Entities.Client             ] = new ClientCollection             ()
+            , [Entities.Project            ] = new ProjectCollection            ()
+            , [Entities.AccomCategory      ] = new AccomCategoryCollection      ()
+            , [Entities.AccomClass         ] = new AccomClassCollection         ()
+            , [Entities.FoodClass          ] = new FoodClassCollection          ()
            };
         }
 

@@ -14,7 +14,7 @@ using System.Windows.Forms;
 using ViewWinform.Common;
 
 namespace ViewWinform.Housing.Rooms {
-    public partial class RoomForm : Form {
+    public partial class RoomForm : SingleForm {
 
         //private RoomController controller = new RoomController();
 
@@ -67,9 +67,7 @@ namespace ViewWinform.Housing.Rooms {
         private void Button3_Click(object sender, EventArgs e) {
             this.controller.Save(this.Model);
             Utils.FormsHelper.successMessage("SUCCESS");
-            this.Model = (RoomModel)controller.Read(this.Model, new string[] {
-                "Room_Name"
-            }).First();
+            this.Model = (RoomModel)controller.Read(this.Model, this.controller.GetMetaData().GetUniqueKeyFields).First();
         }
 
         private void Button4_Click(object sender, EventArgs e) {
@@ -82,10 +80,10 @@ namespace ViewWinform.Housing.Rooms {
             this.Model = new RoomModel();
         }
 
-        private void LookUpButton1_OnLookUpSelected(object sender, EventArgs e) {
+        private void LookUpButton1_LookUpSelected(object sender, EventArgs e) {
             string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
             this.txtRoomName.Text = selected;
-            this.Model = (RoomModel)this.controller.Read(this.Model, new string[] { "Room_Name" }).First();
+            this.Model = (RoomModel)this.controller.Read(this.Model, this.controller.GetMetaData().GetUniqueKeyFields).First();
 
         }
 

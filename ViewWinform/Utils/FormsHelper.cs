@@ -42,6 +42,10 @@ namespace ViewWinform.Utils
             {
                 if (allowedTypes.Contains(control.GetType()))
                 {
+                    if (control.GetType().Equals(typeof(TextBox)) && ((TextBox)control).Multiline) {
+                        continue;
+                    }
+
                     control.KeyDown += delegate (object sender, KeyEventArgs e)
                     {
                         if (e.KeyCode == Keys.Enter)

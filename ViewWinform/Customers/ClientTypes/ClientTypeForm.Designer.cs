@@ -180,7 +180,7 @@
             this.lookUpButtonClientType.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonClientType.TabIndex = 2;
             this.lookUpButtonClientType.TabStop = false;
-            this.lookUpButtonClientType.OnLookUpSelected += new System.EventHandler(this.LookUpButton1_OnLookUpSelected);
+            this.lookUpButtonClientType.LookUpSelected += new System.EventHandler(this.LookUpButton1_LookUpSelected);
             // 
             // panel2
             // 

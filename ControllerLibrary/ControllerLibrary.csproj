@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Billing\FoodClassController.cs" />
+    <Compile Include="Billing\AccomClassController.cs" />
+    <Compile Include="Billing\AccomCategoryController.cs" />
     <Compile Include="Common\AbstractController.cs" />
     <Compile Include="Common\BaseController.cs" />
     <Compile Include="Common\ForControllerAttribute.cs" />
@@ -51,6 +54,8 @@
     <Compile Include="Common\Session.cs" />
     <Compile Include="Configurations\ConfigurationsController.cs" />
     <Compile Include="Configurations\CryptoController.cs" />
+    <Compile Include="Customers\ProjectController.cs" />
+    <Compile Include="Customers\ClientController.cs" />
     <Compile Include="Customers\ClientTypeController.cs" />
     <Compile Include="Customers\NationalityController.cs" />
     <Compile Include="Housing\BuildingTypeController.cs" />

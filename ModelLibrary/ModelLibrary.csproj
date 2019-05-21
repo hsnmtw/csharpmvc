@@ -41,6 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Billing\AccomCategoryCollection.cs" />
+    <Compile Include="Billing\FoodClassCollection.cs" />
+    <Compile Include="Billing\AccomClassCollection.cs" />
+    <Compile Include="Billing\FoodClassModel.cs" />
+    <Compile Include="Billing\AccomClassModel.cs" />
+    <Compile Include="Billing\AccomCategoryModel.cs" />
     <Compile Include="Common\AbstractCollection.cs" />
     <Compile Include="Common\BaseModel.cs" />
     <Compile Include="Common\Entities.cs" />
@@ -56,6 +62,8 @@
     <Compile Include="Common\Statement.cs" />
     <Compile Include="Configurations\ConfigurationModel.cs" />
     <Compile Include="Configurations\CryptoModel.cs" />
+    <Compile Include="Customers\ProjectCollection.cs" />
+    <Compile Include="Customers\ProjectModel.cs" />
     <Compile Include="Customers\ClientTypeCollection.cs" />
     <Compile Include="Customers\ClientCollection.cs" />
     <Compile Include="Customers\ClientTypeModel.cs" />

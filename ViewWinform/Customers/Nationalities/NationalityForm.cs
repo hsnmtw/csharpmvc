@@ -14,7 +14,7 @@ using System.Windows.Forms;
 using ViewWinform.Common;
 
 namespace ViewWinform.Customers.Nationalities {
-    public partial class NationalityForm : Form {
+    public partial class NationalityForm : SingleForm {
 
         public NationalityForm() {
             InitializeComponent();
@@ -50,7 +50,10 @@ namespace ViewWinform.Customers.Nationalities {
                 this.Updated_By_TextBox.Text = _model.Updated_By;
                 this.Created_On_TextBox.Text = _model.Created_By == null || "".Equals(_model.Created_By) ? "" : _model.Created_On.ToString();
                 this.Updated_On_TextBox.Text = _model.Updated_By == null || "".Equals(_model.Updated_By) ? "" : _model.Updated_On.ToString();
-                
+
+                this.Nationality_Code_TextBox.Select();
+                this.Nationality_Code_TextBox.Focus();
+
             }
         }
 
@@ -80,7 +83,7 @@ namespace ViewWinform.Customers.Nationalities {
         private void Button3_Click(object sender, EventArgs e) {
             this.controller.Save(this.Model);
             Utils.FormsHelper.successMessage("Successfully saved ...");
-            Nationality_Code_TextBox_OnLookUpSelected(sender,new LookupEventArgs(this.Nationality_Code_TextBox.Text ));
+            Nationality_Code_TextBox_LookUpSelected(sender,new LookupEventArgs(this.Nationality_Code_TextBox.Text ));
         }
 
         private void Button4_Click(object sender, EventArgs e) {
@@ -89,10 +92,8 @@ namespace ViewWinform.Customers.Nationalities {
             this.Model = new NationalityModel();
         }
 
-        private void Nationality_Code_TextBox_OnLookUpSelected(object sender, EventArgs e) {
-            this.Model = (NationalityModel)this.controller.Read(new NationalityModel() {
-                Nationality_Code = ((LookupEventArgs)e).SelectedValueFromLookup,
-            }, "Nationality_Code".Split(','))[0];
+        private void Nationality_Code_TextBox_LookUpSelected(object sender, EventArgs e) {
+            this.Model = (NationalityModel)this.controller.Read(this.Model, this.controller.GetMetaData().GetUniqueKeyFields).First();
         }
     }
 }

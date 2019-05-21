@@ -24,9 +24,9 @@
         /// </summary>
         private void InitializeComponent() {
             this.txtCompoundName = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnNew = new System.Windows.Forms.Button();
             this.txtUpdatedOn = new System.Windows.Forms.TextBox();
             this.txtUpdatedBy = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -44,9 +44,9 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.lblRowHeader = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtBuildingType = new System.Windows.Forms.TextBox();
-            this.lookUpButtonBuildingType = new ViewWinform.Common.LookUpButton();
             this.label4 = new System.Windows.Forms.Label();
+            this.lookUpButtonBuildingType = new ViewWinform.Common.LookUpButton();
+            this.txtBuildingType = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -60,35 +60,35 @@
             this.txtCompoundName.Size = new System.Drawing.Size(154, 20);
             this.txtCompoundName.TabIndex = 5;
             // 
-            // button4
+            // btnDelete
             // 
-            this.button4.Location = new System.Drawing.Point(71, 267);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 13;
-            this.button4.Text = "Delete";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.Button4_Click);
+            this.btnDelete.Location = new System.Drawing.Point(71, 267);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 13;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.Button4_Click);
             // 
-            // button3
+            // btnSave
             // 
-            this.button3.Location = new System.Drawing.Point(179, 267);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 11;
-            this.button3.Text = "Save";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.Button3_Click);
+            this.btnSave.Location = new System.Drawing.Point(179, 267);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 11;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.Button3_Click);
             // 
-            // button2
+            // btnNew
             // 
-            this.button2.Location = new System.Drawing.Point(287, 267);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "New";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            this.btnNew.Location = new System.Drawing.Point(287, 267);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(75, 23);
+            this.btnNew.TabIndex = 12;
+            this.btnNew.Text = "New";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.Button2_Click);
             // 
             // txtUpdatedOn
             // 
@@ -205,7 +205,7 @@
             this.lookUpButton1.Size = new System.Drawing.Size(22, 22);
             this.lookUpButton1.TabIndex = 2;
             this.lookUpButton1.TabStop = false;
-            this.lookUpButton1.OnLookUpSelected += new System.EventHandler(this.LookUpButton1_OnLookUpSelected);
+            this.lookUpButton1.LookUpSelected += new System.EventHandler(this.LookUpButton1_LookUpSelected);
             // 
             // lookupComound
             // 
@@ -265,11 +265,11 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.txtCompoundName);
             this.panel1.Controls.Add(this.txtCreatedBy);
-            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.txtCreatedOn);
-            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.btnNew);
             this.panel1.Controls.Add(this.txtUpdatedBy);
             this.panel1.Controls.Add(this.txtUpdatedOn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -278,14 +278,14 @@
             this.panel1.Size = new System.Drawing.Size(413, 311);
             this.panel1.TabIndex = 0;
             // 
-            // txtBuildingType
+            // label4
             // 
-            this.txtBuildingType.BackColor = System.Drawing.SystemColors.Window;
-            this.txtBuildingType.Location = new System.Drawing.Point(151, 103);
-            this.txtBuildingType.Name = "txtBuildingType";
-            this.txtBuildingType.ReadOnly = true;
-            this.txtBuildingType.Size = new System.Drawing.Size(154, 20);
-            this.txtBuildingType.TabIndex = 3;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(49, 106);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(70, 13);
+            this.label4.TabIndex = 43;
+            this.label4.Text = "Building Type";
             // 
             // lookUpButtonBuildingType
             // 
@@ -299,14 +299,14 @@
             this.lookUpButtonBuildingType.TabIndex = 4;
             this.lookUpButtonBuildingType.TabStop = false;
             // 
-            // label4
+            // txtBuildingType
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(49, 106);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 13);
-            this.label4.TabIndex = 43;
-            this.label4.Text = "Building Type";
+            this.txtBuildingType.BackColor = System.Drawing.SystemColors.Window;
+            this.txtBuildingType.Location = new System.Drawing.Point(151, 103);
+            this.txtBuildingType.Name = "txtBuildingType";
+            this.txtBuildingType.ReadOnly = true;
+            this.txtBuildingType.Size = new System.Drawing.Size(154, 20);
+            this.txtBuildingType.TabIndex = 3;
             // 
             // BuildingForm
             // 
@@ -329,9 +329,9 @@
 
         private Common.LookUpButton lookupComound;
         private System.Windows.Forms.TextBox txtCompoundName;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.TextBox txtUpdatedOn;
         private System.Windows.Forms.TextBox txtUpdatedBy;
         private System.Windows.Forms.Label label6;

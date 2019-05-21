@@ -71,7 +71,14 @@ namespace ViewWinform.Common {
         //    }
         //}
 
-        public string SelectedValue => this.listBox1.SelectedIndex > -1 ? this.listBox1.SelectedItem.ToString().Substring(0,columnsWidths[0]).Trim() : null;
+        public string SelectedValue {
+            get {
+                if (this.listBox1.SelectedIndex < 0) return null;
+                string selected = $"{this.listBox1.SelectedItem}".Trim();
+                selected = selected.Substring(0, Math.Min(selected.Length, columnsWidths[0])).Trim();
+                return selected;
+            }
+        }
 
         private void LookUp_Load(object sender, EventArgs e) {
             //this.lblSearch.Text = "";

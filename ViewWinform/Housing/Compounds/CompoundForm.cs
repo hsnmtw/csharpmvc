@@ -14,7 +14,7 @@ using System.Windows.Forms;
 using ViewWinform.Common;
 
 namespace ViewWinform.Housing.Compounds {
-    public partial class CompoundForm : Form {
+    public partial class CompoundForm : SingleForm {
         public CompoundForm() {
             InitializeComponent();
         }
@@ -54,7 +54,7 @@ namespace ViewWinform.Housing.Compounds {
         private void Button3_Click(object sender, EventArgs e) {
             this.Model = (CompoundModel)this.controller.Save(this.Model);
             Utils.FormsHelper.successMessage("Successfully saved ...");
-            //Compound_Name_LookupButton_OnLookUpSelected(sender,new LookupEventArgs(this.Model.Compound_Name));
+            //Compound_Name_LookupButton_LookUpSelected(sender,new LookupEventArgs(this.Model.Compound_Name));
         }
 
         private void Button4_Click(object sender, EventArgs e) {
@@ -70,10 +70,8 @@ namespace ViewWinform.Housing.Compounds {
             this.Model = new CompoundModel();
         }
 
-        private void Compound_Name_LookupButton_OnLookUpSelected(object sender, EventArgs e) {
-            this.Model = (CompoundModel)this.controller.Read(new CompoundModel() {
-                Compound_Name = ((LookupEventArgs)e).SelectedValueFromLookup,
-            }, "Compound_Name".Split(',')).First();
+        private void Compound_Name_LookupButton_LookUpSelected(object sender, EventArgs e) {
+            this.Model = (CompoundModel)this.controller.Read(this.Model, this.controller.GetMetaData().GetUniqueKeyFields).First();
         }
 
         private void LookUpButton1_Load(object sender, EventArgs e) {

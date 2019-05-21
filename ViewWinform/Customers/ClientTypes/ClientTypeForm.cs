@@ -14,7 +14,7 @@ using System.Windows.Forms;
 using ViewWinform.Common;
 
 namespace ViewWinform.Customers.ClientTypes {
-    public partial class ClientTypeForm : Form {
+    public partial class ClientTypeForm : SingleForm {
 
         //private BaseController bldgCntrlr = ControllersFactory.GetController(Entities.Client);
         private BaseController controller = ControllersFactory.GetController(Entities.ClientType);
@@ -61,19 +61,17 @@ namespace ViewWinform.Customers.ClientTypes {
         private void Button3_Click(object sender, EventArgs e) {
             this.controller.Save(this.Model);
             Utils.FormsHelper.successMessage("SUCCESS");
-            this.Model = (ClientTypeModel)controller.Read(this.Model, new string[] {
-                "Client_Type"
-            }).First();
+            this.Model = (ClientTypeModel)controller.Read(this.Model, this.controller.GetMetaData().GetUniqueKeyFields).First();
         }
 
         private void Button2_Click(object sender, EventArgs e) {
             this.Model = new ClientTypeModel();
         }
 
-        private void LookUpButton1_OnLookUpSelected(object sender, EventArgs e) {
+        private void LookUpButton1_LookUpSelected(object sender, EventArgs e) {
             string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
             this.txtClientType.Text = selected;
-            this.Model = (ClientTypeModel)this.controller.Read(this.Model, new string[] { "Client_Type" }).First();
+            this.Model = (ClientTypeModel)this.controller.Read(this.Model, this.controller.GetMetaData().GetUniqueKeyFields).First();
 
         }
 

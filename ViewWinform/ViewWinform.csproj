@@ -46,6 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Billing\AccommodationCategories\FoodClasses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Billing\AccommodationCategories\FoodClasses.Designer.cs">
+      <DependentUpon>FoodClasses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Billing\AccommodationCategories\AccommodationClasses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Billing\AccommodationCategories\AccommodationClasses.Designer.cs">
+      <DependentUpon>AccommodationClasses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Billing\AccommodationCategories\AccommodationCategories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Billing\AccommodationCategories\AccommodationCategories.Designer.cs">
+      <DependentUpon>AccommodationCategories.cs</DependentUpon>
+    </Compile>
     <Compile Include="Common\BaseView.cs" />
     <Compile Include="Common\CommonView.cs">
       <SubType>Form</SubType>
@@ -73,6 +91,10 @@
     <Compile Include="Common\RecordsNavigator.Designer.cs">
       <DependentUpon>RecordsNavigator.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\ISingleForm.cs" />
+    <Compile Include="Common\SingleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Configurations\ConfigurationsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +119,12 @@
     <Compile Include="Configurations\DBMaintenance.Designer.cs">
       <DependentUpon>DBMaintenance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Customers\Clients\ClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customers\Clients\ClientForm.Designer.cs">
+      <DependentUpon>ClientForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customers\ClientTypes\ClientTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +136,12 @@
     </Compile>
     <Compile Include="Customers\Nationalities\NationalityForm.Designer.cs">
       <DependentUpon>NationalityForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customers\Projects\ProjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customers\Projects\ProjectForm.Designer.cs">
+      <DependentUpon>ProjectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Housing\Buildings\BuildingForm.cs">
       <SubType>Form</SubType>
@@ -212,6 +246,15 @@
     <Compile Include="Utils\TableDesigner\TableDesignerView.Designer.cs">
       <DependentUpon>TableDesignerView.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Billing\AccommodationCategories\FoodClasses.resx">
+      <DependentUpon>FoodClasses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Billing\AccommodationCategories\AccommodationClasses.resx">
+      <DependentUpon>AccommodationClasses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Billing\AccommodationCategories\AccommodationCategories.resx">
+      <DependentUpon>AccommodationCategories.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Common\CommonView.resx">
       <DependentUpon>CommonView.cs</DependentUpon>
     </EmbeddedResource>
@@ -236,11 +279,17 @@
     <EmbeddedResource Include="Configurations\DBMaintenance.resx">
       <DependentUpon>DBMaintenance.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Customers\Clients\ClientForm.resx">
+      <DependentUpon>ClientForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Customers\ClientTypes\ClientTypeForm.resx">
       <DependentUpon>ClientTypeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Customers\Nationalities\NationalityForm.resx">
       <DependentUpon>NationalityForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customers\Projects\ProjectForm.resx">
+      <DependentUpon>ProjectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Housing\Buildings\BuildingForm.resx">
       <DependentUpon>BuildingForm.cs</DependentUpon>
@@ -409,8 +458,6 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Customers\Clients\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

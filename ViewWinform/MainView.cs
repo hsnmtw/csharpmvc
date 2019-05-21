@@ -16,6 +16,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ModelLibrary.Common;
+using ViewWinform.Common;
 
 namespace ViewWinform
 {
@@ -260,6 +261,44 @@ namespace ViewWinform
 
         private void ClientTypesToolStripMenuItem_Click(object sender, EventArgs e) {
             new Customers.ClientTypes.ClientTypeForm() { MdiParent = this }.Show();
+        }
+
+        private void ClientsToolStripMenuItem_Click(object sender, EventArgs e) {
+            new Customers.Clients.ClientForm() { MdiParent = this }.Show();
+        }
+
+        private void ProjectsToolStripMenuItem_Click(object sender, EventArgs e) {
+            new Customers.Projects.ProjectForm() { MdiParent = this }.Show();
+        }
+
+        private void AccommodationCategoriesToolStripMenuItem_Click(object sender, EventArgs e) {
+            new Billing.AccomodationCategories.AccomodationCategoryForm() { MdiParent = this }.Show();
+        }
+
+        private void AccomodationClassesToolStripMenuItem_Click(object sender, EventArgs e) {
+            new Billing.AccomodationClasses.AccomodationClassForm() { MdiParent = this }.Show();
+        }
+
+        private void NewToolStripMenuItem_Click(object sender, EventArgs e) {
+            try { ((ISingleForm)this.ActiveMdiChild).PerformAction("New"); } catch { }
+        }
+
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e) {
+            try { ((ISingleForm)this.ActiveMdiChild).PerformAction("Save"); } catch { }
+        }
+
+        private void DeleteToolStripMenuItem_Click_1(object sender, EventArgs e) {
+            try { ((ISingleForm)this.ActiveMdiChild).PerformAction("Delete"); } catch { }
+        }
+
+        private void FoodClassesToolStripMenuItem_Click(object sender, EventArgs e) {
+            new Billing.FoodClasses.FoodClassForm() { MdiParent = this }.Show();
+        }
+
+        private void CloseToolStripMenuItem_Click(object sender, EventArgs e) {
+            try {
+                this.ActiveMdiChild.Close();
+            } catch { }
         }
     }
 }

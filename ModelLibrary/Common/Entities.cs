@@ -8,17 +8,22 @@ namespace ModelLibrary.Common {
     [Serializable]
     [Flags]
     public enum Entities {
-          Audit                 
+          AccomCategory
+        , AccomClass
+        , Audit                 
         , Building
         , BuildingType
         , Client
         , ClientType
         , Compound              
-        , Entitlement           
+        , Entitlement     
+        , FoodClass
         , Nationality           
         , Profile               
-        , ProfileEntitlement   
+        , ProfileEntitlement  
+        , Project
         , Room                  
-        , User                  
+        , User          
+        
     }
 }

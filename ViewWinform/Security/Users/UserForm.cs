@@ -11,9 +11,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ViewWinform.Common;
 
 namespace ViewWinform.Security.Users {
-    public partial class UserForm : Form {
+    public partial class UserForm : SingleForm {
         public UserForm() {
             InitializeComponent();
         }
@@ -62,6 +63,7 @@ namespace ViewWinform.Security.Users {
                 this.FailedLogins_TextBox.Text =_model.Failed_Login_Attempts.ToString();
                 this.User_Password_TextBox.Text = _model.User_Password;
                 this.Confirm_User_Password_TextBox.Text = this.User_Password_TextBox.Text;
+
                 this.User_Name_TextBox.Select();
                 this.User_Name_TextBox.Focus();
             }
@@ -78,7 +80,7 @@ namespace ViewWinform.Security.Users {
             }
             this.controller.Save(this.Model);
             Utils.FormsHelper.successMessage("Successfully saved ...");
-            User_Code_TextBox_OnLookUpSelected(this.Model.User_Name);
+            User_Code_TextBox_LookUpSelected(this.Model.User_Name);
         }
 
         private void Button4_Click(object sender, EventArgs e) {
@@ -87,10 +89,8 @@ namespace ViewWinform.Security.Users {
             this.Model = new UserModel();
         }
 
-        private void User_Code_TextBox_OnLookUpSelected(string value) {
-            this.Model = (UserModel)this.controller.Read(new UserModel() {
-                User_Name = value,
-            }, "User_Name".Split(','))[0];
+        private void User_Code_TextBox_LookUpSelected(string value) {
+            this.Model = (UserModel)this.controller.Read(this.Model, this.controller.GetMetaData().GetUniqueKeyFields).First();
         }
 
         private void UserForm_Load(object sender, EventArgs e) {
@@ -109,14 +109,12 @@ namespace ViewWinform.Security.Users {
             }
         }
 
-        private void Profile_Name_Lookup_OnLookUpSelected(object sender, EventArgs e) {
+        private void Profile_Name_Lookup_LookUpSelected(object sender, EventArgs e) {
 
         }
 
-        private void User_Name_Lookup_OnLookUpSelected(object sender, EventArgs e) {
-            this.Model = (UserModel)this.controller.Read(new UserModel() {
-                User_Name = this.User_Name_TextBox.Text 
-            }, new string[]{"User_Name"}).First();
+        private void User_Name_Lookup_LookUpSelected(object sender, EventArgs e) {
+            this.Model = (UserModel)this.controller.Read(this.Model, this.controller.GetMetaData().GetUniqueKeyFields).First();
         }
 
         private void Profile_Name_TextBox_TextChanged(object sender, EventArgs e) {

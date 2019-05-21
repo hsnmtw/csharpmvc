@@ -17,32 +17,28 @@ using ModelLibrary.Common;
 namespace ViewWinform.Common {
 
 
-
+    [DefaultEvent("LookUpSelected")]
     public partial class LookUpButton : UserControl {
 
         public const string ARROW = "↓";
 
         [Category("(Lookup)")]
         [Description("This event is fired after the user selects an item from the lookup form.")]
-        public event EventHandler OnLookUpSelected;
+        public event EventHandler LookUpSelected;
 
         private string valueFromLookup;
         public string ValueFromLookup => valueFromLookup;
         private LookUpForm lookup;
         private Control control;
-
         private BaseController _controller = null;
-
-
 
         public LookUpButton() {
             InitializeComponent();
-            //this.AssociatedControl = null;
             this.button1.Text = ARROW;
             this.Font = new Font("Consolas", 10, FontStyle.Bold);
             this.ShowFieldsInLookUp = new List<string>();
             //this.button1.Click += Button1_Click;
-
+            //this.AssociatedControl = null;
         }
 
         private void Button1_Click(object sender, EventArgs e) {
@@ -51,13 +47,13 @@ namespace ViewWinform.Common {
                 valueFromLookup = lookup.SelectedValue;//[this.SelectedFieldFromLookUp];
                 if (this.AssociatedControl != null && !"".Equals(this.AssociatedControl)) {
                     try {
-                        control.Text = valueFromLookup;
+                        control.Text = $"{valueFromLookup}".Trim();
                     }catch(Exception ex) {
                         Console.WriteLine($"Exception : {ex.Message}");
                     }
                 }
-                if (this.OnLookUpSelected != null) {
-                    this.OnLookUpSelected(sender, new LookupEventArgs(valueFromLookup));
+                if (this.LookUpSelected != null) {
+                    this.LookUpSelected(sender, new LookupEventArgs(valueFromLookup));
                 }
             }
         }

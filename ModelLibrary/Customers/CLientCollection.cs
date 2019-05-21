@@ -10,7 +10,7 @@ namespace ModelLibrary.Customers {
         public override MetaData MetaData => new MetaData() {
               GetModelType        = typeof(ClientModel)
             , GetPrimaryKeyFields = "Id".Split(',')
-            , GetRequiredFields   = "Id,Short_Name,Long_Name".Split(',')
+            , GetRequiredFields   = "Id,Short_Name,Long_Name,Client_Type".Split(',')
             , GetSource           = "Customers_Client"
             , GetUniqueKeyFields  = new string[] { "Short_Name" }
         };
