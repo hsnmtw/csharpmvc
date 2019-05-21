@@ -12,10 +12,16 @@ using System.Windows.Forms;
 namespace ViewWinform.Common {
     public partial class LookUpForm : Form {
 
-        
+        private int[] columnsWidths;
         
         public LookUpForm() {
             InitializeComponent();
+        }
+
+        public string SearchText {
+            set {
+                this.lblSearch.Text = value;
+            }
         }
 
         private BaseController Controller;
@@ -54,28 +60,34 @@ namespace ViewWinform.Common {
             this.Controller = controller;
         }
 
-        public string[] SelectedValue {
-            get {
-                if (this.dataGridView1.SelectedRows.Count > 0) {
-                    return (from DataGridViewCell cell
-                              in this.dataGridView1.SelectedRows[0].Cells
-                          select cell.Value.ToString()).ToArray();
-                }
-                return new string[this.dataGridView1.ColumnCount];
-            }
-        }
+        //public string[] SelectedValue {
+        //    get {
+        //        if (this.dataGridView1.SelectedRows.Count > 0) {
+        //            return (from DataGridViewCell cell
+        //                      in this.dataGridView1.SelectedRows[0].Cells
+        //                  select cell.Value.ToString()).ToArray();
+        //        }
+        //        return new string[this.dataGridView1.ColumnCount];
+        //    }
+        //}
+
+        public string SelectedValue => this.listBox1.SelectedIndex > -1 ? this.listBox1.SelectedItem.ToString().Substring(0,columnsWidths[0]).Trim() : null;
 
         private void LookUp_Load(object sender, EventArgs e) {
-            this.label1.Text = "";
-            if (this.PageSize <1) this.PageSize = 10;
+            //this.lblSearch.Text = "";
+            if (this.PageSize <1) this.PageSize = 15;
             this.Page = 1;
             Requery();
+            listBox1.Select();
+            listBox1.Focus();
         }
 
         public void Requery() {
             object model = this.Controller.CreateNewModel();
-            model.GetType().GetProperty(shownColumns[0]).SetValue(model, $"%{label1.Text}%");
+            model.GetType().GetProperty(shownColumns[0]).SetValue(model, $"%{lblSearch.Text}%");
             var result = this.Controller.GetTable(model,new string[] {shownColumns[0]},true,this.Page,PageSize);
+            
+
             var source = result.Table;
 
             if (shownColumns == null || shownColumns.Length == 0) {
@@ -93,8 +105,36 @@ namespace ViewWinform.Common {
             DataView view = new DataView(source);
             view.Sort = $"{shownColumns[0]} ASC";
 
-            this.dataGridView1.DataSource = view.ToTable(false,shownColumns);
-            this.dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            //this.dataGridView1.DataSource = view.ToTable(false,shownColumns);
+            //this.dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            var table = view.ToTable(false, shownColumns);
+            this.columnsWidths = new int[shownColumns.Length];
+            for (int j = 0; j < table.Columns.Count; j++) {
+                this.columnsWidths[j] = Math.Max(this.columnsWidths[j], table.Columns[j].ColumnName.Length);
+            }
+            for (int i = 0; i < table.Rows.Count; i++) {
+                for(int j=0;j< table.Columns.Count; j++) {
+                    this.columnsWidths[j] = Math.Max(this.columnsWidths[j], table.Rows[i][j].ToString().Length); 
+                }
+            }
+
+
+            var sb = new StringBuilder();
+            for (int j = 0; j < table.Columns.Count; j++) {
+                sb.Append(string.Format(" {0,-" + columnsWidths[j] + "}  ", table.Columns[j].ColumnName));
+            }
+            this.lblRowHeader.Text = sb.ToString();
+
+            this.listBox1.Items.Clear();
+            for (int i = 0; i < table.Rows.Count; i++) {
+                sb = new StringBuilder();
+                for (int j = 0; j < table.Columns.Count; j++) {
+                    sb.Append(string.Format(" {0,-"+ columnsWidths[j] +"}  ", table.Rows[i][j]));
+                }
+                this.listBox1.Items.Add(sb);
+            }
+            if (this.listBox1.Items.Count > 0) this.listBox1.SelectedIndex = 0;
         }
 
         private void LookUp_KeyDown(object sender, KeyEventArgs e) {
@@ -104,14 +144,14 @@ namespace ViewWinform.Common {
         private void DataGridView1_KeyDown(object sender, KeyEventArgs e) {
             switch (e.KeyCode) {
                 case Keys.Back:
-                    if (this.label1.Text.Length > 0) {
-                        this.label1.Text = this.label1.Text.Substring(0, this.label1.Text.Length - 1);
+                    if (this.lblSearch.Text.Length > 0) {
+                        this.lblSearch.Text = this.lblSearch.Text.Substring(0, this.lblSearch.Text.Length - 1);
                     }
                     e.SuppressKeyPress = true;
                     e.Handled = true;
                     break;
                 case Keys.Enter:
-                    if (this.dataGridView1.SelectedRows.Count > 0) this.DialogResult = DialogResult.OK;
+                    if (this.listBox1.SelectedIndex > -1) this.DialogResult = DialogResult.OK;
                     this.Close();
                     e.SuppressKeyPress = true;
                     e.Handled = true;
@@ -123,8 +163,8 @@ namespace ViewWinform.Common {
             }
             
         }
-        private void DataGridView1_KeyPress(object sender, KeyPressEventArgs e) {
-            this.label1.Text += e.KeyChar;
+        public void DataGridView1_KeyPress(object sender, KeyPressEventArgs e) {
+            this.lblSearch.Text += e.KeyChar;
             
         }
 

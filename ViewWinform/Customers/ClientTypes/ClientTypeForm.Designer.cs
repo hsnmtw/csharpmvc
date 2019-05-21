@@ -1,14 +1,14 @@
-﻿namespace ViewWinform.Housing.Buildings {
-    partial class BuildingForm {
-        /// <summary>
+﻿namespace ViewWinform.Customers.ClientTypes {
+    partial class ClientTypeForm {
+        /// <summaryClient
         /// Required designer variable.
-        /// </summary>
+        /// </summaryClient
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
+        /// <summaryClient
         /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// </summaryClient
+        /// <param name="disposing"Clienttrue if managed resources should be disposed; otherwise, false.</paramClient
         protected override void Dispose(bool disposing) {
             if (disposing && (components != null)) {
                 components.Dispose();
@@ -18,12 +18,11 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
+        /// <summaryClient
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
-        /// </summary>
+        /// </summaryClient
         private void InitializeComponent() {
-            this.txtCompoundName = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -33,39 +32,25 @@
             this.txtCreatedOn = new System.Windows.Forms.TextBox();
             this.txtCreatedBy = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtBuildingName = new System.Windows.Forms.TextBox();
-            this.lookUpButton1 = new ViewWinform.Common.LookUpButton();
-            this.lookupComound = new ViewWinform.Common.LookUpButton();
+            this.txtClientType = new System.Windows.Forms.TextBox();
+            this.lookUpButtonClientType = new ViewWinform.Common.LookUpButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.lblRowHeader = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtBuildingType = new System.Windows.Forms.TextBox();
-            this.lookUpButtonBuildingType = new ViewWinform.Common.LookUpButton();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // txtCompoundName
-            // 
-            this.txtCompoundName.BackColor = System.Drawing.SystemColors.Window;
-            this.txtCompoundName.Location = new System.Drawing.Point(151, 131);
-            this.txtCompoundName.Name = "txtCompoundName";
-            this.txtCompoundName.ReadOnly = true;
-            this.txtCompoundName.Size = new System.Drawing.Size(154, 20);
-            this.txtCompoundName.TabIndex = 5;
             // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(71, 267);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 13;
+            this.button4.TabIndex = 11;
             this.button4.Text = "Delete";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.Button4_Click);
@@ -75,7 +60,7 @@
             this.button3.Location = new System.Drawing.Point(179, 267);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 11;
+            this.button3.TabIndex = 9;
             this.button3.Text = "Save";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Button3_Click);
@@ -85,7 +70,7 @@
             this.button2.Location = new System.Drawing.Point(287, 267);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 12;
+            this.button2.TabIndex = 10;
             this.button2.Text = "New";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
@@ -97,7 +82,7 @@
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
             this.txtUpdatedOn.Size = new System.Drawing.Size(137, 20);
-            this.txtUpdatedOn.TabIndex = 10;
+            this.txtUpdatedOn.TabIndex = 8;
             this.txtUpdatedOn.TabStop = false;
             // 
             // txtUpdatedBy
@@ -107,7 +92,7 @@
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
             this.txtUpdatedBy.Size = new System.Drawing.Size(69, 20);
-            this.txtUpdatedBy.TabIndex = 9;
+            this.txtUpdatedBy.TabIndex = 7;
             this.txtUpdatedBy.TabStop = false;
             // 
             // label6
@@ -126,7 +111,7 @@
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
             this.txtCreatedOn.Size = new System.Drawing.Size(137, 20);
-            this.txtCreatedOn.TabIndex = 8;
+            this.txtCreatedOn.TabIndex = 6;
             this.txtCreatedOn.TabStop = false;
             // 
             // txtCreatedBy
@@ -136,7 +121,7 @@
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
             this.txtCreatedBy.Size = new System.Drawing.Size(69, 20);
-            this.txtCreatedBy.TabIndex = 7;
+            this.txtCreatedBy.TabIndex = 5;
             this.txtCreatedBy.TabStop = false;
             // 
             // label5
@@ -147,15 +132,6 @@
             this.label5.Size = new System.Drawing.Size(61, 13);
             this.label5.TabIndex = 45;
             this.label5.Text = "Created by";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(49, 134);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 13);
-            this.label2.TabIndex = 43;
-            this.label2.Text = "Comound Name";
             // 
             // txtId
             // 
@@ -181,43 +157,30 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(49, 76);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 13);
+            this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 43;
-            this.label3.Text = "Building Name";
+            this.label3.Text = "Client Type";
             // 
-            // txtBuildingName
+            // txtClientType
             // 
-            this.txtBuildingName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtBuildingName.Location = new System.Drawing.Point(151, 73);
-            this.txtBuildingName.Name = "txtBuildingName";
-            this.txtBuildingName.Size = new System.Drawing.Size(154, 20);
-            this.txtBuildingName.TabIndex = 1;
+            this.txtClientType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtClientType.Location = new System.Drawing.Point(151, 73);
+            this.txtClientType.Name = "txtClientType";
+            this.txtClientType.Size = new System.Drawing.Size(154, 20);
+            this.txtClientType.TabIndex = 1;
             // 
-            // lookUpButton1
+            // lookUpButtonClientType
             // 
-            this.lookUpButton1.AssociatedControl = "txtBuildingName";
-            this.lookUpButton1.Controller = "Building";
-            this.lookUpButton1.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButton1.Location = new System.Drawing.Point(306, 72);
-            this.lookUpButton1.Name = "lookUpButton1";
-            this.lookUpButton1.ShowFieldsInLookUp.Add("Building_Name");
-            this.lookUpButton1.ShowFieldsInLookUp.Add("Compound_Name");
-            this.lookUpButton1.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButton1.TabIndex = 2;
-            this.lookUpButton1.TabStop = false;
-            this.lookUpButton1.OnLookUpSelected += new System.EventHandler(this.LookUpButton1_OnLookUpSelected);
-            // 
-            // lookupComound
-            // 
-            this.lookupComound.AssociatedControl = "txtCompoundName";
-            this.lookupComound.Controller = "Compound";
-            this.lookupComound.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookupComound.Location = new System.Drawing.Point(306, 130);
-            this.lookupComound.Name = "lookupComound";
-            this.lookupComound.ShowFieldsInLookUp.Add("Compound_Name");
-            this.lookupComound.Size = new System.Drawing.Size(22, 22);
-            this.lookupComound.TabIndex = 6;
-            this.lookupComound.TabStop = false;
+            this.lookUpButtonClientType.AssociatedControl = "txtClientType";
+            this.lookUpButtonClientType.Controller = "ClientType";
+            this.lookUpButtonClientType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.lookUpButtonClientType.Location = new System.Drawing.Point(306, 72);
+            this.lookUpButtonClientType.Name = "lookUpButtonClientType";
+            this.lookUpButtonClientType.ShowFieldsInLookUp.Add("Client_Type");
+            this.lookUpButtonClientType.Size = new System.Drawing.Size(22, 22);
+            this.lookUpButtonClientType.TabIndex = 2;
+            this.lookUpButtonClientType.TabStop = false;
+            this.lookUpButtonClientType.OnLookUpSelected += new System.EventHandler(this.LookUpButton1_OnLookUpSelected);
             // 
             // panel2
             // 
@@ -238,7 +201,7 @@
             this.listBox1.Location = new System.Drawing.Point(3, 20);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(259, 288);
-            this.listBox1.TabIndex = 1;
+            this.listBox1.TabIndex = 0;
             // 
             // lblRowHeader
             // 
@@ -247,23 +210,17 @@
             this.lblRowHeader.Location = new System.Drawing.Point(3, 3);
             this.lblRowHeader.Name = "lblRowHeader";
             this.lblRowHeader.Size = new System.Drawing.Size(259, 17);
-            this.lblRowHeader.TabIndex = 0;
-            this.lblRowHeader.Text = "Room_Name";
+            this.lblRowHeader.TabIndex = 1;
+            this.lblRowHeader.Text = "Client_Name";
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtId);
-            this.panel1.Controls.Add(this.lookUpButton1);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.txtBuildingName);
+            this.panel1.Controls.Add(this.lookUpButtonClientType);
+            this.panel1.Controls.Add(this.txtClientType);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.lookUpButtonBuildingType);
-            this.panel1.Controls.Add(this.lookupComound);
-            this.panel1.Controls.Add(this.txtBuildingType);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.txtCompoundName);
             this.panel1.Controls.Add(this.txtCreatedBy);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.txtCreatedOn);
@@ -278,46 +235,16 @@
             this.panel1.Size = new System.Drawing.Size(413, 311);
             this.panel1.TabIndex = 0;
             // 
-            // txtBuildingType
-            // 
-            this.txtBuildingType.BackColor = System.Drawing.SystemColors.Window;
-            this.txtBuildingType.Location = new System.Drawing.Point(151, 103);
-            this.txtBuildingType.Name = "txtBuildingType";
-            this.txtBuildingType.ReadOnly = true;
-            this.txtBuildingType.Size = new System.Drawing.Size(154, 20);
-            this.txtBuildingType.TabIndex = 3;
-            // 
-            // lookUpButtonBuildingType
-            // 
-            this.lookUpButtonBuildingType.AssociatedControl = "txtBuildingType";
-            this.lookUpButtonBuildingType.Controller = "BuildingType";
-            this.lookUpButtonBuildingType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonBuildingType.Location = new System.Drawing.Point(306, 102);
-            this.lookUpButtonBuildingType.Name = "lookUpButtonBuildingType";
-            this.lookUpButtonBuildingType.ShowFieldsInLookUp.Add("Building_Type");
-            this.lookUpButtonBuildingType.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonBuildingType.TabIndex = 4;
-            this.lookUpButtonBuildingType.TabStop = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(49, 106);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 13);
-            this.label4.TabIndex = 43;
-            this.label4.Text = "Building Type";
-            // 
-            // BuildingForm
+            // ClientTypeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(678, 311);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Name = "BuildingForm";
-            this.Text = "Buildings";
-            this.Load += new System.EventHandler(this.BuildingForm_Load);
+            this.Name = "ClientTypeForm";
+            this.Text = "Client Types";
+            this.Load += new System.EventHandler(this.ClientTypeForm_Load);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -326,9 +253,6 @@
         }
 
         #endregion
-
-        private Common.LookUpButton lookupComound;
-        private System.Windows.Forms.TextBox txtCompoundName;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
@@ -338,18 +262,14 @@
         private System.Windows.Forms.TextBox txtCreatedOn;
         private System.Windows.Forms.TextBox txtCreatedBy;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtBuildingName;
-        private Common.LookUpButton lookUpButton1;
+        private System.Windows.Forms.TextBox txtClientType;
+        private Common.LookUpButton lookUpButtonClientType;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label lblRowHeader;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label4;
-        private Common.LookUpButton lookUpButtonBuildingType;
-        private System.Windows.Forms.TextBox txtBuildingType;
     }
 }

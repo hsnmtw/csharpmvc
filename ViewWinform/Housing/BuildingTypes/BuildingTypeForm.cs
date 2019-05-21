@@ -13,18 +13,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ViewWinform.Common;
 
-namespace ViewWinform.Housing.Buildings {
-    public partial class BuildingForm : Form {
+namespace ViewWinform.Housing.BuildingTypes {
+    public partial class BuildingTypeForm : Form {
 
-        private BaseController roomCntrlr = ControllersFactory.GetController(Entities.Room);
-        private BaseController controller = ControllersFactory.GetController(Entities.Building);
-        private BuildingModel _model = new BuildingModel();
+        private BaseController bldgCntrlr = ControllersFactory.GetController(Entities.Building);
+        private BaseController controller = ControllersFactory.GetController(Entities.BuildingType);
+        private BuildingTypeModel _model = new BuildingTypeModel();
 
-        public BuildingModel Model {
+        public BuildingTypeModel Model {
             get {
                 _model.Id = int.Parse($"0{this.txtId.Text}");
-                _model.Compound_Name = this.txtCompoundName.Text;
-                _model.Building_Name = this.txtBuildingName.Text;
                 _model.Building_Type = this.txtBuildingType.Text;
                 _model.Created_By = this.txtCreatedBy.Text;
                 _model.Updated_By = this.txtUpdatedBy.Text;
@@ -36,8 +34,6 @@ namespace ViewWinform.Housing.Buildings {
             }
             set {
                 this._model = value;
-                this.txtBuildingName.Text = _model.Building_Name;
-                this.txtCompoundName.Text = _model.Compound_Name;
                 this.txtBuildingType.Text = _model.Building_Type;
                 this.txtId.Text = _model.Id.ToString();
                 this.txtCreatedBy.Text = _model.Created_By;
@@ -45,42 +41,43 @@ namespace ViewWinform.Housing.Buildings {
                 this.txtCreatedOn.Text = _model.Created_By == null || "".Equals(_model.Created_By) ? "" : _model.Created_On.ToString();
                 this.txtUpdatedOn.Text = _model.Updated_By == null || "".Equals(_model.Updated_By) ? "" : _model.Updated_On.ToString();
                 this.listBox1.Items.Clear();
-                this.listBox1.Items.AddRange((from RoomModel room in this.roomCntrlr.Read(new RoomModel() { Building_Name = _model.Building_Name },new string[] { "Building_Name" }) select room.Room_Name).ToArray());
-                this.txtBuildingName.Select();
-                this.txtBuildingName.Focus();
+                this.listBox1.Items.AddRange((from BuildingModel building in bldgCntrlr.Read(new BuildingModel() { Building_Type = _model.Building_Type },new string[] { "Building_Type" }) select building.Building_Name).ToArray());
+
+                this.txtBuildingType.Select();
+                this.txtBuildingType.Focus();
             }
         }
 
-        public BuildingForm() {
+        public BuildingTypeForm() {
             InitializeComponent();
         }
 
         private void Button4_Click(object sender, EventArgs e) {
             this.controller.Delete(this.Model);
             Utils.FormsHelper.successMessage("SUCCESS");
-            this.Model = new BuildingModel();
+            this.Model = new BuildingTypeModel();
         }
 
         private void Button3_Click(object sender, EventArgs e) {
             this.controller.Save(this.Model);
             Utils.FormsHelper.successMessage("SUCCESS");
-            this.Model = (BuildingModel)controller.Read(this.Model, new string[] {
-                "Building_Name"
+            this.Model = (BuildingTypeModel)controller.Read(this.Model, new string[] {
+                "Building_Type"
             }).First();
         }
 
         private void Button2_Click(object sender, EventArgs e) {
-            this.Model = new BuildingModel();
+            this.Model = new BuildingTypeModel();
         }
 
         private void LookUpButton1_OnLookUpSelected(object sender, EventArgs e) {
             string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            this.txtBuildingName.Text = selected;
-            this.Model = (BuildingModel)this.controller.Read(this.Model, new string[] { "Building_Name" }).First();
+            this.txtBuildingType.Text = selected;
+            this.Model = (BuildingTypeModel)this.controller.Read(this.Model, new string[] { "Building_Type" }).First();
 
         }
 
-        private void BuildingForm_Load(object sender, EventArgs e) {
+        private void BuildingTypeForm_Load(object sender, EventArgs e) {
             ViewWinform.Utils.FormsHelper.registerEnterAsTab(this.panel1);
         }
     }

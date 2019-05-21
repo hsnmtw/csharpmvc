@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Threading.Tasks;
 
 namespace ModelLibrary.Common
 {
-    public class DBConnectionManager : IDBConnectionManager
+    public class DBConnectionManager : IDBConnectionManager, IDisposable
     {
         public static string
             DB_CONFIG_FACTORY   ,
@@ -22,10 +23,7 @@ namespace ModelLibrary.Common
         public DataTable SchemaTables { get { return this.connection.GetSchema("Tables"); } }
         public DataTable SchemaColumns { get; private set; }
 
-
-        private DBConnectionManager()
-        {
-        }
+        private DBConnectionManager() { }
 
         public ResultSet Execute(Statement statement) 
         {
@@ -119,8 +117,12 @@ namespace ModelLibrary.Common
                 throw new InvalidOperationException("database is null or already closed");
             }
             this.connection.Close();
+            try {
+                this.connection.GetType().GetMethod("ReleaseObjectPool").Invoke(null,null);
+            } catch { }
             this.connection.Dispose();
             this.connection = null;
+            GC.Collect();
         }
 
         public static DBConnectionManager Instance { get {
@@ -131,5 +133,75 @@ namespace ModelLibrary.Common
                 return _instance;
         } }
 
+
+        public async void CompactAndRepair(ProgressUpdate pu) {
+            //var pu = Operations["CompactAndRepair"] = new ProgressUpdate("CompactAndRepair");
+
+            pu.SetProgress("Closing database", 0);
+            ModelLibrary.Common.DBConnectionManager.Instance.Close();
+            await Task.Delay(1000);
+
+            pu.SetProgress("Database is closed", 10);
+            await Task.Delay(3000);
+
+            string dbFileName = DB_CONFIG_SOURCE;
+
+            //engine.OpenDatabase(dbFileName).Close();
+            string FORMAT = "yyyyMMdd.HHmmss";
+            pu.SetProgress("Taking backup of database file", 20);
+            System.IO.File.Copy(dbFileName, dbFileName + $".bak.{DateTime.Now.ToString(FORMAT)}",true);
+            System.IO.File.Copy(dbFileName, dbFileName + $".bak", true);
+
+            pu.SetProgress("Deleting previous compact and repair files", 30);
+            if (System.IO.File.Exists(dbFileName + ".car")) {
+                System.IO.File.Delete(dbFileName + ".car");
+            }
+
+            if (System.IO.File.Exists(dbFileName.Replace(".mdb",".ldb"))) {
+                System.IO.File.Delete(dbFileName.Replace(".mdb", ".ldb"));
+            }
+
+            pu.SetProgress("Performing DAO engine Compact and Repair action ...", 40);
+            var engine = new DAO.DBEngine();
+            
+            engine.CompactDatabase(SrcName: dbFileName+".bak", DstName: dbFileName+".car" );
+
+            await Task.Delay(5000);
+            pu.SetProgress("Compact and repair is completed successfully", 70);
+            
+            engine.FreeLocks();
+            engine = null;
+
+            await Task.Delay(3000);
+            pu.SetProgress("DAO engine is closed", 80);
+            pu.SetProgress($"Database file size before compact and repair: {new System.IO.FileInfo(dbFileName+".car").Length/1024} MB",85);
+
+            int limit = 0;
+            while (limit<10 && System.IO.File.Exists(dbFileName)) {
+                await Task.Delay(1000);
+                try {
+                    System.IO.File.Delete(dbFileName);
+                } catch {
+                    pu.SetProgress("Database file is still not released....", 85+limit++);
+                }
+            }
+
+            pu.SetProgress("database file is deleted", 90);
+
+            System.IO.File.Copy(dbFileName+".car", dbFileName, true);
+            pu.SetProgress("Compact and Repair is completed", 95);
+            await Task.Delay(3000);
+            ModelLibrary.Common.DBConnectionManager.Instance.Open();
+            await Task.Delay(300);
+            pu.SetProgress("Database connection is re-opened after compact and rapair", 98);
+            await Task.Delay(50);
+            pu.SetProgress($"Database file size after compact and repair: {new System.IO.FileInfo(dbFileName).Length / 1024} MB", 99);
+            await Task.Delay(50);
+            pu.SetProgress("Compact and Repair completed successfully !!",100);
+        }
+
+        public void Dispose() {
+            this.Close();
+        }
     }
 }

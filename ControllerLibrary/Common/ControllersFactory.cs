@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace ControllerLibrary.Common {
     public static class ControllersFactory {
-        private static Dictionary<ControllersEnum, BaseController> ControllersMap = null;
+        private static Dictionary<Entities, BaseController> ControllersMap = null;
 
         public static void InitControllersMap(){
-		   ControllersMap = new Dictionary<ControllersEnum, BaseController>() {
+		   ControllersMap = new Dictionary<Entities, BaseController>() {
             //  [ControllersEnum.Nationality        ] = new NationalityController        ()
             //, [ControllersEnum.Compound           ] = new CompoundController           ()
             //, [ControllersEnum.User               ] = new UserController               ()
@@ -25,7 +25,7 @@ namespace ControllerLibrary.Common {
             //, [ControllersEnum.Audit              ] = new AuditController              ()
            };
 
-           foreach(ControllersEnum num in typeof(ControllersEnum).GetEnumValues()) {
+           foreach(Entities num in typeof(Entities).GetEnumValues()) {
                 foreach(var type in ControllersRegistery.Instance[num]) {
                     ForControllerAttribute forca = (ForControllerAttribute)type.GetCustomAttributes(true).First();
                     if (forca.Enabled) {
@@ -39,16 +39,16 @@ namespace ControllerLibrary.Common {
             return (BaseController)Activator.CreateInstance(Type.GetType(typeName));
         }
 
-        public static Dictionary<ControllersEnum, BaseController> GetControllersMap() {
+        public static Dictionary<Entities, BaseController> GetControllersMap() {
             return ControllersMap;
 		}
 
-        public static BaseController GetController(ControllersEnum ce){
+        public static BaseController GetController(Entities ce){
             if (ControllersMap == null) InitControllersMap();
             return ControllersMap[ce];
         }
 
-        public static void SetController(ControllersEnum ce,BaseController bc) {
+        public static void SetController(Entities ce,BaseController bc) {
             if (ControllersMap == null) InitControllersMap();
             ControllersMap[ce] = bc;
         }

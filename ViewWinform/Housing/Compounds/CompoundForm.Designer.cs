@@ -173,6 +173,7 @@
             this.Compound_Name_LookupButton.ShowFieldsInLookUp.Add("Compound_Name");
             this.Compound_Name_LookupButton.Size = new System.Drawing.Size(22, 22);
             this.Compound_Name_LookupButton.TabIndex = 2;
+            this.Compound_Name_LookupButton.TabStop = false;
             this.Compound_Name_LookupButton.OnLookUpSelected += new System.EventHandler(this.Compound_Name_LookupButton_OnLookUpSelected);
             // 
             // CompoundForm

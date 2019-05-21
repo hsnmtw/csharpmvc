@@ -1,5 +1,6 @@
 ﻿using ControllerLibrary.Common;
 using ControllerLibrary.Security;
+using ModelLibrary.Common;
 using ModelLibrary.Security;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace ViewWinform.Security.Profiles {
             InitializeComponent();
         }
 
-        private List<string> entitlements;
+        private List<string> entitlements = null;
         private BaseController controller;
         private BaseController peController;
         private ProfileModel _model;
@@ -38,6 +39,9 @@ namespace ViewWinform.Security.Profiles {
             }
             set {
                 this._model = value;
+                this.listBox2.Items.Clear();
+                this.listBox1.Items.Clear();
+                if(this.entitlements!=null) this.listBox1.Items.AddRange(this.entitlements.ToArray());
                 if (value == null) _model = new ProfileModel();
                 this.Id_TextBox.Text = _model.Id.ToString();
                 this.Profile_Name_TextBox.Text = _model.Profile_Name;
@@ -46,7 +50,8 @@ namespace ViewWinform.Security.Profiles {
                 this.Profile_Desc_TextBox.Text = _model.Profile_Desc;
                 this.Created_On_TextBox.Text = _model.Created_By == null || "".Equals(_model.Created_By) ? "" : _model.Created_On.ToString();
                 this.Updated_On_TextBox.Text = _model.Updated_By == null || "".Equals(_model.Updated_By) ? "" : _model.Updated_On.ToString();
-
+                this.Profile_Name_TextBox.Select();
+                this.Profile_Name_TextBox.Focus();
             }
         }
 
@@ -75,10 +80,10 @@ namespace ViewWinform.Security.Profiles {
 
         private void ProfileForm_Load(object sender, EventArgs e) {
             Utils.FormsHelper.registerEnterAsTab(this);
-            this.controller = ControllersFactory.GetController(ControllersEnum.Profile);
+            this.controller = ControllersFactory.GetController(Entities.Profile);
             this.Model = new ProfileModel();
-            this.peController = (ProfileEntitlementsController)ControllersFactory.GetController(ControllersEnum.ProfileEntitlements);
-            this.entitlements = (from EntitlementModel model in ControllersFactory.GetController(ControllersEnum.Entitlement).Read()
+            this.peController = (ProfileEntitlementsController)ControllersFactory.GetController(Entities.ProfileEntitlement);
+            this.entitlements = (from EntitlementModel model in ControllersFactory.GetController(Entities.Entitlement).Read()
                                 orderby model.Entitlement_Name
                                 select model.Entitlement_Name).ToList();
             Button2_Click(sender, e);

@@ -53,13 +53,13 @@
             this.housingToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.roomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buildingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buildingTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.compoundsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.accommodationCategoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customersToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.residentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.companiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.nationalitiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.securityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,6 +85,8 @@
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
+            this.clientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clientTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -264,6 +266,7 @@
             this.housingToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.roomsToolStripMenuItem,
             this.buildingsToolStripMenuItem,
+            this.buildingTypesToolStripMenuItem,
             this.compoundsToolStripMenuItem,
             this.toolStripMenuItem3,
             this.accommodationCategoriesToolStripMenuItem});
@@ -284,6 +287,13 @@
             this.buildingsToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.buildingsToolStripMenuItem.Text = "Buildings";
             this.buildingsToolStripMenuItem.Click += new System.EventHandler(this.BuildingsToolStripMenuItem_Click);
+            // 
+            // buildingTypesToolStripMenuItem
+            // 
+            this.buildingTypesToolStripMenuItem.Name = "buildingTypesToolStripMenuItem";
+            this.buildingTypesToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
+            this.buildingTypesToolStripMenuItem.Text = "Building Types";
+            this.buildingTypesToolStripMenuItem.Click += new System.EventHandler(this.BuildingTypesToolStripMenuItem_Click);
             // 
             // compoundsToolStripMenuItem
             // 
@@ -308,7 +318,8 @@
             this.customersToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.residentsToolStripMenuItem,
             this.projectsToolStripMenuItem,
-            this.companiesToolStripMenuItem,
+            this.clientsToolStripMenuItem,
+            this.clientTypesToolStripMenuItem,
             this.toolStripMenuItem2,
             this.nationalitiesToolStripMenuItem});
             this.customersToolStripMenuItem1.Name = "customersToolStripMenuItem1";
@@ -318,30 +329,24 @@
             // residentsToolStripMenuItem
             // 
             this.residentsToolStripMenuItem.Name = "residentsToolStripMenuItem";
-            this.residentsToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.residentsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.residentsToolStripMenuItem.Text = "Residents";
             // 
             // projectsToolStripMenuItem
             // 
             this.projectsToolStripMenuItem.Name = "projectsToolStripMenuItem";
-            this.projectsToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.projectsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.projectsToolStripMenuItem.Text = "Projects";
-            // 
-            // companiesToolStripMenuItem
-            // 
-            this.companiesToolStripMenuItem.Name = "companiesToolStripMenuItem";
-            this.companiesToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
-            this.companiesToolStripMenuItem.Text = "Companies";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(137, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
             // 
             // nationalitiesToolStripMenuItem
             // 
             this.nationalitiesToolStripMenuItem.Name = "nationalitiesToolStripMenuItem";
-            this.nationalitiesToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.nationalitiesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nationalitiesToolStripMenuItem.Text = "Nationalities";
             this.nationalitiesToolStripMenuItem.Click += new System.EventHandler(this.NationalitiesToolStripMenuItem_Click);
             // 
@@ -517,6 +522,19 @@
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.Size = new System.Drawing.Size(148, 6);
             // 
+            // clientsToolStripMenuItem
+            // 
+            this.clientsToolStripMenuItem.Name = "clientsToolStripMenuItem";
+            this.clientsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clientsToolStripMenuItem.Text = "Clients";
+            // 
+            // clientTypesToolStripMenuItem
+            // 
+            this.clientTypesToolStripMenuItem.Name = "clientTypesToolStripMenuItem";
+            this.clientTypesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clientTypesToolStripMenuItem.Text = "Client Types";
+            this.clientTypesToolStripMenuItem.Click += new System.EventHandler(this.ClientTypesToolStripMenuItem_Click);
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -564,7 +582,6 @@
         private System.Windows.Forms.ToolStripMenuItem customersToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem residentsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem projectsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem companiesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem windowToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tileHorizontalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tileVerticalToolStripMenuItem;
@@ -598,6 +615,9 @@
         private System.Windows.Forms.ToolStripStatusLabel tssLabelStatus;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem9;
         private System.Windows.Forms.ToolStripMenuItem compactAndRepairToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem buildingTypesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clientsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clientTypesToolStripMenuItem;
     }
 }
 

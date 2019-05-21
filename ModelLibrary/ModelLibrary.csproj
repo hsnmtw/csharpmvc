@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="Common\AbstractCollection.cs" />
     <Compile Include="Common\BaseModel.cs" />
-    <Compile Include="Common\CollectionsEnum.cs" />
+    <Compile Include="Common\Entities.cs" />
     <Compile Include="Common\CollectionsFactory.cs" />
     <Compile Include="Common\DBConnectionManager.cs" />
     <Compile Include="Common\BaseCollection.cs" />
@@ -51,13 +51,20 @@
     <Compile Include="Common\IModel.cs" />
     <Compile Include="Common\MetaData.cs" />
     <Compile Include="Common\ParametersFactory.cs" />
+    <Compile Include="Common\ProgressUpdate.cs" />
     <Compile Include="Common\ResultSet.cs" />
     <Compile Include="Common\Statement.cs" />
     <Compile Include="Configurations\ConfigurationModel.cs" />
     <Compile Include="Configurations\CryptoModel.cs" />
+    <Compile Include="Customers\ClientTypeCollection.cs" />
+    <Compile Include="Customers\ClientCollection.cs" />
+    <Compile Include="Customers\ClientTypeModel.cs" />
     <Compile Include="Customers\NationalityCollection.cs" />
+    <Compile Include="Customers\ClientModel.cs" />
     <Compile Include="Customers\NationalityModel.cs" />
+    <Compile Include="Housing\BuildingTypeCollection.cs" />
     <Compile Include="Housing\BuildingCollection.cs" />
+    <Compile Include="Housing\BuildingTypeModel.cs" />
     <Compile Include="Housing\BuildingModel.cs" />
     <Compile Include="Housing\CompoundCollection.cs" />
     <Compile Include="Housing\CompoundModel.cs" />
@@ -78,6 +85,17 @@
   <ItemGroup>
     <Content Include="Database_Objects.txt" />
     <Content Include="OleDbTypes.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="DAO">
+      <Guid>{00025E01-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

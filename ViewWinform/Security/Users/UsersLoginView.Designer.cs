@@ -91,6 +91,7 @@
             this.User_Name_Lookup.ShowFieldsInLookUp.Add("User_Name");
             this.User_Name_Lookup.Size = new System.Drawing.Size(22, 22);
             this.User_Name_Lookup.TabIndex = 1;
+            this.User_Name_Lookup.TabStop = false;
             // 
             // UsersLoginView
             // 

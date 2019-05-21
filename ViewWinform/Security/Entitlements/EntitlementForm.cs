@@ -1,5 +1,6 @@
 ﻿using ControllerLibrary.Common;
 using ControllerLibrary.Security;
+using ModelLibrary.Common;
 using ModelLibrary.Security;
 using System;
 using System.Collections.Generic;
@@ -43,7 +44,8 @@ namespace ViewWinform.Security.Entitlements {
                 this.Updated_By_TextBox.Text = _model.Updated_By;
                 this.Created_On_TextBox.Text = _model.Created_By == null || "".Equals(_model.Created_By) ? "" : _model.Created_On.ToString();
                 this.Updated_On_TextBox.Text = _model.Updated_By == null || "".Equals(_model.Updated_By) ? "" : _model.Updated_On.ToString();
-
+                this.Entitlement_Name_TextBox.Select();
+                this.Entitlement_Name_TextBox.Focus();
             }
         }
 
@@ -65,7 +67,7 @@ namespace ViewWinform.Security.Entitlements {
 
         private void EntitlementForm_Load(object sender, EventArgs e) {
             Utils.FormsHelper.registerEnterAsTab(this);
-            this.controller = (EntitlementController)ControllersFactory.GetController(ControllersEnum.Entitlement);
+            this.controller = (EntitlementController)ControllersFactory.GetController(Entities.Entitlement);
             this.Model = new EntitlementModel();
         }
 

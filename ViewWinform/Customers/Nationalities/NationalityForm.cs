@@ -1,5 +1,6 @@
 ﻿using ControllerLibrary.Common;
 using ControllerLibrary.Customers;
+using ModelLibrary.Common;
 using ModelLibrary.Customers;
 using System;
 using System.Collections.Generic;
@@ -57,7 +58,7 @@ namespace ViewWinform.Customers.Nationalities {
 
         private void NationalityForm_Load(object sender, EventArgs e) {
             Utils.FormsHelper.registerEnterAsTab(this);
-            this.controller = ControllersFactory.GetController(ControllersEnum.Nationality);
+            this.controller = ControllersFactory.GetController(Entities.Nationality);
             this.Model = new NationalityModel();
 
             Label[] fieldsmarkers = { lblMetaData_Nationality_Arabic,lblMetaData_Nationality_Code,lblMetaData_Nationality_Desc };

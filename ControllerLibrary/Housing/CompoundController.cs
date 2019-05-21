@@ -11,8 +11,8 @@ using ModelLibrary.Common;
 
 namespace ControllerLibrary.Housing
 {
-    [ForControllerAttribute(ControllersEnum.Compound, Enabled = true)]
+    [ForControllerAttribute(Entities.Compound, Enabled = true)]
     public class CompoundController : AbstractController {
-        public CompoundController() : base(CollectionsFactory.GetCollection(CollectionsEnum.Compound)) { }
+        public CompoundController() : base(CollectionsFactory.GetCollection(Entities.Compound)) { }
     }
 }

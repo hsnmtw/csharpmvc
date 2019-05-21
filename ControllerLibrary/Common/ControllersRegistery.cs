@@ -1,6 +1,7 @@
 ﻿using ControllerLibrary.Customers;
 using ControllerLibrary.Housing;
 using ControllerLibrary.Security;
+using ModelLibrary.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ControllerLibrary.Common {
     public class ControllersRegistery {
-        private Dictionary<ControllersEnum, List<Type>> controllerMap = new Dictionary<ControllersEnum, List<Type>>();
+        private Dictionary<Entities, List<Type>> controllerMap = new Dictionary<Entities, List<Type>>();
         private static ControllersRegistery _instance = null;
         public static ControllersRegistery Instance {
             get {
@@ -18,7 +19,7 @@ namespace ControllerLibrary.Common {
             }
         }
 
-        public List<Type> this[ControllersEnum controllersEnum] {
+        public List<Type> this[Entities controllersEnum] {
             get {
                 return this.controllerMap[controllersEnum];
             }
@@ -26,7 +27,7 @@ namespace ControllerLibrary.Common {
 
         private ControllersRegistery() {
 
-            foreach(ControllersEnum num in typeof(ControllersEnum).GetEnumValues()) {
+            foreach(Entities num in typeof(Entities).GetEnumValues()) {
                 controllerMap[num] = new List<Type>();
             }
 

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ModelLibrary.Security;
 using ControllerLibrary.Security;
 using ControllerLibrary.Common;
+using ModelLibrary.Common;
 
 namespace ViewWinform.Security.Users
 {
@@ -37,7 +38,7 @@ namespace ViewWinform.Security.Users
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            BaseController ucon = ControllersFactory.GetController(ControllersEnum.User);
+            BaseController ucon = ControllersFactory.GetController(Entities.User);
             var model = ucon.Dispatch("Autheniticate", this.Model); //ucon.Autheniticate(this.Model);
             if (model != null)
             {

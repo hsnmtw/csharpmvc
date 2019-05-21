@@ -173,6 +173,7 @@
             this.Entitlement_Name_Lookup.Name = "Entitlement_Name_Lookup";
             this.Entitlement_Name_Lookup.Size = new System.Drawing.Size(22, 22);
             this.Entitlement_Name_Lookup.TabIndex = 2;
+            this.Entitlement_Name_Lookup.TabStop = false;
             this.Entitlement_Name_Lookup.OnLookUpSelected += new System.EventHandler(this.Entitlement_Name_Lookup_OnLookUpSelected);
             // 
             // EntitlementForm

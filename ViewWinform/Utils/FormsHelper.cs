@@ -33,9 +33,14 @@ namespace ViewWinform.Utils
 
         public static void registerEnterAsTab(Control userControl)
         {
+            var allowedTypes = new Type[] {
+                typeof(MaskedTextBox),
+                typeof(TextBox),
+                typeof(ComboBox)
+            };
             foreach (Control control in userControl.Controls)
             {
-                if (control.GetType().Equals(typeof(TextBox)) || control.GetType().Equals(typeof(ComboBox)))
+                if (allowedTypes.Contains(control.GetType()))
                 {
                     control.KeyDown += delegate (object sender, KeyEventArgs e)
                     {

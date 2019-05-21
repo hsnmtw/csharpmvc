@@ -120,7 +120,7 @@ namespace ViewWinform
         private void LogOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(Session.Instance.CurrentUser != null) {
-                var audit = (AuditController)ControllersFactory.GetController(ControllersEnum.Audit);
+                var audit = (AuditController)ControllersFactory.GetController(Entities.Audit);
                 audit.registerEvent(new AuditModel() {
                     User_Name = Session.Instance.CurrentUser.User_Name,
                     Event_Comments = "Logout ..."
@@ -140,11 +140,11 @@ namespace ViewWinform
             var loginform = Utils.FormsHelper.showView(this, login);
             login.OnOKAction = delegate ()
             {
-                var ucontroller = ControllersFactory.GetController(ControllersEnum.User);
+                var ucontroller = ControllersFactory.GetController(Entities.User);
                 var model = (UserModel)ucontroller.Read(login.Model,new string[] { "Id" }).First();
                 this.tsslCurrentUser.Text = model.Full_Name;
                 Session.Instance.CurrentUser = model;
-                var pec = (ProfileEntitlementsController)ControllersFactory.GetController(ControllersEnum.ProfileEntitlements);
+                var pec = (ProfileEntitlementsController)ControllersFactory.GetController(Entities.ProfileEntitlement);
                 var entitlements = pec.GetEntitlementsByProfile(model.Profile_Name);
                 foreach(DataRow row in entitlements.Rows)
                 {
@@ -180,7 +180,7 @@ namespace ViewWinform
             userPasswordResetView.Model = (Session.Instance.CurrentUser);
             var pswdresetform = Utils.FormsHelper.showView(this, userPasswordResetView);
             userPasswordResetView.OnOKAction = delegate () {
-                var ucontroller = (UserController)ControllersFactory.GetController(ControllersEnum.User);
+                var ucontroller = (UserController)ControllersFactory.GetController(Entities.User);
                 ucontroller.ResetPassword(userPasswordResetView.Model);
                 Utils.FormsHelper.successMessage("Password has been reset");
                 pswdresetform.Close();
@@ -252,6 +252,14 @@ namespace ViewWinform
             try {
                 DBConnectionManager.Instance.Close();
             } catch { }
+        }
+
+        private void BuildingTypesToolStripMenuItem_Click(object sender, EventArgs e) {
+            new Housing.BuildingTypes.BuildingTypeForm() { MdiParent = this }.Show();
+        }
+
+        private void ClientTypesToolStripMenuItem_Click(object sender, EventArgs e) {
+            new Customers.ClientTypes.ClientTypeForm() { MdiParent = this }.Show();
         }
     }
 }

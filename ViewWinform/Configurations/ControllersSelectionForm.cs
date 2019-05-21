@@ -1,4 +1,5 @@
 ﻿using ControllerLibrary.Common;
+using ModelLibrary.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,36 +18,26 @@ namespace ViewWinform.Configurations {
         }
 
         private void ControllersSelectionForm_Load(object sender, EventArgs e) {
-            //this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.EnableHeadersVisualStyles = false;
-
-            DataTable dt = new DataTable();
-            dt.Columns.Add("SN",typeof(int));
-            dt.Columns.Add("Controller",typeof(ControllersEnum));
-            dt.Columns.Add("Implementation",typeof(Type));
-            dt.Columns.Add("Enabled",typeof(bool));
-
+            string WIDTHS = "{0,2}   {1,-25} {2,-70} {3}";
+            this.label1.Text = string.Format(WIDTHS, "SN", "Controller", "Implementation", "Status");
+            this.listBox1.Items.Clear();
             int sn = 0;
-            foreach (ControllersEnum num in typeof(ControllersEnum).GetEnumValues()) {
+            foreach (Entities num in typeof(Entities).GetEnumValues()) {
                 foreach (Type type in ControllersRegistery.Instance[num]) {
-                    ForControllerAttribute forca = (ForControllerAttribute)type.GetCustomAttributes(true).First();
+                    var forca = (ForControllerAttribute)type.GetCustomAttributes(true).First();
                     bool isEnabled = type.Equals(ControllersFactory.GetController(num).GetType());
-                    dt.Rows.Add(new object[] { sn++,num,type,isEnabled });
+                    listBox1.Items.Add(string.Format(WIDTHS, sn++,num,type,isEnabled? "✓" : ""));
                 }
             }
 
-            this.dataGridView1.DataSource = dt;
         }
 
         private void Button1_Click(object sender, EventArgs e) {
-            if(this.dataGridView1.SelectedRows.Count > 0) {
-                var row = this.dataGridView1.SelectedRows[0];
-                ControllersEnum num;
-                Enum.TryParse( row.Cells[1].Value.ToString(), out num);
-//                Type type = Type.GetType( );
-                //Type type = Type.GetType("")
-
-                ControllersFactory.SetController(num, ControllersFactory.GetController(row.Cells[2].Value.ToString()));
+            if (this.listBox1.SelectedIndex > -1) {
+                var row = this.listBox1.SelectedItem.ToString();
+                Entities num;
+                Enum.TryParse( row.Substring(4,25).Trim(), out num);
+                ControllersFactory.SetController(num, ControllersFactory.GetController( row.Substring(31,70).Trim() ));
             }
             ControllersSelectionForm_Load(sender, e);
         }

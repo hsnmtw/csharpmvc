@@ -9,11 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ControllerLibrary.Housing {
-    [ForControllerAttribute(ControllersEnum.Room, Enabled = false)]
-    public class FakeRoomController : RoomController,BaseController {
+    [ForControllerAttribute(Entities.Room, Enabled = false)]
+    public class FakeRoomController : BaseController {
 
         //static DataTable dt = new DataTable();
-        static Dictionary<string,RoomModel> listOfRooms = new Dictionary<string, RoomModel>();
+        static Dictionary<string, RoomModel> listOfRooms = new Dictionary<string, RoomModel>();
         private static bool dataInitilized = false;
         static Random random = new Random();
 
@@ -54,11 +54,11 @@ namespace ControllerLibrary.Housing {
 
         public string[] fields { get { return (from property in typeof(RoomModel).GetProperties() select property.Name).ToArray<string>(); } }
 
-        public override DataTable GetTable() {
-            return List2DataTable((from object item in listOfRooms.Values select item).ToList(),fields);
+        public DataTable GetTable() {
+            return List2DataTable((from object item in listOfRooms.Values select item).ToList(), fields);
         }
 
-        public override void Delete(object _model) {
+        public void Delete(object _model) {
             RoomModel model = (RoomModel)_model;
             if (listOfRooms.ContainsKey(model.Room_Name)) {
                 listOfRooms.Remove(model.Room_Name);
@@ -67,61 +67,84 @@ namespace ControllerLibrary.Housing {
 
         private void Insert(RoomModel model) {
             var copy = (RoomModel)model.Clone();
-            if (copy.Id == 0) copy.Id = Math.Abs( random.Next(1000,2000) );
-            copy.Created_By = Session.Instance.CurrentUser==null? "" : Session.Instance.CurrentUser.User_Name;
+            if (copy.Id == 0) copy.Id = Math.Abs(random.Next(1000, 2000));
+            copy.Created_By = Session.Instance.CurrentUser == null ? "" : Session.Instance.CurrentUser.User_Name;
             copy.Created_On = DateTime.Now;
             listOfRooms[copy.Room_Name] = copy;
-            Console.WriteLine("insert: {0,-20}  :  {1,-20}",  string.Join(",",listOfRooms.Keys.ToList())  , string.Join(",", from vsl in listOfRooms.Values select vsl.Room_Name));
+            Console.WriteLine("insert: {0,-20}  :  {1,-20}", string.Join(",", listOfRooms.Keys.ToList()), string.Join(",", from vsl in listOfRooms.Values select vsl.Room_Name));
         }
 
-        public override object Save(object _model) {
+        public object Save(object _model) {
             RoomModel model = (RoomModel)_model;
             if (model.Id == 0) Insert(model);
             else Update(model);
             return (RoomModel)listOfRooms[model.Room_Name].Clone();
         }
 
-        public override List<object> Read() {
+        public List<object> Read() {
             return (from item
                       in listOfRooms.Values.ToList()
-                  select item.Clone()).ToList();
+                    select item.Clone()).ToList();
         }
 
-        public override List<object> Read(object model, string[] whereFields) {
-           var propinfo = typeof(RoomModel).GetProperty(whereFields[0]);
-           var list = (from item 
-                     in listOfRooms.Values
-                  where propinfo.GetValue(model).Equals( propinfo.GetValue(item) )
-                 select item.Clone()).ToList();
+        public List<object> Read(object model, string[] whereFields) {
+            var propinfo = typeof(RoomModel).GetProperty(whereFields[0]);
+            var list = (from item
+                      in listOfRooms.Values
+                        where propinfo.GetValue(model).Equals(propinfo.GetValue(item))
+                        select item.Clone()).ToList();
             return list;
         }
 
-        private static DataTable List2DataTable(List<object> list,string[]fields) {
+        private static DataTable List2DataTable(List<object> list, string[] fields) {
             var dt = new DataTable();
             foreach (string column in fields) {
                 dt.Columns.Add(column);
             }
-            foreach(var item in list) {
+            foreach (var item in list) {
                 dt.Rows.Add(((RoomModel)item).ToObjectArray(fields));
             }
-            Console.WriteLine("List2DataTable: {0,-20}  :  {1,-20}",  string.Join(",",listOfRooms.Keys.ToList())  , string.Join(",", from vsl in listOfRooms.Values select vsl.Room_Name));
+            Console.WriteLine("List2DataTable: {0,-20}  :  {1,-20}", string.Join(",", listOfRooms.Keys.ToList()), string.Join(",", from vsl in listOfRooms.Values select vsl.Room_Name));
             return dt;
         }
 
         private void Update(RoomModel model) {
-            Console.WriteLine("0.update: {0,-20}  :  {1,-20}",  string.Join(",",listOfRooms.Keys.ToList())  , string.Join(",", from vsl in listOfRooms.Values select vsl.Room_Name));
+            Console.WriteLine("0.update: {0,-20}  :  {1,-20}", string.Join(",", listOfRooms.Keys.ToList()), string.Join(",", from vsl in listOfRooms.Values select vsl.Room_Name));
 
             var copy = (RoomModel)model.Clone();
             if (listOfRooms.ContainsKey(copy.Room_Name)) {
 
-                copy.Updated_By = Session.Instance.CurrentUser == null? "": Session.Instance.CurrentUser.User_Name;
+                copy.Updated_By = Session.Instance.CurrentUser == null ? "" : Session.Instance.CurrentUser.User_Name;
                 copy.Updated_On = DateTime.Now;
 
-                Console.WriteLine("1.update: {0,-20}  :  {1,-20}",  string.Join(",",listOfRooms.Keys.ToList())  , string.Join(",", from vsl in listOfRooms.Values select vsl.Room_Name));
+                Console.WriteLine("1.update: {0,-20}  :  {1,-20}", string.Join(",", listOfRooms.Keys.ToList()), string.Join(",", from vsl in listOfRooms.Values select vsl.Room_Name));
                 listOfRooms.Remove(copy.Room_Name);
                 listOfRooms[copy.Room_Name] = copy;
-                Console.WriteLine("2.update: {0,-20}  :  {1,-20}",  string.Join(",",listOfRooms.Keys.ToList())  , string.Join(",", from vsl in listOfRooms.Values select vsl.Room_Name));
+                Console.WriteLine("2.update: {0,-20}  :  {1,-20}", string.Join(",", listOfRooms.Keys.ToList()), string.Join(",", from vsl in listOfRooms.Values select vsl.Room_Name));
             }
+        }
+
+        public MetaData GetMetaData() =>
+            BaseCollection.MetaData;
+         
+
+        public DataTable GetTable(object model, string[] whereFields, bool like = false) =>
+            List2DataTable(listOfRooms.Values.ToList<object>(), new string[] { });
+        
+        public ResultSet GetTable(object model, string[] whereFields, bool like, int offset, int length) {
+            return new ResultSet() {
+                Table = GetTable()
+            };
+        }
+
+        private BaseCollection BaseCollection => CollectionsFactory.GetCollection(Entities.Room);
+
+        public object CreateNewModel() => 
+            this.BaseCollection.CreateNew();
+        
+
+        public object Dispatch(string action, params object[] arguments) {
+            throw new NotImplementedException();
         }
     }
 }

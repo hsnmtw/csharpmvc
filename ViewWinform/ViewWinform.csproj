@@ -97,6 +97,12 @@
     <Compile Include="Configurations\DBMaintenance.Designer.cs">
       <DependentUpon>DBMaintenance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Customers\ClientTypes\ClientTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customers\ClientTypes\ClientTypeForm.Designer.cs">
+      <DependentUpon>ClientTypeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customers\Nationalities\NationalityForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +114,12 @@
     </Compile>
     <Compile Include="Housing\Buildings\BuildingForm.Designer.cs">
       <DependentUpon>BuildingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Housing\BuildingTypes\BuildingTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Housing\BuildingTypes\BuildingTypeForm.Designer.cs">
+      <DependentUpon>BuildingTypeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Housing\Compounds\CompoundForm.cs">
       <SubType>Form</SubType>
@@ -194,12 +206,6 @@
     <Compile Include="Utils\SQLView.Designer.cs">
       <DependentUpon>SQLView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utils\TableDesigner\TableDesignerForm.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Utils\TableDesigner\TableDesignerForm.Designer.cs">
-      <DependentUpon>TableDesignerForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Utils\TableDesigner\TableDesignerView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,11 +236,17 @@
     <EmbeddedResource Include="Configurations\DBMaintenance.resx">
       <DependentUpon>DBMaintenance.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Customers\ClientTypes\ClientTypeForm.resx">
+      <DependentUpon>ClientTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Customers\Nationalities\NationalityForm.resx">
       <DependentUpon>NationalityForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Housing\Buildings\BuildingForm.resx">
       <DependentUpon>BuildingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Housing\BuildingTypes\BuildingTypeForm.resx">
+      <DependentUpon>BuildingTypeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Housing\Compounds\CompoundForm.resx">
       <DependentUpon>CompoundForm.cs</DependentUpon>
@@ -284,9 +296,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\SQLView.resx">
       <DependentUpon>SQLView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Utils\TableDesigner\TableDesignerForm.resx">
-      <DependentUpon>TableDesignerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\TableDesigner\TableDesignerView.resx">
       <DependentUpon>TableDesignerView.cs</DependentUpon>
@@ -399,6 +408,9 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Customers\Clients\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

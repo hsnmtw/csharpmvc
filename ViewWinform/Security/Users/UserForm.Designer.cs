@@ -338,6 +338,7 @@
             // 
             // listBox1
             // 
+            this.listBox1.Font = new System.Drawing.Font("Consolas", 8F);
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(404, 42);
             this.listBox1.Name = "listBox1";
@@ -363,6 +364,7 @@
             // 
             // Profile_Name_TextBox
             // 
+            this.Profile_Name_TextBox.BackColor = System.Drawing.SystemColors.Window;
             this.Profile_Name_TextBox.Location = new System.Drawing.Point(158, 104);
             this.Profile_Name_TextBox.Name = "Profile_Name_TextBox";
             this.Profile_Name_TextBox.ReadOnly = true;

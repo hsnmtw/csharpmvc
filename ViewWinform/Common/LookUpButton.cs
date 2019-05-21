@@ -12,6 +12,7 @@ using System.Drawing.Design;
 using ControllerLibrary.Customers;
 using ControllerLibrary.Housing;
 using ControllerLibrary.Security;
+using ModelLibrary.Common;
 
 namespace ViewWinform.Common {
 
@@ -27,7 +28,8 @@ namespace ViewWinform.Common {
 
         private string valueFromLookup;
         public string ValueFromLookup => valueFromLookup;
-
+        private LookUpForm lookup;
+        private Control control;
 
         private BaseController _controller = null;
 
@@ -40,27 +42,16 @@ namespace ViewWinform.Common {
             this.Font = new Font("Consolas", 10, FontStyle.Bold);
             this.ShowFieldsInLookUp = new List<string>();
             //this.button1.Click += Button1_Click;
+
         }
 
         private void Button1_Click(object sender, EventArgs e) {
-            if(this._controller == null) {
-                ControllersEnum num;
-                Enum.TryParse<ControllersEnum>(this.Controller,out num);
-                this._controller = ControllersFactory.GetController(num);
-            }
-
-            if(this.ShowFieldsInLookUp.Count == 0) {
-                this.ShowFieldsInLookUp.AddRange(this._controller.GetMetaData().GetUniqueKeyFields);
-            }
-
-            LookUpForm lookup;
-            lookup = new Common.LookUpForm( this._controller ,this.ShowFieldsInLookUp.ToArray());
             
             if (lookup.ShowDialog() == DialogResult.OK) {
-                valueFromLookup = lookup.SelectedValue[this.SelectedFieldFromLookUp];
+                valueFromLookup = lookup.SelectedValue;//[this.SelectedFieldFromLookUp];
                 if (this.AssociatedControl != null && !"".Equals(this.AssociatedControl)) {
                     try {
-                        this.Parent.Controls.Find(this.AssociatedControl,true)[0].Text = valueFromLookup;
+                        control.Text = valueFromLookup;
                     }catch(Exception ex) {
                         Console.WriteLine($"Exception : {ex.Message}");
                     }
@@ -97,5 +88,33 @@ namespace ViewWinform.Common {
         public string Controller { get; set; }
 
         public override string Text { get => button1.Text; set => button1.Text = value; }
+
+        private void LookUpButton_Load(object sender, EventArgs e) {
+            try {
+
+                if (this._controller == null) {
+                    Entities num;
+                    Enum.TryParse<Entities>(this.Controller, out num);
+                    this._controller = ControllersFactory.GetController(num);
+                }
+
+                if (this.ShowFieldsInLookUp.Count == 0) {
+                    this.ShowFieldsInLookUp.AddRange(this._controller.GetMetaData().GetUniqueKeyFields);
+                }
+
+                lookup = new Common.LookUpForm(this._controller, this.ShowFieldsInLookUp.ToArray());
+
+                control = this.Parent.Controls.Find(this.AssociatedControl, true).First();
+
+                if (((TextBoxBase)control).ReadOnly) {
+                    control.KeyPress += delegate (object s, KeyPressEventArgs ea) {
+                        lookup.SearchText = $"{ea.KeyChar}";
+                        Button1_Click(null, null);
+                    };
+                }
+            } catch (Exception ex) {
+                Console.WriteLine($"Exception : {ex.Message}");
+            }
+        }
     }
 }

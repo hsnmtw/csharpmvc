@@ -48,12 +48,12 @@
     <Compile Include="Common\ForControllerAttribute.cs" />
     <Compile Include="Common\ControllersFactory.cs" />
     <Compile Include="Common\ControllersRegistery.cs" />
-    <Compile Include="Common\ControllersEnum.cs" />
-    <Compile Include="Common\IDBController.cs" />
     <Compile Include="Common\Session.cs" />
     <Compile Include="Configurations\ConfigurationsController.cs" />
     <Compile Include="Configurations\CryptoController.cs" />
+    <Compile Include="Customers\ClientTypeController.cs" />
     <Compile Include="Customers\NationalityController.cs" />
+    <Compile Include="Housing\BuildingTypeController.cs" />
     <Compile Include="Housing\BuildingController.cs" />
     <Compile Include="Housing\CompoundController.cs" />
     <Compile Include="Housing\FakeRoomController.cs" />

@@ -11,10 +11,10 @@ using ControllerLibrary.Common;
 
 namespace ControllerLibrary.Security
 {
-    [ForControllerAttribute(ControllersEnum.ProfileEntitlements, Enabled = true)]
+    [ForControllerAttribute(Entities.ProfileEntitlement, Enabled = true)]
     public class ProfileEntitlementsController : AbstractController {
 
-        public ProfileEntitlementsController() : base(CollectionsFactory.GetCollection(CollectionsEnum.ProfileEntitlements)) { }
+        public ProfileEntitlementsController() : base(CollectionsFactory.GetCollection(Entities.ProfileEntitlement)) { }
 
         public DataTable GetEntitlementsByProfile(string profile)
         {

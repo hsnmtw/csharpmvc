@@ -12,16 +12,16 @@ using System.Windows.Forms;
 
 namespace ControllerLibrary.Security
 {
-    [ForControllerAttribute(ControllersEnum.Entitlement, Enabled = true)]
+    [ForControllerAttribute(Entities.Entitlement, Enabled = true)]
     public class EntitlementController : AbstractController {
 
-        public EntitlementController() : base(CollectionsFactory.GetCollection(CollectionsEnum.Entitlement)) { }
+        public EntitlementController() : base(CollectionsFactory.GetCollection(Entities.Entitlement)) { }
 
         public override DataTable GetTable() {
         
             DataView dvE = new DataView(this.GetTable());
-            DataView dvP = new DataView(ControllersFactory.GetController(ControllersEnum.Profile).GetTable());
-            DataTable dvPE = ControllersFactory.GetController(ControllersEnum.ProfileEntitlements).GetTable();
+            DataView dvP = new DataView(ControllersFactory.GetController(Entities.Profile).GetTable());
+            DataTable dvPE = ControllersFactory.GetController(Entities.ProfileEntitlement).GetTable();
 
             dvE.Sort = "Entitlement_Name ASC";
             dvP.Sort = "Profile_Name ASC";

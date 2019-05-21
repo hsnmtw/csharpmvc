@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 
 namespace ControllerLibrary.Housing {
-    [ForControllerAttribute(Entities.Building, Enabled = true)]
-    public class BuildingController : AbstractController {
-        public BuildingController() : base(CollectionsFactory.GetCollection(Entities.Building)) { }
+    [ForControllerAttribute(Entities.BuildingType, Enabled = true)]
+    public class BuildingTypeController : AbstractController {
+        public BuildingTypeController() : base(CollectionsFactory.GetCollection(Entities.BuildingType)) { }
     }
 }

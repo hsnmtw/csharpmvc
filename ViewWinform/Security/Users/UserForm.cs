@@ -1,5 +1,6 @@
 ﻿using ControllerLibrary.Common;
 using ControllerLibrary.Security;
+using ModelLibrary.Common;
 using ModelLibrary.Security;
 using System;
 using System.Collections.Generic;
@@ -61,6 +62,8 @@ namespace ViewWinform.Security.Users {
                 this.FailedLogins_TextBox.Text =_model.Failed_Login_Attempts.ToString();
                 this.User_Password_TextBox.Text = _model.User_Password;
                 this.Confirm_User_Password_TextBox.Text = this.User_Password_TextBox.Text;
+                this.User_Name_TextBox.Select();
+                this.User_Name_TextBox.Focus();
             }
         }
 
@@ -92,9 +95,9 @@ namespace ViewWinform.Security.Users {
 
         private void UserForm_Load(object sender, EventArgs e) {
             Utils.FormsHelper.registerEnterAsTab(this);
-            this.controller = (UserController)ControllersFactory.GetController(ControllersEnum.User);
+            this.controller = (UserController)ControllersFactory.GetController(Entities.User);
             this.Model = new UserModel();
-            this.profile_Entitlements = ControllersFactory.GetController(ControllersEnum.ProfileEntitlements).Read();
+            this.profile_Entitlements = ControllersFactory.GetController(Entities.ProfileEntitlement).Read();
         }
 
         private void Button1_Click(object sender, EventArgs e) {

@@ -12,10 +12,10 @@ using ModelLibrary.Common;
 
 namespace ControllerLibrary.Security
 {
-    [ForControllerAttribute(ControllersEnum.User, Enabled = true)]
+    [ForControllerAttribute(Entities.User, Enabled = true)]
     public class UserController : AbstractController {
 
-        public UserController() : base(CollectionsFactory.GetCollection(CollectionsEnum.User)) { }
+        public UserController() : base(CollectionsFactory.GetCollection(Entities.User)) { }
        
         public override object Save(object _model) {
             var model = (UserModel)_model;
@@ -46,7 +46,7 @@ namespace ControllerLibrary.Security
             var model = (UserModel)_model;
             if (model.User_Password.StartsWith("{ENC}")) return null;
 
-            var audit = (AuditController)ControllersFactory.GetController(ControllersEnum.Audit);
+            var audit = (AuditController)ControllersFactory.GetController(Entities.Audit);
 
             model.Is_Active = true;
             var models = Read(model, new string[] { "User_Name", "User_Password", "Is_Active" });
@@ -91,7 +91,7 @@ namespace ControllerLibrary.Security
             model.Failed_Login_Attempts = 0;
             this.Save(model);
 
-            var audit = (AuditController)ControllersFactory.GetController(ControllersEnum.Audit);
+            var audit = (AuditController)ControllersFactory.GetController(Entities.Audit);
             audit.registerEvent(new AuditModel() {
                 User_Name = model.User_Name,
                 Event_Comments = $"reset login counter : {model.User_Name}"
@@ -106,7 +106,7 @@ namespace ControllerLibrary.Security
             model.User_Password = password;
             model.Last_Change_Password = DateTime.Now;
             Save(model);
-            var audit = (AuditController)ControllersFactory.GetController(ControllersEnum.Audit);
+            var audit = (AuditController)ControllersFactory.GetController(Entities.Audit);
             audit.registerEvent(new AuditModel() {
                 User_Name = model.User_Name,
                 Event_Comments = "password reset for user : " + model.User_Name

@@ -1,5 +1,6 @@
 ﻿using ControllerLibrary.Common;
 using ControllerLibrary.Housing;
+using ModelLibrary.Common;
 using ModelLibrary.Housing;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace ViewWinform.Housing.Rooms {
 
         //private RoomController controller = new RoomController();
 
-        private BaseController controller = ControllersFactory.GetController(ControllersEnum.Room);
+        private BaseController controller = ControllersFactory.GetController(Entities.Room);
         private RoomModel _model = new RoomModel();
 
         public RoomModel Model {
@@ -54,6 +55,8 @@ namespace ViewWinform.Housing.Rooms {
                 this.txtCreatedOn.Text = _model.Created_By == null || "".Equals(_model.Created_By) ? "" : _model.Created_On.ToString();
                 this.txtUpdatedOn.Text = _model.Updated_By == null || "".Equals(_model.Updated_By) ? "" : _model.Updated_On.ToString();
 
+                this.txtRoomName.Select();
+                this.txtRoomName.Focus();
             }
         }
 
@@ -95,6 +98,10 @@ namespace ViewWinform.Housing.Rooms {
                 report.Body.Add($"Item {i}     Price 0.00 SAR");
             }
             this.printPreviewDialog1.ShowDialog();
+        }
+
+        private void RoomForm_Load(object sender, EventArgs e) {
+            Utils.FormsHelper.registerEnterAsTab(this.panel1);
         }
     }
 }

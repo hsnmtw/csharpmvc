@@ -1,5 +1,6 @@
 ﻿using ControllerLibrary.Common;
 using ControllerLibrary.Housing;
+using ModelLibrary.Common;
 using ModelLibrary.Housing;
 using System;
 using System.Collections.Generic;
@@ -65,7 +66,7 @@ namespace ViewWinform.Housing.Compounds {
 
         private void CompoundForm_Load_1(object sender, EventArgs e) {
             Utils.FormsHelper.registerEnterAsTab(this);
-            this.controller = ControllersFactory.GetController(ControllersEnum.Compound);
+            this.controller = ControllersFactory.GetController(Entities.Compound);
             this.Model = new CompoundModel();
         }
 

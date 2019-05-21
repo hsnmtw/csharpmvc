@@ -20,58 +20,18 @@ namespace ViewWinform.Utils {
             CompactAndRepairAsync();
         }
 
-        public async void CompactAndRepairAsync() {
+        public void CompactAndRepairAsync() {
             this.button1.Enabled = false;
-            MainView.Instance.setProgress("Closing database", 0);
-            ModelLibrary.Common.DBConnectionManager.Instance.Close();
-            await Task.Delay(1000);
-
-            MainView.Instance.setProgress("Database is closed", 10);
-            await Task.Delay(3000); 
-
+            listBox1.Items.Clear();
+            var pu = new ModelLibrary.Common.ProgressUpdate("CompactAndRepair");
             
-            //engine.OpenDatabase(this.lblDatabaseFileName.Text).Close();
-            string FORMAT = "yyyyMMdd.HHmmss";
-            MainView.Instance.setProgress("Taking backup of database file", 20);
-            System.IO.File.Copy(this.lblDatabaseFileName.Text, this.lblDatabaseFileName.Text + $".bak.{DateTime.Now.ToString(FORMAT)}",true);
-            System.IO.File.Copy(this.lblDatabaseFileName.Text, this.lblDatabaseFileName.Text + $".bak", true);
+            pu.Updated = delegate {
+                MainView.Instance.setProgress(pu.Message, pu.Progress);
+                listBox1.Items.Add(pu);
+                this.button1.Enabled = (pu.Progress == 100) ;
+            };
 
-            MainView.Instance.setProgress("Deleting previous compact and repair files", 30);
-            if (System.IO.File.Exists(this.lblDatabaseFileName.Text + ".car")) {
-                System.IO.File.Delete(this.lblDatabaseFileName.Text + ".car");
-            }
-
-            MainView.Instance.setProgress("Performing DAO engine Compact and Repair action ...", 40);
-            var engine = new DAO.DBEngine();
-            engine.CompactDatabase(
-                this.lblDatabaseFileName.Text+".bak",
-                this.lblDatabaseFileName.Text+".car"
-            );
-
-            await Task.Delay(3000);
-            MainView.Instance.setProgress("Compact and repair is completed successfully", 70);
-            
-            engine = null;
-
-            await Task.Delay(2000);
-            MainView.Instance.setProgress("DAO engine is closed", 80);
-            //this.lblDatabaseFileSize.Text = $"{new System.IO.FileInfo(lblDatabaseFileName.Text+".car").Length/1024} MB";
-
-            await Task.Delay(2000);
-            System.IO.File.Delete(this.lblDatabaseFileName.Text);
-
-            MainView.Instance.setProgress("database file is deleted", 90);
-
-            System.IO.File.Copy(this.lblDatabaseFileName.Text+".car", this.lblDatabaseFileName.Text, true);
-            this.lblNewDatabaseFileSize.Text = $"{new System.IO.FileInfo(this.lblDatabaseFileName.Text).Length / 1024} MB";
-            MainView.Instance.setProgress("Compact and Repair is completed", 95);
-            await Task.Delay(3000);
-            ModelLibrary.Common.DBConnectionManager.Instance.Open();
-
-            MainView.Instance.setProgress("Database connection is re-opened after compact and rapair", 100);
-
-            Utils.FormsHelper.successMessage("Compact and Repair completed successfully !!");
-            this.button1.Enabled = true;
+            ModelLibrary.Common.DBConnectionManager.Instance.CompactAndRepair(pu);
         }
 
         private void CompactAndRepairForm_Load(object sender, EventArgs e) {
@@ -84,12 +44,6 @@ namespace ViewWinform.Utils {
                     break;
                 }
             }
-
-            this.lblDatabaseFileName.Text = databasefile;
-
-            this.lblDatabaseFileSize.Text = $"{new System.IO.FileInfo(this.lblDatabaseFileName.Text).Length / 1024} MB";
-
-
         }
     }
 }

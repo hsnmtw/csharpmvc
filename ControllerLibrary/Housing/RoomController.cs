@@ -8,8 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ControllerLibrary.Housing {
-    [ForControllerAttribute(ControllersEnum.Room, Enabled = true)]
+    [ForControllerAttribute(Entities.Room, Enabled = true)]
     public class RoomController : AbstractController {
-        public RoomController() : base(CollectionsFactory.GetCollection(CollectionsEnum.Room)) { }
+        public RoomController() : base(CollectionsFactory.GetCollection(Entities.Room)) { }
     }
 }
