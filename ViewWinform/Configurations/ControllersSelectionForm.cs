@@ -17,7 +17,7 @@ namespace ViewWinform.Configurations {
             InitializeComponent();
         }
 
-        private void ControllersSelectionForm_Load(object sender, EventArgs e) {
+        private void ControllersSelectionFormLoad(object sender, EventArgs e) {
             string WIDTHS = "{0,2}   {1,-25} {2,-70} {3}";
             this.label1.Text = string.Format(WIDTHS, "SN", "Controller", "Implementation", "Status");
             this.listBox1.Items.Clear();
@@ -32,14 +32,14 @@ namespace ViewWinform.Configurations {
 
         }
 
-        private void Button1_Click(object sender, EventArgs e) {
+        private void Button1Click(object sender, EventArgs e) {
             if (this.listBox1.SelectedIndex > -1) {
                 var row = this.listBox1.SelectedItem.ToString();
                 Entities num;
                 Enum.TryParse( row.Substring(4,25).Trim(), out num);
                 ControllersFactory.SetController(num, ControllersFactory.GetController( row.Substring(31,70).Trim() ));
             }
-            ControllersSelectionForm_Load(sender, e);
+            ControllersSelectionFormLoad(sender, e);
         }
     }
 }

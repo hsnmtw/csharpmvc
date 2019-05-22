@@ -65,7 +65,7 @@ namespace ViewWinform.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _new {
             get {
-                object obj = ResourceManager.GetObject("_new", resourceCulture);
+                object obj = ResourceManager.GetObject("new", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace ViewWinform.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap arrow_down_big {
+        internal static System.Drawing.Bitmap arrowdownbig {
             get {
-                object obj = ResourceManager.GetObject("arrow_down_big", resourceCulture);
+                object obj = ResourceManager.GetObject("arrowdownbig", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,19 +83,9 @@ namespace ViewWinform.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap arrow_down_small {
+        internal static System.Drawing.Bitmap chevronthindown {
             get {
-                object obj = ResourceManager.GetObject("arrow_down_small", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap chevron_thin_down {
-            get {
-                object obj = ResourceManager.GetObject("chevron_thin_down", resourceCulture);
+                object obj = ResourceManager.GetObject("chevronthindown", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,9 +213,9 @@ namespace ViewWinform.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap power_off {
+        internal static System.Drawing.Bitmap poweroff {
             get {
-                object obj = ResourceManager.GetObject("power_off", resourceCulture);
+                object obj = ResourceManager.GetObject("poweroff", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

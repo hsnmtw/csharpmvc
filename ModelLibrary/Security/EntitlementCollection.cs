@@ -12,9 +12,9 @@ namespace ModelLibrary.Security
         public override MetaData MetaData => new MetaData() {
             GetModelType = typeof(EntitlementModel)
             , GetPrimaryKeyFields = "Id".Split(',')
-            , GetRequiredFields = new string[] { "Id","Entitlement_Name" }
-            , GetSource = "Security_Entitlements"
-            , GetUniqueKeyFields = new string[] { "Entitlement_Name" }
+            , GetRequiredFields = new string[] { "Id","EntitlementName" }
+            , GetSource = "SecurityEntitlements"
+            , GetUniqueKeyFields = new string[] { "EntitlementName" }
         };
     }
 }

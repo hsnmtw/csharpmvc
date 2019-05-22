@@ -24,16 +24,16 @@
         /// </summary>
         private void InitializeComponent() {
             this.label1 = new System.Windows.Forms.Label();
-            this.Database_Source_Label = new System.Windows.Forms.Label();
+            this.DatabaseSourceLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.Size_on_disk_Label = new System.Windows.Forms.Label();
+            this.SizeondiskLabel = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.Number_of_Tables_Label = new System.Windows.Forms.Label();
-            this.Number_of_Views_Label = new System.Windows.Forms.Label();
+            this.NumberofTablesLabel = new System.Windows.Forms.Label();
+            this.NumberofViewsLabel = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.CompactRepair_Button = new System.Windows.Forms.Button();
-            this.Backup_Button = new System.Windows.Forms.Button();
-            this.Restore_Button = new System.Windows.Forms.Button();
+            this.CompactRepairButton = new System.Windows.Forms.Button();
+            this.BackupButton = new System.Windows.Forms.Button();
+            this.RestoreButton = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.DateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,14 +53,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Database Source";
             // 
-            // Database_Source_Label
+            // DatabaseSourceLabel
             // 
-            this.Database_Source_Label.AutoSize = true;
-            this.Database_Source_Label.Location = new System.Drawing.Point(13, 38);
-            this.Database_Source_Label.Name = "Database_Source_Label";
-            this.Database_Source_Label.Size = new System.Drawing.Size(89, 13);
-            this.Database_Source_Label.TabIndex = 0;
-            this.Database_Source_Label.Text = "Database Source";
+            this.DatabaseSourceLabel.AutoSize = true;
+            this.DatabaseSourceLabel.Location = new System.Drawing.Point(13, 38);
+            this.DatabaseSourceLabel.Name = "DatabaseSourceLabel";
+            this.DatabaseSourceLabel.Size = new System.Drawing.Size(89, 13);
+            this.DatabaseSourceLabel.TabIndex = 0;
+            this.DatabaseSourceLabel.Text = "Database Source";
             // 
             // label3
             // 
@@ -72,14 +72,14 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Size on disk";
             // 
-            // Size_on_disk_Label
+            // SizeondiskLabel
             // 
-            this.Size_on_disk_Label.AutoSize = true;
-            this.Size_on_disk_Label.Location = new System.Drawing.Point(13, 95);
-            this.Size_on_disk_Label.Name = "Size_on_disk_Label";
-            this.Size_on_disk_Label.Size = new System.Drawing.Size(62, 13);
-            this.Size_on_disk_Label.TabIndex = 0;
-            this.Size_on_disk_Label.Text = "Size on disk";
+            this.SizeondiskLabel.AutoSize = true;
+            this.SizeondiskLabel.Location = new System.Drawing.Point(13, 95);
+            this.SizeondiskLabel.Name = "SizeondiskLabel";
+            this.SizeondiskLabel.Size = new System.Drawing.Size(62, 13);
+            this.SizeondiskLabel.TabIndex = 0;
+            this.SizeondiskLabel.Text = "Size on disk";
             // 
             // label5
             // 
@@ -91,23 +91,23 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Number of Tables";
             // 
-            // Number_of_Tables_Label
+            // NumberofTablesLabel
             // 
-            this.Number_of_Tables_Label.AutoSize = true;
-            this.Number_of_Tables_Label.Location = new System.Drawing.Point(133, 95);
-            this.Number_of_Tables_Label.Name = "Number_of_Tables_Label";
-            this.Number_of_Tables_Label.Size = new System.Drawing.Size(91, 13);
-            this.Number_of_Tables_Label.TabIndex = 0;
-            this.Number_of_Tables_Label.Text = "Number of Tables";
+            this.NumberofTablesLabel.AutoSize = true;
+            this.NumberofTablesLabel.Location = new System.Drawing.Point(133, 95);
+            this.NumberofTablesLabel.Name = "NumberofTablesLabel";
+            this.NumberofTablesLabel.Size = new System.Drawing.Size(91, 13);
+            this.NumberofTablesLabel.TabIndex = 0;
+            this.NumberofTablesLabel.Text = "Number of Tables";
             // 
-            // Number_of_Views_Label
+            // NumberofViewsLabel
             // 
-            this.Number_of_Views_Label.AutoSize = true;
-            this.Number_of_Views_Label.Location = new System.Drawing.Point(282, 95);
-            this.Number_of_Views_Label.Name = "Number_of_Views_Label";
-            this.Number_of_Views_Label.Size = new System.Drawing.Size(87, 13);
-            this.Number_of_Views_Label.TabIndex = 1;
-            this.Number_of_Views_Label.Text = "Number of Views";
+            this.NumberofViewsLabel.AutoSize = true;
+            this.NumberofViewsLabel.Location = new System.Drawing.Point(282, 95);
+            this.NumberofViewsLabel.Name = "NumberofViewsLabel";
+            this.NumberofViewsLabel.Size = new System.Drawing.Size(87, 13);
+            this.NumberofViewsLabel.TabIndex = 1;
+            this.NumberofViewsLabel.Text = "Number of Views";
             // 
             // label8
             // 
@@ -119,35 +119,35 @@
             this.label8.TabIndex = 2;
             this.label8.Text = "Number of Views";
             // 
-            // CompactRepair_Button
+            // CompactRepairButton
             // 
-            this.CompactRepair_Button.Enabled = false;
-            this.CompactRepair_Button.Location = new System.Drawing.Point(16, 139);
-            this.CompactRepair_Button.Name = "CompactRepair_Button";
-            this.CompactRepair_Button.Size = new System.Drawing.Size(133, 23);
-            this.CompactRepair_Button.TabIndex = 3;
-            this.CompactRepair_Button.Text = "Compact and Repair";
-            this.CompactRepair_Button.UseVisualStyleBackColor = true;
+            this.CompactRepairButton.Enabled = false;
+            this.CompactRepairButton.Location = new System.Drawing.Point(16, 139);
+            this.CompactRepairButton.Name = "CompactRepairButton";
+            this.CompactRepairButton.Size = new System.Drawing.Size(133, 23);
+            this.CompactRepairButton.TabIndex = 3;
+            this.CompactRepairButton.Text = "Compact and Repair";
+            this.CompactRepairButton.UseVisualStyleBackColor = true;
             // 
-            // Backup_Button
+            // BackupButton
             // 
-            this.Backup_Button.Enabled = false;
-            this.Backup_Button.Location = new System.Drawing.Point(180, 139);
-            this.Backup_Button.Name = "Backup_Button";
-            this.Backup_Button.Size = new System.Drawing.Size(77, 23);
-            this.Backup_Button.TabIndex = 3;
-            this.Backup_Button.Text = "Backup";
-            this.Backup_Button.UseVisualStyleBackColor = true;
+            this.BackupButton.Enabled = false;
+            this.BackupButton.Location = new System.Drawing.Point(180, 139);
+            this.BackupButton.Name = "BackupButton";
+            this.BackupButton.Size = new System.Drawing.Size(77, 23);
+            this.BackupButton.TabIndex = 3;
+            this.BackupButton.Text = "Backup";
+            this.BackupButton.UseVisualStyleBackColor = true;
             // 
-            // Restore_Button
+            // RestoreButton
             // 
-            this.Restore_Button.Enabled = false;
-            this.Restore_Button.Location = new System.Drawing.Point(300, 139);
-            this.Restore_Button.Name = "Restore_Button";
-            this.Restore_Button.Size = new System.Drawing.Size(77, 23);
-            this.Restore_Button.TabIndex = 3;
-            this.Restore_Button.Text = "Restore";
-            this.Restore_Button.UseVisualStyleBackColor = true;
+            this.RestoreButton.Enabled = false;
+            this.RestoreButton.Location = new System.Drawing.Point(300, 139);
+            this.RestoreButton.Name = "RestoreButton";
+            this.RestoreButton.Size = new System.Drawing.Size(77, 23);
+            this.RestoreButton.TabIndex = 3;
+            this.RestoreButton.Text = "Restore";
+            this.RestoreButton.UseVisualStyleBackColor = true;
             // 
             // label9
             // 
@@ -217,21 +217,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(393, 440);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.Restore_Button);
-            this.Controls.Add(this.Backup_Button);
-            this.Controls.Add(this.CompactRepair_Button);
-            this.Controls.Add(this.Number_of_Views_Label);
+            this.Controls.Add(this.RestoreButton);
+            this.Controls.Add(this.BackupButton);
+            this.Controls.Add(this.CompactRepairButton);
+            this.Controls.Add(this.NumberofViewsLabel);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.Number_of_Tables_Label);
+            this.Controls.Add(this.NumberofTablesLabel);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.Size_on_disk_Label);
-            this.Controls.Add(this.Database_Source_Label);
+            this.Controls.Add(this.SizeondiskLabel);
+            this.Controls.Add(this.DatabaseSourceLabel);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Name = "DBMaintenance";
             this.Text = "Database Maintenance";
-            this.Load += new System.EventHandler(this.DBMaintenance_Load);
+            this.Load += new System.EventHandler(this.DBMaintenanceLoad);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -241,16 +241,16 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label Database_Source_Label;
+        private System.Windows.Forms.Label DatabaseSourceLabel;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label Size_on_disk_Label;
+        private System.Windows.Forms.Label SizeondiskLabel;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label Number_of_Tables_Label;
-        private System.Windows.Forms.Label Number_of_Views_Label;
+        private System.Windows.Forms.Label NumberofTablesLabel;
+        private System.Windows.Forms.Label NumberofViewsLabel;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button CompactRepair_Button;
-        private System.Windows.Forms.Button Backup_Button;
-        private System.Windows.Forms.Button Restore_Button;
+        private System.Windows.Forms.Button CompactRepairButton;
+        private System.Windows.Forms.Button BackupButton;
+        private System.Windows.Forms.Button RestoreButton;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateColumn;

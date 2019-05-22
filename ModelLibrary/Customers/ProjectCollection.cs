@@ -10,9 +10,9 @@ namespace ModelLibrary.Customers {
         public override MetaData MetaData => new MetaData() {
               GetModelType        = typeof(ProjectModel)
             , GetPrimaryKeyFields = "Id".Split(',')
-            , GetRequiredFields   = "Id,Project_Name,Client_Short_Name".Split(',')
-            , GetSource           = "Customers_Project"
-            , GetUniqueKeyFields  = new string[] { "Project_Name" }
+            , GetRequiredFields   = "Id,ProjectName,ClientShortName".Split(',')
+            , GetSource           = "CustomersProject"
+            , GetUniqueKeyFields  = new string[] { "ProjectName" }
         };
     }
 }

@@ -12,34 +12,34 @@ using System.Windows.Forms;
 
 namespace ViewWinform.Configurations {
     public partial class CryptoForm : Form {
-        private CryptoModel _model;
-        private CryptoController _controller;
+        private CryptoModel model;
+        private CryptoController controller;
 
         public CryptoModel Model {
             set {
-                _model = value;
-                txtInput.Text     = _model == null ? "" : _model.InputText;
-                txtEncrypted.Text = _model == null ? "" : _model.Encrypted;
-                txtDecrypted.Text = _model == null ? "" : _model.Decrypted;
-                txtHashed.Text    = _model == null ? "" : _model.Hashed;
+                model = value;
+                txtInput.Text     = model == null ? "" : model.InputText;
+                txtEncrypted.Text = model == null ? "" : model.Encrypted;
+                txtDecrypted.Text = model == null ? "" : model.Decrypted;
+                txtHashed.Text    = model == null ? "" : model.Hashed;
             }
             get {
-                if (_model == null) _model = new CryptoModel();
-                _model.InputText = txtInput.Text;
-                _model.Encrypted = txtEncrypted.Text;
-                _model.Decrypted = txtDecrypted.Text;
-                _model.Hashed    = txtHashed.Text;
-                return _model;
+                if (model == null) model = new CryptoModel();
+                model.InputText = txtInput.Text;
+                model.Encrypted = txtEncrypted.Text;
+                model.Decrypted = txtDecrypted.Text;
+                model.Hashed    = txtHashed.Text;
+                return model;
             }
         }
 
         public CryptoForm() {
             InitializeComponent();
-            this._controller = new CryptoController();
+            this.controller = new CryptoController();
         }
 
-        private void Button1_Click(object sender, EventArgs e) {
-            this.Model = this._controller.Process(this.Model);
+        private void Button1Click(object sender, EventArgs e) {
+            this.Model = this.controller.Process(this.Model);
         }
     }
 }

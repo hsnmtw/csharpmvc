@@ -19,13 +19,13 @@ namespace ViewWinform.Configurations {
             this.controller = new ConfigurationsController();
         }
 
-        private void ConfigurationsForm_Load(object sender, EventArgs e) {
+        private void ConfigurationsFormLoad(object sender, EventArgs e) {
             this.textBox1.Text = this.controller.Source;
-            this.DatabaseConfig_DataGridView.DataSource = this.controller.Database;
-            this.CultureInfoConfig_DataGridView.DataSource = this.controller.CultureInfo;
+            this.DatabaseConfigDataGridView.DataSource = this.controller.Database;
+            this.CultureInfoConfigDataGridView.DataSource = this.controller.CultureInfo;
 
-            this.DatabaseConfig_DataGridView.AutoGenerateColumns = false;
-            this.CultureInfoConfig_DataGridView.AutoGenerateColumns = false;
+            this.DatabaseConfigDataGridView.AutoGenerateColumns = false;
+            this.CultureInfoConfigDataGridView.AutoGenerateColumns = false;
         }
     }
 }

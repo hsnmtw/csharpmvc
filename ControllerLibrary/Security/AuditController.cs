@@ -17,11 +17,11 @@ namespace ControllerLibrary.Security {
         public AuditController() : base(CollectionsFactory.GetCollection(Entities.Audit)) { }
 
         public void registerEvent(AuditModel model) {
-            model.Updated_By = "SYSTEM";
-            model.Created_By = "SYSTEM";
-            model.Event_Date = DateTime.Now;
-            model.Updated_On = DateTime.Now;
-            model.Created_On = DateTime.Now;
+            model.UpdatedBy = "SYSTEM";
+            model.CreatedBy = "SYSTEM";
+            model.EventDate = DateTime.Now;
+            model.UpdatedOn = DateTime.Now;
+            model.CreatedOn = DateTime.Now;
             model.Id = 0; // this makes the model new
             Save(model);
         }

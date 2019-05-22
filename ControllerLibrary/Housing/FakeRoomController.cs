@@ -23,27 +23,27 @@ namespace ControllerLibrary.Housing {
         private void InitializeMemoryDatabase() {
             dataInitilized = true;
             var Room1 = new RoomModel() {
-                Room_Name = "A",
-                Building_Name = "A",
-                Nationality_Code = "BGD",
-                Bed_Capacity = 1,
-                Number_Of_Windows = 2
+                RoomName = "A",
+                BuildingName = "A",
+                NationalityCode = "BGD",
+                BedCapacity = 1,
+                NumberOfWindows = 2
             };
 
             var Room2 = new RoomModel() {
-                Room_Name = "B",
-                Building_Name = "A",
-                Nationality_Code = "IND",
-                Bed_Capacity = 4,
-                Number_Of_Windows = 1
+                RoomName = "B",
+                BuildingName = "A",
+                NationalityCode = "IND",
+                BedCapacity = 4,
+                NumberOfWindows = 1
             };
 
             var Room3 = new RoomModel() {
-                Room_Name = "C",
-                Building_Name = "A",
-                Nationality_Code = "FIL",
-                Bed_Capacity = 2,
-                Number_Of_Windows = 3
+                RoomName = "C",
+                BuildingName = "A",
+                NationalityCode = "FIL",
+                BedCapacity = 2,
+                NumberOfWindows = 3
             };
 
             this.Insert(Room1);
@@ -58,27 +58,30 @@ namespace ControllerLibrary.Housing {
             return List2DataTable((from object item in listOfRooms.Values select item).ToList(), fields);
         }
 
-        public void Delete(object _model) {
-            RoomModel model = (RoomModel)_model;
-            if (listOfRooms.ContainsKey(model.Room_Name)) {
-                listOfRooms.Remove(model.Room_Name);
+        public DBModificationResult Delete(object roomModel) {
+            RoomModel model = (RoomModel)roomModel;
+            if (listOfRooms.ContainsKey(model.RoomName)) {
+                listOfRooms.Remove(model.RoomName);
             }
+            return new DBModificationResult() { };
         }
 
         private void Insert(RoomModel model) {
             var copy = (RoomModel)model.Clone();
             if (copy.Id == 0) copy.Id = Math.Abs(random.Next(1000, 2000));
-            copy.Created_By = Session.Instance.CurrentUser == null ? "" : Session.Instance.CurrentUser.User_Name;
-            copy.Created_On = DateTime.Now;
-            listOfRooms[copy.Room_Name] = copy;
-            Console.WriteLine("insert: {0,-20}  :  {1,-20}", string.Join(",", listOfRooms.Keys.ToList()), string.Join(",", from vsl in listOfRooms.Values select vsl.Room_Name));
+            copy.CreatedBy = Session.Instance.CurrentUser == null ? "" : Session.Instance.CurrentUser.UserName;
+            copy.CreatedOn = DateTime.Now;
+            listOfRooms[copy.RoomName] = copy;
+            Console.WriteLine("insert: {0,-20}  :  {1,-20}", string.Join(",", listOfRooms.Keys.ToList()), string.Join(",", from vsl in listOfRooms.Values select vsl.RoomName));
         }
 
-        public object Save(object _model) {
-            RoomModel model = (RoomModel)_model;
+        public DBModificationResult Save(object roomModel) {
+            RoomModel model = (RoomModel)roomModel;
             if (model.Id == 0) Insert(model);
             else Update(model);
-            return (RoomModel)listOfRooms[model.Room_Name].Clone();
+            return new DBModificationResult() {
+                Result = (RoomModel)listOfRooms[model.RoomName].Clone()
+            };
         }
 
         public List<object> Read() {
@@ -104,23 +107,23 @@ namespace ControllerLibrary.Housing {
             foreach (var item in list) {
                 dt.Rows.Add(((RoomModel)item).ToObjectArray(fields));
             }
-            Console.WriteLine("List2DataTable: {0,-20}  :  {1,-20}", string.Join(",", listOfRooms.Keys.ToList()), string.Join(",", from vsl in listOfRooms.Values select vsl.Room_Name));
+            Console.WriteLine("List2DataTable: {0,-20}  :  {1,-20}", string.Join(",", listOfRooms.Keys.ToList()), string.Join(",", from vsl in listOfRooms.Values select vsl.RoomName));
             return dt;
         }
 
         private void Update(RoomModel model) {
-            Console.WriteLine("0.update: {0,-20}  :  {1,-20}", string.Join(",", listOfRooms.Keys.ToList()), string.Join(",", from vsl in listOfRooms.Values select vsl.Room_Name));
+            Console.WriteLine("0.update: {0,-20}  :  {1,-20}", string.Join(",", listOfRooms.Keys.ToList()), string.Join(",", from vsl in listOfRooms.Values select vsl.RoomName));
 
             var copy = (RoomModel)model.Clone();
-            if (listOfRooms.ContainsKey(copy.Room_Name)) {
+            if (listOfRooms.ContainsKey(copy.RoomName)) {
 
-                copy.Updated_By = Session.Instance.CurrentUser == null ? "" : Session.Instance.CurrentUser.User_Name;
-                copy.Updated_On = DateTime.Now;
+                copy.UpdatedBy = Session.Instance.CurrentUser == null ? "" : Session.Instance.CurrentUser.UserName;
+                copy.UpdatedOn = DateTime.Now;
 
-                Console.WriteLine("1.update: {0,-20}  :  {1,-20}", string.Join(",", listOfRooms.Keys.ToList()), string.Join(",", from vsl in listOfRooms.Values select vsl.Room_Name));
-                listOfRooms.Remove(copy.Room_Name);
-                listOfRooms[copy.Room_Name] = copy;
-                Console.WriteLine("2.update: {0,-20}  :  {1,-20}", string.Join(",", listOfRooms.Keys.ToList()), string.Join(",", from vsl in listOfRooms.Values select vsl.Room_Name));
+                Console.WriteLine("1.update: {0,-20}  :  {1,-20}", string.Join(",", listOfRooms.Keys.ToList()), string.Join(",", from vsl in listOfRooms.Values select vsl.RoomName));
+                listOfRooms.Remove(copy.RoomName);
+                listOfRooms[copy.RoomName] = copy;
+                Console.WriteLine("2.update: {0,-20}  :  {1,-20}", string.Join(",", listOfRooms.Keys.ToList()), string.Join(",", from vsl in listOfRooms.Values select vsl.RoomName));
             }
         }
 

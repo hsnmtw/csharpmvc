@@ -16,7 +16,7 @@ namespace ControllerLibrary.Configurations {
             throw new NotImplementedException();
         }
 
-        public void Delete(object model) {
+        public DBModificationResult Delete(object model) {
             throw new NotImplementedException();
         }
 
@@ -65,7 +65,7 @@ namespace ControllerLibrary.Configurations {
             throw new NotImplementedException();
         }
 
-        public object Save(object model) {
+        public DBModificationResult Save(object model) {
             throw new NotImplementedException();
         }
     }

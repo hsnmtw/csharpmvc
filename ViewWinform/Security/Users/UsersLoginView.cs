@@ -14,42 +14,48 @@ using ModelLibrary.Common;
 
 namespace ViewWinform.Security.Users
 {
-    public partial class UsersLoginView : UserControl, BaseView<UserModel>
+    public partial class UsersLoginView : Form
     {
+        public BaseController Controller = ControllersFactory.GetController(Entities.User);
+
         public UsersLoginView()
         {
-            _model = new UserModel();
+            model = new UserModel();
             InitializeComponent();
-            Utils.FormsHelper.registerEnterAsTab(this);
+            Utils.FormsHelper.BindViewToModel(this,ref this.model);
         }
 
-        public Action OnOKAction { get; set; }
-        public Action OnCancelAction { get; set; }
 
-        private UserModel _model;
+
+        private UserModel model = new UserModel();
         public UserModel Model {
-            set => _model = value;
+            set => model = value;
             get {
-                _model.User_Name = User_Name_TextBox.Text;
-                _model.User_Password = Password_TextBox.Text;
-                return _model;
+                model.UserName = UserNameTextBox.Text;
+                model.UserPassword = PasswordTextBox.Text;
+                return model;
             }
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void Button1Click(object sender, EventArgs e)
         {
-            BaseController ucon = ControllersFactory.GetController(Entities.User);
-            var model = ucon.Dispatch("Autheniticate", this.Model); //ucon.Autheniticate(this.Model);
+            
+            var model = (UserModel)Controller.Dispatch("Autheniticate", this.Model); //ucon.Autheniticate(this.Model);
             if (model != null)
             {
-                this.Model = (UserModel)model;
-                this.OnOKAction();
+                this.Model = model;
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
             else
             {
-                Utils.FormsHelper.errorMessage(@"Login denied");
+                Utils.FormsHelper.Error(@"Login denied");
             }
             
+        }
+
+        private void UsersLoginView_Load(object sender, EventArgs e) {
+
         }
     }
 }

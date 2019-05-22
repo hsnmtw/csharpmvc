@@ -10,12 +10,12 @@ namespace ControllerLibrary.Common
 {
     public class Session
     {
-        private static Session _instance = null;
+        private static Session instance = null;
 
         public UserModel CurrentUser { get; set; }
 
         private Session() { }
 
-        public static Session Instance { get { if (_instance == null) { _instance = new Session(); }  return _instance; } }
+        public static Session Instance { get { if (instance == null) { instance = new Session(); }  return instance; } }
     }
 }

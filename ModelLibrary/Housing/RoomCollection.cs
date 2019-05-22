@@ -10,9 +10,9 @@ namespace ModelLibrary.Housing {
         public override MetaData MetaData => new MetaData() {
             GetModelType = typeof(RoomModel)
             , GetPrimaryKeyFields = "Id".Split(',')
-            , GetRequiredFields = "Id,Room_Name,Building_Name,Bed_Capacity".Split(',')
-            , GetSource = "Housing_Room"
-            , GetUniqueKeyFields = new string[] { "Room_Name" }
+            , GetRequiredFields = "Id,RoomName,BuildingName,BedCapacity".Split(',')
+            , GetSource = "HousingRoom"
+            , GetUniqueKeyFields = new string[] { "RoomName" }
         };
     }
 }

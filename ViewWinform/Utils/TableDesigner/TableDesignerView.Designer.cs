@@ -77,8 +77,8 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(219, 414);
             this.listBox1.TabIndex = 0;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.ListBox1_SelectedIndexChanged);
-            this.listBox1.SelectedValueChanged += new System.EventHandler(this.ListBox1_SelectedValueChanged);
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.ListBox1SelectedIndexChanged);
+            this.listBox1.SelectedValueChanged += new System.EventHandler(this.ListBox1SelectedValueChanged);
             // 
             // panel2
             // 
@@ -108,7 +108,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(300, 20);
             this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "TEMP_TABLE";
+            this.textBox1.Text = "TEMPTABLE";
             // 
             // label1
             // 
@@ -127,7 +127,7 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "GENERATE SQL";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            this.button2.Click += new System.EventHandler(this.Button2Click);
             // 
             // button1
             // 
@@ -137,7 +137,7 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "CREATE";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1Click);
             // 
             // dataGridView2
             // 
@@ -295,7 +295,7 @@
             this.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "TableDesignerView";
             this.Text = "TableDesignerView";
-            this.Load += new System.EventHandler(this.TableDesignerView_Load);
+            this.Load += new System.EventHandler(this.TableDesignerViewLoad);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

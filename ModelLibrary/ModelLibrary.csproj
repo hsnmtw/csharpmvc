@@ -41,14 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Billing\AccomCategoryCollection.cs" />
+    <Compile Include="Billing\BillingCategoryCollection.cs" />
+    <Compile Include="Billing\FoodTypeCollection.cs" />
     <Compile Include="Billing\FoodClassCollection.cs" />
     <Compile Include="Billing\AccomClassCollection.cs" />
+    <Compile Include="Billing\FoodTypeModel.cs" />
     <Compile Include="Billing\FoodClassModel.cs" />
     <Compile Include="Billing\AccomClassModel.cs" />
-    <Compile Include="Billing\AccomCategoryModel.cs" />
+    <Compile Include="Billing\BillingCategoryModel.cs" />
     <Compile Include="Common\AbstractCollection.cs" />
     <Compile Include="Common\BaseModel.cs" />
+    <Compile Include="Common\DBModificationResult.cs" />
     <Compile Include="Common\Entities.cs" />
     <Compile Include="Common\CollectionsFactory.cs" />
     <Compile Include="Common\DBConnectionManager.cs" />
@@ -95,6 +98,24 @@
     <Content Include="OleDbTypes.txt" />
   </ItemGroup>
   <ItemGroup>
+    <COMReference Include="ADODB">
+      <Guid>{2A75196C-D9EB-4129-B803-931327F72D5C}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="ADOX">
+      <Guid>{00000600-0000-0010-8000-00AA006D2EA4}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
     <COMReference Include="DAO">
       <Guid>{00025E01-0000-0000-C000-000000000046}</Guid>
       <VersionMajor>5</VersionMajor>

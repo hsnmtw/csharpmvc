@@ -9,7 +9,7 @@ namespace ModelLibrary.Security
 {
     public class ProfileEntitlementsModel : BaseModel
     {
-        public String Profile_Name     { get; set; }
-        public String Entitlement_Name { get; set; }
+        public string ProfileName     { get; set; }
+        public string EntitlementName { get; set; }
     }
 }

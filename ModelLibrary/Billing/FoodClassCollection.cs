@@ -10,9 +10,9 @@ namespace ModelLibrary.Customers {
         public override MetaData MetaData => new MetaData() {
               GetModelType        = typeof(FoodClassModel)
             , GetPrimaryKeyFields = "Id".Split(',')
-            , GetRequiredFields   = "Id,Food_Class".Split(',')
-            , GetSource           = "Billing_Food_Classes"
-            , GetUniqueKeyFields  = new string[] { "Food_Class" }
+            , GetRequiredFields   = "Id,FoodClass".Split(',')
+            , GetSource           = "BillingFoodClasses"
+            , GetUniqueKeyFields  = new string[] { "FoodClass" }
         };
     }
 }

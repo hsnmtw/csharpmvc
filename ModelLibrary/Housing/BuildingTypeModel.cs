@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 
 namespace ModelLibrary.Housing {
     public class BuildingTypeModel : BaseModel {
-        public string Building_Type { get; set; }
+        public string BuildingType { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace ViewWinform.Configurations {
             InitializeComponent();
         }
 
-        private void DBMaintenance_Load(object sender, EventArgs e) {
+        private void DBMaintenanceLoad(object sender, EventArgs e) {
             var configs = new ConfigurationsController().GetTable();
         }
     }

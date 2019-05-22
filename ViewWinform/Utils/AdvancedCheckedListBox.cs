@@ -67,17 +67,17 @@ namespace ViewWinform.Utils
             return this.listView1.Items[index].SubItems[0].Text;
         }
 
-        private void TextBox1_TextChanged(object sender, EventArgs e)
+        private void TextBox1TextChanged(object sender, EventArgs e)
         {
             refresh();
         }
 
-        public void setAll(bool is_checked)
+        public void setAll(bool ischecked)
         {
             foreach(ListViewItem item in listView1.Items)
             {
-                item.Checked = is_checked;
-                this.checkedStateList[item.SubItems[0].Text] = is_checked;
+                item.Checked = ischecked;
+                this.checkedStateList[item.SubItems[0].Text] = ischecked;
             }
         }
 
@@ -99,12 +99,12 @@ namespace ViewWinform.Utils
             return query.ToList<string>();
         }
 
-        private void ListView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListView1SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void ListView1_ItemChecked(object sender, ItemCheckedEventArgs e)
+        private void ListView1ItemChecked(object sender, ItemCheckedEventArgs e)
         {
             //this.checkedStateList[ this.listView1.Items[e.Item.Index].SubItems[0].Text ] = e.Item.Checked;
         }

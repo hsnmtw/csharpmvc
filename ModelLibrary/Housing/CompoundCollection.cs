@@ -12,9 +12,9 @@ namespace ModelLibrary.Housing
         public override MetaData MetaData => new MetaData() {
             GetModelType = typeof(CompoundModel)
             , GetPrimaryKeyFields = "Id".Split(',')
-            , GetRequiredFields = "Id,Compound_Name".Split(',')
-            , GetSource = "Housing_Compounds"
-            , GetUniqueKeyFields = new string[] { "Compound_Name" }
+            , GetRequiredFields = "Id,CompoundName".Split(',')
+            , GetSource = "HousingCompounds"
+            , GetUniqueKeyFields = new string[] { "CompoundName" }
             };
     }
 }

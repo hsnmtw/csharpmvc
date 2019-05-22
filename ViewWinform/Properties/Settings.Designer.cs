@@ -26,108 +26,108 @@ namespace ViewWinform.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("yyyy-MM-dd")]
-        public string DateTimeFormat_ShortDatePattern {
+        public string DateTimeFormatShortDatePattern {
             get {
-                return ((string)(this["DateTimeFormat_ShortDatePattern"]));
+                return ((string)(this["DateTimeFormatShortDatePattern"]));
             }
             set {
-                this["DateTimeFormat_ShortDatePattern"] = value;
+                this["DateTimeFormatShortDatePattern"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("yyyy-MM-dd HH:mm:ss")]
-        public string DateTimeFormat_LongDatePattern {
+        public string DateTimeFormatLongDatePattern {
             get {
-                return ((string)(this["DateTimeFormat_LongDatePattern"]));
+                return ((string)(this["DateTimeFormatLongDatePattern"]));
             }
             set {
-                this["DateTimeFormat_LongDatePattern"] = value;
+                this["DateTimeFormatLongDatePattern"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\96650\\source\\repos\\HIS\\DB\\his_database.mdb")]
-        public string Database_Source {
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\96650\\source\\repos\\HIS\\DB\\hisdatabase.mdb")]
+        public string DatabaseSource {
             get {
-                return ((string)(this["Database_Source"]));
+                return ((string)(this["DatabaseSource"]));
             }
             set {
-                this["Database_Source"] = value;
+                this["DatabaseSource"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Admin")]
-        public string Database_User_Id {
+        public string DatabaseUserId {
             get {
-                return ((string)(this["Database_User_Id"]));
+                return ((string)(this["DatabaseUserId"]));
             }
             set {
-                this["Database_User_Id"] = value;
+                this["DatabaseUserId"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Database_Password {
+        public string DatabasePassword {
             get {
-                return ((string)(this["Database_Password"]));
+                return ((string)(this["DatabasePassword"]));
             }
             set {
-                this["Database_Password"] = value;
+                this["DatabasePassword"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Microsoft.Jet.OLEDB.4.0")]
-        public string Database_Provider {
+        public string DatabaseProvider {
             get {
-                return ((string)(this["Database_Provider"]));
+                return ((string)(this["DatabaseProvider"]));
             }
             set {
-                this["Database_Provider"] = value;
+                this["DatabaseProvider"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("-")]
-        public string DateTimeFormat_DateSeparator {
+        public string DateTimeFormatDateSeparator {
             get {
-                return ((string)(this["DateTimeFormat_DateSeparator"]));
+                return ((string)(this["DateTimeFormatDateSeparator"]));
             }
             set {
-                this["DateTimeFormat_DateSeparator"] = value;
+                this["DateTimeFormatDateSeparator"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("en-NZ")]
-        public string Globalization_Culture {
+        public string GlobalizationCulture {
             get {
-                return ((string)(this["Globalization_Culture"]));
+                return ((string)(this["GlobalizationCulture"]));
             }
             set {
-                this["Globalization_Culture"] = value;
+                this["GlobalizationCulture"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("en-NZ")]
-        public string Globalization_UICulture {
+        public string GlobalizationUICulture {
             get {
-                return ((string)(this["Globalization_UICulture"]));
+                return ((string)(this["GlobalizationUICulture"]));
             }
             set {
-                this["Globalization_UICulture"] = value;
+                this["GlobalizationUICulture"] = value;
             }
         }
     }

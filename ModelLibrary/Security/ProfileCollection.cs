@@ -13,9 +13,9 @@ namespace ModelLibrary.Security
         public override MetaData MetaData => new MetaData() {
             GetModelType = typeof(ProfileModel)
             , GetPrimaryKeyFields = "Id".Split(',')
-            , GetRequiredFields = new string[] { "Id", "Profile_Name" }
-            , GetSource = "Security_Profiles"
-            , GetUniqueKeyFields = new string[] { "Profile_Name" }
+            , GetRequiredFields = new string[] { "Id", "ProfileName" }
+            , GetSource = "SecurityProfiles"
+            , GetUniqueKeyFields = new string[] { "ProfileName" }
         };
     }
 }

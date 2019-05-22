@@ -17,7 +17,7 @@ namespace ModelLibrary.Utils.TableDesigner {
         }
 
 
-        private void ListBox1_SelectedValueChanged(object sender, EventArgs e) {
+        private void ListBox1SelectedValueChanged(object sender, EventArgs e) {
 
         }
 
@@ -32,9 +32,9 @@ namespace ModelLibrary.Utils.TableDesigner {
             }
         }
 
-        private void ListBox1_SelectedIndexChanged(object sender, EventArgs e) {
+        private void ListBox1SelectedIndexChanged(object sender, EventArgs e) {
             if (this.listBox1.SelectedItem == null) return;
-            //COLUMN_NAME,DATA_TYPE,CHARACTER_MAXIMUM_LENGTH,!IS_NULLABLE,key
+            //COLUMNNAME,DATATYPE,CHARACTERMAXIMUMLENGTH,!ISNULLABLE,key
             var columns =
                 (from row
                 in ModelLibrary.Common.DBConnectionManager.Instance.SchemaColumns.Rows.Cast<DataRow>()
@@ -79,12 +79,12 @@ namespace ModelLibrary.Utils.TableDesigner {
                 dataGridView1.Rows.Add(row);
             }
             if ((from n in DBConnectionManager.Instance.SchemaTables.Rows.Cast<DataRow>() where n["TABLE_NAME"].ToString().Equals(name) select n).Count() == 1) {
-                this.dataGridView2.DataSource = DBConnectionManager.Instance.Query(new Statement(name, "SELECT * FROM " + name));
+                this.dataGridView2.DataSource = DBConnectionManager.Instance.Query(new Statement(name, $"SELECT * FROM [{name}] ORDER BY 1" ));
             }
         }
 
 
-        private void TableDesignerView_Load(object sender, EventArgs e) {
+        private void TableDesignerViewLoad(object sender, EventArgs e) {
             //if (DesignMode) return;
             var tables =
                 from row
@@ -94,35 +94,39 @@ namespace ModelLibrary.Utils.TableDesigner {
                 select row["TABLE_NAME"]
                 ;
             this.listBox1.Items.Clear();
-            foreach (var table in tables) {
+            foreach (string table in tables) {
                 this.listBox1.Items.Add(table);
+                //DBConnectionManager.Instance.Execute(new Statement(table) {
+                //    Sql = $"ALTER TABLE {table} ADD COLUMN ReadOnly YESNO"
+                //});
             }
             CreateNew();
         }
         public void CreateNew() { 
-            addColumnsDefinition("NEW_TABLE_NAME",
+            addColumnsDefinition("NEWTABLENAME",
              new object[][] {
                              //name,type,size,required,key
-                new object[]{ "Id",        "AUTOINCREMENT"    ,null,true ,"PRIMARY KEY" },
-                new object[]{ "Created_By","TEXT"             ,50  ,false, null },
-                new object[]{ "Created_On","DATETIME"         ,null,false, null },
-                new object[]{ "Updated_By","TEXT"             ,50  ,false, null },
-                new object[]{ "Updated_On","DATETIME"         ,null,false, null },
+                new object[]{ "Id"       ,"AUTOINCREMENT"    ,null,true ,"PRIMARY KEY" },
+                new object[]{ "CreatedBy","TEXT"             ,50  ,false, null },
+                new object[]{ "CreatedOn","DATETIME"         ,null,false, null },
+                new object[]{ "UpdatedBy","TEXT"             ,50  ,false, null },
+                new object[]{ "UpdatedOn","DATETIME"         ,null,false, null },
+                new object[]{ "ReadOnly", "YESNO"            ,null,false, null },
             });
             this.textBox1.Focus();
             this.textBox1.Select();
             this.textBox1.SelectAll();
         }
 
-        private void Button2_Click(object sender, EventArgs e) {
+        private void Button2Click(object sender, EventArgs e) {
             GenerateSQL();
         }
 
-        private void Button1_Click(object sender, EventArgs e) {
+        private void Button1Click(object sender, EventArgs e) {
             GenerateSQL();
             DBConnectionManager.Instance.Execute(new Statement(this.textBox2.Text, this.textBox2.Text));
-            ViewWinform.Utils.FormsHelper.successMessage("Done...");
-            TableDesignerView_Load(null,null);
+            ViewWinform.Utils.FormsHelper.Success("Done...");
+            TableDesignerViewLoad(null,null);
         }
     }
 }

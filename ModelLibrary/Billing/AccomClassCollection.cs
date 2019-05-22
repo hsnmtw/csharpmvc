@@ -10,9 +10,9 @@ namespace ModelLibrary.Customers {
         public override MetaData MetaData => new MetaData() {
               GetModelType        = typeof(AccomClassModel)
             , GetPrimaryKeyFields = "Id".Split(',')
-            , GetRequiredFields   = "Id,Accom_Class".Split(',')
-            , GetSource           = "Billing_Accomodation_Classes"
-            , GetUniqueKeyFields  = new string[] { "Accom_Class" }
+            , GetRequiredFields   = "Id,AccomClass".Split(',')
+            , GetSource           = "BillingAccomodationClasses"
+            , GetUniqueKeyFields  = new string[] { "AccomClass" }
         };
     }
 }

@@ -26,11 +26,11 @@ namespace ViewWinform.Common {
 
         private BaseController Controller;
         private string[] shownColumns;
-        private int _page,_pages,_pagesize;
+        private int page,pages,pagesize;
         public int Page {
-            get => _page;
+            get => page;
             private set {
-                _page = value;
+                page = value;
                 
                 tsbFirst.Enabled = tsbPrevious.Enabled = Page > 1;
                 tsbLast.Enabled = tsbNext.Enabled = Page < Pages;
@@ -38,18 +38,18 @@ namespace ViewWinform.Common {
             }
         }
         public int Pages {
-            get => _pages;
+            get => pages;
             private set {
-                _pages = value;
+                pages = value;
                 tsbFirst.Enabled = tsbPrevious.Enabled = Page > 1;
                 tsbLast.Enabled = tsbNext.Enabled = Page < Pages;
                 this.tslRecordPosition.Text = $"{Page}/{Pages}";
             }
         }
         public int PageSize {
-            get => _pagesize;
+            get => pagesize;
             set {
-                _pagesize = value;
+                pagesize = value;
                 this.tslPageSize.Text  = $"Page Size {value}";
             }
         }
@@ -80,7 +80,7 @@ namespace ViewWinform.Common {
             }
         }
 
-        private void LookUp_Load(object sender, EventArgs e) {
+        private void LookUpLoad(object sender, EventArgs e) {
             //this.lblSearch.Text = "";
             if (this.PageSize <1) this.PageSize = 15;
             this.Page = 1;
@@ -144,11 +144,11 @@ namespace ViewWinform.Common {
             if (this.listBox1.Items.Count > 0) this.listBox1.SelectedIndex = 0;
         }
 
-        private void LookUp_KeyDown(object sender, KeyEventArgs e) {
+        private void LookUpKeyDown(object sender, KeyEventArgs e) {
 
         }
 
-        private void DataGridView1_KeyDown(object sender, KeyEventArgs e) {
+        private void DataGridView1KeyDown(object sender, KeyEventArgs e) {
             switch (e.KeyCode) {
                 case Keys.Back:
                     if (this.lblSearch.Text.Length > 0) {
@@ -170,38 +170,38 @@ namespace ViewWinform.Common {
             }
             
         }
-        public void DataGridView1_KeyPress(object sender, KeyPressEventArgs e) {
+        public void DataGridView1KeyPress(object sender, KeyPressEventArgs e) {
             this.lblSearch.Text += e.KeyChar;
             
         }
 
-        private void TsbFirst_Click(object sender, EventArgs e) {
+        private void TsbFirstClick(object sender, EventArgs e) {
             Page = 1; Requery();
         }
 
-        private void TsbPrevious_Click(object sender, EventArgs e) {
+        private void TsbPreviousClick(object sender, EventArgs e) {
             Page--; Requery();
         }
 
-        private void TsbNext_Click(object sender, EventArgs e) {
+        private void TsbNextClick(object sender, EventArgs e) {
             Page++; Requery();
         }
 
-        private void TsbLast_Click(object sender, EventArgs e) {
+        private void TsbLastClick(object sender, EventArgs e) {
             Page = Pages; Requery();
         }
 
-        private void DataGridView1_KeyUp(object sender, KeyEventArgs e) {
+        private void DataGridView1KeyUp(object sender, KeyEventArgs e) {
         }
 
-        private void Label1_TextChanged(object sender, EventArgs e) {
+        private void Label1TextChanged(object sender, EventArgs e) {
             //(this.dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("{0} Like '%{1}%'", this.dataGridView1.Columns[0].Name, this.label1.Text);
             if(PageSize>0)
-            TsbFirst_Click(null, null);
+            TsbFirstClick(null, null);
         }
 
-        private void DataGridView1_DoubleClick(object sender, EventArgs e) {
-            this.DataGridView1_KeyDown(sender, new KeyEventArgs(Keys.Enter));
+        private void DataGridView1DoubleClick(object sender, EventArgs e) {
+            this.DataGridView1KeyDown(sender, new KeyEventArgs(Keys.Enter));
         }
     }
 }

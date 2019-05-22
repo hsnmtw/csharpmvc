@@ -13,10 +13,11 @@ namespace ModelLibrary.Common
     public abstract class BaseModel : IModel, IComparable, ICloneable {
         //Database table properties
         public int Id               { get; set; }
-        public string Created_By    { get; set; }
-        public string Updated_By    { get; set; }
-        public DateTime? Created_On { get; set; }
-        public DateTime? Updated_On { get; set; }
+        public string CreatedBy    { get; set; }
+        public string UpdatedBy    { get; set; }
+        public DateTime? CreatedOn { get; set; }
+        public DateTime? UpdatedOn { get; set; }
+        public bool      ReadOnly  { get; set; }
 
         public object Clone() {
             var copy = Activator.CreateInstance(this.GetType());

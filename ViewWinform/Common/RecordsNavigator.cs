@@ -14,23 +14,23 @@ namespace ViewWinform.Common {
         
         public event EventHandler OnGotoFirstRecord,OnGotoNextRecord,OnGotoPreviousRecord,OnGotoLastRecord,OnNewClicked;
 
-        private int _position,_total;
+        private int position,total;
         public int Position {
-            get { return this._position; }
+            get { return this.position; }
             set {
-                this._position = value;
-                this.label1.Text = string.Format("{0}/{1}", _position, _total);
+                this.position = value;
+                this.label1.Text = string.Format("{0}/{1}", position, total);
             }
         }
         public int TotalRecords {
-            get { return this._total; }
+            get { return this.total; }
             set {
-                this._total = value;
-                this.label1.Text = string.Format("{0}/{1}", _position, _total);
+                this.total = value;
+                this.label1.Text = string.Format("{0}/{1}", position, total);
             }
         }
 
-        private void Button3_Click(object sender, EventArgs e) {
+        private void Button3Click(object sender, EventArgs e) {
             if (TotalRecords < 1) return;
             if (Position < TotalRecords) {
                 this.OnGotoNextRecord(sender, e);
@@ -38,13 +38,13 @@ namespace ViewWinform.Common {
             }
         }
 
-        private void Button4_Click(object sender, EventArgs e) {
+        private void Button4Click(object sender, EventArgs e) {
             if (TotalRecords < 1) return;
             this.OnGotoLastRecord(sender, e);
             Position = TotalRecords;
         }
 
-        private void Button2_Click(object sender, EventArgs e) {
+        private void Button2Click(object sender, EventArgs e) {
             if (TotalRecords < 1) return;
             if (Position > 1) {
                 this.OnGotoPreviousRecord(sender, e);
@@ -52,7 +52,7 @@ namespace ViewWinform.Common {
             }
         }
 
-        private void Button1_Click(object sender, EventArgs e) {
+        private void Button1Click(object sender, EventArgs e) {
             if (TotalRecords < 1) return;
             this.OnGotoFirstRecord(sender, e);
             Position = 1;
@@ -62,7 +62,7 @@ namespace ViewWinform.Common {
             InitializeComponent();
         }
 
-        private void Button5_Click(object sender, EventArgs e) {
+        private void Button5Click(object sender, EventArgs e) {
             this.OnNewClicked(sender, e);
         }
     }

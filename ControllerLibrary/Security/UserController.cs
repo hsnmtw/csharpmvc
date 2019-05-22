@@ -17,53 +17,53 @@ namespace ControllerLibrary.Security
 
         public UserController() : base(CollectionsFactory.GetCollection(Entities.User)) { }
        
-        public override object Save(object _model) {
-            var model = (UserModel)_model;
-            if (model.User_Password.StartsWith("{ENC}") == false) {
-                model.User_Password = CryptoFactory.Encrypt(model.User_Password);
+        public override DBModificationResult Save(object userModel) {
+            var model = (UserModel)userModel;
+            if (model.UserPassword.StartsWith("{ENC}") == false) {
+                model.UserPassword = CryptoFactory.Encrypt(model.UserPassword);
             }
             return base.Save(model);
         }
 
-        public override void Delete(object _model) {
-            var model = (UserModel)_model;
+        public override DBModificationResult Delete(object userModel) {
+            var model = (UserModel)userModel;
             model = (UserModel)Read(model, new string[] { "Id" }).First();
-            if ("admin".Equals($"{model.User_Name}".ToLower())) {
+            if ("admin".Equals($"{model.UserName}".ToLower())) {
                 throw new ArgumentException("You cannot delete Admin user");
             }
-            base.Delete(model);
+            return base.Delete(model);
         }
 
-        public override List<object> Read(object _model, string[] whereFields) {
-            var model = (UserModel)_model;
-            if(!(model.User_Password == null || model.User_Password.StartsWith("{ENC}"))) {
-                model.User_Password = CryptoFactory.Encrypt(model.User_Password);
+        public override List<object> Read(object userModel, string[] whereFields) {
+            var model = (UserModel)userModel;
+            if(!(model.UserPassword == null || model.UserPassword.StartsWith("{ENC}"))) {
+                model.UserPassword = CryptoFactory.Encrypt(model.UserPassword);
             }
             return base.Read(model, whereFields);
         }
 
-        public UserModel Autheniticate(object _model){
-            var model = (UserModel)_model;
-            if (model.User_Password.StartsWith("{ENC}")) return null;
+        public UserModel Autheniticate(object userModel) {
+            var model = (UserModel)userModel;
+            if (model.UserPassword.StartsWith("{ENC}")) return null;
 
             var audit = (AuditController)ControllersFactory.GetController(Entities.Audit);
 
-            model.Is_Active = true;
-            var models = Read(model, new string[] { "User_Name", "User_Password", "Is_Active" });
+            model.IsActive = true;
+            var models = Read(model, new string[] { "UserName", "UserPassword", "IsActive" });
 
             if (models.Count < 1) {
-                models = Read(model, new string[] { "User_Name"});
+                models = Read(model, new string[] { "UserName"});
                 if(models.Count > 0) {
                     var user = (UserModel)models.First();
-                    user.Failed_Login_Attempts += 1;
-                    if (user.Failed_Login_Attempts > 5) {
-                        user.Is_Active = false;
+                    user.FailedLoginAttempts += 1;
+                    if (user.FailedLoginAttempts > 5) {
+                        user.IsActive = false;
                     }
                     Save(user);
                     
                     audit.registerEvent(new AuditModel() {
-                        User_Name = model.User_Name,
-                        Event_Comments = $"Login denied : {user}"
+                        UserName = model.UserName,
+                        EventComments = $"Login denied : {user}"
                     });
                 }
                 return null;
@@ -71,12 +71,12 @@ namespace ControllerLibrary.Security
 
             model = (UserModel)models.First();
 
-            model.Last_Login_Date = DateTime.Now;
+            model.LastLoginDate = DateTime.Now;
             Save(model);
 
             audit.registerEvent(new AuditModel() {
-                User_Name = model.User_Name,
-                Event_Comments = "Login successful"
+                UserName = model.UserName,
+                EventComments = "Login successful"
             });
 
             this.ResetLoginCounter(model);
@@ -85,31 +85,31 @@ namespace ControllerLibrary.Security
         }
 
         public bool ResetLoginCounter(UserModel model) {
-            var models = Read(model, new string[] { "User_Name" });
+            var models = Read(model, new string[] { "UserName" });
             if (models.Count < 1) return false;
             model = (UserModel)models.First();
-            model.Failed_Login_Attempts = 0;
+            model.FailedLoginAttempts = 0;
             this.Save(model);
 
             var audit = (AuditController)ControllersFactory.GetController(Entities.Audit);
             audit.registerEvent(new AuditModel() {
-                User_Name = model.User_Name,
-                Event_Comments = $"reset login counter : {model.User_Name}"
+                UserName = model.UserName,
+                EventComments = $"reset login counter : {model.UserName}"
             });
             return true;
         }
 
         public void ResetPassword(UserModel model) {
-            if (model.User_Password.StartsWith("{ENC}")) throw new Exception("password must in plain text");
-            var password = CryptoFactory.Encrypt(model.User_Password);
-            model = (UserModel)Read(model, new string[] { "User_Name" }).First();
-            model.User_Password = password;
-            model.Last_Change_Password = DateTime.Now;
+            if (model.UserPassword.StartsWith("{ENC}")) throw new Exception("password must in plain text");
+            var password = CryptoFactory.Encrypt(model.UserPassword);
+            model = (UserModel)Read(model, new string[] { "UserName" }).First();
+            model.UserPassword = password;
+            model.LastChangePassword = DateTime.Now;
             Save(model);
             var audit = (AuditController)ControllersFactory.GetController(Entities.Audit);
             audit.registerEvent(new AuditModel() {
-                User_Name = model.User_Name,
-                Event_Comments = "password reset for user : " + model.User_Name
+                UserName = model.UserName,
+                EventComments = "password reset for user : " + model.UserName
             });
         }
     }

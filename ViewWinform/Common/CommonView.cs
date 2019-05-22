@@ -25,24 +25,24 @@ namespace ViewWinform.Common {
         public event RecordSpecificOperationHandler OnDeleteInvoked;
         public event RecordSpecificOperationHandler OnTableInvoked;
 
-        private int _position;
-        private int _totalRecords = 0;
+        private int position;
+        private int totalRecords = 0;
         public int TotalRecords {
-            get { return _totalRecords; }
+            get { return totalRecords; }
             set {
-                _totalRecords = value;
+                totalRecords = value;
                 if(value == 0) {
-                    TsbNew_Click_1(null, null);
+                    TsbNewClick1(null, null);
                 }
             }
         }
         public int Position {
             get {
-                return this._position;
+                return this.position;
             }
             set {
-                _position = value;
-                this.tslRecordPosition.Text = string.Format("{0}/{1}",_position,TotalRecords);
+                position = value;
+                this.tslRecordPosition.Text = string.Format("{0}/{1}",position,TotalRecords);
             }
         }
 
@@ -56,41 +56,41 @@ namespace ViewWinform.Common {
             this.OnRecordPositionChanged(position - 1);
         }
 
-        private void TsbFirst_Click(object sender, EventArgs e) {
+        private void TsbFirstClick(object sender, EventArgs e) {
             SetRecordPosition(1);
         }
 
-        private void TsbLast_Click(object sender, EventArgs e) {
+        private void TsbLastClick(object sender, EventArgs e) {
             SetRecordPosition(TotalRecords);
         }
 
-        private void TsbPrevious_Click(object sender, EventArgs e) {
+        private void TsbPreviousClick(object sender, EventArgs e) {
             SetRecordPosition(Position - 1);
         }
 
-        private void TsbNext_Click(object sender, EventArgs e) {
+        private void TsbNextClick(object sender, EventArgs e) {
             SetRecordPosition(Position + 1);
         }
 
-        private void TsbSave_Click(object sender, EventArgs e) {
+        private void TsbSaveClick(object sender, EventArgs e) {
             if (this.OnRecordOperationInvoked != null) this.OnRecordOperationInvoked(RecordOperation.Save);
             if(this.OnSaveInvoked != null) this.OnSaveInvoked(); 
         }
 
 
 
-        private void TsbTableView_Click(object sender, EventArgs e) {
+        private void TsbTableViewClick(object sender, EventArgs e) {
             if (this.OnRecordOperationInvoked != null) this.OnRecordOperationInvoked(RecordOperation.Table);
             if(this.OnTableInvoked!=null) this.OnTableInvoked();
         }
 
-        private void TsbNew_Click_1(object sender, EventArgs e) {
+        private void TsbNewClick1(object sender, EventArgs e) {
             if (this.OnRecordOperationInvoked != null) this.OnRecordOperationInvoked(RecordOperation.New);
             if(this.OnNewInvoked!=null) this.OnNewInvoked();
             this.tslRecordPosition.Text = "new record";
         }
 
-        private void TsbDelete_Click_1(object sender, EventArgs e) {
+        private void TsbDeleteClick1(object sender, EventArgs e) {
             if (this.OnRecordOperationInvoked != null) this.OnRecordOperationInvoked(RecordOperation.Delete);
             if (this.OnDeleteInvoked != null) this.OnDeleteInvoked();
         }

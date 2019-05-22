@@ -24,11 +24,11 @@ namespace ViewWinform
     {
         private Dictionary<string, ToolStripMenuItem> menus = new Dictionary<string, ToolStripMenuItem>();
 
-        private static MainView _instance = null;
+        private static MainView instance = null;
         public static MainView Instance {
             get {
-                if (_instance == null) _instance = new MainView();
-                return _instance;
+                if (instance == null) instance = new MainView();
+                return instance;
             }
         }
 
@@ -58,7 +58,7 @@ namespace ViewWinform
 
         
 
-        private void MainView_Load(object sender, EventArgs e)
+        private void MainViewLoad(object sender, EventArgs e)
         {
             tsProgressBar.Value = 0;
 
@@ -77,54 +77,54 @@ namespace ViewWinform
 
 
             tssLabelStatus.Text = "Loading Menus";
-            LogOutToolStripMenuItem_Click(sender, e);
-            LogInToolStripMenuItem_Click(sender, e);
+            LogOutToolStripMenuItemClick(sender, e);
+            LogInToolStripMenuItemClick(sender, e);
             tsProgressBar.Value += 25;
         }
 
-        private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void DeleteToolStripMenuItemClick(object sender, EventArgs e)
         {
 
         }
 
-        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItemClick(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void InitializerToolStripMenuItem_Click(object sender, EventArgs e)
+        private void InitializerToolStripMenuItemClick(object sender, EventArgs e)
         {
             
         }
 
-        private void UsersToolStripMenuItem_Click(object sender, EventArgs e)
+        private void UsersToolStripMenuItemClick(object sender, EventArgs e)
         {
             //Utils.FormsHelper.showView(this, new UsersListView());
             new UserForm() { MdiParent = this }.Show();
         }
 
-        private void ProfilesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ProfilesToolStripMenuItemClick(object sender, EventArgs e)
         {
             new ProfileForm() { MdiParent = this }.Show();
         }
 
-        private void EntitlementsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EntitlementsToolStripMenuItemClick(object sender, EventArgs e)
         {
             new EntitlementForm() { MdiParent = this }.Show();
         }
 
-        private void PorfileEntitelmentsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void PorfileEntitelmentsToolStripMenuItemClick(object sender, EventArgs e)
         {
-            //Utils.FormsHelper.showView(this, new Porfile_EntitlementsView());
+            //Utils.FormsHelper.showView(this, new PorfileEntitlementsView());
         }
 
-        private void LogOutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void LogOutToolStripMenuItemClick(object sender, EventArgs e)
         {
             if(Session.Instance.CurrentUser != null) {
                 var audit = (AuditController)ControllersFactory.GetController(Entities.Audit);
                 audit.registerEvent(new AuditModel() {
-                    User_Name = Session.Instance.CurrentUser.User_Name,
-                    Event_Comments = "Logout ..."
+                    UserName = Session.Instance.CurrentUser.UserName,
+                    EventComments = "Logout ..."
                 });
             }
             Session.Instance.CurrentUser = null;
@@ -135,30 +135,22 @@ namespace ViewWinform
             }            
         }
 
-        private void LogInToolStripMenuItem_Click(object sender, EventArgs e)
+        private void LogInToolStripMenuItemClick(object sender, EventArgs e)
         {
-            var login = new Security.Users.UsersLoginView();
-            var loginform = Utils.FormsHelper.showView(this, login);
-            login.OnOKAction = delegate ()
-            {
-                var ucontroller = ControllersFactory.GetController(Entities.User);
-                var model = (UserModel)ucontroller.Read(login.Model,new string[] { "Id" }).First();
-                this.tsslCurrentUser.Text = model.Full_Name;
-                Session.Instance.CurrentUser = model;
+            var loginview = new UsersLoginView();
+            if (loginview.ShowDialog() == DialogResult.OK) {
+                Session.Instance.CurrentUser = loginview.Model;
                 var pec = (ProfileEntitlementsController)ControllersFactory.GetController(Entities.ProfileEntitlement);
-                var entitlements = pec.GetEntitlementsByProfile(model.Profile_Name);
-                foreach(DataRow row in entitlements.Rows)
-                {
-                    var Entitlement_Name = row["Entitlement_Name"].ToString();
-                    if(this.menus.ContainsKey(Entitlement_Name))
-                        this.menus[Entitlement_Name].Enabled = true;
+                var entitlements = pec.GetEntitlementsByProfile(loginview.Model.ProfileName);
+                foreach (DataRow row in entitlements.Rows) {
+                    var EntitlementName = row["EntitlementName"].ToString();
+                    if (this.menus.ContainsKey(EntitlementName))
+                        this.menus[EntitlementName].Enabled = true;
                 }
-                loginform.Close();
-            };
-            
+            }
         }
 
-        private void SQLViewerToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SQLViewerToolStripMenuItemClick(object sender, EventArgs e)
         {
             var sqlview = new Utils.SQLView();
             sqlview.MdiParent = this;
@@ -167,138 +159,135 @@ namespace ViewWinform
             sqlview.Show();
         }
 
-        private void EncryptionToolToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EncryptionToolToolStripMenuItemClick(object sender, EventArgs e)
         {
             new Configurations.CryptoForm() { MdiParent = this }.Show();
         }
 
-        private void PasswordResetToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void PasswordResetToolStripMenuItemClick(object sender, EventArgs e) {
             if(Session.Instance.CurrentUser == null) {
-                Utils.FormsHelper.errorMessage("Not logged in");
+                Utils.FormsHelper.Error("Not logged in");
                 return;
             }
             var userPasswordResetView = new Security.Users.UserPasswordResetView();
             userPasswordResetView.Model = (Session.Instance.CurrentUser);
-            var pswdresetform = Utils.FormsHelper.showView(this, userPasswordResetView);
-            userPasswordResetView.OnOKAction = delegate () {
-                var ucontroller = (UserController)ControllersFactory.GetController(Entities.User);
-                ucontroller.ResetPassword(userPasswordResetView.Model);
-                Utils.FormsHelper.successMessage("Password has been reset");
-                pswdresetform.Close();
-            };
-            userPasswordResetView.OnCancelAction = delegate () { pswdresetform.Close(); };
+            userPasswordResetView.ShowDialog();
         }
 
-        private void NationalitiesToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void NationalitiesToolStripMenuItemClick(object sender, EventArgs e) {
             //Utils.FormsHelper.showView(this, new ViewWinform.Customers.Nationalities.NationalityListView());
             //new NationalityView() { MdiParent = this }.Show();
             new NationalityForm() { MdiParent = this }.Show();
         }
 
-        private void AuditToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void AuditToolStripMenuItemClick(object sender, EventArgs e) {
             new AuditView() { MdiParent = this }.Show();
         }
 
-        private void TableDesignerToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void TableDesignerToolStripMenuItemClick(object sender, EventArgs e) {
             new ModelLibrary.Utils.TableDesigner.TableDesignerView() { MdiParent = this }.Show();
         }
 
-        private void CompoundsToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void CompoundsToolStripMenuItemClick(object sender, EventArgs e) {
             new Housing.Compounds.CompoundForm() { MdiParent = this }.Show();
         }
 
-        private void ConfigurationsToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void ConfigurationsToolStripMenuItemClick(object sender, EventArgs e) {
             new Configurations.ConfigurationsForm() { MdiParent = this }.Show();
         }
 
-        private void CloseAllToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void CloseAllToolStripMenuItemClick(object sender, EventArgs e) {
             foreach(var child in this.MdiChildren) {
                 child.Close();
             }
         }
 
-        private void CascadeToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void CascadeToolStripMenuItemClick(object sender, EventArgs e) {
             this.LayoutMdi(System.Windows.Forms.MdiLayout.Cascade);
         }
 
-        private void TileVerticalToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void TileVerticalToolStripMenuItemClick(object sender, EventArgs e) {
             this.LayoutMdi(System.Windows.Forms.MdiLayout.TileVertical);
         }
 
-        private void TileHorizontalToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void TileHorizontalToolStripMenuItemClick(object sender, EventArgs e) {
             this.LayoutMdi(System.Windows.Forms.MdiLayout.TileHorizontal);
         }
 
-        private void ArrangeIconsToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void ArrangeIconsToolStripMenuItemClick(object sender, EventArgs e) {
             this.LayoutMdi(System.Windows.Forms.MdiLayout.ArrangeIcons);
         }
 
-        private void BuildingsToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void BuildingsToolStripMenuItemClick(object sender, EventArgs e) {
             new Housing.Buildings.BuildingForm() { MdiParent = this }.Show();
         }
 
-        private void RoomsToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void RoomsToolStripMenuItemClick(object sender, EventArgs e) {
             new Housing.Rooms.RoomForm() { MdiParent = this }.Show();
         }
 
-        private void ControllersRegistryToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void ControllersRegistryToolStripMenuItemClick(object sender, EventArgs e) {
             new Configurations.ControllersSelectionForm() { MdiParent = this }.Show();
         }
 
-        private void CompactAndRepairToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void CompactAndRepairToolStripMenuItemClick(object sender, EventArgs e) {
             new Utils.CompactAndRepairForm() { MdiParent = this }.Show();
         }
 
-        private void MainView_FormClosing(object sender, FormClosingEventArgs e) {
+        private void MainViewFormClosing(object sender, FormClosingEventArgs e) {
             try {
                 DBConnectionManager.Instance.Close();
             } catch { }
         }
 
-        private void BuildingTypesToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void BuildingTypesToolStripMenuItemClick(object sender, EventArgs e) {
             new Housing.BuildingTypes.BuildingTypeForm() { MdiParent = this }.Show();
         }
 
-        private void ClientTypesToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void ClientTypesToolStripMenuItemClick(object sender, EventArgs e) {
             new Customers.ClientTypes.ClientTypeForm() { MdiParent = this }.Show();
         }
 
-        private void ClientsToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void ClientsToolStripMenuItemClick(object sender, EventArgs e) {
             new Customers.Clients.ClientForm() { MdiParent = this }.Show();
         }
 
-        private void ProjectsToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void ProjectsToolStripMenuItemClick(object sender, EventArgs e) {
             new Customers.Projects.ProjectForm() { MdiParent = this }.Show();
         }
 
-        private void AccommodationCategoriesToolStripMenuItem_Click(object sender, EventArgs e) {
-            new Billing.AccomodationCategories.AccomodationCategoryForm() { MdiParent = this }.Show();
+        private void BillingCategoriesToolStripMenuItemClick(object sender, EventArgs e) {
+            new Billing.BillingCategoryForm() { MdiParent = this }.Show();
         }
 
-        private void AccomodationClassesToolStripMenuItem_Click(object sender, EventArgs e) {
-            new Billing.AccomodationClasses.AccomodationClassForm() { MdiParent = this }.Show();
+        private void AccomodationClassesToolStripMenuItemClick(object sender, EventArgs e) {
+            new Billing.AccomodationClassForm() { MdiParent = this }.Show();
         }
 
-        private void NewToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void NewToolStripMenuItemClick(object sender, EventArgs e) {
             try { ((ISingleForm)this.ActiveMdiChild).PerformAction("New"); } catch { }
         }
 
-        private void SaveToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void SaveToolStripMenuItemClick(object sender, EventArgs e) {
             try { ((ISingleForm)this.ActiveMdiChild).PerformAction("Save"); } catch { }
         }
 
-        private void DeleteToolStripMenuItem_Click_1(object sender, EventArgs e) {
+        private void DeleteToolStripMenuItemClick1(object sender, EventArgs e) {
             try { ((ISingleForm)this.ActiveMdiChild).PerformAction("Delete"); } catch { }
         }
 
-        private void FoodClassesToolStripMenuItem_Click(object sender, EventArgs e) {
-            new Billing.FoodClasses.FoodClassForm() { MdiParent = this }.Show();
+        private void FoodClassesToolStripMenuItemClick(object sender, EventArgs e) {
+            new Billing.FoodClassForm() { MdiParent = this }.Show();
         }
 
-        private void CloseToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void CloseToolStripMenuItemClick(object sender, EventArgs e) {
             try {
                 this.ActiveMdiChild.Close();
             } catch { }
+        }
+
+        private void FoodTypesToolStripMenuItem_Click(object sender, EventArgs e) {
+            new Billing.FoodTypeForm() { MdiParent = this }.Show();
         }
     }
 }

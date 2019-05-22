@@ -18,6 +18,7 @@ namespace ModelLibrary.Common {
         , Compound              
         , Entitlement     
         , FoodClass
+        , FoodType
         , Nationality           
         , Profile               
         , ProfileEntitlement  

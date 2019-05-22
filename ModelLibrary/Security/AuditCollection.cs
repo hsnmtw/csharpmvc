@@ -10,8 +10,8 @@ namespace ModelLibrary.Security {
         public override MetaData MetaData => new MetaData() {
             GetModelType = typeof(AuditModel)
             , GetPrimaryKeyFields = "Id".Split(',')
-            , GetRequiredFields = "Id,Event_Date,Event_Comments".Split(',')
-            , GetSource = "Security_Audit"
+            , GetRequiredFields = "Id,EventDate,EventComments".Split(',')
+            , GetSource = "SecurityAudit"
             , GetUniqueKeyFields = new string[] { }
         };
     }

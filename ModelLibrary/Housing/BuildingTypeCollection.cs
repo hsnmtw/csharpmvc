@@ -11,9 +11,9 @@ namespace ModelLibrary.Housing {
         public override MetaData MetaData => new MetaData() {
             GetModelType = typeof(BuildingTypeModel)
             , GetPrimaryKeyFields = "Id".Split(',')
-            , GetRequiredFields = "Id,Building_Type".Split(',')
-            , GetSource = "Housing_Building_Types"
-            , GetUniqueKeyFields = new string[] { "Building_Type" }
+            , GetRequiredFields = "Id,BuildingType".Split(',')
+            , GetSource = "HousingBuildingTypes"
+            , GetUniqueKeyFields = new string[] { "BuildingType" }
         };
     }
 }

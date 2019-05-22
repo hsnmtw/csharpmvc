@@ -17,9 +17,9 @@ namespace ModelLibrary.Common {
 
         object CreateNew();
 
-        object Save(object model);
+        DBModificationResult Save(object model);
 
-        void Delete(object model);
+        DBModificationResult Delete(object model);
 
         MetaData MetaData { get; }
     }

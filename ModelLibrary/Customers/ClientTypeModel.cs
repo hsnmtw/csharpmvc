@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 
 namespace ModelLibrary.Customers {
     public class ClientTypeModel : BaseModel {
-        public string Client_Type   { get; set; }
+        public string ClientType   { get; set; }
     }
 }

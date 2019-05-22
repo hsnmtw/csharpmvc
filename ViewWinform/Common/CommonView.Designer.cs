@@ -77,7 +77,7 @@ namespace ViewWinform.Common {
             this.tsbSave.Name = "tsbSave";
             this.tsbSave.Size = new System.Drawing.Size(23, 22);
             this.tsbSave.Text = "Save";
-            this.tsbSave.Click += new System.EventHandler(this.TsbSave_Click);
+            this.tsbSave.Click += new System.EventHandler(this.TsbSaveClick);
             // 
             // tsbEdit
             // 
@@ -123,7 +123,7 @@ namespace ViewWinform.Common {
             this.tsbTableView.Name = "tsbTableView";
             this.tsbTableView.Size = new System.Drawing.Size(23, 22);
             this.tsbTableView.Text = "ض";
-            this.tsbTableView.Click += new System.EventHandler(this.TsbTableView_Click);
+            this.tsbTableView.Click += new System.EventHandler(this.TsbTableViewClick);
             // 
             // toolStrip2
             // 
@@ -154,7 +154,7 @@ namespace ViewWinform.Common {
             this.tsbFirst.Name = "tsbFirst";
             this.tsbFirst.Size = new System.Drawing.Size(23, 22);
             this.tsbFirst.Text = "First";
-            this.tsbFirst.Click += new System.EventHandler(this.TsbFirst_Click);
+            this.tsbFirst.Click += new System.EventHandler(this.TsbFirstClick);
             // 
             // tsbPrevious
             // 
@@ -164,7 +164,7 @@ namespace ViewWinform.Common {
             this.tsbPrevious.Name = "tsbPrevious";
             this.tsbPrevious.Size = new System.Drawing.Size(23, 22);
             this.tsbPrevious.Text = "Previous";
-            this.tsbPrevious.Click += new System.EventHandler(this.TsbPrevious_Click);
+            this.tsbPrevious.Click += new System.EventHandler(this.TsbPreviousClick);
             // 
             // tslRecordPosition
             // 
@@ -183,7 +183,7 @@ namespace ViewWinform.Common {
             this.tsbNext.Name = "tsbNext";
             this.tsbNext.Size = new System.Drawing.Size(23, 22);
             this.tsbNext.Text = "Next";
-            this.tsbNext.Click += new System.EventHandler(this.TsbNext_Click);
+            this.tsbNext.Click += new System.EventHandler(this.TsbNextClick);
             // 
             // tsbLast
             // 
@@ -193,7 +193,7 @@ namespace ViewWinform.Common {
             this.tsbLast.Name = "tsbLast";
             this.tsbLast.Size = new System.Drawing.Size(23, 22);
             this.tsbLast.Text = "Last";
-            this.tsbLast.Click += new System.EventHandler(this.TsbLast_Click);
+            this.tsbLast.Click += new System.EventHandler(this.TsbLastClick);
             // 
             // toolStripSeparator2
             // 
@@ -209,7 +209,7 @@ namespace ViewWinform.Common {
             this.tsbNew.Name = "tsbNew";
             this.tsbNew.Size = new System.Drawing.Size(23, 22);
             this.tsbNew.Text = "New";
-            this.tsbNew.Click += new System.EventHandler(this.TsbNew_Click_1);
+            this.tsbNew.Click += new System.EventHandler(this.TsbNewClick1);
             // 
             // tsbDelete
             // 
@@ -220,7 +220,7 @@ namespace ViewWinform.Common {
             this.tsbDelete.Name = "tsbDelete";
             this.tsbDelete.Size = new System.Drawing.Size(23, 22);
             this.tsbDelete.Text = "Delete";
-            this.tsbDelete.Click += new System.EventHandler(this.TsbDelete_Click_1);
+            this.tsbDelete.Click += new System.EventHandler(this.TsbDeleteClick1);
             // 
             // CommonView
             // 

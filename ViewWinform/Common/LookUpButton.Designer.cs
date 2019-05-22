@@ -35,14 +35,14 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1Click);
             // 
             // LookUpButton
             // 
             this.Controls.Add(this.button1);
             this.Name = "LookUpButton";
             this.Size = new System.Drawing.Size(22, 22);
-            this.Load += new System.EventHandler(this.LookUpButton_Load);
+            this.Load += new System.EventHandler(this.LookUpButtonLoad);
             this.ResumeLayout(false);
 
         }

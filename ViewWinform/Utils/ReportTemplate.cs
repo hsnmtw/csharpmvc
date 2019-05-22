@@ -18,7 +18,7 @@ namespace ViewWinform.Reporting {
 
         public ReportTemplate(PrintDocument pd){
             this.PrintDocument = pd;
-            this.PrintDocument.PrintPage += PrintDocument_PrintPage;
+            this.PrintDocument.PrintPage += PrintDocumentPrintPage;
             this.Body = new List<string>();
             this.Brush = Brushes.Black;
             this.Font = new Font("Consolas", 12, FontStyle.Regular);
@@ -27,7 +27,7 @@ namespace ViewWinform.Reporting {
 
         private int line;
         private int page = 1;
-        private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e) {
+        private void PrintDocumentPrintPage(object sender, PrintPageEventArgs e) {
             Graphics g = e.Graphics;
             int x = 1, y = 1;
             double pages = 1+(Body.Count *20 / (e.MarginBounds.Bottom-30));

@@ -7,14 +7,14 @@ namespace ModelLibrary.Security
 {
     public class UserModel : BaseModel
     {
-        public String    User_Name             { get; set; }
-        public String    Full_Name             { get; set; }
-        public String    User_Password         { get; set; }
-        public String    Profile_Name          { get; set; }
-        public Boolean   Is_Active             { get; set; } 
-        public String    Email                 { get; set; } 
-        public Int32     Failed_Login_Attempts { get; set; } 
-        public DateTime? Last_Login_Date       { get; set; } 
-        public DateTime? Last_Change_Password  { get; set; }
+        public string    UserName             { get; set; }
+        public string    FullName             { get; set; }
+        public string    UserPassword         { get; set; }
+        public string    ProfileName          { get; set; }
+        public bool      IsActive             { get; set; } 
+        public string    Email                 { get; set; } 
+        public int       FailedLoginAttempts { get; set; } 
+        public DateTime? LastLoginDate       { get; set; } 
+        public DateTime? LastChangePassword  { get; set; }
     }
 }

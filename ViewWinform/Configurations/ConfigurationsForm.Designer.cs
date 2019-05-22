@@ -28,8 +28,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.DatabaseConfig_DataGridView = new System.Windows.Forms.DataGridView();
-            this.CultureInfoConfig_DataGridView = new System.Windows.Forms.DataGridView();
+            this.DatabaseConfigDataGridView = new System.Windows.Forms.DataGridView();
+            this.CultureInfoConfigDataGridView = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.KeyColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,8 +38,8 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DatabaseConfig_DataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CultureInfoConfig_DataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DatabaseConfigDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CultureInfoConfigDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -71,7 +71,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.DatabaseConfig_DataGridView);
+            this.tabPage1.Controls.Add(this.DatabaseConfigDataGridView);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -82,7 +82,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.CultureInfoConfig_DataGridView);
+            this.tabPage2.Controls.Add(this.CultureInfoConfigDataGridView);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -91,55 +91,55 @@
             this.tabPage2.Text = "CultureInfo";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // DatabaseConfig_DataGridView
+            // DatabaseConfigDataGridView
             // 
-            this.DatabaseConfig_DataGridView.AllowUserToAddRows = false;
-            this.DatabaseConfig_DataGridView.AllowUserToDeleteRows = false;
-            this.DatabaseConfig_DataGridView.AllowUserToResizeRows = false;
-            this.DatabaseConfig_DataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.DatabaseConfig_DataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.DatabaseConfig_DataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.DatabaseConfig_DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DatabaseConfig_DataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DatabaseConfigDataGridView.AllowUserToAddRows = false;
+            this.DatabaseConfigDataGridView.AllowUserToDeleteRows = false;
+            this.DatabaseConfigDataGridView.AllowUserToResizeRows = false;
+            this.DatabaseConfigDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DatabaseConfigDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DatabaseConfigDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.DatabaseConfigDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DatabaseConfigDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.KeyColumn,
             this.ValueColumn});
-            this.DatabaseConfig_DataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DatabaseConfig_DataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.DatabaseConfig_DataGridView.Location = new System.Drawing.Point(3, 3);
-            this.DatabaseConfig_DataGridView.Name = "DatabaseConfig_DataGridView";
-            this.DatabaseConfig_DataGridView.RowHeadersWidth = 30;
-            this.DatabaseConfig_DataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DatabaseConfig_DataGridView.ShowCellErrors = false;
-            this.DatabaseConfig_DataGridView.ShowCellToolTips = false;
-            this.DatabaseConfig_DataGridView.ShowEditingIcon = false;
-            this.DatabaseConfig_DataGridView.ShowRowErrors = false;
-            this.DatabaseConfig_DataGridView.Size = new System.Drawing.Size(606, 174);
-            this.DatabaseConfig_DataGridView.TabIndex = 2;
+            this.DatabaseConfigDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DatabaseConfigDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.DatabaseConfigDataGridView.Location = new System.Drawing.Point(3, 3);
+            this.DatabaseConfigDataGridView.Name = "DatabaseConfigDataGridView";
+            this.DatabaseConfigDataGridView.RowHeadersWidth = 30;
+            this.DatabaseConfigDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DatabaseConfigDataGridView.ShowCellErrors = false;
+            this.DatabaseConfigDataGridView.ShowCellToolTips = false;
+            this.DatabaseConfigDataGridView.ShowEditingIcon = false;
+            this.DatabaseConfigDataGridView.ShowRowErrors = false;
+            this.DatabaseConfigDataGridView.Size = new System.Drawing.Size(606, 174);
+            this.DatabaseConfigDataGridView.TabIndex = 2;
             // 
-            // CultureInfoConfig_DataGridView
+            // CultureInfoConfigDataGridView
             // 
-            this.CultureInfoConfig_DataGridView.AllowUserToAddRows = false;
-            this.CultureInfoConfig_DataGridView.AllowUserToDeleteRows = false;
-            this.CultureInfoConfig_DataGridView.AllowUserToResizeRows = false;
-            this.CultureInfoConfig_DataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.CultureInfoConfig_DataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CultureInfoConfig_DataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.CultureInfoConfig_DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.CultureInfoConfig_DataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CultureInfoConfigDataGridView.AllowUserToAddRows = false;
+            this.CultureInfoConfigDataGridView.AllowUserToDeleteRows = false;
+            this.CultureInfoConfigDataGridView.AllowUserToResizeRows = false;
+            this.CultureInfoConfigDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.CultureInfoConfigDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CultureInfoConfigDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.CultureInfoConfigDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CultureInfoConfigDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2});
-            this.CultureInfoConfig_DataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CultureInfoConfig_DataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.CultureInfoConfig_DataGridView.Location = new System.Drawing.Point(3, 3);
-            this.CultureInfoConfig_DataGridView.Name = "CultureInfoConfig_DataGridView";
-            this.CultureInfoConfig_DataGridView.RowHeadersWidth = 30;
-            this.CultureInfoConfig_DataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.CultureInfoConfig_DataGridView.ShowCellErrors = false;
-            this.CultureInfoConfig_DataGridView.ShowCellToolTips = false;
-            this.CultureInfoConfig_DataGridView.ShowEditingIcon = false;
-            this.CultureInfoConfig_DataGridView.ShowRowErrors = false;
-            this.CultureInfoConfig_DataGridView.Size = new System.Drawing.Size(606, 174);
-            this.CultureInfoConfig_DataGridView.TabIndex = 3;
+            this.CultureInfoConfigDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CultureInfoConfigDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.CultureInfoConfigDataGridView.Location = new System.Drawing.Point(3, 3);
+            this.CultureInfoConfigDataGridView.Name = "CultureInfoConfigDataGridView";
+            this.CultureInfoConfigDataGridView.RowHeadersWidth = 30;
+            this.CultureInfoConfigDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.CultureInfoConfigDataGridView.ShowCellErrors = false;
+            this.CultureInfoConfigDataGridView.ShowCellToolTips = false;
+            this.CultureInfoConfigDataGridView.ShowEditingIcon = false;
+            this.CultureInfoConfigDataGridView.ShowRowErrors = false;
+            this.CultureInfoConfigDataGridView.Size = new System.Drawing.Size(606, 174);
+            this.CultureInfoConfigDataGridView.TabIndex = 3;
             // 
             // button1
             // 
@@ -192,12 +192,12 @@
             this.Controls.Add(this.label1);
             this.Name = "ConfigurationsForm";
             this.Text = "Configurations";
-            this.Load += new System.EventHandler(this.ConfigurationsForm_Load);
+            this.Load += new System.EventHandler(this.ConfigurationsFormLoad);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DatabaseConfig_DataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CultureInfoConfig_DataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DatabaseConfigDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CultureInfoConfigDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,8 +210,8 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView DatabaseConfig_DataGridView;
-        private System.Windows.Forms.DataGridView CultureInfoConfig_DataGridView;
+        private System.Windows.Forms.DataGridView DatabaseConfigDataGridView;
+        private System.Windows.Forms.DataGridView CultureInfoConfigDataGridView;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn KeyColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValueColumn;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ModelLibrary.Customers {
     public class ProjectModel : BaseModel {
-        public string Client_Short_Name   { get; set; }
-        public string Project_Name   { get; set; }
+        public string ClientShortName   { get; set; }
+        public string ProjectName   { get; set; }
     }
 }

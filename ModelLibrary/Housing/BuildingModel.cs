@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModelLibrary.Housing {
     public class BuildingModel : BaseModel {
-        public string Building_Name { get; set; }
-        public string Building_Type { get; set; }
-        public string Compound_Name { get; set; }
+        public string BuildingName { get; set; }
+        public string BuildingType { get; set; }
+        public string CompoundName { get; set; }
     }
 }

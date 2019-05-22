@@ -46,23 +46,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Billing\AccommodationCategories\FoodClasses.cs">
+    <Compile Include="Billing\FoodTypes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Billing\AccommodationCategories\FoodClasses.Designer.cs">
+    <Compile Include="Billing\FoodTypes.Designer.cs">
+      <DependentUpon>FoodTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Billing\FoodClasses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Billing\FoodClasses.Designer.cs">
       <DependentUpon>FoodClasses.cs</DependentUpon>
     </Compile>
-    <Compile Include="Billing\AccommodationCategories\AccommodationClasses.cs">
+    <Compile Include="Billing\AccommodationClasses.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Billing\AccommodationCategories\AccommodationClasses.Designer.cs">
+    <Compile Include="Billing\AccommodationClasses.Designer.cs">
       <DependentUpon>AccommodationClasses.cs</DependentUpon>
     </Compile>
-    <Compile Include="Billing\AccommodationCategories\AccommodationCategories.cs">
+    <Compile Include="Billing\BillingCategories.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Billing\AccommodationCategories\AccommodationCategories.Designer.cs">
-      <DependentUpon>AccommodationCategories.cs</DependentUpon>
+    <Compile Include="Billing\BillingCategories.Designer.cs">
+      <DependentUpon>BillingCategories.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\BaseView.cs" />
     <Compile Include="Common\CommonView.cs">
@@ -119,52 +125,52 @@
     <Compile Include="Configurations\DBMaintenance.Designer.cs">
       <DependentUpon>DBMaintenance.cs</DependentUpon>
     </Compile>
-    <Compile Include="Customers\Clients\ClientForm.cs">
+    <Compile Include="Customers\ClientForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Customers\Clients\ClientForm.Designer.cs">
+    <Compile Include="Customers\ClientForm.Designer.cs">
       <DependentUpon>ClientForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Customers\ClientTypes\ClientTypeForm.cs">
+    <Compile Include="Customers\ClientTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Customers\ClientTypes\ClientTypeForm.Designer.cs">
+    <Compile Include="Customers\ClientTypeForm.Designer.cs">
       <DependentUpon>ClientTypeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Customers\Nationalities\NationalityForm.cs">
+    <Compile Include="Customers\NationalityForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Customers\Nationalities\NationalityForm.Designer.cs">
+    <Compile Include="Customers\NationalityForm.Designer.cs">
       <DependentUpon>NationalityForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Customers\Projects\ProjectForm.cs">
+    <Compile Include="Customers\ProjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Customers\Projects\ProjectForm.Designer.cs">
+    <Compile Include="Customers\ProjectForm.Designer.cs">
       <DependentUpon>ProjectForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Housing\Buildings\BuildingForm.cs">
+    <Compile Include="Housing\BuildingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Housing\Buildings\BuildingForm.Designer.cs">
+    <Compile Include="Housing\BuildingForm.Designer.cs">
       <DependentUpon>BuildingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Housing\BuildingTypes\BuildingTypeForm.cs">
+    <Compile Include="Housing\BuildingTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Housing\BuildingTypes\BuildingTypeForm.Designer.cs">
+    <Compile Include="Housing\BuildingTypeForm.Designer.cs">
       <DependentUpon>BuildingTypeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Housing\Compounds\CompoundForm.cs">
+    <Compile Include="Housing\CompoundForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Housing\Compounds\CompoundForm.Designer.cs">
+    <Compile Include="Housing\CompoundForm.Designer.cs">
       <DependentUpon>CompoundForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Housing\Rooms\RoomForm.cs">
+    <Compile Include="Housing\RoomForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Housing\Rooms\RoomForm.Designer.cs">
+    <Compile Include="Housing\RoomForm.Designer.cs">
       <DependentUpon>RoomForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainView.cs">
@@ -175,28 +181,27 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Security\Audit\AuditFormView.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Security\Audit\AuditFormView.Designer.cs">
-      <DependentUpon>AuditFormView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Security\Audit\AuditView.cs">
+    <Compile Include="Security\AuditView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Security\Audit\AuditView.Designer.cs">
+    <Compile Include="Security\AuditView.Designer.cs">
       <DependentUpon>AuditView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Security\Entitlements\EntitlementForm.cs">
+    <Compile Include="Security\EntitlementForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Security\Entitlements\EntitlementForm.Designer.cs">
+    <Compile Include="Security\EntitlementForm.Designer.cs">
       <DependentUpon>EntitlementForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Security\Profiles\ProfileForm.cs">
+    <Compile Include="Security\ProfileForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Security\Profiles\ProfileForm.Designer.cs">
+    <Compile Include="Security\ProfileForm.Designer.cs">
       <DependentUpon>ProfileForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Security\Users\UserForm.cs">
@@ -206,13 +211,13 @@
       <DependentUpon>UserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Security\Users\UserPasswordResetView.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Security\Users\UserPasswordResetView.Designer.cs">
       <DependentUpon>UserPasswordResetView.cs</DependentUpon>
     </Compile>
     <Compile Include="Security\Users\UsersLoginView.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Security\Users\UsersLoginView.Designer.cs">
       <DependentUpon>UsersLoginView.cs</DependentUpon>
@@ -246,14 +251,17 @@
     <Compile Include="Utils\TableDesigner\TableDesignerView.Designer.cs">
       <DependentUpon>TableDesignerView.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Billing\AccommodationCategories\FoodClasses.resx">
+    <EmbeddedResource Include="Billing\FoodTypes.resx">
+      <DependentUpon>FoodTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Billing\FoodClasses.resx">
       <DependentUpon>FoodClasses.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Billing\AccommodationCategories\AccommodationClasses.resx">
+    <EmbeddedResource Include="Billing\AccommodationClasses.resx">
       <DependentUpon>AccommodationClasses.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Billing\AccommodationCategories\AccommodationCategories.resx">
-      <DependentUpon>AccommodationCategories.cs</DependentUpon>
+    <EmbeddedResource Include="Billing\BillingCategories.resx">
+      <DependentUpon>BillingCategories.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Common\CommonView.resx">
       <DependentUpon>CommonView.cs</DependentUpon>
@@ -279,28 +287,28 @@
     <EmbeddedResource Include="Configurations\DBMaintenance.resx">
       <DependentUpon>DBMaintenance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Customers\Clients\ClientForm.resx">
+    <EmbeddedResource Include="Customers\ClientForm.resx">
       <DependentUpon>ClientForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Customers\ClientTypes\ClientTypeForm.resx">
+    <EmbeddedResource Include="Customers\ClientTypeForm.resx">
       <DependentUpon>ClientTypeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Customers\Nationalities\NationalityForm.resx">
+    <EmbeddedResource Include="Customers\NationalityForm.resx">
       <DependentUpon>NationalityForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Customers\Projects\ProjectForm.resx">
+    <EmbeddedResource Include="Customers\ProjectForm.resx">
       <DependentUpon>ProjectForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Housing\Buildings\BuildingForm.resx">
+    <EmbeddedResource Include="Housing\BuildingForm.resx">
       <DependentUpon>BuildingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Housing\BuildingTypes\BuildingTypeForm.resx">
+    <EmbeddedResource Include="Housing\BuildingTypeForm.resx">
       <DependentUpon>BuildingTypeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Housing\Compounds\CompoundForm.resx">
+    <EmbeddedResource Include="Housing\CompoundForm.resx">
       <DependentUpon>CompoundForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Housing\Rooms\RoomForm.resx">
+    <EmbeddedResource Include="Housing\RoomForm.resx">
       <DependentUpon>RoomForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainView.resx">
@@ -308,24 +316,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <EmbeddedResource Include="Security\Audit\AuditFormView.resx">
-      <DependentUpon>AuditFormView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Security\Audit\AuditView.resx">
+    <EmbeddedResource Include="Security\AuditView.resx">
       <DependentUpon>AuditView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Security\Entitlements\EntitlementForm.resx">
+    <EmbeddedResource Include="Security\EntitlementForm.resx">
       <DependentUpon>EntitlementForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Security\Profiles\ProfileForm.resx">
+    <EmbeddedResource Include="Security\ProfileForm.resx">
       <DependentUpon>ProfileForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Security\Users\UserForm.resx">

@@ -35,7 +35,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Compact and Repair";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1Click);
             // 
             // listBox1
             // 
@@ -55,7 +55,7 @@
             this.Controls.Add(this.button1);
             this.Name = "CompactAndRepairForm";
             this.Text = "Compact and Repair";
-            this.Load += new System.EventHandler(this.CompactAndRepairForm_Load);
+            this.Load += new System.EventHandler(this.CompactAndRepairFormLoad);
             this.ResumeLayout(false);
 
         }

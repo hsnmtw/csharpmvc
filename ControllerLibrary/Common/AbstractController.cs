@@ -15,22 +15,22 @@ namespace ControllerLibrary.Common {
             this.BaseCollection = baseCollection;
         }
         public virtual object CreateNewModel() => this.BaseCollection.CreateNew();
-        public virtual void Delete(object model) => this.BaseCollection.Delete(model);
+        public virtual DBModificationResult Delete(object model) => this.BaseCollection.Delete(model);
         public virtual DataTable GetTable() => GetTable(new object(),new string[] { });
         public virtual DataTable GetTable(object model, string[] whereFields,bool like=false) => this.BaseCollection.GetTable(model, whereFields,like);
         public virtual ResultSet GetTable(object model, string[] whereFields,bool like,int offset, int length) => this.BaseCollection.GetTable(model, whereFields,like,offset,length);
         public virtual List<object> Read() => BaseCollection.Read();
         public virtual List<object> Read(object model, string[] whereFields) => BaseCollection.Read(model, whereFields);
-        public virtual object Save(object _model) {
-            var model = (BaseModel)_model;
+        public virtual DBModificationResult Save(object anyModel) {
+            var model = (BaseModel)anyModel;
             if (model.Id == 0) {
-                model.Created_By = Session.Instance.CurrentUser==null ? "SYSTEM" : Session.Instance.CurrentUser.User_Name;
-                model.Created_On = DateTime.Now;
+                model.CreatedBy = Session.Instance.CurrentUser==null ? "SYSTEM" : Session.Instance.CurrentUser.UserName;
+                model.CreatedOn = DateTime.Now;
             } else {
-                model.Updated_By = Session.Instance.CurrentUser == null ? "SYSTEM" : Session.Instance.CurrentUser.User_Name;
-                model.Updated_On = DateTime.Now;
+                model.UpdatedBy = Session.Instance.CurrentUser == null ? "SYSTEM" : Session.Instance.CurrentUser.UserName;
+                model.UpdatedOn = DateTime.Now;
             }
-            return BaseCollection.Save(_model);
+            return BaseCollection.Save(model);
         }
 
         public MetaData GetMetaData() => this.BaseCollection.MetaData;

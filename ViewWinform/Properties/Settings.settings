@@ -2,31 +2,31 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ViewWinform.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="DateTimeFormat_ShortDatePattern" Type="System.String" Scope="User">
+    <Setting Name="DateTimeFormatShortDatePattern" Type="System.String" Scope="User">
       <Value Profile="(Default)">yyyy-MM-dd</Value>
     </Setting>
-    <Setting Name="DateTimeFormat_LongDatePattern" Type="System.String" Scope="User">
+    <Setting Name="DateTimeFormatLongDatePattern" Type="System.String" Scope="User">
       <Value Profile="(Default)">yyyy-MM-dd HH:mm:ss</Value>
     </Setting>
-    <Setting Name="Database_Source" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Users\96650\source\repos\HIS\DB\his_database.mdb</Value>
+    <Setting Name="DatabaseSource" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\96650\source\repos\HIS\DB\hisdatabase.mdb</Value>
     </Setting>
-    <Setting Name="Database_User_Id" Type="System.String" Scope="User">
+    <Setting Name="DatabaseUserId" Type="System.String" Scope="User">
       <Value Profile="(Default)">Admin</Value>
     </Setting>
-    <Setting Name="Database_Password" Type="System.String" Scope="User">
+    <Setting Name="DatabasePassword" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="Database_Provider" Type="System.String" Scope="User">
+    <Setting Name="DatabaseProvider" Type="System.String" Scope="User">
       <Value Profile="(Default)">Microsoft.Jet.OLEDB.4.0</Value>
     </Setting>
-    <Setting Name="DateTimeFormat_DateSeparator" Type="System.String" Scope="User">
+    <Setting Name="DateTimeFormatDateSeparator" Type="System.String" Scope="User">
       <Value Profile="(Default)">-</Value>
     </Setting>
-    <Setting Name="Globalization_Culture" Type="System.String" Scope="User">
+    <Setting Name="GlobalizationCulture" Type="System.String" Scope="User">
       <Value Profile="(Default)">en-NZ</Value>
     </Setting>
-    <Setting Name="Globalization_UICulture" Type="System.String" Scope="User">
+    <Setting Name="GlobalizationUICulture" Type="System.String" Scope="User">
       <Value Profile="(Default)">en-NZ</Value>
     </Setting>
   </Settings>

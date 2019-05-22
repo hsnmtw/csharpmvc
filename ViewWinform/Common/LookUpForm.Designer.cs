@@ -63,7 +63,7 @@
             this.lblSearch.Size = new System.Drawing.Size(401, 20);
             this.lblSearch.TabIndex = 0;
             this.lblSearch.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblSearch.TextChanged += new System.EventHandler(this.Label1_TextChanged);
+            this.lblSearch.TextChanged += new System.EventHandler(this.Label1TextChanged);
             // 
             // panel2
             // 
@@ -85,10 +85,10 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(401, 241);
             this.listBox1.TabIndex = 0;
-            this.listBox1.DoubleClick += new System.EventHandler(this.DataGridView1_DoubleClick);
-            this.listBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DataGridView1_KeyDown);
-            this.listBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DataGridView1_KeyPress);
-            this.listBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DataGridView1_KeyUp);
+            this.listBox1.DoubleClick += new System.EventHandler(this.DataGridView1DoubleClick);
+            this.listBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DataGridView1KeyDown);
+            this.listBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DataGridView1KeyPress);
+            this.listBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DataGridView1KeyUp);
             // 
             // lblRowHeader
             // 
@@ -132,7 +132,7 @@
             this.tsbFirst.Name = "tsbFirst";
             this.tsbFirst.Size = new System.Drawing.Size(23, 22);
             this.tsbFirst.Text = "First";
-            this.tsbFirst.Click += new System.EventHandler(this.TsbFirst_Click);
+            this.tsbFirst.Click += new System.EventHandler(this.TsbFirstClick);
             // 
             // tsbPrevious
             // 
@@ -143,7 +143,7 @@
             this.tsbPrevious.Name = "tsbPrevious";
             this.tsbPrevious.Size = new System.Drawing.Size(23, 22);
             this.tsbPrevious.Text = "Previous";
-            this.tsbPrevious.Click += new System.EventHandler(this.TsbPrevious_Click);
+            this.tsbPrevious.Click += new System.EventHandler(this.TsbPreviousClick);
             // 
             // tslRecordPosition
             // 
@@ -163,7 +163,7 @@
             this.tsbNext.Name = "tsbNext";
             this.tsbNext.Size = new System.Drawing.Size(23, 22);
             this.tsbNext.Text = "Next";
-            this.tsbNext.Click += new System.EventHandler(this.TsbNext_Click);
+            this.tsbNext.Click += new System.EventHandler(this.TsbNextClick);
             // 
             // tsbLast
             // 
@@ -174,7 +174,7 @@
             this.tsbLast.Name = "tsbLast";
             this.tsbLast.Size = new System.Drawing.Size(23, 22);
             this.tsbLast.Text = "Last";
-            this.tsbLast.Click += new System.EventHandler(this.TsbLast_Click);
+            this.tsbLast.Click += new System.EventHandler(this.TsbLastClick);
             // 
             // toolStripSeparator2
             // 
@@ -227,8 +227,8 @@
             this.Name = "LookUpForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "LookUp";
-            this.Load += new System.EventHandler(this.LookUp_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LookUp_KeyDown);
+            this.Load += new System.EventHandler(this.LookUpLoad);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LookUpKeyDown);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.toolStrip2.ResumeLayout(false);

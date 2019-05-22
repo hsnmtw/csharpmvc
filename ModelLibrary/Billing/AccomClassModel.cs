@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 
 namespace ModelLibrary.Customers {
     public class AccomClassModel : BaseModel {
-        public string Accom_Class { get; set; }
+        public string AccomClass { get; set; }
     }
 }

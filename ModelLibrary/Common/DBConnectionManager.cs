@@ -9,16 +9,16 @@ namespace ModelLibrary.Common
     public class DBConnectionManager : IDBConnectionManager, IDisposable
     {
         public static string
-            DB_CONFIG_FACTORY   ,
-            DB_CONFIG_PROVIDER  ,
-            DB_CONFIG_SOURCE    ,
-            DB_CONFIG_USER      ,
-            DB_CONFIG_PASSWORD  ;
+            DBCONFIGFACTORY   ,
+            DBCONFIGPROVIDER  ,
+            DBCONFIGSOURCE    ,
+            DBCONFIGUSER      ,
+            DBCONFIGPASSWORD  ;
 
-        public DbProviderFactory dbFactory => DbProviderFactories.GetFactory(DB_CONFIG_FACTORY);
+        public DbProviderFactory dbFactory => DbProviderFactories.GetFactory(DBCONFIGFACTORY);
 
         private DbConnection connection;
-        private static DBConnectionManager _instance = null;
+        private static DBConnectionManager instance = null;
         private DataSet dataSet;
         public DataTable SchemaTables { get { return this.connection.GetSchema("Tables"); } }
         public DataTable SchemaColumns { get; private set; }
@@ -94,19 +94,25 @@ namespace ModelLibrary.Common
             return cmd.ExecuteScalar();
         }
 
+        public string GetConnectionString() {
+            DbConnectionStringBuilder csBuilder = dbFactory.CreateConnectionStringBuilder();
+
+            csBuilder["Provider"]    = DBCONFIGPROVIDER;
+            csBuilder["Data Source"] = DBCONFIGSOURCE;
+            csBuilder["User Id"]     = DBCONFIGUSER;
+            csBuilder["Password"]    = DBCONFIGPASSWORD;
+
+            return csBuilder.ConnectionString;
+        }
+
         public void Open() {
             if(!(this.connection == null || this.connection.State == ConnectionState.Closed)) {
                 throw new InvalidOperationException("database is already open");
             }
-            DbConnectionStringBuilder csBuilder = dbFactory.CreateConnectionStringBuilder();
 
-            csBuilder["Provider"] = DB_CONFIG_PROVIDER;
-            csBuilder["Data Source"] = DB_CONFIG_SOURCE;
-            csBuilder["User Id"] = DB_CONFIG_USER;
-            csBuilder["Password"] = DB_CONFIG_PASSWORD;
 
             this.connection = dbFactory.CreateConnection();
-            this.connection.ConnectionString = csBuilder.ConnectionString;
+            this.connection.ConnectionString = GetConnectionString();
             this.connection.Open();
             this.dataSet = new DataSet();
             this.SchemaColumns = this.connection.GetSchema("Columns");
@@ -126,11 +132,11 @@ namespace ModelLibrary.Common
         }
 
         public static DBConnectionManager Instance { get {
-                if (_instance == null)
+                if (instance == null)
                 {
-                    _instance = new DBConnectionManager();
+                    instance = new DBConnectionManager();
                 }
-                return _instance;
+                return instance;
         } }
 
 
@@ -144,7 +150,7 @@ namespace ModelLibrary.Common
             pu.SetProgress("Database is closed", 10);
             await Task.Delay(3000);
 
-            string dbFileName = DB_CONFIG_SOURCE;
+            string dbFileName = DBCONFIGSOURCE;
 
             //engine.OpenDatabase(dbFileName).Close();
             string FORMAT = "yyyyMMdd.HHmmss";
@@ -161,7 +167,7 @@ namespace ModelLibrary.Common
                 System.IO.File.Delete(dbFileName.Replace(".mdb", ".ldb"));
             }
 
-            pu.SetProgress("Performing DAO engine Compact and Repair action ...", 40);
+            pu.SetProgress("Performing DAO engine Compact action ...", 40);
             var engine = new DAO.DBEngine();
             
             engine.CompactDatabase(SrcName: dbFileName+".bak", DstName: dbFileName+".car" );
@@ -174,7 +180,7 @@ namespace ModelLibrary.Common
 
             await Task.Delay(3000);
             pu.SetProgress("DAO engine is closed", 80);
-            pu.SetProgress($"Database file size before compact and repair: {new System.IO.FileInfo(dbFileName+".car").Length/1024} MB",85);
+            pu.SetProgress($"Database file size before compact : {new System.IO.FileInfo(dbFileName+".bak").Length/1024} MB",85);
 
             int limit = 0;
             while (limit<10 && System.IO.File.Exists(dbFileName)) {
@@ -186,6 +192,8 @@ namespace ModelLibrary.Common
                 }
             }
 
+            
+
             pu.SetProgress("database file is deleted", 90);
 
             System.IO.File.Copy(dbFileName+".car", dbFileName, true);
@@ -195,10 +203,28 @@ namespace ModelLibrary.Common
             await Task.Delay(300);
             pu.SetProgress("Database connection is re-opened after compact and rapair", 98);
             await Task.Delay(50);
-            pu.SetProgress($"Database file size after compact and repair: {new System.IO.FileInfo(dbFileName).Length / 1024} MB", 99);
+            pu.SetProgress($"Database file size after compact : {new System.IO.FileInfo(dbFileName).Length / 1024} MB", 99);
             await Task.Delay(50);
             pu.SetProgress("Compact and Repair completed successfully !!",100);
         }
+
+        //public void FixColumnNames() {
+        //    var ctlg = new ADOX.Catalog();
+        //    var conn = new ADODB.Connection();
+        //    conn.Open(GetConnectionString());
+            
+        //    ctlg.ActiveConnection = conn;
+            
+        //    foreach (ADOX.Table table in ctlg.Tables) {
+        //        //try { table.Name = table.Name.Replace("", ""); } catch { }
+        //        foreach(ADOX.Column col in table.Columns) {
+        //            Console.WriteLine($"{col.Name} : {col.Type} : {col.Attributes}");
+        //        }
+        //    }
+            
+        //    conn.Close();
+        //    conn = null;
+        //}
 
         public void Dispose() {
             this.Close();

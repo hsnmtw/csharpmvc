@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModelLibrary.Customers {
     public class NationalityModel : BaseModel {
-        public string Nationality_Code   { get; set; }
-        public string Nationality_Desc   { get; set; }
-        public string Nationality_Arabic { get; set; }
+        public string NationalityCode   { get; set; }
+        public string NationalityDesc   { get; set; }
+        public string NationalityArabic { get; set; }
     }
 }

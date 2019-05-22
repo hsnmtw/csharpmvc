@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 
 namespace ModelLibrary.Customers {
     public class FoodClassModel : BaseModel {
-        public string Food_Class { get; set; }
+        public string FoodClass { get; set; }
     }
 }

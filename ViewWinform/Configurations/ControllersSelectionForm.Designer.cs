@@ -36,7 +36,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "Enable";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1Click);
             // 
             // listBox1
             // 
@@ -68,7 +68,7 @@
             this.Controls.Add(this.button1);
             this.Name = "ControllersSelectionForm";
             this.Text = "Controllers Selection";
-            this.Load += new System.EventHandler(this.ControllersSelectionForm_Load);
+            this.Load += new System.EventHandler(this.ControllersSelectionFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
 

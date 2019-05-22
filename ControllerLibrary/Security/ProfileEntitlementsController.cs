@@ -18,14 +18,14 @@ namespace ControllerLibrary.Security
 
         public DataTable GetEntitlementsByProfile(string profile)
         {
-            var model = new ProfileEntitlementsModel() { Profile_Name = profile };
-            return GetTable(model, new string[] { "Profile_Name" });
+            var model = new ProfileEntitlementsModel() { ProfileName = profile };
+            return GetTable(model, new string[] { "ProfileName" });
         }
 
         public void DeleteEntitlementForProfile(string profile)
         {
-            var model = new ProfileEntitlementsModel() { Profile_Name = profile };
-            var list = Read(model, new string[] { "Profile_Name" });
+            var model = new ProfileEntitlementsModel() { ProfileName = profile };
+            var list = Read(model, new string[] { "ProfileName" });
             foreach(var ent in list) {
                 Delete(ent);
             }
@@ -36,8 +36,8 @@ namespace ControllerLibrary.Security
             foreach(var entitlement in entitlements)
             {
                 var model = new ProfileEntitlementsModel() {
-                    Profile_Name = profile,
-                    Entitlement_Name = entitlement
+                    ProfileName = profile,
+                    EntitlementName = entitlement
                 };
                 Save(model);
             }

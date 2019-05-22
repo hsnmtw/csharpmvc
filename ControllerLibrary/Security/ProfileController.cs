@@ -17,10 +17,10 @@ namespace ControllerLibrary.Security
 
         public ProfileController() : base(CollectionsFactory.GetCollection(Entities.Profile)) { }
 
-        public override void Delete(object model) {
+        public override DBModificationResult Delete(object model) {
             var controller = (ProfileEntitlementsController)ControllersFactory.GetController(Entities.ProfileEntitlement);
-            controller.DeleteEntitlementForProfile(((ProfileModel)model).Profile_Name);
-            base.Delete(model);
+            controller.DeleteEntitlementForProfile(((ProfileModel)model).ProfileName);
+            return base.Delete(model);
         }
     }
 }

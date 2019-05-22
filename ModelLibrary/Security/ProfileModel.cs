@@ -10,7 +10,7 @@ namespace ModelLibrary.Security
 {
     public class ProfileModel : BaseModel
     {
-        public String Profile_Name { get; set; }
-        public String Profile_Desc { get; set; }
+        public string ProfileName { get; set; }
+        public string ProfileDesc { get; set; }
     }
 }

@@ -9,43 +9,44 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ModelLibrary.Security;
 using ControllerLibrary.Security;
+using ControllerLibrary.Common;
+using ModelLibrary.Common;
 
 namespace ViewWinform.Security.Users {
-    public partial class UserPasswordResetView : UserControl , BaseView<UserModel>{
+    public partial class UserPasswordResetView : Form {
         public UserPasswordResetView() {
             InitializeComponent();
-            Utils.FormsHelper.registerEnterAsTab(this);
+            Utils.FormsHelper.BindViewToModel(this, ref this.model);
         }
 
-        public Action OnOKAction { get; set; }
-        public Action OnCancelAction { get; set; }
-
-        private UserModel _model;
+        public UserController Controller = (UserController)ControllersFactory.GetController(Entities.User);
+        private UserModel model = new UserModel();
 
         public UserModel Model {
             get {
-                _model.Id = int.Parse(this.Id_TextBox.Text,0);
-                _model.User_Name = this.UserName_TextBox.Text;
-                _model.User_Password = this.Password_TextBox.Text;
-                return _model;
+                model.Id = int.Parse($"0{this.txtId.Text}");
+                model.UserName = this.txtUserName.Text.Trim();
+                model.UserPassword = this.txtUserPassword.Text.Trim();
+                return model;
             }
             set {
-                _model = value;
-                this.Id_TextBox.Text = _model.Id.ToString();
-                this.UserName_TextBox.Text = _model.User_Name;
+                model = value;
+                this.txtId.Text = $"{model.Id}";
+                this.txtUserName.Text = model.UserName;
             }
         }
 
-        private void Button1_Click(object sender, EventArgs e) {
-            if (this.Password_TextBox.Text.Equals(this.Confirm_TextBox.Text)) {
-                OnOKAction();
+        private void Button1Click(object sender, EventArgs e) {
+            if (Model.UserPassword.Equals(txtConfirmPassword.Text.Trim())) {
+                Controller.ResetPassword(this.Model);
+                Utils.FormsHelper.Success("Password has been reset");
             } else {
-                Utils.FormsHelper.errorMessage("Password and confirmation don't match");
+                Utils.FormsHelper.Error("Password and confirmation don't match");
             }
         }
 
-        private void Button2_Click(object sender, EventArgs e) {
-            OnCancelAction();
+        private void Button2Click(object sender, EventArgs e) {
+            this.Close();
         }
     }
 }

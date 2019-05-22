@@ -10,9 +10,9 @@ namespace ModelLibrary.Security
         public override MetaData MetaData => new MetaData() {
             GetModelType = typeof(UserModel)
             , GetPrimaryKeyFields = "Id".Split(',')
-            , GetRequiredFields = "Id,User_Name,User_Password,Created_By,Created_On".Split(',')
-            , GetSource = "Security_Users"
-            , GetUniqueKeyFields = new string[] { "User_Name" }
+            , GetRequiredFields = "Id,UserName,UserPassword,CreatedBy,CreatedOn".Split(',')
+            , GetSource = "SecurityUsers"
+            , GetUniqueKeyFields = new string[] { "UserName" }
         };
     }
 }

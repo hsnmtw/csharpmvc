@@ -16,7 +16,7 @@ namespace ViewWinform.Utils {
             InitializeComponent();
         }
 
-        private void Button1_Click(object sender, EventArgs e) {
+        private void Button1Click(object sender, EventArgs e) {
             CompactAndRepairAsync();
         }
 
@@ -34,12 +34,12 @@ namespace ViewWinform.Utils {
             ModelLibrary.Common.DBConnectionManager.Instance.CompactAndRepair(pu);
         }
 
-        private void CompactAndRepairForm_Load(object sender, EventArgs e) {
+        private void CompactAndRepairFormLoad(object sender, EventArgs e) {
             ConfigurationsController con = new ConfigurationsController();
             string databasefile = null;
 
             foreach(var confModel in new ConfigurationsController().Database) {
-                if (confModel.Key.ToLower().Equals("database_source")) {
+                if (confModel.Key.ToLower().Equals("databasesource")) {
                     databasefile = confModel.Value;
                     break;
                 }

@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ModelLibrary.Housing {
     public class RoomModel : BaseModel {
-        public string Room_Name { get; set; }
-        public string Building_Name { get; set; }
-        public int Bed_Capacity { get; set; }
-        public string Nationality_Code { get; set; }
-        public int Number_Of_Windows { get; set; }
+        public string RoomName { get; set; }
+        public string BuildingName { get; set; }
+        public int BedCapacity { get; set; }
+        public string NationalityCode { get; set; }
+        public int NumberOfWindows { get; set; }
     }
 }

@@ -12,15 +12,15 @@ namespace ModelLibrary.Security
         public override MetaData MetaData => new MetaData() {
             GetModelType = typeof(ProfileEntitlementsModel)
             , GetPrimaryKeyFields = "Id".Split(',')
-            , GetRequiredFields = new string[] { "Id", "Profile_Name", "Entitlement_Name" }
-            , GetSource = "Security_Profile_Entitlements"
+            , GetRequiredFields = new string[] { "Id", "ProfileName", "EntitlementName" }
+            , GetSource = "SecurityProfileEntitlements"
             , GetUniqueKeyFields = new string[] {  }
         };
 
         public Statement GetEntitlementsStatement(ProfileEntitlementsModel model) {
-            return new Statement($"EntitlementsForProfile:{model.Profile_Name}") {
-                Sql = $@"SELECT * FROM [{MetaData.GetSource}] WHERE [Profile_Name]=@Profile_Name",
-                Parameters = ParametersFactory.CreateParameters(model,new string[] { "Profile_Name" })
+            return new Statement($"EntitlementsForProfile:{model.ProfileName}") {
+                Sql = $@"SELECT * FROM [{MetaData.GetSource}] WHERE [ProfileName]=@ProfileName",
+                Parameters = ParametersFactory.CreateParameters(model,new string[] { "ProfileName" })
             };
         }
     }

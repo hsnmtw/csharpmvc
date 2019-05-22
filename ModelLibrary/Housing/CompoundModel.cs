@@ -9,6 +9,6 @@ namespace ModelLibrary.Housing
 {
     public class CompoundModel : BaseModel
     {
-        public String Compound_Name { get; set; }
+        public string CompoundName { get; set; }
     }
 }

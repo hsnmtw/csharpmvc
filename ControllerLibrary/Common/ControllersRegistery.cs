@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 namespace ControllerLibrary.Common {
     public class ControllersRegistery {
         private Dictionary<Entities, List<Type>> controllerMap = new Dictionary<Entities, List<Type>>();
-        private static ControllersRegistery _instance = null;
+        private static ControllersRegistery instance = null;
         public static ControllersRegistery Instance {
             get {
-                if (_instance == null) _instance = new ControllersRegistery();
-                return _instance;
+                if (instance == null) instance = new ControllersRegistery();
+                return instance;
             }
         }
 

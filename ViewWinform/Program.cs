@@ -18,7 +18,7 @@ namespace ViewWinform
     {
         [DllImport("kernel32.dll")]
         static extern bool AttachConsole(int dwProcessId);
-        private const int ATTACH_PARENT_PROCESS = -1;
+        private const int ATTACHPARENTPROCESS = -1;
 
         /// <summary>
         /// The main entry point for the application.
@@ -27,17 +27,16 @@ namespace ViewWinform
         static void Main()
         {
 
-            AttachConsole(ATTACH_PARENT_PROCESS);
+            AttachConsole(ATTACHPARENTPROCESS);
 
-            CultureInfo cultureInfo = CultureInfo.CreateSpecificCulture(ConfigurationManager.AppSettings["CultureInfo_Globalization"]);
-
+            CultureInfo cultureInfo = CultureInfo.CreateSpecificCulture(ConfigurationManager.AppSettings["CultureInfoGlobalization"]);
             
-            cultureInfo.DateTimeFormat.ShortDatePattern = ConfigurationManager.AppSettings["CultureInfo_DateTimeFormat_ShortDatePattern"];
-            cultureInfo.DateTimeFormat.LongDatePattern  = ConfigurationManager.AppSettings["CultureInfo_DateTimeFormat_LongDatePattern"];
-            cultureInfo.DateTimeFormat.DateSeparator    = ConfigurationManager.AppSettings["CultureInfo_DateTimeFormat_DateSeparator"];
-            cultureInfo.DateTimeFormat.ShortTimePattern = ConfigurationManager.AppSettings["CultureInfo_DateTimeFormat_ShortTimePattern"];
-            cultureInfo.DateTimeFormat.LongTimePattern  = ConfigurationManager.AppSettings["CultureInfo_DateTimeFormat_LongTimePattern"];
-            cultureInfo.DateTimeFormat.TimeSeparator    = ConfigurationManager.AppSettings["CultureInfo_DateTimeFormat_TimeSeparator"];
+            cultureInfo.DateTimeFormat.ShortDatePattern = ConfigurationManager.AppSettings["CultureInfoDateTimeFormatShortDatePattern"];
+            cultureInfo.DateTimeFormat.LongDatePattern  = ConfigurationManager.AppSettings["CultureInfoDateTimeFormatLongDatePattern"];
+            cultureInfo.DateTimeFormat.DateSeparator    = ConfigurationManager.AppSettings["CultureInfoDateTimeFormatDateSeparator"];
+            cultureInfo.DateTimeFormat.ShortTimePattern = ConfigurationManager.AppSettings["CultureInfoDateTimeFormatShortTimePattern"];
+            cultureInfo.DateTimeFormat.LongTimePattern  = ConfigurationManager.AppSettings["CultureInfoDateTimeFormatLongTimePattern"];
+            cultureInfo.DateTimeFormat.TimeSeparator    = ConfigurationManager.AppSettings["CultureInfoDateTimeFormatTimeSeparator"];
 
 
             cultureInfo.DateTimeFormat.Calendar = new GregorianCalendar();
@@ -46,14 +45,14 @@ namespace ViewWinform
             Thread.CurrentThread.CurrentUICulture = cultureInfo;
             Application.CurrentCulture = cultureInfo;
 
-            DBConnectionManager.DB_CONFIG_FACTORY  = ConfigurationManager.AppSettings["Database_Factory"];
-            DBConnectionManager.DB_CONFIG_PROVIDER = ConfigurationManager.AppSettings["Database_Provider"];
-            DBConnectionManager.DB_CONFIG_SOURCE   = ConfigurationManager.AppSettings["Database_Source"];
-            DBConnectionManager.DB_CONFIG_USER     = ConfigurationManager.AppSettings["Database_User_Id"];
-            DBConnectionManager.DB_CONFIG_PASSWORD = ConfigurationManager.AppSettings["Database_Password"];
+            DBConnectionManager.DBCONFIGFACTORY  = ConfigurationManager.AppSettings["DatabaseFactory"];
+            DBConnectionManager.DBCONFIGPROVIDER = ConfigurationManager.AppSettings["DatabaseProvider"];
+            DBConnectionManager.DBCONFIGSOURCE   = ConfigurationManager.AppSettings["DatabaseSource"];
+            DBConnectionManager.DBCONFIGUSER     = ConfigurationManager.AppSettings["DatabaseUserId"];
+            DBConnectionManager.DBCONFIGPASSWORD = ConfigurationManager.AppSettings["DatabasePassword"];
 
 
-
+            //DBConnectionManager.Instance.FixColumnNames();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

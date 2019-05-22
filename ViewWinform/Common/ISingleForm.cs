@@ -7,5 +7,6 @@ using System.Threading.Tasks;
 namespace ViewWinform.Common {
     public interface ISingleForm {
         void PerformAction(string action);
+        void UpdateModel();
     }
 }

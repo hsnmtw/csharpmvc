@@ -9,6 +9,6 @@ namespace ModelLibrary.Security
 {
     public class EntitlementModel : BaseModel
     {
-        public String Entitlement_Name { get; set; }
+        public string EntitlementName { get; set; }
     }
 }

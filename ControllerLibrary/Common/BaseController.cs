@@ -14,8 +14,8 @@ namespace ControllerLibrary.Common {
         ResultSet GetTable(object model, string[] whereFields,bool like,int offset,int length);
         List<object> Read();
         List<object> Read(object model, string[] whereFields);
-        object Save(object model);
-        void Delete(object model);
+        DBModificationResult Save(object model);
+        DBModificationResult Delete(object model);
         object CreateNewModel();
         object Dispatch(string action, params object[] arguments);
     }

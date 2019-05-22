@@ -17,43 +17,43 @@ namespace ModelLibrary.Common {
 
         public virtual Statement GetDeleteStatement(object model) {
             return new Statement(MetaData.GetSource) {
-                Sql = $"DELETE FROM [{MetaData.GetSource}] WHERE ([Id]=@Id)",
+                Sql = $"DELETE FROM [{MetaData.GetSource}] WHERE ([Id]=@Id) AND ([ReadOnly]=false)",
                 Parameters = ParametersFactory.CreateParameters(model,new string[] { "Id" })
             };
         }
 
         public virtual Statement GetInsertStatement(object model) {
 
-            string[] fields_without_id = (from field in MetaData.GetFields
+            string[] fieldswithoutid = (from field in MetaData.GetFields
                                           where !field.ToLower().Equals("id")
                                           select field).ToArray<string>();
 
             return new Statement(MetaData.GetSource) {
                 Sql = string.Format("INSERT INTO [{0}] ([{1}]) VALUES (@{2})",
                     MetaData.GetSource,
-                    string.Join("],[", fields_without_id),
-                    string.Join(",@", fields_without_id)
+                    string.Join("],[", fieldswithoutid),
+                    string.Join(",@", fieldswithoutid)
                 ),
-                Parameters = ParametersFactory.CreateParameters(model,fields_without_id)
+                Parameters = ParametersFactory.CreateParameters(model,fieldswithoutid)
             };
         }
 
         public virtual Statement GetUpdateStatement(object model) {
-            string[] fields_without_id = (from field in MetaData.GetFields
+            string[] fieldswithoutid = (from field in MetaData.GetFields
                                           where !(
                                                     field.ToLower().Equals("id") ||
-                                                    field.ToLower().Equals("created_by") ||
-                                                    field.ToLower().Equals("created_on")
+                                                    field.ToLower().Equals("createdby") ||
+                                                    field.ToLower().Equals("createdon")
                                                  )
                                           select field).ToArray<string>();
 
 
             return new Statement(MetaData.GetSource) {
-                Sql = string.Format("UPDATE [{0}] SET {1} WHERE ([Id]=@Id)",
+                Sql = string.Format("UPDATE [{0}] SET {1} WHERE ([Id]=@Id) AND ([ReadOnly]=false)",
                     MetaData.GetSource,
-                    string.Join(",", (from f in fields_without_id select string.Format("[{0}]=@{0}", f)).ToArray())
+                    string.Join(",", (from f in fieldswithoutid select string.Format("[{0}]=@{0}", f)).ToArray())
                 ),
-                Parameters = ParametersFactory.CreateParameters(model, fields_without_id.Concat(new string[] { "Id" }).ToArray())
+                Parameters = ParametersFactory.CreateParameters(model, fieldswithoutid.Concat(new string[] { "Id" }).ToArray())
             };
         }
 
@@ -109,9 +109,9 @@ namespace ModelLibrary.Common {
             
             DataTable table = GetTable(model, whereFields, like);
             int rowcount = table.Rows.Count;
-            int _pagesize = pagesize;
-            int pages = (rowcount + _pagesize - 1) / _pagesize;
-            int offset = _pagesize * (page - 1);
+            
+            int pages = (rowcount + pagesize - 1) / pagesize;
+            int offset = pagesize * (page - 1);
             if (offset >= rowcount) return new ResultSet {
                 RowsCount = rowcount,
                 Pages = pages,
@@ -121,11 +121,11 @@ namespace ModelLibrary.Common {
                 Status = true,
                 ResponseMessage = $"Data was retreived, but the offset [{offset}] is greater than row count [{table.Rows.Count}]"
             };
-            if (_pagesize < 1) _pagesize = table.Rows.Count;
-            if (offset + _pagesize > table.Rows.Count) _pagesize = table.Rows.Count - offset;
+            if (pagesize < 1) pagesize = table.Rows.Count;
+            if (offset + pagesize > table.Rows.Count) pagesize = table.Rows.Count - offset;
             
 
-            table = table.AsEnumerable().Skip(offset).Take(_pagesize).CopyToDataTable();
+            table = table.AsEnumerable().Skip(offset).Take(pagesize).CopyToDataTable();
             return new ResultSet {
                 RowsCount = rowcount,
                 Pages = pages,
@@ -133,7 +133,7 @@ namespace ModelLibrary.Common {
                 PageSize = pagesize,
                 Table = table,
                 Status = true,
-                ResponseMessage = $"Data was retreived, offset [{offset}], length [{_pagesize}], row count [{rowcount}]"
+                ResponseMessage = $"Data was retreived, offset [{offset}], length [{pagesize}], row count [{rowcount}]"
             };
         }
         public virtual DataTable GetTable(object model, string[] whereFields, bool like = false) {
@@ -147,48 +147,42 @@ namespace ModelLibrary.Common {
             return Activator.CreateInstance(MetaData.GetModelType);
         }
 
-        public virtual object Save(object model) {
-            if (((BaseModel)model).Id == 0) {
-                Create(model);
-                return this.Read(model, new string[] { "Created_On" }).First();
-            } else {
-                Update(model);
-                return this.Read(model, new string[] { "Id" }).First();
+        public virtual DBModificationResult Save(object model) {
+            if (model == null) return new DBModificationResult() {
+                Status = -1,
+                Result = null
+            };
+            var properties = model.GetType().GetProperties().Where(x => x.PropertyType.Equals(typeof(string)));
+            foreach (var property in properties) {
+                var value = $"{property.GetValue(model)}".Trim();
+                property.SetValue(model, value.Equals("")?null:value);
             }
-            
-            
+            if (((BaseModel)model).Id == 0) {
+                int affected = Create(model);
+                return new DBModificationResult() {
+                    Status = affected,
+                    Result = this.Read(model, new string[] { "CreatedOn" }).First()
+                };
+            } else {
+                int affected = Update(model);
+                return new DBModificationResult() {
+                    Status = affected,
+                    Result = this.Read(model, new string[] { "Id" }).First()
+                };
+                //return this.Read(model, new string[] { "Id" }).First();
+            }
         }
 
-        private void Create(object model) {
-            //model.Created_By = Session.Instance.CurrentUser == null ? "SYSTEM" : Session.Instance.CurrentUser.User_Name;
-            //model.Created_On = DateTime.Now;
-            database.Execute(GetInsertStatement(model));
-            //if (this.GetType().Equals(typeof(AuditController)) == false) {
-            //     ControllersFactory.GetController(ControllersEnum.Audit).registerEvent(new AuditModel() {
-            //        User_Name = Session.Instance.CurrentUser.User_Name,
-            //        Event_Comments = $"insert new record into [{model.GetSource()}] fields [{model}]"
-            //    });
-            //}
+        private int Create(object model) {
+            return database.Execute(GetInsertStatement(model)).RowsCount;
         }
-        private void Update(object model) {
-            //model.Updated_By = Session.Instance.CurrentUser.User_Name;
-            //model.Updated_On = DateTime.Now;
-            database.Execute(GetUpdateStatement(model));
-            //if (this.GetType().Equals(typeof(AuditController)) == false) {
-            //     ControllersFactory.GetController(ControllersEnum.Audit).registerEvent(new AuditModel() {
-            //        User_Name = Session.Instance.CurrentUser.User_Name,
-            //        Event_Comments = $"update record of [{model.GetSource()}] with fields [{model}]"
-            //    });
-            //}
+        private int Update(object model) {
+            return database.Execute(GetUpdateStatement(model)).RowsCount;
         }
-        public virtual void Delete(object model) {
-            database.Execute(GetDeleteStatement(model));
-            //if (this.GetType().Equals(typeof(AuditController)) == false) {
-            //     ControllersFactory.GetController(ControllersEnum.Audit).registerEvent(new AuditModel() {
-            //        User_Name = Session.Instance.CurrentUser.User_Name,
-            //        Event_Comments = $"delete record from [{model.GetSource()}] with fields [{model}]"
-            //    });
-            //}
+        public virtual DBModificationResult Delete(object model) {
+            return new DBModificationResult() {
+                Status = database.Execute(GetDeleteStatement(model)).RowsCount
+            };
         }
     }
 }

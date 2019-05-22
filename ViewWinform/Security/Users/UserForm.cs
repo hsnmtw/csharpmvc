@@ -20,110 +20,63 @@ namespace ViewWinform.Security.Users {
         }
 
 
-        private UserController controller;
-        private UserModel _model;
-        private List<object> profile_Entitlements;
+        private UserController Controller => (UserController)ControllersFactory.GetController(Entities.User);
+        private UserModel model = new UserModel();
+        private List<object> profileEntitlements;
 
         public UserModel Model {
             get {
-                _model.Id = int.Parse($"0{this.Id_TextBox.Text}");
-                _model.User_Name = this.User_Name_TextBox.Text;
-
-
-                _model.Full_Name = this.Full_Name_TextBox.Text;
-                _model.Profile_Name = this.Profile_Name_TextBox.Text;
-                _model.Email = this.Email_TextBox.Text;
-                _model.Is_Active = this.Is_Active_CheckBox.Checked;
-
-                _model.User_Password = this.User_Password_TextBox.Text;
-
-                _model.Created_By = this.Created_By_TextBox.Text;
-                _model.Updated_By = this.Updated_By_TextBox.Text;
-                try {
-                    _model.Created_On = DateTime.Parse(this.Created_On_TextBox.Text);
-                    _model.Updated_On = DateTime.Parse(this.Updated_On_TextBox.Text);
-                } catch { }
-                return _model;
+                model = ViewWinform.Utils.FormsHelper.PopulateModelFromControls(model, this);
+                return model;
             }
             set {
-                this._model = value;
-                if (value == null) _model = new UserModel();
-                this.Id_TextBox.Text = _model.Id.ToString();
-                this.User_Name_TextBox.Text = _model.User_Name;
-                this.Created_By_TextBox.Text = _model.Created_By;
-                this.Updated_By_TextBox.Text = _model.Updated_By;
-                this.Created_On_TextBox.Text = _model.Created_By == null || "".Equals(_model.Created_By) ? "" : _model.Created_On.ToString();
-                this.Updated_On_TextBox.Text = _model.Updated_By == null || "".Equals(_model.Updated_By) ? "" : _model.Updated_On.ToString();
-                this.Full_Name_TextBox.Text =_model.Full_Name;
-                this.Profile_Name_TextBox.Text =_model.Profile_Name;
-                this.Email_TextBox.Text =_model.Email;
-                this.Is_Active_CheckBox.Checked =_model.Is_Active ;
-                this.LastLoginDate_TextBox.Text = "";  if (_model.Last_Login_Date != null) this.LastLoginDate_TextBox.Text = _model.Last_Login_Date.ToString() ;
-                this.LastPasswordReset_TextBox.Text = "";  if(_model.Last_Change_Password != null) this.LastPasswordReset_TextBox.Text = _model.Last_Change_Password.ToString();
-                this.FailedLogins_TextBox.Text =_model.Failed_Login_Attempts.ToString();
-                this.User_Password_TextBox.Text = _model.User_Password;
-                this.Confirm_User_Password_TextBox.Text = this.User_Password_TextBox.Text;
+                this.model = value;
 
-                this.User_Name_TextBox.Select();
-                this.User_Name_TextBox.Focus();
+                ViewWinform.Utils.FormsHelper.PopulateControlsFromModel(model, this);
+                this.txtUserPasswordConfirm.Text = this.txtUserPassword.Text;
+                this.txtUserName.Select();
+                this.txtUserName.Focus();
             }
         }
+        public override void UpdateModel() { var _ = Model; }
 
-        private void Button2_Click(object sender, EventArgs e) {
+        private void UserCodeTextBoxLookUpSelected(string value) {
+            this.Model = (UserModel)this.Controller.Read(this.Model, this.Controller.GetMetaData().GetUniqueKeyFields).First();
+        }
+
+        private void UserFormLoad(object sender, EventArgs e) {
+            Utils.FormsHelper.BindViewToModel(this,ref this.model);
+            
             this.Model = new UserModel();
+            this.profileEntitlements = ControllersFactory.GetController(Entities.ProfileEntitlement).Read();
         }
 
-        private void Button3_Click(object sender, EventArgs e) {
-            if(this.User_Password_TextBox.Text.Equals(this.Confirm_User_Password_TextBox.Text)==false) {
-                Utils.FormsHelper.errorMessage("Password and confirmation don't match");
-                return;
-            }
-            this.controller.Save(this.Model);
-            Utils.FormsHelper.successMessage("Successfully saved ...");
-            User_Code_TextBox_LookUpSelected(this.Model.User_Name);
-        }
-
-        private void Button4_Click(object sender, EventArgs e) {
-            this.controller.Delete(this.Model);
-            Utils.FormsHelper.successMessage("Successfully deleted ...");
-            this.Model = new UserModel();
-        }
-
-        private void User_Code_TextBox_LookUpSelected(string value) {
-            this.Model = (UserModel)this.controller.Read(this.Model, this.controller.GetMetaData().GetUniqueKeyFields).First();
-        }
-
-        private void UserForm_Load(object sender, EventArgs e) {
-            Utils.FormsHelper.registerEnterAsTab(this);
-            this.controller = (UserController)ControllersFactory.GetController(Entities.User);
-            this.Model = new UserModel();
-            this.profile_Entitlements = ControllersFactory.GetController(Entities.ProfileEntitlement).Read();
-        }
-
-        private void Button1_Click(object sender, EventArgs e) {
-            if (this.controller.ResetLoginCounter(this.Model)) {
-                this.FailedLogins_TextBox.Text = "0";
-                Utils.FormsHelper.successMessage("Failed Login attempts counter has been reset");
+        private void Button1Click(object sender, EventArgs e) {
+            if (this.Controller.ResetLoginCounter(this.Model)) {
+                this.txtFailedLoginAttempts.Text = "0";
+                Utils.FormsHelper.Success("Failed Login attempts counter has been reset");
             } else {
-                Utils.FormsHelper.errorMessage("Something went wrong, please try again later...");
+                Utils.FormsHelper.Error("Something went wrong, please try again later...");
             }
         }
 
-        private void Profile_Name_Lookup_LookUpSelected(object sender, EventArgs e) {
+        private void ProfileNameLookupLookUpSelected(object sender, EventArgs e) {
 
         }
 
-        private void User_Name_Lookup_LookUpSelected(object sender, EventArgs e) {
-            this.Model = (UserModel)this.controller.Read(this.Model, this.controller.GetMetaData().GetUniqueKeyFields).First();
+        private void UserNameLookupLookUpSelected(object sender, EventArgs e) {
+            var selected = ((LookupEventArgs)e).SelectedValueFromLookup;
+            this.txtUserName.Text  = selected;
+            this.Model = (UserModel)this.Controller.Read(this.Model, this.Controller.GetMetaData().GetUniqueKeyFields).First();
         }
 
-        private void Profile_Name_TextBox_TextChanged(object sender, EventArgs e) {
-            this.listBox1.Items.Clear();
-            this.listBox1.Items.AddRange((
-                from ProfileEntitlementsModel model in profile_Entitlements
-                where model.Profile_Name.Equals(Profile_Name_TextBox.Text)
-                orderby model.Entitlement_Name
-                select model.Entitlement_Name
+        private void ProfileNameTextBoxTextChanged(object sender, EventArgs e) {
+            this.lstEntitlements.Items.Clear();
+            this.lstEntitlements.Items.AddRange((
+                from ProfileEntitlementsModel model in profileEntitlements
+                where model.ProfileName.Equals(txtProfileName.Text)
+                orderby model.EntitlementName
+                select model.EntitlementName
             ).ToArray());
         }
     }
