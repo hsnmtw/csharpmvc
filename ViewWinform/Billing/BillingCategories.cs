@@ -29,8 +29,8 @@ namespace ViewWinform.Billing {
                 this.model = value;
                 ViewWinform.Utils.FormsHelper.PopulateControlsFromModel(model, this);
 
-                this.txtBillingCateogy.Select();
-                this.txtBillingCateogy.Focus();
+                this.txtBillingCategory.Select();
+                this.txtBillingCategory.Focus();
             }
         }
         public override void UpdateModel() { var _ = Model; }
@@ -40,7 +40,7 @@ namespace ViewWinform.Billing {
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
             string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            this.txtBillingCateogy.Text = selected;
+            this.txtBillingCategory.Text = selected;
             this.Model = (BillingCategoryModel)this.Controller.Read(this.Model, this.Controller.GetMetaData().GetUniqueKeyFields ).First();
 
         }

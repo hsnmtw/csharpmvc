@@ -26,50 +26,13 @@ namespace ViewWinform.Common {
 
         private BaseController Controller;
         private string[] shownColumns;
-        private int page,pages,pagesize;
-        public int Page {
-            get => page;
-            private set {
-                page = value;
-                
-                tsbFirst.Enabled = tsbPrevious.Enabled = Page > 1;
-                tsbLast.Enabled = tsbNext.Enabled = Page < Pages;
-                this.tslRecordPosition.Text = $"{Page}/{Pages}";
-            }
-        }
-        public int Pages {
-            get => pages;
-            private set {
-                pages = value;
-                tsbFirst.Enabled = tsbPrevious.Enabled = Page > 1;
-                tsbLast.Enabled = tsbNext.Enabled = Page < Pages;
-                this.tslRecordPosition.Text = $"{Page}/{Pages}";
-            }
-        }
-        public int PageSize {
-            get => pagesize;
-            set {
-                pagesize = value;
-                this.tslPageSize.Text  = $"Page Size {value}";
-            }
-        }
+
         
         public LookUpForm(BaseController controller,params string[]shownColumns) {
             InitializeComponent();
             this.shownColumns = shownColumns;
             this.Controller = controller;
         }
-
-        //public string[] SelectedValue {
-        //    get {
-        //        if (this.dataGridView1.SelectedRows.Count > 0) {
-        //            return (from DataGridViewCell cell
-        //                      in this.dataGridView1.SelectedRows[0].Cells
-        //                  select cell.Value.ToString()).ToArray();
-        //        }
-        //        return new string[this.dataGridView1.ColumnCount];
-        //    }
-        //}
 
         public string SelectedValue {
             get {
@@ -82,8 +45,6 @@ namespace ViewWinform.Common {
 
         private void LookUpLoad(object sender, EventArgs e) {
             //this.lblSearch.Text = "";
-            if (this.PageSize <1) this.PageSize = 15;
-            this.Page = 1;
             Requery();
             listBox1.Select();
             listBox1.Focus();
@@ -92,28 +53,20 @@ namespace ViewWinform.Common {
         public void Requery() {
             object model = this.Controller.CreateNewModel();
             model.GetType().GetProperty(shownColumns[0]).SetValue(model, $"%{lblSearch.Text}%");
-            var result = this.Controller.GetTable(model,new string[] {shownColumns[0]},true,this.Page,PageSize);
+            var source = this.Controller.GetTable(model,new string[] {shownColumns[0]},true);
             
 
-            var source = result.Table;
+            
 
             if (shownColumns == null || shownColumns.Length == 0) {
                 shownColumns = (from DataColumn column in source.Columns select column.ColumnName).ToArray();
             }
 
 
-            //this.Pages = (result.RowsCount+ this.PageSize-1) / this.PageSize;
-
-            this.Pages = result.Pages;
-            this.Page = result.Page;
-            this.PageSize = result.PageSize;
-            this.tslRecordsCount.Text = $"Records {result.RowsCount}";
 
             DataView view = new DataView(source);
             view.Sort = $"{shownColumns[0]} ASC";
 
-            //this.dataGridView1.DataSource = view.ToTable(false,shownColumns);
-            //this.dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             var table = view.ToTable(false, shownColumns);
             this.columnsWidths = new int[shownColumns.Length];
@@ -175,29 +128,12 @@ namespace ViewWinform.Common {
             
         }
 
-        private void TsbFirstClick(object sender, EventArgs e) {
-            Page = 1; Requery();
-        }
-
-        private void TsbPreviousClick(object sender, EventArgs e) {
-            Page--; Requery();
-        }
-
-        private void TsbNextClick(object sender, EventArgs e) {
-            Page++; Requery();
-        }
-
-        private void TsbLastClick(object sender, EventArgs e) {
-            Page = Pages; Requery();
-        }
-
         private void DataGridView1KeyUp(object sender, KeyEventArgs e) {
         }
 
         private void Label1TextChanged(object sender, EventArgs e) {
             //(this.dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("{0} Like '%{1}%'", this.dataGridView1.Columns[0].Name, this.label1.Text);
-            if(PageSize>0)
-            TsbFirstClick(null, null);
+            Requery();
         }
 
         private void DataGridView1DoubleClick(object sender, EventArgs e) {

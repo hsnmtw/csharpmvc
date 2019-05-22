@@ -23,7 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summaryClient
         private void InitializeComponent() {
-            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.txtUpdatedOn = new System.Windows.Forms.TextBox();
@@ -35,7 +35,7 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtBillingCateogy = new System.Windows.Forms.TextBox();
+            this.txtBillingCategory = new System.Windows.Forms.TextBox();
             this.lookUpButtonAccomCategory = new ViewWinform.Common.LookUpButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
@@ -46,28 +46,29 @@
             this.txtFoodType = new System.Windows.Forms.TextBox();
             this.txtFoodClass = new System.Windows.Forms.TextBox();
             this.txtBillingCategoryDesc = new System.Windows.Forms.TextBox();
-            this.txtAcommClass = new System.Windows.Forms.TextBox();
+            this.txtAccomClass = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnDuplicate = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnDelete
+            // btnRemove
             // 
-            this.btnDelete.Location = new System.Drawing.Point(72, 289);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 17;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnRemove.Location = new System.Drawing.Point(72, 289);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(75, 23);
+            this.btnRemove.TabIndex = 17;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(180, 289);
+            this.btnSave.Location = new System.Drawing.Point(287, 289);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 15;
@@ -76,7 +77,7 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(288, 289);
+            this.btnNew.Location = new System.Drawing.Point(395, 289);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 23);
             this.btnNew.TabIndex = 16;
@@ -169,22 +170,23 @@
             this.label3.TabIndex = 43;
             this.label3.Text = "Billing Category";
             // 
-            // txtBillingCateogy
+            // txtBillingCategory
             // 
-            this.txtBillingCateogy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtBillingCateogy.Location = new System.Drawing.Point(151, 43);
-            this.txtBillingCateogy.Name = "txtBillingCateogy";
-            this.txtBillingCateogy.Size = new System.Drawing.Size(212, 20);
-            this.txtBillingCateogy.TabIndex = 1;
+            this.txtBillingCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtBillingCategory.Location = new System.Drawing.Point(151, 43);
+            this.txtBillingCategory.Name = "txtBillingCategory";
+            this.txtBillingCategory.Size = new System.Drawing.Size(212, 20);
+            this.txtBillingCategory.TabIndex = 1;
             // 
             // lookUpButtonAccomCategory
             // 
-            this.lookUpButtonAccomCategory.AssociatedControl = "txtBillingCateogy";
-            this.lookUpButtonAccomCategory.Controller = "BillingCateogy";
+            this.lookUpButtonAccomCategory.AssociatedControl = "txtBillingCategory";
+            this.lookUpButtonAccomCategory.Controller = "BillingCategory";
             this.lookUpButtonAccomCategory.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonAccomCategory.Location = new System.Drawing.Point(364, 42);
             this.lookUpButtonAccomCategory.Name = "lookUpButtonAccomCategory";
-            this.lookUpButtonAccomCategory.ShowFieldsInLookUp.Add("AccomCategory");
+            this.lookUpButtonAccomCategory.ShowFieldsInLookUp.Add("BillingCategory");
+            this.lookUpButtonAccomCategory.ShowFieldsInLookUp.Add("BillingCategoryDesc");
             this.lookUpButtonAccomCategory.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonAccomCategory.TabIndex = 2;
             this.lookUpButtonAccomCategory.TabStop = false;
@@ -203,8 +205,8 @@
             this.panel1.Controls.Add(this.lookUpButtonAccomCategory);
             this.panel1.Controls.Add(this.txtFoodClass);
             this.panel1.Controls.Add(this.txtBillingCategoryDesc);
-            this.panel1.Controls.Add(this.txtAcommClass);
-            this.panel1.Controls.Add(this.txtBillingCateogy);
+            this.panel1.Controls.Add(this.txtAccomClass);
+            this.panel1.Controls.Add(this.txtBillingCategory);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label9);
@@ -214,7 +216,8 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.txtCreatedBy);
-            this.panel1.Controls.Add(this.btnDelete);
+            this.panel1.Controls.Add(this.btnDuplicate);
+            this.panel1.Controls.Add(this.btnRemove);
             this.panel1.Controls.Add(this.txtCreatedOn);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.label6);
@@ -272,7 +275,7 @@
             // 
             // lookUpButtonAccommClass
             // 
-            this.lookUpButtonAccommClass.AssociatedControl = "txtAcommClass";
+            this.lookUpButtonAccommClass.AssociatedControl = "txtAccomClass";
             this.lookUpButtonAccommClass.Controller = "AccomClass";
             this.lookUpButtonAccommClass.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonAccommClass.Location = new System.Drawing.Point(210, 96);
@@ -305,18 +308,17 @@
             this.txtBillingCategoryDesc.BackColor = System.Drawing.SystemColors.Window;
             this.txtBillingCategoryDesc.Location = new System.Drawing.Point(151, 70);
             this.txtBillingCategoryDesc.Name = "txtBillingCategoryDesc";
-            this.txtBillingCategoryDesc.ReadOnly = true;
             this.txtBillingCategoryDesc.Size = new System.Drawing.Size(433, 20);
             this.txtBillingCategoryDesc.TabIndex = 3;
             // 
-            // txtAcommClass
+            // txtAccomClass
             // 
-            this.txtAcommClass.BackColor = System.Drawing.SystemColors.Window;
-            this.txtAcommClass.Location = new System.Drawing.Point(151, 97);
-            this.txtAcommClass.Name = "txtAcommClass";
-            this.txtAcommClass.ReadOnly = true;
-            this.txtAcommClass.Size = new System.Drawing.Size(57, 20);
-            this.txtAcommClass.TabIndex = 4;
+            this.txtAccomClass.BackColor = System.Drawing.SystemColors.Window;
+            this.txtAccomClass.Location = new System.Drawing.Point(151, 97);
+            this.txtAccomClass.Name = "txtAccomClass";
+            this.txtAccomClass.ReadOnly = true;
+            this.txtAccomClass.Size = new System.Drawing.Size(57, 20);
+            this.txtAccomClass.TabIndex = 4;
             // 
             // label7
             // 
@@ -372,6 +374,15 @@
             this.label2.TabIndex = 43;
             this.label2.Text = "Accomm Class";
             // 
+            // btnDuplicate
+            // 
+            this.btnDuplicate.Location = new System.Drawing.Point(179, 289);
+            this.btnDuplicate.Name = "btnDuplicate";
+            this.btnDuplicate.Size = new System.Drawing.Size(75, 23);
+            this.btnDuplicate.TabIndex = 17;
+            this.btnDuplicate.Text = "Duplicate";
+            this.btnDuplicate.UseVisualStyleBackColor = true;
+            // 
             // BillingCategoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -388,7 +399,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.TextBox txtUpdatedOn;
@@ -400,13 +411,13 @@
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtBillingCateogy;
+        private System.Windows.Forms.TextBox txtBillingCategory;
         private Common.LookUpButton lookUpButtonAccomCategory;
         private System.Windows.Forms.Panel panel1;
         private Common.LookUpButton lookUpButtonFood;
         private Common.LookUpButton lookUpButtonAccommClass;
         private System.Windows.Forms.TextBox txtFoodClass;
-        private System.Windows.Forms.TextBox txtAcommClass;
+        private System.Windows.Forms.TextBox txtAccomClass;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtBillingCategoryDesc;
@@ -418,5 +429,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnDuplicate;
     }
 }

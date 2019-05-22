@@ -48,7 +48,7 @@ namespace ViewWinform
                 {
                     if (mii.GetType().Equals(typeof(ToolStripMenuItem)))
                     {
-                        ToolStripMenuItem tsmi = ((ToolStripMenuItem)mii);
+                        var tsmi = ((ToolStripMenuItem)mii);
                         tsmi.Enabled = false;
                         menus[tsmi.Text] = tsmi;
                     }
@@ -82,19 +82,10 @@ namespace ViewWinform
             tsProgressBar.Value += 25;
         }
 
-        private void DeleteToolStripMenuItemClick(object sender, EventArgs e)
-        {
-
-        }
 
         private void ExitToolStripMenuItemClick(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void InitializerToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            
         }
 
         private void UsersToolStripMenuItemClick(object sender, EventArgs e)
@@ -272,10 +263,6 @@ namespace ViewWinform
             try { ((ISingleForm)this.ActiveMdiChild).PerformAction("Save"); } catch { }
         }
 
-        private void DeleteToolStripMenuItemClick1(object sender, EventArgs e) {
-            try { ((ISingleForm)this.ActiveMdiChild).PerformAction("Delete"); } catch { }
-        }
-
         private void FoodClassesToolStripMenuItemClick(object sender, EventArgs e) {
             new Billing.FoodClassForm() { MdiParent = this }.Show();
         }
@@ -288,6 +275,26 @@ namespace ViewWinform
 
         private void FoodTypesToolStripMenuItem_Click(object sender, EventArgs e) {
             new Billing.FoodTypeForm() { MdiParent = this }.Show();
+        }
+
+        private void DuplicateToolStripMenuItem_Click(object sender, EventArgs e) {
+            try {
+
+
+                var form = (Form)this.ActiveMdiChild;
+                var model = (BaseModel)form.GetType().GetProperty("Model").GetValue(form);
+                model.Id = 0;
+                model.CreatedBy = null;
+                model.CreatedOn = null;
+                model.UpdatedBy = null;
+                model.UpdatedOn = null;
+
+                ((BaseModel)form.GetType().GetProperty("Model")).SetValue(form, model);
+            } catch { }
+        }
+
+        private void RemmoveToolStripMenuItem_Click(object sender, EventArgs e) {
+            try { ((ISingleForm)this.ActiveMdiChild).PerformAction("Delete"); } catch { }
         }
     }
 }

@@ -50,7 +50,8 @@ namespace ViewWinform.Utils
             var allowedTypes = new Type[] {
                 typeof(MaskedTextBox),
                 typeof(TextBox),
-                typeof(ComboBox)
+                typeof(ComboBox),
+                typeof(CheckBox)
             };
 
             string[] buttons = { "btnSave","btnNew","btnDelete" };

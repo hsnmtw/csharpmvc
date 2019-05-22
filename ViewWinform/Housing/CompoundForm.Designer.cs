@@ -164,7 +164,7 @@
             // 
             // CompoundNameLookupButton
             // 
-            this.CompoundNameLookupButton.AssociatedControl = "CompoundNameTextBox";
+            this.CompoundNameLookupButton.AssociatedControl = "txtCompoundName";
             this.CompoundNameLookupButton.Controller = "Compound";
             this.CompoundNameLookupButton.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.CompoundNameLookupButton.Location = new System.Drawing.Point(275, 50);
