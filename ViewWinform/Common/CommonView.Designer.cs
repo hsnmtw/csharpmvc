@@ -219,7 +219,7 @@ namespace ViewWinform.Common {
             this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDelete.Name = "tsbDelete";
             this.tsbDelete.Size = new System.Drawing.Size(23, 22);
-            this.tsbDelete.Text = "Delete";
+            this.tsbDelete.Text = "Remove";
             this.tsbDelete.Click += new System.EventHandler(this.TsbDeleteClick1);
             // 
             // CommonView

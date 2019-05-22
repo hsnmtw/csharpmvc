@@ -25,7 +25,7 @@ namespace ControllerLibrary.Housing {
             var Room1 = new RoomModel() {
                 RoomName = "A",
                 BuildingName = "A",
-                NationalityCode = "BGD",
+                CountryCode = "BGD",
                 BedCapacity = 1,
                 NumberOfWindows = 2
             };
@@ -33,7 +33,7 @@ namespace ControllerLibrary.Housing {
             var Room2 = new RoomModel() {
                 RoomName = "B",
                 BuildingName = "A",
-                NationalityCode = "IND",
+                CountryCode = "IND",
                 BedCapacity = 4,
                 NumberOfWindows = 1
             };
@@ -41,7 +41,7 @@ namespace ControllerLibrary.Housing {
             var Room3 = new RoomModel() {
                 RoomName = "C",
                 BuildingName = "A",
-                NationalityCode = "FIL",
+                CountryCode = "FIL",
                 BedCapacity = 2,
                 NumberOfWindows = 3
             };

@@ -11,6 +11,7 @@ namespace ModelLibrary.Customers {
         public string BillingCategoryDesc  { get; set; }
         public string AccomClass           { get; set; }
         public string FoodClass            { get; set; }
+        public string FoodType             { get; set; }
         public bool   ReservationOnly      { get; set; }
     }
 }

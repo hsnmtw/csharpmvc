@@ -14,16 +14,16 @@ using System.Windows.Forms;
 using ViewWinform.Common;
 
 namespace ViewWinform.Security {
-    public partial class EntitlementForm : SingleForm {
-        public EntitlementForm() {
+    public partial class EntitlementGroupForm : SingleForm {
+        public EntitlementGroupForm() {
             InitializeComponent();
         }
 
 
-        public EntitlementController Controller => (EntitlementController)ControllersFactory.GetController(Entities.Entitlement);
-        private EntitlementModel model = new EntitlementModel();
+        public EntitlementGroupController Controller => (EntitlementGroupController)ControllersFactory.GetController(Entities.EntitlementGroup);
+        private EntitlementGroupModel model = new EntitlementGroupModel();
 
-        public EntitlementModel Model {
+        public EntitlementGroupModel Model {
             get {
                 model = ViewWinform.Utils.FormsHelper.PopulateModelFromControls(model, this);
                 return model;
@@ -32,22 +32,22 @@ namespace ViewWinform.Security {
                 this.model = value;
                 ViewWinform.Utils.FormsHelper.PopulateControlsFromModel(model, this);
 
-                this.txtEntitlementName.Select();
-                this.txtEntitlementName.Focus();
+                this.txtEntitlementGroupName.Select();
+                this.txtEntitlementGroupName.Focus();
             }
         }
         public override void UpdateModel() { var _ = Model; }
 
 
-        private void EntitlementFormLoad(object sender, EventArgs e) {
+        private void EntitlementGroupFormLoad(object sender, EventArgs e) {
             Utils.FormsHelper.BindViewToModel(this,ref this.model);
             
-            this.Model = new EntitlementModel();
+            this.Model = new EntitlementGroupModel();
         }
 
-        private void EntitlementNameLookupLookUpSelected(object sender, EventArgs e) {
-            this.txtEntitlementName.Text = ((LookupEventArgs)e).SelectedValueFromLookup;
-            this.Model = (EntitlementModel)this.Controller.Read(this.Model, this.Controller.GetMetaData().GetUniqueKeyFields).First();
+        private void EntitlementGroupNameLookupLookUpSelected(object sender, EventArgs e) {
+            this.txtEntitlementGroupName.Text = ((LookupEventArgs)e).SelectedValueFromLookup;
+            this.Model = (EntitlementGroupModel)this.Controller.Read(this.Model, this.Controller.GetMetaData().GetUniqueKeyFields).First();
         }
     }
 }

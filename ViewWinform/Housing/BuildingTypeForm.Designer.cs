@@ -23,7 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.txtUpdatedOn = new System.Windows.Forms.TextBox();
@@ -47,14 +47,14 @@
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnDelete
+            // btnRemove
             // 
-            this.btnDelete.Location = new System.Drawing.Point(71, 267);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 11;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnRemove.Location = new System.Drawing.Point(71, 267);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(75, 23);
+            this.btnRemove.TabIndex = 11;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
             // 
             // btnSave
             // 
@@ -223,7 +223,7 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.txtCreatedBy);
-            this.panel1.Controls.Add(this.btnDelete);
+            this.panel1.Controls.Add(this.btnRemove);
             this.panel1.Controls.Add(this.txtCreatedOn);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.label6);
@@ -273,7 +273,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.TextBox txtUpdatedOn;

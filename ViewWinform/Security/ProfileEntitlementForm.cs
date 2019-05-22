@@ -14,16 +14,16 @@ using System.Windows.Forms;
 using ViewWinform.Common;
 
 namespace ViewWinform.Security {
-    public partial class EntitlementForm : SingleForm {
-        public EntitlementForm() {
+    public partial class ProfileEntitlementForm : SingleForm {
+        public ProfileEntitlementForm() {
             InitializeComponent();
         }
 
 
-        public EntitlementController Controller => (EntitlementController)ControllersFactory.GetController(Entities.Entitlement);
-        private EntitlementModel model = new EntitlementModel();
+        public ProfileEntitlementsController Controller => (ProfileEntitlementsController)ControllersFactory.GetController(Entities.ProfileEntitlement);
+        private ProfileEntitlementsModel model = new ProfileEntitlementsModel();
 
-        public EntitlementModel Model {
+        public ProfileEntitlementsModel Model {
             get {
                 model = ViewWinform.Utils.FormsHelper.PopulateModelFromControls(model, this);
                 return model;
@@ -38,16 +38,13 @@ namespace ViewWinform.Security {
         }
         public override void UpdateModel() { var _ = Model; }
 
-
         private void EntitlementFormLoad(object sender, EventArgs e) {
             Utils.FormsHelper.BindViewToModel(this,ref this.model);
-            
-            this.Model = new EntitlementModel();
         }
 
-        private void EntitlementNameLookupLookUpSelected(object sender, EventArgs e) {
-            this.txtEntitlementName.Text = ((LookupEventArgs)e).SelectedValueFromLookup;
-            this.Model = (EntitlementModel)this.Controller.Read(this.Model, this.Controller.GetMetaData().GetUniqueKeyFields).First();
+        private void BtnSave_Click(object sender, EventArgs e) {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

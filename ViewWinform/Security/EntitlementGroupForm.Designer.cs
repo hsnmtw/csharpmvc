@@ -1,5 +1,5 @@
 ﻿namespace ViewWinform.Security {
-    partial class EntitlementForm {
+    partial class EntitlementGroupForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -35,13 +35,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtEntitlementName = new System.Windows.Forms.TextBox();
-            this.EntitlementNameLookup = new ViewWinform.Common.LookUpButton();
-            this.chkReadOnly = new System.Windows.Forms.CheckBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.txtEntitlementGroupName = new System.Windows.Forms.TextBox();
             this.EntitlementGroupNameLookup = new ViewWinform.Common.LookUpButton();
-            this.label3 = new System.Windows.Forms.Label();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnRemove
@@ -49,7 +46,7 @@
             this.btnRemove.Location = new System.Drawing.Point(79, 193);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 23);
-            this.btnRemove.TabIndex = 12;
+            this.btnRemove.TabIndex = 40;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
             // 
@@ -58,7 +55,7 @@
             this.btnSave.Location = new System.Drawing.Point(187, 193);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 10;
+            this.btnSave.TabIndex = 38;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             // 
@@ -67,7 +64,7 @@
             this.btnNew.Location = new System.Drawing.Point(295, 193);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 23);
-            this.btnNew.TabIndex = 11;
+            this.btnNew.TabIndex = 39;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = true;
             // 
@@ -78,7 +75,7 @@
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
             this.txtUpdatedOn.Size = new System.Drawing.Size(137, 20);
-            this.txtUpdatedOn.TabIndex = 8;
+            this.txtUpdatedOn.TabIndex = 37;
             this.txtUpdatedOn.TabStop = false;
             // 
             // txtUpdatedBy
@@ -88,7 +85,7 @@
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
             this.txtUpdatedBy.Size = new System.Drawing.Size(69, 20);
-            this.txtUpdatedBy.TabIndex = 7;
+            this.txtUpdatedBy.TabIndex = 36;
             this.txtUpdatedBy.TabStop = false;
             // 
             // label6
@@ -107,7 +104,7 @@
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
             this.txtCreatedOn.Size = new System.Drawing.Size(137, 20);
-            this.txtCreatedOn.TabIndex = 6;
+            this.txtCreatedOn.TabIndex = 35;
             this.txtCreatedOn.TabStop = false;
             // 
             // txtCreatedBy
@@ -117,7 +114,7 @@
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
             this.txtCreatedBy.Size = new System.Drawing.Size(69, 20);
-            this.txtCreatedBy.TabIndex = 5;
+            this.txtCreatedBy.TabIndex = 34;
             this.txtCreatedBy.TabStop = false;
             // 
             // label5
@@ -134,9 +131,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(30, 45);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 13);
+            this.label2.Size = new System.Drawing.Size(123, 13);
             this.label2.TabIndex = 42;
-            this.label2.Text = "Entitlement Name";
+            this.label2.Text = "Entitlement Group Name";
             // 
             // txtId
             // 
@@ -144,7 +141,7 @@
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(68, 20);
-            this.txtId.TabIndex = 0;
+            this.txtId.TabIndex = 32;
             this.txtId.TabStop = false;
             this.txtId.Text = "0";
             // 
@@ -157,28 +154,26 @@
             this.label1.TabIndex = 41;
             this.label1.Text = "Id";
             // 
-            // txtEntitlementName
+            // txtEntitlementGroupName
             // 
-            this.txtEntitlementName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtEntitlementName.Location = new System.Drawing.Point(159, 42);
-            this.txtEntitlementName.Name = "txtEntitlementName";
-            this.txtEntitlementName.Size = new System.Drawing.Size(192, 20);
-            this.txtEntitlementName.TabIndex = 1;
-            this.txtEntitlementName.TabStop = false;
+            this.txtEntitlementGroupName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtEntitlementGroupName.Location = new System.Drawing.Point(159, 42);
+            this.txtEntitlementGroupName.Name = "txtEntitlementGroupName";
+            this.txtEntitlementGroupName.Size = new System.Drawing.Size(192, 20);
+            this.txtEntitlementGroupName.TabIndex = 1;
+            this.txtEntitlementGroupName.TabStop = false;
             // 
-            // EntitlementNameLookup
+            // EntitlementGroupNameLookup
             // 
-            this.EntitlementNameLookup.AssociatedControl = "txtEntitlementName";
-            this.EntitlementNameLookup.Controller = "Entitlement";
-            this.EntitlementNameLookup.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.EntitlementNameLookup.Location = new System.Drawing.Point(351, 41);
-            this.EntitlementNameLookup.Name = "EntitlementNameLookup";
-            this.EntitlementNameLookup.ShowFieldsInLookUp.Add("EntitlementName");
-            this.EntitlementNameLookup.ShowFieldsInLookUp.Add("EntitlementGroupName");
-            this.EntitlementNameLookup.Size = new System.Drawing.Size(22, 22);
-            this.EntitlementNameLookup.TabIndex = 2;
-            this.EntitlementNameLookup.TabStop = false;
-            this.EntitlementNameLookup.LookUpSelected += new System.EventHandler(this.EntitlementNameLookupLookUpSelected);
+            this.EntitlementGroupNameLookup.AssociatedControl = "txtEntitlementGroupName";
+            this.EntitlementGroupNameLookup.Controller = "EntitlementGroup";
+            this.EntitlementGroupNameLookup.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.EntitlementGroupNameLookup.Location = new System.Drawing.Point(351, 41);
+            this.EntitlementGroupNameLookup.Name = "EntitlementGroupNameLookup";
+            this.EntitlementGroupNameLookup.Size = new System.Drawing.Size(22, 22);
+            this.EntitlementGroupNameLookup.TabIndex = 2;
+            this.EntitlementGroupNameLookup.TabStop = false;
+            this.EntitlementGroupNameLookup.LookUpSelected += new System.EventHandler(this.EntitlementGroupNameLookupLookUpSelected);
             // 
             // chkReadOnly
             // 
@@ -187,7 +182,7 @@
             this.chkReadOnly.Location = new System.Drawing.Point(158, 162);
             this.chkReadOnly.Name = "chkReadOnly";
             this.chkReadOnly.Size = new System.Drawing.Size(15, 14);
-            this.chkReadOnly.TabIndex = 9;
+            this.chkReadOnly.TabIndex = 50;
             this.chkReadOnly.UseVisualStyleBackColor = true;
             // 
             // label10
@@ -199,48 +194,15 @@
             this.label10.TabIndex = 51;
             this.label10.Text = "Read Only";
             // 
-            // txtEntitlementGroupName
-            // 
-            this.txtEntitlementGroupName.BackColor = System.Drawing.SystemColors.Window;
-            this.txtEntitlementGroupName.Location = new System.Drawing.Point(159, 69);
-            this.txtEntitlementGroupName.Name = "txtEntitlementGroupName";
-            this.txtEntitlementGroupName.ReadOnly = true;
-            this.txtEntitlementGroupName.Size = new System.Drawing.Size(192, 20);
-            this.txtEntitlementGroupName.TabIndex = 3;
-            this.txtEntitlementGroupName.TabStop = false;
-            // 
-            // EntitlementGroupNameLookup
-            // 
-            this.EntitlementGroupNameLookup.AssociatedControl = "txtEntitlementGroupName";
-            this.EntitlementGroupNameLookup.Controller = "EntitlementGroup";
-            this.EntitlementGroupNameLookup.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.EntitlementGroupNameLookup.Location = new System.Drawing.Point(351, 68);
-            this.EntitlementGroupNameLookup.Name = "EntitlementGroupNameLookup";
-            this.EntitlementGroupNameLookup.Size = new System.Drawing.Size(22, 22);
-            this.EntitlementGroupNameLookup.TabIndex = 4;
-            this.EntitlementGroupNameLookup.TabStop = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(30, 72);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(123, 13);
-            this.label3.TabIndex = 54;
-            this.label3.Text = "Entitlement Group Name";
-            // 
-            // EntitlementForm
+            // EntitlementGroupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(427, 229);
-            this.Controls.Add(this.txtEntitlementGroupName);
-            this.Controls.Add(this.EntitlementGroupNameLookup);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.chkReadOnly);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.txtEntitlementName);
-            this.Controls.Add(this.EntitlementNameLookup);
+            this.Controls.Add(this.txtEntitlementGroupName);
+            this.Controls.Add(this.EntitlementGroupNameLookup);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnNew);
@@ -253,9 +215,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.label1);
-            this.Name = "EntitlementForm";
-            this.Text = "Entitlements";
-            this.Load += new System.EventHandler(this.EntitlementFormLoad);
+            this.Name = "EntitlementGroupForm";
+            this.Text = "Entitlement Groups";
+            this.Load += new System.EventHandler(this.EntitlementGroupFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -263,7 +225,7 @@
 
         #endregion
 
-        private Common.LookUpButton EntitlementNameLookup;
+        private Common.LookUpButton EntitlementGroupNameLookup;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnNew;
@@ -276,11 +238,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtEntitlementName;
+        private System.Windows.Forms.TextBox txtEntitlementGroupName;
         private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtEntitlementGroupName;
-        private Common.LookUpButton EntitlementGroupNameLookup;
-        private System.Windows.Forms.Label label3;
     }
 }

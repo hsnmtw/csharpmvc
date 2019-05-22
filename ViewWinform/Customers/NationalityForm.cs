@@ -13,19 +13,19 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ViewWinform.Common;
 
-namespace ViewWinform.Customers.Nationalities {
-    public partial class NationalityForm : SingleForm {
+namespace ViewWinform.Customers {
+    public partial class CountryForm : SingleForm {
 
-        public NationalityForm() {
+        public CountryForm() {
             InitializeComponent();
         }
 
 
-        public BaseController Controller => ControllersFactory.GetController(Entities.Nationality);
-        private NationalityModel model = new NationalityModel();
+        public BaseController Controller => ControllersFactory.GetController(Entities.Country);
+        private CountryModel model = new CountryModel();
 
 
-        public NationalityModel Model{
+        public CountryModel Model{
             get {
                 model = ViewWinform.Utils.FormsHelper.PopulateModelFromControls(model, this);
                 return model;
@@ -34,18 +34,18 @@ namespace ViewWinform.Customers.Nationalities {
                 this.model = value;
                 ViewWinform.Utils.FormsHelper.PopulateControlsFromModel(model, this);
 
-                this.txtNationalityCode.Select();
-                this.txtNationalityCode.Focus();
+                this.txtCountryCode.Select();
+                this.txtCountryCode.Focus();
 
             }
         }
         public override void UpdateModel() { var _ = Model; }
 
 
-        private void NationalityFormLoad(object sender, EventArgs e) {
+        private void CountryFormLoad(object sender, EventArgs e) {
             Utils.FormsHelper.BindViewToModel(this,ref this.model);
 
-            Label[] fieldsmarkers = { lblMetaDataNationalityArabic,lblMetaDataNationalityCode,lblMetaDataNationalityDesc };
+            Label[] fieldsmarkers = { lblMetaDataCountryArabic,lblMetaDataCountryCode,lblMetaDataCountryEnglish };
 
             foreach(var required in fieldsmarkers) {
                 string field = required.Name.Replace("lblMetaData", "");
@@ -57,11 +57,11 @@ namespace ViewWinform.Customers.Nationalities {
             }
         }
 
-        private void NationalityCodeTextBoxLookUpSelected(object sender, EventArgs e) {
+        private void CountryCodeTextBoxLookUpSelected(object sender, EventArgs e) {
             var selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            this.txtNationalityCode.Text = selected;
+            this.txtCountryCode.Text = selected;
             
-            this.Model = (NationalityModel)this.Controller.Read(this.Model, this.Controller.GetMetaData().GetUniqueKeyFields).First();
+            this.Model = (CountryModel)this.Controller.Read(this.Model, this.Controller.GetMetaData().GetUniqueKeyFields).First();
         }
     }
 }

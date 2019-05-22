@@ -9,8 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ControllerLibrary.Customers {
-    [ForControllerAttribute(Entities.Nationality, Enabled = true)]
-    public class NationalityController : AbstractController {
-        public NationalityController() : base(CollectionsFactory.GetCollection(Entities.Nationality)) {}
+    [ForControllerAttribute(Entities.IdentificationType, Enabled = true)]
+    public class IdentificationTypeController : AbstractController {
+        public IdentificationTypeController() : base(CollectionsFactory.GetCollection(Entities.IdentificationType)) {}
     }
 }

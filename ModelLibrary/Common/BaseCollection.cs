@@ -6,7 +6,7 @@ namespace ModelLibrary.Common {
     public interface BaseCollection {
         List<object> Read();
 
-        List<object> Read(object model, string[] whereFields);
+        List<object> Read(object model, params string[] whereFields);
         //List<object> Read(object model, string[] whereFields,int offset,int length);
 
         DataTable GetTable(object model, string[] whereFields, bool like=false);
@@ -18,8 +18,9 @@ namespace ModelLibrary.Common {
         object CreateNew();
 
         DBModificationResult Save(object model);
-
+        
         DBModificationResult Delete(object model);
+        DBModificationResult Delete(object model, params string[] whereFields);
 
         MetaData MetaData { get; }
     }

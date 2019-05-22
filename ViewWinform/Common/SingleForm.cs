@@ -9,10 +9,11 @@ namespace ViewWinform.Common {
     public class SingleForm : Form, ISingleForm {
 
         public void PerformAction(string action) {
-            //var buttons = this.Controls.OfType<Button>().Where(x => action.ToLower().Equals(x.Text.ToLower()));
-            var buttons = this.Controls.Find($"btn{action}", true).OfType<Button>();
-            if (buttons.Count() == 0) return;
-            buttons.First().PerformClick();            
+            try {
+                var buttons = this.Controls.Find($"btn{action}", true).OfType<Button>();
+                if (buttons.Count() == 0) return;
+                buttons.First().PerformClick();
+            } catch { }
         }
 
         public virtual void UpdateModel() { } 

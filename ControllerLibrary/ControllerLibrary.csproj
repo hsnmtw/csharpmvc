@@ -55,10 +55,11 @@
     <Compile Include="Common\Session.cs" />
     <Compile Include="Configurations\ConfigurationsController.cs" />
     <Compile Include="Configurations\CryptoController.cs" />
+    <Compile Include="Customers\IdentificationTypeController.cs" />
     <Compile Include="Customers\ProjectController.cs" />
     <Compile Include="Customers\ClientController.cs" />
     <Compile Include="Customers\ClientTypeController.cs" />
-    <Compile Include="Customers\NationalityController.cs" />
+    <Compile Include="Customers\CountryController.cs" />
     <Compile Include="Housing\BuildingTypeController.cs" />
     <Compile Include="Housing\BuildingController.cs" />
     <Compile Include="Housing\CompoundController.cs" />
@@ -70,6 +71,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Security\AuditController.cs" />
+    <Compile Include="Security\EntitlementGroupController.cs" />
     <Compile Include="Security\EntitlementController.cs" />
     <Compile Include="Security\ProfileEntitlementsController.cs" />
     <Compile Include="Configurations\CryptoFactory.cs" />

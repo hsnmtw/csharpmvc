@@ -19,7 +19,7 @@ namespace ModelLibrary.Common
 
         private DbConnection connection;
         private static DBConnectionManager instance = null;
-        private DataSet dataSet;
+        //private DataSet dataSet;
         public DataTable SchemaTables { get { return this.connection.GetSchema("Tables"); } }
         public DataTable SchemaColumns { get; private set; }
 
@@ -40,19 +40,19 @@ namespace ModelLibrary.Common
             //Console.WriteLine(sql);
 
             var result = cmd.ExecuteNonQuery();
-            if (this.dataSet.Tables.Contains(statement.TargetTable)) {
-                this.dataSet.Tables.Remove(statement.TargetTable);
-            }
+            //if (this.dataSet.Tables.Contains(statement.TargetTable)) {
+            //    this.dataSet.Tables.Remove(statement.TargetTable);
+            //}
 
             return new ResultSet() { Status = true, ResponseMessage = result.ToString() };            
         }
 
         public DataTable Query(Statement statement)
         {
-            if (statement.Parameters.Length == 0 && this.dataSet.Tables.Contains(statement.TargetTable)) {
-                //return cached data
-                return this.dataSet.Tables[statement.TargetTable];
-            }
+            //if (statement.Parameters.Length == 0 && this.dataSet.Tables.Contains(statement.TargetTable)) {
+            //    //return cached data
+            //    return this.dataSet.Tables[statement.TargetTable];
+            //}
 
             var dt = new DataTable(statement.TargetTable);
             var cmd = this.connection.CreateCommand();
@@ -69,11 +69,11 @@ namespace ModelLibrary.Common
                 adaptor.SelectCommand = cmd;
                 adaptor.Fill(dt);
             }
-            if (statement.Parameters.Length == 0) {
-                DataTable cached = null; if (dataSet.Tables.Contains(dt.TableName)) { cached = dataSet.Tables[dt.TableName]; }
-                if (cached != null) this.dataSet.Tables.Remove(cached);
-                this.dataSet.Tables.Add(dt);  //save a cached copy
-            }
+            //if (statement.Parameters.Length == 0) {
+            //    DataTable cached = null; if (dataSet.Tables.Contains(dt.TableName)) { cached = dataSet.Tables[dt.TableName]; }
+            //    if (cached != null) this.dataSet.Tables.Remove(cached);
+            //    this.dataSet.Tables.Add(dt);  //save a cached copy
+            //}
             return dt;
         }
 
@@ -114,7 +114,7 @@ namespace ModelLibrary.Common
             this.connection = dbFactory.CreateConnection();
             this.connection.ConnectionString = GetConnectionString();
             this.connection.Open();
-            this.dataSet = new DataSet();
+            //this.dataSet = new DataSet();
             this.SchemaColumns = this.connection.GetSchema("Columns");
         }
 

@@ -14,13 +14,13 @@ using System.Windows.Forms;
 using ViewWinform.Common;
 
 namespace ViewWinform.Customers {
-    public partial class ClientTypeForm : SingleForm {
+    public partial class IdentificationTypeForm : SingleForm {
 
         //private BaseController bldgCntrlr = ControllersFactory.GetController(Entities.Client);
-        public BaseController Controller => ControllersFactory.GetController(Entities.ClientType);
-        private ClientTypeModel model = new ClientTypeModel();
+        public BaseController Controller => ControllersFactory.GetController(Entities.IdentificationType);
+        private IdentificationTypeModel model = new IdentificationTypeModel();
 
-        public ClientTypeModel Model {
+        public IdentificationTypeModel Model {
             get {
                 model = ViewWinform.Utils.FormsHelper.PopulateModelFromControls(model, this);
                 return model;
@@ -29,23 +29,23 @@ namespace ViewWinform.Customers {
                 this.model = value;
                 ViewWinform.Utils.FormsHelper.PopulateControlsFromModel(model, this);
 
-                this.txtClientType.Select();
-                this.txtClientType.Focus();
+                this.txtIdentificationType.Select();
+                this.txtIdentificationType.Focus();
             }
         }
         public override void UpdateModel() { var _ = Model; }
-        public ClientTypeForm() {
+        public IdentificationTypeForm() {
             InitializeComponent();
         }
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
             string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            this.txtClientType.Text = selected;
-            this.Model = (ClientTypeModel)this.Controller.Read(this.Model, this.Controller.GetMetaData().GetUniqueKeyFields).First();
+            this.txtIdentificationType.Text = selected;
+            this.Model = (IdentificationTypeModel)this.Controller.Read(this.Model, this.Controller.GetMetaData().GetUniqueKeyFields).First();
 
         }
 
-        private void ClientTypeFormLoad(object sender, EventArgs e) {
+        private void IdentificationTypeFormLoad(object sender, EventArgs e) {
             ViewWinform.Utils.FormsHelper.BindViewToModel(this.panel1,ref this.model);
         }
     }

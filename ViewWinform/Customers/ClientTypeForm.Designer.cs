@@ -1,4 +1,4 @@
-﻿namespace ViewWinform.Customers.ClientTypes {
+﻿namespace ViewWinform.Customers {
     partial class ClientTypeForm {
         /// <summaryClient
         /// Required designer variable.
@@ -23,9 +23,9 @@
         /// the contents of this method with the code editor.
         /// </summaryClient
         private void InitializeComponent() {
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnNew = new System.Windows.Forms.Button();
             this.txtUpdatedOn = new System.Windows.Forms.TextBox();
             this.txtUpdatedBy = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -47,32 +47,32 @@
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button4
+            // btnRemove
             // 
-            this.button4.Location = new System.Drawing.Point(71, 267);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "Delete";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnRemove.Location = new System.Drawing.Point(71, 267);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(75, 23);
+            this.btnRemove.TabIndex = 11;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnSave
             // 
-            this.button3.Location = new System.Drawing.Point(179, 267);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "Save";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnSave.Location = new System.Drawing.Point(179, 267);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 9;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnNew
             // 
-            this.button2.Location = new System.Drawing.Point(287, 267);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "New";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnNew.Location = new System.Drawing.Point(287, 267);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(75, 23);
+            this.btnNew.TabIndex = 10;
+            this.btnNew.Text = "New";
+            this.btnNew.UseVisualStyleBackColor = true;
             // 
             // txtUpdatedOn
             // 
@@ -223,11 +223,11 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.txtCreatedBy);
-            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.btnRemove);
             this.panel1.Controls.Add(this.txtCreatedOn);
-            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.btnNew);
             this.panel1.Controls.Add(this.txtUpdatedBy);
             this.panel1.Controls.Add(this.txtUpdatedOn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -273,9 +273,9 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.TextBox txtUpdatedOn;
         private System.Windows.Forms.TextBox txtUpdatedBy;
         private System.Windows.Forms.Label label6;

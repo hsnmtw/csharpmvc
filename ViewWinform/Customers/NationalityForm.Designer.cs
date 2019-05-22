@@ -1,5 +1,5 @@
-﻿namespace ViewWinform.Customers.Nationalities {
-    partial class NationalityForm {
+﻿namespace ViewWinform.Customers {
+    partial class CountryForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -23,38 +23,38 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.txtNationalityArabic = new System.Windows.Forms.TextBox();
+            this.txtCountryArabic = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtNationalityDesc = new System.Windows.Forms.TextBox();
+            this.txtCountryEnglish = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtCreatedBy = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtUpdatedBy = new System.Windows.Forms.TextBox();
             this.txtCreatedOn = new System.Windows.Forms.TextBox();
             this.txtUpdatedOn = new System.Windows.Forms.TextBox();
-            this.NationalityCodeLookupButton = new ViewWinform.Common.LookUpButton();
-            this.txtNationalityCode = new System.Windows.Forms.TextBox();
-            this.lblMetaDataNationalityCode = new System.Windows.Forms.Label();
-            this.lblMetaDataNationalityDesc = new System.Windows.Forms.Label();
-            this.lblMetaDataNationalityArabic = new System.Windows.Forms.Label();
+            this.CountryCodeLookupButton = new ViewWinform.Common.LookUpButton();
+            this.txtCountryCode = new System.Windows.Forms.TextBox();
+            this.lblMetaDataCountryCode = new System.Windows.Forms.Label();
+            this.lblMetaDataCountryEnglish = new System.Windows.Forms.Label();
+            this.lblMetaDataCountryArabic = new System.Windows.Forms.Label();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // txtNationalityArabic
+            // txtCountryArabic
             // 
-            this.txtNationalityArabic.BackColor = System.Drawing.Color.White;
-            this.txtNationalityArabic.Location = new System.Drawing.Point(140, 91);
-            this.txtNationalityArabic.Name = "txtNationalityArabic";
-            this.txtNationalityArabic.Size = new System.Drawing.Size(204, 20);
-            this.txtNationalityArabic.TabIndex = 4;
+            this.txtCountryArabic.BackColor = System.Drawing.Color.White;
+            this.txtCountryArabic.Location = new System.Drawing.Point(140, 91);
+            this.txtCountryArabic.Name = "txtCountryArabic";
+            this.txtCountryArabic.Size = new System.Drawing.Size(204, 20);
+            this.txtCountryArabic.TabIndex = 4;
             // 
             // label4
             // 
@@ -63,15 +63,15 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(91, 13);
             this.label4.TabIndex = 14;
-            this.label4.Text = "Nationality Arabic";
+            this.label4.Text = "Country Arabic";
             // 
-            // txtNationalityDesc
+            // txtCountryEnglish
             // 
-            this.txtNationalityDesc.BackColor = System.Drawing.Color.White;
-            this.txtNationalityDesc.Location = new System.Drawing.Point(140, 65);
-            this.txtNationalityDesc.Name = "txtNationalityDesc";
-            this.txtNationalityDesc.Size = new System.Drawing.Size(204, 20);
-            this.txtNationalityDesc.TabIndex = 3;
+            this.txtCountryEnglish.BackColor = System.Drawing.Color.White;
+            this.txtCountryEnglish.Location = new System.Drawing.Point(140, 65);
+            this.txtCountryEnglish.Name = "txtCountryEnglish";
+            this.txtCountryEnglish.Size = new System.Drawing.Size(204, 20);
+            this.txtCountryEnglish.TabIndex = 3;
             // 
             // label3
             // 
@@ -80,7 +80,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(94, 13);
             this.label3.TabIndex = 15;
-            this.label3.Text = "Nationality English";
+            this.label3.Text = "Country English";
             // 
             // label2
             // 
@@ -128,14 +128,14 @@
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             // 
-            // btnDelete
+            // btnRemove
             // 
-            this.btnDelete.Location = new System.Drawing.Point(53, 232);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 11;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnRemove.Location = new System.Drawing.Point(53, 232);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(75, 23);
+            this.btnRemove.TabIndex = 11;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -195,56 +195,56 @@
             this.txtUpdatedOn.TabIndex = 8;
             this.txtUpdatedOn.TabStop = false;
             // 
-            // NationalityCodeLookupButton
+            // CountryCodeLookupButton
             // 
-            this.NationalityCodeLookupButton.AssociatedControl = "txtNationalityCode";
-            this.NationalityCodeLookupButton.Controller = "Nationality";
-            this.NationalityCodeLookupButton.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.NationalityCodeLookupButton.Location = new System.Drawing.Point(213, 37);
-            this.NationalityCodeLookupButton.Name = "NationalityCodeLookupButton";
-            this.NationalityCodeLookupButton.ShowFieldsInLookUp.Add("NationalityCode");
-            this.NationalityCodeLookupButton.ShowFieldsInLookUp.Add("NationalityDesc");
-            this.NationalityCodeLookupButton.Size = new System.Drawing.Size(22, 22);
-            this.NationalityCodeLookupButton.TabIndex = 2;
-            this.NationalityCodeLookupButton.LookUpSelected += new System.EventHandler(this.NationalityCodeTextBoxLookUpSelected);
+            this.CountryCodeLookupButton.AssociatedControl = "txtCountryCode";
+            this.CountryCodeLookupButton.Controller = "Country";
+            this.CountryCodeLookupButton.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.CountryCodeLookupButton.Location = new System.Drawing.Point(213, 37);
+            this.CountryCodeLookupButton.Name = "CountryCodeLookupButton";
+            this.CountryCodeLookupButton.ShowFieldsInLookUp.Add("CountryCode");
+            this.CountryCodeLookupButton.ShowFieldsInLookUp.Add("CountryEnglish");
+            this.CountryCodeLookupButton.Size = new System.Drawing.Size(22, 22);
+            this.CountryCodeLookupButton.TabIndex = 2;
+            this.CountryCodeLookupButton.LookUpSelected += new System.EventHandler(this.CountryCodeTextBoxLookUpSelected);
             // 
-            // txtNationalityCode
+            // txtCountryCode
             // 
-            this.txtNationalityCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtNationalityCode.Location = new System.Drawing.Point(140, 38);
-            this.txtNationalityCode.Name = "txtNationalityCode";
-            this.txtNationalityCode.Size = new System.Drawing.Size(72, 20);
-            this.txtNationalityCode.TabIndex = 1;
+            this.txtCountryCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtCountryCode.Location = new System.Drawing.Point(140, 38);
+            this.txtCountryCode.Name = "txtCountryCode";
+            this.txtCountryCode.Size = new System.Drawing.Size(72, 20);
+            this.txtCountryCode.TabIndex = 1;
             // 
-            // lblMetaDataNationalityCode
+            // lblMetaDataCountryCode
             // 
-            this.lblMetaDataNationalityCode.AutoSize = true;
-            this.lblMetaDataNationalityCode.ForeColor = System.Drawing.Color.Red;
-            this.lblMetaDataNationalityCode.Location = new System.Drawing.Point(127, 41);
-            this.lblMetaDataNationalityCode.Name = "lblMetaDataNationalityCode";
-            this.lblMetaDataNationalityCode.Size = new System.Drawing.Size(12, 13);
-            this.lblMetaDataNationalityCode.TabIndex = 16;
-            this.lblMetaDataNationalityCode.Text = "?";
+            this.lblMetaDataCountryCode.AutoSize = true;
+            this.lblMetaDataCountryCode.ForeColor = System.Drawing.Color.Red;
+            this.lblMetaDataCountryCode.Location = new System.Drawing.Point(127, 41);
+            this.lblMetaDataCountryCode.Name = "lblMetaDataCountryCode";
+            this.lblMetaDataCountryCode.Size = new System.Drawing.Size(12, 13);
+            this.lblMetaDataCountryCode.TabIndex = 16;
+            this.lblMetaDataCountryCode.Text = "?";
             // 
-            // lblMetaDataNationalityDesc
+            // lblMetaDataCountryEnglish
             // 
-            this.lblMetaDataNationalityDesc.AutoSize = true;
-            this.lblMetaDataNationalityDesc.ForeColor = System.Drawing.Color.Red;
-            this.lblMetaDataNationalityDesc.Location = new System.Drawing.Point(127, 69);
-            this.lblMetaDataNationalityDesc.Name = "lblMetaDataNationalityDesc";
-            this.lblMetaDataNationalityDesc.Size = new System.Drawing.Size(12, 13);
-            this.lblMetaDataNationalityDesc.TabIndex = 16;
-            this.lblMetaDataNationalityDesc.Text = "?";
+            this.lblMetaDataCountryEnglish.AutoSize = true;
+            this.lblMetaDataCountryEnglish.ForeColor = System.Drawing.Color.Red;
+            this.lblMetaDataCountryEnglish.Location = new System.Drawing.Point(127, 69);
+            this.lblMetaDataCountryEnglish.Name = "lblMetaDataCountryEnglish";
+            this.lblMetaDataCountryEnglish.Size = new System.Drawing.Size(12, 13);
+            this.lblMetaDataCountryEnglish.TabIndex = 16;
+            this.lblMetaDataCountryEnglish.Text = "?";
             // 
-            // lblMetaDataNationalityArabic
+            // lblMetaDataCountryArabic
             // 
-            this.lblMetaDataNationalityArabic.AutoSize = true;
-            this.lblMetaDataNationalityArabic.ForeColor = System.Drawing.Color.Red;
-            this.lblMetaDataNationalityArabic.Location = new System.Drawing.Point(128, 94);
-            this.lblMetaDataNationalityArabic.Name = "lblMetaDataNationalityArabic";
-            this.lblMetaDataNationalityArabic.Size = new System.Drawing.Size(12, 13);
-            this.lblMetaDataNationalityArabic.TabIndex = 16;
-            this.lblMetaDataNationalityArabic.Text = "?";
+            this.lblMetaDataCountryArabic.AutoSize = true;
+            this.lblMetaDataCountryArabic.ForeColor = System.Drawing.Color.Red;
+            this.lblMetaDataCountryArabic.Location = new System.Drawing.Point(128, 94);
+            this.lblMetaDataCountryArabic.Name = "lblMetaDataCountryArabic";
+            this.lblMetaDataCountryArabic.Size = new System.Drawing.Size(12, 13);
+            this.lblMetaDataCountryArabic.TabIndex = 16;
+            this.lblMetaDataCountryArabic.Text = "?";
             // 
             // chkReadOnly
             // 
@@ -265,37 +265,37 @@
             this.label10.TabIndex = 45;
             this.label10.Text = "Read Only";
             // 
-            // NationalityForm
+            // CountryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(369, 267);
             this.Controls.Add(this.chkReadOnly);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.lblMetaDataNationalityArabic);
-            this.Controls.Add(this.lblMetaDataNationalityDesc);
-            this.Controls.Add(this.lblMetaDataNationalityCode);
-            this.Controls.Add(this.NationalityCodeLookupButton);
-            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.lblMetaDataCountryArabic);
+            this.Controls.Add(this.lblMetaDataCountryEnglish);
+            this.Controls.Add(this.lblMetaDataCountryCode);
+            this.Controls.Add(this.CountryCodeLookupButton);
+            this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.txtUpdatedOn);
             this.Controls.Add(this.txtUpdatedBy);
-            this.Controls.Add(this.txtNationalityArabic);
+            this.Controls.Add(this.txtCountryArabic);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtCreatedOn);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtCreatedBy);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtNationalityCode);
-            this.Controls.Add(this.txtNationalityDesc);
+            this.Controls.Add(this.txtCountryCode);
+            this.Controls.Add(this.txtCountryEnglish);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.label1);
-            this.Name = "NationalityForm";
-            this.Text = "Nationality";
-            this.Load += new System.EventHandler(this.NationalityFormLoad);
+            this.Name = "CountryForm";
+            this.Text = "Country";
+            this.Load += new System.EventHandler(this.CountryFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -303,16 +303,16 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtNationalityArabic;
+        private System.Windows.Forms.TextBox txtCountryArabic;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtNationalityDesc;
+        private System.Windows.Forms.TextBox txtCountryEnglish;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtCreatedBy;
         private System.Windows.Forms.Label label6;
@@ -320,11 +320,11 @@
         private System.Windows.Forms.TextBox txtCreatedOn;
         private System.Windows.Forms.TextBox txtUpdatedOn;
         private Common.LookUpButton lookUpField1;
-        private Common.LookUpButton NationalityCodeLookupButton;
-        private System.Windows.Forms.TextBox txtNationalityCode;
-        private System.Windows.Forms.Label lblMetaDataNationalityCode;
-        private System.Windows.Forms.Label lblMetaDataNationalityDesc;
-        private System.Windows.Forms.Label lblMetaDataNationalityArabic;
+        private Common.LookUpButton CountryCodeLookupButton;
+        private System.Windows.Forms.TextBox txtCountryCode;
+        private System.Windows.Forms.Label lblMetaDataCountryCode;
+        private System.Windows.Forms.Label lblMetaDataCountryEnglish;
+        private System.Windows.Forms.Label lblMetaDataCountryArabic;
         private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
     }

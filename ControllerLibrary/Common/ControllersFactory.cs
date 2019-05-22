@@ -14,7 +14,7 @@ namespace ControllerLibrary.Common {
 
         public static void InitControllersMap(){
 		   ControllersMap = new Dictionary<Entities, BaseController>() {
-            //  [ControllersEnum.Nationality        ] = new NationalityController        ()
+            //  [ControllersEnum.Country        ] = new CountryController        ()
             //, [ControllersEnum.Compound           ] = new CompoundController           ()
             //, [ControllersEnum.User               ] = new UserController               ()
             //, [ControllersEnum.Entitlement        ] = new EntitlementController        ()

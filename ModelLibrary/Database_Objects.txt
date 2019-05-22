@@ -92,15 +92,15 @@ CREATE TABLE SecurityUsers (
 );
 
 
-CREATE TABLE CustomersNationalities (
+CREATE TABLE CustomersCountry (
     [Id]               AUTOINCREMENT   UNIQUE,
-    [NationalityCode]       TEXT(50)          NOT NULL,
-    [NationalityDesc]       TEXT(100)          NOT NULL UNIQUE,
+    [CountryCode]       TEXT(50)          NOT NULL,
+    [CountryEnglish]       TEXT(100)          NOT NULL UNIQUE,
 	[CreatedBy]            TEXT(50)			        ,
 	[CreatedOn]            DATETIME			        ,
 	[UpdatedBy]            TEXT(50)			        ,
 	[UpdatedOn]            DATETIME                    ,
-    PRIMARY KEY([NationalityCode])
+    PRIMARY KEY([CountryCode])
 );
 
 TRANSFORM count(entitlementname) 

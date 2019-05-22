@@ -7,9 +7,8 @@ using ModelLibrary.Common;
 
 namespace ModelLibrary.Security
 {
-    public class EntitlementModel : BaseModel
+    public class EntitlementGroupModel : BaseModel
     {
-        public string EntitlementName { get; set; }
         public string EntitlementGroupName { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace ViewWinform.Customers.Projects {
+﻿namespace ViewWinform.Customers {
     partial class ProjectForm {
         /// <summaryProject
         /// Required designer variable.
@@ -23,7 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summaryProject
         private void InitializeComponent() {
-            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.txtUpdatedOn = new System.Windows.Forms.TextBox();
@@ -44,7 +44,7 @@
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.lblMetaDataNationalityDesc = new System.Windows.Forms.Label();
+            this.lblMetaDataCountryEnglish = new System.Windows.Forms.Label();
             this.txtClientShortName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lookUpButtonProjectName = new ViewWinform.Common.LookUpButton();
@@ -52,14 +52,14 @@
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnDelete
+            // btnRemove
             // 
-            this.btnDelete.Location = new System.Drawing.Point(72, 241);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 11;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnRemove.Location = new System.Drawing.Point(72, 241);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(75, 23);
+            this.btnRemove.TabIndex = 11;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
             // 
             // btnSave
             // 
@@ -222,7 +222,7 @@
             this.panel1.Controls.Add(this.chkReadOnly);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.lblMetaDataNationalityDesc);
+            this.panel1.Controls.Add(this.lblMetaDataCountryEnglish);
             this.panel1.Controls.Add(this.txtClientShortName);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
@@ -233,7 +233,7 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.txtCreatedBy);
-            this.panel1.Controls.Add(this.btnDelete);
+            this.panel1.Controls.Add(this.btnRemove);
             this.panel1.Controls.Add(this.txtCreatedOn);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.label6);
@@ -275,15 +275,15 @@
             this.label10.TabIndex = 48;
             this.label10.Text = "?";
             // 
-            // lblMetaDataNationalityDesc
+            // lblMetaDataCountryEnglish
             // 
-            this.lblMetaDataNationalityDesc.AutoSize = true;
-            this.lblMetaDataNationalityDesc.ForeColor = System.Drawing.Color.Red;
-            this.lblMetaDataNationalityDesc.Location = new System.Drawing.Point(137, 97);
-            this.lblMetaDataNationalityDesc.Name = "lblMetaDataNationalityDesc";
-            this.lblMetaDataNationalityDesc.Size = new System.Drawing.Size(12, 13);
-            this.lblMetaDataNationalityDesc.TabIndex = 48;
-            this.lblMetaDataNationalityDesc.Text = "?";
+            this.lblMetaDataCountryEnglish.AutoSize = true;
+            this.lblMetaDataCountryEnglish.ForeColor = System.Drawing.Color.Red;
+            this.lblMetaDataCountryEnglish.Location = new System.Drawing.Point(137, 97);
+            this.lblMetaDataCountryEnglish.Name = "lblMetaDataCountryEnglish";
+            this.lblMetaDataCountryEnglish.Size = new System.Drawing.Size(12, 13);
+            this.lblMetaDataCountryEnglish.TabIndex = 48;
+            this.lblMetaDataCountryEnglish.Text = "?";
             // 
             // txtClientShortName
             // 
@@ -334,7 +334,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.TextBox txtUpdatedOn;
@@ -353,7 +353,7 @@
         private System.Windows.Forms.Label lblRowHeader;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label lblMetaDataNationalityDesc;
+        private System.Windows.Forms.Label lblMetaDataCountryEnglish;
         private System.Windows.Forms.TextBox txtClientShortName;
         private System.Windows.Forms.Label label2;
         private Common.LookUpButton lookUpButtonProjectName;

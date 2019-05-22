@@ -1,9 +1,6 @@
 ﻿using ControllerLibrary.Common;
 using ControllerLibrary.Security;
-using ViewWinform.Customers.Nationalities;
-using ViewWinform.Security.Audit;
-using ViewWinform.Security.Entitlements;
-using ViewWinform.Security.Profiles;
+using ViewWinform.Customers;
 using ViewWinform.Security.Users;
 using ModelLibrary.Security;
 using System;
@@ -17,6 +14,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ModelLibrary.Common;
 using ViewWinform.Common;
+using ViewWinform.Billing;
+using ViewWinform.Security;
 
 namespace ViewWinform
 {
@@ -132,9 +131,13 @@ namespace ViewWinform
             if (loginview.ShowDialog() == DialogResult.OK) {
                 Session.Instance.CurrentUser = loginview.Model;
                 var pec = (ProfileEntitlementsController)ControllersFactory.GetController(Entities.ProfileEntitlement);
-                var entitlements = pec.GetEntitlementsByProfile(loginview.Model.ProfileName);
-                foreach (DataRow row in entitlements.Rows) {
-                    var EntitlementName = row["EntitlementName"].ToString();
+                var entitlements = pec.Read(new ProfileEntitlementsModel() {
+                    ProfileName = loginview.Model.ProfileName,
+                    AllowRead = true
+                },"ProfileName","AllowRead");
+
+                foreach (ProfileEntitlementsModel row in entitlements) {
+                    var EntitlementName = row.EntitlementName;
                     if (this.menus.ContainsKey(EntitlementName))
                         this.menus[EntitlementName].Enabled = true;
                 }
@@ -165,10 +168,10 @@ namespace ViewWinform
             userPasswordResetView.ShowDialog();
         }
 
-        private void NationalitiesToolStripMenuItemClick(object sender, EventArgs e) {
-            //Utils.FormsHelper.showView(this, new ViewWinform.Customers.Nationalities.NationalityListView());
-            //new NationalityView() { MdiParent = this }.Show();
-            new NationalityForm() { MdiParent = this }.Show();
+        private void CountryToolStripMenuItemClick(object sender, EventArgs e) {
+            //Utils.FormsHelper.showView(this, new ViewWinform.Customers.Country.CountryListView());
+            //new CountryView() { MdiParent = this }.Show();
+            new CountryForm() { MdiParent = this }.Show();
         }
 
         private void AuditToolStripMenuItemClick(object sender, EventArgs e) {
@@ -236,31 +239,33 @@ namespace ViewWinform
         }
 
         private void ClientTypesToolStripMenuItemClick(object sender, EventArgs e) {
-            new Customers.ClientTypes.ClientTypeForm() { MdiParent = this }.Show();
+            new ClientTypeForm() { MdiParent = this }.Show();
         }
 
         private void ClientsToolStripMenuItemClick(object sender, EventArgs e) {
-            new Customers.Clients.ClientForm() { MdiParent = this }.Show();
+            new ClientForm() { MdiParent = this }.Show();
         }
 
         private void ProjectsToolStripMenuItemClick(object sender, EventArgs e) {
-            new Customers.Projects.ProjectForm() { MdiParent = this }.Show();
+            new ProjectForm() { MdiParent = this }.Show();
         }
 
         private void BillingCategoriesToolStripMenuItemClick(object sender, EventArgs e) {
-            new Billing.BillingCategoryForm() { MdiParent = this }.Show();
+            new BillingCategoryForm() { MdiParent = this }.Show();
         }
 
         private void AccomodationClassesToolStripMenuItemClick(object sender, EventArgs e) {
-            new Billing.AccomodationClassForm() { MdiParent = this }.Show();
+            new AccomodationClassForm() { MdiParent = this }.Show();
         }
 
         private void NewToolStripMenuItemClick(object sender, EventArgs e) {
-            try { ((ISingleForm)this.ActiveMdiChild).PerformAction("New"); } catch { }
+            //try { ((Button)((Form)this.ActiveMdiChild).Controls.Find("btnNew", true).First()).PerformClick(); } catch { }
+            ((ISingleForm)this.ActiveMdiChild).PerformAction("New");
         }
 
         private void SaveToolStripMenuItemClick(object sender, EventArgs e) {
-            try { ((ISingleForm)this.ActiveMdiChild).PerformAction("Save"); } catch { }
+            //try { ((Button)((Form)this.ActiveMdiChild).Controls.Find("btnSave", true).First()).PerformClick(); } catch { }
+            ((ISingleForm)this.ActiveMdiChild).PerformAction("Save");
         }
 
         private void FoodClassesToolStripMenuItemClick(object sender, EventArgs e) {
@@ -274,27 +279,24 @@ namespace ViewWinform
         }
 
         private void FoodTypesToolStripMenuItem_Click(object sender, EventArgs e) {
-            new Billing.FoodTypeForm() { MdiParent = this }.Show();
+            new FoodTypeForm() { MdiParent = this }.Show();
         }
 
         private void DuplicateToolStripMenuItem_Click(object sender, EventArgs e) {
-            try {
-
-
-                var form = (Form)this.ActiveMdiChild;
-                var model = (BaseModel)form.GetType().GetProperty("Model").GetValue(form);
-                model.Id = 0;
-                model.CreatedBy = null;
-                model.CreatedOn = null;
-                model.UpdatedBy = null;
-                model.UpdatedOn = null;
-
-                ((BaseModel)form.GetType().GetProperty("Model")).SetValue(form, model);
-            } catch { }
+            ((ISingleForm)this.ActiveMdiChild).PerformAction("Duplicate");
         }
 
-        private void RemmoveToolStripMenuItem_Click(object sender, EventArgs e) {
-            try { ((ISingleForm)this.ActiveMdiChild).PerformAction("Delete"); } catch { }
+        private void RemoveToolStripMenuItem_Click(object sender, EventArgs e) {
+            //try {((Button)((Form)this.ActiveMdiChild).Controls.Find("btnRemove", true).First()).PerformClick();} catch {}
+            ((ISingleForm)this.ActiveMdiChild).PerformAction("Remove");
+        }
+
+        private void IdentificationTypesToolStripMenuItem_Click(object sender, EventArgs e) {
+            new IdentificationTypeForm() { MdiParent = this }.Show();
+        }
+
+        private void EntitlementGroupsToolStripMenuItem_Click(object sender, EventArgs e) {
+            new EntitlementGroupForm() { MdiParent = this }.Show();
         }
     }
 }

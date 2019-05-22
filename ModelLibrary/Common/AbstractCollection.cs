@@ -22,6 +22,14 @@ namespace ModelLibrary.Common {
             };
         }
 
+        public virtual Statement GetDeleteStatement(object model,params string[]whereFields) {
+            string WHERE = string.Join(" AND ", (from field in whereFields select $"[{field}]=@{field}") );
+            return new Statement(MetaData.GetSource) {
+                Sql = $"DELETE FROM [{MetaData.GetSource}] WHERE ({WHERE}) AND ([ReadOnly]=false)",
+                Parameters = ParametersFactory.CreateParameters(model, whereFields)
+            };
+        }
+
         public virtual Statement GetInsertStatement(object model) {
 
             string[] fieldswithoutid = (from field in MetaData.GetFields
@@ -57,6 +65,28 @@ namespace ModelLibrary.Common {
             };
         }
 
+
+        public virtual Statement GetUpdateStatement(object model,params string[]whereFields) {
+            string[] fieldswithoutid = (from field in MetaData.GetFields
+                                        where !(
+                                                  field.ToLower().Equals("id") ||
+                                                  field.ToLower().Equals("createdby") ||
+                                                  field.ToLower().Equals("createdon")
+                                               )
+                                        select field).ToArray<string>();
+
+
+            return new Statement(MetaData.GetSource) {
+                Sql = string.Format("UPDATE [{0}] SET {1} WHERE ({2}) AND ([ReadOnly]=false)",
+                    MetaData.GetSource,
+                    string.Join(",", (from f in fieldswithoutid select string.Format("[{0}]=@{0}", f)).ToArray()),
+                    string.Join(" AND ", (from field in whereFields select $"[{field}]=@{field}"))
+                ),
+                Parameters = ParametersFactory.CreateParameters(model, fieldswithoutid.Concat(whereFields).ToArray())
+            };
+        }
+
+
         public virtual Statement GetSelectStatement() {
             return new Statement(MetaData.GetSource) {
                 Sql = string.Format($"SELECT * FROM [{MetaData.GetSource}] ORDER BY 1")
@@ -87,17 +117,19 @@ namespace ModelLibrary.Common {
             return Read(CreateNew(), new string[] { });
         }
 
-        public List<object> Read(object model, string[] whereFields) {
+        public List<object> Read(object model, params string[] whereFields) {
 
             var dt = GetTable(model,whereFields);
             var result = new List<object>();
             foreach (DataRow row in dt.Rows) {
                 var newModel = CreateNew();
+                var props = (from prop in newModel.GetType().GetProperties() select prop.Name);
                 for (int i = 0; i < dt.Columns.Count; i++) {
+                    if (props.Contains(dt.Columns[i].ColumnName)) {
                         model.GetType().GetProperty(dt.Columns[i].ColumnName).SetValue(
                         newModel,
                         DBNull.Value.Equals(row[i]) ? null : row[i]
-                    );
+                    );}
                 }
                 result.Add(newModel);
             }
@@ -182,6 +214,12 @@ namespace ModelLibrary.Common {
         public virtual DBModificationResult Delete(object model) {
             return new DBModificationResult() {
                 Status = database.Execute(GetDeleteStatement(model)).RowsCount
+            };
+        }
+
+        public virtual DBModificationResult Delete(object model,string[]whereFields) {
+            return new DBModificationResult() {
+                Status = database.Execute(GetDeleteStatement(model,whereFields)).RowsCount
             };
         }
     }

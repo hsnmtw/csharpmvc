@@ -20,7 +20,7 @@ namespace ControllerLibrary.Common {
         public virtual DataTable GetTable(object model, string[] whereFields,bool like=false) => this.BaseCollection.GetTable(model, whereFields,like);
         public virtual ResultSet GetTable(object model, string[] whereFields,bool like,int offset, int length) => this.BaseCollection.GetTable(model, whereFields,like,offset,length);
         public virtual List<object> Read() => BaseCollection.Read();
-        public virtual List<object> Read(object model, string[] whereFields) => BaseCollection.Read(model, whereFields);
+        public virtual List<object> Read(object model, params string[] whereFields) => BaseCollection.Read(model, whereFields);
         public virtual DBModificationResult Save(object anyModel) {
             var model = (BaseModel)anyModel;
             if (model.Id == 0) {

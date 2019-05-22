@@ -1,4 +1,4 @@
-﻿namespace ViewWinform.Security.Audit {
+﻿namespace ViewWinform.Security {
     partial class AuditView {
         /// <summary>
         /// Required designer variable.

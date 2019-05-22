@@ -16,30 +16,17 @@ namespace ControllerLibrary.Security
 
         public ProfileEntitlementsController() : base(CollectionsFactory.GetCollection(Entities.ProfileEntitlement)) { }
 
-        public DataTable GetEntitlementsByProfile(string profile)
-        {
-            var model = new ProfileEntitlementsModel() { ProfileName = profile };
-            return GetTable(model, new string[] { "ProfileName" });
-        }
-
-        public void DeleteEntitlementForProfile(string profile)
-        {
-            var model = new ProfileEntitlementsModel() { ProfileName = profile };
-            var list = Read(model, new string[] { "ProfileName" });
-            foreach(var ent in list) {
-                Delete(ent);
-            }
-        }
-
-        public void UpdateEntitlementForProfile(string profile,List<string> entitlements)
-        {
-            foreach(var entitlement in entitlements)
-            {
-                var model = new ProfileEntitlementsModel() {
-                    ProfileName = profile,
-                    EntitlementName = entitlement
-                };
-                Save(model);
+        public void ChangePermissions(string profile,string entitlement,bool create, bool read,bool update,bool delete) {
+            var pes = Read(new ProfileEntitlementsModel() {
+                ProfileName = profile,
+                EntitlementName = entitlement
+            }, new string[] { "ProfileName", "EntitlementName" });
+            foreach (ProfileEntitlementsModel pe in pes) {
+                pe.AllowCreate = create;
+                pe.AllowRead   = read;
+                pe.AllowUpdate = update;
+                pe.AllowDelete = delete;
+                Save(pe);
             }
         }
     }

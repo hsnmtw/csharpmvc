@@ -16,10 +16,12 @@ namespace ModelLibrary.Common {
         , Client
         , ClientType
         , Compound              
-        , Entitlement     
+        , Entitlement
+        , EntitlementGroup
         , FoodClass
         , FoodType
-        , Nationality           
+        , IdentificationType
+        , Country           
         , Profile               
         , ProfileEntitlement  
         , Project

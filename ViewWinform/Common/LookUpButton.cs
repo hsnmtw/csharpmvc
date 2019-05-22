@@ -48,7 +48,8 @@ namespace ViewWinform.Common {
                 if (this.AssociatedControl != null && !"".Equals(this.AssociatedControl)) {
                     try {
                         control.Text = $"{valueFromLookup}".Trim();
-                    }catch(Exception ex) {
+                        SendKeys.Send("\t");
+                    } catch (Exception ex) {
                         Console.WriteLine($"Exception : {ex.Message}");
                     }
                 }

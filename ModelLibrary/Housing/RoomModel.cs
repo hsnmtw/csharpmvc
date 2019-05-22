@@ -10,7 +10,7 @@ namespace ModelLibrary.Housing {
         public string RoomName { get; set; }
         public string BuildingName { get; set; }
         public int BedCapacity { get; set; }
-        public string NationalityCode { get; set; }
+        public string CountryCode { get; set; }
         public int NumberOfWindows { get; set; }
     }
 }

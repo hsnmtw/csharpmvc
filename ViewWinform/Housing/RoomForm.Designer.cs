@@ -26,7 +26,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RoomForm));
             this.txtRoomName = new System.Windows.Forms.TextBox();
             this.txtBuildingName = new System.Windows.Forms.TextBox();
-            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.txtUpdatedOn = new System.Windows.Forms.TextBox();
@@ -40,14 +40,14 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtNationalityCode = new System.Windows.Forms.TextBox();
+            this.txtCountryCode = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.label8 = new System.Windows.Forms.Label();
             this.lookUpButton1 = new ViewWinform.Common.LookUpButton();
-            this.lookupNationality = new ViewWinform.Common.LookUpButton();
+            this.lookupCountry = new ViewWinform.Common.LookUpButton();
             this.lookupBuilding = new ViewWinform.Common.LookUpButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -74,14 +74,14 @@
             this.txtBuildingName.Size = new System.Drawing.Size(154, 20);
             this.txtBuildingName.TabIndex = 3;
             // 
-            // btnDelete
+            // btnRemove
             // 
-            this.btnDelete.Location = new System.Drawing.Point(62, 292);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 16;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnRemove.Location = new System.Drawing.Point(62, 292);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(75, 23);
+            this.btnRemove.TabIndex = 16;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
             // 
             // btnSave
             // 
@@ -203,15 +203,15 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 60;
-            this.label4.Text = "Nationality";
+            this.label4.Text = "Country";
             // 
-            // txtNationalityCode
+            // txtCountryCode
             // 
-            this.txtNationalityCode.Location = new System.Drawing.Point(136, 104);
-            this.txtNationalityCode.Name = "txtNationalityCode";
-            this.txtNationalityCode.ReadOnly = true;
-            this.txtNationalityCode.Size = new System.Drawing.Size(154, 20);
-            this.txtNationalityCode.TabIndex = 5;
+            this.txtCountryCode.Location = new System.Drawing.Point(136, 104);
+            this.txtCountryCode.Name = "txtCountryCode";
+            this.txtCountryCode.ReadOnly = true;
+            this.txtCountryCode.Size = new System.Drawing.Size(154, 20);
+            this.txtCountryCode.TabIndex = 5;
             // 
             // label7
             // 
@@ -261,26 +261,26 @@
             this.lookUpButton1.Location = new System.Drawing.Point(291, 47);
             this.lookUpButton1.Name = "lookUpButton1";
             this.lookUpButton1.ShowFieldsInLookUp.Add("RoomName");
-            this.lookUpButton1.ShowFieldsInLookUp.Add("NationalityCode");
+            this.lookUpButton1.ShowFieldsInLookUp.Add("CountryCode");
             this.lookUpButton1.ShowFieldsInLookUp.Add("BedCapacity");
             this.lookUpButton1.Size = new System.Drawing.Size(22, 22);
             this.lookUpButton1.TabIndex = 2;
             this.lookUpButton1.TabStop = false;
             this.lookUpButton1.LookUpSelected += new System.EventHandler(this.LookUpButton1LookUpSelected);
             // 
-            // lookupNationality
+            // lookupCountry
             // 
-            this.lookupNationality.AssociatedControl = "txtNationalityCode";
-            this.lookupNationality.Controller = "Nationality";
-            this.lookupNationality.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookupNationality.Location = new System.Drawing.Point(291, 103);
-            this.lookupNationality.Name = "lookupNationality";
-            this.lookupNationality.ShowFieldsInLookUp.Add("NationalityCode");
-            this.lookupNationality.ShowFieldsInLookUp.Add("NationalityDesc");
-            this.lookupNationality.ShowFieldsInLookUp.Add("NationalityArabic");
-            this.lookupNationality.Size = new System.Drawing.Size(22, 22);
-            this.lookupNationality.TabIndex = 6;
-            this.lookupNationality.TabStop = false;
+            this.lookupCountry.AssociatedControl = "txtCountryCode";
+            this.lookupCountry.Controller = "Country";
+            this.lookupCountry.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.lookupCountry.Location = new System.Drawing.Point(291, 103);
+            this.lookupCountry.Name = "lookupCountry";
+            this.lookupCountry.ShowFieldsInLookUp.Add("CountryCode");
+            this.lookupCountry.ShowFieldsInLookUp.Add("CountryEnglish");
+            this.lookupCountry.ShowFieldsInLookUp.Add("CountryArabic");
+            this.lookupCountry.Size = new System.Drawing.Size(22, 22);
+            this.lookupCountry.TabIndex = 6;
+            this.lookupCountry.TabStop = false;
             // 
             // lookupBuilding
             // 
@@ -317,17 +317,17 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.txtRoomName);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.lookupNationality);
+            this.panel1.Controls.Add(this.lookupCountry);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.lookupBuilding);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.txtCreatedBy);
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.txtNationalityCode);
+            this.panel1.Controls.Add(this.txtCountryCode);
             this.panel1.Controls.Add(this.txtCreatedOn);
             this.panel1.Controls.Add(this.txtBuildingName);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.btnDelete);
+            this.panel1.Controls.Add(this.btnRemove);
             this.panel1.Controls.Add(this.txtUpdatedBy);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.txtUpdatedOn);
@@ -393,7 +393,7 @@
         private System.Windows.Forms.TextBox txtRoomName;
         private Common.LookUpButton lookupBuilding;
         private System.Windows.Forms.TextBox txtBuildingName;
-        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.TextBox txtUpdatedOn;
@@ -407,8 +407,8 @@
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtNationalityCode;
-        private Common.LookUpButton lookupNationality;
+        private System.Windows.Forms.TextBox txtCountryCode;
+        private Common.LookUpButton lookupCountry;
         private System.Windows.Forms.Label label7;
         private Common.LookUpButton lookUpButton1;
         private System.Windows.Forms.Button button1;

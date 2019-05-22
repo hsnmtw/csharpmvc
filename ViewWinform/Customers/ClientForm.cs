@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ViewWinform.Common;
 
-namespace ViewWinform.Customers.Clients {
+namespace ViewWinform.Customers {
     public partial class ClientForm : SingleForm {
 
         //private BaseController bldgCntrlr = ControllersFactory.GetController(Entities.Client);
@@ -29,7 +29,6 @@ namespace ViewWinform.Customers.Clients {
                 this.model = value;
                 ViewWinform.Utils.FormsHelper.PopulateControlsFromModel(model, this);
 
-                this.lstProjects.Items.Clear();
                 this.txtShortName.Select();
                 this.txtShortName.Focus();
             }
@@ -40,7 +39,7 @@ namespace ViewWinform.Customers.Clients {
         }
 
         private void ClientTypeFormLoad(object sender, EventArgs e) {
-            ViewWinform.Utils.FormsHelper.BindViewToModel(this.panel1,ref this.model);
+            ViewWinform.Utils.FormsHelper.BindViewToModel(this,ref this.model);
         }
 
         private void LookUpButtonShortNameLookUpSelected(object sender, EventArgs e) {

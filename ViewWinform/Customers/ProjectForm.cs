@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ViewWinform.Common;
 
-namespace ViewWinform.Customers.Projects {
+namespace ViewWinform.Customers {
     public partial class ProjectForm : SingleForm {
 
         //private BaseController bldgCntrlr = ControllersFactory.GetController(Entities.Project);

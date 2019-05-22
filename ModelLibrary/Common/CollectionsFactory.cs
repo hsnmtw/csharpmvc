@@ -13,7 +13,7 @@ namespace ModelLibrary.Common {
 
         public static void InitCollectionsMap(){
 		   CollectionsMap = new Dictionary<Entities, BaseCollection>() {
-              [Entities.Nationality        ] = new NationalityCollection        ()
+              [Entities.Country        ] = new CountryCollection        ()
             , [Entities.Compound           ] = new CompoundCollection           ()
             , [Entities.User               ] = new UserCollection               ()
             , [Entities.Entitlement        ] = new EntitlementCollection        ()
@@ -26,10 +26,12 @@ namespace ModelLibrary.Common {
             , [Entities.ClientType         ] = new ClientTypeCollection         ()
             , [Entities.Client             ] = new ClientCollection             ()
             , [Entities.Project            ] = new ProjectCollection            ()
-            , [Entities.AccomCategory      ] = new BillingCategoryCollection      ()
+            , [Entities.AccomCategory      ] = new BillingCategoryCollection    ()
             , [Entities.AccomClass         ] = new AccomClassCollection         ()
             , [Entities.FoodClass          ] = new FoodClassCollection          ()
             , [Entities.FoodType           ] = new FoodTypeCollection           ()
+            , [Entities.IdentificationType ] = new IdentificationTypeCollection ()
+            , [Entities.EntitlementGroup   ] = new EntitlementGroupCollection   ()
            };
         }
 

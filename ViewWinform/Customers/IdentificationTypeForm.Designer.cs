@@ -1,5 +1,5 @@
-﻿namespace ViewWinform.Billing {
-    partial class AccomodationClassForm {
+﻿namespace ViewWinform.Customers {
+    partial class IdentificationTypeForm {
         /// <summaryClient
         /// Required designer variable.
         /// </summaryClient
@@ -35,17 +35,17 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtAccomodationClass = new System.Windows.Forms.TextBox();
+            this.txtIdentificationType = new System.Windows.Forms.TextBox();
+            this.lookUpButtonIdentificationType = new ViewWinform.Common.LookUpButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.lookUpButtonAccomClass = new ViewWinform.Common.LookUpButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(71, 289);
+            this.btnRemove.Location = new System.Drawing.Point(71, 267);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 23);
             this.btnRemove.TabIndex = 11;
@@ -54,7 +54,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(179, 289);
+            this.btnSave.Location = new System.Drawing.Point(179, 267);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 9;
@@ -63,7 +63,7 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(287, 289);
+            this.btnNew.Location = new System.Drawing.Point(287, 267);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 23);
             this.btnNew.TabIndex = 10;
@@ -73,7 +73,7 @@
             // txtUpdatedOn
             // 
             this.txtUpdatedOn.BackColor = System.Drawing.SystemColors.Control;
-            this.txtUpdatedOn.Location = new System.Drawing.Point(225, 217);
+            this.txtUpdatedOn.Location = new System.Drawing.Point(225, 191);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
             this.txtUpdatedOn.Size = new System.Drawing.Size(137, 20);
@@ -83,7 +83,7 @@
             // txtUpdatedBy
             // 
             this.txtUpdatedBy.BackColor = System.Drawing.SystemColors.Control;
-            this.txtUpdatedBy.Location = new System.Drawing.Point(150, 217);
+            this.txtUpdatedBy.Location = new System.Drawing.Point(151, 191);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
             this.txtUpdatedBy.Size = new System.Drawing.Size(69, 20);
@@ -93,7 +93,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(22, 227);
+            this.label6.Location = new System.Drawing.Point(24, 197);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(63, 13);
             this.label6.TabIndex = 44;
@@ -102,7 +102,7 @@
             // txtCreatedOn
             // 
             this.txtCreatedOn.BackColor = System.Drawing.SystemColors.Control;
-            this.txtCreatedOn.Location = new System.Drawing.Point(225, 191);
+            this.txtCreatedOn.Location = new System.Drawing.Point(225, 165);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
             this.txtCreatedOn.Size = new System.Drawing.Size(137, 20);
@@ -112,7 +112,7 @@
             // txtCreatedBy
             // 
             this.txtCreatedBy.BackColor = System.Drawing.SystemColors.Control;
-            this.txtCreatedBy.Location = new System.Drawing.Point(150, 191);
+            this.txtCreatedBy.Location = new System.Drawing.Point(151, 165);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
             this.txtCreatedBy.Size = new System.Drawing.Size(69, 20);
@@ -122,7 +122,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(22, 201);
+            this.label5.Location = new System.Drawing.Point(24, 171);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 13);
             this.label5.TabIndex = 45;
@@ -141,7 +141,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 50);
+            this.label1.Location = new System.Drawing.Point(24, 46);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(17, 13);
             this.label1.TabIndex = 42;
@@ -150,19 +150,32 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(22, 76);
+            this.label3.Location = new System.Drawing.Point(24, 76);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 13);
+            this.label3.Size = new System.Drawing.Size(97, 13);
             this.label3.TabIndex = 43;
-            this.label3.Text = "Accomodation Class";
+            this.label3.Text = "Identification Type";
             // 
-            // txtAccomodationClass
+            // txtIdentificationType
             // 
-            this.txtAccomodationClass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtAccomodationClass.Location = new System.Drawing.Point(151, 73);
-            this.txtAccomodationClass.Name = "txtAccomodationClass";
-            this.txtAccomodationClass.Size = new System.Drawing.Size(154, 20);
-            this.txtAccomodationClass.TabIndex = 1;
+            this.txtIdentificationType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtIdentificationType.Location = new System.Drawing.Point(151, 73);
+            this.txtIdentificationType.Name = "txtIdentificationType";
+            this.txtIdentificationType.Size = new System.Drawing.Size(154, 20);
+            this.txtIdentificationType.TabIndex = 1;
+            // 
+            // lookUpButtonIdentificationType
+            // 
+            this.lookUpButtonIdentificationType.AssociatedControl = "txtIdentificationType";
+            this.lookUpButtonIdentificationType.Controller = "IdentificationType";
+            this.lookUpButtonIdentificationType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.lookUpButtonIdentificationType.Location = new System.Drawing.Point(306, 72);
+            this.lookUpButtonIdentificationType.Name = "lookUpButtonIdentificationType";
+            this.lookUpButtonIdentificationType.ShowFieldsInLookUp.Add("IdentificationType");
+            this.lookUpButtonIdentificationType.Size = new System.Drawing.Size(22, 22);
+            this.lookUpButtonIdentificationType.TabIndex = 2;
+            this.lookUpButtonIdentificationType.TabStop = false;
+            this.lookUpButtonIdentificationType.LookUpSelected += new System.EventHandler(this.LookUpButton1LookUpSelected);
             // 
             // panel1
             // 
@@ -170,8 +183,8 @@
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtId);
-            this.panel1.Controls.Add(this.lookUpButtonAccomClass);
-            this.panel1.Controls.Add(this.txtAccomodationClass);
+            this.panel1.Controls.Add(this.lookUpButtonIdentificationType);
+            this.panel1.Controls.Add(this.txtIdentificationType);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.txtCreatedBy);
@@ -185,50 +198,37 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(398, 334);
+            this.panel1.Size = new System.Drawing.Size(392, 311);
             this.panel1.TabIndex = 0;
             // 
             // chkReadOnly
             // 
             this.chkReadOnly.AutoSize = true;
             this.chkReadOnly.Enabled = false;
-            this.chkReadOnly.Location = new System.Drawing.Point(150, 253);
+            this.chkReadOnly.Location = new System.Drawing.Point(152, 225);
             this.chkReadOnly.Name = "chkReadOnly";
             this.chkReadOnly.Size = new System.Drawing.Size(15, 14);
-            this.chkReadOnly.TabIndex = 44;
+            this.chkReadOnly.TabIndex = 46;
             this.chkReadOnly.UseVisualStyleBackColor = true;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(22, 252);
+            this.label10.Location = new System.Drawing.Point(24, 224);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(57, 13);
-            this.label10.TabIndex = 45;
+            this.label10.TabIndex = 47;
             this.label10.Text = "Read Only";
             // 
-            // lookUpButtonAccomClass
-            // 
-            this.lookUpButtonAccomClass.AssociatedControl = "txtAccomodationClass";
-            this.lookUpButtonAccomClass.Controller = "AccomClass";
-            this.lookUpButtonAccomClass.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonAccomClass.Location = new System.Drawing.Point(306, 72);
-            this.lookUpButtonAccomClass.Name = "lookUpButtonAccomClass";
-            this.lookUpButtonAccomClass.ShowFieldsInLookUp.Add("AccomClass");
-            this.lookUpButtonAccomClass.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonAccomClass.TabIndex = 2;
-            this.lookUpButtonAccomClass.TabStop = false;
-            this.lookUpButtonAccomClass.LookUpSelected += new System.EventHandler(this.LookUpButton1LookUpSelected);
-            // 
-            // AccomodationClassForm
+            // IdentificationTypeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(398, 334);
+            this.ClientSize = new System.Drawing.Size(392, 311);
             this.Controls.Add(this.panel1);
-            this.Name = "AccomodationClassForm";
-            this.Text = "Accomodation Classes";
-            this.Load += new System.EventHandler(this.AccomClassFormLoad);
+            this.Name = "IdentificationTypeForm";
+            this.Text = "Identification Type";
+            this.Load += new System.EventHandler(this.IdentificationTypeFormLoad);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -248,8 +248,8 @@
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtAccomodationClass;
-        private Common.LookUpButton lookUpButtonAccomClass;
+        private System.Windows.Forms.TextBox txtIdentificationType;
+        private Common.LookUpButton lookUpButtonIdentificationType;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;

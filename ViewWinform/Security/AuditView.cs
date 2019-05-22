@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ViewWinform.Security.Audit {
+namespace ViewWinform.Security {
     public partial class AuditView : Common.CommonView {
         private MVCAdaptor<AuditController> adaptor;
 

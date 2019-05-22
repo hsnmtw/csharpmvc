@@ -6,14 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ControllerLibrary.Common;
+using ModelLibrary.Common;
 using ModelLibrary.Customers;
 using ViewWinform.Common;
-using ViewWinform.Customers.Clients;
+using ViewWinform.Customers;
 
 namespace ViewWinform.Utils
 {
     public class FormsHelper
     {
+        public const string ARROW = "↓";
+        public const string CALENDAR = "📅";
 
         public static void Error(string message)
         {
@@ -54,7 +57,7 @@ namespace ViewWinform.Utils
                 typeof(CheckBox)
             };
 
-            string[] buttons = { "btnSave","btnNew","btnDelete" };
+            string[] buttons = { "btnSave","btnNew","btnRemove" };
 
             foreach (Control control in cntrl.Controls)
             {
@@ -72,19 +75,36 @@ namespace ViewWinform.Utils
                                 var Controller = (BaseController)form.GetType().GetProperty("Controller").GetValue(form);
                                 var Model      = form.GetType().GetProperty("Model");
                                 ModelLibrary.Common.DBModificationResult result = Controller.Save(Model.GetValue(form));
-                                Utils.FormsHelper.Success("SUCCESS ::: saved");
+                                //Utils.FormsHelper.Success("SUCCESS ::: saved");
                                 Model.SetValue(form, result.Result);
                                 //successMessage("SAVE");
+                                MainView.Instance.setProgress("Saved Successfully", 100);
                             };
                             break;
-                        case "btnDelete":
+                        case "btnRemove":
                             control.Click += (s, e) => {
                                 var Controller = (BaseController)form.GetType().GetProperty("Controller").GetValue(form);
                                 var Model = form.GetType().GetProperty("Model");
                                 ModelLibrary.Common.DBModificationResult result = Controller.Delete(Model.GetValue(form));
-                                Utils.FormsHelper.Success("SUCCESS ::: deleted");
+                                //Utils.FormsHelper.Success("SUCCESS ::: deleted");
                                 Model.SetValue(form, Activator.CreateInstance(Model.PropertyType));
                                 //successMessage("NEW");
+                                MainView.Instance.setProgress("Deleted Successfully", 100);
+                            };
+                            break;
+                        case "btnDuplicate":
+                            control.Click += (s, e) => {
+                                try {
+
+                                    var fmodel = (BaseModel)form.GetType().GetProperty("Model").GetValue(form);
+                                    fmodel.Id = 0;
+                                    fmodel.CreatedBy = null;
+                                    fmodel.CreatedOn = null;
+                                    fmodel.UpdatedBy = null;
+                                    fmodel.UpdatedOn = null;
+
+                                    form.GetType().GetProperty("Model").SetValue(form, fmodel);
+                                } catch { }
                             };
                             break;
                     }
@@ -93,6 +113,15 @@ namespace ViewWinform.Utils
                 {
                     if (control.GetType().Equals(typeof(TextBox))) {
                         control.LostFocus += (s, e) => control.Text = control.Text.Trim();
+                        if (((TextBox)control).ReadOnly) {
+                            control.KeyDown += (s, e) => {
+                                if (e.KeyCode == Keys.Back) {
+                                    control.Text = "";
+                                    e.Handled = true;
+                                    e.SuppressKeyPress = true;
+                                }
+                            };
+                        }
                     }
                     if (control.GetType().Equals(typeof(TextBox)) && ((TextBox)control).Multiline) {
                         continue;
