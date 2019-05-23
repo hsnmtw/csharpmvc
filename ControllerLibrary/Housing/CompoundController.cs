@@ -13,6 +13,6 @@ namespace ControllerLibrary.Housing
 {
     [ForControllerAttribute(Entities.Compound, Enabled = true)]
     public class CompoundController : AbstractController {
-        public CompoundController() : base(CollectionsFactory.GetCollection(Entities.Compound)) { }
+        public CompoundController() : base(EntitiesFactory.GetEntity(Entities.Compound)) { }
     }
 }

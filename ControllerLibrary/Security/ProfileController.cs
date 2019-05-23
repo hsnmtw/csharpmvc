@@ -13,6 +13,6 @@ namespace ControllerLibrary.Security
 {
     [ForControllerAttribute(Entities.Profile, Enabled = true)]
     public class ProfileController : AbstractController{
-        public ProfileController() : base(CollectionsFactory.GetCollection(Entities.Profile)) { }
+        public ProfileController() : base(EntitiesFactory.GetEntity(Entities.Profile)) { }
     }
 }

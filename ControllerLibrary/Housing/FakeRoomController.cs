@@ -140,7 +140,7 @@ namespace ControllerLibrary.Housing {
             };
         }
 
-        private BaseCollection BaseCollection => CollectionsFactory.GetCollection(Entities.Room);
+        private BaseEntity BaseCollection => EntitiesFactory.GetEntity(Entities.Room);
 
         public object CreateNewModel() => 
             this.BaseCollection.CreateNew();

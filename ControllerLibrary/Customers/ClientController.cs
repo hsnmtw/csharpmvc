@@ -11,6 +11,6 @@ using System.Threading.Tasks;
 namespace ControllerLibrary.Customers {
     [ForControllerAttribute(Entities.Client, Enabled = true)]
     public class ClientController : AbstractController {
-        public ClientController() : base(CollectionsFactory.GetCollection(Entities.Client)) {}
+        public ClientController() : base(EntitiesFactory.GetEntity(Entities.Client)) {}
     }
 }

@@ -66,8 +66,8 @@ namespace ViewWinform
             tsProgressBar.Value += 25;
 
 
-            tssLabelStatus.Text = "Loading Collections"; 
-            CollectionsFactory.InitCollectionsMap();
+            tssLabelStatus.Text = "Loading Entities"; 
+            EntitiesFactory.InitEntitiesMap();
             tsProgressBar.Value += 25;
 
             tssLabelStatus.Text = "Loading Controllers";

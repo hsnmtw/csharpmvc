@@ -11,6 +11,6 @@ using System.Threading.Tasks;
 namespace ControllerLibrary.Housing {
     [ForControllerAttribute(Entities.Building, Enabled = true)]
     public class BuildingController : AbstractController {
-        public BuildingController() : base(CollectionsFactory.GetCollection(Entities.Building)) { }
+        public BuildingController() : base(EntitiesFactory.GetEntity(Entities.Building)) { }
     }
 }

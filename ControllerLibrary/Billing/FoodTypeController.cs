@@ -11,6 +11,6 @@ using System.Threading.Tasks;
 namespace ControllerLibrary.Billing {
     [ForControllerAttribute(Entities.FoodType, Enabled = true)]
     public class FoodTypeController : AbstractController {
-        public FoodTypeController() : base(CollectionsFactory.GetCollection(Entities.FoodType)) {}
+        public FoodTypeController() : base(EntitiesFactory.GetEntity(Entities.FoodType)) {}
     }
 }

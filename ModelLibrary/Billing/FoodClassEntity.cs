@@ -6,13 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ModelLibrary.Customers {
-    public class ClientCollection : AbstractCollection {
+    public class FoodClassEntity : AbstractEntity {
         public override MetaData MetaData => new MetaData() {
-              GetModelType        = typeof(ClientModel)
+              GetModelType        = typeof(FoodClassModel)
             , GetPrimaryKeyFields = "Id".Split(',')
-            , GetRequiredFields   = "Id,ShortName,LongName,ClientType".Split(',')
-            , GetSource           = "CustomersClient"
-            , GetUniqueKeyFields  = new string[] { "ShortName" }
+            , GetRequiredFields   = "Id,FoodClass".Split(',')
+            , GetSource           = "BillingFoodClasses"
+            , GetUniqueKeyFields  = new string[] { "FoodClass" }
         };
     }
 }

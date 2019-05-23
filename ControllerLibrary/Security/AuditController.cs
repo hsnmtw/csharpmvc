@@ -14,7 +14,7 @@ namespace ControllerLibrary.Security {
     [ForControllerAttribute(Entities.Audit, Enabled = true)]
     public class AuditController : AbstractController {
 
-        public AuditController() : base(CollectionsFactory.GetCollection(Entities.Audit)) { }
+        public AuditController() : base(EntitiesFactory.GetEntity(Entities.Audit)) { }
 
         public void registerEvent(AuditModel model) {
             model.UpdatedBy = "SYSTEM";

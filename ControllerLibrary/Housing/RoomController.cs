@@ -10,6 +10,6 @@ using System.Threading.Tasks;
 namespace ControllerLibrary.Housing {
     [ForControllerAttribute(Entities.Room, Enabled = true)]
     public class RoomController : AbstractController {
-        public RoomController() : base(CollectionsFactory.GetCollection(Entities.Room)) { }
+        public RoomController() : base(EntitiesFactory.GetEntity(Entities.Room)) { }
     }
 }

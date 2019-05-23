@@ -7,7 +7,7 @@ using ModelLibrary.Common;
 
 namespace ModelLibrary.Housing
 {
-    public class CompoundCollection : AbstractCollection {
+    public class CompoundEntity : AbstractEntity {
 
         public override MetaData MetaData => new MetaData() {
             GetModelType = typeof(CompoundModel)

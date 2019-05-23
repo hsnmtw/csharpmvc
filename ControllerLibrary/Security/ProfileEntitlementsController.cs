@@ -14,7 +14,7 @@ namespace ControllerLibrary.Security
     [ForControllerAttribute(Entities.ProfileEntitlement, Enabled = true)]
     public class ProfileEntitlementsController : AbstractController {
 
-        public ProfileEntitlementsController() : base(CollectionsFactory.GetCollection(Entities.ProfileEntitlement)) { }
+        public ProfileEntitlementsController() : base(EntitiesFactory.GetEntity(Entities.ProfileEntitlement)) { }
 
         public void ChangePermissions(string profile,string entitlement,bool create, bool read,bool update,bool delete) {
             var pes = Read(new ProfileEntitlementsModel() {

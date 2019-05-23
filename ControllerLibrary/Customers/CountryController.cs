@@ -11,6 +11,6 @@ using System.Threading.Tasks;
 namespace ControllerLibrary.Customers {
     [ForControllerAttribute(Entities.Country, Enabled = true)]
     public class CountryController : AbstractController {
-        public CountryController() : base(CollectionsFactory.GetCollection(Entities.Country)) {}
+        public CountryController() : base(EntitiesFactory.GetEntity(Entities.Country)) {}
     }
 }

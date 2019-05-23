@@ -8,19 +8,19 @@ using ModelLibrary.Common;
 
 namespace ControllerLibrary.Common {
     public class AbstractController : BaseController {
-        private BaseCollection BaseCollection { get; set; }
+        private BaseEntity BaseEntity { get; set; }
         private AbstractController() { }
-        public AbstractController(BaseCollection baseCollection) {
-            if (baseCollection == null) throw new ArgumentNullException("baseCollection");
-            this.BaseCollection = baseCollection;
+        public AbstractController(BaseEntity baseEntity) {
+            if (baseEntity == null) throw new ArgumentNullException("baseEntity");
+            this.BaseEntity = baseEntity;
         }
-        public virtual object CreateNewModel() => this.BaseCollection.CreateNew();
-        public virtual DBModificationResult Delete(object model) => this.BaseCollection.Delete(model);
+        public virtual object CreateNewModel() => this.BaseEntity.CreateNew();
+        public virtual DBModificationResult Delete(object model) => this.BaseEntity.Delete(model);
         public virtual DataTable GetTable() => GetTable(new object(),new string[] { });
-        public virtual DataTable GetTable(object model, string[] whereFields,bool like=false) => this.BaseCollection.GetTable(model, whereFields,like);
-        public virtual ResultSet GetTable(object model, string[] whereFields,bool like,int offset, int length) => this.BaseCollection.GetTable(model, whereFields,like,offset,length);
-        public virtual List<object> Read() => BaseCollection.Read();
-        public virtual List<object> Read(object model, params string[] whereFields) => BaseCollection.Read(model, whereFields);
+        public virtual DataTable GetTable(object model, string[] whereFields,bool like=false) => this.BaseEntity.GetTable(model, whereFields,like);
+        public virtual ResultSet GetTable(object model, string[] whereFields,bool like,int offset, int length) => this.BaseEntity.GetTable(model, whereFields,like,offset,length);
+        public virtual List<object> Read() => BaseEntity.Read();
+        public virtual List<object> Read(object model, params string[] whereFields) => BaseEntity.Read(model, whereFields);
         public virtual DBModificationResult Save(object anyModel) {
             var model = (BaseModel)anyModel;
             if (model.Id == 0) {
@@ -30,10 +30,10 @@ namespace ControllerLibrary.Common {
                 model.UpdatedBy = Session.Instance.CurrentUser == null ? "SYSTEM" : Session.Instance.CurrentUser.UserName;
                 model.UpdatedOn = DateTime.Now;
             }
-            return BaseCollection.Save(model);
+            return BaseEntity.Save(model);
         }
 
-        public MetaData GetMetaData() => this.BaseCollection.MetaData;
+        public MetaData GetMetaData() => this.BaseEntity.MetaData;
 
         public object Dispatch(string action, params object[] arguments) {
             return this.GetType().GetMethod(action).Invoke(this,arguments);

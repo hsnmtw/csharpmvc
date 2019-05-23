@@ -11,6 +11,6 @@ using System.Threading.Tasks;
 namespace ControllerLibrary.Customers {
     [ForControllerAttribute(Entities.IdentificationType, Enabled = true)]
     public class IdentificationTypeController : AbstractController {
-        public IdentificationTypeController() : base(CollectionsFactory.GetCollection(Entities.IdentificationType)) {}
+        public IdentificationTypeController() : base(EntitiesFactory.GetEntity(Entities.IdentificationType)) {}
     }
 }

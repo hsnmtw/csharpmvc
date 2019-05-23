@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using ModelLibrary.Common;
 
 namespace ModelLibrary.Security {
-    public class AuditCollection : AbstractCollection {
+    public class AuditEntity : AbstractEntity {
         public override MetaData MetaData => new MetaData() {
             GetModelType = typeof(AuditModel)
             , GetPrimaryKeyFields = "Id".Split(',')

@@ -14,15 +14,6 @@ namespace ControllerLibrary.Common {
 
         public static void InitControllersMap(){
 		   ControllersMap = new Dictionary<Entities, BaseController>() {
-            //  [ControllersEnum.Country        ] = new CountryController        ()
-            //, [ControllersEnum.Compound           ] = new CompoundController           ()
-            //, [ControllersEnum.User               ] = new UserController               ()
-            //, [ControllersEnum.Entitlement        ] = new EntitlementController        ()
-            //, [ControllersEnum.ProfileEntitlements] = new ProfileEntitlementsController()
-            //, [ControllersEnum.Profile            ] = new ProfileController            ()
-            //, [ControllersEnum.Building           ] = new BuildingController           ()
-            //, [ControllersEnum.Room               ] = new RoomController               ()
-            //, [ControllersEnum.Audit              ] = new AuditController              ()
            };
 
            foreach(Entities num in typeof(Entities).GetEnumValues()) {

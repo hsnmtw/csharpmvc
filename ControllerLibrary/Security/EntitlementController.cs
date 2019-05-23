@@ -15,7 +15,7 @@ namespace ControllerLibrary.Security
     [ForControllerAttribute(Entities.Entitlement, Enabled = true)]
     public class EntitlementController : AbstractController {
 
-        public EntitlementController() : base(CollectionsFactory.GetCollection(Entities.Entitlement)) { }
+        public EntitlementController() : base(EntitiesFactory.GetEntity(Entities.Entitlement)) { }
 
         public override DataTable GetTable() {
         

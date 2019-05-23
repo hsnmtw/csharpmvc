@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ModelLibrary.Housing {
-    public class BuildingTypeCollection : AbstractCollection,BaseCollection {
+    public class BuildingTypeEntity : AbstractEntity,BaseEntity {
 
         public override MetaData MetaData => new MetaData() {
             GetModelType = typeof(BuildingTypeModel)

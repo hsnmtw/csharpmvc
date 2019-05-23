@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 
 namespace ModelLibrary.Common {
-    public interface BaseCollection {
+    public interface BaseEntity {
         List<object> Read();
 
         List<object> Read(object model, params string[] whereFields);

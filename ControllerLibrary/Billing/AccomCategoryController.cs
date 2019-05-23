@@ -11,6 +11,6 @@ using System.Threading.Tasks;
 namespace ControllerLibrary.Billing {
     [ForControllerAttribute(Entities.AccomCategory, Enabled = true)]
     public class AccomCategoryController : AbstractController {
-        public AccomCategoryController() : base(CollectionsFactory.GetCollection(Entities.AccomCategory)) {}
+        public AccomCategoryController() : base(EntitiesFactory.GetEntity(Entities.AccomCategory)) {}
     }
 }

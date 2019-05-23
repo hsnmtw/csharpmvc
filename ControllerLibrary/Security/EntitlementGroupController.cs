@@ -15,7 +15,7 @@ namespace ControllerLibrary.Security
     [ForControllerAttribute(Entities.EntitlementGroup, Enabled = true)]
     public class EntitlementGroupController : AbstractController {
 
-        public EntitlementGroupController() : base(CollectionsFactory.GetCollection(Entities.EntitlementGroup)) { }
+        public EntitlementGroupController() : base(EntitiesFactory.GetEntity(Entities.EntitlementGroup)) { }
 
     }
 }

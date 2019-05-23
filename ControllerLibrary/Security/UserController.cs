@@ -15,7 +15,7 @@ namespace ControllerLibrary.Security
     [ForControllerAttribute(Entities.User, Enabled = true)]
     public class UserController : AbstractController {
 
-        public UserController() : base(CollectionsFactory.GetCollection(Entities.User)) { }
+        public UserController() : base(EntitiesFactory.GetEntity(Entities.User)) { }
        
         public override DBModificationResult Save(object userModel) {
             var model = (UserModel)userModel;

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ModelLibrary.Housing {
-    public class RoomCollection : AbstractCollection {
+    public class RoomEntity : AbstractEntity {
         public override MetaData MetaData => new MetaData() {
             GetModelType = typeof(RoomModel)
             , GetPrimaryKeyFields = "Id".Split(',')
