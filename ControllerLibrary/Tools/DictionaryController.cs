@@ -15,22 +15,24 @@ namespace ControllerLibrary.Tools
     public class DictionaryController : AbstractDBController {
 
         
-        private Dictionary<string, string> myDictionary = new Dictionary<string, string>();
+        private static Dictionary<string, string> en = new Dictionary<string, string>();
+        private static Dictionary<string, string> ar = new Dictionary<string, string>();
 
         public static LanguageState LanguageState { get; set; }
 
         public string this[string word]{
             get {
-                
-                return myDictionary.ContainsKey(word) ? myDictionary[word] : word;
+                if(LanguageState == LanguageState.Arabic)
+                    return en.ContainsKey(word) ? en[word] : word;
+                else
+                    return ar.ContainsKey(word) ? ar[word] : word;
             }
         }
 
-
         public DictionaryController() : base(DBEntitiesFactory.GetEntity(Entities.Dictionary)) {
             foreach (DictionaryModel model in Read()) {
-                this.myDictionary[model.WordInArabic] = model.WordInEnglish;
-                this.myDictionary[model.WordInEnglish] = model.WordInArabic;
+                en[model.WordInEnglish] = model.WordInArabic;
+                ar[model.WordInArabic] = model.WordInEnglish;
             }
         }
 

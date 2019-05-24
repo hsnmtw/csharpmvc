@@ -42,11 +42,20 @@ namespace ViewWinform.Utils
                 typeof(Button),
                 typeof(CheckBox),
                 typeof(RadioButton),
+                typeof(MenuStrip)
             };
 
             foreach (Control control in cntrl.Controls) {
                 if (languageEnabledTypes.Contains(control.GetType())) {
                     control.Text = MainView.Instance.dictionaryController[control.Text];
+                    if(control.GetType().Equals(typeof(MenuStrip))) {
+                        foreach(var menu in ((MenuStrip)control).Items.OfType<ToolStripMenuItem>()) {
+                            menu.Text = MainView.Instance.dictionaryController[menu.Text];
+                            foreach(var cmenu in menu.DropDownItems.OfType<ToolStripMenuItem>()) {
+                                cmenu.Text = MainView.Instance.dictionaryController[cmenu.Text];
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -112,7 +121,7 @@ namespace ViewWinform.Utils
                             break;
                         case "btnRemove":
                             control.Click += (s, e) => {
-                                var Controller = (IDBController)form.GetType().GetProperty("Controller").GetValue(form);
+                                var Controller = (IDBController)form.GetType().GetField("Controller").GetValue(form);
                                 var Model = form.GetType().GetProperty("Model");
                                 ModelLibrary.Common.DBModificationResult result = Controller.Delete(Model.GetValue(form));
                                 //Utils.FormsHelper.Success("SUCCESS ::: deleted");

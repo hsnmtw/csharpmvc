@@ -18,6 +18,7 @@ using ViewWinform.Billing;
 using ViewWinform.Security;
 using System.Reflection;
 using ControllerLibrary.Tools;
+using ViewWinform.Utils;
 
 namespace ViewWinform
 {
@@ -81,26 +82,15 @@ namespace ViewWinform
 
         private void MainViewLoad(object sender, EventArgs e)
         {
+            if (DesignMode) return;
             tsProgressBar.Value = 0;
 
-            tssLabelStatus.Text = "Connecting to database";
-            DBConnectionManager.Instance.Open();
-            tsProgressBar.Value += 25;
-
-
-            tssLabelStatus.Text = "Loading Entities"; 
-            DBEntitiesFactory.InitEntitiesMap();
-            tsProgressBar.Value += 25;
-
-            tssLabelStatus.Text = "Loading Controllers";
-            DBControllersFactory.InitControllersMap();
-            tsProgressBar.Value += 25;
-
+            FormsHelper.ApplyLanguageLocalization(this);
 
             tssLabelStatus.Text = "Loading Menus";
             LogOutToolStripMenuItemClick(sender, e);
             LogInToolStripMenuItemClick(sender, e);
-            tsProgressBar.Value += 25;
+            tsProgressBar.Value = 100;
         }
 
 
@@ -112,17 +102,17 @@ namespace ViewWinform
         private void UsersToolStripMenuItemClick(object sender, EventArgs e)
         {
             //Utils.FormsHelper.showView(this, new UsersListView());
-            new UserForm() { MdiParent = this }.Show();
+            new UserForm() { MdiParent = this, RightToLeft = this.RightToLeft , RightToLeftLayout = this.RightToLeftLayout, }.Show();
         }
 
         private void ProfilesToolStripMenuItemClick(object sender, EventArgs e)
         {
-            new ProfileForm() { MdiParent = this }.Show();
+            new ProfileForm() { MdiParent = this, RightToLeft = this.RightToLeft , RightToLeftLayout = this.RightToLeftLayout, }.Show();
         }
 
         private void EntitlementsToolStripMenuItemClick(object sender, EventArgs e)
         {
-            new EntitlementForm() { MdiParent = this }.Show();
+            new EntitlementForm() { MdiParent = this, RightToLeft = this.RightToLeft , RightToLeftLayout = this.RightToLeftLayout, }.Show();
         }
 
         private void PorfileEntitelmentsToolStripMenuItemClick(object sender, EventArgs e)
@@ -132,44 +122,46 @@ namespace ViewWinform
 
         private void LogOutToolStripMenuItemClick(object sender, EventArgs e)
         {
-            if(Session.Instance.CurrentUser != null) {
-                var audit = (AuditController)DBControllersFactory.GetController(Entities.Audit);
-                audit.registerEvent(new AuditModel() {
-                    UserName = Session.Instance.CurrentUser.UserName,
-                    EventComments = "Logout ..."
-                });
-            }
-            Session.Instance.CurrentUser = null;
-            this.tsslCurrentUser.Text = "Guest";
-            foreach (ToolStripMenuItem mi in this.menus.Values)
-            {
-                mi.Enabled = false;
-            }            
+            //CloseAllToolStripMenuItemClick(sender, e);
+            //if (Session.Instance.CurrentUser != null) {
+            //    var audit = (AuditController)DBControllersFactory.GetController(Entities.Audit);
+            //    audit.registerEvent(new AuditModel() {
+            //        UserName = Session.Instance.CurrentUser.UserName,
+            //        EventComments = "Logout ..."
+            //    });
+            //}
+            //Session.Instance.CurrentUser = null;
+            //this.tsslCurrentUser.Text = "Guest";
+            //foreach (ToolStripMenuItem mi in this.menus.Values)
+            //{
+            //    mi.Enabled = false;
+            //}            
         }
 
         private void LogInToolStripMenuItemClick(object sender, EventArgs e)
         {
-            var loginview = new UsersLoginView();
-            if (loginview.ShowDialog() == DialogResult.OK) {
-                Session.Instance.CurrentUser = loginview.Model;
-                var pec = (ProfileEntitlementsController)DBControllersFactory.GetController(Entities.ProfileEntitlement);
-                var entitlements = pec.Read(new ProfileEntitlementsModel() {
-                    ProfileName = loginview.Model.ProfileName,
-                    AllowRead = true
-                },"ProfileName","AllowRead");
+            //new UsersLoginView() { RightToLeft = this.RightToLeft, RightToLeftLayout = this.RightToLeftLayout, }.ShowDialog();
+        }
 
-                foreach (ProfileEntitlementsModel row in entitlements) {
-                    var EntitlementName = row.EntitlementName;
-                    if (this.menus.ContainsKey(EntitlementName))
-                        this.menus[EntitlementName].Enabled = true;
-                }
+        public void WhenAuthenticated(UserModel model) {
+            Session.Instance.CurrentUser = model;
+            var pec = (ProfileEntitlementsController)DBControllersFactory.GetController(Entities.ProfileEntitlement);
+            var entitlements = pec.Read(new ProfileEntitlementsModel() {
+                ProfileName = Session.Instance.CurrentUser.ProfileName,
+                AllowRead = true
+            }, "ProfileName", "AllowRead");
+
+            foreach (ProfileEntitlementsModel row in entitlements) {
+                var EntitlementName = row.EntitlementName;
+                if (this.menus.ContainsKey(EntitlementName))
+                    this.menus[EntitlementName].Enabled = true;
             }
         }
 
-        private void SQLViewerToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            var sqlview = new Utils.SQLView();
-            sqlview.MdiParent = this;
+        private void SQLViewerToolStripMenuItemClick(object sender, EventArgs e) {
+            var sqlview = new Utils.SQLView() {
+                MdiParent = this, RightToLeft = this.RightToLeft, RightToLeftLayout = this.RightToLeftLayout,
+            };
             //sqlview.WindowState = FormWindowState.Maximized;
             sqlview.Size = new Size(sqlview.Width + 20, sqlview.Height + 120);
             sqlview.Show();
@@ -177,7 +169,7 @@ namespace ViewWinform
 
         private void EncryptionToolToolStripMenuItemClick(object sender, EventArgs e)
         {
-            new Configurations.CryptoForm() { MdiParent = this }.Show();
+            new Configurations.CryptoForm() { MdiParent = this, RightToLeft = this.RightToLeft , RightToLeftLayout = this.RightToLeftLayout, }.Show();
         }
 
         private void PasswordResetToolStripMenuItemClick(object sender, EventArgs e) {
@@ -192,24 +184,24 @@ namespace ViewWinform
 
         private void CountryToolStripMenuItemClick(object sender, EventArgs e) {
             //Utils.FormsHelper.showView(this, new ViewWinform.Customers.Country.CountryListView());
-            //new CountryView() { MdiParent = this }.Show();
-            new CountryForm() { MdiParent = this }.Show();
+            //new CountryView() { MdiParent = this, RightToLeft = this.RightToLeft , RightToLeftLayout = this.RightToLeftLayout, }.Show();
+            new CountryForm() { MdiParent = this, RightToLeft = this.RightToLeft , RightToLeftLayout = this.RightToLeftLayout, }.Show();
         }
 
         private void AuditToolStripMenuItemClick(object sender, EventArgs e) {
-            new AuditView() { MdiParent = this }.Show();
+            new AuditView() { MdiParent = this, RightToLeft = this.RightToLeft , RightToLeftLayout = this.RightToLeftLayout, }.Show();
         }
 
         private void TableDesignerToolStripMenuItemClick(object sender, EventArgs e) {
-            new ModelLibrary.Utils.TableDesigner.TableDesignerView() { MdiParent = this }.Show();
+            new ModelLibrary.Utils.TableDesigner.TableDesignerView() { MdiParent = this, RightToLeft = this.RightToLeft , RightToLeftLayout = this.RightToLeftLayout, }.Show();
         }
 
         private void CompoundsToolStripMenuItemClick(object sender, EventArgs e) {
-            new Housing.Compounds.CompoundForm() { MdiParent = this }.Show();
+            new Housing.Compounds.CompoundForm() { MdiParent = this, RightToLeft = this.RightToLeft , RightToLeftLayout = this.RightToLeftLayout, }.Show();
         }
 
         private void ConfigurationsToolStripMenuItemClick(object sender, EventArgs e) {
-            new Configurations.ConfigurationsForm() { MdiParent = this }.Show();
+            new Configurations.ConfigurationsForm() { MdiParent = this, RightToLeft = this.RightToLeft , RightToLeftLayout = this.RightToLeftLayout, }.Show();
         }
 
         private void CloseAllToolStripMenuItemClick(object sender, EventArgs e) {
@@ -235,19 +227,19 @@ namespace ViewWinform
         }
 
         private void BuildingsToolStripMenuItemClick(object sender, EventArgs e) {
-            new Housing.Buildings.BuildingForm() { MdiParent = this }.Show();
+            new Housing.Buildings.BuildingForm() { MdiParent = this, RightToLeft = this.RightToLeft , RightToLeftLayout = this.RightToLeftLayout, }.Show();
         }
 
         private void RoomsToolStripMenuItemClick(object sender, EventArgs e) {
-            new Housing.Rooms.RoomForm() { MdiParent = this }.Show();
+            new Housing.Rooms.RoomForm() { MdiParent = this, RightToLeft = this.RightToLeft , RightToLeftLayout = this.RightToLeftLayout, }.Show();
         }
 
         private void ControllersRegistryToolStripMenuItemClick(object sender, EventArgs e) {
-            new Configurations.ControllersSelectionForm() { MdiParent = this }.Show();
+            new Configurations.ControllersSelectionForm() { MdiParent = this, RightToLeft = this.RightToLeft , RightToLeftLayout = this.RightToLeftLayout, }.Show();
         }
 
         private void CompactAndRepairToolStripMenuItemClick(object sender, EventArgs e) {
-            new Utils.CompactAndRepairForm() { MdiParent = this }.Show();
+            new Utils.CompactAndRepairForm() { MdiParent = this, RightToLeft = this.RightToLeft , RightToLeftLayout = this.RightToLeftLayout, }.Show();
         }
 
         private void MainViewFormClosing(object sender, FormClosingEventArgs e) {
@@ -257,41 +249,45 @@ namespace ViewWinform
         }
 
         private void BuildingTypesToolStripMenuItemClick(object sender, EventArgs e) {
-            new Housing.BuildingTypes.BuildingTypeForm() { MdiParent = this }.Show();
+            new Housing.BuildingTypes.BuildingTypeForm() { MdiParent = this, RightToLeft = this.RightToLeft , RightToLeftLayout = this.RightToLeftLayout, }.Show();
         }
 
         private void ClientTypesToolStripMenuItemClick(object sender, EventArgs e) {
-            new ClientTypeForm() { MdiParent = this }.Show();
+            new ClientTypeForm() { MdiParent = this, RightToLeft = this.RightToLeft , RightToLeftLayout = this.RightToLeftLayout, }.Show();
         }
 
         private void ClientsToolStripMenuItemClick(object sender, EventArgs e) {
-            new ClientForm() { MdiParent = this }.Show();
+            new ClientForm() { MdiParent = this, RightToLeft = this.RightToLeft , RightToLeftLayout = this.RightToLeftLayout, }.Show();
         }
 
         private void ProjectsToolStripMenuItemClick(object sender, EventArgs e) {
-            new ProjectForm() { MdiParent = this }.Show();
+            new ProjectForm() { MdiParent = this, RightToLeft = this.RightToLeft , RightToLeftLayout = this.RightToLeftLayout, }.Show();
         }
 
         private void BillingCategoriesToolStripMenuItemClick(object sender, EventArgs e) {
-            new BillingCategoryForm() { MdiParent = this }.Show();
+            new BillingCategoryForm() { MdiParent = this, RightToLeft = this.RightToLeft , RightToLeftLayout = this.RightToLeftLayout, }.Show();
         }
 
         private void AccomodationClassesToolStripMenuItemClick(object sender, EventArgs e) {
-            new AccomodationClassForm() { MdiParent = this }.Show();
+            new AccomodationClassForm() { MdiParent = this, RightToLeft = this.RightToLeft , RightToLeftLayout = this.RightToLeftLayout, }.Show();
         }
 
         private void NewToolStripMenuItemClick(object sender, EventArgs e) {
-            //try { ((Button)((Form)this.ActiveMdiChild).Controls.Find("btnNew", true).First()).PerformClick(); } catch { }
-            ((ISingleForm)this.ActiveMdiChild).PerformAction("New");
+            if (this.ActiveMdiChild == null) return;
+            if (this.ActiveMdiChild is ISingleForm) {
+                ((ISingleForm)this.ActiveMdiChild).PerformAction("New");
+            }
         }
 
         private void SaveToolStripMenuItemClick(object sender, EventArgs e) {
-            //try { ((Button)((Form)this.ActiveMdiChild).Controls.Find("btnSave", true).First()).PerformClick(); } catch { }
-            ((ISingleForm)this.ActiveMdiChild).PerformAction("Save");
+            if (this.ActiveMdiChild == null) return;
+            if (this.ActiveMdiChild is ISingleForm) {
+                ((ISingleForm)this.ActiveMdiChild).PerformAction("Save");
+            }
         }
 
         private void FoodClassesToolStripMenuItemClick(object sender, EventArgs e) {
-            new Billing.FoodClassForm() { MdiParent = this }.Show();
+            new Billing.FoodClassForm() { MdiParent = this, RightToLeft = this.RightToLeft , RightToLeftLayout = this.RightToLeftLayout, }.Show();
         }
 
         private void CloseToolStripMenuItemClick(object sender, EventArgs e) {
@@ -301,32 +297,37 @@ namespace ViewWinform
         }
 
         private void FoodTypesToolStripMenuItem_Click(object sender, EventArgs e) {
-            new FoodTypeForm() { MdiParent = this }.Show();
+            new FoodTypeForm() { MdiParent = this, RightToLeft = this.RightToLeft , RightToLeftLayout = this.RightToLeftLayout, }.Show();
         }
 
         private void DuplicateToolStripMenuItem_Click(object sender, EventArgs e) {
-            ((ISingleForm)this.ActiveMdiChild).PerformAction("Duplicate");
+            if (this.ActiveMdiChild == null) return;
+            if (this.ActiveMdiChild is ISingleForm) {
+                ((ISingleForm)this.ActiveMdiChild).PerformAction("Duplicate");
+            }
         }
 
         private void RemoveToolStripMenuItem_Click(object sender, EventArgs e) {
-            //try {((Button)((Form)this.ActiveMdiChild).Controls.Find("btnRemove", true).First()).PerformClick();} catch {}
-            ((ISingleForm)this.ActiveMdiChild).PerformAction("Remove");
+            if (this.ActiveMdiChild == null) return;
+            if (this.ActiveMdiChild is ISingleForm) {
+                ((ISingleForm)this.ActiveMdiChild).PerformAction("Remove");
+            }
         }
 
         private void IdentificationTypesToolStripMenuItem_Click(object sender, EventArgs e) {
-            new IdentificationTypeForm() { MdiParent = this }.Show();
+            new IdentificationTypeForm() { MdiParent = this, RightToLeft = this.RightToLeft , RightToLeftLayout = this.RightToLeftLayout, }.Show();
         }
 
         private void EntitlementGroupsToolStripMenuItem_Click(object sender, EventArgs e) {
-            new EntitlementGroupForm() { MdiParent = this }.Show();
+            new EntitlementGroupForm() { MdiParent = this, RightToLeft = this.RightToLeft , RightToLeftLayout = this.RightToLeftLayout, }.Show();
         }
 
         private void IdentificationToolStripMenuItem_Click(object sender, EventArgs e) {
-            new IdentificationForm() { MdiParent = this }.Show();
+            new IdentificationForm() { MdiParent = this, RightToLeft = this.RightToLeft , RightToLeftLayout = this.RightToLeftLayout, }.Show();
         }
 
         private void DictionaryToolStripMenuItem_Click(object sender, EventArgs e) {
-            new Tools.DictionaryForm() { MdiParent = this }.Show();
+            new Tools.DictionaryForm() { MdiParent = this, RightToLeft = this.RightToLeft , RightToLeftLayout = this.RightToLeftLayout }.Show();
         }
 
         private void ArabicToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -337,21 +338,25 @@ namespace ViewWinform
                 case LanguageState.Arabic:
                     DictionaryController.LanguageState = LanguageState.English;
                     this.RightToLeft = RightToLeft.No;
+                    this.RightToLeftLayout = false;
                     break;
                 default:
                     DictionaryController.LanguageState = LanguageState.Arabic;
                     this.RightToLeft = RightToLeft.Yes;
+                    this.RightToLeftLayout = true;
                     break;
             }
 
-            var mainm = menuStrip1.Items.OfType<ToolStripMenuItem>();
+            FormsHelper.ApplyLanguageLocalization(this);
 
-            foreach (var menu in mainm) {
-                menu.Text = this.dictionaryController[menu.Text];
-                foreach(var cmenu in menu.DropDownItems.OfType<ToolStripMenuItem>()) {
-                    cmenu.Text = this.dictionaryController[cmenu.Text];
-                }
-            }
+            //var mainm = menuStrip1.Items.OfType<ToolStripMenuItem>();
+
+            //foreach (var menu in mainm) {
+            //    menu.Text = this.dictionaryController[menu.Text];
+            //    foreach(var cmenu in menu.DropDownItems.OfType<ToolStripMenuItem>()) {
+            //        cmenu.Text = this.dictionaryController[cmenu.Text];
+            //    }
+            //}
         }
     }
 }

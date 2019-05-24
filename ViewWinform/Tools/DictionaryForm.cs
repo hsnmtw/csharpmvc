@@ -18,12 +18,12 @@ namespace ViewWinform.Tools {
     public partial class DictionaryForm : SingleForm {
 
         public IDBController Controller;
-        private DictionaryController dictionaryController;
+        private IDBController dictionaryController;
         private DictionaryModel model;
 
         public DictionaryForm() : base() {
             InitializeComponent(); if (DesignMode) return;
-            dictionaryController = (DictionaryController)DBControllersFactory.GetController(Entities.Dictionary);
+            dictionaryController = DBControllersFactory.GetController(Entities.Dictionary);
             Controller = DBControllersFactory.GetController(Entities.Dictionary);
             model = new DictionaryModel();
             Utils.FormsHelper.BindViewToModel(this, ref this.model);

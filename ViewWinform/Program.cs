@@ -10,6 +10,7 @@ using ModelLibrary.Common;
 using ControllerLibrary.Common;
 using System.IO;
 using System.Runtime.InteropServices;
+using ViewWinform.Security.Users;
 
 namespace ViewWinform
 {
@@ -56,9 +57,18 @@ namespace ViewWinform
             //DBConnectionManager.Instance.FixColumnNames();
 
             DBConnectionManager.Instance.Open();
+            DBEntitiesFactory.InitEntitiesMap();
+            DBControllersFactory.InitControllersMap();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(MainView.Instance);
+
+            if (new UsersLoginView().ShowDialog() == DialogResult.OK) {
+                Application.Run(MainView.Instance);
+            }
+
+            
+            
             //Application.Run(new Tools.CalendarForm());
         }
     }

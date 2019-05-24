@@ -9,9 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ControllerLibrary.Configurations;
 using DAO;
+using ViewWinform.Common;
 
 namespace ViewWinform.Utils {
-    public partial class CompactAndRepairForm : Form {
+    public partial class CompactAndRepairForm : SingleForm {
         public CompactAndRepairForm() {
             InitializeComponent(); if (DesignMode) return;
         }

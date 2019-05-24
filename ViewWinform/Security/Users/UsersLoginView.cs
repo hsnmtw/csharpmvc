@@ -12,10 +12,12 @@ using ControllerLibrary.Security;
 using ControllerLibrary.Common;
 using ModelLibrary.Common;
 using ControllerLibrary.Tools;
+using ViewWinform.Utils;
+using ViewWinform.Common;
 
 namespace ViewWinform.Security.Users
 {
-    public partial class UsersLoginView : Form
+    public partial class UsersLoginView : SingleForm
     {
         public IDBController Controller = DBControllersFactory.GetController(Entities.User);
 
@@ -45,6 +47,7 @@ namespace ViewWinform.Security.Users
             if (model != null)
             {
                 this.Model = model;
+                MainView.Instance.WhenAuthenticated(model);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -61,12 +64,24 @@ namespace ViewWinform.Security.Users
 
         private void RdoArabic_CheckedChanged(object sender, EventArgs e) {
             DictionaryController.LanguageState = LanguageState.Arabic;
-            this.RightToLeft = RightToLeft.Yes;
+            FormsHelper.ApplyLanguageLocalization(this);
+            MainView.Instance.RightToLeft = RightToLeft.Yes;
+            MainView.Instance.RightToLeftLayout = true;
+            this.SuspendLayout();
+            //this.RightToLeft = RightToLeft.Yes;
+            this.RightToLeftLayout = true;
+            this.ResumeLayout();
         }
 
         private void RdoEnglish_CheckedChanged(object sender, EventArgs e) {
             DictionaryController.LanguageState = LanguageState.English;
-            this.RightToLeft = RightToLeft.No;
+            MainView.Instance.RightToLeft = RightToLeft.No;
+            MainView.Instance.RightToLeftLayout = false;
+            FormsHelper.ApplyLanguageLocalization(this);
+            this.SuspendLayout();
+            //this.RightToLeft = RightToLeft.Yes;
+            this.RightToLeftLayout = true;
+            this.ResumeLayout();
         }
     }
 }

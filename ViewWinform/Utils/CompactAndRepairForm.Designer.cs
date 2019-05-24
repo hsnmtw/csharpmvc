@@ -29,9 +29,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(445, 238);
+            this.button1.Location = new System.Drawing.Point(343, 238);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(93, 23);
+            this.button1.Size = new System.Drawing.Size(195, 32);
             this.button1.TabIndex = 2;
             this.button1.Text = "Compact and Repair";
             this.button1.UseVisualStyleBackColor = true;
@@ -50,7 +50,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(550, 273);
+            this.ClientSize = new System.Drawing.Size(549, 282);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button1);
             this.Name = "CompactAndRepairForm";
