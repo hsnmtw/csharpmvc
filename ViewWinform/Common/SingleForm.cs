@@ -1,12 +1,23 @@
-﻿using System;
+﻿using ControllerLibrary.Tools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ViewWinform.Utils;
 
 namespace ViewWinform.Common {
     public class SingleForm : Form, ISingleForm {
+
+        public SingleForm() {
+            this.Load += (s, e) => {
+                if (DictionaryController.LanguageState == LanguageState.Arabic) {
+                    this.RightToLeft = RightToLeft.Yes;
+                    FormsHelper.ApplyLanguageLocalization(this);
+                }
+            };
+        }
 
         public void PerformAction(string action) {
             try {

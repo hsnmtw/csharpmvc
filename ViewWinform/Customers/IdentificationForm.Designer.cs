@@ -199,7 +199,7 @@
             this.btnExpiryDate.Size = new System.Drawing.Size(23, 22);
             this.btnExpiryDate.TabIndex = 10;
             this.btnExpiryDate.TabStop = false;
-            this.btnExpiryDate.Tag = "txtExpiryDate/lblExpiryDateHG";
+            this.btnExpiryDate.Tag = "txtExpiryDate";
             this.btnExpiryDate.Text = "📅";
             this.btnExpiryDate.UseVisualStyleBackColor = true;
             // 
@@ -268,7 +268,7 @@
             this.txtExpiryDate.ReadOnly = true;
             this.txtExpiryDate.Size = new System.Drawing.Size(103, 20);
             this.txtExpiryDate.TabIndex = 9;
-            this.txtExpiryDate.Tag = "PhoneNumber";
+            this.txtExpiryDate.Tag = "DateFormat:dd/MM/yyyy";
             // 
             // txtIdType
             // 
@@ -336,7 +336,7 @@
             this.btnIssueDateCalendar.Size = new System.Drawing.Size(23, 22);
             this.btnIssueDateCalendar.TabIndex = 7;
             this.btnIssueDateCalendar.TabStop = false;
-            this.btnIssueDateCalendar.Tag = "txtIssueDate/lblIssueDateHG";
+            this.btnIssueDateCalendar.Tag = "txtIssueDate";
             this.btnIssueDateCalendar.Text = "📅";
             this.btnIssueDateCalendar.UseVisualStyleBackColor = true;
             // 
@@ -348,7 +348,7 @@
             this.txtIssueDate.ReadOnly = true;
             this.txtIssueDate.Size = new System.Drawing.Size(103, 20);
             this.txtIssueDate.TabIndex = 6;
-            this.txtIssueDate.Tag = "PhoneNumber";
+            this.txtIssueDate.Tag = "DateFormat:dd/MM/yyyy";
             // 
             // label29
             // 

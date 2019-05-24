@@ -1,6 +1,7 @@
 ﻿using ModelLibrary.Customers;
 using ModelLibrary.Housing;
 using ModelLibrary.Security;
+using ModelLibrary.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,7 @@ namespace ModelLibrary.Common {
             , [Entities.IdentificationType ] = new IdentificationTypeEntity ()
             , [Entities.Identification     ] = new IdentificationEntity     ()
             , [Entities.EntitlementGroup   ] = new EntitlementGroupEntity   ()
+            , [Entities.Dictionary         ] = new DictionaryEntity         ()
            };
         }
 

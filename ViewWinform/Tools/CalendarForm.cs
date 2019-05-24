@@ -45,6 +45,7 @@ namespace ViewWinform.Tools {
             if (DesignMode) return;
             
             this.dataGridView1.AutoGenerateColumns = false;
+            
             this.cmbYear.Items.Clear();
             this.cmbMonth.Items.Clear();
 

@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ViewWinform.Common;
+using ViewWinform.Utils;
 
 namespace ViewWinform.Customers {
     public partial class IdentificationForm : SingleForm {
@@ -37,7 +38,7 @@ namespace ViewWinform.Customers {
             InitializeComponent(); if (DesignMode) return;
             Controller = DBControllersFactory.GetController(Entities.Identification);
             model = new IdentificationModel();
-            ViewWinform.Utils.FormsHelper.BindViewToModel(this, ref this.model);
+            FormsHelper.BindViewToModel(this, ref this.model);
         }
 
         private void ClientTypeFormLoad(object sender, EventArgs e) {

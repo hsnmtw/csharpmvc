@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ViewWinform.Common;
+using ViewWinform.Utils;
 
 namespace ViewWinform.Housing.Buildings {
     public partial class BuildingForm : SingleForm {
@@ -42,7 +43,7 @@ namespace ViewWinform.Housing.Buildings {
             roomCntrlr = DBControllersFactory.GetController(Entities.Room);
             Controller = DBControllersFactory.GetController(Entities.Building);
             model = new BuildingModel();
-            ViewWinform.Utils.FormsHelper.BindViewToModel(this.panel1, ref this.model);
+            FormsHelper.BindViewToModel(this.panel1, ref this.model);
         }
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {

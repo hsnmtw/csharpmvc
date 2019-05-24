@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ViewWinform.Common;
+using ViewWinform.Utils;
 
 namespace ViewWinform.Customers {
     public partial class ClientTypeForm : SingleForm {
@@ -47,7 +48,7 @@ namespace ViewWinform.Customers {
         }
 
         private void ClientTypeFormLoad(object sender, EventArgs e) {
-            ViewWinform.Utils.FormsHelper.BindViewToModel(this.panel1,ref this.model);
+            FormsHelper.BindViewToModel(this.panel1,ref this.model);
         }
     }
 }

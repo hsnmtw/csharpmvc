@@ -18,7 +18,7 @@ namespace ControllerLibrary.Common {
 
            foreach(Entities num in typeof(Entities).GetEnumValues()) {
                 foreach(var type in ControllersRegistery.Instance[num]) {
-                    ForControllerAttribute forca = (ForControllerAttribute)type.GetCustomAttributes(true).First();
+                    ForControllerAttribute forca = (ForControllerAttribute)type.GetCustomAttributes(true).OfType<ForControllerAttribute>().First();
                     if (forca.Enabled) {
                         DBControllersFactory.ControllersMap[num] = (IDBController)Activator.CreateInstance(type);
                     }

@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ViewWinform.Common;
+using ViewWinform.Utils;
 
 namespace ViewWinform.Customers {
     public partial class ProjectForm : SingleForm {
@@ -38,7 +39,7 @@ namespace ViewWinform.Customers {
             InitializeComponent(); if (DesignMode) return;
             Controller = DBControllersFactory.GetController(Entities.Project);
             model = new ProjectModel();
-            ViewWinform.Utils.FormsHelper.BindViewToModel(this.panel1, ref this.model);
+            FormsHelper.BindViewToModel(this.panel1, ref this.model);
         }
 
 

@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ViewWinform.Common;
+using ViewWinform.Utils;
 
 namespace ViewWinform.Housing.BuildingTypes {
     public partial class BuildingTypeForm : SingleForm {
@@ -42,7 +43,7 @@ namespace ViewWinform.Housing.BuildingTypes {
             bldgCntrlr = DBControllersFactory.GetController(Entities.Building);
             Controller = DBControllersFactory.GetController(Entities.BuildingType);
             model = new BuildingTypeModel();
-            ViewWinform.Utils.FormsHelper.BindViewToModel(this.panel1, ref this.model);
+            FormsHelper.BindViewToModel(this.panel1, ref this.model);
         }
 
 

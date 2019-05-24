@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ViewWinform.Common;
+using ViewWinform.Utils;
 
 namespace ViewWinform.Billing {
     public partial class AccomodationClassForm : SingleForm {
@@ -41,7 +42,7 @@ namespace ViewWinform.Billing {
             
             Controller = DBControllersFactory.GetController(Entities.AccomClass);
             model = new AccomClassModel();
-            ViewWinform.Utils.FormsHelper.BindViewToModel(this.panel1, ref this.model);
+            FormsHelper.BindViewToModel(this.panel1, ref this.model);
         }
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {

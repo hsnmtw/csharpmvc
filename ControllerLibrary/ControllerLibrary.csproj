@@ -83,6 +83,8 @@
     <Compile Include="Configurations\SimpleCrypto.cs" />
     <Compile Include="Security\UserController.cs" />
     <Compile Include="Tools\CalendarController.cs" />
+    <Compile Include="Tools\DictionaryController.cs" />
+    <Compile Include="Tools\LanguageState.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj">

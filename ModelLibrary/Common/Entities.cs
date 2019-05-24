@@ -15,7 +15,8 @@ namespace ModelLibrary.Common {
         , BuildingType
         , Client
         , ClientType
-        , Compound              
+        , Compound    
+        , Dictionary
         , Entitlement
         , EntitlementGroup
         , FoodClass

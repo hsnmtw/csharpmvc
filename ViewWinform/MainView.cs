@@ -16,12 +16,32 @@ using ModelLibrary.Common;
 using ViewWinform.Common;
 using ViewWinform.Billing;
 using ViewWinform.Security;
+using System.Reflection;
+using ControllerLibrary.Tools;
 
 namespace ViewWinform
 {
     public partial class MainView : Form, IDisposable
     {
+
+        public DictionaryController dictionaryController;
+        //private DictionaryModel model;
+
+        //public DictionaryModel Model {
+        //    get {
+        //        model = ViewWinform.Utils.FormsHelper.PopulateModelFromControls(model, this);
+        //        return model;
+        //    }
+        //    set {
+        //        this.model = value;
+        //        ViewWinform.Utils.FormsHelper.PopulateControlsFromModel(model, this);
+        //    }
+        //}
+
+
         private Dictionary<string, ToolStripMenuItem> menus = new Dictionary<string, ToolStripMenuItem>();
+
+
 
         private static MainView instance = null;
         public static MainView Instance {
@@ -40,6 +60,8 @@ namespace ViewWinform
         private MainView()
         {
             InitializeComponent(); if (DesignMode) return;
+            this.dictionaryController = (DictionaryController)DBControllersFactory.GetController(Entities.Dictionary);
+
             foreach (ToolStripMenuItem mi in this.menuStrip1.Items)
             {
                 if (mi.Text.Contains("File") || mi.Text.Contains("Window") || mi.Text.Contains("Developer")) continue;
@@ -301,6 +323,35 @@ namespace ViewWinform
 
         private void IdentificationToolStripMenuItem_Click(object sender, EventArgs e) {
             new IdentificationForm() { MdiParent = this }.Show();
+        }
+
+        private void DictionaryToolStripMenuItem_Click(object sender, EventArgs e) {
+            new Tools.DictionaryForm() { MdiParent = this }.Show();
+        }
+
+        private void ArabicToolStripMenuItem_Click(object sender, EventArgs e) {
+
+            //DictionaryController.LanguageState = DictionaryController.LanguageState == LanguageState.Arabic ? LanguageState.English : LanguageState.Arabic;
+
+            switch (DictionaryController.LanguageState) {
+                case LanguageState.Arabic:
+                    DictionaryController.LanguageState = LanguageState.English;
+                    this.RightToLeft = RightToLeft.No;
+                    break;
+                default:
+                    DictionaryController.LanguageState = LanguageState.Arabic;
+                    this.RightToLeft = RightToLeft.Yes;
+                    break;
+            }
+
+            var mainm = menuStrip1.Items.OfType<ToolStripMenuItem>();
+
+            foreach (var menu in mainm) {
+                menu.Text = this.dictionaryController[menu.Text];
+                foreach(var cmenu in menu.DropDownItems.OfType<ToolStripMenuItem>()) {
+                    cmenu.Text = this.dictionaryController[cmenu.Text];
+                }
+            }
         }
     }
 }

@@ -55,6 +55,7 @@ namespace ViewWinform
 
             //DBConnectionManager.Instance.FixColumnNames();
 
+            DBConnectionManager.Instance.Open();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(MainView.Instance);

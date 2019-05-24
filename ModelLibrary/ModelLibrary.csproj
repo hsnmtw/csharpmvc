@@ -99,6 +99,8 @@
     <Compile Include="Security\ProfileEntitlementsModel.cs" />
     <Compile Include="Security\UserEntity.cs" />
     <Compile Include="Security\UserModel.cs" />
+    <Compile Include="Tools\DictionaryEntity.cs" />
+    <Compile Include="Tools\DictionaryModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database_Objects.txt" />
@@ -133,8 +135,6 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Tools\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

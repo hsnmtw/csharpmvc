@@ -11,6 +11,7 @@ using ModelLibrary.Security;
 using ControllerLibrary.Security;
 using ControllerLibrary.Common;
 using ModelLibrary.Common;
+using ControllerLibrary.Tools;
 
 namespace ViewWinform.Security.Users
 {
@@ -20,8 +21,8 @@ namespace ViewWinform.Security.Users
 
         public UsersLoginView()
         {
-            model = new UserModel();
             InitializeComponent(); if (DesignMode) return;
+            model = new UserModel();
             Utils.FormsHelper.BindViewToModel(this,ref this.model);
         }
 
@@ -31,8 +32,8 @@ namespace ViewWinform.Security.Users
         public UserModel Model {
             set => model = value;
             get {
-                model.UserName = UserNameTextBox.Text;
-                model.UserPassword = PasswordTextBox.Text;
+                model.UserName = txtUserName.Text;
+                model.UserPassword = txtPassword.Text;
                 return model;
             }
         }
@@ -56,6 +57,16 @@ namespace ViewWinform.Security.Users
 
         private void UsersLoginView_Load(object sender, EventArgs e) {
 
+        }
+
+        private void RdoArabic_CheckedChanged(object sender, EventArgs e) {
+            DictionaryController.LanguageState = LanguageState.Arabic;
+            this.RightToLeft = RightToLeft.Yes;
+        }
+
+        private void RdoEnglish_CheckedChanged(object sender, EventArgs e) {
+            DictionaryController.LanguageState = LanguageState.English;
+            this.RightToLeft = RightToLeft.No;
         }
     }
 }

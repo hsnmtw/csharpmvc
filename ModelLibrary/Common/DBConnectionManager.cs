@@ -107,7 +107,8 @@ namespace ModelLibrary.Common
 
         public void Open() {
             if(!(this.connection == null || this.connection.State == ConnectionState.Closed)) {
-                throw new InvalidOperationException("database is already open");
+                Console.WriteLine("database is already open");
+                return;
             }
 
 

@@ -28,18 +28,28 @@ namespace ViewWinform.Utils
             MessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        public static Form showView(Form owner,UserControl userControl)
-        {
-            var form = new Form() { MdiParent = owner, Text = userControl.Name };
-            form.Controls.Add(userControl);
-            form.Show();
-            form.Size = new System.Drawing.Size(userControl.Width+20,userControl.Height+20);
-            userControl.Dock = DockStyle.Fill;
-            //form.WindowState = FormWindowState.Maximized;
-            return form;
-        }
+        public static void ApplyLanguageLocalization(Control cntrl) {
+            if (cntrl == null) return;
+            var form = cntrl;
+            int i = 10;
+            while (--i > 0 && (form != null) && !(form is Form)) {
+                form = form.Parent;
+            }
+            form.Text = MainView.Instance.dictionaryController[form.Text];
 
-        
+            var languageEnabledTypes = new Type[]{
+                typeof(Label),
+                typeof(Button),
+                typeof(CheckBox),
+                typeof(RadioButton),
+            };
+
+            foreach (Control control in cntrl.Controls) {
+                if (languageEnabledTypes.Contains(control.GetType())) {
+                    control.Text = MainView.Instance.dictionaryController[control.Text];
+                }
+            }
+        }
 
         public static void BindViewToModel<M>(Control cntrl,ref M model)
         {
@@ -59,18 +69,23 @@ namespace ViewWinform.Utils
 
             string[] buttons = { "btnSave","btnNew","btnRemove" };
 
+
+
             foreach (Control control in cntrl.Controls)
             {
+
                 if (control.GetType().Equals(typeof(Button)) && control.Text.Equals(CALENDAR) ) {
-                    string[] txt = $"{control.Tag}".Split('/');
+                    string txt = $"{control.Tag}";
                     control.Click += (s,e) => {
                         var calendar = new Tools.CalendarForm();
                         if (calendar.ShowDialog() == DialogResult.OK) {
                             if (txt.Length > 0) {
-                                cntrl.Controls.Find(txt[0], true).First().Text = calendar.Date.ToString(ConfigLoader.CultureInfoDateTimeFormatShortDatePattern);
-                                if (txt.Length > 1) {
-                                    cntrl.Controls.Find(txt[1], true).First().Text = calendar.Date.ToString(ConfigLoader.CultureInfoDateTimeFormatLongDatePattern);
+                                Control box = cntrl.Controls.Find(txt, true).First();
+                                string format = ConfigLoader.CultureInfoDateTimeFormatShortDatePattern;
+                                if(box.Tag != null && box.Tag.ToString().Contains("DateFormat:")) {
+                                    format = box.Tag.ToString().Replace("DateFormat:","");
                                 }
+                                box.Text = calendar.Date.ToString(format);
                             }
                         }
                     };
@@ -162,6 +177,7 @@ namespace ViewWinform.Utils
                 string prop = properties[i].Name;
                 var chk = container.Controls.Find($"chk{prop}", true).OfType<CheckBox>();
                 var txt = container.Controls.Find($"txt{prop}", true).OfType<TextBox>();
+                var cmb = container.Controls.Find($"cmb{prop}", true).OfType<ComboBox>();
 
                 if (txt.Count() > 0) {
                     if (properties[i].PropertyType.Equals(typeof(string))) {
@@ -183,6 +199,9 @@ namespace ViewWinform.Utils
                 } 
                 else if(chk.Count() > 0) {
                     properties[i].SetValue(model, chk.First().Checked);
+                } 
+                else if (cmb.Count() > 0) {
+                    properties[i].SetValue(model, cmb.First().Text);
                 }
             }
             return model;
@@ -196,12 +215,29 @@ namespace ViewWinform.Utils
                 string prop = properties[i].Name;
                 var chk = container.Controls.Find($"chk{prop}", true).OfType<CheckBox>();
                 var txt = container.Controls.Find($"txt{prop}", true).OfType<TextBox>();
+                var cmb = container.Controls.Find($"cmb{prop}", true).OfType<ComboBox>();
 
                 if (chk.Count() > 0) {
                     chk.First().Checked = (bool)properties[i].GetValue(model);
                 }
                 else if (txt.Count() > 0) {
-                    txt.First().Text = $"{properties[i].GetValue(model)}";
+                    if (properties[i].PropertyType.Equals(typeof(DateTime?)) || properties[i].PropertyType.Equals(typeof(DateTime))) {
+
+                        TextBox box = txt.First();
+                        if (box.Tag != null && box.Tag.ToString().Contains("DateFormat:")) {
+                            string format = box.Tag.ToString().Replace("DateFormat:", "").Trim();
+                            object dvalue = properties[i].GetValue(model);
+                            box.Text = dvalue==null? "" : ((DateTime)dvalue).ToString(format);
+                        } else {
+                            box.Text = $"{properties[i].GetValue(model)}";
+                        }
+
+                    } else {
+                        txt.First().Text = $"{properties[i].GetValue(model)}";
+                    }
+                } 
+                else if (cmb.Count() > 0) {
+                    cmb.First().Text = $"{properties[i].GetValue(model)}";
                 }
             }
         }
