@@ -16,9 +16,8 @@ using ViewWinform.Common;
 namespace ViewWinform.Billing {
     public partial class FoodClassForm : SingleForm {
 
-        //private BaseController bldgCntrlr = ControllersFactory.GetController(Entities.Client);
-        public BaseController Controller => ControllersFactory.GetController(Entities.FoodClass);
-        private FoodClassModel model = new FoodClassModel();
+        public IDBController Controller;
+        private FoodClassModel model;   
 
         public FoodClassModel Model {
             get {
@@ -35,7 +34,11 @@ namespace ViewWinform.Billing {
         }
         public override void UpdateModel() { var _ = Model; }
         public FoodClassForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode) return;
+            
+            Controller = DBControllersFactory.GetController(Entities.FoodClass);
+            model = new FoodClassModel();
+            ViewWinform.Utils.FormsHelper.BindViewToModel(this.panel1, ref this.model);
         }
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
@@ -46,7 +49,7 @@ namespace ViewWinform.Billing {
         }
 
         private void FoodClassFormLoad(object sender, EventArgs e) {
-            ViewWinform.Utils.FormsHelper.BindViewToModel(this.panel1,ref this.model);
+           
         }
     }
 }

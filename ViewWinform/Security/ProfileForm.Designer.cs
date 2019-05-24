@@ -164,9 +164,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(16, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(17, 13);
+            this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 41;
-            this.label1.Text = "Id";
+            this.label1.Text = "Record Id";
             // 
             // label3
             // 
@@ -196,7 +196,7 @@
             // 
             // ProfileNameLookup
             // 
-            this.ProfileNameLookup.AssociatedControl = "ProfileNameTextBox";
+            this.ProfileNameLookup.AssociatedControl = "txtProfileName";
             this.ProfileNameLookup.Controller = "Profile";
             this.ProfileNameLookup.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.ProfileNameLookup.Location = new System.Drawing.Point(342, 35);

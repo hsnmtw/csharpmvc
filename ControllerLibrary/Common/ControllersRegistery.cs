@@ -31,7 +31,7 @@ namespace ControllerLibrary.Common {
                 controllerMap[num] = new List<Type>();
             }
 
-            var type = typeof(BaseController);
+            var type = typeof(IDBController);
             var types = AppDomain.CurrentDomain.GetAssemblies()
                         .SelectMany(s => s.GetTypes())
                         .Where(p => type.IsAssignableFrom(p));

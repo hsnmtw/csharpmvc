@@ -115,7 +115,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(17, 13);
             this.label5.TabIndex = 6;
-            this.label5.Text = "Id";
+            this.label5.Text = "Record Id";
             // 
             // txtId
             // 

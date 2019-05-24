@@ -18,15 +18,19 @@ namespace ViewWinform.Security {
         const char C = 'C', R = 'R', U = 'U', D = 'D', E = '-';
         private Dictionary<string, List<string>> entitlementsByGroup = new Dictionary<string, List<string>>();
         private List<string> allEntitlements = new List<string>();
+
+        public IDBController Controller;
+        private IDBController peController;
+        private ProfileModel model;
+
         public ProfileForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode) return;
+            Controller = DBControllersFactory.GetController(Entities.Profile);
+            peController = DBControllersFactory.GetController(Entities.ProfileEntitlement);
+            model = new ProfileModel();
         }
 
-        public  BaseController Controller   => ControllersFactory.GetController(Entities.Profile);
-        private BaseController peController => ControllersFactory.GetController(Entities.ProfileEntitlement);
-        //private BaseController eController  => ControllersFactory.GetController(Entities.Entitlement);
-
-        private ProfileModel model = new ProfileModel();
+        
 
         public ProfileModel Model {
             get {
@@ -66,18 +70,22 @@ namespace ViewWinform.Security {
         }
 
         private void ProfileFormLoad(object sender, EventArgs e) {
-            Utils.FormsHelper.BindViewToModel(this,ref this.model);
+
+
+       
+
+        Utils.FormsHelper.BindViewToModel(this,ref this.model);
             this.cmbEntitelmentsGroup.Items.Clear();
             this.cmbEntitelmentsGroup.Items.Add("All");
             this.cmbEntitelmentsGroup.Text = "All";
             this.cmbEntitelmentsGroup.Items.AddRange((
                from EntitlementGroupModel eg
-               in ControllersFactory.GetController(Entities.EntitlementGroup).Read()
+               in DBControllersFactory.GetController(Entities.EntitlementGroup).Read()
                orderby eg.EntitlementGroupName
                select eg.EntitlementGroupName
             ).ToArray());
 
-            foreach(EntitlementModel em in ControllersFactory.GetController(Entities.Entitlement).Read().OrderBy(x => ((EntitlementModel)x).EntitlementName )) {
+            foreach(EntitlementModel em in DBControllersFactory.GetController(Entities.Entitlement).Read().OrderBy(x => ((EntitlementModel)x).EntitlementName )) {
                 if (this.entitlementsByGroup.ContainsKey(em.EntitlementGroupName) == false) {
                     this.entitlementsByGroup[em.EntitlementGroupName] = new List<string>();
                 }

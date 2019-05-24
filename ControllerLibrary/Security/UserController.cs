@@ -13,9 +13,9 @@ using ModelLibrary.Common;
 namespace ControllerLibrary.Security
 {
     [ForControllerAttribute(Entities.User, Enabled = true)]
-    public class UserController : AbstractController {
+    public class UserController : AbstractDBController {
 
-        public UserController() : base(EntitiesFactory.GetEntity(Entities.User)) { }
+        public UserController() : base(DBEntitiesFactory.GetEntity(Entities.User)) { }
        
         public override DBModificationResult Save(object userModel) {
             var model = (UserModel)userModel;
@@ -46,7 +46,7 @@ namespace ControllerLibrary.Security
             var model = (UserModel)userModel;
             if (model.UserPassword.StartsWith("{ENC}")) return null;
 
-            var audit = (AuditController)ControllersFactory.GetController(Entities.Audit);
+            var audit = (AuditController)DBControllersFactory.GetController(Entities.Audit);
 
             model.IsActive = true;
             var models = Read(model, new string[] { "UserName", "UserPassword", "IsActive" });
@@ -91,7 +91,7 @@ namespace ControllerLibrary.Security
             model.FailedLoginAttempts = 0;
             this.Save(model);
 
-            var audit = (AuditController)ControllersFactory.GetController(Entities.Audit);
+            var audit = (AuditController)DBControllersFactory.GetController(Entities.Audit);
             audit.registerEvent(new AuditModel() {
                 UserName = model.UserName,
                 EventComments = $"reset login counter : {model.UserName}"
@@ -106,7 +106,7 @@ namespace ControllerLibrary.Security
             model.UserPassword = password;
             model.LastChangePassword = DateTime.Now;
             Save(model);
-            var audit = (AuditController)ControllersFactory.GetController(Entities.Audit);
+            var audit = (AuditController)DBControllersFactory.GetController(Entities.Audit);
             audit.registerEvent(new AuditModel() {
                 UserName = model.UserName,
                 EventComments = "password reset for user : " + model.UserName

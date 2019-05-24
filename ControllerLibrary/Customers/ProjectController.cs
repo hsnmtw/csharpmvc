@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ControllerLibrary.Customers {
     [ForControllerAttribute(Entities.Project, Enabled = true)]
-    public class ProjectController : AbstractController {
-        public ProjectController() : base(EntitiesFactory.GetEntity(Entities.Project)) {}
+    public class ProjectController : AbstractDBController {
+        public ProjectController() : base(DBEntitiesFactory.GetEntity(Entities.Project)) {}
     }
 }

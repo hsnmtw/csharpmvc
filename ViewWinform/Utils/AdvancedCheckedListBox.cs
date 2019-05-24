@@ -20,7 +20,7 @@ namespace ViewWinform.Utils
         public ListViewItemCollection Items { get { return this.listView1.Items; } }
         public AdvancedCheckedListBox()
         {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode) return;
         }
 
         public void setDataSource(DataTable dataTable)

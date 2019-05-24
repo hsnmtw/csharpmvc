@@ -20,6 +20,7 @@ namespace ModelLibrary.Common {
         , EntitlementGroup
         , FoodClass
         , FoodType
+        , Identification
         , IdentificationType
         , Country           
         , Profile               

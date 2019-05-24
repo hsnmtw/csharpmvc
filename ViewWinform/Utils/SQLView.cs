@@ -15,7 +15,7 @@ namespace ViewWinform.Utils
     {
         public SQLView()
         {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode) return;
         }
 
         private void Button1Click(object sender, EventArgs e)

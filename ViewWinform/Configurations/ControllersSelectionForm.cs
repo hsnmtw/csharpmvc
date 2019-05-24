@@ -14,7 +14,7 @@ namespace ViewWinform.Configurations {
     public partial class ControllersSelectionForm : Form {
 
         public ControllersSelectionForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode) return;
         }
 
         private void ControllersSelectionFormLoad(object sender, EventArgs e) {
@@ -25,7 +25,7 @@ namespace ViewWinform.Configurations {
             foreach (Entities num in typeof(Entities).GetEnumValues()) {
                 foreach (Type type in ControllersRegistery.Instance[num]) {
                     var forca = (ForControllerAttribute)type.GetCustomAttributes(true).First();
-                    bool isEnabled = type.Equals(ControllersFactory.GetController(num).GetType());
+                    bool isEnabled = type.Equals(DBControllersFactory.GetController(num).GetType());
                     listBox1.Items.Add(string.Format(WIDTHS, sn++,num,type,isEnabled? "✓" : ""));
                 }
             }
@@ -37,7 +37,7 @@ namespace ViewWinform.Configurations {
                 var row = this.listBox1.SelectedItem.ToString();
                 Entities num;
                 Enum.TryParse( row.Substring(4,25).Trim(), out num);
-                ControllersFactory.SetController(num, ControllersFactory.GetController( row.Substring(31,70).Trim() ));
+                DBControllersFactory.SetController(num, DBControllersFactory.GetController( row.Substring(31,70).Trim() ));
             }
             ControllersSelectionFormLoad(sender, e);
         }

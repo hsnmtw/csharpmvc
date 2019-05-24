@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ModelLibrary.Common {
-    public abstract class AbstractEntity : BaseEntity {
+    public abstract class AbstractDBEntity : IDBEntity {
 
         private const string EQ = "=";
         private const string LIKE = "LIKE";

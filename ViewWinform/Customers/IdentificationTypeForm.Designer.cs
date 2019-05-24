@@ -35,11 +35,15 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtIdentificationType = new System.Windows.Forms.TextBox();
+            this.txtIdTypeCode = new System.Windows.Forms.TextBox();
             this.lookUpButtonIdentificationType = new ViewWinform.Common.LookUpButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtIdTypeArabic = new System.Windows.Forms.TextBox();
+            this.txtIdTypeEnglish = new System.Windows.Forms.TextBox();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,7 +52,7 @@
             this.btnRemove.Location = new System.Drawing.Point(71, 267);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 23);
-            this.btnRemove.TabIndex = 11;
+            this.btnRemove.TabIndex = 12;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
             // 
@@ -57,7 +61,7 @@
             this.btnSave.Location = new System.Drawing.Point(179, 267);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 9;
+            this.btnSave.TabIndex = 10;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             // 
@@ -66,7 +70,7 @@
             this.btnNew.Location = new System.Drawing.Point(287, 267);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 23);
-            this.btnNew.TabIndex = 10;
+            this.btnNew.TabIndex = 11;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = true;
             // 
@@ -143,35 +147,37 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(24, 46);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(17, 13);
+            this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 42;
-            this.label1.Text = "Id";
+            this.label1.Text = "Record Id";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(24, 76);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 13);
+            this.label3.Size = new System.Drawing.Size(72, 13);
             this.label3.TabIndex = 43;
-            this.label3.Text = "Identification Type";
+            this.label3.Text = "Id Type Code";
             // 
-            // txtIdentificationType
+            // txtIdTypeCode
             // 
-            this.txtIdentificationType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtIdentificationType.Location = new System.Drawing.Point(151, 73);
-            this.txtIdentificationType.Name = "txtIdentificationType";
-            this.txtIdentificationType.Size = new System.Drawing.Size(154, 20);
-            this.txtIdentificationType.TabIndex = 1;
+            this.txtIdTypeCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtIdTypeCode.Location = new System.Drawing.Point(152, 76);
+            this.txtIdTypeCode.Name = "txtIdTypeCode";
+            this.txtIdTypeCode.Size = new System.Drawing.Size(52, 20);
+            this.txtIdTypeCode.TabIndex = 1;
             // 
             // lookUpButtonIdentificationType
             // 
-            this.lookUpButtonIdentificationType.AssociatedControl = "txtIdentificationType";
+            this.lookUpButtonIdentificationType.AssociatedControl = "txtIdTypeCode";
             this.lookUpButtonIdentificationType.Controller = "IdentificationType";
             this.lookUpButtonIdentificationType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonIdentificationType.Location = new System.Drawing.Point(306, 72);
+            this.lookUpButtonIdentificationType.Location = new System.Drawing.Point(205, 75);
             this.lookUpButtonIdentificationType.Name = "lookUpButtonIdentificationType";
-            this.lookUpButtonIdentificationType.ShowFieldsInLookUp.Add("IdentificationType");
+            this.lookUpButtonIdentificationType.ShowFieldsInLookUp.Add("IdTypeCode");
+            this.lookUpButtonIdentificationType.ShowFieldsInLookUp.Add("IdTypeEnglish");
+            this.lookUpButtonIdentificationType.ShowFieldsInLookUp.Add("IdTypeArabic");
             this.lookUpButtonIdentificationType.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonIdentificationType.TabIndex = 2;
             this.lookUpButtonIdentificationType.TabStop = false;
@@ -179,13 +185,17 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtIdTypeArabic);
+            this.panel1.Controls.Add(this.txtIdTypeEnglish);
             this.panel1.Controls.Add(this.chkReadOnly);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtId);
             this.panel1.Controls.Add(this.lookUpButtonIdentificationType);
-            this.panel1.Controls.Add(this.txtIdentificationType);
+            this.panel1.Controls.Add(this.txtIdTypeCode);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.txtCreatedBy);
             this.panel1.Controls.Add(this.btnRemove);
@@ -201,6 +211,20 @@
             this.panel1.Size = new System.Drawing.Size(392, 311);
             this.panel1.TabIndex = 0;
             // 
+            // txtIdTypeArabic
+            // 
+            this.txtIdTypeArabic.Location = new System.Drawing.Point(152, 126);
+            this.txtIdTypeArabic.Name = "txtIdTypeArabic";
+            this.txtIdTypeArabic.Size = new System.Drawing.Size(210, 20);
+            this.txtIdTypeArabic.TabIndex = 4;
+            // 
+            // txtIdTypeEnglish
+            // 
+            this.txtIdTypeEnglish.Location = new System.Drawing.Point(152, 100);
+            this.txtIdTypeEnglish.Name = "txtIdTypeEnglish";
+            this.txtIdTypeEnglish.Size = new System.Drawing.Size(210, 20);
+            this.txtIdTypeEnglish.TabIndex = 3;
+            // 
             // chkReadOnly
             // 
             this.chkReadOnly.AutoSize = true;
@@ -208,7 +232,7 @@
             this.chkReadOnly.Location = new System.Drawing.Point(152, 225);
             this.chkReadOnly.Name = "chkReadOnly";
             this.chkReadOnly.Size = new System.Drawing.Size(15, 14);
-            this.chkReadOnly.TabIndex = 46;
+            this.chkReadOnly.TabIndex = 9;
             this.chkReadOnly.UseVisualStyleBackColor = true;
             // 
             // label10
@@ -219,6 +243,24 @@
             this.label10.Size = new System.Drawing.Size(57, 13);
             this.label10.TabIndex = 47;
             this.label10.Text = "Read Only";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(24, 129);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(77, 13);
+            this.label4.TabIndex = 43;
+            this.label4.Text = "Id Type Arabic";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(24, 103);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(80, 13);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "Id Type English";
             // 
             // IdentificationTypeForm
             // 
@@ -248,10 +290,14 @@
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtIdentificationType;
+        private System.Windows.Forms.TextBox txtIdTypeCode;
         private Common.LookUpButton lookUpButtonIdentificationType;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtIdTypeArabic;
+        private System.Windows.Forms.TextBox txtIdTypeEnglish;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label2;
     }
 }

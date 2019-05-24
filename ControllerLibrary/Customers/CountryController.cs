@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ControllerLibrary.Customers {
     [ForControllerAttribute(Entities.Country, Enabled = true)]
-    public class CountryController : AbstractController {
-        public CountryController() : base(EntitiesFactory.GetEntity(Entities.Country)) {}
+    public class CountryController : AbstractDBController {
+        public CountryController() : base(DBEntitiesFactory.GetEntity(Entities.Country)) {}
     }
 }

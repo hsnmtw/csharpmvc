@@ -12,7 +12,7 @@ using ModelLibrary.Common;
 namespace ControllerLibrary.Housing
 {
     [ForControllerAttribute(Entities.Compound, Enabled = true)]
-    public class CompoundController : AbstractController {
-        public CompoundController() : base(EntitiesFactory.GetEntity(Entities.Compound)) { }
+    public class CompoundController : AbstractDBController {
+        public CompoundController() : base(DBEntitiesFactory.GetEntity(Entities.Compound)) { }
     }
 }

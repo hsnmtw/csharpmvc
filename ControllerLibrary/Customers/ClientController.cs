@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ControllerLibrary.Customers {
     [ForControllerAttribute(Entities.Client, Enabled = true)]
-    public class ClientController : AbstractController {
-        public ClientController() : base(EntitiesFactory.GetEntity(Entities.Client)) {}
+    public class ClientController : AbstractDBController {
+        public ClientController() : base(DBEntitiesFactory.GetEntity(Entities.Client)) {}
     }
 }

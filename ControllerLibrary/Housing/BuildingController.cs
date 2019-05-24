@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ControllerLibrary.Housing {
     [ForControllerAttribute(Entities.Building, Enabled = true)]
-    public class BuildingController : AbstractController {
-        public BuildingController() : base(EntitiesFactory.GetEntity(Entities.Building)) { }
+    public class BuildingController : AbstractDBController {
+        public BuildingController() : base(DBEntitiesFactory.GetEntity(Entities.Building)) { }
     }
 }

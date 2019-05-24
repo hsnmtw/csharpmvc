@@ -15,11 +15,11 @@ using ModelLibrary.Common;
 namespace ViewWinform.Security.Users {
     public partial class UserPasswordResetView : Form {
         public UserPasswordResetView() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode) return;
             Utils.FormsHelper.BindViewToModel(this, ref this.model);
         }
 
-        public UserController Controller = (UserController)ControllersFactory.GetController(Entities.User);
+        public UserController Controller = (UserController)DBControllersFactory.GetController(Entities.User);
         private UserModel model = new UserModel();
 
         public UserModel Model {

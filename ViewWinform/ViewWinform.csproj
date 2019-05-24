@@ -71,6 +71,12 @@
       <DependentUpon>BillingCategories.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\BaseView.cs" />
+    <Compile Include="Tools\CalendarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\CalendarForm.Designer.cs">
+      <DependentUpon>CalendarForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Common\CommonView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +131,12 @@
     <Compile Include="Configurations\DBMaintenance.Designer.cs">
       <DependentUpon>DBMaintenance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Customers\IdentificationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customers\IdentificationForm.Designer.cs">
+      <DependentUpon>IdentificationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customers\ClientForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,11 +155,11 @@
     <Compile Include="Customers\ClientTypeForm.Designer.cs">
       <DependentUpon>ClientTypeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Customers\NationalityForm.cs">
+    <Compile Include="Customers\CountryForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Customers\NationalityForm.Designer.cs">
-      <DependentUpon>NationalityForm.cs</DependentUpon>
+    <Compile Include="Customers\CountryForm.Designer.cs">
+      <DependentUpon>CountryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Customers\ProjectForm.cs">
       <SubType>Form</SubType>
@@ -252,6 +264,7 @@
     <Compile Include="Utils\CompactAndRepairForm.Designer.cs">
       <DependentUpon>CompactAndRepairForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\ConfigLoader.cs" />
     <Compile Include="Utils\CustomDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -281,6 +294,9 @@
     <EmbeddedResource Include="Billing\BillingCategories.resx">
       <DependentUpon>BillingCategories.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tools\CalendarForm.resx">
+      <DependentUpon>CalendarForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Common\CommonView.resx">
       <DependentUpon>CommonView.cs</DependentUpon>
     </EmbeddedResource>
@@ -305,6 +321,9 @@
     <EmbeddedResource Include="Configurations\DBMaintenance.resx">
       <DependentUpon>DBMaintenance.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Customers\IdentificationForm.resx">
+      <DependentUpon>IdentificationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Customers\ClientForm.resx">
       <DependentUpon>ClientForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -314,8 +333,8 @@
     <EmbeddedResource Include="Customers\ClientTypeForm.resx">
       <DependentUpon>ClientTypeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Customers\NationalityForm.resx">
-      <DependentUpon>NationalityForm.cs</DependentUpon>
+    <EmbeddedResource Include="Customers\CountryForm.resx">
+      <DependentUpon>CountryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Customers\ProjectForm.resx">
       <DependentUpon>ProjectForm.cs</DependentUpon>

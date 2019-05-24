@@ -16,9 +16,8 @@ using ViewWinform.Common;
 namespace ViewWinform.Customers {
     public partial class ClientForm : SingleForm {
 
-        //private BaseController bldgCntrlr = ControllersFactory.GetController(Entities.Client);
-        public BaseController Controller => ControllersFactory.GetController(Entities.Client);
-        private ClientModel model = new ClientModel();
+        public IDBController Controller;
+        private ClientModel model;
 
         public ClientModel Model {
             get {
@@ -35,11 +34,15 @@ namespace ViewWinform.Customers {
         }
         public override void UpdateModel() { var _ = Model; }
         public ClientForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode) return;
+            
+            Controller = DBControllersFactory.GetController(Entities.Client);
+            model = new ClientModel();
+            ViewWinform.Utils.FormsHelper.BindViewToModel(this, ref this.model);
         }
 
         private void ClientTypeFormLoad(object sender, EventArgs e) {
-            ViewWinform.Utils.FormsHelper.BindViewToModel(this,ref this.model);
+            
         }
 
         private void LookUpButtonShortNameLookUpSelected(object sender, EventArgs e) {

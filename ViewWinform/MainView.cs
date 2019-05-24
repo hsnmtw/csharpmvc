@@ -39,7 +39,7 @@ namespace ViewWinform
 
         private MainView()
         {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode) return;
             foreach (ToolStripMenuItem mi in this.menuStrip1.Items)
             {
                 if (mi.Text.Contains("File") || mi.Text.Contains("Window") || mi.Text.Contains("Developer")) continue;
@@ -67,11 +67,11 @@ namespace ViewWinform
 
 
             tssLabelStatus.Text = "Loading Entities"; 
-            EntitiesFactory.InitEntitiesMap();
+            DBEntitiesFactory.InitEntitiesMap();
             tsProgressBar.Value += 25;
 
             tssLabelStatus.Text = "Loading Controllers";
-            ControllersFactory.InitControllersMap();
+            DBControllersFactory.InitControllersMap();
             tsProgressBar.Value += 25;
 
 
@@ -111,7 +111,7 @@ namespace ViewWinform
         private void LogOutToolStripMenuItemClick(object sender, EventArgs e)
         {
             if(Session.Instance.CurrentUser != null) {
-                var audit = (AuditController)ControllersFactory.GetController(Entities.Audit);
+                var audit = (AuditController)DBControllersFactory.GetController(Entities.Audit);
                 audit.registerEvent(new AuditModel() {
                     UserName = Session.Instance.CurrentUser.UserName,
                     EventComments = "Logout ..."
@@ -130,7 +130,7 @@ namespace ViewWinform
             var loginview = new UsersLoginView();
             if (loginview.ShowDialog() == DialogResult.OK) {
                 Session.Instance.CurrentUser = loginview.Model;
-                var pec = (ProfileEntitlementsController)ControllersFactory.GetController(Entities.ProfileEntitlement);
+                var pec = (ProfileEntitlementsController)DBControllersFactory.GetController(Entities.ProfileEntitlement);
                 var entitlements = pec.Read(new ProfileEntitlementsModel() {
                     ProfileName = loginview.Model.ProfileName,
                     AllowRead = true
@@ -297,6 +297,10 @@ namespace ViewWinform
 
         private void EntitlementGroupsToolStripMenuItem_Click(object sender, EventArgs e) {
             new EntitlementGroupForm() { MdiParent = this }.Show();
+        }
+
+        private void IdentificationToolStripMenuItem_Click(object sender, EventArgs e) {
+            new IdentificationForm() { MdiParent = this }.Show();
         }
     }
 }

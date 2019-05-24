@@ -16,11 +16,11 @@ using ViewWinform.Common;
 namespace ViewWinform.Security.Users {
     public partial class UserForm : SingleForm {
         public UserForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode) return;
         }
 
 
-        private UserController Controller => (UserController)ControllersFactory.GetController(Entities.User);
+        private UserController Controller => (UserController)DBControllersFactory.GetController(Entities.User);
         private UserModel model = new UserModel();
         private List<object> profileEntitlements;
 
@@ -48,7 +48,7 @@ namespace ViewWinform.Security.Users {
             Utils.FormsHelper.BindViewToModel(this,ref this.model);
             
             this.Model = new UserModel();
-            this.profileEntitlements = ControllersFactory.GetController(Entities.ProfileEntitlement).Read();
+            this.profileEntitlements = DBControllersFactory.GetController(Entities.ProfileEntitlement).Read();
         }
 
         private void Button1Click(object sender, EventArgs e) {

@@ -12,10 +12,12 @@ using System.Windows.Forms;
 namespace ViewWinform.Common {
     public partial class LookUpForm : Form {
 
+        private Dictionary<string, string> values;
         private int[] columnsWidths;
         
         public LookUpForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode) return;
+            this.values = new Dictionary<string, string>();
         }
 
         public string SearchText {
@@ -24,12 +26,13 @@ namespace ViewWinform.Common {
             }
         }
 
-        private BaseController Controller;
+        private IDBController Controller;
         private string[] shownColumns;
 
         
-        public LookUpForm(BaseController controller,params string[]shownColumns) {
-            InitializeComponent();
+        public LookUpForm(IDBController controller,params string[]shownColumns) {
+            InitializeComponent(); if (DesignMode) return;
+            this.values = new Dictionary<string, string>();
             this.shownColumns = shownColumns;
             this.Controller = controller;
         }
@@ -43,6 +46,8 @@ namespace ViewWinform.Common {
             }
         }
 
+        public string SelectedDescription => this.listBox1.SelectedIndex < 0? null : values[SelectedValue];
+
         private void LookUpLoad(object sender, EventArgs e) {
             //this.lblSearch.Text = "";
             Requery();
@@ -50,33 +55,34 @@ namespace ViewWinform.Common {
             listBox1.Focus();
         }
 
+        private bool columnsInitialized { get; set; }
+
         public void Requery() {
             object model = this.Controller.CreateNewModel();
             model.GetType().GetProperty(shownColumns[0]).SetValue(model, $"%{lblSearch.Text}%");
             var source = this.Controller.GetTable(model,new string[] {shownColumns[0]},true);
             
-
-            
-
             if (shownColumns == null || shownColumns.Length == 0) {
                 shownColumns = (from DataColumn column in source.Columns select column.ColumnName).ToArray();
             }
-
-
 
             DataView view = new DataView(source);
             view.Sort = $"{shownColumns[0]} ASC";
 
 
             var table = view.ToTable(false, shownColumns);
-            this.columnsWidths = new int[shownColumns.Length];
-            for (int j = 0; j < table.Columns.Count; j++) {
-                this.columnsWidths[j] = Math.Max(this.columnsWidths[j], table.Columns[j].ColumnName.Length);
-            }
-            for (int i = 0; i < table.Rows.Count; i++) {
-                for(int j=0;j< table.Columns.Count; j++) {
-                    this.columnsWidths[j] = Math.Max(this.columnsWidths[j], table.Rows[i][j].ToString().Length); 
+            if (!columnsInitialized) {
+                this.columnsWidths = new int[shownColumns.Length];
+                for (int j = 0; j < table.Columns.Count; j++) {
+                    this.columnsWidths[j] = Math.Max(this.columnsWidths[j], table.Columns[j].ColumnName.Length);
                 }
+                for (int i = 0; i < table.Rows.Count; i++) {
+                    for (int j = 0; j < table.Columns.Count; j++) {
+                        this.columnsWidths[j] = Math.Max(this.columnsWidths[j], table.Rows[i][j].ToString().Length);
+                    }
+                    
+                }
+                columnsInitialized = true;
             }
 
 
@@ -92,6 +98,7 @@ namespace ViewWinform.Common {
                 for (int j = 0; j < table.Columns.Count; j++) {
                     sb.Append(string.Format(" {0,-"+ columnsWidths[j] +"}  ", table.Rows[i][j]));
                 }
+                values[$"{table.Rows[i][0]}"] = $"{table.Rows[i][table.Columns.Count > 1 ? 1 : 0]}";
                 this.listBox1.Items.Add(sb);
             }
             if (this.listBox1.Items.Count > 0) this.listBox1.SelectedIndex = 0;

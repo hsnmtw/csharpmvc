@@ -12,8 +12,8 @@ using System.Windows.Forms;
 namespace ModelLibrary.Utils.TableDesigner {
     public partial class TableDesignerView : Form {
         public TableDesignerView() {
-            InitializeComponent();
-            //if (DesignMode) return;
+            InitializeComponent(); if (DesignMode) return;
+            //
         }
 
 
@@ -85,7 +85,7 @@ namespace ModelLibrary.Utils.TableDesigner {
 
 
         private void TableDesignerViewLoad(object sender, EventArgs e) {
-            //if (DesignMode) return;
+            //
             var tables =
                 from row
                 in ModelLibrary.Common.DBConnectionManager.Instance.SchemaTables.Rows.Cast<DataRow>()

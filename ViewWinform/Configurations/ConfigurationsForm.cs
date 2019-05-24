@@ -15,7 +15,7 @@ namespace ViewWinform.Configurations {
 
         private ConfigurationsController controller;
         public ConfigurationsForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode) return;
             this.controller = new ConfigurationsController();
         }
 

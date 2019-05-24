@@ -9,37 +9,37 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ControllerLibrary.Common {
-    public static class ControllersFactory {
-        private static Dictionary<Entities, BaseController> ControllersMap = null;
+    public static class DBControllersFactory {
+        private static Dictionary<Entities, IDBController> ControllersMap = null;
 
         public static void InitControllersMap(){
-		   ControllersMap = new Dictionary<Entities, BaseController>() {
+		   ControllersMap = new Dictionary<Entities, IDBController>() {
            };
 
            foreach(Entities num in typeof(Entities).GetEnumValues()) {
                 foreach(var type in ControllersRegistery.Instance[num]) {
                     ForControllerAttribute forca = (ForControllerAttribute)type.GetCustomAttributes(true).First();
                     if (forca.Enabled) {
-                        ControllersFactory.ControllersMap[num] = (BaseController)Activator.CreateInstance(type);
+                        DBControllersFactory.ControllersMap[num] = (IDBController)Activator.CreateInstance(type);
                     }
                 }
             }
         }
 
-        public static BaseController GetController(string typeName) {
-            return (BaseController)Activator.CreateInstance(Type.GetType(typeName));
+        public static IDBController GetController(string typeName) {
+            return (IDBController)Activator.CreateInstance(Type.GetType(typeName));
         }
 
-        public static Dictionary<Entities, BaseController> GetControllersMap() {
+        public static Dictionary<Entities, IDBController> GetControllersMap() {
             return ControllersMap;
 		}
 
-        public static BaseController GetController(Entities ce){
+        public static IDBController GetController(Entities ce){
             if (ControllersMap == null) InitControllersMap();
             return ControllersMap[ce];
         }
 
-        public static void SetController(Entities ce,BaseController bc) {
+        public static void SetController(Entities ce,IDBController bc) {
             if (ControllersMap == null) InitControllersMap();
             ControllersMap[ce] = bc;
         }

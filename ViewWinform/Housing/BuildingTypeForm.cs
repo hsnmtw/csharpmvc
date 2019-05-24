@@ -16,9 +16,9 @@ using ViewWinform.Common;
 namespace ViewWinform.Housing.BuildingTypes {
     public partial class BuildingTypeForm : SingleForm {
 
-        private BaseController bldgCntrlr = ControllersFactory.GetController(Entities.Building);
-        public BaseController Controller => ControllersFactory.GetController(Entities.BuildingType);
-        private BuildingTypeModel model = new BuildingTypeModel();
+        private IDBController bldgCntrlr;
+        public IDBController Controller; 
+        private BuildingTypeModel model;  
 
         public BuildingTypeModel Model {
             get {
@@ -38,7 +38,11 @@ namespace ViewWinform.Housing.BuildingTypes {
         }
         public override void UpdateModel() { var _ = Model; }
         public BuildingTypeForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode) return;
+            bldgCntrlr = DBControllersFactory.GetController(Entities.Building);
+            Controller = DBControllersFactory.GetController(Entities.BuildingType);
+            model = new BuildingTypeModel();
+            ViewWinform.Utils.FormsHelper.BindViewToModel(this.panel1, ref this.model);
         }
 
 
@@ -50,7 +54,7 @@ namespace ViewWinform.Housing.BuildingTypes {
         }
 
         private void BuildingTypeFormLoad(object sender, EventArgs e) {
-            ViewWinform.Utils.FormsHelper.BindViewToModel(this.panel1,ref this.model);
+
         }
     }
 }

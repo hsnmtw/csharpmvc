@@ -15,13 +15,9 @@ using ViewWinform.Common;
 
 namespace ViewWinform.Security {
     public partial class EntitlementForm : SingleForm {
-        public EntitlementForm() {
-            InitializeComponent();
-        }
 
-
-        public EntitlementController Controller => (EntitlementController)ControllersFactory.GetController(Entities.Entitlement);
-        private EntitlementModel model = new EntitlementModel();
+        public EntitlementController Controller;
+        private EntitlementModel model;
 
         public EntitlementModel Model {
             get {
@@ -39,10 +35,18 @@ namespace ViewWinform.Security {
         public override void UpdateModel() { var _ = Model; }
 
 
+        public EntitlementForm() {
+            InitializeComponent(); if (DesignMode) return;
+            Controller = (EntitlementController)DBControllersFactory.GetController(Entities.Entitlement);
+            model = new EntitlementModel();
+            Utils.FormsHelper.BindViewToModel(this, ref this.model);
+        }
+
+
+
+
         private void EntitlementFormLoad(object sender, EventArgs e) {
-            Utils.FormsHelper.BindViewToModel(this,ref this.model);
-            
-            this.Model = new EntitlementModel();
+
         }
 
         private void EntitlementNameLookupLookUpSelected(object sender, EventArgs e) {

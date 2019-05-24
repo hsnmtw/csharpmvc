@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ControllerLibrary.Billing {
     [ForControllerAttribute(Entities.FoodType, Enabled = true)]
-    public class FoodTypeController : AbstractController {
-        public FoodTypeController() : base(EntitiesFactory.GetEntity(Entities.FoodType)) {}
+    public class FoodTypeController : AbstractDBController {
+        public FoodTypeController() : base(DBEntitiesFactory.GetEntity(Entities.FoodType)) {}
     }
 }

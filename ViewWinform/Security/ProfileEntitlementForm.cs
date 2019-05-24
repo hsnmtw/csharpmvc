@@ -15,13 +15,16 @@ using ViewWinform.Common;
 
 namespace ViewWinform.Security {
     public partial class ProfileEntitlementForm : SingleForm {
+
+        public IDBController Controller;
+        private ProfileEntitlementsModel model;
+
         public ProfileEntitlementForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode) return;
+            Controller = DBControllersFactory.GetController(Entities.ProfileEntitlement);
+            model = new ProfileEntitlementsModel();
+            Utils.FormsHelper.BindViewToModel(this, ref this.model);
         }
-
-
-        public ProfileEntitlementsController Controller => (ProfileEntitlementsController)ControllersFactory.GetController(Entities.ProfileEntitlement);
-        private ProfileEntitlementsModel model = new ProfileEntitlementsModel();
 
         public ProfileEntitlementsModel Model {
             get {
@@ -39,7 +42,7 @@ namespace ViewWinform.Security {
         public override void UpdateModel() { var _ = Model; }
 
         private void EntitlementFormLoad(object sender, EventArgs e) {
-            Utils.FormsHelper.BindViewToModel(this,ref this.model);
+
         }
 
         private void BtnSave_Click(object sender, EventArgs e) {

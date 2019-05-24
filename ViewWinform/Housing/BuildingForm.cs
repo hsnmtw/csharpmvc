@@ -16,9 +16,9 @@ using ViewWinform.Common;
 namespace ViewWinform.Housing.Buildings {
     public partial class BuildingForm : SingleForm {
 
-        private BaseController roomCntrlr = ControllersFactory.GetController(Entities.Room);
-        public BaseController Controller => ControllersFactory.GetController(Entities.Building);
-        private BuildingModel model = new BuildingModel();
+        private IDBController roomCntrlr;
+        public IDBController Controller;
+        private BuildingModel model;
 
         public BuildingModel Model {
             get {
@@ -38,7 +38,11 @@ namespace ViewWinform.Housing.Buildings {
         public override void UpdateModel() { var _ = Model; }
 
         public BuildingForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode) return;
+            roomCntrlr = DBControllersFactory.GetController(Entities.Room);
+            Controller = DBControllersFactory.GetController(Entities.Building);
+            model = new BuildingModel();
+            ViewWinform.Utils.FormsHelper.BindViewToModel(this.panel1, ref this.model);
         }
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
@@ -49,7 +53,7 @@ namespace ViewWinform.Housing.Buildings {
         }
 
         private void BuildingFormLoad(object sender, EventArgs e) {
-            ViewWinform.Utils.FormsHelper.BindViewToModel(this.panel1,ref this.model);
+
         }
     }
 }

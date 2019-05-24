@@ -29,11 +29,7 @@ namespace ViewWinform.Security {
         public virtual void UpdateModel() { var _ = Model; }
 
         public AuditView() {
-            InitializeComponent();
-            this.adaptor = new MVCAdaptor<AuditController>();
-            this.adaptor.Requery();
-            this.TotalRecords = adaptor.Count;
-            this.SetRecordPosition(1);
+            InitializeComponent(); if (DesignMode) return;
         }
 
         private void AuditViewOnRecordPositionChanged(int index) {
@@ -49,7 +45,10 @@ namespace ViewWinform.Security {
         }
 
         private void AuditView_Load(object sender, EventArgs e) {
-
+            this.adaptor = new MVCAdaptor<AuditController>();
+            this.adaptor.Requery();
+            this.TotalRecords = adaptor.Count;
+            this.SetRecordPosition(1);
         }
     }
 }

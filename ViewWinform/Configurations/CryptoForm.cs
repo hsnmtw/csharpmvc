@@ -34,7 +34,7 @@ namespace ViewWinform.Configurations {
         }
 
         public CryptoForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode) return;
             this.controller = new CryptoController();
         }
 

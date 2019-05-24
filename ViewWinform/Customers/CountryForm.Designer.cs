@@ -108,7 +108,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(17, 13);
             this.label1.TabIndex = 12;
-            this.label1.Text = "Id";
+            this.label1.Text = "Record Id";
             // 
             // btnNew
             // 

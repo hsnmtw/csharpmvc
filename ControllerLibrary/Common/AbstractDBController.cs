@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using ModelLibrary.Common;
 
 namespace ControllerLibrary.Common {
-    public class AbstractController : BaseController {
-        private BaseEntity BaseEntity { get; set; }
-        private AbstractController() { }
-        public AbstractController(BaseEntity baseEntity) {
+    public class AbstractDBController : IDBController {
+        private IDBEntity BaseEntity { get; set; }
+        private AbstractDBController() { }
+        public AbstractDBController(IDBEntity baseEntity) {
             if (baseEntity == null) throw new ArgumentNullException("baseEntity");
             this.BaseEntity = baseEntity;
         }

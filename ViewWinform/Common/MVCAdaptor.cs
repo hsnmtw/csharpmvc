@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Threading;
 
 namespace ViewWinform.Common {
-    class MVCAdaptor<C> where C : AbstractController {
+    class MVCAdaptor<C> where C : AbstractDBController {
         public C Controller { get; private set; }
         private List<object> recordset { get; set; }
 

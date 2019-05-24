@@ -7,7 +7,7 @@ using ModelLibrary.Common;
 
 namespace ModelLibrary.Security
 {
-    public class EntitlementEntity : AbstractEntity{
+    public class EntitlementEntity : AbstractDBEntity{
 
         public override MetaData MetaData => new MetaData() {
             GetModelType = typeof(EntitlementModel)
@@ -20,8 +20,8 @@ namespace ModelLibrary.Security
         public override DBModificationResult Delete(object model) {
             var em = (EntitlementModel)model;
             int id = em.Id;
-            var pec = EntitiesFactory.GetEntity(Entities.ProfileEntitlement);
-            var pc = EntitiesFactory.GetEntity(Entities.Profile);
+            var pec = DBEntitiesFactory.GetEntity(Entities.ProfileEntitlement);
+            var pc = DBEntitiesFactory.GetEntity(Entities.Profile);
             if (id != 0) {
                 foreach (ProfileModel p in pc.Read()) {
                     pec.Delete(new ProfileEntitlementsModel() {
@@ -36,8 +36,8 @@ namespace ModelLibrary.Security
         public override DBModificationResult Save(object model) {
             var em = (EntitlementModel)model;
             int id = em.Id;
-            var pec = EntitiesFactory.GetEntity(Entities.ProfileEntitlement);
-            var pc = EntitiesFactory.GetEntity(Entities.Profile);
+            var pec = DBEntitiesFactory.GetEntity(Entities.ProfileEntitlement);
+            var pc = DBEntitiesFactory.GetEntity(Entities.Profile);
             if (id != 0) {
                 string entitlement = ((EntitlementModel)Read(new EntitlementModel() { Id=id },new string[] { "Id" }).First()).EntitlementName;
                 foreach(ProfileModel p in pc.Read()) {

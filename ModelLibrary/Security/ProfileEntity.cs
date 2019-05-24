@@ -8,7 +8,7 @@ using ModelLibrary.Common;
 
 namespace ModelLibrary.Security
 {
-    public class ProfileEntity : AbstractEntity {
+    public class ProfileEntity : AbstractDBEntity {
 
         public override MetaData MetaData => new MetaData() {
             GetModelType = typeof(ProfileModel)
@@ -21,8 +21,8 @@ namespace ModelLibrary.Security
         public override DBModificationResult Save(object model) {
             DBModificationResult result = base.Save(model);
             var profile = ((ProfileModel)model);
-            var pec = EntitiesFactory.GetEntity(Entities.ProfileEntitlement);
-            var ec = EntitiesFactory.GetEntity(Entities.Entitlement);
+            var pec = DBEntitiesFactory.GetEntity(Entities.ProfileEntitlement);
+            var ec = DBEntitiesFactory.GetEntity(Entities.Entitlement);
             var es = ec.Read().OfType<EntitlementModel>();
             foreach (var e in es) {
                 pec.Save(new ProfileEntitlementsModel() {
@@ -38,7 +38,7 @@ namespace ModelLibrary.Security
 
         public override DBModificationResult Delete(object model) {
             var profilename = ((ProfileModel)model).ProfileName;
-            var pec = EntitiesFactory.GetEntity(Entities.ProfileEntitlement);
+            var pec = DBEntitiesFactory.GetEntity(Entities.ProfileEntitlement);
             var pes = pec.Read(new ProfileEntitlementsModel() { ProfileName = profilename },new string[] { "ProfileName" });
             foreach(var pe in pes) {
                 pec.Delete(pe);

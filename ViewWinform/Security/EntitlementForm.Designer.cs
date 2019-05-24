@@ -153,9 +153,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(30, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(17, 13);
+            this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 41;
-            this.label1.Text = "Id";
+            this.label1.Text = "Record Id";
             // 
             // txtEntitlementName
             // 
@@ -164,7 +164,6 @@
             this.txtEntitlementName.Name = "txtEntitlementName";
             this.txtEntitlementName.Size = new System.Drawing.Size(192, 20);
             this.txtEntitlementName.TabIndex = 1;
-            this.txtEntitlementName.TabStop = false;
             // 
             // EntitlementNameLookup
             // 
@@ -207,7 +206,6 @@
             this.txtEntitlementGroupName.ReadOnly = true;
             this.txtEntitlementGroupName.Size = new System.Drawing.Size(192, 20);
             this.txtEntitlementGroupName.TabIndex = 3;
-            this.txtEntitlementGroupName.TabStop = false;
             // 
             // EntitlementGroupNameLookup
             // 

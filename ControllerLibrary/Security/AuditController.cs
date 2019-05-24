@@ -12,9 +12,9 @@ using System.Threading.Tasks;
 
 namespace ControllerLibrary.Security {
     [ForControllerAttribute(Entities.Audit, Enabled = true)]
-    public class AuditController : AbstractController {
+    public class AuditController : AbstractDBController {
 
-        public AuditController() : base(EntitiesFactory.GetEntity(Entities.Audit)) { }
+        public AuditController() : base(DBEntitiesFactory.GetEntity(Entities.Audit)) { }
 
         public void registerEvent(AuditModel model) {
             model.UpdatedBy = "SYSTEM";

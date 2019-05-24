@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ControllerLibrary.Common {
-    public interface BaseController {
+    public interface IDBController : IController {
         MetaData GetMetaData();
         DataTable GetTable();
         DataTable GetTable(object model, string[] whereFields,bool like=false);

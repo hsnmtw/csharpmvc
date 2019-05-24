@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ControllerLibrary.Billing {
     [ForControllerAttribute(Entities.AccomCategory, Enabled = true)]
-    public class AccomCategoryController : AbstractController {
-        public AccomCategoryController() : base(EntitiesFactory.GetEntity(Entities.AccomCategory)) {}
+    public class AccomCategoryController : AbstractDBController {
+        public AccomCategoryController() : base(DBEntitiesFactory.GetEntity(Entities.AccomCategory)) {}
     }
 }

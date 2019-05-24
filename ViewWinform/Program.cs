@@ -28,15 +28,16 @@ namespace ViewWinform
         {
 
             AttachConsole(ATTACHPARENTPROCESS);
+            new Utils.ConfigLoader();
 
-            CultureInfo cultureInfo = CultureInfo.CreateSpecificCulture(ConfigurationManager.AppSettings["CultureInfoGlobalization"]);
+            CultureInfo cultureInfo = CultureInfo.CreateSpecificCulture(Utils.ConfigLoader.CultureInfoGlobalization);
             
-            cultureInfo.DateTimeFormat.ShortDatePattern = ConfigurationManager.AppSettings["CultureInfoDateTimeFormatShortDatePattern"];
-            cultureInfo.DateTimeFormat.LongDatePattern  = ConfigurationManager.AppSettings["CultureInfoDateTimeFormatLongDatePattern"];
-            cultureInfo.DateTimeFormat.DateSeparator    = ConfigurationManager.AppSettings["CultureInfoDateTimeFormatDateSeparator"];
-            cultureInfo.DateTimeFormat.ShortTimePattern = ConfigurationManager.AppSettings["CultureInfoDateTimeFormatShortTimePattern"];
-            cultureInfo.DateTimeFormat.LongTimePattern  = ConfigurationManager.AppSettings["CultureInfoDateTimeFormatLongTimePattern"];
-            cultureInfo.DateTimeFormat.TimeSeparator    = ConfigurationManager.AppSettings["CultureInfoDateTimeFormatTimeSeparator"];
+            cultureInfo.DateTimeFormat.ShortDatePattern = Utils.ConfigLoader.CultureInfoDateTimeFormatShortDatePattern;
+            cultureInfo.DateTimeFormat.LongDatePattern  = Utils.ConfigLoader.CultureInfoDateTimeFormatLongDatePattern;
+            cultureInfo.DateTimeFormat.DateSeparator    = Utils.ConfigLoader.CultureInfoDateTimeFormatDateSeparator;
+            cultureInfo.DateTimeFormat.ShortTimePattern = Utils.ConfigLoader.CultureInfoDateTimeFormatShortTimePattern;
+            cultureInfo.DateTimeFormat.LongTimePattern  = Utils.ConfigLoader.CultureInfoDateTimeFormatLongTimePattern;
+            cultureInfo.DateTimeFormat.TimeSeparator    = Utils.ConfigLoader.CultureInfoDateTimeFormatTimeSeparator;
 
 
             cultureInfo.DateTimeFormat.Calendar = new GregorianCalendar();
@@ -45,11 +46,11 @@ namespace ViewWinform
             Thread.CurrentThread.CurrentUICulture = cultureInfo;
             Application.CurrentCulture = cultureInfo;
 
-            DBConnectionManager.DBCONFIGFACTORY  = ConfigurationManager.AppSettings["DatabaseFactory"];
-            DBConnectionManager.DBCONFIGPROVIDER = ConfigurationManager.AppSettings["DatabaseProvider"];
-            DBConnectionManager.DBCONFIGSOURCE   = ConfigurationManager.AppSettings["DatabaseSource"];
-            DBConnectionManager.DBCONFIGUSER     = ConfigurationManager.AppSettings["DatabaseUserId"];
-            DBConnectionManager.DBCONFIGPASSWORD = ConfigurationManager.AppSettings["DatabasePassword"];
+            DBConnectionManager.DBCONFIGFACTORY  = Utils.ConfigLoader.DatabaseFactory;
+            DBConnectionManager.DBCONFIGPROVIDER = Utils.ConfigLoader.DatabaseProvider;
+            DBConnectionManager.DBCONFIGSOURCE   = Utils.ConfigLoader.DatabaseSource;
+            DBConnectionManager.DBCONFIGUSER     = Utils.ConfigLoader.DatabaseUserId;
+            DBConnectionManager.DBCONFIGPASSWORD = Utils.ConfigLoader.DatabasePassword;
 
 
             //DBConnectionManager.Instance.FixColumnNames();
@@ -57,6 +58,7 @@ namespace ViewWinform
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(MainView.Instance);
+            //Application.Run(new Tools.CalendarForm());
         }
     }
 }

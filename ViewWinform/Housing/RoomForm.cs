@@ -16,10 +16,9 @@ using ViewWinform.Common;
 namespace ViewWinform.Housing.Rooms {
     public partial class RoomForm : SingleForm {
 
-        //private RoomController Controller = new RoomController();
 
-        public BaseController Controller => ControllersFactory.GetController(Entities.Room);
-        private RoomModel model = new RoomModel();
+        public IDBController Controller;
+        private RoomModel model;
 
         public RoomModel Model {
             get {
@@ -37,7 +36,10 @@ namespace ViewWinform.Housing.Rooms {
         public override void UpdateModel() { var _ = Model; }
 
         public RoomForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode) return;
+            Controller = DBControllersFactory.GetController(Entities.Room);
+            model = new RoomModel();
+            Utils.FormsHelper.BindViewToModel(this.panel1, ref this.model);
         }
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
@@ -59,7 +61,7 @@ namespace ViewWinform.Housing.Rooms {
         }
 
         private void RoomFormLoad(object sender, EventArgs e) {
-            Utils.FormsHelper.BindViewToModel(this.panel1,ref this.model);
+
         }
     }
 }

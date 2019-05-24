@@ -16,13 +16,15 @@ using ViewWinform.Common;
 namespace ViewWinform.Customers {
     public partial class CountryForm : SingleForm {
 
+        public IDBController Controller;
+        private CountryModel model;
+
         public CountryForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode) return;
+            Controller = DBControllersFactory.GetController(Entities.Country);
+            model = new CountryModel();
+            Utils.FormsHelper.BindViewToModel(this, ref this.model);
         }
-
-
-        public BaseController Controller => ControllersFactory.GetController(Entities.Country);
-        private CountryModel model = new CountryModel();
 
 
         public CountryModel Model{
@@ -43,8 +45,6 @@ namespace ViewWinform.Customers {
 
 
         private void CountryFormLoad(object sender, EventArgs e) {
-            Utils.FormsHelper.BindViewToModel(this,ref this.model);
-
             Label[] fieldsmarkers = { lblMetaDataCountryArabic,lblMetaDataCountryCode,lblMetaDataCountryEnglish };
 
             foreach(var required in fieldsmarkers) {

@@ -9,7 +9,7 @@ using ModelLibrary.Configurations;
 using ModelLibrary.Common;
 
 namespace ControllerLibrary.Configurations {
-    public class CryptoController : BaseController {
+    public class CryptoController : IDBController {
         public string Source => throw new NotImplementedException();
 
         public object CreateNewModel() {

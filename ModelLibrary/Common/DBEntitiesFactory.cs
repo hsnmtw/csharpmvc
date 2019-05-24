@@ -8,12 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ModelLibrary.Common {
-    public static class EntitiesFactory {
-        private static Dictionary<Entities, BaseEntity> EntitiesMap = null;
+    public static class DBEntitiesFactory {
+        private static Dictionary<Entities, IDBEntity> EntitiesMap = null;
 
         public static void InitEntitiesMap(){
-		   EntitiesMap = new Dictionary<Entities, BaseEntity>() {
-              [Entities.Country        ] = new CountryEntity        ()
+		   EntitiesMap = new Dictionary<Entities, IDBEntity>() {
+              [Entities.Country            ] = new CountryEntity            ()
             , [Entities.Compound           ] = new CompoundEntity           ()
             , [Entities.User               ] = new UserEntity               ()
             , [Entities.Entitlement        ] = new EntitlementEntity        ()
@@ -31,20 +31,21 @@ namespace ModelLibrary.Common {
             , [Entities.FoodClass          ] = new FoodClassEntity          ()
             , [Entities.FoodType           ] = new FoodTypeEntity           ()
             , [Entities.IdentificationType ] = new IdentificationTypeEntity ()
+            , [Entities.Identification     ] = new IdentificationEntity     ()
             , [Entities.EntitlementGroup   ] = new EntitlementGroupEntity   ()
            };
         }
 
-        public static Dictionary<Entities, BaseEntity> GetEntitiesMap() {
+        public static Dictionary<Entities, IDBEntity> GetEntitiesMap() {
             return EntitiesMap;
 		}
 
-        public static BaseEntity GetEntity(Entities ce){
+        public static IDBEntity GetEntity(Entities ce){
             if (EntitiesMap == null) InitEntitiesMap();
             return EntitiesMap[ce];
         }
 
-        public static void SetEntity(Entities ce,BaseEntity bc) {
+        public static void SetEntity(Entities ce,IDBEntity bc) {
             if (EntitiesMap == null) InitEntitiesMap();
             EntitiesMap[ce] = bc;
         }

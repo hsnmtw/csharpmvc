@@ -16,9 +16,8 @@ using ViewWinform.Common;
 namespace ViewWinform.Billing {
     public partial class AccomodationClassForm : SingleForm {
 
-        //private BaseController bldgCntrlr = ControllersFactory.GetController(Entities.Client);
-        public BaseController Controller => ControllersFactory.GetController(Entities.AccomClass);
-        private AccomClassModel model = new AccomClassModel();
+        public IDBController Controller ;
+        private AccomClassModel model;
 
         public AccomClassModel Model {
             get {
@@ -38,7 +37,11 @@ namespace ViewWinform.Billing {
    
 
         public AccomodationClassForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode) return;
+            
+            Controller = DBControllersFactory.GetController(Entities.AccomClass);
+            model = new AccomClassModel();
+            ViewWinform.Utils.FormsHelper.BindViewToModel(this.panel1, ref this.model);
         }
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
@@ -49,7 +52,7 @@ namespace ViewWinform.Billing {
         }
 
         private void AccomClassFormLoad(object sender, EventArgs e) {
-            ViewWinform.Utils.FormsHelper.BindViewToModel(this.panel1,ref this.model);
+            
         }
     }
 }

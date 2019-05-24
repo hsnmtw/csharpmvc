@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ControllerLibrary.Housing {
     [ForControllerAttribute(Entities.Room, Enabled = false)]
-    public class FakeRoomController : BaseController {
+    public class FakeRoomController : IDBController {
 
         //static DataTable dt = new DataTable();
         static Dictionary<string, RoomModel> listOfRooms = new Dictionary<string, RoomModel>();
@@ -140,7 +140,7 @@ namespace ControllerLibrary.Housing {
             };
         }
 
-        private BaseEntity BaseCollection => EntitiesFactory.GetEntity(Entities.Room);
+        private IDBEntity BaseCollection => DBEntitiesFactory.GetEntity(Entities.Room);
 
         public object CreateNewModel() => 
             this.BaseCollection.CreateNew();

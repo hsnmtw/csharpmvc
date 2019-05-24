@@ -12,7 +12,7 @@ using ModelLibrary.Common;
 namespace ControllerLibrary.Security
 {
     [ForControllerAttribute(Entities.Profile, Enabled = true)]
-    public class ProfileController : AbstractController{
-        public ProfileController() : base(EntitiesFactory.GetEntity(Entities.Profile)) { }
+    public class ProfileController : AbstractDBController{
+        public ProfileController() : base(DBEntitiesFactory.GetEntity(Entities.Profile)) { }
     }
 }

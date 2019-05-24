@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 namespace ViewWinform.Common {
     class LookupEventArgs : EventArgs {
         public string SelectedValueFromLookup { get; set; }
-        public LookupEventArgs(string svfl) {
+        public string SelectedDescriptionFromLookup { get; set; }
+        public LookupEventArgs(string svfl,string sdfl) {
             this.SelectedValueFromLookup = svfl;
+            this.SelectedDescriptionFromLookup = sdfl;
         }
     }
 }

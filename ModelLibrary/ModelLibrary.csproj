@@ -49,14 +49,15 @@
     <Compile Include="Billing\FoodClassModel.cs" />
     <Compile Include="Billing\AccomClassModel.cs" />
     <Compile Include="Billing\BillingCategoryModel.cs" />
-    <Compile Include="Common\AbstractEntity.cs" />
+    <Compile Include="Common\AbstractDBEntity.cs" />
     <Compile Include="Common\BaseModel.cs" />
     <Compile Include="Common\DBModificationResult.cs" />
     <Compile Include="Common\Entities.cs" />
-    <Compile Include="Common\EntitiesFactory.cs" />
+    <Compile Include="Common\DBEntitiesFactory.cs" />
     <Compile Include="Common\DBConnectionManager.cs" />
-    <Compile Include="Common\BaseEntity.cs" />
+    <Compile Include="Common\IDBEntity.cs" />
     <Compile Include="Common\IDBConnectionManager.cs" />
+    <Compile Include="Common\IEntity.cs" />
     <Compile Include="Common\IModel.cs" />
     <Compile Include="Common\MetaData.cs" />
     <Compile Include="Common\ParametersFactory.cs" />
@@ -65,7 +66,9 @@
     <Compile Include="Common\Statement.cs" />
     <Compile Include="Configurations\ConfigurationModel.cs" />
     <Compile Include="Configurations\CryptoModel.cs" />
+    <Compile Include="Customers\IdentificationEntity.cs" />
     <Compile Include="Customers\IdentificationTypeEntity.cs" />
+    <Compile Include="Customers\IdentificationModel.cs" />
     <Compile Include="Customers\IdentificationTypeModel.cs" />
     <Compile Include="Customers\ProjectEntity.cs" />
     <Compile Include="Customers\ProjectModel.cs" />
@@ -129,6 +132,9 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tools\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

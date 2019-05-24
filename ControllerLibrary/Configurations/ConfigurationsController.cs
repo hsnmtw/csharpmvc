@@ -12,13 +12,11 @@ using System.Data;
 using ModelLibrary.Common;
 
 namespace ControllerLibrary.Configurations {
-    public class ConfigurationsController : BaseController {       
+    public class ConfigurationsController : IDBController {       
         public string Source => string.Format(@"{0}.config", System.Reflection.Assembly.GetEntryAssembly().CodeBase.Replace("file:///",""));
 
         public List<ConfigurationModel> Database { private set; get; }
         public List<ConfigurationModel> CultureInfo { private set; get; }
-
-
 
         public ConfigurationsController() : base() {
             this.Database = new List<ConfigurationModel>();
@@ -38,6 +36,14 @@ namespace ControllerLibrary.Configurations {
                 }
             }
             fs.Close();
+        }
+
+        public string GetShortDateFormat() {
+            return this.CultureInfo.Where(x => x.Key.Contains("ShortDate")).First().Value;
+        }
+
+        public string GetLongDateFormat() {
+            return this.CultureInfo.Where(x => x.Key.Contains("LongDate")).First().Value;
         }
 
         public DataTable GetTable() => throw new NotImplementedException();

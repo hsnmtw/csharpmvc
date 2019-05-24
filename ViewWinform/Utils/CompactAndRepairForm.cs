@@ -13,7 +13,7 @@ using DAO;
 namespace ViewWinform.Utils {
     public partial class CompactAndRepairForm : Form {
         public CompactAndRepairForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode) return;
         }
 
         private void Button1Click(object sender, EventArgs e) {

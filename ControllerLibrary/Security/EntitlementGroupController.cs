@@ -13,9 +13,9 @@ using System.Windows.Forms;
 namespace ControllerLibrary.Security
 {
     [ForControllerAttribute(Entities.EntitlementGroup, Enabled = true)]
-    public class EntitlementGroupController : AbstractController {
+    public class EntitlementGroupController : AbstractDBController {
 
-        public EntitlementGroupController() : base(EntitiesFactory.GetEntity(Entities.EntitlementGroup)) { }
+        public EntitlementGroupController() : base(DBEntitiesFactory.GetEntity(Entities.EntitlementGroup)) { }
 
     }
 }

@@ -15,12 +15,16 @@ using ViewWinform.Common;
 
 namespace ViewWinform.Housing.Compounds {
     public partial class CompoundForm : SingleForm {
-        public CompoundForm() {
-            InitializeComponent();
-        }
 
-        public BaseController Controller => ControllersFactory.GetController(Entities.Compound);
-        private CompoundModel model = new CompoundModel();
+        public IDBController Controller;
+        private CompoundModel model;
+
+        public CompoundForm() {
+            InitializeComponent(); if (DesignMode) return;
+            Controller = DBControllersFactory.GetController(Entities.Compound);
+            model = new CompoundModel();
+            Utils.FormsHelper.BindViewToModel(this, ref this.model);
+        }
 
         public CompoundModel Model {
             get {
@@ -35,15 +39,11 @@ namespace ViewWinform.Housing.Compounds {
         public override void UpdateModel() { var _ = Model; }
 
         private void CompoundFormLoad1(object sender, EventArgs e) {
-            Utils.FormsHelper.BindViewToModel(this,ref this.model);
+
         }
 
         private void CompoundNameLookupButtonLookUpSelected(object sender, EventArgs e) {
             this.Model = (CompoundModel)this.Controller.Read(this.Model, this.Controller.GetMetaData().GetUniqueKeyFields).First();
-        }
-
-        private void LookUpButton1Load(object sender, EventArgs e) {
-
         }
     }
 }

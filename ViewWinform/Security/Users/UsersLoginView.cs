@@ -16,12 +16,12 @@ namespace ViewWinform.Security.Users
 {
     public partial class UsersLoginView : Form
     {
-        public BaseController Controller = ControllersFactory.GetController(Entities.User);
+        public IDBController Controller = DBControllersFactory.GetController(Entities.User);
 
         public UsersLoginView()
         {
             model = new UserModel();
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode) return;
             Utils.FormsHelper.BindViewToModel(this,ref this.model);
         }
 

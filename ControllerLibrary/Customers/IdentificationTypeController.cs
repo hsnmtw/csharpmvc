@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ControllerLibrary.Customers {
     [ForControllerAttribute(Entities.IdentificationType, Enabled = true)]
-    public class IdentificationTypeController : AbstractController {
-        public IdentificationTypeController() : base(EntitiesFactory.GetEntity(Entities.IdentificationType)) {}
+    public class IdentificationTypeController : AbstractDBController {
+        public IdentificationTypeController() : base(DBEntitiesFactory.GetEntity(Entities.IdentificationType)) {}
     }
 }

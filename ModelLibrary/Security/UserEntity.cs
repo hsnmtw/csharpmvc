@@ -5,7 +5,7 @@ using ModelLibrary.Common;
 
 namespace ModelLibrary.Security
 {
-    public class UserEntity : AbstractEntity{
+    public class UserEntity : AbstractDBEntity{
 
         public override MetaData MetaData => new MetaData() {
             GetModelType = typeof(UserModel)

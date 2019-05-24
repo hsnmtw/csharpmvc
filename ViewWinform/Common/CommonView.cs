@@ -47,7 +47,7 @@ namespace ViewWinform.Common {
         }
 
         public CommonView() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode) return;
         }
 
         public void SetRecordPosition(int position) {

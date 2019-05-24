@@ -13,15 +13,15 @@ using System.Windows.Forms;
 namespace ControllerLibrary.Security
 {
     [ForControllerAttribute(Entities.Entitlement, Enabled = true)]
-    public class EntitlementController : AbstractController {
+    public class EntitlementController : AbstractDBController {
 
-        public EntitlementController() : base(EntitiesFactory.GetEntity(Entities.Entitlement)) { }
+        public EntitlementController() : base(DBEntitiesFactory.GetEntity(Entities.Entitlement)) { }
 
         public override DataTable GetTable() {
         
             DataView dvE = new DataView(this.GetTable());
-            DataView dvP = new DataView(ControllersFactory.GetController(Entities.Profile).GetTable());
-            DataTable dvPE = ControllersFactory.GetController(Entities.ProfileEntitlement).GetTable();
+            DataView dvP = new DataView(DBControllersFactory.GetController(Entities.Profile).GetTable());
+            DataTable dvPE = DBControllersFactory.GetController(Entities.ProfileEntitlement).GetTable();
 
             dvE.Sort = "EntitlementName ASC";
             dvP.Sort = "ProfileName ASC";

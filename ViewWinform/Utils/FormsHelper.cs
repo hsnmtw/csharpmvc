@@ -61,6 +61,20 @@ namespace ViewWinform.Utils
 
             foreach (Control control in cntrl.Controls)
             {
+                if (control.GetType().Equals(typeof(Button)) && control.Text.Equals(CALENDAR) ) {
+                    string[] txt = $"{control.Tag}".Split('/');
+                    control.Click += (s,e) => {
+                        var calendar = new Tools.CalendarForm();
+                        if (calendar.ShowDialog() == DialogResult.OK) {
+                            if (txt.Length > 0) {
+                                cntrl.Controls.Find(txt[0], true).First().Text = calendar.Date.ToString(ConfigLoader.CultureInfoDateTimeFormatShortDatePattern);
+                                if (txt.Length > 1) {
+                                    cntrl.Controls.Find(txt[1], true).First().Text = calendar.Date.ToString(ConfigLoader.CultureInfoDateTimeFormatLongDatePattern);
+                                }
+                            }
+                        }
+                    };
+                }
                 if (buttons.Contains(control.Name)) {
                     
                     ((ISingleForm)form).UpdateModel();
@@ -72,7 +86,7 @@ namespace ViewWinform.Utils
                             break;
                         case "btnSave":
                             control.Click += (s, e) => {
-                                var Controller = (BaseController)form.GetType().GetProperty("Controller").GetValue(form);
+                                var Controller = (IDBController)form.GetType().GetField("Controller").GetValue(form);
                                 var Model      = form.GetType().GetProperty("Model");
                                 ModelLibrary.Common.DBModificationResult result = Controller.Save(Model.GetValue(form));
                                 //Utils.FormsHelper.Success("SUCCESS ::: saved");
@@ -83,7 +97,7 @@ namespace ViewWinform.Utils
                             break;
                         case "btnRemove":
                             control.Click += (s, e) => {
-                                var Controller = (BaseController)form.GetType().GetProperty("Controller").GetValue(form);
+                                var Controller = (IDBController)form.GetType().GetProperty("Controller").GetValue(form);
                                 var Model = form.GetType().GetProperty("Model");
                                 ModelLibrary.Common.DBModificationResult result = Controller.Delete(Model.GetValue(form));
                                 //Utils.FormsHelper.Success("SUCCESS ::: deleted");

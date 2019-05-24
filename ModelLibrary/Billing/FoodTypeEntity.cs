@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ModelLibrary.Customers {
-    public class FoodTypeEntity : AbstractEntity {
+    public class FoodTypeEntity : AbstractDBEntity {
         public override MetaData MetaData => new MetaData() {
               GetModelType        = typeof(FoodTypeModel)
             , GetPrimaryKeyFields = "Id".Split(',')

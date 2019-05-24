@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ControllerLibrary.Housing {
     [ForControllerAttribute(Entities.Room, Enabled = true)]
-    public class RoomController : AbstractController {
-        public RoomController() : base(EntitiesFactory.GetEntity(Entities.Room)) { }
+    public class RoomController : AbstractDBController {
+        public RoomController() : base(DBEntitiesFactory.GetEntity(Entities.Room)) { }
     }
 }

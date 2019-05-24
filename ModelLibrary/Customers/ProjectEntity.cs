@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ModelLibrary.Customers {
-    public class ProjectEntity : AbstractEntity {
+    public class ProjectEntity : AbstractDBEntity {
         public override MetaData MetaData => new MetaData() {
               GetModelType        = typeof(ProjectModel)
             , GetPrimaryKeyFields = "Id".Split(',')

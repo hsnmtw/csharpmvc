@@ -7,7 +7,7 @@ using ModelLibrary.Common;
 
 namespace ModelLibrary.Security
 {
-    public class EntitlementGroupEntity : AbstractEntity{
+    public class EntitlementGroupEntity : AbstractDBEntity{
 
         public override MetaData MetaData => new MetaData() {
             GetModelType = typeof(EntitlementGroupModel)

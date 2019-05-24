@@ -16,9 +16,8 @@ using ViewWinform.Common;
 namespace ViewWinform.Customers {
     public partial class ProjectForm : SingleForm {
 
-        //private BaseController bldgCntrlr = ControllersFactory.GetController(Entities.Project);
-        public BaseController Controller => ControllersFactory.GetController(Entities.Project);
-        private ProjectModel model = new ProjectModel();
+        public IDBController Controller;
+        private ProjectModel model;
 
         public ProjectModel Model {
             get {
@@ -36,12 +35,15 @@ namespace ViewWinform.Customers {
         public override void UpdateModel() { var _ = Model; }
 
         public ProjectForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode) return;
+            Controller = DBControllersFactory.GetController(Entities.Project);
+            model = new ProjectModel();
+            ViewWinform.Utils.FormsHelper.BindViewToModel(this.panel1, ref this.model);
         }
 
 
         private void ProjectTypeFormLoad(object sender, EventArgs e) {
-            ViewWinform.Utils.FormsHelper.BindViewToModel(this.panel1,ref this.model);
+
         }
 
         private void LookUpButtonProjectNameLookUpSelected(object sender, EventArgs e) {

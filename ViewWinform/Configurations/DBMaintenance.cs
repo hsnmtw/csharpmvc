@@ -14,7 +14,7 @@ namespace ViewWinform.Configurations {
     public partial class DBMaintenance : Form {
 
         public DBMaintenance() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode) return;
         }
 
         private void DBMaintenanceLoad(object sender, EventArgs e) {

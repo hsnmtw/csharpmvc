@@ -16,9 +16,8 @@ using ViewWinform.Common;
 namespace ViewWinform.Billing {
     public partial class BillingCategoryForm : SingleForm {
 
-        //private BaseController bldgCntrlr = ControllersFactory.GetController(Entities.Client);
-        public BaseController Controller => ControllersFactory.GetController(Entities.AccomCategory);
-        private BillingCategoryModel model = new BillingCategoryModel();
+        public IDBController Controller;  
+        private BillingCategoryModel model; 
 
         public BillingCategoryModel Model {
             get {
@@ -35,7 +34,11 @@ namespace ViewWinform.Billing {
         }
         public override void UpdateModel() { var _ = Model; }
         public BillingCategoryForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode) return;
+            
+            Controller = DBControllersFactory.GetController(Entities.AccomCategory);
+            model = new BillingCategoryModel();
+            ViewWinform.Utils.FormsHelper.BindViewToModel(this.panel1, ref this.model);
         }
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
@@ -46,7 +49,7 @@ namespace ViewWinform.Billing {
         }
 
         private void AccomCategoryFormLoad(object sender, EventArgs e) {
-            ViewWinform.Utils.FormsHelper.BindViewToModel(this.panel1,ref this.model);
+            
         }
     }
 }

@@ -15,13 +15,16 @@ using ViewWinform.Common;
 
 namespace ViewWinform.Security {
     public partial class EntitlementGroupForm : SingleForm {
+
+        public EntitlementGroupController Controller;
+        private EntitlementGroupModel model;
+
         public EntitlementGroupForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode) return;
+            Controller = (EntitlementGroupController)DBControllersFactory.GetController(Entities.EntitlementGroup);
+            model = new EntitlementGroupModel();
+            Utils.FormsHelper.BindViewToModel(this, ref this.model);
         }
-
-
-        public EntitlementGroupController Controller => (EntitlementGroupController)ControllersFactory.GetController(Entities.EntitlementGroup);
-        private EntitlementGroupModel model = new EntitlementGroupModel();
 
         public EntitlementGroupModel Model {
             get {
@@ -40,9 +43,7 @@ namespace ViewWinform.Security {
 
 
         private void EntitlementGroupFormLoad(object sender, EventArgs e) {
-            Utils.FormsHelper.BindViewToModel(this,ref this.model);
-            
-            this.Model = new EntitlementGroupModel();
+
         }
 
         private void EntitlementGroupNameLookupLookUpSelected(object sender, EventArgs e) {

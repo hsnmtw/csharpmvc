@@ -59,7 +59,7 @@ namespace ViewWinform.Common {
         }
 
         public RecordsNavigator() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode) return;
         }
 
         private void Button5Click(object sender, EventArgs e) {
