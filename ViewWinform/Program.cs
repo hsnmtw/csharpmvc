@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Threading;
+﻿using MVCWinform.Common;
+using MVCWinform.Utils;
+using System;
 using System.Globalization;
-using System.Configuration;
-using ModelLibrary.Common;
-using ControllerLibrary.Common;
-using System.IO;
 using System.Runtime.InteropServices;
-using ViewWinform.Security.Users;
+using System.Threading;
+using System.Windows.Forms;
 
-namespace ViewWinform
-{
+namespace MVCWinform {
 
     static class Program
     {
@@ -47,28 +40,31 @@ namespace ViewWinform
             Thread.CurrentThread.CurrentUICulture = cultureInfo;
             Application.CurrentCulture = cultureInfo;
 
-            DBConnectionManager.DBCONFIGFACTORY  = Utils.ConfigLoader.DatabaseFactory;
-            DBConnectionManager.DBCONFIGPROVIDER = Utils.ConfigLoader.DatabaseProvider;
-            DBConnectionManager.DBCONFIGSOURCE   = Utils.ConfigLoader.DatabaseSource;
-            DBConnectionManager.DBCONFIGUSER     = Utils.ConfigLoader.DatabaseUserId;
-            DBConnectionManager.DBCONFIGPASSWORD = Utils.ConfigLoader.DatabasePassword;
+            DBConnectionManager.FACTORY           = Utils.ConfigLoader.DatabaseFactory;
+            DBConnectionManager.CONNECTION_STRING = Utils.ConfigLoader.ConnectionString;
 
 
-            //DBConnectionManager.Instance.FixColumnNames();
+            try {
+                DBEntitiesFactory.InitEntitiesMap();
+                DBControllersFactory.InitControllersMap();
+            }catch(Exception ex) {
+                FormsHelper.Error(ex.Message);
+            }
+            //DBConnectionManager.Execute("CREATE TABLE CustomersContact (CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,Email VARCHAR(100) ,FaxNumber VARCHAR(15) ,FullName VARCHAR(100) NOT NULL,Id integer AUTOINCREMENT NOT NULL,MobileNumber VARCHAR(15) NOT NULL,PhoneNumber VARCHAR(15) ,ReadOnly YESNO ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME , PRIMARY KEY(Id), UNIQUE (MobileNumber))");
 
-            DBConnectionManager.Instance.Open();
-            DBEntitiesFactory.InitEntitiesMap();
-            DBControllersFactory.InitControllersMap();
+            Session.Instance.CurrentUser = null;
+
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            if (new UsersLoginView().ShowDialog() == DialogResult.OK) {
-                Application.Run(MainView.Instance);
-            }
+
+
+            Application.Run(MainView.Instance);
 
             
-            
+
+
             //Application.Run(new Tools.CalendarForm());
         }
     }

@@ -1,0 +1,157 @@
+﻿1> create database his
+2> go
+---------------------------------------------------------------------
+use his
+go
+create login hisuser with 
+    password         = 'hisuser123@.', 
+    default_database = his,
+    CHECK_POLICY     = OFF,
+    CHECK_EXPIRATION = OFF;;
+go
+------------------------------------------------------------------
+create user hisuser for login hisuser with default_schema=his;
+go
+------------------------------------------------------------------
+use his
+go
+grant connect to hisuser
+go
+use his
+go
+create schema his
+go
+grant alter on schema::his to hisuser
+go
+------------------------------------------------------------------
+use his
+go
+EXEC sp_addrolemember N'db_owner', N'hisuser'
+go
+alter login hisuser enable;
+go
+---------------------------------------------------------------
+use master
+go
+EXEC xp_instance_regwrite N'HKEY_LOCAL_MACHINE', 
+    N'Software\Microsoft\MSSQLServer\MSSQLServer', N'LoginMode', REG_DWORD, 2
+go
+-----------------------------------------------------------------
+sp_configure 'contained database authentication',1
+go
+reconfigure
+go
+-----------------------------------------------------------------
+alter database his
+SET CONTAINMENT=PARTIAL
+go
+-----------------------------------------------------------------
+use his
+go
+Changed database context to 'his'.
+---------------------------------------------------------------------
+grant execute to hisuser
+go
+grant create table to hisuser
+go
+grant create view to hisuser
+go
+grant create procedure to hisuser
+go
+grant create trigger to hisuser
+go
+
+use his
+go
+
+DROP TABLE ToolsDictionary ;
+DROP TABLE SecurityAudit ;
+DROP TABLE SecurityEntitlements ;
+DROP TABLE SecurityEntitlementGroups ;
+DROP TABLE SecurityProfileEntitlements ;
+DROP TABLE SecurityProfiles ;
+DROP TABLE SecurityUsers ;
+DROP TABLE HousingBuilding ;
+DROP TABLE HousingBuildingTypes ;
+DROP TABLE HousingCompounds ;
+DROP TABLE HousingRoom ;
+DROP TABLE BillingAccomodationClasses ;
+DROP TABLE BillingCategories ;
+DROP TABLE BillingFoodClasses ;
+DROP TABLE BillingFoodTypes ;
+DROP TABLE CustomersContact ;
+DROP TABLE CustomersClient ;
+DROP TABLE CustomersClientTypes ;
+DROP TABLE CustomersCountry ;
+DROP TABLE CustomersIdentification ;
+DROP TABLE CustomersIdentificationType ;
+DROP TABLE CustomersProject ;
+DROP TABLE CommonEntites ;
+drop table dual;
+
+create table dual(x CHAR(1));
+insert into dual values(0);
+
+CREATE TABLE ToolsDictionary (CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,Id int IDENTITY(1,1) NOT NULL,ReadOnly CHAR(1) ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,WordInArabic VARCHAR(250) NOT NULL,WordInEnglish VARCHAR(250) NOT NULL, PRIMARY KEY(Id), UNIQUE (WordInEnglish));
+CREATE TABLE SecurityAudit (CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,EventComments VARCHAR(1000) NOT NULL,EventDate DATETIME NOT NULL,Id int IDENTITY(1,1) NOT NULL,ReadOnly CHAR(1) ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,UserName VARCHAR(50) , PRIMARY KEY(Id), UNIQUE (Id));
+CREATE TABLE SecurityEntitlements (CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,EntitlementGroupName VARCHAR(50) ,EntitlementName VARCHAR(50) NOT NULL,EntityName VARCHAR(50) ,Id int IDENTITY(1,1) NOT NULL,ReadOnly CHAR(1) ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME , PRIMARY KEY(Id), UNIQUE (EntitlementName));
+CREATE TABLE SecurityEntitlementGroups (CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,Dynamic CHAR(1) ,EntitlementGroupName VARCHAR(50) NOT NULL,Id int IDENTITY(1,1) NOT NULL,ReadOnly CHAR(1) ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME , PRIMARY KEY(Id), UNIQUE (EntitlementGroupName));
+CREATE TABLE SecurityProfileEntitlements (AllowCreate CHAR(1) ,AllowDelete CHAR(1) ,AllowRead CHAR(1) ,AllowUpdate CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,EntitlementName VARCHAR(50) NOT NULL,Id int IDENTITY(1,1) NOT NULL,ProfileName VARCHAR(50) NOT NULL,ReadOnly CHAR(1) ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME , PRIMARY KEY(Id), UNIQUE (ProfileName,EntitlementName));
+CREATE TABLE SecurityProfiles (CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,Id int IDENTITY(1,1) NOT NULL,ProfileDesc VARCHAR(100) ,ProfileName VARCHAR(50) NOT NULL,ReadOnly CHAR(1) ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME , PRIMARY KEY(Id), UNIQUE (ProfileName));
+CREATE TABLE SecurityUsers (CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,Email VARCHAR(100) ,FailedLoginAttempts INTEGER ,FullName VARCHAR(100) NOT NULL,Id int IDENTITY(1,1) NOT NULL,IsActive CHAR(1) ,LastChangePassword DATETIME ,LastLoginDate DATETIME ,ProfileName VARCHAR(50) ,ReadOnly CHAR(1) ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,UserName VARCHAR(50) NOT NULL,UserPassword VARCHAR(100) NOT NULL, PRIMARY KEY(Id), UNIQUE (UserName));
+CREATE TABLE HousingBuilding (BuildingName VARCHAR(50) NOT NULL,BuildingType VARCHAR(50) NOT NULL,CompoundName VARCHAR(50) NOT NULL,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,Id int IDENTITY(1,1) NOT NULL,ReadOnly CHAR(1) ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME , PRIMARY KEY(Id), UNIQUE (BuildingName));
+CREATE TABLE HousingBuildingTypes (BuildingType VARCHAR(50) NOT NULL,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,Id int IDENTITY(1,1) NOT NULL,ReadOnly CHAR(1) ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME , PRIMARY KEY(Id), UNIQUE (BuildingType));
+CREATE TABLE HousingCompounds (CompoundName VARCHAR(50) NOT NULL,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,Id int IDENTITY(1,1) NOT NULL,ReadOnly CHAR(1) ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME , PRIMARY KEY(Id), UNIQUE (CompoundName));
+CREATE TABLE HousingRoom (BedCapacity INTEGER NOT NULL,BuildingName VARCHAR(50) NOT NULL,CountryCode VARCHAR(50) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,Id int IDENTITY(1,1) NOT NULL,NumberOfWindows INTEGER ,ReadOnly CHAR(1) ,RoomName VARCHAR(50) NOT NULL,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME , PRIMARY KEY(Id), UNIQUE (RoomName));
+CREATE TABLE BillingAccomodationClasses (AccomClass VARCHAR(50) NOT NULL,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,Id int IDENTITY(1,1) NOT NULL,ReadOnly CHAR(1) ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME , PRIMARY KEY(Id), UNIQUE (AccomClass));
+CREATE TABLE BillingCategories (AccomClass VARCHAR(50) ,BillingCategory VARCHAR(150) NOT NULL,BillingCategoryDesc VARCHAR(250) NOT NULL,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,FoodClass VARCHAR(50) ,FoodType VARCHAR(50) ,Id int IDENTITY(1,1) NOT NULL,ReadOnly CHAR(1) ,ReservationOnly CHAR(1) ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME , PRIMARY KEY(Id), UNIQUE (BillingCategory));
+CREATE TABLE BillingFoodClasses (CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,FoodClass VARCHAR(50) NOT NULL,Id int IDENTITY(1,1) NOT NULL,ReadOnly CHAR(1) ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME , PRIMARY KEY(Id), UNIQUE (FoodClass));
+CREATE TABLE BillingFoodTypes (CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,FoodType VARCHAR(50) NOT NULL,Id int IDENTITY(1,1) NOT NULL,ReadOnly CHAR(1) ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME , PRIMARY KEY(Id), UNIQUE (FoodType));
+CREATE TABLE CustomersContact (CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,Email VARCHAR(100) ,FaxNumber VARCHAR(15) ,FullName VARCHAR(100) NOT NULL,Id int IDENTITY(1,1) NOT NULL,MobileNumber VARCHAR(15) NOT NULL,PhoneNumber VARCHAR(15) ,ReadOnly CHAR(1) ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME , PRIMARY KEY(Id), UNIQUE (MobileNumber));
+CREATE TABLE CustomersClient (BillingAddress VARCHAR(255) ,ClientType VARCHAR(50) NOT NULL,ContactPerson VARCHAR(100) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,Email VARCHAR(100) ,FaxNumber VARCHAR(20) ,Id int IDENTITY(1,1) NOT NULL,LongName VARCHAR(150) NOT NULL,PhoneNumber VARCHAR(20) ,ReadOnly CHAR(1) ,ShortName VARCHAR(50) NOT NULL,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME , PRIMARY KEY(Id), UNIQUE (ShortName));
+CREATE TABLE CustomersClientTypes (ClientType VARCHAR(50) NOT NULL,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,Id int IDENTITY(1,1) NOT NULL,ReadOnly CHAR(1) ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME , PRIMARY KEY(Id), UNIQUE (ClientType));
+CREATE TABLE CustomersCountry (CountryArabic VARCHAR(100) ,CountryCode VARCHAR(50) NOT NULL,CountryEnglish VARCHAR(100) NOT NULL,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,Id int IDENTITY(1,1) NOT NULL,ReadOnly CHAR(1) ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME , PRIMARY KEY(Id), UNIQUE (CountryCode));
+CREATE TABLE CustomersIdentification (CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,ExpiryDate DATETIME ,Id int IDENTITY(1,1) NOT NULL,IdNumber VARCHAR(15) NOT NULL,IdType VARCHAR(50) NOT NULL,IsActive CHAR(1) ,IssueDate DATETIME ,IssuingCountry VARCHAR(50) ,ReadOnly CHAR(1) ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME , PRIMARY KEY(Id), UNIQUE (IdNumber));
+CREATE TABLE CustomersIdentificationType (CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,Id int IDENTITY(1,1) NOT NULL,IdTypeArabic VARCHAR(100) ,IdTypeCode VARCHAR(50) NOT NULL,IdTypeEnglish VARCHAR(100) ,ReadOnly CHAR(1) ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME , PRIMARY KEY(Id), UNIQUE (IdTypeCode));
+CREATE TABLE CustomersProject (ClientShortName VARCHAR(50) NOT NULL,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,Id int IDENTITY(1,1) NOT NULL,ProjectName VARCHAR(50) NOT NULL,ReadOnly CHAR(1) ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME , PRIMARY KEY(Id), UNIQUE (ProjectName));
+CREATE TABLE CommonEntites (CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,EntityDesc VARCHAR(100) NOT NULL,EntityName VARCHAR(50) NOT NULL,Id int IDENTITY(1,1) NOT NULL,ReadOnly CHAR(1) ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME , PRIMARY KEY(Id), UNIQUE (EntityName));
+go
+
+------------------------------
+-- use his
+-- go
+-- BEGIN TRANSACTION
+-- insert into securityusers  (username,userpassword,profilename,isactive,createdby,createdon,readonly) values ('Admin','{ENC}H4sIAAAAAAAEAJsS1rzhzR+NjwCZz56xCAAAAA==','Admin',1,'SYSTEM',GETDATE(),1);
+-- go
+-- insert into securityentitlementgroups (entitlementgroupname,Dynamic,createdby,createdon,readonly) values ('Security',1,'SYSTEM',GETDATE(),1);
+-- go
+-- insert into CommonEntites (entityname,entitydesc,createdby,createdon,readonly) values ('Entitlement','SecurityEntitlements','SYSTEM',GETDATE(),1);
+-- go
+-- insert into CommonEntites (entityname,entitydesc,createdby,createdon,readonly) values ('Entity','CommonEntites','SYSTEM',GETDATE(),1);
+-- go
+-- insert into securityentitlements (entitlementgroupname,entitlementname,entityname,createdby,createdon,readonly) values ('Security','Entitlements','Entitlement','SYSTEM',GETDATE(),1);
+-- go
+-- insert into securityentitlements (entitlementgroupname,entitlementname,entityname,createdby,createdon,readonly) values ('Security','Entitlement Groups','EntitlementGroup','SYSTEM',GETDATE(),1);
+-- go
+-- insert into securityentitlements (entitlementgroupname,entitlementname,entityname,createdby,createdon,readonly) values ('Security','Entities','EntitlementGroup','SYSTEM',GETDATE(),1);
+-- go
+-- insert into securityprofiles (profilename,createdby,createdon,readonly) values ('Admin','SYSTEM',GETDATE(),1);
+-- go
+-- insert into securityprofileentitlements (profilename,entitlementname,allowread,createdby,createdon,readonly) values ('Admin','Entitlements',1,'SYSTEM',GETDATE(),1);
+-- go
+-- insert into securityprofileentitlements (profilename,entitlementname,allowread,createdby,createdon,readonly) values ('Admin','Entitlement Groups',1,'SYSTEM',GETDATE(),1);
+-- go
+-- insert into securityprofileentitlements (profilename,entitlementname,allowread,createdby,createdon,readonly) values ('Admin','Entities',1,'SYSTEM',GETDATE(),1);
+-- go
+-- commit;
+
+delete from ToolsDictionary             ;
+delete from SecurityAudit               ;
+delete from SecurityEntitlements        ;
+delete from SecurityEntitlementGroups   ;
+delete from SecurityProfileEntitlements ;
+delete from SecurityProfiles            ;
+delete from SecurityUsers               ;
+delete from CommonEntites               ;
+
+-- then click initialize

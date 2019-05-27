@@ -1,0 +1,564 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{95B68EBD-3E3F-4A3E-B461-7BD7C51836A7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ViewWinform</RootNamespace>
+    <AssemblyName>ViewWinform</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\Billing\AccomClassController.cs" />
+    <Compile Include="Controllers\Billing\BillingCategoryController.cs" />
+    <Compile Include="Controllers\Billing\FoodClassController.cs" />
+    <Compile Include="Controllers\Billing\FoodTypeController.cs" />
+    <Compile Include="Controllers\Common\AbstractDBController.cs" />
+    <Compile Include="Controllers\Common\ControllersRegistery.cs" />
+    <Compile Include="Controllers\Common\DBControllersFactory.cs" />
+    <Compile Include="Controllers\Common\EntityController.cs" />
+    <Compile Include="Controllers\Common\IController.cs" />
+    <Compile Include="Controllers\Common\ICrypto.cs" />
+    <Compile Include="Controllers\Common\IDBController.cs" />
+    <Compile Include="Controllers\Common\Session.cs" />
+    <Compile Include="Controllers\Configurations\CryptoController.cs" />
+    <Compile Include="Controllers\Configurations\CryptoFactory.cs" />
+    <Compile Include="Controllers\Configurations\SimpleCrypto.cs" />
+    <Compile Include="Controllers\Customers\ContactController.cs" />
+    <Compile Include="Controllers\Customers\ClientController.cs" />
+    <Compile Include="Controllers\Customers\ClientTypeController.cs" />
+    <Compile Include="Controllers\Customers\CountryController.cs" />
+    <Compile Include="Controllers\Customers\IdentificationController.cs" />
+    <Compile Include="Controllers\Customers\IdentificationTypeController.cs" />
+    <Compile Include="Controllers\Customers\ProjectController.cs" />
+    <Compile Include="Controllers\Housing\BuildingController.cs" />
+    <Compile Include="Controllers\Housing\BuildingTypeController.cs" />
+    <Compile Include="Controllers\Housing\CompoundController.cs" />
+    <Compile Include="Controllers\Housing\RoomController.cs" />
+    <Compile Include="Controllers\Security\AuditController.cs" />
+    <Compile Include="Controllers\Security\EntitlementController.cs" />
+    <Compile Include="Controllers\Security\EntitlementGroupController.cs" />
+    <Compile Include="Controllers\Security\ProfileController.cs" />
+    <Compile Include="Controllers\Security\ProfileEntitlementsController.cs" />
+    <Compile Include="Controllers\Security\UserController.cs" />
+    <Compile Include="Controllers\Tools\CalendarController.cs" />
+    <Compile Include="Controllers\Tools\DictionaryController.cs" />
+    <Compile Include="Controllers\Tools\LanguageState.cs" />
+    <Compile Include="Models\Billing\AccomClassEntity.cs" />
+    <Compile Include="Models\Billing\AccomClassModel.cs" />
+    <Compile Include="Models\Billing\BillingCategoryEntity.cs" />
+    <Compile Include="Models\Billing\BillingCategoryModel.cs" />
+    <Compile Include="Models\Billing\FoodClassEntity.cs" />
+    <Compile Include="Models\Billing\FoodClassModel.cs" />
+    <Compile Include="Models\Billing\FoodTypeEntity.cs" />
+    <Compile Include="Models\Billing\FoodTypeModel.cs" />
+    <Compile Include="Models\Common\AbstractDBEntity.cs" />
+    <Compile Include="Models\Common\BaseModel.cs" />
+    <Compile Include="Models\Common\DBConnectionManager.cs" />
+    <Compile Include="Models\Common\DBEntitiesFactory.cs" />
+    <Compile Include="Models\Common\Entities.cs" />
+    <Compile Include="Models\Common\EntityEntity.cs" />
+    <Compile Include="Models\Common\EntityModel.cs" />
+    <Compile Include="Models\Common\ForEntityAttribute.cs" />
+    <Compile Include="Models\Common\IDBEntity.cs" />
+    <Compile Include="Models\Common\IEntity.cs" />
+    <Compile Include="Models\Common\IModel.cs" />
+    <Compile Include="Models\Common\MetaData.cs" />
+    <Compile Include="Models\Common\ParametersFactory.cs" />
+    <Compile Include="Models\Common\ProgressUpdate.cs" />
+    <Compile Include="Models\Configurations\CryptoModel.cs" />
+    <Compile Include="Models\Customers\ContactEntity.cs" />
+    <Compile Include="Models\Customers\ClientEntity.cs" />
+    <Compile Include="Models\Customers\ContactModel.cs" />
+    <Compile Include="Models\Customers\ClientModel.cs" />
+    <Compile Include="Models\Customers\ClientTypeEntity.cs" />
+    <Compile Include="Models\Customers\ClientTypeModel.cs" />
+    <Compile Include="Models\Customers\CountryEntity.cs" />
+    <Compile Include="Models\Customers\CountryModel.cs" />
+    <Compile Include="Models\Customers\IdentificationEntity.cs" />
+    <Compile Include="Models\Customers\IdentificationModel.cs" />
+    <Compile Include="Models\Customers\IdentificationTypeEntity.cs" />
+    <Compile Include="Models\Customers\IdentificationTypeModel.cs" />
+    <Compile Include="Models\Customers\ProjectEntity.cs" />
+    <Compile Include="Models\Customers\ProjectModel.cs" />
+    <Compile Include="Models\Housing\BuildingEntity.cs" />
+    <Compile Include="Models\Housing\BuildingModel.cs" />
+    <Compile Include="Models\Housing\BuildingTypeEntity.cs" />
+    <Compile Include="Models\Housing\BuildingTypeModel.cs" />
+    <Compile Include="Models\Housing\CompoundEntity.cs" />
+    <Compile Include="Models\Housing\CompoundModel.cs" />
+    <Compile Include="Models\Housing\RoomEntity.cs" />
+    <Compile Include="Models\Housing\RoomModel.cs" />
+    <Compile Include="Models\Security\AuditEntity.cs" />
+    <Compile Include="Models\Security\AuditModel.cs" />
+    <Compile Include="Models\Security\EntitlementEntity.cs" />
+    <Compile Include="Models\Security\EntitlementGroupEntity.cs" />
+    <Compile Include="Models\Security\EntitlementGroupModel.cs" />
+    <Compile Include="Models\Security\EntitlementModel.cs" />
+    <Compile Include="Models\Security\ProfileEntitlementsEntity.cs" />
+    <Compile Include="Models\Security\ProfileEntitlementsModel.cs" />
+    <Compile Include="Models\Security\ProfileEntity.cs" />
+    <Compile Include="Models\Security\ProfileModel.cs" />
+    <Compile Include="Models\Security\UserEntity.cs" />
+    <Compile Include="Models\Security\UserModel.cs" />
+    <Compile Include="Models\Tools\DictionaryEntity.cs" />
+    <Compile Include="Models\Tools\DictionaryModel.cs" />
+    <Compile Include="Views\Billing\FoodTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Billing\FoodTypes.Designer.cs">
+      <DependentUpon>FoodTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Billing\FoodClasses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Billing\FoodClasses.Designer.cs">
+      <DependentUpon>FoodClasses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Billing\AccommodationClasses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Billing\AccommodationClasses.Designer.cs">
+      <DependentUpon>AccommodationClasses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Billing\BillingCategories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Billing\BillingCategories.Designer.cs">
+      <DependentUpon>BillingCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\DBViewsFactory.cs" />
+    <Compile Include="Views\Common\EntityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Common\EntityForm.Designer.cs">
+      <DependentUpon>EntityForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customers\ContactForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Customers\ContactForm.Designer.cs">
+      <DependentUpon>ContactForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Utils\BaseView.cs" />
+    <Compile Include="Views\Tools\CalendarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Tools\CalendarForm.Designer.cs">
+      <DependentUpon>CalendarForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Utils\LookupEventArgs.cs" />
+    <Compile Include="Views\Utils\LookUpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Utils\LookUpForm.Designer.cs">
+      <DependentUpon>LookUpForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Utils\LookUpButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Utils\LookUpButton.Designer.cs">
+      <DependentUpon>LookUpButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Utils\MVCAdaptor.cs" />
+    <Compile Include="Views\Utils\RecordsNavigator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Utils\RecordsNavigator.Designer.cs">
+      <DependentUpon>RecordsNavigator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\ISingleForm.cs" />
+    <Compile Include="Views\Common\SingleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Configurations\ControllersSelectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Configurations\ControllersSelectionForm.Designer.cs">
+      <DependentUpon>ControllersSelectionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Configurations\CryptoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Configurations\CryptoForm.Designer.cs">
+      <DependentUpon>CryptoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customers\IdentificationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Customers\IdentificationForm.Designer.cs">
+      <DependentUpon>IdentificationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customers\ClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Customers\ClientForm.Designer.cs">
+      <DependentUpon>ClientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customers\IdentificationTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Customers\IdentificationTypeForm.Designer.cs">
+      <DependentUpon>IdentificationTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customers\ClientTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Customers\ClientTypeForm.Designer.cs">
+      <DependentUpon>ClientTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customers\CountryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Customers\CountryForm.Designer.cs">
+      <DependentUpon>CountryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customers\ProjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Customers\ProjectForm.Designer.cs">
+      <DependentUpon>ProjectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Housing\BuildingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Housing\BuildingForm.Designer.cs">
+      <DependentUpon>BuildingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Housing\BuildingTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Housing\BuildingTypeForm.Designer.cs">
+      <DependentUpon>BuildingTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Housing\CompoundForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Housing\CompoundForm.Designer.cs">
+      <DependentUpon>CompoundForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Housing\RoomForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Housing\RoomForm.Designer.cs">
+      <DependentUpon>RoomForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MainView.Designer.cs">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Security\AuditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Security\AuditForm.Designer.cs">
+      <DependentUpon>AuditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Security\EntitlementGroupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Security\EntitlementGroupForm.Designer.cs">
+      <DependentUpon>EntitlementGroupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Security\ProfileEntitlementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Security\ProfileEntitlementForm.Designer.cs">
+      <DependentUpon>ProfileEntitlementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Security\EntitlementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Security\EntitlementForm.Designer.cs">
+      <DependentUpon>EntitlementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Security\ProfileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Security\ProfileForm.Designer.cs">
+      <DependentUpon>ProfileForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Security\Users\UserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Security\Users\UserForm.Designer.cs">
+      <DependentUpon>UserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Security\Users\UserPasswordResetView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Security\Users\UserPasswordResetView.Designer.cs">
+      <DependentUpon>UserPasswordResetView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Security\Users\UsersLoginView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Security\Users\UsersLoginView.Designer.cs">
+      <DependentUpon>UsersLoginView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tools\DictionaryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Tools\DictionaryForm.Designer.cs">
+      <DependentUpon>DictionaryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Utils\ConfigLoader.cs" />
+    <Compile Include="Views\Utils\FormsHelper.cs" />
+    <Compile Include="Views\Utils\ReportTemplate.cs" />
+    <Compile Include="Views\Utils\SQLView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Utils\SQLView.Designer.cs">
+      <DependentUpon>SQLView.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Views\Billing\FoodTypes.resx">
+      <DependentUpon>FoodTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Billing\FoodClasses.resx">
+      <DependentUpon>FoodClasses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Billing\AccommodationClasses.resx">
+      <DependentUpon>AccommodationClasses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Billing\BillingCategories.resx">
+      <DependentUpon>BillingCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Common\EntityForm.resx">
+      <DependentUpon>EntityForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Common\SingleForm.resx">
+      <DependentUpon>SingleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Customers\ContactForm.resx">
+      <DependentUpon>ContactForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Tools\CalendarForm.resx">
+      <DependentUpon>CalendarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Utils\LookUpForm.resx">
+      <DependentUpon>LookUpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Utils\LookUpButton.resx">
+      <DependentUpon>LookUpButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Utils\RecordsNavigator.resx">
+      <DependentUpon>RecordsNavigator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Configurations\ControllersSelectionForm.resx">
+      <DependentUpon>ControllersSelectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Configurations\CryptoForm.resx">
+      <DependentUpon>CryptoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Customers\IdentificationForm.resx">
+      <DependentUpon>IdentificationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Customers\ClientForm.resx">
+      <DependentUpon>ClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Customers\IdentificationTypeForm.resx">
+      <DependentUpon>IdentificationTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Customers\ClientTypeForm.resx">
+      <DependentUpon>ClientTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Customers\CountryForm.resx">
+      <DependentUpon>CountryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Customers\ProjectForm.resx">
+      <DependentUpon>ProjectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Housing\BuildingForm.resx">
+      <DependentUpon>BuildingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Housing\BuildingTypeForm.resx">
+      <DependentUpon>BuildingTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Housing\CompoundForm.resx">
+      <DependentUpon>CompoundForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Housing\RoomForm.resx">
+      <DependentUpon>RoomForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MainView.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Security\AuditForm.resx">
+      <DependentUpon>AuditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Security\EntitlementGroupForm.resx">
+      <DependentUpon>EntitlementGroupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Security\ProfileEntitlementForm.resx">
+      <DependentUpon>ProfileEntitlementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Security\EntitlementForm.resx">
+      <DependentUpon>EntitlementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Security\ProfileForm.resx">
+      <DependentUpon>ProfileForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Security\Users\UserForm.resx">
+      <DependentUpon>UserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Security\Users\UserPasswordResetView.resx">
+      <DependentUpon>UserPasswordResetView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Security\Users\UsersLoginView.resx">
+      <DependentUpon>UsersLoginView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Tools\DictionaryForm.resx">
+      <DependentUpon>DictionaryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Utils\SQLView.resx">
+      <DependentUpon>SQLView.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Resources\Save.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Resources\print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Resources\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Resources\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Resources\filter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Resources\list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Resources\new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Resources\ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Resources\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Resources\power_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Resources\refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Resources\table.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Resources\first.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Resources\last.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Resources\next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Resources\previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Resources\copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Resources\cut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Resources\paste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Resources\glyphicons-basic-427-square-triangle-down%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Resources\glyphicons-halflings-181-square-triangle-down%402x_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Resources\chevron-thin-down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Resources\icons8-web-design-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\Tables.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
