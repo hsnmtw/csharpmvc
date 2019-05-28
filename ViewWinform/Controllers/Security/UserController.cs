@@ -18,41 +18,32 @@ namespace MVCWinform.Security {
             });
         }
 
-        public override int Save(object userModel) {
-            var model = (UserModel)userModel;
+        public override int Save(BaseModel userModel) {
+            UserModel model = (UserModel)userModel;
             if (model.UserPassword.StartsWith("{ENC}") == false) {
                 model.UserPassword = CryptoFactory.Encrypt(model.UserPassword);
             }
             return base.Save(model);
         }
 
-        public override int Delete(object userModel) {
-            var model = (UserModel)userModel;
-            model = (UserModel)Find(model, "Id" );
+        public override int Delete(BaseModel userModel) {
+            var model = Find((UserModel)userModel, "Id" );
             if ("admin".Equals($"{model.UserName}".ToLower())) {
                 throw new ArgumentException("You cannot delete Admin user");
             }
             return base.Delete(model);
         }
 
-        //public override List<object> Read(object userModel, string[] whereFields) {
-        //    var model = (UserModel)userModel;
-        //    if(!(model.UserPassword == null || model.UserPassword.StartsWith("{ENC}"))) {
-        //        model.UserPassword = CryptoFactory.Encrypt(model.UserPassword);
-        //    }
-        //    return base.Read(model, whereFields);
-        //}
-
-        
-
         public UserModel Autheniticate(UserModel model) {
-         
-            //if (model.UserPassword.StartsWith("{ENC}")) return null;
+
+            if (model!=null && model.UserPassword!=null && !model.UserPassword.StartsWith("{ENC}")) {
+                model.UserPassword = new CryptoController().Process(new CryptoModel() { InputText = model.UserPassword }).Encrypted;
+            }
 
             var audit = (AuditController)DBControllersFactory.GetController(Entities.Audit);
 
             model.IsActive = true;
-            var modelf = Find(model, "UserName", "UserPassword", "IsActive");
+            UserModel modelf = Find(model, "UserName", "UserPassword", "IsActive");
 
             if (modelf == null) {
                 modelf = Find(model, "UserName" );
@@ -72,7 +63,7 @@ namespace MVCWinform.Security {
                 return null;
             };
 
-            model = (UserModel)modelf;
+            model = modelf;
 
             model.LastLoginDate = DateTime.Now;
             Save(model);

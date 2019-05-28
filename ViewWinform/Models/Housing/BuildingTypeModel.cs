@@ -2,6 +2,6 @@
 
 namespace MVCWinform.Housing {
     public class BuildingTypeModel : BaseModel {
-        public string BuildingType { get; set; }
+        public string BuildingTypeCode { get; set; }
     }
 }

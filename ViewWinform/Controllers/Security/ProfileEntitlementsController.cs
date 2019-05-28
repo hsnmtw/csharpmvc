@@ -10,8 +10,8 @@ namespace MVCWinform.Security {
         public ProfileEntitlementsController() : base(DBEntitiesFactory.GetEntity(Entities.ProfileEntitlement)) { }
 
         public void Initialize() {
-            var es = DBControllersFactory.GetController(Entities.Entitlement).Read();
-            var ps = DBControllersFactory.GetController(Entities.Profile).Read();
+            var es = DBControllersFactory.GetController(Entities.Entitlement).Read<EntitlementModel>();
+            var ps = DBControllersFactory.GetController(Entities.Profile).Read<ProfileModel>();
             foreach(ProfileModel p in ps) {
                 foreach(EntitlementModel e in es) {
                     Save(new ProfileEntitlementsModel() {

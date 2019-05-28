@@ -37,7 +37,7 @@ namespace MVCWinform.Utils {
                     }
 
                     if (sql.Trim().ToLower().StartsWith("select")) richTextBox1.Text += NEWLINE + this.ViewResult(sql, i);
-                    else richTextBox1.Text += $"{NEWLINE}affected rows: { DBConnectionManager.Execute(sql) } ";
+                    else richTextBox1.Text += $"{NEWLINE}affected rows: { DBConnectionManager.Instance.Execute(sql) } ";
 
                 } catch (Exception ex) {
                     //MessageBox.Show($"{}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -52,10 +52,8 @@ namespace MVCWinform.Utils {
         }
 
         private string ViewResult(string sql,int index) {
-            
-            //DataGridView grid = new Utils.CustomDataGridView();
-            //grid.DataSource = DBConnectionManager.Query(sql,null);
-            var query = DBConnectionManager.Query(sql, null).OfType<Dictionary<string, object>>();
+
+            IEnumerable<Dictionary<string, object>> query = DBConnectionManager.Instance.QueryAsDictionary(sql);
             if (query.Count() == 0) return "NO ROWS !!!";
             var sb = new StringBuilder();
             var first = query.First();

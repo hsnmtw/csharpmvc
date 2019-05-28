@@ -1,8 +1,9 @@
-﻿using System;
+﻿using MVCWinform.Security;
+using System;
 using System.Data;
 
 namespace MVCWinform.Common {
-    class MVCAdaptor<C> where C : AbstractDBController {
+    class MVCAdaptor<C> where C : IDBController {
         public C Controller { get; private set; }
         private DataTable recordset { get; set; }
 
@@ -18,12 +19,12 @@ namespace MVCWinform.Common {
         }
 
         public MVCAdaptor() {
-            this.Controller = Activator.CreateInstance<C>();
+            Controller = Activator.CreateInstance<C>();
         }
 
         public void Requery() {
-            this.recordset = this.Controller.ConvertToDataTable( this.Controller.Read() );
-            this.Count = this.recordset.Rows.Count;
+            recordset = Controller.GetData<AuditModel>();
+            Count = recordset.Rows.Count;
         }
     }
 }

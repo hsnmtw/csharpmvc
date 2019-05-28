@@ -3,46 +3,50 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using ViewWinform.Common;
 
 namespace MVCWinform.Security.Users {
     [ForEntity(Entities.User)]
-    public partial class UserForm : SingleForm {
+    public partial class UserForm: UserView {
         public UserForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            Controller = (UserController)DBControllersFactory.GetController(Entities.User);
+            //template
+            Mapper["Id"] = txtId;
+            Mapper["CreatedBy"] = txtCreatedBy;
+            Mapper["CreatedOn"] = txtCreatedOn;
+            Mapper["UpdatedBy"] = txtUpdatedBy;
+            Mapper["UpdatedOn"] = txtUpdatedOn;
+            Mapper["ReadOnly"] = chkReadOnly;
+            //data
+            Mapper["FullName           ".Trim()] = txtFullName;
+            Mapper["UserName           ".Trim()] = txtUserName;
+            Mapper["UserPassword       ".Trim()] = txtUserPassword;
+            Mapper["FailedLoginAttempts".Trim()] = txtFailedLoginAttempts;
+            Mapper["LastChangePassword ".Trim()] = txtLastPasswordReset;
+            Mapper["LastLoginDate      ".Trim()] = txtLastLoginDate;
+            Mapper["IsActive           ".Trim()] = chkIsActive;
+            Mapper["ProfileName        ".Trim()] = txtProfileName;
+            Mapper["Email              ".Trim()] = txtEmail;
+            //actions
+            SaveButton = btnSave;
+            DeleteButton = btnDelete;
+            NewButton = btnNew;
         }
 
 
-        private UserController Controller => (UserController)DBControllersFactory.GetController(Entities.User);
-        private UserModel model = new UserModel();
+        //private UserController Controller => (UserController)DBControllersFactory.GetController(Entities.User);
         private List<ProfileEntitlementsModel> profileEntitlements;
 
-        public UserModel Model {
-            get {
-                model = MVCWinform.Utils.FormsHelper.PopulateModelFromControls(model, this);
-                return model;
-            }
-            set {
-                this.model = value;
 
-                MVCWinform.Utils.FormsHelper.PopulateControlsFromModel(model, this);
-                this.txtUserPasswordConfirm.Text = this.txtUserPassword.Text;
-                this.txtUserName.Select();
-                this.txtUserName.Focus();
-            }
-        }
-        public override void UpdateModel() { var _ = Model; }
-
-        private void UserCodeTextBoxLookUpSelected(string value) {
-            this.Model = (UserModel)this.Controller.Find(this.Model, this.Controller.GetMetaData().GetUniqueKeyFields);
-        }
+        
 
         private void UserFormLoad(object sender, EventArgs e) {
-            Utils.FormsHelper.BindViewToModel(this,ref this.model);
             
-            this.Model = new UserModel();
-            this.profileEntitlements = 
-                (from ProfileEntitlementsModel row 
-                   in DBControllersFactory.GetController(Entities.ProfileEntitlement).Read()
+            Model = new UserModel();
+            profileEntitlements = 
+                (from row 
+                   in DBControllersFactory.GetController(Entities.ProfileEntitlement).Read<ProfileEntitlementsModel>()
                select row).ToList();
         }
 
@@ -62,7 +66,7 @@ namespace MVCWinform.Security.Users {
         private void UserNameLookupLookUpSelected(object sender, EventArgs e) {
             var selected = ((LookupEventArgs)e).SelectedValueFromLookup;
             //this.txtUserName.Text  = selected;
-            this.Model = (UserModel)this.Controller.Find(new UserModel() { UserName=selected }, "UserName");
+            Model = Controller.Find(new UserModel() { UserName=selected }, "UserName");
         }
 
         private void ProfileNameTextBoxTextChanged(object sender, EventArgs e) {
@@ -75,4 +79,5 @@ namespace MVCWinform.Security.Users {
             ).ToArray());
         }
     }
+    public class UserView : BaseView<UserModel, UserController> { }
 }

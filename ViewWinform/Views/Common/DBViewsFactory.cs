@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ViewWinform.Common;
 
 namespace MVCWinform.Common {
     public static class DBViewsFactory {
@@ -9,7 +10,7 @@ namespace MVCWinform.Common {
         public static void InitViewsMap(){
             ViewsMap = new Dictionary<Entities, Type>();
 
-            var type = typeof(ISingleForm);
+            var type = typeof(IView);
             var types = AppDomain.CurrentDomain.GetAssemblies()
                         .SelectMany(s => s.GetTypes())
                         .Where(p => type.IsAssignableFrom(p));
@@ -29,10 +30,9 @@ namespace MVCWinform.Common {
 
         }
 
-        public static ISingleForm GetView(Entities ce){
+        public static IView GetView(Entities ce){
             if (ViewsMap == null) InitViewsMap();
-            //return ViewsMap[ce];
-            return (ISingleForm)Activator.CreateInstance(ViewsMap[ce]);
+            return (IView)Activator.CreateInstance(ViewsMap[ce]);
         }
     }
 }

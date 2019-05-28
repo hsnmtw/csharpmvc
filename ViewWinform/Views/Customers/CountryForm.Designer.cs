@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnRemove = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtCreatedBy = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -128,14 +128,14 @@
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             // 
-            // btnRemove
+            // btnDelete
             // 
-            this.btnRemove.Location = new System.Drawing.Point(53, 232);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(75, 23);
-            this.btnRemove.TabIndex = 11;
-            this.btnRemove.Text = "Remove";
-            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnDelete.Location = new System.Drawing.Point(53, 232);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 11;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -276,7 +276,7 @@
             this.Controls.Add(this.lblMetaDataCountryEnglish);
             this.Controls.Add(this.lblMetaDataCountryCode);
             this.Controls.Add(this.CountryCodeLookupButton);
-            this.Controls.Add(this.btnRemove);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.txtUpdatedOn);
@@ -312,14 +312,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtCreatedBy;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtUpdatedBy;
         private System.Windows.Forms.TextBox txtCreatedOn;
         private System.Windows.Forms.TextBox txtUpdatedOn;
-        private Common.LookUpButton lookUpField1;
         private Common.LookUpButton CountryCodeLookupButton;
         private System.Windows.Forms.TextBox txtCountryCode;
         private System.Windows.Forms.Label lblMetaDataCountryCode;

@@ -24,7 +24,7 @@ namespace MVCWinform.Tools {
 
         public DictionaryController() : base(DBEntitiesFactory.GetEntity(Entities.Dictionary)) {
             try {
-                foreach (var row in Read().OfType<DictionaryModel>()) {
+                foreach (var row in Read<DictionaryModel>()) {
                     var WordInArabic = row.WordInArabic;
                     var WordInEnglish = row.WordInEnglish;
                     en[WordInEnglish] = WordInArabic;

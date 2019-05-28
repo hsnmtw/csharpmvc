@@ -44,28 +44,16 @@ namespace MVCWinform {
             DBConnectionManager.CONNECTION_STRING = Utils.ConfigLoader.ConnectionString;
 
 
-            try {
-                DBEntitiesFactory.InitEntitiesMap();
-                DBControllersFactory.InitControllersMap();
-            }catch(Exception ex) {
-                FormsHelper.Error(ex.Message);
-            }
-            //DBConnectionManager.Execute("CREATE TABLE CustomersContact (CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,Email VARCHAR(100) ,FaxNumber VARCHAR(15) ,FullName VARCHAR(100) NOT NULL,Id integer AUTOINCREMENT NOT NULL,MobileNumber VARCHAR(15) NOT NULL,PhoneNumber VARCHAR(15) ,ReadOnly YESNO ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME , PRIMARY KEY(Id), UNIQUE (MobileNumber))");
+            DBEntitiesFactory.InitEntitiesMap();
+            DBControllersFactory.InitControllersMap();
+            //DBViewsFactory.InitViewsMap();
 
             Session.Instance.CurrentUser = null;
 
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-
-
             Application.Run(MainView.Instance);
-
-            
-
-
-            //Application.Run(new Tools.CalendarForm());
         }
     }
 }

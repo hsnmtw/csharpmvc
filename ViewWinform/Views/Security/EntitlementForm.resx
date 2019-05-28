@@ -118,29 +118,29 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnRemove.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="btnDelete.Location" type="System.Drawing.Point, System.Drawing">
     <value>79, 236</value>
   </data>
-  <data name="btnRemove.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btnDelete.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btnRemove.TabIndex" type="System.Int32, mscorlib">
+  <data name="btnDelete.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
   </data>
-  <data name="btnRemove.Text" xml:space="preserve">
+  <data name="btnDelete.Text" xml:space="preserve">
     <value>Remove</value>
   </data>
-  <data name="&gt;&gt;btnRemove.Name" xml:space="preserve">
-    <value>btnRemove</value>
+  <data name="&gt;&gt;btnDelete.Name" xml:space="preserve">
+    <value>btnDelete</value>
   </data>
-  <data name="&gt;&gt;btnRemove.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnDelete.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnRemove.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnDelete.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;btnRemove.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnDelete.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
   <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">

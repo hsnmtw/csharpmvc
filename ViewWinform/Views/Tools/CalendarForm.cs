@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 
 namespace MVCWinform.Tools {
-    public partial class CalendarForm : SingleForm {
+    public partial class CalendarForm: Form {
 
         public int MinYear { get; set; }
         public int MaxYear { get; set; }

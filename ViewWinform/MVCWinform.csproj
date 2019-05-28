@@ -84,82 +84,80 @@
     <Compile Include="Controllers\Tools\CalendarController.cs" />
     <Compile Include="Controllers\Tools\DictionaryController.cs" />
     <Compile Include="Controllers\Tools\LanguageState.cs" />
-    <Compile Include="Models\Billing\AccomClassEntity.cs" />
+    <Compile Include="Entities\Billing\AccomClassEntity.cs" />
     <Compile Include="Models\Billing\AccomClassModel.cs" />
-    <Compile Include="Models\Billing\BillingCategoryEntity.cs" />
+    <Compile Include="Entities\Billing\BillingCategoryEntity.cs" />
     <Compile Include="Models\Billing\BillingCategoryModel.cs" />
-    <Compile Include="Models\Billing\FoodClassEntity.cs" />
+    <Compile Include="Entities\Billing\FoodClassEntity.cs" />
     <Compile Include="Models\Billing\FoodClassModel.cs" />
-    <Compile Include="Models\Billing\FoodTypeEntity.cs" />
+    <Compile Include="Entities\Billing\FoodTypeEntity.cs" />
     <Compile Include="Models\Billing\FoodTypeModel.cs" />
-    <Compile Include="Models\Common\AbstractDBEntity.cs" />
+    <Compile Include="Entities\Common\AbstractDBEntity.cs" />
     <Compile Include="Models\Common\BaseModel.cs" />
-    <Compile Include="Models\Common\DBConnectionManager.cs" />
-    <Compile Include="Models\Common\DBEntitiesFactory.cs" />
-    <Compile Include="Models\Common\Entities.cs" />
-    <Compile Include="Models\Common\EntityEntity.cs" />
+    <Compile Include="Entities\Common\DBConnectionManager.cs" />
+    <Compile Include="Entities\Common\DBEntitiesFactory.cs" />
+    <Compile Include="Entities\Common\Entities.cs" />
+    <Compile Include="Entities\Tools\EntityEntity.cs" />
     <Compile Include="Models\Common\EntityModel.cs" />
-    <Compile Include="Models\Common\ForEntityAttribute.cs" />
-    <Compile Include="Models\Common\IDBEntity.cs" />
-    <Compile Include="Models\Common\IEntity.cs" />
+    <Compile Include="Entities\Common\ForEntityAttribute.cs" />
+    <Compile Include="Entities\Common\IDBEntity.cs" />
+    <Compile Include="Entities\Common\IEntity.cs" />
     <Compile Include="Models\Common\IModel.cs" />
     <Compile Include="Models\Common\MetaData.cs" />
-    <Compile Include="Models\Common\ParametersFactory.cs" />
-    <Compile Include="Models\Common\ProgressUpdate.cs" />
     <Compile Include="Models\Configurations\CryptoModel.cs" />
-    <Compile Include="Models\Customers\ContactEntity.cs" />
-    <Compile Include="Models\Customers\ClientEntity.cs" />
+    <Compile Include="Entities\Customers\ContactEntity.cs" />
+    <Compile Include="Entities\Customers\ClientEntity.cs" />
     <Compile Include="Models\Customers\ContactModel.cs" />
     <Compile Include="Models\Customers\ClientModel.cs" />
-    <Compile Include="Models\Customers\ClientTypeEntity.cs" />
+    <Compile Include="Entities\Customers\ClientTypeEntity.cs" />
     <Compile Include="Models\Customers\ClientTypeModel.cs" />
-    <Compile Include="Models\Customers\CountryEntity.cs" />
+    <Compile Include="Entities\Customers\CountryEntity.cs" />
     <Compile Include="Models\Customers\CountryModel.cs" />
-    <Compile Include="Models\Customers\IdentificationEntity.cs" />
+    <Compile Include="Entities\Customers\IdentificationEntity.cs" />
     <Compile Include="Models\Customers\IdentificationModel.cs" />
-    <Compile Include="Models\Customers\IdentificationTypeEntity.cs" />
+    <Compile Include="Entities\Customers\IdentificationTypeEntity.cs" />
     <Compile Include="Models\Customers\IdentificationTypeModel.cs" />
-    <Compile Include="Models\Customers\ProjectEntity.cs" />
+    <Compile Include="Entities\Customers\ProjectEntity.cs" />
     <Compile Include="Models\Customers\ProjectModel.cs" />
-    <Compile Include="Models\Housing\BuildingEntity.cs" />
+    <Compile Include="Entities\Housing\BuildingEntity.cs" />
     <Compile Include="Models\Housing\BuildingModel.cs" />
-    <Compile Include="Models\Housing\BuildingTypeEntity.cs" />
+    <Compile Include="Entities\Housing\BuildingTypeEntity.cs" />
     <Compile Include="Models\Housing\BuildingTypeModel.cs" />
-    <Compile Include="Models\Housing\CompoundEntity.cs" />
+    <Compile Include="Entities\Housing\CompoundEntity.cs" />
     <Compile Include="Models\Housing\CompoundModel.cs" />
-    <Compile Include="Models\Housing\RoomEntity.cs" />
+    <Compile Include="Entities\Housing\RoomEntity.cs" />
     <Compile Include="Models\Housing\RoomModel.cs" />
-    <Compile Include="Models\Security\AuditEntity.cs" />
+    <Compile Include="Entities\Security\AuditEntity.cs" />
     <Compile Include="Models\Security\AuditModel.cs" />
-    <Compile Include="Models\Security\EntitlementEntity.cs" />
-    <Compile Include="Models\Security\EntitlementGroupEntity.cs" />
+    <Compile Include="Entities\Security\EntitlementEntity.cs" />
+    <Compile Include="Entities\Security\EntitlementGroupEntity.cs" />
     <Compile Include="Models\Security\EntitlementGroupModel.cs" />
     <Compile Include="Models\Security\EntitlementModel.cs" />
-    <Compile Include="Models\Security\ProfileEntitlementsEntity.cs" />
+    <Compile Include="Entities\Security\ProfileEntitlementsEntity.cs" />
     <Compile Include="Models\Security\ProfileEntitlementsModel.cs" />
-    <Compile Include="Models\Security\ProfileEntity.cs" />
+    <Compile Include="Entities\Security\ProfileEntity.cs" />
     <Compile Include="Models\Security\ProfileModel.cs" />
-    <Compile Include="Models\Security\UserEntity.cs" />
+    <Compile Include="Entities\Security\UserEntity.cs" />
     <Compile Include="Models\Security\UserModel.cs" />
-    <Compile Include="Models\Tools\DictionaryEntity.cs" />
+    <Compile Include="Entities\Tools\DictionaryEntity.cs" />
     <Compile Include="Models\Tools\DictionaryModel.cs" />
-    <Compile Include="Views\Billing\FoodTypes.cs">
+    <Compile Include="Views\Billing\FoodTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Billing\FoodTypes.Designer.cs">
-      <DependentUpon>FoodTypes.cs</DependentUpon>
+    <Compile Include="Views\Billing\FoodTypeForm.Designer.cs">
+      <DependentUpon>FoodTypeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Billing\FoodClasses.cs">
+    <Compile Include="Views\Billing\FoodClassForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Billing\FoodClasses.Designer.cs">
-      <DependentUpon>FoodClasses.cs</DependentUpon>
+    <Compile Include="Views\Billing\FoodClassForm.Designer.cs">
+      <DependentUpon>FoodClassForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Billing\AccommodationClasses.cs">
+    <Compile Include="Views\Billing\AccommClassForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Billing\AccommodationClasses.Designer.cs">
-      <DependentUpon>AccommodationClasses.cs</DependentUpon>
+    <Compile Include="Views\Billing\AccommClassForm.Designer.cs">
+      <DependentUpon>AccommClassForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Billing\BillingCategories.cs">
       <SubType>Form</SubType>
@@ -167,11 +165,15 @@
     <Compile Include="Views\Billing\BillingCategories.Designer.cs">
       <DependentUpon>BillingCategories.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Common\DBViewsFactory.cs" />
-    <Compile Include="Views\Common\EntityForm.cs">
+    <Compile Include="Views\Common\BaseView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Common\EntityForm.Designer.cs">
+    <Compile Include="Views\Common\DBViewsFactory.cs" />
+    <Compile Include="Views\Common\IView.cs" />
+    <Compile Include="Views\Tools\EntityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Tools\EntityForm.Designer.cs">
       <DependentUpon>EntityForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Customers\ContactForm.cs">
@@ -180,14 +182,25 @@
     <Compile Include="Views\Customers\ContactForm.Designer.cs">
       <DependentUpon>ContactForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Utils\BaseView.cs" />
     <Compile Include="Views\Tools\CalendarForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Tools\CalendarForm.Designer.cs">
       <DependentUpon>CalendarForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Utils\FixedWidthListBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Utils\FixedWidthListBox.Designer.cs">
+      <DependentUpon>FixedWidthListBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Utils\LookupEventArgs.cs" />
+    <Compile Include="Views\Utils\LookUpForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Utils\LookUpForm2.Designer.cs">
+      <DependentUpon>LookUpForm2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Utils\LookUpForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,10 +219,6 @@
     </Compile>
     <Compile Include="Views\Utils\RecordsNavigator.Designer.cs">
       <DependentUpon>RecordsNavigator.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Common\ISingleForm.cs" />
-    <Compile Include="Views\Common\SingleForm.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Configurations\ControllersSelectionForm.cs">
       <SubType>Form</SubType>
@@ -359,29 +368,32 @@
     <Compile Include="Views\Utils\SQLView.Designer.cs">
       <DependentUpon>SQLView.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Views\Billing\FoodTypes.resx">
-      <DependentUpon>FoodTypes.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Billing\FoodTypeForm.resx">
+      <DependentUpon>FoodTypeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Billing\FoodClasses.resx">
-      <DependentUpon>FoodClasses.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Billing\FoodClassForm.resx">
+      <DependentUpon>FoodClassForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Billing\AccommodationClasses.resx">
-      <DependentUpon>AccommodationClasses.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Billing\AccommClassForm.resx">
+      <DependentUpon>AccommClassForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Billing\BillingCategories.resx">
       <DependentUpon>BillingCategories.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Common\EntityForm.resx">
+    <EmbeddedResource Include="Views\Tools\EntityForm.resx">
       <DependentUpon>EntityForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Common\SingleForm.resx">
-      <DependentUpon>SingleForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Customers\ContactForm.resx">
       <DependentUpon>ContactForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Tools\CalendarForm.resx">
       <DependentUpon>CalendarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Utils\FixedWidthListBox.resx">
+      <DependentUpon>FixedWidthListBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Utils\LookUpForm2.resx">
+      <DependentUpon>LookUpForm2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Utils\LookUpForm.resx">
       <DependentUpon>LookUpForm.cs</DependentUpon>
@@ -559,6 +571,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Models\Tables.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\Configurations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

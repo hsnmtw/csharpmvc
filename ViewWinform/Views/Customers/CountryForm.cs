@@ -2,38 +2,33 @@
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using ViewWinform.Common;
 
 namespace MVCWinform.Customers {
     [ForEntity(Entities.Country)]
-    public partial class CountryForm : SingleForm {
+    public partial class CountryForm: CountryView {
 
-        public IDBController Controller;
-        private CountryModel model;
+        //public IDBController Controller;
 
         public CountryForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
-            Controller = DBControllersFactory.GetController(Entities.Country);
-            model = new CountryModel();
-            Utils.FormsHelper.BindViewToModel(this, ref this.model);
+            Controller = (CountryController)DBControllersFactory.GetController(Entities.Country);
+            //template
+            Mapper["Id"] = txtId;
+            Mapper["CreatedBy"] = txtCreatedBy;
+            Mapper["CreatedOn"] = txtCreatedOn;
+            Mapper["UpdatedBy"] = txtUpdatedBy;
+            Mapper["UpdatedOn"] = txtUpdatedOn;
+            Mapper["ReadOnly"] = chkReadOnly;
+            //data
+            Mapper[Model.CountryCode] = txtCountryCode;
+            Mapper[Model.CountryArabic] = txtCountryArabic;
+            Mapper[Model.CountryEnglish] = txtCountryEnglish;
+            //actions
+            SaveButton = btnSave;
+            DeleteButton = btnDelete;
+            NewButton = btnNew;
         }
-
-
-        public CountryModel Model{
-            get {
-                model = MVCWinform.Utils.FormsHelper.PopulateModelFromControls(model, this);
-                return model;
-            }
-            set {
-                this.model = value;
-                MVCWinform.Utils.FormsHelper.PopulateControlsFromModel(model, this);
-
-                this.txtCountryCode.Select();
-                this.txtCountryCode.Focus();
-
-            }
-        }
-        public override void UpdateModel() { var _ = Model; }
-
 
         private void CountryFormLoad(object sender, EventArgs e) {
             Label[] fieldsmarkers = { lblMetaDataCountryArabic,lblMetaDataCountryCode,lblMetaDataCountryEnglish };
@@ -50,9 +45,8 @@ namespace MVCWinform.Customers {
 
         private void CountryCodeTextBoxLookUpSelected(object sender, EventArgs e) {
             var selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            this.txtCountryCode.Text = selected;
-            
-            this.Model = (CountryModel)this.Controller.Find(this.Model, this.Controller.GetMetaData().GetUniqueKeyFields);
+            Model = Controller.Find(new CountryModel() { CountryCode = selected }, "CountryCode");
         }
     }
+    public class CountryView : BaseView<CountryModel, CountryController> { }
 }

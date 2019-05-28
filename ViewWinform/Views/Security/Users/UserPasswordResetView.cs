@@ -1,29 +1,13 @@
 ﻿using MVCWinform.Common;
 using System;
 using System.Windows.Forms;
+using ViewWinform.Common;
 
 namespace MVCWinform.Security.Users {
-    public partial class UserPasswordResetView : Form {
+    public partial class UserPasswordResetView : UserView {
         public UserPasswordResetView() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
-            Utils.FormsHelper.BindViewToModel(this, ref this.model);
-        }
-
-        public UserController Controller = (UserController)DBControllersFactory.GetController(Entities.User);
-        private UserModel model = new UserModel();
-
-        public UserModel Model {
-            get {
-                model.Id = int.Parse($"0{this.txtId.Text}");
-                model.UserName = this.txtUserName.Text.Trim();
-                model.UserPassword = this.txtUserPassword.Text.Trim();
-                return model;
-            }
-            set {
-                model = value;
-                this.txtId.Text = $"{model.Id}";
-                this.txtUserName.Text = model.UserName;
-            }
+            Controller = (UserController)DBControllersFactory.GetController(Entities.User);
         }
 
         private void Button1Click(object sender, EventArgs e) {

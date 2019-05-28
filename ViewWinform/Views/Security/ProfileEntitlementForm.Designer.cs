@@ -49,7 +49,7 @@
             this.lookuptxtProfileName = new MVCWinform.Common.LookUpButton();
             this.lookUpButton1 = new MVCWinform.Common.LookUpButton();
             this.btnNew = new System.Windows.Forms.Button();
-            this.btnRemove = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.lookupId = new MVCWinform.Common.LookUpButton();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -59,7 +59,7 @@
             this.btnSave.Location = new System.Drawing.Point(147, 308);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 14;
+            this.btnSave.TabIndex = 15;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             // 
@@ -71,7 +71,7 @@
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
             this.txtUpdatedOn.Size = new System.Drawing.Size(137, 20);
-            this.txtUpdatedOn.TabIndex = 12;
+            this.txtUpdatedOn.TabIndex = 13;
             this.txtUpdatedOn.TabStop = false;
             // 
             // txtUpdatedBy
@@ -82,7 +82,7 @@
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
             this.txtUpdatedBy.Size = new System.Drawing.Size(69, 20);
-            this.txtUpdatedBy.TabIndex = 11;
+            this.txtUpdatedBy.TabIndex = 12;
             this.txtUpdatedBy.TabStop = false;
             // 
             // label6
@@ -102,7 +102,7 @@
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
             this.txtCreatedOn.Size = new System.Drawing.Size(137, 20);
-            this.txtCreatedOn.TabIndex = 10;
+            this.txtCreatedOn.TabIndex = 11;
             this.txtCreatedOn.TabStop = false;
             // 
             // txtCreatedBy
@@ -113,7 +113,7 @@
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
             this.txtCreatedBy.Size = new System.Drawing.Size(69, 20);
-            this.txtCreatedBy.TabIndex = 9;
+            this.txtCreatedBy.TabIndex = 10;
             this.txtCreatedBy.TabStop = false;
             // 
             // label5
@@ -128,7 +128,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 74);
+            this.label2.Location = new System.Drawing.Point(33, 46);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 13);
             this.label2.TabIndex = 42;
@@ -157,11 +157,11 @@
             // txtEntitlementName
             // 
             this.txtEntitlementName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtEntitlementName.Location = new System.Drawing.Point(161, 74);
+            this.txtEntitlementName.Location = new System.Drawing.Point(161, 43);
             this.txtEntitlementName.Name = "txtEntitlementName";
             this.txtEntitlementName.ReadOnly = true;
             this.txtEntitlementName.Size = new System.Drawing.Size(193, 20);
-            this.txtEntitlementName.TabIndex = 3;
+            this.txtEntitlementName.TabIndex = 2;
             // 
             // chkReadOnly
             // 
@@ -170,7 +170,7 @@
             this.chkReadOnly.Location = new System.Drawing.Point(161, 267);
             this.chkReadOnly.Name = "chkReadOnly";
             this.chkReadOnly.Size = new System.Drawing.Size(15, 14);
-            this.chkReadOnly.TabIndex = 13;
+            this.chkReadOnly.TabIndex = 14;
             this.chkReadOnly.UseVisualStyleBackColor = true;
             // 
             // label10
@@ -197,7 +197,7 @@
             this.chkAllowDelete.Location = new System.Drawing.Point(161, 180);
             this.chkAllowDelete.Name = "chkAllowDelete";
             this.chkAllowDelete.Size = new System.Drawing.Size(15, 14);
-            this.chkAllowDelete.TabIndex = 8;
+            this.chkAllowDelete.TabIndex = 9;
             this.chkAllowDelete.UseVisualStyleBackColor = true;
             // 
             // label4
@@ -215,7 +215,7 @@
             this.chkAllowUpdate.Location = new System.Drawing.Point(161, 155);
             this.chkAllowUpdate.Name = "chkAllowUpdate";
             this.chkAllowUpdate.Size = new System.Drawing.Size(15, 14);
-            this.chkAllowUpdate.TabIndex = 7;
+            this.chkAllowUpdate.TabIndex = 8;
             this.chkAllowUpdate.UseVisualStyleBackColor = true;
             // 
             // label7
@@ -233,13 +233,13 @@
             this.chkAllowRead.Location = new System.Drawing.Point(161, 130);
             this.chkAllowRead.Name = "chkAllowRead";
             this.chkAllowRead.Size = new System.Drawing.Size(15, 14);
-            this.chkAllowRead.TabIndex = 6;
+            this.chkAllowRead.TabIndex = 7;
             this.chkAllowRead.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(33, 46);
+            this.label8.Location = new System.Drawing.Point(32, 74);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(67, 13);
             this.label8.TabIndex = 42;
@@ -248,11 +248,11 @@
             // txtProfileName
             // 
             this.txtProfileName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtProfileName.Location = new System.Drawing.Point(161, 43);
+            this.txtProfileName.Location = new System.Drawing.Point(161, 74);
             this.txtProfileName.Name = "txtProfileName";
             this.txtProfileName.ReadOnly = true;
             this.txtProfileName.Size = new System.Drawing.Size(193, 20);
-            this.txtProfileName.TabIndex = 1;
+            this.txtProfileName.TabIndex = 4;
             // 
             // label9
             // 
@@ -269,7 +269,7 @@
             this.chkAllowCreate.Location = new System.Drawing.Point(161, 105);
             this.chkAllowCreate.Name = "chkAllowCreate";
             this.chkAllowCreate.Size = new System.Drawing.Size(15, 14);
-            this.chkAllowCreate.TabIndex = 5;
+            this.chkAllowCreate.TabIndex = 6;
             this.chkAllowCreate.UseVisualStyleBackColor = true;
             // 
             // lookuptxtProfileName
@@ -278,12 +278,12 @@
             this.lookuptxtProfileName.AssociatedControlDescription = null;
             this.lookuptxtProfileName.Controller = "Profile";
             this.lookuptxtProfileName.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookuptxtProfileName.Location = new System.Drawing.Point(356, 42);
+            this.lookuptxtProfileName.Location = new System.Drawing.Point(356, 73);
             this.lookuptxtProfileName.Name = "lookuptxtProfileName";
             this.lookuptxtProfileName.SelectedValueIndex = 0;
             this.lookuptxtProfileName.ShowFieldsInLookUp.Add("ProfileName");
             this.lookuptxtProfileName.Size = new System.Drawing.Size(22, 22);
-            this.lookuptxtProfileName.TabIndex = 2;
+            this.lookuptxtProfileName.TabIndex = 5;
             this.lookuptxtProfileName.TabStop = false;
             // 
             // lookUpButton1
@@ -292,12 +292,12 @@
             this.lookUpButton1.AssociatedControlDescription = null;
             this.lookUpButton1.Controller = "Entitlement";
             this.lookUpButton1.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButton1.Location = new System.Drawing.Point(356, 73);
+            this.lookUpButton1.Location = new System.Drawing.Point(356, 42);
             this.lookUpButton1.Name = "lookUpButton1";
             this.lookUpButton1.SelectedValueIndex = 0;
             this.lookUpButton1.ShowFieldsInLookUp.Add("EntitlementName");
             this.lookUpButton1.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButton1.TabIndex = 4;
+            this.lookUpButton1.TabIndex = 3;
             this.lookUpButton1.TabStop = false;
             // 
             // btnNew
@@ -305,18 +305,18 @@
             this.btnNew.Location = new System.Drawing.Point(236, 308);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 23);
-            this.btnNew.TabIndex = 15;
+            this.btnNew.TabIndex = 16;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = true;
             // 
-            // btnRemove
+            // btnDelete
             // 
-            this.btnRemove.Location = new System.Drawing.Point(58, 308);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(75, 23);
-            this.btnRemove.TabIndex = 16;
-            this.btnRemove.Text = "Remove";
-            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnDelete.Location = new System.Drawing.Point(58, 308);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 17;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // lookupId
             // 
@@ -331,7 +331,7 @@
             this.lookupId.ShowFieldsInLookUp.Add("ProfileName");
             this.lookupId.ShowFieldsInLookUp.Add("Id");
             this.lookupId.Size = new System.Drawing.Size(22, 22);
-            this.lookupId.TabIndex = 2;
+            this.lookupId.TabIndex = 1;
             this.lookupId.TabStop = false;
             this.lookupId.LookUpSelected += new System.EventHandler(this.LookUpButton2_LookUpSelected);
             // 
@@ -340,7 +340,7 @@
             this.button1.Location = new System.Drawing.Point(327, 308);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 15;
+            this.button1.TabIndex = 18;
             this.button1.Text = "Close";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
@@ -349,7 +349,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 355);
+            this.ClientSize = new System.Drawing.Size(431, 355);
             this.Controls.Add(this.lookUpButton1);
             this.Controls.Add(this.lookupId);
             this.Controls.Add(this.lookuptxtProfileName);
@@ -365,7 +365,7 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtProfileName);
             this.Controls.Add(this.txtEntitlementName);
-            this.Controls.Add(this.btnRemove);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btnSave);
@@ -417,7 +417,7 @@
         private Common.LookUpButton lookuptxtProfileName;
         private Common.LookUpButton lookUpButton1;
         private System.Windows.Forms.Button btnNew;
-        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Button btnDelete;
         private Common.LookUpButton lookupId;
         private System.Windows.Forms.Button button1;
     }

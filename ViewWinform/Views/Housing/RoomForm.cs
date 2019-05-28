@@ -1,42 +1,40 @@
 ﻿using MVCWinform.Common;
 using System;
 using System.Collections.Generic;
+using ViewWinform.Common;
 
 namespace MVCWinform.Housing.Rooms {
     [ForEntity(Entities.Room)]
-    public partial class RoomForm : SingleForm {
+    public partial class RoomForm: RoomView {
 
 
-        public IDBController Controller;
-        private RoomModel model;
-
-        public RoomModel Model {
-            get {
-                model = MVCWinform.Utils.FormsHelper.PopulateModelFromControls(model, this);
-                return model;
-            }
-            set {
-                this.model = value;
-                MVCWinform.Utils.FormsHelper.PopulateControlsFromModel(model, this);
-
-                this.txtRoomName.Select();
-                this.txtRoomName.Focus();
-            }
-        }
-        public override void UpdateModel() { var _ = Model; }
+        //public IDBController Controller;
 
         public RoomForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
-            Controller = DBControllersFactory.GetController(Entities.Room);
-            model = new RoomModel();
-            Utils.FormsHelper.BindViewToModel(this.panel1, ref this.model);
+            Controller = (RoomController)DBControllersFactory.GetController(Entities.Room);
+            //template
+            Mapper["Id"] = txtId;
+            Mapper["CreatedBy"] = txtCreatedBy;
+            Mapper["CreatedOn"] = txtCreatedOn;
+            Mapper["UpdatedBy"] = txtUpdatedBy;
+            Mapper["UpdatedOn"] = txtUpdatedOn;
+            Mapper["ReadOnly"] = chkReadOnly;
+            //data
+            Mapper["RoomName"] = txtRoomName;
+            Mapper["NumberOfWindows"] = txtNumberOfWindows;
+            Mapper["CountryCode"] = txtCountryCode;
+            Mapper["BedCapacity"] = txtBedCapacity;
+            Mapper["BuildingName"] = txtBuildingName;
+            //actions
+            SaveButton = btnSave;
+            DeleteButton = btnDelete;
+            NewButton = btnNew;
         }
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
             string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            this.txtRoomName.Text = selected;
-            this.Model = (RoomModel)this.Controller.Find(this.Model, this.Controller.GetMetaData().GetUniqueKeyFields);
-
+            Model = Controller.Find(new RoomModel() { RoomName = selected }, "RoomName");
         }
 
         private void Button1Click(object sender, EventArgs e) {
@@ -54,4 +52,5 @@ namespace MVCWinform.Housing.Rooms {
 
         }
     }
+    public class RoomView : BaseView<RoomModel, RoomController> { }
 }

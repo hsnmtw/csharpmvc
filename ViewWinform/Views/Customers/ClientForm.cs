@@ -1,34 +1,29 @@
 ﻿using MVCWinform.Common;
 using MVCWinform.Utils;
 using System;
+using ViewWinform.Common;
 
 namespace MVCWinform.Customers {
     [ForEntity(Entities.Client)]
-    public partial class ClientForm : SingleForm {
+    public partial class ClientForm: ClientView {
 
-        public IDBController Controller;
-        private ClientModel model;
-
-        public ClientModel Model {
-            get {
-                model = MVCWinform.Utils.FormsHelper.PopulateModelFromControls(model, this);
-                return model;
-            }
-            set {
-                this.model = value;
-                MVCWinform.Utils.FormsHelper.PopulateControlsFromModel(model, this);
-
-                this.txtShortName.Select();
-                this.txtShortName.Focus();
-            }
-        }
-        public override void UpdateModel() { var _ = Model; }
+        //public IDBController Controller;
+        
         public ClientForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
-            
-            Controller = DBControllersFactory.GetController(Entities.Client);
-            model = new ClientModel();
-            FormsHelper.BindViewToModel(this, ref this.model);
+            Controller = (ClientController)DBControllersFactory.GetController(Entities.Client);
+            //template
+            Mapper["Id"] = txtId;
+            Mapper["CreatedBy"] = txtCreatedBy;
+            Mapper["CreatedOn"] = txtCreatedOn;
+            Mapper["UpdatedBy"] = txtUpdatedBy;
+            Mapper["UpdatedOn"] = txtUpdatedOn;
+            Mapper["ReadOnly"] = chkReadOnly;
+            //data
+            //actions
+            SaveButton = btnSave;
+            DeleteButton = btnDelete;
+            NewButton = btnNew;
         }
 
         private void ClientTypeFormLoad(object sender, EventArgs e) {
@@ -37,8 +32,8 @@ namespace MVCWinform.Customers {
 
         private void LookUpButtonShortNameLookUpSelected(object sender, EventArgs e) {
             string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            this.txtShortName.Text = selected;
-            this.Model = (ClientModel)this.Controller.Find(this.Model, this.Controller.GetMetaData().GetUniqueKeyFields);
+            Model = Controller.Find(new ClientModel() { ShortName = selected }, "ShortName");
         }
     }
+    public class ClientView : BaseView<ClientModel, ClientController> { }
 }

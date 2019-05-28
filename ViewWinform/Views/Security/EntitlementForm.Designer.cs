@@ -24,7 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EntitlementForm));
-            this.btnRemove = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.txtUpdatedOn = new System.Windows.Forms.TextBox();
@@ -48,11 +48,11 @@
             this.txtEntityName = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // btnRemove
+            // btnDelete
             // 
-            resources.ApplyResources(this.btnRemove, "btnRemove");
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnDelete, "btnDelete");
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // btnSave
             // 
@@ -213,7 +213,7 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtEntitlementName);
             this.Controls.Add(this.EntitlementNameLookup);
-            this.Controls.Add(this.btnRemove);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.txtUpdatedOn);
@@ -235,7 +235,7 @@
         #endregion
 
         private Common.LookUpButton EntitlementNameLookup;
-        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.TextBox txtUpdatedOn;

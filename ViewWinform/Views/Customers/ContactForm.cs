@@ -1,43 +1,44 @@
 ﻿using MVCWinform.Common;
 using MVCWinform.Utils;
 using System;
+using ViewWinform.Common;
 
 namespace MVCWinform.Customers {
     [ForEntity(Entities.Contact)]
-    public partial class ContactForm : SingleForm {
+    public partial class ContactForm: ContactView {
 
-        public IDBController Controller; 
-        private ContactModel model; 
-
-        public ContactModel Model {
-            get {
-                model = MVCWinform.Utils.FormsHelper.PopulateModelFromControls(model, this);
-                return model;
-            }
-            set {
-                this.model = value;
-                MVCWinform.Utils.FormsHelper.PopulateControlsFromModel(model, this);
-
-                this.txtMobileNumber.Select();
-                this.txtMobileNumber.Focus();
-            }
-        }
-        public override void UpdateModel() { var _ = Model; }
+        //public IDBController Controller; 
+        
         public ContactForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
-            Controller = DBControllersFactory.GetController(Entities.Contact);
-            model = new ContactModel();
+            Controller = (ContactController)DBControllersFactory.GetController(Entities.Contact);
+            //template
+            Mapper["Id"] = txtId;
+            Mapper["CreatedBy"] = txtCreatedBy;
+            Mapper["CreatedOn"] = txtCreatedOn;
+            Mapper["UpdatedBy"] = txtUpdatedBy;
+            Mapper["UpdatedOn"] = txtUpdatedOn;
+            Mapper["ReadOnly"] = chkReadOnly;
+            //data
+            Mapper["Email"] = txtEmail;
+            Mapper["FaxNumber"] = txtFaxNumber;
+            Mapper["PhoneNumber"] = txtPhoneNumber;
+            Mapper["MobileNumber"] = txtMobileNumber;
+            Mapper["FullName"] = txtFullName;
+            //actions
+            SaveButton = btnSave;
+            DeleteButton = btnDelete;
+            NewButton = btnNew;
         }
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            //string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
+            string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
             //this.txtMobileNumber.Text = selected;
-            this.Model = (ContactModel)this.Controller.Find(this.Model, this.Controller.GetMetaData().GetUniqueKeyFields);
-
+            Model = Controller.Find(new ContactModel() { MobileNumber=selected }, "MobileNumber");
         }
 
         private void ContactFormLoad(object sender, EventArgs e) {
-            FormsHelper.BindViewToModel(this,ref this.model);
         }
     }
+    public class ContactView : BaseView<ContactModel, ContactController> { }
 }

@@ -1,43 +1,39 @@
 ﻿using MVCWinform.Common;
 using System;
+using ViewWinform.Common;
 
 namespace MVCWinform.Tools {
     [ForEntity(Entities.Dictionary)]
-    public partial class DictionaryForm : SingleForm {
+    public partial class DictionaryForm: DictionaryView {
 
-        public IDBController Controller;
-        private IDBController dictionaryController;
-        private DictionaryModel model;
 
         public DictionaryForm() : base() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
-            dictionaryController = DBControllersFactory.GetController(Entities.Dictionary);
-            Controller = DBControllersFactory.GetController(Entities.Dictionary);
-            model = new DictionaryModel();
-            Utils.FormsHelper.BindViewToModel(this, ref this.model);
+            Controller = (DictionaryController)DBControllersFactory.GetController(Entities.Dictionary);
+            //template
+            Mapper["Id"] = txtId;
+            Mapper["CreatedBy"] = txtCreatedBy;
+            Mapper["CreatedOn"] = txtCreatedOn;
+            Mapper["UpdatedBy"] = txtUpdatedBy;
+            Mapper["UpdatedOn"] = txtUpdatedOn;
+            //data
+            Mapper["WordInArabic"] = txtWordInArabic;
+            Mapper["WordInEnglish"] = txtWordInEnglish;
+            //actions
+            SaveButton = btnSave;
+            DeleteButton = btnDelete;
+            NewButton = btnNew;
         }
-
-        public DictionaryModel Model {
-            get {
-                model = MVCWinform.Utils.FormsHelper.PopulateModelFromControls(model, this);
-                return model;
-            }
-            set {
-                this.model = value;
-                MVCWinform.Utils.FormsHelper.PopulateControlsFromModel(model, this);
-
-                this.txtWordInEnglish.Focus();
-                this.txtWordInEnglish.Select();
-            }
-        }
-        public override void UpdateModel() { var _ = Model; }
+        
 
         private void DictionaryFormLoad1(object sender, EventArgs e) {
 
         }
 
         private void DictionaryNameLookupButtonLookUpSelected(object sender, EventArgs e) {
-            this.Model = (DictionaryModel)this.Controller.Find(this.Model, this.Controller.GetMetaData().GetUniqueKeyFields);
+            var selected = ((LookupEventArgs)e).SelectedValueFromLookup;
+            Model = Controller.Find(new DictionaryModel() { WordInEnglish = selected }, "WordInEnglish");
         }
     }
+    public class DictionaryView : BaseView<DictionaryModel, DictionaryController> { }
 }

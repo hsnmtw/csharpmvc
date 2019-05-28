@@ -1,38 +1,40 @@
 ﻿using MVCWinform.Common;
 using System;
+using ViewWinform.Common;
 
-namespace MVCWinform.Housing.Compounds {
+namespace MVCWinform.Housing {
     [ForEntity(Entities.Compound)]
-    public partial class CompoundForm : SingleForm {
+    public partial class CompoundForm: CompoundView {
 
-        public IDBController Controller;
-        private CompoundModel model;
+        //public IDBController Controller;
 
         public CompoundForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
-            Controller = DBControllersFactory.GetController(Entities.Compound);
-            model = new CompoundModel();
-            Utils.FormsHelper.BindViewToModel(this, ref this.model);
+            Controller = (CompoundController)DBControllersFactory.GetController(Entities.Compound);
+            //template
+            Mapper["Id"] = txtId;
+            Mapper["CreatedBy"] = txtCreatedBy;
+            Mapper["CreatedOn"] = txtCreatedOn;
+            Mapper["UpdatedBy"] = txtUpdatedBy;
+            Mapper["UpdatedOn"] = txtUpdatedOn;
+            Mapper["ReadOnly"] = chkReadOnly;
+            //data
+            Mapper["CompoundName"] = txtCompoundName;
+            //actions
+            SaveButton = btnSave;
+            DeleteButton = btnDelete;
+            NewButton = btnNew;
         }
-
-        public CompoundModel Model {
-            get {
-                model = MVCWinform.Utils.FormsHelper.PopulateModelFromControls(model, this);
-                return model;
-            }
-            set {
-                this.model = value;
-                MVCWinform.Utils.FormsHelper.PopulateControlsFromModel(model, this);
-            }
-        }
-        public override void UpdateModel() { var _ = Model; }
+        
 
         private void CompoundFormLoad1(object sender, EventArgs e) {
 
         }
 
         private void CompoundNameLookupButtonLookUpSelected(object sender, EventArgs e) {
-            this.Model = (CompoundModel)this.Controller.Find(this.Model, this.Controller.GetMetaData().GetUniqueKeyFields);
+            var selected = ((LookupEventArgs)e).SelectedValueFromLookup;
+            Model = Controller.Find(new CompoundModel() { CompoundName = selected }, "CompoundName");
         }
     }
+    public class CompoundView : BaseView<CompoundModel, CompoundController> { }
 }

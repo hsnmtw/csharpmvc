@@ -372,7 +372,7 @@
     <value>UserNameLookup</value>
   </data>
   <data name="&gt;&gt;UserNameLookup.Type" xml:space="preserve">
-    <value>MVCWinform.Common.LookUpButton, MVCWinform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>MVCWinform.Common.LookUpButton, ViewWinform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;UserNameLookup.Parent" xml:space="preserve">
     <value>$this</value>
@@ -478,6 +478,6 @@
     <value>UsersLoginView</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>MVCWinform.Common.SingleForm, MVCWinform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ViewWinform.Common.UserView, ViewWinform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

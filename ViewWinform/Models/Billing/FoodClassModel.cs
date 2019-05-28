@@ -2,6 +2,6 @@
 
 namespace MVCWinform.Customers {
     public class FoodClassModel : BaseModel {
-        public string FoodClass { get; set; }
+        public string FoodClassCode { get; set; }
     }
 }

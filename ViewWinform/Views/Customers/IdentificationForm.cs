@@ -1,33 +1,34 @@
 ﻿using MVCWinform.Common;
 using MVCWinform.Utils;
 using System;
+using ViewWinform.Common;
 
 namespace MVCWinform.Customers {
     [ForEntity(Entities.Identification)]
-    public partial class IdentificationForm : SingleForm {
+    public partial class IdentificationForm: IdentificationView {
 
-        public IDBController Controller;
-        private IdentificationModel model;
-
-        public IdentificationModel Model {
-            get {
-                model = MVCWinform.Utils.FormsHelper.PopulateModelFromControls(model, this);
-                return model;
-            }
-            set {
-                this.model = value;
-                MVCWinform.Utils.FormsHelper.PopulateControlsFromModel(model, this);
-
-                this.txtIdNumber.Select();
-                this.txtIdNumber.Focus();
-            }
-        }
-        public override void UpdateModel() { var _ = Model; }
+        //public IDBController Controller;
+        
         public IdentificationForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
-            Controller = DBControllersFactory.GetController(Entities.Identification);
-            model = new IdentificationModel();
-            FormsHelper.BindViewToModel(this, ref this.model);
+            Controller = (IdentificationController)DBControllersFactory.GetController(Entities.Identification);
+            //template
+            Mapper["Id"] = txtId;
+            Mapper["CreatedBy"] = txtCreatedBy;
+            Mapper["CreatedOn"] = txtCreatedOn;
+            Mapper["UpdatedBy"] = txtUpdatedBy;
+            Mapper["UpdatedOn"] = txtUpdatedOn;
+            Mapper["ReadOnly"] = chkReadOnly;
+            //data
+            Mapper["ExpiryDate"] = txtExpiryDate;
+            Mapper["IssueDate"] = txtIssueDate;
+            Mapper["IssuingCountry"] = txtIssuingCountry;
+            Mapper["IdNumber"] = txtIdNumber;
+            Mapper["IdType"] = txtIdType;
+            //actions
+            SaveButton = btnSave;
+            DeleteButton = btnDelete;
+            NewButton = btnNew;
         }
 
         private void ClientTypeFormLoad(object sender, EventArgs e) {
@@ -35,8 +36,8 @@ namespace MVCWinform.Customers {
 
         private void LookUpButtonShortNameLookUpSelected(object sender, EventArgs e) {
             string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            this.txtId.Text = selected;
-            this.Model = (IdentificationModel)this.Controller.Find(this.Model, this.Controller.GetMetaData().GetUniqueKeyFields);
+            Model = Controller.Find(new IdentificationModel() { IdNumber = selected }, "IdNumber");
         }
     }
+    public class IdentificationView : BaseView<IdentificationModel, IdentificationController> { }
 }

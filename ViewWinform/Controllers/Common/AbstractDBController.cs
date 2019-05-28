@@ -10,30 +10,30 @@ namespace MVCWinform.Common {
             if (baseEntity == null) throw new ArgumentNullException("baseEntity");
             this.BaseEntity = baseEntity;
         }
-        public virtual M Find<M>(M model, params string[] whereFields) => this.BaseEntity.Find(model,whereFields);
-        public virtual object CreateNewModel() => this.BaseEntity.NewModel();
-        public virtual int Delete(object model) => this.BaseEntity.Delete(model);
-        public virtual List<object> Read() => Read(CreateNewModel());
-        public virtual List<object> Read(object model, params string[] whereFields) => this.BaseEntity.Read(model, false, whereFields);
-        public virtual List<object> Read(object model, bool like = false, params string[] whereFields) => this.BaseEntity.Read(model, like, whereFields);
-        public virtual int Save(object model){
-            var type = model.GetType();
-            if (Convert.ToInt32(type.GetProperty("Id").GetValue(model)) == 0) {
-                type.GetProperty("CreatedBy").SetValue(model, Session.Instance.CurrentUser==null ? "SYSTEM" : Session.Instance.CurrentUser.UserName);
-                type.GetProperty("CreatedOn").SetValue(model, DateTime.Now);
+        public virtual M Find<M>(M model, params string[] whereFields) => BaseEntity.Find(model,whereFields);
+        public virtual M NewModel<M>() => BaseEntity.NewModel<M>();
+        public virtual int Delete(BaseModel model) => BaseEntity.Delete(model);
+        public virtual IEnumerable<M> Read<M>() => Read(Activator.CreateInstance<M>());
+        public virtual IEnumerable<M> Read<M>(M model, params string[] whereFields) => BaseEntity.Read(model, false, whereFields);
+        public virtual IEnumerable<M> Read<M>(M model, bool like = false, params string[] whereFields) => BaseEntity.Read(model, like, whereFields);
+        public virtual int Save(BaseModel model){
+            //var type = model.GetType();
+            if (model.Id == 0) {
+                model.CreatedBy = (Session.Instance.CurrentUser==null ? "SYSTEM" : Session.Instance.CurrentUser.UserName);
+                model.CreatedOn = (DateTime.Now);
                 return BaseEntity.Create(model);
             } else {
-                type.GetProperty("UpdatedBy").SetValue(model, Session.Instance.CurrentUser == null ? "SYSTEM" : Session.Instance.CurrentUser.UserName);
-                type.GetProperty("UpdatedOn").SetValue(model, DateTime.Now);
+                model.UpdatedBy = (Session.Instance.CurrentUser == null ? "SYSTEM" : Session.Instance.CurrentUser.UserName);
+                model.UpdatedOn = (DateTime.Now);
                 return BaseEntity.Update(model,"Id");
             }
         }
-        public MetaData GetMetaData() => this.BaseEntity.MetaData;
+        public MetaData GetMetaData() => BaseEntity.MetaData;
 
-        public DataTable ConvertToDataTable(List<object> models) => AbstractDBEntity.ConvertToDataTable(models);
+        public DataTable GetData<M>() => BaseEntity.GetData(NewModel<M>());
 
         public object Dispatch(string action, params object[] arguments) {
-            return this.GetType().GetMethod(action).Invoke(this,arguments);
+            return GetType().GetMethod(action).Invoke(this,arguments);
         }
     }
 }

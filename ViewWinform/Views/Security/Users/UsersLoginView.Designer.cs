@@ -94,7 +94,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.Window;
-            //this.pictureBox1.Image = global::MVCWinform.Properties.Resources.icons8_web_design_64;
+            this.pictureBox1.Image = global::ViewWinform.Properties.Resources.icons8_web_design_64;
             resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;

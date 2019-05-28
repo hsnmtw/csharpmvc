@@ -9,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using ViewWinform.Common;
 
 namespace MVCWinform {
     public partial class MainView : Form, IDisposable
@@ -18,9 +19,7 @@ namespace MVCWinform {
         public EntitlementGroupController egController;
         public EntitlementController eController;
 
-        private Dictionary<string, ToolStripMenuItem> menus = new Dictionary<string, ToolStripMenuItem>();
-
-
+        private readonly Dictionary<string, ToolStripMenuItem> menus = new Dictionary<string, ToolStripMenuItem>();
 
         private static MainView instance = null;
         public static MainView Instance {
@@ -48,7 +47,9 @@ namespace MVCWinform {
 
 
         private void MainViewLoad(object sender, EventArgs e) {
-            try { LoadForm(); }
+            try {
+                LoadForm();
+              }
             catch(Exception ex) {
                 FormsHelper.Error(ex.Message);
             }
@@ -59,8 +60,8 @@ namespace MVCWinform {
             initializeToolStripMenuItem.Visible = false;
             initializeToolStripMenuItem.Visible = (null == eController.Find(new EntitlementModel() { EntitlementName = "Initialize" }, "EntitlementName"));
 
-            var entitlements = eController.Read().OfType<EntitlementModel>().OrderBy(x => x.EntitlementName);
-            var egroups = egController.Read().OfType<EntitlementGroupModel>().Where(r => r.Dynamic).OrderBy(x => x.EntitlementGroupName);
+            var entitlements = eController.Read<EntitlementModel>().OrderBy(x => x.EntitlementName);
+            var egroups = egController.Read<EntitlementGroupModel>().Where(r => r.Dynamic).OrderBy(x => x.EntitlementGroupName);
 
             foreach (var row in egroups) {
                 var egn = row.EntitlementGroupName;
@@ -86,7 +87,10 @@ namespace MVCWinform {
                     ce.Click += (s, ea) => {
                         if (s == null || !typeof(ToolStripMenuItem).Equals(s.GetType()) || ((ToolStripMenuItem)s).Tag == null || ((ToolStripMenuItem)s).Tag.ToString().Equals("")) return;
                         if (Enum.TryParse<Entities>(((ToolStripMenuItem)s).Tag.ToString(), out Entities num)) {
-                            ((Form)DBViewsFactory.GetView(num)).Show();
+                            var view = ((Form)DBViewsFactory.GetView(num));
+                            view.MdiParent = this;
+                            view.Show();
+                            FormsHelper.ApplyLanguageLocalization(view);
                         } else {
                             FormsHelper.Error("Not implemented");
                         }
@@ -114,7 +118,9 @@ namespace MVCWinform {
             //LogInToolStripMenuItemClick(sender, e);
             tsProgressBar.Value = 100;
 
-            new UsersLoginView().Show();
+            var login = new UsersLoginView() { MdiParent = this };
+            login.Show();
+            //login.Model = new UserModel() { UserName = "Admin", UserPassword = "123" };
             tsProgressBar.Value = 0;
         }
 
@@ -195,17 +201,11 @@ namespace MVCWinform {
         }
 
         private void NewToolStripMenuItemClick(object sender, EventArgs e) {
-            if (this.ActiveMdiChild == null) return;
-            if (this.ActiveMdiChild is ISingleForm) {
-                ((ISingleForm)this.ActiveMdiChild).PerformAction("New");
-            }
+            ((IView)ActiveMdiChild)?.NewButton?.PerformClick();
         }
 
         private void SaveToolStripMenuItemClick(object sender, EventArgs e) {
-            if (this.ActiveMdiChild == null) return;
-            if (this.ActiveMdiChild is ISingleForm) {
-                ((ISingleForm)this.ActiveMdiChild).PerformAction("Save");
-            }
+            ((IView)ActiveMdiChild)?.SaveButton?.PerformClick();
         }
 
         private void CloseToolStripMenuItemClick(object sender, EventArgs e) {
@@ -214,18 +214,10 @@ namespace MVCWinform {
             } catch { }
         }
 
-        private void DuplicateToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (this.ActiveMdiChild == null) return;
-            if (this.ActiveMdiChild is ISingleForm) {
-                ((ISingleForm)this.ActiveMdiChild).PerformAction("Duplicate");
-            }
-        }
+        
 
-        private void RemoveToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (this.ActiveMdiChild == null) return;
-            if (this.ActiveMdiChild is ISingleForm) {
-                ((ISingleForm)this.ActiveMdiChild).PerformAction("Remove");
-            }
+        private void DeleteToolStripMenuItem_Click(object sender, EventArgs e) {
+            ((IView)ActiveMdiChild)?.DeleteButton?.PerformClick();
         }
 
         private void EnglishToolStripMenuItem_Click(object sender, EventArgs e) {

@@ -65,7 +65,7 @@ namespace MVCWinform.Utils {
             }
         }
 
-        public static void BindViewToModel<M>(Control cntrl,ref M model)
+        private static void BindViewToModel<M>(Control cntrl,ref M model)
         {
             //return;
 
@@ -83,7 +83,7 @@ namespace MVCWinform.Utils {
                 typeof(CheckBox)
             };
 
-            string[] buttons = { "btnSave","btnNew","btnRemove" };
+            string[] buttons = { "btnSave","btnNew","btnDelete" };
 
 
 
@@ -107,8 +107,8 @@ namespace MVCWinform.Utils {
                     };
                 }
                 if (buttons.Contains(control.Name)) {
-                    
-                    ((ISingleForm)form).UpdateModel();
+                    FormsHelper.Error("29837:error");
+                    //((ISingleForm)form).UpdateModel();
                     switch (control.Name) {
                         case "btnNew":  control.Click += (s, e) => {
                                 form.GetType().GetProperty("Model").SetValue(form,Activator.CreateInstance(modeltype));
@@ -118,19 +118,23 @@ namespace MVCWinform.Utils {
                         case "btnSave":
                             control.Click += (s, e) => {
                                 var Controller = (IDBController)form.GetType().GetField("Controller").GetValue(form);
-                                var Model      = form.GetType().GetProperty("Model");
-                                Controller.Save(Model.GetValue(form));
-                                var saved = Controller.Find(Model.GetValue(form), Controller.GetMetaData().GetUniqueKeyFields);
-                                Model.SetValue(form, saved);
-                                MainView.Instance.setProgress("Saved Successfully", 0);
+                                var ModelProp  = form.GetType().GetProperty("Model");
+                                var m = (BaseModel)ModelProp.GetValue(form);
+                                Controller.Save(m);
+                      //          var mdl = Controller.NewModel();
+                                //var idp = mdl.GetType().GetProperty("Id");
+                                //idp.SetValue(mdl, idp.GetValue(m));
+                                //var saved = Controller.Find(mdl, "Id");
+                                //ModelProp.SetValue(form, saved);
+                                //MainView.Instance.setProgress("Saved Successfully", 0);
                             };
                             break;
-                        case "btnRemove":
+                        case "btnDelete":
                             control.Click += (s, e) => {
                                 var Controller = (IDBController)form.GetType().GetField("Controller").GetValue(form);
-                                var Model = form.GetType().GetProperty("Model");
-                                Controller.Delete(Model.GetValue(form));
-                                Model.SetValue(form, Activator.CreateInstance(Model.PropertyType));
+                                var mprop = form.GetType().GetProperty("Model");
+                                Controller.Delete((BaseModel)mprop.GetValue(form));
+                                mprop.SetValue(form, Activator.CreateInstance(mprop.PropertyType));
                                 MainView.Instance.setProgress("Deleted Successfully", 0);
                             };
                             break;
@@ -182,7 +186,7 @@ namespace MVCWinform.Utils {
             }
         }
 
-        internal static M PopulateModelFromControls<M>(M model, Control container) {
+        private static M PopulateModelFromControls<M>(M model, Control container) {
             //if(model == null || container==null)return model;
 
             PropertyInfo[] properties = model.GetType().GetProperties();
@@ -222,7 +226,7 @@ namespace MVCWinform.Utils {
             return model;
         }
 
-        internal static void PopulateControlsFromModel(object model, Control container) {
+        private static void PopulateControlsFromModel(object model, Control container) {
             //if(model == null)return;
 
             PropertyInfo[] properties = model.GetType().GetProperties();

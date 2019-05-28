@@ -35,11 +35,13 @@ namespace MVCWinform.Common {
 
         private void Button1Click(object sender, EventArgs e) {
             if (!isInitialized) init();
+            lookup = new Common.LookUpForm(this.controller.GetData<BaseModel>(), this.ShowFieldsInLookUp.ToArray());
             lookup.SelectedValueIndex = this.SelectedValueIndex;
             lookup.SelectedDescriptionIndex = this.SelectedDescriptionIndex;
+
             if (lookup.ShowDialog() == DialogResult.OK) {
-                valueFromLookup = lookup.SelectedValue.Trim();
-                descFromLookup = lookup.SelectedDescription.Trim();
+                valueFromLookup = lookup.SelectedValue;
+                descFromLookup = lookup.SelectedDescription;
                 if (this.controlValu != null) {
                     controlValu.Text = $"{valueFromLookup}".Trim();
                     SendKeys.Send("\t");
@@ -47,9 +49,7 @@ namespace MVCWinform.Common {
                         controlDesc.Text = $"{descFromLookup}".Trim();
                     }
                 }
-                if (this.LookUpSelected != null) {
-                    this.LookUpSelected(sender, new LookupEventArgs(valueFromLookup, descFromLookup));
-                }
+                this.LookUpSelected?.Invoke(sender, new LookupEventArgs(valueFromLookup, descFromLookup));
             }
         }
 
@@ -113,7 +113,8 @@ namespace MVCWinform.Common {
                 this.ShowFieldsInLookUp.AddRange(this.controller.GetMetaData().GetUniqueKeyFields);
             }
 
-            lookup = new Common.LookUpForm(this.controller, this.ShowFieldsInLookUp.ToArray());
+
+
 
             if (this.AssociatedControl != null && !"".Equals(this.AssociatedControl)) {
                 var vControlsValu = this.Parent.Controls.Find(this.AssociatedControl, true);
@@ -124,16 +125,16 @@ namespace MVCWinform.Common {
                 var vControlsDesc = this.Parent.Controls.Find(this.AssociatedControlDescription, true);
                 controlDesc = vControlsDesc.Count() == 0 ? null : vControlsDesc.First();
                 if (controlValu != null) {
-                    controlValu.TextChanged += (sndr, ea) => controlDesc.Text = "-";
+                    controlValu.TextChanged += (sndr, ea) => controlDesc.Text = string.Empty;
                 }
             }
 
-            if (controlValu != null && ((TextBoxBase)controlValu).ReadOnly) {
-                controlValu.KeyPress += delegate (object s, KeyPressEventArgs ea) {
-                    lookup.SearchText = $"{ea.KeyChar}";
-                    Button1Click(null, null);
-                };
-            }
+            //if (controlValu != null && ((TextBoxBase)controlValu).ReadOnly) {
+            //    controlValu.KeyPress += delegate (object s, KeyPressEventArgs ea) {
+            //        lookup.SearchText = $"{ea.KeyChar}";
+            //        Button1Click(null, null);
+            //    };
+            //}
             isInitialized = true;
         }
     }

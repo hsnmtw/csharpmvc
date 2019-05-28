@@ -2,39 +2,39 @@
 using MVCWinform.Customers;
 using MVCWinform.Utils;
 using System;
+using ViewWinform.Common;
 
 namespace MVCWinform.Billing {
+    
     [ForEntity(Entities.BillingCategory)]
-    public partial class BillingCategoryForm : SingleForm {
+    public partial class BillingCategoryForm: BillingCategoryView {
 
-        public IDBController Controller;  
-        private BillingCategoryModel model; 
-
-        public BillingCategoryModel Model {
-            get {
-                model = MVCWinform.Utils.FormsHelper.PopulateModelFromControls(model, this);
-                return model;
-            }
-            set {
-                this.model = value;
-                MVCWinform.Utils.FormsHelper.PopulateControlsFromModel(model, this);
-
-                this.txtBillingCategory.Select();
-                this.txtBillingCategory.Focus();
-            }
-        }
-        public override void UpdateModel() { var _ = Model; }
         public BillingCategoryForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
-            
-            Controller = DBControllersFactory.GetController(Entities.BillingCategory);
-            model = new BillingCategoryModel();
-            FormsHelper.BindViewToModel(this.panel1, ref this.model);
+            Controller = (BillingCategoryController)DBControllersFactory.GetController(Entities.BillingCategory);
+            //template
+            Mapper["Id"] = txtId;
+            Mapper["CreatedBy"] = txtCreatedBy;
+            Mapper["CreatedOn"] = txtCreatedOn;
+            Mapper["UpdatedBy"] = txtUpdatedBy;
+            Mapper["UpdatedOn"] = txtUpdatedOn;
+            Mapper["ReadOnly"] = chkReadOnly;
+            //data
+            Mapper["AccomClass"] = txtAccomClassCode;
+            Mapper["BillingCategory"] = txtBillingCategory;
+            Mapper["BillingCategoryDesc"] = txtBillingCategoryDesc;
+            Mapper["FoodType"] = txtFoodTypeCode;
+            Mapper["FoodClass"] = txtFoodClassCode;
+            Mapper["ReservationOnly"] = chkReservationOnly;
+            //actions
+            SaveButton = btnSave;
+            DeleteButton = btnDelete;
+            NewButton = btnNew;
         }
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
             string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            this.Model = this.Controller.Find(new BillingCategoryModel() { BillingCategory = selected }, "BillingCategory");
+            Model = Controller.Find(new BillingCategoryModel() { BillingCategory = selected }, "BillingCategory");
 
         }
 
@@ -42,4 +42,5 @@ namespace MVCWinform.Billing {
             
         }
     }
+    public class BillingCategoryView : BaseView<BillingCategoryModel, BillingCategoryController> { }
 }

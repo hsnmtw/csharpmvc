@@ -26,8 +26,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblSearch = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.lblRowHeader = new System.Windows.Forms.Label();
+            this.lstView = new ViewWinform.Utils.FixedWidthListBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -55,8 +54,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.listBox1);
-            this.panel2.Controls.Add(this.lblRowHeader);
+            this.panel2.Controls.Add(this.lstView);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 26);
             this.panel2.Name = "panel2";
@@ -64,28 +62,18 @@
             this.panel2.Size = new System.Drawing.Size(407, 289);
             this.panel2.TabIndex = 0;
             // 
-            // listBox1
+            // lstView
             // 
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox1.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(3, 20);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(401, 266);
-            this.listBox1.TabIndex = 0;
-            this.listBox1.DoubleClick += new System.EventHandler(this.DataGridView1DoubleClick);
-            this.listBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DataGridView1KeyDown);
-            this.listBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DataGridView1KeyPress);
-            // 
-            // lblRowHeader
-            // 
-            this.lblRowHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblRowHeader.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRowHeader.Location = new System.Drawing.Point(3, 3);
-            this.lblRowHeader.Name = "lblRowHeader";
-            this.lblRowHeader.Size = new System.Drawing.Size(401, 17);
-            this.lblRowHeader.TabIndex = 1;
-            this.lblRowHeader.Text = "label2";
+            this.lstView.DataSource = null;
+            this.lstView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstView.Filter = null;
+            this.lstView.Location = new System.Drawing.Point(3, 3);
+            this.lstView.Name = "lstView";
+            this.lstView.ShownColumns = null;
+            this.lstView.Size = new System.Drawing.Size(401, 283);
+            this.lstView.TabIndex = 0;
+            this.lstView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LstView_KeyDown);
+            this.lstView.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LstView_KeyPress);
             // 
             // LookUpForm
             // 
@@ -113,7 +101,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblSearch;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Label lblRowHeader;
+        private ViewWinform.Utils.FixedWidthListBox lstView;
     }
 }

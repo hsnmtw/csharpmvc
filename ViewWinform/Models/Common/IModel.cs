@@ -1,12 +1,9 @@
-﻿namespace MVCWinform.Common {
+﻿using System;
 
+namespace MVCWinform.Common {
+    /// <summary>
+    /// The model is expected to have no methods and no additional fields but the ones that will be persisted in the database
+    /// </summary>
     public interface IModel {
-        /// <summary>
-        /// converts model to object array populating its properties 
-        /// in the same order of the fields selected
-        /// </summary>
-        /// <param name="fields">list of fields to be populated in the object array</param>
-        /// <returns>object array containing object's properties</returns>
-        object[] ToObjectArray(string[] fields);
     }
 }
