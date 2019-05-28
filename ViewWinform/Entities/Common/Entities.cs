@@ -5,7 +5,7 @@ namespace MVCWinform.Common {
     [Flags]
     public enum Entities {
           BillingCategory
-        , AccomClass
+        , AccommClass
         , Audit                 
         , Building
         , BuildingType
@@ -26,6 +26,8 @@ namespace MVCWinform.Common {
         , Room                  
         , User
         , Entity
-        , Contact
+        , Contact,
+        ClientContact,
+        ClientIdentification
     }
 }

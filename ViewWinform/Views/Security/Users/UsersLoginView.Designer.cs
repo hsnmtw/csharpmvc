@@ -102,7 +102,7 @@
             // UserNameLookup
             // 
             this.UserNameLookup.AssociatedControl = "txtUserName";
-            this.UserNameLookup.AssociatedControlDescription = null;
+            this.UserNameLookup.Tag = null;
             this.UserNameLookup.Controller = "User";
             resources.ApplyResources(this.UserNameLookup, "UserNameLookup");
             this.UserNameLookup.Name = "UserNameLookup";

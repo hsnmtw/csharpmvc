@@ -181,7 +181,7 @@
             // lookUpButtonShortName
             // 
             this.lookUpButtonShortName.AssociatedControl = "txtIdNumber";
-            this.lookUpButtonShortName.AssociatedControlDescription = null;
+            this.lookUpButtonShortName.Tag = null;
             this.lookUpButtonShortName.Controller = "Identification";
             this.lookUpButtonShortName.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonShortName.Location = new System.Drawing.Point(265, 49);
@@ -283,7 +283,7 @@
             // lookUpButtonIdentificationType
             // 
             this.lookUpButtonIdentificationType.AssociatedControl = "txtIdType";
-            this.lookUpButtonIdentificationType.AssociatedControlDescription = "lblIdTypeEnglish";
+            this.lookUpButtonIdentificationType.Tag = "lblIdTypeEnglish";
             this.lookUpButtonIdentificationType.Controller = "IdentificationType";
             this.lookUpButtonIdentificationType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonIdentificationType.Location = new System.Drawing.Point(217, 76);
@@ -298,7 +298,7 @@
             // lookUpButtonCountryOfIssue
             // 
             this.lookUpButtonCountryOfIssue.AssociatedControl = "txtIssuingCountry";
-            this.lookUpButtonCountryOfIssue.AssociatedControlDescription = "lblIssuingCountryEnglish";
+            this.lookUpButtonCountryOfIssue.Tag = "lblIssuingCountryEnglish";
             this.lookUpButtonCountryOfIssue.Controller = "Country";
             this.lookUpButtonCountryOfIssue.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonCountryOfIssue.Location = new System.Drawing.Point(217, 155);

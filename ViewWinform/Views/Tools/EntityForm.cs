@@ -6,7 +6,7 @@ namespace MVCWinform.Common {
     [ForEntity(Entities.Entity)]
     public partial class EntityForm: EntityView {
 
-        //public IDBController Controller;
+        
         
         public EntityForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;

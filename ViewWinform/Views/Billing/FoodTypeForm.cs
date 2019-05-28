@@ -12,7 +12,7 @@ namespace MVCWinform.Billing {
     [ForEntity(Entities.FoodType)]
     public partial class FoodTypeForm: FoodTypeView {
 
-        //public IDBController Controller;
+        
 
         
         public FoodTypeForm() {
@@ -40,7 +40,7 @@ namespace MVCWinform.Billing {
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
             string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
             //this.txtFoodType.Text = selected;
-            Model = Controller.Find(new FoodTypeModel() { FoodTypeCode = selected }, "FoodType");
+            Model = Controller.Find(new FoodTypeModel() { FoodTypeCode = selected }, "FoodTypeCode");
 
         }
 

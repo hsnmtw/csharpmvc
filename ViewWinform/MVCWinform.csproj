@@ -64,6 +64,8 @@
     <Compile Include="Controllers\Configurations\CryptoController.cs" />
     <Compile Include="Controllers\Configurations\CryptoFactory.cs" />
     <Compile Include="Controllers\Configurations\SimpleCrypto.cs" />
+    <Compile Include="Controllers\Customers\ClientIdentificationController.cs" />
+    <Compile Include="Controllers\Customers\ClientContactController.cs" />
     <Compile Include="Controllers\Customers\ContactController.cs" />
     <Compile Include="Controllers\Customers\ClientController.cs" />
     <Compile Include="Controllers\Customers\ClientTypeController.cs" />
@@ -84,8 +86,10 @@
     <Compile Include="Controllers\Tools\CalendarController.cs" />
     <Compile Include="Controllers\Tools\DictionaryController.cs" />
     <Compile Include="Controllers\Tools\LanguageState.cs" />
-    <Compile Include="Entities\Billing\AccomClassEntity.cs" />
-    <Compile Include="Models\Billing\AccomClassModel.cs" />
+    <Compile Include="Entities\Billing\AccommClassEntity.cs" />
+    <Compile Include="Entities\Customers\ClientIdentificationEntity.cs" />
+    <Compile Include="Entities\Customers\ClientContactEntity.cs" />
+    <Compile Include="Models\Billing\AccommClassModel.cs" />
     <Compile Include="Entities\Billing\BillingCategoryEntity.cs" />
     <Compile Include="Models\Billing\BillingCategoryModel.cs" />
     <Compile Include="Entities\Billing\FoodClassEntity.cs" />
@@ -107,6 +111,8 @@
     <Compile Include="Models\Configurations\CryptoModel.cs" />
     <Compile Include="Entities\Customers\ContactEntity.cs" />
     <Compile Include="Entities\Customers\ClientEntity.cs" />
+    <Compile Include="Models\Customers\ClientIdentificationModel.cs" />
+    <Compile Include="Models\Customers\ClientContactModel.cs" />
     <Compile Include="Models\Customers\ContactModel.cs" />
     <Compile Include="Models\Customers\ClientModel.cs" />
     <Compile Include="Entities\Customers\ClientTypeEntity.cs" />
@@ -159,11 +165,11 @@
     <Compile Include="Views\Billing\AccommClassForm.Designer.cs">
       <DependentUpon>AccommClassForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Billing\BillingCategories.cs">
+    <Compile Include="Views\Billing\BillingCategoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Billing\BillingCategories.Designer.cs">
-      <DependentUpon>BillingCategories.cs</DependentUpon>
+    <Compile Include="Views\Billing\BillingCategoryForm.Designer.cs">
+      <DependentUpon>BillingCategoryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Common\BaseView.cs">
       <SubType>Form</SubType>
@@ -377,8 +383,8 @@
     <EmbeddedResource Include="Views\Billing\AccommClassForm.resx">
       <DependentUpon>AccommClassForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Billing\BillingCategories.resx">
-      <DependentUpon>BillingCategories.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Billing\BillingCategoryForm.resx">
+      <DependentUpon>BillingCategoryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Tools\EntityForm.resx">
       <DependentUpon>EntityForm.cs</DependentUpon>

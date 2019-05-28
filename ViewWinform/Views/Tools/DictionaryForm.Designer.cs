@@ -167,7 +167,6 @@
             // DictionaryNameLookupButton
             // 
             this.DictionaryNameLookupButton.AssociatedControl = "txtWordInEnglish";
-            this.DictionaryNameLookupButton.AssociatedControlDescription = null;
             this.DictionaryNameLookupButton.Controller = "Dictionary";
             this.DictionaryNameLookupButton.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.DictionaryNameLookupButton.Location = new System.Drawing.Point(275, 50);

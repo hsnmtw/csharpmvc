@@ -11,7 +11,7 @@ namespace MVCWinform.Customers {
             , GetSizes = new Dictionary<string, int> { ["CreatedBy"] = 50, ["UpdatedBy"] = 50,
                     ["BillingCategory"    ] = 150
                    ,["BillingCategoryDesc"] = 250
-                   ,["AccomClass"         ] = 50
+                   ,["AccommClass"         ] = 50
                    ,["FoodClass"          ] = 50
                    ,["FoodType"           ] = 50
             }
@@ -23,7 +23,7 @@ namespace MVCWinform.Customers {
 /*
     ["BillingCategory"    ] = 50
    ,["BillingCategoryDesc"] = 50
-   ,["AccomClass"         ] = 50
+   ,["AccommClass"         ] = 50
    ,["FoodClass"          ] = 50
    ,["FoodType"           ] = 50
    ,["ReservationOnly"    ] = BOOLEAN

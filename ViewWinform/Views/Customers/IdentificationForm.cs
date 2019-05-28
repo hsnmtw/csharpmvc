@@ -7,7 +7,7 @@ namespace MVCWinform.Customers {
     [ForEntity(Entities.Identification)]
     public partial class IdentificationForm: IdentificationView {
 
-        //public IDBController Controller;
+        
         
         public IdentificationForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;

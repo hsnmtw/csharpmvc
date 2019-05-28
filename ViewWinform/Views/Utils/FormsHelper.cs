@@ -28,7 +28,9 @@ namespace MVCWinform.Utils {
             while (--i > 0 && (form != null) && !(form is Form)) {
                 form = form.Parent;
             }
+            
             form.Text = MainView.Instance.dictionaryController[form.Text];
+            if(form!=cntrl) cntrl.Text = MainView.Instance.dictionaryController[cntrl.Text];
 
             var languageEnabledTypes = new Type[]{
                 typeof(Label),

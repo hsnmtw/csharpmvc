@@ -7,12 +7,26 @@ using System.Reflection;
 namespace MVCWinform.Common {
     public abstract class AbstractDBEntity : IDBEntity {
 
-        private const string EQ = "=";
+        private const string EQ = "IN";
         private const string LIKE = "LIKE";
 
         public abstract MetaData MetaData { get; }
 
         public AbstractDBEntity() : base() {
+        }
+
+        public DataTable GetDataById<M>(M model, IEnumerable<int> Ids) {
+            if (Ids == null || Ids.Count() == 0) return new DataTable();
+            var tpl = GetSQLAndParameters(model, false, "Id");
+            var sql = tpl.Item1.Replace("@Id", string.Join(",", Ids));
+            return DBConnectionManager.Instance.GetData(sql);
+        }
+
+        public IEnumerable<M> FindById<M>(M model, IEnumerable<int> Ids) {
+            if (Ids==null || Ids.Count() == 0) return new List<M>();
+            var tpl = GetSQLAndParameters(model,false,"Id");
+            var sql = tpl.Item1.Replace("@Id", string.Join(",", Ids));
+            return DBConnectionManager.Instance.Query(model, sql);
         }
 
         public M NewModel<M>() {
@@ -25,7 +39,7 @@ namespace MVCWinform.Common {
             var src = MetaData.GetSource;
             var whr = string.Join(" AND ", (from c in whereFields select $"{c}=@{c}"));
             var sql = $"SELECT {slc} FROM {src} {(whereFields.Length>0? $" WHERE ({whr})" : "")}";
-            var prm = (from c in whereFields select new KeyValuePair<string,object>($"@{c}", PrepareParameter(model.GetType().GetProperty(c).GetValue(model)))).ToArray();
+            var prm = (from c in whereFields select new KeyValuePair<string,object>($"@{c}", PrepareParameter(model.GetType().GetProperty(c).GetValue(model))))?.ToArray();
             var tbl = DBConnectionManager.Instance.Query(model,sql, prm);
             return tbl.FirstOrDefault();
         }
@@ -37,7 +51,7 @@ namespace MVCWinform.Common {
             var col = string.Join(",",(from c in prp select $"{c}"));
             var val = string.Join(",",(from c in prp select $"@{c}"));
             var sql = $"INSERT INTO {src} ({col}) VALUES ({val})";
-            var prm = (from c in prp select new KeyValuePair<string, object>($"@{c}", PrepareParameter(model.GetType().GetProperty(c).GetValue(model)))).ToArray();
+            var prm = (from c in prp select new KeyValuePair<string, object>($"@{c}", PrepareParameter(model.GetType().GetProperty(c).GetValue(model))))?.ToArray();
             return DBConnectionManager.Instance.Execute(sql, prm);
         }
 
@@ -46,9 +60,9 @@ namespace MVCWinform.Common {
             var slc = string.Join(",", prp); if ("".Equals(slc.Trim())) slc = "*";
             var src = MetaData.GetSource;
             var opr = like ? LIKE : EQ;
-            var whr = string.Join(" AND ", (from c in whereFields select $"{c} {opr} @{c}"));
+            var whr = string.Join(" AND ", (from c in whereFields select $"{c} {opr} (@{c})"));
             var sql = $"SELECT {slc} FROM {src} {(whereFields.Length > 0 ? $" WHERE ({whr})" : "")}";
-            var prm = (from c in whereFields select new KeyValuePair<string, object>($"@{c}", PrepareParameter(model.GetType().GetProperty(c).GetValue(model)))).ToArray();
+            var prm = (from c in whereFields select new KeyValuePair<string, object>($"@{c}", PrepareParameter(model.GetType().GetProperty(c).GetValue(model))))?.ToArray();
             return new Tuple<string, KeyValuePair<string, object>[]>(sql,prm);
         }
 
@@ -71,7 +85,7 @@ namespace MVCWinform.Common {
             var cvl = string.Join(",", (from c in prp select $"{c}=@{c}"));
             var whr = string.Join(" AND ", (from c in whereFields select $"{c}=@{c}"));
             var sql = $"UPDATE {src} SET {cvl} WHERE ({whr}) AND (ReadOnly='0')";
-            var prm = (from c in prp.Concat(whereFields) select new KeyValuePair<string, object>($"@{c}", PrepareParameter(model.GetType().GetProperty(c).GetValue(model)))).ToArray();
+            var prm = (from c in prp.Concat(whereFields) select new KeyValuePair<string, object>($"@{c}", PrepareParameter(model.GetType().GetProperty(c).GetValue(model))))?.ToArray();
             return DBConnectionManager.Instance.Execute(sql, prm);
         }
         
@@ -80,7 +94,7 @@ namespace MVCWinform.Common {
             var src = MetaData.GetSource;
             var whr = string.Join(" AND ", (from c in whereFields select $"{c}=@{c}"));
             var sql = $"DELETE FROM {src} WHERE ({whr}) AND (ReadOnly='0')";
-            var prm = (from c in whereFields select new KeyValuePair<string, object>($"@{c}", PrepareParameter(model.GetType().GetProperty(c).GetValue(model)))).ToArray();
+            var prm = (from c in whereFields select new KeyValuePair<string, object>($"@{c}", PrepareParameter(model.GetType().GetProperty(c).GetValue(model))))?.ToArray();
             return DBConnectionManager.Instance.Execute(sql, prm);
         }
 
@@ -99,13 +113,14 @@ namespace MVCWinform.Common {
 
 
         public string GetDDL() {
-            var cols = MetaData.GetFields;
+            var cols = from c in MetaData.GetFields where c!="Id" select c;
             var size = MetaData.GetSizes;
-            var dtps = from p in cols select ddltype(this.MetaData.GetModelType.GetProperty(p).PropertyType, size.ContainsKey(p) ? size[p] : -1);
+            var dtps = from p in cols where p!="Id" select ddltype(this.MetaData.GetModelType.GetProperty(p).PropertyType, size.ContainsKey(p) ? size[p] : -1);
             var rqrd = MetaData.GetRequiredFields;
             var uniq = string.Join(",",MetaData.GetUniqueKeyFields );
             var pkey = string.Join(",",MetaData.GetPrimaryKeyFields);
             var cdef = from tpl in cols.Zip(dtps,(a,b) => new Tuple<string,string>(a,b)) select $@"{tpl.Item1} {tpl.Item2} {(rqrd.Contains(tpl.Item1) ? "NOT NULL" : "")}";
+            cdef = cdef.Concat(new string[] { "Id INTEGER IDENTITY(1,1) NOT NULL" });
             return $@"CREATE TABLE {MetaData.GetSource} ({string.Join(",",cdef)}, PRIMARY KEY({pkey}), UNIQUE ({uniq}))";
         }
 

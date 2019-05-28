@@ -7,7 +7,7 @@ namespace MVCWinform.Customers {
     [ForEntity(Entities.IdentificationType)]
     public partial class IdentificationTypeForm: IdentificationTypeView {
 
-        //public IDBController Controller;
+        
         
         public IdentificationTypeForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
@@ -20,6 +20,9 @@ namespace MVCWinform.Customers {
             Mapper["UpdatedOn"] = txtUpdatedOn;
             Mapper["ReadOnly"] = chkReadOnly;
             //data
+            Mapper["IdTypeCode"] = txtIdTypeCode;
+            Mapper["IdTypeEnglish"] = txtIdTypeEnglish;
+            Mapper["IdTypeArabic"] = txtIdTypeArabic;
             //actions
             SaveButton = btnSave;
             DeleteButton = btnDelete;

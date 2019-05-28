@@ -134,7 +134,7 @@
             // EntitlementNameLookup
             // 
             this.EntitlementNameLookup.AssociatedControl = "txtEntitlementName";
-            this.EntitlementNameLookup.AssociatedControlDescription = null;
+            this.EntitlementNameLookup.Tag = null;
             this.EntitlementNameLookup.Controller = "Entitlement";
             resources.ApplyResources(this.EntitlementNameLookup, "EntitlementNameLookup");
             this.EntitlementNameLookup.Name = "EntitlementNameLookup";
@@ -165,7 +165,7 @@
             // EntitlementGroupNameLookup
             // 
             this.EntitlementGroupNameLookup.AssociatedControl = "txtEntitlementGroupName";
-            this.EntitlementGroupNameLookup.AssociatedControlDescription = null;
+            this.EntitlementGroupNameLookup.Tag = null;
             this.EntitlementGroupNameLookup.Controller = "EntitlementGroup";
             resources.ApplyResources(this.EntitlementGroupNameLookup, "EntitlementGroupNameLookup");
             this.EntitlementGroupNameLookup.Name = "EntitlementGroupNameLookup";
@@ -185,7 +185,7 @@
             // lookUpEntityName
             // 
             this.lookUpEntityName.AssociatedControl = "txtEntityName";
-            this.lookUpEntityName.AssociatedControlDescription = null;
+            this.lookUpEntityName.Tag = null;
             this.lookUpEntityName.Controller = "Entity";
             resources.ApplyResources(this.lookUpEntityName, "lookUpEntityName");
             this.lookUpEntityName.Name = "lookUpEntityName";

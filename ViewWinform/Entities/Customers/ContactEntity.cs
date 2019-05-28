@@ -20,10 +20,3 @@ namespace MVCWinform.Customers {
         };
     }
 }
-/*
-MobileNumber
-Email           
-FaxNumber
-PhoneNumber 
-FullName    
-*/

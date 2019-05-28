@@ -9,7 +9,7 @@ using ViewWinform.Common;
 namespace MVCWinform.Security.Users {
     public partial class UsersLoginView: UserView
     {
-        //public IDBController Controller;
+        
         public CryptoController Encryption;
 
         public UsersLoginView()

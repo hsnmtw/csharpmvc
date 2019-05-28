@@ -33,7 +33,7 @@ namespace MVCWinform.Security {
                 new string[]{"Building Types","Housing","BuildingType"},
                 new string[]{"Clients","Customers","Client"},
                 new string[]{"Client Types","Customers","ClientType"},
-                new string[]{"Accommodation Classes","Billing","AccomClass"},
+                new string[]{"Accommodation Classes","Billing","AccommClass"},
                 new string[]{"Food Classes","Billing","FoodClass"},
                 new string[]{"Food Types","Billing","FoodType"},
                 new string[]{"Identification Types","Customers","IdentificationType"},

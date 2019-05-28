@@ -10,6 +10,8 @@ namespace MVCWinform.Common {
             if (baseEntity == null) throw new ArgumentNullException("baseEntity");
             this.BaseEntity = baseEntity;
         }
+        public virtual DataTable GetDataById<M>(IEnumerable<int> Ids) => BaseEntity.GetDataById(NewModel<M>(), Ids);
+        public virtual IEnumerable<M> FindById<M>(IEnumerable<int> Ids) => BaseEntity.FindById(NewModel<M>(), Ids);
         public virtual M Find<M>(M model, params string[] whereFields) => BaseEntity.Find(model,whereFields);
         public virtual M NewModel<M>() => BaseEntity.NewModel<M>();
         public virtual int Delete(BaseModel model) => BaseEntity.Delete(model);

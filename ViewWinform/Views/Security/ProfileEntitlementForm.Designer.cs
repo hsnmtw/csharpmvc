@@ -275,7 +275,7 @@
             // lookuptxtProfileName
             // 
             this.lookuptxtProfileName.AssociatedControl = "txtProfileName";
-            this.lookuptxtProfileName.AssociatedControlDescription = null;
+            this.lookuptxtProfileName.Tag = null;
             this.lookuptxtProfileName.Controller = "Profile";
             this.lookuptxtProfileName.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookuptxtProfileName.Location = new System.Drawing.Point(356, 73);
@@ -289,7 +289,7 @@
             // lookUpButton1
             // 
             this.lookUpButton1.AssociatedControl = "txtEntitlementName";
-            this.lookUpButton1.AssociatedControlDescription = null;
+            this.lookUpButton1.Tag = null;
             this.lookUpButton1.Controller = "Entitlement";
             this.lookUpButton1.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButton1.Location = new System.Drawing.Point(356, 42);
@@ -321,7 +321,7 @@
             // lookupId
             // 
             this.lookupId.AssociatedControl = "txtId";
-            this.lookupId.AssociatedControlDescription = null;
+            this.lookupId.Tag = null;
             this.lookupId.Controller = "ProfileEntitlement";
             this.lookupId.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookupId.Location = new System.Drawing.Point(230, 11);

@@ -241,7 +241,7 @@
             // lookUpButton1
             // 
             this.lookUpButton1.AssociatedControl = "txtRoomName";
-            this.lookUpButton1.AssociatedControlDescription = null;
+            this.lookUpButton1.Tag = null;
             this.lookUpButton1.Controller = "Room";
             this.lookUpButton1.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButton1.Location = new System.Drawing.Point(284, 39);
@@ -258,7 +258,7 @@
             // lookupCountry
             // 
             this.lookupCountry.AssociatedControl = "txtCountryCode";
-            this.lookupCountry.AssociatedControlDescription = null;
+            this.lookupCountry.Tag = null;
             this.lookupCountry.Controller = "Country";
             this.lookupCountry.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookupCountry.Location = new System.Drawing.Point(284, 95);
@@ -274,7 +274,7 @@
             // lookupBuilding
             // 
             this.lookupBuilding.AssociatedControl = "txtBuildingName";
-            this.lookupBuilding.AssociatedControlDescription = null;
+            this.lookupBuilding.Tag = null;
             this.lookupBuilding.Controller = "Building";
             this.lookupBuilding.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookupBuilding.Location = new System.Drawing.Point(284, 67);

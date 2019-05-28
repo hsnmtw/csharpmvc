@@ -10,7 +10,7 @@ namespace MVCWinform.Housing.Buildings {
     public partial class BuildingForm: BuildingView {
 
         private IDBController roomCntrlr;
-        //public IDBController Controller;
+        
         
         public BuildingForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;

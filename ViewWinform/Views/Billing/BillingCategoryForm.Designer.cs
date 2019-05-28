@@ -45,22 +45,21 @@
             this.txtFoodTypeCode = new System.Windows.Forms.TextBox();
             this.txtFoodClassCode = new System.Windows.Forms.TextBox();
             this.txtBillingCategoryDesc = new System.Windows.Forms.TextBox();
-            this.txtAccomClassCode = new System.Windows.Forms.TextBox();
+            this.txtAccommClassCode = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnDuplicate = new System.Windows.Forms.Button();
-            this.txtAccomClassDesc = new System.Windows.Forms.TextBox();
+            this.txtAccommClassDesc = new System.Windows.Forms.TextBox();
             this.txtFoodClassDesc = new System.Windows.Forms.TextBox();
             this.txtFoodTypeDesc = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(61, 288);
+            this.btnDelete.Location = new System.Drawing.Point(168, 288);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 17;
@@ -182,7 +181,6 @@
             // lookUpButtonAccomCategory
             // 
             this.lookUpButtonAccomCategory.AssociatedControl = "txtBillingCategory";
-            this.lookUpButtonAccomCategory.AssociatedControlDescription = null;
             this.lookUpButtonAccomCategory.Controller = "BillingCategory";
             this.lookUpButtonAccomCategory.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonAccomCategory.Location = new System.Drawing.Point(353, 41);
@@ -216,42 +214,42 @@
             // 
             // lookUpButtonFoodType
             // 
-            this.lookUpButtonFoodType.AssociatedControl = "txtFoodType";
-            this.lookUpButtonFoodType.AssociatedControlDescription = null;
+            this.lookUpButtonFoodType.AssociatedControl = "txtFoodTypeCode";
             this.lookUpButtonFoodType.Controller = "FoodType";
             this.lookUpButtonFoodType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonFoodType.Location = new System.Drawing.Point(245, 149);
+            this.lookUpButtonFoodType.Location = new System.Drawing.Point(187, 149);
             this.lookUpButtonFoodType.Name = "lookUpButtonFoodType";
             this.lookUpButtonFoodType.SelectedValueIndex = 0;
-            this.lookUpButtonFoodType.ShowFieldsInLookUp.Add("FoodType");
+            this.lookUpButtonFoodType.ShowFieldsInLookUp.Add("FoodTypeCode");
+            this.lookUpButtonFoodType.ShowFieldsInLookUp.Add("FoodTypeDesc");
             this.lookUpButtonFoodType.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonFoodType.TabIndex = 9;
             this.lookUpButtonFoodType.TabStop = false;
             // 
             // lookUpButtonFood
             // 
-            this.lookUpButtonFood.AssociatedControl = "txtFoodClass";
-            this.lookUpButtonFood.AssociatedControlDescription = null;
+            this.lookUpButtonFood.AssociatedControl = "txtFoodClassCode";
             this.lookUpButtonFood.Controller = "FoodClass";
             this.lookUpButtonFood.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonFood.Location = new System.Drawing.Point(245, 122);
+            this.lookUpButtonFood.Location = new System.Drawing.Point(187, 122);
             this.lookUpButtonFood.Name = "lookUpButtonFood";
             this.lookUpButtonFood.SelectedValueIndex = 0;
-            this.lookUpButtonFood.ShowFieldsInLookUp.Add("FoodClass");
+            this.lookUpButtonFood.ShowFieldsInLookUp.Add("FoodClassCode");
+            this.lookUpButtonFood.ShowFieldsInLookUp.Add("FoodClassDesc");
             this.lookUpButtonFood.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonFood.TabIndex = 7;
             this.lookUpButtonFood.TabStop = false;
             // 
             // lookUpButtonAccommClass
             // 
-            this.lookUpButtonAccommClass.AssociatedControl = "txtAccomClass";
-            this.lookUpButtonAccommClass.AssociatedControlDescription = null;
-            this.lookUpButtonAccommClass.Controller = "AccomClass";
+            this.lookUpButtonAccommClass.AssociatedControl = "txtAccommClassCode";
+            this.lookUpButtonAccommClass.Controller = "AccommClass";
             this.lookUpButtonAccommClass.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonAccommClass.Location = new System.Drawing.Point(199, 95);
+            this.lookUpButtonAccommClass.Location = new System.Drawing.Point(187, 95);
             this.lookUpButtonAccommClass.Name = "lookUpButtonAccommClass";
             this.lookUpButtonAccommClass.SelectedValueIndex = 0;
-            this.lookUpButtonAccommClass.ShowFieldsInLookUp.Add("AccomClass");
+            this.lookUpButtonAccommClass.ShowFieldsInLookUp.Add("AccommClassCode");
+            this.lookUpButtonAccommClass.ShowFieldsInLookUp.Add("AccommClassDesc");
             this.lookUpButtonAccommClass.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonAccommClass.TabIndex = 5;
             this.lookUpButtonAccommClass.TabStop = false;
@@ -262,8 +260,9 @@
             this.txtFoodTypeCode.Location = new System.Drawing.Point(140, 150);
             this.txtFoodTypeCode.Name = "txtFoodTypeCode";
             this.txtFoodTypeCode.ReadOnly = true;
-            this.txtFoodTypeCode.Size = new System.Drawing.Size(103, 20);
+            this.txtFoodTypeCode.Size = new System.Drawing.Size(47, 20);
             this.txtFoodTypeCode.TabIndex = 8;
+            this.txtFoodTypeCode.TextChanged += new System.EventHandler(this.TxtFoodTypeCode_TextChanged);
             // 
             // txtFoodClassCode
             // 
@@ -271,8 +270,9 @@
             this.txtFoodClassCode.Location = new System.Drawing.Point(140, 123);
             this.txtFoodClassCode.Name = "txtFoodClassCode";
             this.txtFoodClassCode.ReadOnly = true;
-            this.txtFoodClassCode.Size = new System.Drawing.Size(103, 20);
+            this.txtFoodClassCode.Size = new System.Drawing.Size(47, 20);
             this.txtFoodClassCode.TabIndex = 6;
+            this.txtFoodClassCode.TextChanged += new System.EventHandler(this.TxtFoodClassCode_TextChanged);
             // 
             // txtBillingCategoryDesc
             // 
@@ -281,14 +281,15 @@
             this.txtBillingCategoryDesc.Size = new System.Drawing.Size(433, 20);
             this.txtBillingCategoryDesc.TabIndex = 3;
             // 
-            // txtAccomClassCode
+            // txtAccommClassCode
             // 
-            this.txtAccomClassCode.BackColor = System.Drawing.SystemColors.Window;
-            this.txtAccomClassCode.Location = new System.Drawing.Point(140, 96);
-            this.txtAccomClassCode.Name = "txtAccomClassCode";
-            this.txtAccomClassCode.ReadOnly = true;
-            this.txtAccomClassCode.Size = new System.Drawing.Size(57, 20);
-            this.txtAccomClassCode.TabIndex = 4;
+            this.txtAccommClassCode.BackColor = System.Drawing.SystemColors.Window;
+            this.txtAccommClassCode.Location = new System.Drawing.Point(140, 96);
+            this.txtAccommClassCode.Name = "txtAccommClassCode";
+            this.txtAccommClassCode.ReadOnly = true;
+            this.txtAccommClassCode.Size = new System.Drawing.Size(47, 20);
+            this.txtAccommClassCode.TabIndex = 4;
+            this.txtAccommClassCode.TextChanged += new System.EventHandler(this.TxtAccommClassCode_TextChanged);
             // 
             // label7
             // 
@@ -344,26 +345,17 @@
             this.label2.TabIndex = 43;
             this.label2.Text = "Accomm Class";
             // 
-            // btnDuplicate
+            // txtAccommClassDesc
             // 
-            this.btnDuplicate.Location = new System.Drawing.Point(168, 288);
-            this.btnDuplicate.Name = "btnDuplicate";
-            this.btnDuplicate.Size = new System.Drawing.Size(75, 23);
-            this.btnDuplicate.TabIndex = 17;
-            this.btnDuplicate.Text = "Duplicate";
-            this.btnDuplicate.UseVisualStyleBackColor = true;
-            // 
-            // txtAccomClassDesc
-            // 
-            this.txtAccomClassDesc.Location = new System.Drawing.Point(223, 96);
-            this.txtAccomClassDesc.Name = "txtAccomClassDesc";
-            this.txtAccomClassDesc.ReadOnly = true;
-            this.txtAccomClassDesc.Size = new System.Drawing.Size(129, 20);
-            this.txtAccomClassDesc.TabIndex = 4;
+            this.txtAccommClassDesc.Location = new System.Drawing.Point(209, 96);
+            this.txtAccommClassDesc.Name = "txtAccommClassDesc";
+            this.txtAccommClassDesc.ReadOnly = true;
+            this.txtAccommClassDesc.Size = new System.Drawing.Size(179, 20);
+            this.txtAccommClassDesc.TabIndex = 4;
             // 
             // txtFoodClassDesc
             // 
-            this.txtFoodClassDesc.Location = new System.Drawing.Point(269, 123);
+            this.txtFoodClassDesc.Location = new System.Drawing.Point(209, 123);
             this.txtFoodClassDesc.Name = "txtFoodClassDesc";
             this.txtFoodClassDesc.ReadOnly = true;
             this.txtFoodClassDesc.Size = new System.Drawing.Size(179, 20);
@@ -371,7 +363,7 @@
             // 
             // txtFoodTypeDesc
             // 
-            this.txtFoodTypeDesc.Location = new System.Drawing.Point(269, 150);
+            this.txtFoodTypeDesc.Location = new System.Drawing.Point(209, 150);
             this.txtFoodTypeDesc.Name = "txtFoodTypeDesc";
             this.txtFoodTypeDesc.ReadOnly = true;
             this.txtFoodTypeDesc.Size = new System.Drawing.Size(179, 20);
@@ -401,11 +393,10 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.txtFoodClassDesc);
             this.Controls.Add(this.txtFoodClassCode);
-            this.Controls.Add(this.btnDuplicate);
             this.Controls.Add(this.txtBillingCategoryDesc);
             this.Controls.Add(this.txtCreatedBy);
-            this.Controls.Add(this.txtAccomClassDesc);
-            this.Controls.Add(this.txtAccomClassCode);
+            this.Controls.Add(this.txtAccommClassDesc);
+            this.Controls.Add(this.txtAccommClassCode);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtBillingCategory);
             this.Controls.Add(this.label2);
@@ -441,7 +432,7 @@
         private Common.LookUpButton lookUpButtonFood;
         private Common.LookUpButton lookUpButtonAccommClass;
         private System.Windows.Forms.TextBox txtFoodClassCode;
-        private System.Windows.Forms.TextBox txtAccomClassCode;
+        private System.Windows.Forms.TextBox txtAccommClassCode;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtBillingCategoryDesc;
@@ -453,8 +444,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button btnDuplicate;
-        private System.Windows.Forms.TextBox txtAccomClassDesc;
+        private System.Windows.Forms.TextBox txtAccommClassDesc;
         private System.Windows.Forms.TextBox txtFoodClassDesc;
         private System.Windows.Forms.TextBox txtFoodTypeDesc;
     }

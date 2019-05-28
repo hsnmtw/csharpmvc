@@ -197,7 +197,7 @@
             // ProfileNameLookup
             // 
             this.ProfileNameLookup.AssociatedControl = "txtProfileName";
-            this.ProfileNameLookup.AssociatedControlDescription = null;
+            this.ProfileNameLookup.Tag = null;
             this.ProfileNameLookup.Controller = "Profile";
             this.ProfileNameLookup.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.ProfileNameLookup.Location = new System.Drawing.Point(342, 35);

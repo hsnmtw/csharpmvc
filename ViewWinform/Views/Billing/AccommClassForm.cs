@@ -7,12 +7,12 @@ using System.Windows.Forms;
 using ViewWinform.Common;
 
 namespace MVCWinform.Billing {
-    [ForEntity(Entities.AccomClass)]
-    public partial class AccommClassForm : AccomClassView {
+    [ForEntity(Entities.AccommClass)]
+    public partial class AccommClassForm : AccommClassView {
 
         public AccommClassForm () : base() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;            
-            Controller = (AccomClassController)DBControllersFactory.GetController(Entities.AccomClass);
+            Controller = (AccommClassController)DBControllersFactory.GetController(Entities.AccommClass);
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -21,8 +21,8 @@ namespace MVCWinform.Billing {
             Mapper["UpdatedOn"] = txtUpdatedOn;
             Mapper["ReadOnly"] = chkReadOnly;
             //data
-            Mapper["AccomClassCode"] = txtAccommClassCode;
-            Mapper["AccomClassDesc"] = txtAccommClassDesc;
+            Mapper["AccommClassCode"] = txtAccommClassCode;
+            Mapper["AccommClassDesc"] = txtAccommClassDesc;
             //actions
             SaveButton = btnSave;
             DeleteButton = btnDelete;
@@ -31,12 +31,12 @@ namespace MVCWinform.Billing {
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
             string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            Model = Controller.Find(new AccomClassModel() {AccomClassCode = selected }, "AccomClass");
+            Model = Controller.Find(new AccommClassModel() { AccommClassCode = selected }, "AccommClassCode");
         }
 
-        private void AccomClassFormLoad(object sender, EventArgs e) {
+        private void AccommClassFormLoad(object sender, EventArgs e) {
             
         }
     }
-    public class AccomClassView : BaseView<AccomClassModel, AccomClassController> { }
+    public class AccommClassView : BaseView<AccommClassModel, AccommClassController> { }
 }

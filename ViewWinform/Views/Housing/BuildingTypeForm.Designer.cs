@@ -165,7 +165,7 @@
             // lookUpButton1
             // 
             this.lookUpButton1.AssociatedControl = "txtBuildingType";
-            this.lookUpButton1.AssociatedControlDescription = null;
+            this.lookUpButton1.Tag = null;
             this.lookUpButton1.Controller = "BuildingType";
             this.lookUpButton1.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButton1.Location = new System.Drawing.Point(294, 45);

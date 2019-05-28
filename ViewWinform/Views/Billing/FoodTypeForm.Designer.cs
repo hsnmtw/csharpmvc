@@ -202,7 +202,6 @@
             // lookUpButtonFoodType
             // 
             this.lookUpButtonFoodType.AssociatedControl = "txtFoodType";
-            this.lookUpButtonFoodType.AssociatedControlDescription = null;
             this.lookUpButtonFoodType.Controller = "FoodType";
             this.lookUpButtonFoodType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonFoodType.Location = new System.Drawing.Point(295, 60);

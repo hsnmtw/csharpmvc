@@ -18,10 +18,9 @@ namespace MVCWinform.Common {
         [Description("This event is fired after the user selects an item from the lookup form.")]
         public event EventHandler LookUpSelected;
 
-        private string valueFromLookup, descFromLookup;
-        public string ValueFromLookup => valueFromLookup;
+        public string ValueFromLookup { get; private set; }
         private LookUpForm lookup;
-        private Control controlValu = null,controlDesc = null;
+        private Control controlValu = null;
         private IDBController controller = null;
 
         public LookUpButton() {
@@ -37,19 +36,14 @@ namespace MVCWinform.Common {
             if (!isInitialized) init();
             lookup = new Common.LookUpForm(this.controller.GetData<BaseModel>(), this.ShowFieldsInLookUp.ToArray());
             lookup.SelectedValueIndex = this.SelectedValueIndex;
-            lookup.SelectedDescriptionIndex = this.SelectedDescriptionIndex;
 
             if (lookup.ShowDialog() == DialogResult.OK) {
-                valueFromLookup = lookup.SelectedValue;
-                descFromLookup = lookup.SelectedDescription;
+                ValueFromLookup = lookup.SelectedValue;
                 if (this.controlValu != null) {
-                    controlValu.Text = $"{valueFromLookup}".Trim();
-                    SendKeys.Send("\t");
-                    if (this.controlDesc != null) {
-                        controlDesc.Text = $"{descFromLookup}".Trim();
-                    }
+                    controlValu.Text = $"{ValueFromLookup}".Trim();
+                    //SendKeys.Send("\t");
                 }
-                this.LookUpSelected?.Invoke(sender, new LookupEventArgs(valueFromLookup, descFromLookup));
+                this.LookUpSelected?.Invoke(sender, new LookupEventArgs(ValueFromLookup));
             }
         }
 
@@ -60,24 +54,12 @@ namespace MVCWinform.Common {
         public string AssociatedControl { get; set; }
 
         [Category("(Lookup)")]
-        [Description("Associated control/textbox for description.")]
-        [Browsable(true)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        public string AssociatedControlDescription { get; set; }
-
-        [Category("(Lookup)")]
         [Description("The selected fields to be shown in the lookup.")]
         [Editor("System.Windows.Forms.Design.ListControlStringCollectionEditor, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         [MergableProperty(false)]
         [Localizable(true)]
         public List<string> ShowFieldsInLookUp { get; set; }
-
-        [Category("(Lookup)")]
-        [Description("The selected description index from shown columns.")]
-        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public int SelectedDescriptionIndex { get; set; }
 
         [Category("(Lookup)")]
         [Description("The controller used to populate values in the lookup.")]
@@ -121,13 +103,7 @@ namespace MVCWinform.Common {
                 controlValu = vControlsValu.Count() == 0 ? null : vControlsValu.First();
             }
 
-            if (this.AssociatedControlDescription != null && !"".Equals(this.AssociatedControlDescription)) {
-                var vControlsDesc = this.Parent.Controls.Find(this.AssociatedControlDescription, true);
-                controlDesc = vControlsDesc.Count() == 0 ? null : vControlsDesc.First();
-                if (controlValu != null) {
-                    controlValu.TextChanged += (sndr, ea) => controlDesc.Text = string.Empty;
-                }
-            }
+            
 
             //if (controlValu != null && ((TextBoxBase)controlValu).ReadOnly) {
             //    controlValu.KeyPress += delegate (object s, KeyPressEventArgs ea) {

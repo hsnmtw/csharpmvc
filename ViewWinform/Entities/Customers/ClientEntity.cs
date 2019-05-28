@@ -10,26 +10,18 @@ namespace MVCWinform.Customers {
             , GetRequiredFields   = new string[] { "Id", "ShortName", "LongName", "ClientType" }
             , GetUniqueKeyFields  = new string[] { "ShortName" }
             , GetSizes = new Dictionary<string, int> { ["CreatedBy"] = 50, ["UpdatedBy"] = 50,
-                 ["ClientType"    ] = 50
-                ,["ShortName"     ] = 50
-                ,["LongName"      ] = 150
-                ,["Email"         ] = 100
-                ,["FaxNumber"     ] = 20
-                ,["BillingAddress"] = 255
-                ,["PhoneNumber"   ] = 20
-                ,["ContactPerson" ] = 100
+                  ["ClientType"    ] = 50
+                , ["ShortName"     ] = 50
+                , ["LongName"      ] = 150
+                , ["Email"         ] = 100
+                , ["FaxNumber"     ] = 20
+                , ["BillingAddress"] = 255
+                , ["PhoneNumber"   ] = 20
+                , ["Website"       ] = 100
+                , ["NameArabic"    ] = 150
+                , ["Nationality"   ] = 50
             }
             , GetSource           = "CustomersClient"            
         };
     }
 }
-/*
-ClientType
-ShortName
-LongName
-Email
-FaxNumber
-BillingAddress
-PhoneNumber
-ContactPerson 
-    */

@@ -6,7 +6,7 @@
         public void Initialize() {
             string[][] data = {
                 new string[]{"BillingCategory","BillingCategories"},
-                new string[]{"AccomClass","BillingAccomodationClasses"},
+                new string[]{"AccommClass","BillingAccomodationClasses"},
                 new string[]{"Audit","SecurityAudit"},
                 new string[]{"Building","HousingBuilding"},
                 new string[]{"BuildingType","HousingBuildingTypes"},

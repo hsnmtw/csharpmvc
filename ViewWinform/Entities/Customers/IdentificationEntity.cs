@@ -8,7 +8,7 @@ namespace MVCWinform.Customers {
               GetModelType        = typeof(IdentificationModel)
             , GetPrimaryKeyFields = new string[] { "Id" }
             , GetRequiredFields   = new string[] { "Id", "IdType", "IdNumber" }
-            , GetUniqueKeyFields  = new string[] { "IdNumber" }
+            , GetUniqueKeyFields  = new string[] { "IdNumber", "IdType" }
             , GetSizes = new Dictionary<string, int> { ["CreatedBy"] = 50, ["UpdatedBy"] = 50,
                  ["IdNumber"       ] = 15
                 ,["IdType"         ] = 50

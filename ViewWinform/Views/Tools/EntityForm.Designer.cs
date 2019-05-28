@@ -169,7 +169,6 @@
             // lookUpButtonEntity
             // 
             this.lookUpButtonEntity.AssociatedControl = "txtEntityName";
-            this.lookUpButtonEntity.AssociatedControlDescription = null;
             this.lookUpButtonEntity.Controller = "Entity";
             this.lookUpButtonEntity.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonEntity.Location = new System.Drawing.Point(341, 75);

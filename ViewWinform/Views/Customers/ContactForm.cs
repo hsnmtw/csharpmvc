@@ -7,7 +7,7 @@ namespace MVCWinform.Customers {
     [ForEntity(Entities.Contact)]
     public partial class ContactForm: ContactView {
 
-        //public IDBController Controller; 
+         
         
         public ContactForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;

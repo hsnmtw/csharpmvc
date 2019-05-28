@@ -7,7 +7,7 @@ namespace MVCWinform.Customers {
     [ForEntity(Entities.ClientType)]
     public partial class ClientTypeForm: ClientTypeView {
 
-        //public IDBController Controller; 
+         
         
         public ClientTypeForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;

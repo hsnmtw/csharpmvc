@@ -7,7 +7,7 @@ namespace MVCWinform.Customers {
     [ForEntity(Entities.Project)]
     public partial class ProjectForm: ProjectView {
 
-        //public IDBController Controller;
+        
         
 
         public ProjectForm() {

@@ -169,7 +169,6 @@
             // lookUpButtonContact
             // 
             this.lookUpButtonContact.AssociatedControl = "txtMobileNumber";
-            this.lookUpButtonContact.AssociatedControlDescription = "txtFullName";
             this.lookUpButtonContact.Controller = "Contact";
             this.lookUpButtonContact.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonContact.Location = new System.Drawing.Point(305, 39);

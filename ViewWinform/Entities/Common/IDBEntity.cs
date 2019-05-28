@@ -6,6 +6,8 @@ namespace MVCWinform.Common {
         M NewModel<M>();
         int Create<M>(M model);
         M Find<M>(M model, params string[] whereFields);
+        IEnumerable<M> FindById<M>(M model, IEnumerable<int> Ids);
+        DataTable GetDataById<M>(M model, IEnumerable<int> Ids);
         IEnumerable<M> Read<M>(M model, bool like = false, params string[] whereFields);
         int Update<M>(M model, params string[] whereFields);
         int Delete<M>(M model, params string[] whereFields);

@@ -8,7 +8,7 @@ namespace MVCWinform.Customers {
     [ForEntity(Entities.Country)]
     public partial class CountryForm: CountryView {
 
-        //public IDBController Controller;
+        
 
         public CountryForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
@@ -21,9 +21,9 @@ namespace MVCWinform.Customers {
             Mapper["UpdatedOn"] = txtUpdatedOn;
             Mapper["ReadOnly"] = chkReadOnly;
             //data
-            Mapper[Model.CountryCode] = txtCountryCode;
-            Mapper[Model.CountryArabic] = txtCountryArabic;
-            Mapper[Model.CountryEnglish] = txtCountryEnglish;
+            Mapper["CountryCode"] = txtCountryCode;
+            Mapper["CountryArabic"] = txtCountryArabic;
+            Mapper["CountryEnglish"] = txtCountryEnglish;
             //actions
             SaveButton = btnSave;
             DeleteButton = btnDelete;

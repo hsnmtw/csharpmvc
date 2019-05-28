@@ -7,7 +7,7 @@ namespace MVCWinform.Common {
     [Serializable]
     public abstract class BaseModel : IModel { //, IComparable, ICloneable {
         //Database table properties
-        public Int64 Id            { get; set; }
+        public int   Id            { get; set; }
         public string CreatedBy    { get; set; }
         public string UpdatedBy    { get; set; }
         public DateTime? CreatedOn { get; set; }

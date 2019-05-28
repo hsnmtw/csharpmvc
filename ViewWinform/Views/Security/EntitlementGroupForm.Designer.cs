@@ -167,7 +167,7 @@
             // EntitlementGroupNameLookup
             // 
             this.EntitlementGroupNameLookup.AssociatedControl = "txtEntitlementGroupName";
-            this.EntitlementGroupNameLookup.AssociatedControlDescription = null;
+            this.EntitlementGroupNameLookup.Tag = null;
             this.EntitlementGroupNameLookup.Controller = "EntitlementGroup";
             this.EntitlementGroupNameLookup.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.EntitlementGroupNameLookup.Location = new System.Drawing.Point(351, 41);

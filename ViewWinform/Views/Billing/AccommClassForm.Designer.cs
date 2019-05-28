@@ -38,7 +38,7 @@
             this.txtAccommClassCode = new System.Windows.Forms.TextBox();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.lookUpButtonAccomClass = new MVCWinform.Common.LookUpButton();
+            this.lookUpButtonAccommClass = new MVCWinform.Common.LookUpButton();
             this.label2 = new System.Windows.Forms.Label();
             this.txtAccommClassDesc = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -183,21 +183,20 @@
             this.label10.TabIndex = 45;
             this.label10.Text = "Read Only";
             // 
-            // lookUpButtonAccomClass
+            // lookUpButtonAccommClass
             // 
-            this.lookUpButtonAccomClass.AssociatedControl = "txtAccomodationClass";
-            this.lookUpButtonAccomClass.AssociatedControlDescription = null;
-            this.lookUpButtonAccomClass.Controller = "AccomClass";
-            this.lookUpButtonAccomClass.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonAccomClass.Location = new System.Drawing.Point(355, 45);
-            this.lookUpButtonAccomClass.Name = "lookUpButtonAccomClass";
-            this.lookUpButtonAccomClass.SelectedValueIndex = 0;
-            this.lookUpButtonAccomClass.ShowFieldsInLookUp.Add("AccomClassCode");
-            this.lookUpButtonAccomClass.ShowFieldsInLookUp.Add("AccomClassDesc");
-            this.lookUpButtonAccomClass.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonAccomClass.TabIndex = 2;
-            this.lookUpButtonAccomClass.TabStop = false;
-            this.lookUpButtonAccomClass.LookUpSelected += new System.EventHandler(this.LookUpButton1LookUpSelected);
+            this.lookUpButtonAccommClass.AssociatedControl = "txtAccomodationClass";
+            this.lookUpButtonAccommClass.Controller = "AccommClass";
+            this.lookUpButtonAccommClass.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.lookUpButtonAccommClass.Location = new System.Drawing.Point(355, 45);
+            this.lookUpButtonAccommClass.Name = "lookUpButtonAccommClass";
+            this.lookUpButtonAccommClass.SelectedValueIndex = 0;
+            this.lookUpButtonAccommClass.ShowFieldsInLookUp.Add("AccommClassCode");
+            this.lookUpButtonAccommClass.ShowFieldsInLookUp.Add("AccommClassDesc");
+            this.lookUpButtonAccommClass.Size = new System.Drawing.Size(22, 22);
+            this.lookUpButtonAccommClass.TabIndex = 2;
+            this.lookUpButtonAccommClass.TabStop = false;
+            this.lookUpButtonAccommClass.LookUpSelected += new System.EventHandler(this.LookUpButton1LookUpSelected);
             // 
             // label2
             // 
@@ -226,7 +225,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtUpdatedOn);
             this.Controls.Add(this.txtUpdatedBy);
-            this.Controls.Add(this.lookUpButtonAccomClass);
+            this.Controls.Add(this.lookUpButtonAccommClass);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.txtAccommClassDesc);
             this.Controls.Add(this.txtAccommClassCode);
@@ -240,7 +239,7 @@
             this.Controls.Add(this.btnDelete);
             this.Name = "AccommClassForm";
             this.Text = "Accomm Classes";
-            this.Load += new System.EventHandler(this.AccomClassFormLoad);
+            this.Load += new System.EventHandler(this.AccommClassFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -260,7 +259,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtAccommClassCode;
-        private Common.LookUpButton lookUpButtonAccomClass;
+        private Common.LookUpButton lookUpButtonAccommClass;
         private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label2;

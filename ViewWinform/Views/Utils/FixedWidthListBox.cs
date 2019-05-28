@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVCWinform.Utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -42,47 +43,66 @@ namespace ViewWinform.Utils {
         public override string Text => lstView.Text; 
 
         public FixedWidthListBox() {
-            InitializeComponent(); if (Site != null && Site.DesignMode) return;
+            InitializeComponent();
+            ShownColumns = new List<string>();
+            if (Site != null && Site.DesignMode) return;
         }
 
         public int SelectedIndex => lstView.SelectedIndex;
+
+        public int[] ColumnsWidths { get; private set; }
 
         public void Requery() {
             
             if (ShownColumns == null || ShownColumns.Count() == 0) {
                 ShownColumns = (from DataColumn column in source.Columns select column.ColumnName).ToList();
             }
-
-            var columnsWidths = new int[ShownColumns.Count()];
-            var view = new DataView(source);
-            string[] sb = new string[columnsWidths.Count()];
-
-
-            view.RowFilter = Filter;// string.Format("{0} Like '%{1}%'", ShownColumns[0], this.lblSearch.Text);
-            view.Sort = $"{ShownColumns[0]} ASC";
-
-            var table = view.ToTable(false, ShownColumns.ToArray());
-            if (!columnsInitialized) {
-                
-                for (int j = 0; j < table.Columns.Count; j++) {
-                    columnsWidths[j] = Math.Max(columnsWidths[j], table.Columns[j].ColumnName.Length);
+            lstView.Items.Clear();
+            if (source.Rows.Count == 0) return;
+            var table = source;
+            
+            string[] sb = new string[ShownColumns.Count()];
+            
+            try {
+                if (table?.Rows.Count > 0) {
+                    var view = new DataView(table);
+                    view.RowFilter = Filter;// string.Format("{0} Like '%{1}%'", ShownColumns[0], this.lblSearch.Text);
+                    view.Sort = $"{ShownColumns[0]} ASC";
+                    table = view.ToTable(false, ShownColumns.ToArray());
                 }
+            } catch (Exception e) {
+                FormsHelper.Error(e.Message);
+            }
+            
+
+            //var table = view.ToTable(false, ShownColumns.ToArray());
+            if (!columnsInitialized) {
+                ColumnsWidths = new int[ShownColumns.Count()];
+                var shownColumnsInciesInTable = (from col 
+                                                 in source.Columns.Cast<DataColumn>()
+                                                 where ShownColumns.Contains(col.ColumnName)
+                                                 select col.Ordinal).ToArray();
+                
+                for (int j = 0; j < ColumnsWidths.Length; j++) {
+                    ColumnsWidths[j] = Math.Max(ColumnsWidths[j], ShownColumns[j].Length);
+                }
+
                 for (int i = 0; i < table.Rows.Count; i++) {
                     for (int j = 0; j < table.Columns.Count; j++) {
-                        columnsWidths[j] = Math.Max(columnsWidths[j], table.Rows[i][j].ToString().Length);
+                        ColumnsWidths[j] = Math.Max(ColumnsWidths[j], table.Rows[i][j].ToString().Length);
                     }
                 }
-                for (int j = 0; j < table.Columns.Count; j++) {
-                    sb[j] = string.Format(string.Join("", " {0,-", columnsWidths[j], "} "), table.Columns[j].ColumnName);
+                for (int j = 0; j < ColumnsWidths.Length; j++) {
+                    sb[j] = string.Format(string.Join("", " {0,-", ColumnsWidths[j], "} "), ShownColumns[j]);
                 }
                 this.lblRowHeader.Text = string.Join("|", sb);
                 columnsInitialized = true;
             }
 
-            this.lstView.Items.Clear();
+//            this.lstView.Items.Clear();
             for (int i = 0; i < table.Rows.Count; i++) {
-                for (int j = 0; j < table.Columns.Count; j++) {
-                    sb[j] = (string.Format(" {0,-" + columnsWidths[j] + "} ", table.Rows[i][j]));
+                for (int j = 0; j < ShownColumns.Count; j++) {
+                    sb[j] = (string.Format(" {0,-" + ColumnsWidths[j] + "} ", table.Rows[i][ShownColumns[j]]));
                 }
                 this.lstView.Items.Add(string.Join("|", sb));
             }

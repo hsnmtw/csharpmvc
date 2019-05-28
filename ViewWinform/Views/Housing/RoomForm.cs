@@ -8,7 +8,7 @@ namespace MVCWinform.Housing.Rooms {
     public partial class RoomForm: RoomView {
 
 
-        //public IDBController Controller;
+        
 
         public RoomForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;

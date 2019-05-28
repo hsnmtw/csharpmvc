@@ -6,7 +6,7 @@ namespace MVCWinform.Housing {
     [ForEntity(Entities.Compound)]
     public partial class CompoundForm: CompoundView {
 
-        //public IDBController Controller;
+        
 
         public CompoundForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
