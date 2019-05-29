@@ -2,7 +2,7 @@
 using System;
 using System.Linq;
 using System.Windows.Forms;
-using ViewWinform.Common;
+using MVCHIS.Common;
 
 namespace MVCHIS.Customers {
     [ForModel(Common.MODELS.Country)]

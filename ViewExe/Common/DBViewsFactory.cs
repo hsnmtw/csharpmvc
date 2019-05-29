@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ViewWinform.Common;
+using MVCHIS.Common;
 
 namespace MVCHIS.Common {
     public static class DBViewsFactory {

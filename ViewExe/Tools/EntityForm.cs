@@ -1,6 +1,6 @@
 ﻿using MVCHIS.Utils;
 using System;
-using ViewWinform.Common;
+using MVCHIS.Common;
 
 namespace MVCHIS.Common {
     [ForModel(Common.MODELS.Entity)]

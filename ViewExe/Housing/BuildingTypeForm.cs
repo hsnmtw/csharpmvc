@@ -3,7 +3,7 @@ using MVCHIS.Utils;
 using System;
 using System.Data;
 using System.Linq;
-using ViewWinform.Common;
+using MVCHIS.Common;
 
 namespace MVCHIS.Housing.BuildingTypes {
     [ForModel(Common.MODELS.BuildingType)]

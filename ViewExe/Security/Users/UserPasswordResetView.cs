@@ -1,7 +1,7 @@
 ﻿using MVCHIS.Common;
 using System;
 using System.Windows.Forms;
-using ViewWinform.Common;
+using MVCHIS.Common;
 
 namespace MVCHIS.Security.Users {
     public partial class UserPasswordResetView : UserView {

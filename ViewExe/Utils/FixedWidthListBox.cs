@@ -6,9 +6,9 @@ using System.Data;
 using System.Drawing.Design;
 using System.Linq;
 using System.Windows.Forms;
-using ViewWinform.Common;
+using MVCHIS.Common;
 
-namespace ViewWinform.Utils {
+namespace MVCHIS.Utils {
     public partial class FixedWidthListBox : UserControl {
         private DataTable source;
         private bool columnsInitialized;

@@ -1,6 +1,6 @@
 ﻿using MVCHIS.Common;
 using System;
-using ViewWinform.Common;
+using MVCHIS.Common;
 
 namespace MVCHIS.Security {
     [ForModel(Common.MODELS.EntitlementGroup)]

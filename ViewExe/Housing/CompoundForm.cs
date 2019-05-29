@@ -1,6 +1,6 @@
 ﻿using MVCHIS.Common;
 using System;
-using ViewWinform.Common;
+using MVCHIS.Common;
 
 namespace MVCHIS.Housing {
     [ForModel(Common.MODELS.Compound)]

@@ -179,6 +179,7 @@
     <Compile Include="Security\EntitlementGroupForm.Designer.cs">
       <DependentUpon>EntitlementGroupForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Security\PermissionsHelper.cs" />
     <Compile Include="Security\ProfileEntitlementForm.cs">
       <SubType>Form</SubType>
     </Compile>

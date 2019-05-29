@@ -11,12 +11,9 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace ViewWinform.Common {
+namespace MVCHIS.Common {
 
     public class BaseView<M,C> : Form, IView where M:BaseModel where C:IDBController {
-
-        
-
 
         public Action AfterSave { get; set; }
         public virtual C Controller { get; set; } 
@@ -66,9 +63,15 @@ namespace ViewWinform.Common {
         public Button SaveButton { get; set; }
         public Button NewButton { get; set; }
         public Button DeleteButton { get; set; }
+
+        public bool   SaveButtonEnabled { get; set; }
+        public bool    NewButtonEnabled { get; set; }
+        public bool DeleteButtonEnabled { get; set; }
+
         public Action ModelChanged { get; set; }
 
         public BaseView() : base() {
+            
             MdiParent = MainView.Instance;
             Controllers = new Dictionary<string, IDBController>();
             Mapper = new Dictionary<string, Control>();
@@ -84,13 +87,23 @@ namespace ViewWinform.Common {
                                                   || Prop(x).PropertyType == typeof(Double));
 
             Load += (s, e) => {
-                if (SaveButton != null)   SaveButton.Click   += (bs, be) => {
-                    Controller.Save(Model);
-                    Model = Controller.Find(Model, Controller.GetMetaData().GetUniqueKeyFields);
-                    AfterSave?.Invoke();
-                };
-                if (DeleteButton != null) DeleteButton.Click += (bs, be) => { Controller.Delete(Model); NewButton?.PerformClick(); };
-                if (NewButton != null)    NewButton.Click    += (bs, be) => { Model = Controller.NewModel<M>(); };
+                new PermissionsHelper<M, C>(this);
+                if (SaveButton != null) {
+                    SaveButton.Enabled = SaveButtonEnabled;
+                    SaveButton.Click += (bs, be) => {
+                        Controller.Save(Model);
+                        Model = Controller.Find(Model, Controller.GetMetaData().GetUniqueKeyFields);
+                        AfterSave?.Invoke();
+                    };
+                }
+                if (DeleteButton != null) {
+                    DeleteButton.Enabled = DeleteButtonEnabled;
+                    DeleteButton.Click += (bs, be) => { Controller.Delete(Model); NewButton?.PerformClick(); };
+                }
+                if (NewButton != null) {
+                    NewButton.Enabled = NewButtonEnabled;
+                    NewButton.Click += (bs, be) => { Model = Controller.NewModel<M>(); };
+                }
             };
 
         }

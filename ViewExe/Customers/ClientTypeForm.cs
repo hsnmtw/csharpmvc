@@ -1,7 +1,7 @@
 ﻿using MVCHIS.Common;
 using MVCHIS.Utils;
 using System;
-using ViewWinform.Common;
+using MVCHIS.Common;
 
 namespace MVCHIS.Customers {
     [ForModel(Common.MODELS.ClientType)]

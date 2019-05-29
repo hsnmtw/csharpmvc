@@ -4,7 +4,7 @@ using MVCHIS.Utils;
 using System;
 using System.Linq;
 using System.Windows.Forms;
-using ViewWinform.Common;
+using MVCHIS.Common;
 
 namespace MVCHIS.Customers {
     [ForModel(Common.MODELS.Client)]
@@ -109,9 +109,7 @@ namespace MVCHIS.Customers {
                 form.Close();
                 RequeryContact();
             };
-            form.Show();
-                
-            
+            form?.Show();
         }
 
         private void TxtNationalityCode_TextChanged(object sender, EventArgs e) {

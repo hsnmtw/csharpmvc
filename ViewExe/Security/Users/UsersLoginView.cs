@@ -4,7 +4,7 @@ using MVCHIS.Tools;
 using MVCHIS.Utils;
 using System;
 using System.Windows.Forms;
-using ViewWinform.Common;
+using MVCHIS.Common;
 
 namespace MVCHIS.Security.Users {
     public partial class UsersLoginView: UserView

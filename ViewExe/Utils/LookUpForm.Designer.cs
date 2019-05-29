@@ -26,7 +26,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblSearch = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lstView = new ViewWinform.Utils.FixedWidthListBox();
+            this.lstView = new MVCHIS.Utils.FixedWidthListBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -101,6 +101,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblSearch;
-        private ViewWinform.Utils.FixedWidthListBox lstView;
+        private MVCHIS.Utils.FixedWidthListBox lstView;
     }
 }

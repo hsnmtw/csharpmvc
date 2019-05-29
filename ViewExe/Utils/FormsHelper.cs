@@ -15,6 +15,7 @@ namespace MVCHIS.Utils {
 
         public static void Error(string message)
         {
+            //throw new Exception(message);
             MessageBox.Show(message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
         }
 

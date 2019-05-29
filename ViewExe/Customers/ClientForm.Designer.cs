@@ -68,12 +68,12 @@
             this.txtFaxNumber = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpIdentifications = new System.Windows.Forms.TabPage();
-            this.lstIdentifications = new ViewWinform.Utils.FixedWidthListBox();
+            this.lstIdentifications = new MVCHIS.Utils.FixedWidthListBox();
             this.btnUnassociateIdentification = new System.Windows.Forms.Button();
             this.btnAddIdentification = new System.Windows.Forms.Button();
             this.btnOpenIdentification = new System.Windows.Forms.Button();
             this.tpContacts = new System.Windows.Forms.TabPage();
-            this.lstContacts = new ViewWinform.Utils.FixedWidthListBox();
+            this.lstContacts = new MVCHIS.Utils.FixedWidthListBox();
             this.btnUnassociateContact = new System.Windows.Forms.Button();
             this.btnOpenContact = new System.Windows.Forms.Button();
             this.btnAddContact = new System.Windows.Forms.Button();
@@ -827,8 +827,8 @@
         private System.Windows.Forms.Button btnUnassociateIdentification;
         private System.Windows.Forms.Button btnOpenIdentification;
         private System.Windows.Forms.Button btnAddIdentification;
-        private ViewWinform.Utils.FixedWidthListBox lstIdentifications;
-        private ViewWinform.Utils.FixedWidthListBox lstContacts;
+        private MVCHIS.Utils.FixedWidthListBox lstIdentifications;
+        private MVCHIS.Utils.FixedWidthListBox lstContacts;
         private System.Windows.Forms.Button btnUnassociateContact;
         private System.Windows.Forms.Button btnOpenContact;
         private System.Windows.Forms.Button btnAddContact;

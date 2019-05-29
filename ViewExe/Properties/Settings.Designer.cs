@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ViewExe.Properties {
+namespace MVCHIS.Properties {
 
 
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

@@ -1,13 +1,14 @@
 ﻿using MVCHIS.Security;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
 
 namespace MVCHIS.Common {
-    public class Session
-    {
+    public class Session {
         private static Session instance = null;
 
         public UserModel CurrentUser { get; set; }
+        public IEnumerable<ProfileEntitlementsModel> UserEntitlements { get; set;}
 
         private Session() {
         }

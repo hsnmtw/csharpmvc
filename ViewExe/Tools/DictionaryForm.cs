@@ -1,6 +1,6 @@
 ﻿using MVCHIS.Common;
 using System;
-using ViewWinform.Common;
+using MVCHIS.Common;
 
 namespace MVCHIS.Tools {
     [ForModel(Common.MODELS.Dictionary)]

@@ -9,7 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using ViewWinform.Common;
+using MVCHIS.Common;
 
 namespace MVCHIS {
     public partial class MainView : Form, IDisposable
@@ -47,9 +47,9 @@ namespace MVCHIS {
 
 
         private void MainViewLoad(object sender, EventArgs e) {
-            try {
                 LoadForm();
-              }
+            
+              try{}
             catch(Exception ex) {
                 FormsHelper.Error(ex.Message);
             }
@@ -89,6 +89,7 @@ namespace MVCHIS {
                         if (Enum.TryParse<MODELS>(((ToolStripMenuItem)s).Tag.ToString(), out MODELS num)) {
                             var view = ((Form)DBViewsFactory.GetView(num));
                             view.MdiParent = this;
+                            
                             view.Show();
                             FormsHelper.ApplyLanguageLocalization(view);
                         } else {
@@ -134,16 +135,18 @@ namespace MVCHIS {
         public void WhenAuthenticated(UserModel model) {
             Session.Instance.CurrentUser = model;
             var pec = (ProfileEntitlementsController)DBControllersFactory.GetController(Common.MODELS.ProfileEntitlement);
-            var entitlements = pec.Read(new ProfileEntitlementsModel() {
+            var pes = pec.Read(new ProfileEntitlementsModel() {
                 ProfileName = Session.Instance.CurrentUser.ProfileName,
                 AllowRead = true
             }, "ProfileName", "AllowRead");
 
-            foreach (ProfileEntitlementsModel row in entitlements) {
+            foreach (ProfileEntitlementsModel row in pes) {
                 var EntitlementName = row.EntitlementName;
-                if (this.menus.ContainsKey(EntitlementName))
+                if (this.menus.ContainsKey(EntitlementName)) { 
                     this.menus[EntitlementName].Enabled = true;
+                }
             }
+            Session.Instance.UserEntitlements = pes;
         }
 
         private void SQLViewerToolStripMenuItemClick(object sender, EventArgs e) {

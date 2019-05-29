@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ViewWinform.Common {
+namespace MVCHIS.Common {
     public interface IView {
         Action AfterSave     { get; set; }
         Action ModelChanged { get; set; }
@@ -15,5 +15,9 @@ namespace ViewWinform.Common {
         Button SaveButton { get; set; }
         Button NewButton { get; set; }
         Button DeleteButton { get; set; }
+
+        bool   SaveButtonEnabled { get; set; }
+        bool    NewButtonEnabled { get; set; }
+        bool DeleteButtonEnabled { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using MVCHIS.Common;
 using System;
 using System.Collections.Generic;
-using ViewWinform.Common;
+using MVCHIS.Common;
 
 namespace MVCHIS.Housing.Rooms {
     [ForModel(Common.MODELS.Room)]

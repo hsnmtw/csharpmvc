@@ -1,4 +1,4 @@
-﻿namespace ViewWinform.Utils {
+﻿namespace MVCHIS.Utils {
     partial class FixedWidthListBox {
         /// <summary> 
         /// Required designer variable.

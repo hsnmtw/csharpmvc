@@ -4,7 +4,7 @@ using MVCHIS.Utils;
 using System;
 using System.Reflection;
 using System.Windows.Forms;
-using ViewWinform.Common;
+using MVCHIS.Common;
 
 namespace MVCHIS.Billing {
     [ForModel(Common.MODELS.AccommClass)]
