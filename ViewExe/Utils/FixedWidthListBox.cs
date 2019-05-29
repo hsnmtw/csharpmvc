@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing.Design;
 using System.Linq;
 using System.Windows.Forms;
+using ViewWinform.Common;
 
 namespace ViewWinform.Utils {
     public partial class FixedWidthListBox : UserControl {
@@ -78,20 +79,11 @@ namespace ViewWinform.Utils {
             //var table = view.ToTable(false, ShownColumns.ToArray());
             if (!columnsInitialized) {
                 ColumnsWidths = new int[ShownColumns.Count()];
-                var shownColumnsInciesInTable = (from col 
-                                                 in source.Columns.Cast<DataColumn>()
-                                                 where ShownColumns.Contains(col.ColumnName)
-                                                 select col.Ordinal).ToArray();
-                
+
                 for (int j = 0; j < ColumnsWidths.Length; j++) {
                     ColumnsWidths[j] = Math.Max(ColumnsWidths[j], ShownColumns[j].Length);
                 }
-
-                for (int i = 0; i < table.Rows.Count; i++) {
-                    for (int j = 0; j < table.Columns.Count; j++) {
-                        ColumnsWidths[j] = Math.Max(ColumnsWidths[j], table.Rows[i][j].ToString().Length);
-                    }
-                }
+                
                 for (int j = 0; j < ColumnsWidths.Length; j++) {
                     sb[j] = string.Format(string.Join("", " {0,-", ColumnsWidths[j], "} "), ShownColumns[j]);
                 }
@@ -99,14 +91,23 @@ namespace ViewWinform.Utils {
                 columnsInitialized = true;
             }
 
-//            this.lstView.Items.Clear();
             for (int i = 0; i < table.Rows.Count; i++) {
                 for (int j = 0; j < ShownColumns.Count; j++) {
-                    sb[j] = (string.Format(" {0,-" + ColumnsWidths[j] + "} ", table.Rows[i][ShownColumns[j]]));
+                    sb[j] = (string.Format(" {0,-" + ColumnsWidths[j] + "} ", Formatted(table.Rows[i][ShownColumns[j]])));
                 }
                 this.lstView.Items.Add(string.Join("|", sb));
             }
             if (this.lstView.Items.Count > 0) this.lstView.SelectedIndex = 0;
+        }
+
+        private string Formatted(object v) {
+            if (v?.GetType() == typeof(bool)) {
+                return Convert.ToBoolean(v) ? FormsHelper.TICK : "";
+            }
+            if (v?.GetType() == typeof(DateTime)) {
+                return ((DateTime)v).ToString(FormsHelper.DATE_FORMAT);
+            }
+            return Convert.ToString(v);
         }
 
         private void LstView_KeyDown(object sender, KeyEventArgs e) {

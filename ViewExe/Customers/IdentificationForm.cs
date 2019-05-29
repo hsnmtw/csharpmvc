@@ -38,6 +38,14 @@ namespace MVCHIS.Customers {
             string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
             Model = Controller.Find(new IdentificationModel() { IdNumber = selected }, "IdNumber");
         }
+
+        private void TxtIssueDate_Leave(object sender, EventArgs e) {
+            ValidateDate(txtIssueDate);
+        }
+
+        private void TxtExpiryDate_Leave(object sender, EventArgs e) {
+            ValidateDate(txtExpiryDate);
+        }
     }
     public class IdentificationView : BaseView<IdentificationModel, IdentificationController> { }
 }

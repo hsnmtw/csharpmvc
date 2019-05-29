@@ -209,12 +209,6 @@
     <Compile Include="Security\Users\UsersLoginView.Designer.cs">
       <DependentUpon>UsersLoginView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tools\CalendarForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Tools\CalendarForm.Designer.cs">
-      <DependentUpon>CalendarForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Tools\DictionaryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -353,9 +347,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Security\Users\UsersLoginView.resx">
       <DependentUpon>UsersLoginView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tools\CalendarForm.resx">
-      <DependentUpon>CalendarForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\DictionaryForm.resx">
       <DependentUpon>DictionaryForm.cs</DependentUpon>

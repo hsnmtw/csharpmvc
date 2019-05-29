@@ -59,8 +59,6 @@
             this.label26 = new System.Windows.Forms.Label();
             this.chkIsActive = new System.Windows.Forms.CheckBox();
             this.label30 = new System.Windows.Forms.Label();
-            this.txtDateOfBirth = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.txtClientType = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -84,6 +82,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.lookUpButtonNationality = new MVCHIS.Common.LookUpButton();
             this.label14 = new System.Windows.Forms.Label();
+            this.txtDateOfBirth = new System.Windows.Forms.TextBox();
+            this.btnDateOfBirth = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tpIdentifications.SuspendLayout();
             this.tpContacts.SuspendLayout();
@@ -125,7 +125,6 @@
             this.txtUpdatedOn.Size = new System.Drawing.Size(137, 20);
             this.txtUpdatedOn.TabIndex = 19;
             this.txtUpdatedOn.TabStop = false;
-            this.txtUpdatedOn.Tag = "UpdatedOn";
             // 
             // txtUpdatedBy
             // 
@@ -156,7 +155,7 @@
             this.txtCreatedOn.Size = new System.Drawing.Size(137, 20);
             this.txtCreatedOn.TabIndex = 17;
             this.txtCreatedOn.TabStop = false;
-            this.txtCreatedOn.Tag = "CreatedOn";
+            this.txtCreatedOn.Tag = "";
             // 
             // txtCreatedBy
             // 
@@ -235,7 +234,7 @@
             // 
             this.chkReadOnly.AutoSize = true;
             this.chkReadOnly.Enabled = false;
-            this.chkReadOnly.Location = new System.Drawing.Point(534, 327);
+            this.chkReadOnly.Location = new System.Drawing.Point(534, 328);
             this.chkReadOnly.Name = "chkReadOnly";
             this.chkReadOnly.Size = new System.Drawing.Size(15, 14);
             this.chkReadOnly.TabIndex = 20;
@@ -245,7 +244,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(406, 327);
+            this.label19.Location = new System.Drawing.Point(406, 328);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(57, 13);
             this.label19.TabIndex = 50;
@@ -354,7 +353,7 @@
             this.lookUpButtonClientType.AssociatedControl = "txtClientTypeId";
             this.lookUpButtonClientType.Controller = "ClientType";
             this.lookUpButtonClientType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonClientType.Location = new System.Drawing.Point(196, 127);
+            this.lookUpButtonClientType.Location = new System.Drawing.Point(195, 127);
             this.lookUpButtonClientType.Name = "lookUpButtonClientType";
             this.lookUpButtonClientType.SelectedValueIndex = 1;
             this.lookUpButtonClientType.ShowFieldsInLookUp.Add("ClientType");
@@ -422,7 +421,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(31, 319);
+            this.label26.Location = new System.Drawing.Point(31, 317);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(49, 13);
             this.label26.TabIndex = 11;
@@ -431,7 +430,7 @@
             // chkIsActive
             // 
             this.chkIsActive.AutoSize = true;
-            this.chkIsActive.Location = new System.Drawing.Point(161, 319);
+            this.chkIsActive.Location = new System.Drawing.Point(161, 317);
             this.chkIsActive.Name = "chkIsActive";
             this.chkIsActive.Size = new System.Drawing.Size(15, 14);
             this.chkIsActive.TabIndex = 12;
@@ -441,38 +440,18 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(31, 344);
+            this.label30.Location = new System.Drawing.Point(31, 343);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(68, 13);
             this.label30.TabIndex = 47;
             this.label30.Text = "Date of Birth";
             // 
-            // txtDateOfBirth
-            // 
-            this.txtDateOfBirth.BackColor = System.Drawing.Color.White;
-            this.txtDateOfBirth.Location = new System.Drawing.Point(161, 339);
-            this.txtDateOfBirth.Name = "txtDateOfBirth";
-            this.txtDateOfBirth.Size = new System.Drawing.Size(103, 20);
-            this.txtDateOfBirth.TabIndex = 13;
-            this.txtDateOfBirth.Tag = "PhoneNumber";
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(266, 338);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(23, 22);
-            this.button3.TabIndex = 14;
-            this.button3.TabStop = false;
-            this.button3.Tag = "CALENDAR";
-            this.button3.Text = "📅";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
             // txtClientType
             // 
             this.txtClientType.Enabled = false;
-            this.txtClientType.Location = new System.Drawing.Point(222, 128);
+            this.txtClientType.Location = new System.Drawing.Point(218, 128);
             this.txtClientType.Name = "txtClientType";
-            this.txtClientType.Size = new System.Drawing.Size(149, 20);
+            this.txtClientType.Size = new System.Drawing.Size(154, 20);
             this.txtClientType.TabIndex = 7;
             this.txtClientType.Tag = "ClientType";
             // 
@@ -668,9 +647,9 @@
             // txtNationalityDesc
             // 
             this.txtNationalityDesc.Enabled = false;
-            this.txtNationalityDesc.Location = new System.Drawing.Point(234, 366);
+            this.txtNationalityDesc.Location = new System.Drawing.Point(227, 366);
             this.txtNationalityDesc.Name = "txtNationalityDesc";
-            this.txtNationalityDesc.Size = new System.Drawing.Size(137, 20);
+            this.txtNationalityDesc.Size = new System.Drawing.Size(146, 20);
             this.txtNationalityDesc.TabIndex = 7;
             this.txtNationalityDesc.Tag = "ClientType";
             // 
@@ -688,7 +667,7 @@
             this.lookUpButtonNationality.AssociatedControl = "txtNationalityCode";
             this.lookUpButtonNationality.Controller = "Country";
             this.lookUpButtonNationality.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonNationality.Location = new System.Drawing.Point(207, 365);
+            this.lookUpButtonNationality.Location = new System.Drawing.Point(204, 365);
             this.lookUpButtonNationality.Name = "lookUpButtonNationality";
             this.lookUpButtonNationality.SelectedValueIndex = 0;
             this.lookUpButtonNationality.ShowFieldsInLookUp.Add("CountryCode");
@@ -708,13 +687,36 @@
             this.label14.TabIndex = 48;
             this.label14.Text = "?";
             // 
+            // txtDateOfBirth
+            // 
+            this.txtDateOfBirth.BackColor = System.Drawing.Color.White;
+            this.txtDateOfBirth.Location = new System.Drawing.Point(161, 338);
+            this.txtDateOfBirth.Name = "txtDateOfBirth";
+            this.txtDateOfBirth.Size = new System.Drawing.Size(103, 20);
+            this.txtDateOfBirth.TabIndex = 13;
+            this.txtDateOfBirth.Tag = "yyyy-MM-dd";
+            this.txtDateOfBirth.Leave += new System.EventHandler(this.TxtDateOfBirth_Leave);
+            // 
+            // btnDateOfBirth
+            // 
+            this.btnDateOfBirth.Enabled = false;
+            this.btnDateOfBirth.Location = new System.Drawing.Point(264, 337);
+            this.btnDateOfBirth.Name = "btnDateOfBirth";
+            this.btnDateOfBirth.Size = new System.Drawing.Size(23, 22);
+            this.btnDateOfBirth.TabIndex = 14;
+            this.btnDateOfBirth.TabStop = false;
+            this.btnDateOfBirth.Tag = "CALENDAR";
+            this.btnDateOfBirth.Text = "📅";
+            this.btnDateOfBirth.UseVisualStyleBackColor = true;
+            this.btnDateOfBirth.Click += new System.EventHandler(this.BtnDateOfBirth_Click);
+            // 
             // ClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(771, 402);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnDateOfBirth);
             this.Controls.Add(this.chkIsActive);
             this.Controls.Add(this.txtFaxNumber);
             this.Controls.Add(this.txtPhoneNumber);
@@ -811,8 +813,6 @@
         private System.Windows.Forms.TextBox txtWebsite;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox txtDateOfBirth;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.TextBox txtClientType;
         private System.Windows.Forms.Label label4;
@@ -837,5 +837,7 @@
         private System.Windows.Forms.Label label13;
         private Common.LookUpButton lookUpButtonNationality;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtDateOfBirth;
+        private System.Windows.Forms.Button btnDateOfBirth;
     }
 }

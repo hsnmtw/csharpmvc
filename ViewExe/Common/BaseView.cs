@@ -1,9 +1,11 @@
-﻿using MVCHIS.Billing;
+﻿using MVCHIS;
+using MVCHIS.Billing;
 using MVCHIS.Common;
 using MVCHIS.Customers;
 using MVCHIS.Housing;
 using MVCHIS.Security;
 using MVCHIS.Tools;
+using MVCHIS.Utils;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -12,6 +14,10 @@ using System.Windows.Forms;
 namespace ViewWinform.Common {
 
     public class BaseView<M,C> : Form, IView where M:BaseModel where C:IDBController {
+
+        
+
+
         public Action AfterSave { get; set; }
         public virtual C Controller { get; set; } 
         private M model;
@@ -21,11 +27,11 @@ namespace ViewWinform.Common {
                 foreach (var x in Mapper.Keys) {
                     string text = Mapper[x].Text;
                     Mapper[x].Text = text.Trim();
-                    if (isBoolean(x)) Prop(x).SetValue(model, ((CheckBox)Mapper[x]).Checked);
+                         if (isBoolean(x))  Prop(x).SetValue(model, ((CheckBox)Mapper[x]).Checked);
                     else if (isDateTime(x)) Prop(x).SetValue(model, text.Equals("") ? default(DateTime?) : Convert.ToDateTime(text));
-                    else if (isDouble(x)) Prop(x).SetValue(model, Convert.ToDouble($"0{text}"));
-                    else if (isInt32(x)) Prop(x).SetValue(model, Convert.ToInt32($"0{text}"));
-                    else if (isInt64(x)) Prop(x).SetValue(model, Convert.ToInt64($"0{text}"));
+                    else if (isDouble(x))   Prop(x).SetValue(model, Convert.ToDouble($"0{text}"));
+                    else if (isInt32(x))    Prop(x).SetValue(model, Convert.ToInt32($"0{text}"));
+                    else if (isInt64(x))    Prop(x).SetValue(model, Convert.ToInt64($"0{text}"));
                     else Prop(x).SetValue(model, text);
                 }
                 return model;
@@ -33,10 +39,19 @@ namespace ViewWinform.Common {
             set {
                 if (value == null) { model = Activator.CreateInstance<M>(); } else { model = value; }
                 foreach (var x in Mapper.Keys) {
-                    if (isBoolean(x))
+                    if (isBoolean(x)) {
                         ((CheckBox)Mapper[x]).Checked = Convert.ToBoolean(Prop(x).GetValue(model));
-                    else
+                    } else if (isDateTime(x)) {
+                        var date = Prop(x).GetValue(model);
+                        if (date == null) {
+                            Mapper[x].Text = "";
+                        } else {
+                            var dateFormat = (x.Contains("On") ? $"{FormsHelper.DATE_FORMAT} {FormsHelper.TIME_FORMAT}" : (x.Contains("Time")? FormsHelper.TIME_FORMAT : FormsHelper.DATE_FORMAT));
+                            Mapper[x].Text = ((DateTime)Prop(x).GetValue(model)).ToString($"{Mapper[x].Tag}".Equals("") ? dateFormat : $"{Mapper[x].Tag}");
+                        }
+                    } else {
                         Mapper[x].Text = Convert.ToString(Prop(x).GetValue(model));
+                    }
                 }
                 ModelChanged?.Invoke();
             }
@@ -54,6 +69,7 @@ namespace ViewWinform.Common {
         public Action ModelChanged { get; set; }
 
         public BaseView() : base() {
+            MdiParent = MainView.Instance;
             Controllers = new Dictionary<string, IDBController>();
             Mapper = new Dictionary<string, Control>();
             Prop = new Func<string, PropertyInfo>(x => typeof(M).GetProperty(x));
@@ -79,6 +95,13 @@ namespace ViewWinform.Common {
 
         }
 
+        public void ValidateDate(TextBoxBase textbox) {
+            if (DateTime.TryParse(textbox.Text, out DateTime date)) {
+                textbox.Text = date.ToString(FormsHelper.DATE_FORMAT);
+            } else {
+                textbox.Text = "";
+            }
+        }
 
     }
 }

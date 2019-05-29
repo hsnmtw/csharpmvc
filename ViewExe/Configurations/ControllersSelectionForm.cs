@@ -1,4 +1,5 @@
 ﻿using MVCHIS.Common;
+using MVCHIS.Utils;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -19,7 +20,7 @@ namespace MVCHIS.Configurations {
                 foreach (Type type in ControllersRegistery.Instance[num]) {
                     var forca = (ForModelAttribute)type.GetCustomAttributes(true).OfType<ForModelAttribute>().First();
                     bool isEnabled = type.Equals(DBControllersFactory.GetController(num).GetType());
-                    listBox1.Items.Add(string.Format(WIDTHS, sn++,num,type,isEnabled? "✓" : ""));
+                    listBox1.Items.Add(string.Format(WIDTHS, sn++,num,type,isEnabled? FormsHelper.TICK : ""));
                 }
             }
 
