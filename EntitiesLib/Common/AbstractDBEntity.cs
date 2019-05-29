@@ -17,7 +17,7 @@ namespace MVCHIS.Common {
 
         public virtual bool Validate<M>(M model) {
             var p = MetaData.RequiredFields;
-            var q = p.Select(x => "".Equals($"{model.GetType().GetProperty(x).GetValue(model)}"));
+            var q = p.Select(x => "".Equals($"{model.GetType().GetProperty(x).GetValue(model)}".Trim()));
             var w = q.All(y => !y);
             return w;
         }
@@ -113,6 +113,9 @@ namespace MVCHIS.Common {
             } 
             if (value != null && typeof(DateTime).Equals(value.GetType())) {
                 return ((DateTime)value).ToString("yyyy-MM-dd HH:mm:ss");
+            }
+            if (value != null && typeof(string).Equals(value.GetType())) {
+                return $"{value}".Trim();
             }
             return value;
         }
