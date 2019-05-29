@@ -1,13 +1,12 @@
 ﻿using MVCHIS.Common;
 using System;
-using MVCHIS.Common;
 
 namespace MVCHIS.Security {
     [ForModel(Common.MODELS.Entitlement)]
     public partial class EntitlementForm: EntitlementView {
 
         public EntitlementForm() {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
             base.Controller = (EntitlementController)DBControllersFactory.GetController(Common.MODELS.Entitlement);
             //template
             Mapper["Id"] = txtId;

@@ -4,7 +4,6 @@ using MVCHIS.Tools;
 using MVCHIS.Utils;
 using System;
 using System.Windows.Forms;
-using MVCHIS.Common;
 
 namespace MVCHIS.Security.Users {
     public partial class UsersLoginView: UserView
@@ -14,7 +13,7 @@ namespace MVCHIS.Security.Users {
 
         public UsersLoginView()
         {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
             base.Controller = (UserController)DBControllersFactory.GetController(Common.MODELS.User);
             Mapper["UserName"     ] = txtUserName;
             Mapper["UserPassword" ] = txtPassword;
@@ -41,7 +40,7 @@ namespace MVCHIS.Security.Users {
         }
 
         private void UsersLoginView_Load(object sender, EventArgs e) {
-            if(Site != null && Site.DesignMode) return;
+            if(Site!=null && Site.DesignMode) return;
             Encryption = new CryptoController();
         }
 

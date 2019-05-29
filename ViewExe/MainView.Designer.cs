@@ -26,8 +26,8 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent(){
+   
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsslCurrentUser = new System.Windows.Forms.ToolStripStatusLabel();

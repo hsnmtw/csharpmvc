@@ -1,6 +1,5 @@
 ﻿using MVCHIS.Common;
 using System;
-using MVCHIS.Common;
 
 namespace MVCHIS.Housing {
     [ForModel(Common.MODELS.Compound)]
@@ -9,7 +8,7 @@ namespace MVCHIS.Housing {
         
 
         public CompoundForm() {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
             base.Controller = (CompoundController)DBControllersFactory.GetController(Common.MODELS.Compound);
             //template
             Mapper["Id"] = txtId;

@@ -22,7 +22,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summaryClient
-        private void InitializeComponent() {
+        private void InitializeComponent(){
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();

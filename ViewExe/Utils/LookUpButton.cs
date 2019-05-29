@@ -24,7 +24,7 @@ namespace MVCHIS.Common {
         private IDBController controller = null;
 
         public LookUpButton() {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
             this.button1.Text = ARROW;
             this.Font = new Font("Consolas", 10, FontStyle.Bold);
             this.ShowFieldsInLookUp = new List<string>();
@@ -93,7 +93,7 @@ namespace MVCHIS.Common {
             }
 
             if (this.ShowFieldsInLookUp.Count == 0) {
-                this.ShowFieldsInLookUp.AddRange(this.controller.GetMetaData().GetUniqueKeyFields);
+                this.ShowFieldsInLookUp.AddRange(this.controller.GetMetaData().UniqueKeyFields);
             }
 
 

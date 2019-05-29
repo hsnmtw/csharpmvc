@@ -22,7 +22,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent() {
+        private void InitializeComponent(){
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblSearch = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();

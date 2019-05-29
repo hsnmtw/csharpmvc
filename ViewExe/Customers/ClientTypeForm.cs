@@ -1,7 +1,6 @@
 ﻿using MVCHIS.Common;
 using MVCHIS.Utils;
 using System;
-using MVCHIS.Common;
 
 namespace MVCHIS.Customers {
     [ForModel(Common.MODELS.ClientType)]
@@ -10,7 +9,7 @@ namespace MVCHIS.Customers {
          
         
         public ClientTypeForm() {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
             base.Controller = (ClientTypeController)DBControllersFactory.GetController(Common.MODELS.ClientType);
             //template
             Mapper["Id"] = txtId;

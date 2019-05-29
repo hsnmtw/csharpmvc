@@ -1,7 +1,6 @@
 ﻿using MVCHIS.Common;
 using MVCHIS.Utils;
 using System;
-using MVCHIS.Common;
 
 namespace MVCHIS.Customers {
     [ForModel(Common.MODELS.Identification)]
@@ -10,8 +9,12 @@ namespace MVCHIS.Customers {
         
         
         public IdentificationForm() {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
             base.Controller = (IdentificationController)DBControllersFactory.GetController(Common.MODELS.Identification);
+            Controllers = new System.Collections.Generic.Dictionary<string, IDBController> {
+                ["c"]  = DBControllersFactory.GetController(Common.MODELS.Country),
+                ["it"] = DBControllersFactory.GetController(Common.MODELS.IdentificationType),
+            };
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -45,6 +48,14 @@ namespace MVCHIS.Customers {
 
         private void TxtExpiryDate_Leave(object sender, EventArgs e) {
             ValidateDate(txtExpiryDate);
+        }
+
+        private void TxtIdType_TextChanged(object sender, EventArgs e) {
+            lblIdTypeEnglish.Text = Controllers["it"].Find(new IdentificationTypeModel() { IdTypeCode = txtIdType.Text }, "IdTypeCode")?.IdTypeEnglish;
+        }
+
+        private void TxtIssuingCountry_TextChanged(object sender, EventArgs e) {
+            lblIssuingCountryEnglish.Text = Controllers["c"].Find(new CountryModel() { CountryCode = txtIssuingCountry.Text }, "CountryCode")?.CountryEnglish;
         }
     }
     public class IdentificationView : BaseView<IdentificationModel, IdentificationController> { }

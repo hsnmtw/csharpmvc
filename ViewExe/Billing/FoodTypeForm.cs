@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Windows.Forms;
-using MVCHIS.Common;
 
 namespace MVCHIS.Billing {
 
@@ -16,7 +15,7 @@ namespace MVCHIS.Billing {
 
         
         public FoodTypeForm() {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
             
             base.Controller = (FoodTypeController)DBControllersFactory.GetController(Common.MODELS.FoodType);
 

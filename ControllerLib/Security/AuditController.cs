@@ -8,6 +8,10 @@ namespace MVCHIS.Security {
 
         public AuditController() : base(DBEntitiesFactory.GetEntity(MODELS.Audit)) { }
 
+        public override bool Validate<M>(M model) {
+            return base.Validate(model);
+        }
+
         public void registerEvent(AuditModel model) {
             model.UpdatedBy = "SYSTEM";
             model.CreatedBy = "SYSTEM";

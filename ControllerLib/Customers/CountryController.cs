@@ -5,6 +5,10 @@ namespace MVCHIS.Customers {
     public class CountryController : AbstractDBController {
         public CountryController() : base(DBEntitiesFactory.GetEntity(MODELS.Country)) {}
 
+        public override bool Validate<M>(M model) {
+            return base.Validate(model);
+        }
+
         public void Initialize() {
             string[][] data = {
                  new string[]{"BGD","Bangladish","بنغلاديش"}

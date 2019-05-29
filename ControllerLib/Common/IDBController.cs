@@ -15,5 +15,6 @@ namespace MVCHIS.Common {
         M NewModel<M>();
         object Dispatch(string action, params object[] arguments);
         DataTable GetData<M>();
+        bool Validate<M>(M model);
     }
 }

@@ -30,13 +30,13 @@ namespace MVCHIS.Common {
         }
 
         public M NewModel<M>() {
-            return (M)Activator.CreateInstance(MetaData.GetModelType);
+            return (M)Activator.CreateInstance(MetaData.ModelType);
         }
         public virtual M Find<M>(M model, params string[] whereFields) {
             var mdl = NewModel<M>();
             var prp = (from PropertyInfo pinfo in mdl.GetType().GetProperties() orderby pinfo.Name select pinfo.Name);
             var slc = string.Join(",", prp);
-            var src = MetaData.GetSource;
+            var src = MetaData.Source;
             var whr = string.Join(" AND ", (from c in whereFields select $"{c}=@{c}"));
             var sql = $"SELECT {slc} FROM {src} {(whereFields.Length>0? $" WHERE ({whr})" : "")}";
             var prm = (from c in whereFields select new KeyValuePair<string,object>($"@{c}", PrepareParameter(model.GetType().GetProperty(c).GetValue(model))))?.ToArray();
@@ -47,7 +47,7 @@ namespace MVCHIS.Common {
         public virtual int Create<M>(M model) {
             var xcl = new string[] { "Id", "UpdatedBy", "UpdatedOn" };
             var prp = (from pinfo in model.GetType().GetProperties() where !xcl.Contains(pinfo.Name) select pinfo.Name);
-            var src = MetaData.GetSource;
+            var src = MetaData.Source;
             var col = string.Join(",",(from c in prp select $"{c}"));
             var val = string.Join(",",(from c in prp select $"@{c}"));
             var sql = $"INSERT INTO {src} ({col}) VALUES ({val})";
@@ -58,7 +58,7 @@ namespace MVCHIS.Common {
         public virtual Tuple<string, KeyValuePair<string, object>[]> GetSQLAndParameters<M>(M model, bool like = false, params string[] whereFields) {
             var prp = (from pinfo in model.GetType().GetProperties() orderby pinfo.Name select pinfo.Name);
             var slc = string.Join(",", prp); if ("".Equals(slc.Trim())) slc = "*";
-            var src = MetaData.GetSource;
+            var src = MetaData.Source;
             var opr = like ? LIKE : EQ;
             var whr = string.Join(" AND ", (from c in whereFields select $"{c} {opr} (@{c})"));
             var sql = $"SELECT {slc} FROM {src} {(whereFields.Length > 0 ? $" WHERE ({whr})" : "")}";
@@ -81,7 +81,7 @@ namespace MVCHIS.Common {
             if (whereFields.Length == 0) whereFields = new string[] { "Id" };
             var xcl = new string[] { "Id", "CreatedBy", "CreatedOn" };
             var prp = (from pinfo in model.GetType().GetProperties() where !xcl.Contains(pinfo.Name) select pinfo.Name);
-            var src = MetaData.GetSource;
+            var src = MetaData.Source;
             var cvl = string.Join(",", (from c in prp select $"{c}=@{c}"));
             var whr = string.Join(" AND ", (from c in whereFields select $"{c}=@{c}"));
             var sql = $"UPDATE {src} SET {cvl} WHERE ({whr}) AND (ReadOnly='0')";
@@ -91,7 +91,7 @@ namespace MVCHIS.Common {
         
         public virtual int Delete<M>(M model,params string[]whereFields) {
             if (whereFields.Length == 0) whereFields = new string[] { "Id" };
-            var src = MetaData.GetSource;
+            var src = MetaData.Source;
             var whr = string.Join(" AND ", (from c in whereFields select $"{c}=@{c}"));
             var sql = $"DELETE FROM {src} WHERE ({whr}) AND (ReadOnly='0')";
             var prm = (from c in whereFields select new KeyValuePair<string, object>($"@{c}", PrepareParameter(model.GetType().GetProperty(c).GetValue(model))))?.ToArray();
@@ -115,13 +115,13 @@ namespace MVCHIS.Common {
         public string GetDDL() {
             var cols = from c in MetaData.GetFields where c!="Id" select c;
             var size = MetaData.GetSizes;
-            var dtps = from p in cols where p!="Id" select ddltype(this.MetaData.GetModelType.GetProperty(p).PropertyType, size.ContainsKey(p) ? size[p] : -1);
-            var rqrd = MetaData.GetRequiredFields;
-            var uniq = string.Join(",",MetaData.GetUniqueKeyFields );
-            var pkey = string.Join(",",MetaData.GetPrimaryKeyFields);
+            var dtps = from p in cols where p!="Id" select ddltype(this.MetaData.ModelType.GetProperty(p).PropertyType, size.ContainsKey(p) ? size[p] : -1);
+            var rqrd = MetaData.RequiredFields;
+            var uniq = string.Join(",",MetaData.UniqueKeyFields );
+            var pkey = string.Join(",",MetaData.PrimaryKeyFields);
             var cdef = from tpl in cols.Zip(dtps,(a,b) => new Tuple<string,string>(a,b)) select $@"{tpl.Item1} {tpl.Item2} {(rqrd.Contains(tpl.Item1) ? "NOT NULL" : "")}";
             cdef = cdef.Concat(new string[] { "Id INTEGER IDENTITY(1,1) NOT NULL" });
-            return $@"CREATE TABLE {MetaData.GetSource} ({string.Join(",",cdef)}, PRIMARY KEY({pkey}), UNIQUE ({uniq}))";
+            return $@"CREATE TABLE {MetaData.Source} ({string.Join(",",cdef)}, PRIMARY KEY({pkey}), UNIQUE ({uniq}))";
         }
 
         private string ddltype(Type propertyType,int size) {

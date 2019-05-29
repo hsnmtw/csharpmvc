@@ -4,14 +4,13 @@ using MVCHIS.Utils;
 using System;
 using System.Reflection;
 using System.Windows.Forms;
-using MVCHIS.Common;
 
 namespace MVCHIS.Billing {
     [ForModel(Common.MODELS.AccommClass)]
     public partial class AccommClassForm : AccommClassView {
 
         public AccommClassForm () : base() {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;            
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;; //(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
             base.Controller = (AccommClassController)DBControllersFactory.GetController(Common.MODELS.AccommClass);
             //template
             Mapper["Id"] = txtId;

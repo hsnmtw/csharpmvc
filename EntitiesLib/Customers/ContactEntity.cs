@@ -5,10 +5,10 @@ namespace MVCHIS.Customers {
     [ForModel(MODELS.Contact)]
     public class ContactEntity : AbstractDBEntity {
         public override MetaData MetaData => new MetaData() {
-              GetModelType        = typeof(ContactModel)
-            , GetPrimaryKeyFields = new string[] { "Id" }
-            , GetRequiredFields   = new string[] { "Id", "MobileNumber", "FullName" }
-            , GetUniqueKeyFields  = new string[] { "MobileNumber" }
+              ModelType        = typeof(ContactModel)
+            , PrimaryKeyFields = new string[] { "Id" }
+            , RequiredFields   = new string[] { "Id", "MobileNumber", "FullName" }
+            , UniqueKeyFields  = new string[] { "MobileNumber" }
             , GetSizes = new Dictionary<string, int> { ["CreatedBy"] = 50, ["UpdatedBy"] = 50,
                  ["MobileNumber"] = 15
                 ,["Email"       ] = 100
@@ -16,7 +16,7 @@ namespace MVCHIS.Customers {
                 ,["PhoneNumber" ] = 15
                 ,["FullName"    ] = 100
             }
-            , GetSource           = "CustomersContact"            
+            , Source           = "CustomersContact"            
         };
     }
 }

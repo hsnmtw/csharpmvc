@@ -9,7 +9,6 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using MVCHIS.Common;
 
 namespace MVCHIS {
     public partial class MainView : Form, IDisposable
@@ -37,7 +36,7 @@ namespace MVCHIS {
 
         private MainView()
         {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;; //(); if(DesignMode || (Site != null && Site.DesignMode)) return;;
             this.dictionaryController = (DictionaryController)DBControllersFactory.GetController(Common.MODELS.Dictionary);
             this.egController = (EntitlementGroupController)DBControllersFactory.GetController(Common.MODELS.EntitlementGroup);
             this.eController = (EntitlementController)DBControllersFactory.GetController(Common.MODELS.Entitlement);
@@ -55,8 +54,8 @@ namespace MVCHIS {
             }
         }
 
-        public void LoadForm() { 
-            if(Site != null && Site.DesignMode) return;
+        public void LoadForm() {
+            if (DesignMode || (Site != null && Site.DesignMode)) return;;
             initializeToolStripMenuItem.Visible = false;
             initializeToolStripMenuItem.Visible = (null == eController.Find(new EntitlementModel() { EntitlementName = "Initialize" }, "EntitlementName"));
 
@@ -85,7 +84,7 @@ namespace MVCHIS {
                     
                     ce.Tag = crow.EntityName;
                     ce.Click += (s, ea) => {
-                        if (s == null || !typeof(ToolStripMenuItem).Equals(s.GetType()) || ((ToolStripMenuItem)s).Tag == null || ((ToolStripMenuItem)s).Tag.ToString().Equals("")) return;
+                        if (s == null || !typeof(ToolStripMenuItem).Equals(s.GetType()) || ((ToolStripMenuItem)s).Tag == null || ((ToolStripMenuItem)s).Tag.ToString().Equals("")) return;;
                         if (Enum.TryParse<MODELS>(((ToolStripMenuItem)s).Tag.ToString(), out MODELS num)) {
                             var view = ((Form)DBViewsFactory.GetView(num));
                             view.MdiParent = this;

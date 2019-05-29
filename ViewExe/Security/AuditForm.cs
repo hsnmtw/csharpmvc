@@ -1,6 +1,5 @@
 ﻿using MVCHIS.Common;
 using System;
-using MVCHIS.Common;
 
 namespace MVCHIS.Security {
     [ForModel(Common.MODELS.Audit)]
@@ -10,7 +9,7 @@ namespace MVCHIS.Security {
         public virtual void UpdateModel() { var _ = Model; }
 
         public AuditForm() {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
         }
 
         private void AuditView_Load(object sender, EventArgs e) {

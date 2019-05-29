@@ -7,7 +7,11 @@ namespace MVCHIS.Security {
     public class UserController : AbstractDBController {
 
         public UserController() : base(DBEntitiesFactory.GetEntity(MODELS.User)) { }
-       
+
+        public override bool Validate<M>(M model) {
+            return base.Validate(model);
+        }
+
         public void Initialize() {
             Save(new UserModel() {
                 UserName = "Admin",
@@ -90,7 +94,7 @@ namespace MVCHIS.Security {
                 UserName = model.UserName,
                 EventComments = $"reset login counter : {model.UserName}"
             });
-            return true;
+            return base.Validate(model);
         }
 
         public void ResetPassword(UserModel model) {

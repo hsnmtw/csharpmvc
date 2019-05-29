@@ -7,6 +7,7 @@ using MVCHIS.Security;
 using MVCHIS.Tools;
 using MVCHIS.Utils;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Windows.Forms;
@@ -71,8 +72,8 @@ namespace MVCHIS.Common {
         public Action ModelChanged { get; set; }
 
         public BaseView() : base() {
-            
-            MdiParent = MainView.Instance;
+            if (DesignMode||(Site!=null && Site.DesignMode)) return;;
+            //MdiParent = MainView.Instance;
             Controllers = new Dictionary<string, IDBController>();
             Mapper = new Dictionary<string, Control>();
             Prop = new Func<string, PropertyInfo>(x => typeof(M).GetProperty(x));
@@ -91,9 +92,13 @@ namespace MVCHIS.Common {
                 if (SaveButton != null) {
                     SaveButton.Enabled = SaveButtonEnabled;
                     SaveButton.Click += (bs, be) => {
-                        Controller.Save(Model);
-                        Model = Controller.Find(Model, Controller.GetMetaData().GetUniqueKeyFields);
-                        AfterSave?.Invoke();
+                        try {
+                            Controller.Save(Model);
+                            Model = Controller.Find(Model, Controller.GetMetaData().UniqueKeyFields.ToArray());
+                            AfterSave?.Invoke();
+                        }catch(Exception ex) {
+                            FormsHelper.Error(ex.Message);
+                        }
                     };
                 }
                 if (DeleteButton != null) {

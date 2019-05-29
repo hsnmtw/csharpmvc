@@ -5,10 +5,10 @@ namespace MVCHIS.Customers {
     [ForModel(MODELS.Client)]
     public class ClientEntity : AbstractDBEntity {
         public override MetaData MetaData => new MetaData() {
-              GetModelType        = typeof(ClientModel)
-            , GetPrimaryKeyFields = new string[] { "Id" }
-            , GetRequiredFields   = new string[] { "Id", "ShortName", "LongName", "ClientType" }
-            , GetUniqueKeyFields  = new string[] { "ShortName" }
+              ModelType        = typeof(ClientModel)
+            , PrimaryKeyFields = new string[] { "Id" }
+            , RequiredFields   = new string[] { "Id", "ShortName", "LongName", "ClientType" }
+            , UniqueKeyFields  = new string[] { "ShortName" }
             , GetSizes = new Dictionary<string, int> { ["CreatedBy"] = 50, ["UpdatedBy"] = 50,
                   ["ClientType"    ] = 50
                 , ["ShortName"     ] = 50
@@ -21,7 +21,7 @@ namespace MVCHIS.Customers {
                 , ["NameArabic"    ] = 150
                 , ["Nationality"   ] = 50
             }
-            , GetSource           = "CustomersClient"            
+            , Source           = "CustomersClient"            
         };
     }
 }

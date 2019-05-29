@@ -2,7 +2,6 @@
 using MVCHIS.Customers;
 using MVCHIS.Utils;
 using System;
-using MVCHIS.Common;
 
 namespace MVCHIS.Billing {
     [ForModel(Common.MODELS.FoodClass)]
@@ -11,7 +10,7 @@ namespace MVCHIS.Billing {
         
         
         public FoodClassForm() {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
             base.Controller = (FoodClassController)DBControllersFactory.GetController(Common.MODELS.FoodClass);
             //template
             Mapper["Id"] = txtId;

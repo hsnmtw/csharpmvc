@@ -3,13 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using MVCHIS.Common;
 
 namespace MVCHIS.Security.Users {
     [ForModel(Common.MODELS.User)]
     public partial class UserForm: UserView {
         public UserForm() {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
             base.Controller = (UserController)DBControllersFactory.GetController(Common.MODELS.User);
             //template
             Mapper["Id"] = txtId;

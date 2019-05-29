@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using MVCHIS.Common;
 
 namespace MVCHIS.Security {
     [ForModel(Common.MODELS.Profile)]
@@ -13,7 +12,7 @@ namespace MVCHIS.Security {
         private List<string> allEntitlements = new List<string>();
 
         public ProfileForm() {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
             base.Controller = (ProfileController)DBControllersFactory.GetController(Common.MODELS.Profile);
 
             Controllers = new Dictionary<string, IDBController> {

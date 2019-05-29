@@ -1,6 +1,5 @@
 ﻿using MVCHIS.Common;
 using System;
-using MVCHIS.Common;
 
 namespace MVCHIS.Security {
     [ForModel(Common.MODELS.EntitlementGroup)]
@@ -8,7 +7,7 @@ namespace MVCHIS.Security {
 
  
         public EntitlementGroupForm() {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
             base.Controller = (EntitlementGroupController)DBControllersFactory.GetController(Common.MODELS.EntitlementGroup);
             //template
             Mapper["Id"] = txtId;

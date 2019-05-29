@@ -1,6 +1,5 @@
 ﻿using MVCHIS.Common;
 using System;
-using MVCHIS.Common;
 
 namespace MVCHIS.Tools {
     [ForModel(Common.MODELS.Dictionary)]
@@ -8,7 +7,7 @@ namespace MVCHIS.Tools {
 
 
         public DictionaryForm() : base() {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
             base.Controller = (DictionaryController)DBControllersFactory.GetController(Common.MODELS.Dictionary);
             //template
             Mapper["Id"] = txtId;

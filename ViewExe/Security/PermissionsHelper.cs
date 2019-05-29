@@ -11,8 +11,8 @@ using System.Windows.Forms;
 namespace MVCHIS.Security {
     public class PermissionsHelper<M,C> where M:BaseModel where C:IDBController {
         public PermissionsHelper(BaseView<M,C> view) {
-            var ecn = DBControllersFactory.GetController(MVCHIS.Common.MODELS.Entitlement);
-            var pec = DBControllersFactory.GetController(MVCHIS.Common.MODELS.ProfileEntitlement);
+            var ecn = DBControllersFactory.GetController(Common.MODELS.Entitlement);
+            var pec = DBControllersFactory.GetController(Common.MODELS.ProfileEntitlement);
             var usr = Session.Instance.CurrentUser;
 
             var mdl = view?.GetType().GetCustomAttributes().OfType<ForModelAttribute>().FirstOrDefault();

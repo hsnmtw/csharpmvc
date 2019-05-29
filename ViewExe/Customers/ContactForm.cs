@@ -1,7 +1,6 @@
 ﻿using MVCHIS.Common;
 using MVCHIS.Utils;
 using System;
-using MVCHIS.Common;
 
 namespace MVCHIS.Customers {
     [ForModel(Common.MODELS.Contact)]
@@ -10,7 +9,7 @@ namespace MVCHIS.Customers {
          
         
         public ContactForm() {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
             base.Controller = (ContactController)DBControllersFactory.GetController(Common.MODELS.Contact);
             //template
             Mapper["Id"] = txtId;

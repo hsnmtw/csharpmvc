@@ -7,6 +7,10 @@ namespace MVCHIS.Security {
 
         public EntitlementController() : base(DBEntitiesFactory.GetEntity(MODELS.Entitlement)) { }
 
+        public override bool Validate<M>(M model) {
+            return base.Validate(model);
+        }
+
         public void Initialize() {
             string[][] data = {
                 new string[]{"Rooms","Housing","Room"},

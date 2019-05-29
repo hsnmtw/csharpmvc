@@ -9,7 +9,7 @@ namespace MVCHIS.Common {
         
         
         public EntityForm() {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
             base.Controller = (EntityController)DBControllersFactory.GetController(Common.MODELS.Entity);
             //template
             Mapper["Id"] = txtId;

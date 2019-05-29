@@ -1,12 +1,11 @@
 ﻿using MVCHIS.Common;
 using System;
 using System.Windows.Forms;
-using MVCHIS.Common;
 
 namespace MVCHIS.Security.Users {
     public partial class UserPasswordResetView : UserView {
         public UserPasswordResetView() {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
             base.Controller = (UserController)DBControllersFactory.GetController(Common.MODELS.User);
         }
 

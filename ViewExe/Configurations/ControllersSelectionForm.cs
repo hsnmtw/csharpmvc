@@ -8,7 +8,7 @@ namespace MVCHIS.Configurations {
     public partial class ControllersSelectionForm : Form {
 
         public ControllersSelectionForm() {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
         }
 
         private void ControllersSelectionFormLoad(object sender, EventArgs e) {

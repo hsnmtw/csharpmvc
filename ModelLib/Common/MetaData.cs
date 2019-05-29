@@ -11,26 +11,26 @@ namespace MVCHIS.Common {
         /// the list of fields that make up the model
         /// </summary>
         /// <returns></returns>
-        public string[] GetFields => (from propinfo in GetModelType.GetProperties() orderby propinfo.Name select propinfo.Name).ToArray();
+        public IEnumerable<string> GetFields => (from propinfo in ModelType.GetProperties() orderby propinfo.Name select propinfo.Name).ToArray();
 
         public Dictionary<string, int> GetSizes  {get;set;}
         /// <summary>
         /// the source of data to populate the model
         /// </summary>
         /// <returns>eg. Database table from/to which data is stored</returns>
-        public string GetSource { get; set; }
+        public string Source { get; set; }
         /// <summary>
         /// get list of fields that collectively make the primary key.
         /// this should be used to verify uniqueness
         /// </summary>
         /// <returns>list of fields names that are part of the primary key</returns>
-        public string[] GetPrimaryKeyFields { get; set; }
+        public IEnumerable<string> PrimaryKeyFields { get; set; }
         /// <summary>
         /// get list of fields that are marked UNIQUE.
         /// this should be used to verify uniqueness
         /// </summary>
         /// <returns>list of fields names that are marked UNIQUE</returns>
-        public string[] GetUniqueKeyFields { get; set; }
+        public IEnumerable<string> UniqueKeyFields { get; set; }
         /// <summary>
         /// gets the list of properties/fields that are mandatory
         /// this should be used for validation before saving a model
@@ -38,10 +38,10 @@ namespace MVCHIS.Common {
         /// contain data in them, i.e. NOT NULL
         /// </summary>
         /// <returns>list of fields names that are marked REQUIRED</returns>
-        public string[] GetRequiredFields { get; set; }
+        public IEnumerable<string> RequiredFields { get; set; }
         /// <summary>
         /// the type of the model for this collection
         /// </summary>
-        public Type GetModelType { get; set; }
+        public Type ModelType { get; set; }
     }
 }

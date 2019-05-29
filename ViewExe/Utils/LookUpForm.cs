@@ -8,7 +8,7 @@ namespace MVCHIS.Common {
     public partial class LookUpForm : Form {
         
         public LookUpForm() {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
         }
 
         public int SelectedValueIndex       { get; set; }
@@ -24,7 +24,7 @@ namespace MVCHIS.Common {
 
         
         public LookUpForm(DataTable data,params string[]shownColumns) {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
             this.shownColumns = shownColumns;
             lstView.ShownColumns = shownColumns.ToList();
             lstView.DataSource = data;

@@ -1,6 +1,5 @@
 ﻿using MVCHIS.Common;
 using System;
-using MVCHIS.Common;
 
 namespace MVCHIS.Security {
     [ForModel(Common.MODELS.ProfileEntitlement)]
@@ -8,7 +7,7 @@ namespace MVCHIS.Security {
 
 
         public ProfileEntitlementForm() {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
             base.Controller = (ProfileEntitlementsController)DBControllersFactory.GetController(Common.MODELS.ProfileEntitlement);
             //template
             Mapper["Id"] = txtId;

@@ -2,7 +2,6 @@
 using MVCHIS.Customers;
 using MVCHIS.Utils;
 using System;
-using MVCHIS.Common;
 
 namespace MVCHIS.Billing {
     
@@ -15,7 +14,7 @@ namespace MVCHIS.Billing {
 
 
         public BillingCategoryForm() {
-            InitializeComponent(); if (Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;; //(); if (DesignMode||(Site!=null && Site.DesignMode)) return;;
             base.Controller = (BillingCategoryController)DBControllersFactory.GetController(Common.MODELS.BillingCategory);
             this.Controllers = new System.Collections.Generic.Dictionary<string, IDBController> {
                 ["FoodClass"  ] = DBControllersFactory.GetController(Common.MODELS.FoodClass),

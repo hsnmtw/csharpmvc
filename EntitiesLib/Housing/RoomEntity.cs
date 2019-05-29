@@ -5,16 +5,16 @@ namespace MVCHIS.Housing {
     [ForModel(MODELS.Room)]
     public class RoomEntity : AbstractDBEntity {
         public override MetaData MetaData => new MetaData() {
-            GetModelType = typeof(RoomModel)
-            , GetPrimaryKeyFields = new string[]{ "Id" }
-            , GetRequiredFields   = new string[] { "Id", "RoomName", "BuildingName", "BedCapacity" }
+            ModelType = typeof(RoomModel)
+            , PrimaryKeyFields = new string[]{ "Id" }
+            , RequiredFields   = new string[] { "Id", "RoomName", "BuildingName", "BedCapacity" }
             , GetSizes = new Dictionary<string, int> { ["CreatedBy"] = 50, ["UpdatedBy"] = 50,
                  ["RoomName"] = 50
                 ,["BuildingName"] = 50
                 ,["CountryCode"] = 50
             }
-            , GetSource = "HousingRoom"
-            , GetUniqueKeyFields = new string[] { "RoomName" }
+            , Source = "HousingRoom"
+            , UniqueKeyFields = new string[] { "RoomName" }
         };
     }
 }

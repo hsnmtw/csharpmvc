@@ -1,7 +1,6 @@
 ﻿using MVCHIS.Common;
 using MVCHIS.Utils;
 using System;
-using MVCHIS.Common;
 
 namespace MVCHIS.Customers {
     [ForModel(Common.MODELS.IdentificationType)]
@@ -10,7 +9,7 @@ namespace MVCHIS.Customers {
         
         
         public IdentificationTypeForm() {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
             base.Controller = (IdentificationTypeController)DBControllersFactory.GetController(Common.MODELS.IdentificationType);
             //template
             Mapper["Id"] = txtId;

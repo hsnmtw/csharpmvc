@@ -22,7 +22,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summaryClient
-        private void InitializeComponent() {
+        private void InitializeComponent(){
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
@@ -278,6 +278,7 @@
             this.txtIdType.Size = new System.Drawing.Size(55, 20);
             this.txtIdType.TabIndex = 3;
             this.txtIdType.Tag = "PhoneNumber";
+            this.txtIdType.TextChanged += new System.EventHandler(this.TxtIdType_TextChanged);
             // 
             // lookUpButtonIdentificationType
             // 
@@ -320,6 +321,7 @@
             this.txtIssuingCountry.Size = new System.Drawing.Size(55, 20);
             this.txtIssuingCountry.TabIndex = 12;
             this.txtIssuingCountry.Tag = "PhoneNumber";
+            this.txtIssuingCountry.TextChanged += new System.EventHandler(this.TxtIssuingCountry_TextChanged);
             // 
             // label23
             // 

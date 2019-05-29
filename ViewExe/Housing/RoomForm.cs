@@ -1,7 +1,6 @@
 ﻿using MVCHIS.Common;
 using System;
 using System.Collections.Generic;
-using MVCHIS.Common;
 
 namespace MVCHIS.Housing.Rooms {
     [ForModel(Common.MODELS.Room)]
@@ -11,7 +10,7 @@ namespace MVCHIS.Housing.Rooms {
         
 
         public RoomForm() {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
             base.Controller = (RoomController)DBControllersFactory.GetController(Common.MODELS.Room);
             //template
             Mapper["Id"] = txtId;

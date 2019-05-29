@@ -6,10 +6,10 @@ namespace MVCHIS.Security {
     public class UserEntity : AbstractDBEntity{
 
         public override MetaData MetaData => new MetaData() {
-            GetModelType = typeof(UserModel)
-            , GetPrimaryKeyFields = new string[]{ "Id" }
-            , GetRequiredFields = new string[]{"Id","UserName","FullName","UserPassword"}
-            , GetUniqueKeyFields = new string[] { "UserName" }
+            ModelType = typeof(UserModel)
+            , PrimaryKeyFields = new string[]{ "Id" }
+            , RequiredFields = new string[]{"Id","UserName","FullName","UserPassword"}
+            , UniqueKeyFields = new string[] { "UserName" }
             , GetSizes = new Dictionary<string, int> { ["CreatedBy"] = 50, ["UpdatedBy"] = 50,
                 ["UserName"]     = 50,
                 ["FullName"]     = 100,
@@ -17,7 +17,7 @@ namespace MVCHIS.Security {
                 ["ProfileName"]  = 50,
                 ["Email"]        = 100,
             }
-            , GetSource = "SecurityUser"
+            , Source = "SecurityUser"
         };
     }
 }

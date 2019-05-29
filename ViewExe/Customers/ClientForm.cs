@@ -4,14 +4,13 @@ using MVCHIS.Utils;
 using System;
 using System.Linq;
 using System.Windows.Forms;
-using MVCHIS.Common;
 
 namespace MVCHIS.Customers {
     [ForModel(Common.MODELS.Client)]
     public partial class ClientForm: ClientView {
 
         public ClientForm() {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
             base.Controller   = (ClientController)DBControllersFactory.GetController(Common.MODELS.Client);
 
             Controllers = new System.Collections.Generic.Dictionary<string, IDBController> { 

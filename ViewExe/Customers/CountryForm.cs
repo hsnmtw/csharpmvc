@@ -2,7 +2,6 @@
 using System;
 using System.Linq;
 using System.Windows.Forms;
-using MVCHIS.Common;
 
 namespace MVCHIS.Customers {
     [ForModel(Common.MODELS.Country)]
@@ -11,7 +10,7 @@ namespace MVCHIS.Customers {
         
 
         public CountryForm() {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
             base.Controller = (CountryController)DBControllersFactory.GetController(Common.MODELS.Country);
             //template
             Mapper["Id"] = txtId;
@@ -35,7 +34,7 @@ namespace MVCHIS.Customers {
 
             foreach(var required in fieldsmarkers) {
                 string field = required.Name.Replace("lblMetaData", "");
-                if (this.Controller.GetMetaData().GetRequiredFields.Contains(field)) {
+                if (this.Controller.GetMetaData().RequiredFields.Contains(field)) {
                     required.Text = "*";
                 } else {
                     required.Text = "";

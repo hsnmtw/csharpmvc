@@ -9,6 +9,10 @@ namespace MVCHIS.Security {
 
         public ProfileEntitlementsController() : base(DBEntitiesFactory.GetEntity(MODELS.ProfileEntitlement)) { }
 
+        public override bool Validate<M>(M model) {
+            return base.Validate(model);
+        }
+
         public void Initialize() {
             var es = DBControllersFactory.GetController(Common.MODELS.Entitlement).Read<EntitlementModel>();
             var ps = DBControllersFactory.GetController(Common.MODELS.Profile).Read<ProfileModel>();

@@ -26,6 +26,10 @@ namespace MVCHIS.Tools {
             ReadDictionary();
         }
 
+        public override bool Validate<M>(M model) {
+            return base.Validate(model);
+        }
+
         public void ReadDictionary() { 
             try {
                 foreach (var row in Read<DictionaryModel>()) {

@@ -3,7 +3,6 @@ using MVCHIS.Utils;
 using System;
 using System.Data;
 using System.Linq;
-using MVCHIS.Common;
 
 namespace MVCHIS.Housing.BuildingTypes {
     [ForModel(Common.MODELS.BuildingType)]
@@ -13,7 +12,7 @@ namespace MVCHIS.Housing.BuildingTypes {
          
         
         public BuildingTypeForm() {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
             bldgCntrlr = DBControllersFactory.GetController(Common.MODELS.Building);
             base.Controller = (BuildingTypeController)DBControllersFactory.GetController(Common.MODELS.BuildingType);
             //template

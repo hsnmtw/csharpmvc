@@ -11,7 +11,7 @@ namespace MVCHIS.Common {
         private int[] columnsWidths;
         
         public LookUpForm2() {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
             //this.values = new Dictionary<string, string>();
         }
 
@@ -29,7 +29,7 @@ namespace MVCHIS.Common {
 
         
         public LookUpForm2(DataTable data,params string[]shownColumns) {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
             this.shownColumns = shownColumns;
             //Controller = controller;
             source = data;

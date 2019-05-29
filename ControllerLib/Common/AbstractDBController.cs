@@ -1,14 +1,20 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Data;
 
 namespace MVCHIS.Common {
-    public class AbstractDBController : IDBController {
+    public abstract class AbstractDBController : IDBController {
         private IDBEntity BaseEntity { get; set; }
         private AbstractDBController() { }
         public AbstractDBController(IDBEntity baseEntity) {
-            if (baseEntity == null) throw new ArgumentNullException("baseEntity");
-            this.BaseEntity = baseEntity;
+            BaseEntity = baseEntity ?? throw new ArgumentNullException("baseEntity");
+        }
+        public virtual bool Validate<M>(M model) {
+            var p = GetMetaData().RequiredFields;
+            var q = p.Select(x => "".Equals($"{model.GetType().GetProperty(x).GetValue(model)}"));
+            var w = q.All(y => !y);
+            return w;
         }
         public virtual DataTable GetDataById<M>(IEnumerable<int> Ids) => BaseEntity.GetDataById(NewModel<M>(), Ids);
         public virtual IEnumerable<M> FindById<M>(IEnumerable<int> Ids) => BaseEntity.FindById(NewModel<M>(), Ids);
@@ -19,7 +25,7 @@ namespace MVCHIS.Common {
         public virtual IEnumerable<M> Read<M>(M model, params string[] whereFields) => BaseEntity.Read(model, false, whereFields);
         public virtual IEnumerable<M> Read<M>(M model, bool like = false, params string[] whereFields) => BaseEntity.Read(model, like, whereFields);
         public virtual int Save(BaseModel model){
-            //var type = model.GetType();
+            if (!Validate(model)) throw new Exception("Validation error.");
             if (model.Id == 0) {
                 model.CreatedBy = (Session.Instance.CurrentUser==null ? "SYSTEM" : Session.Instance.CurrentUser.UserName);
                 model.CreatedOn = (DateTime.Now);

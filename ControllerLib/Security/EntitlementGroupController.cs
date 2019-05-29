@@ -6,6 +6,10 @@ namespace MVCHIS.Security {
 
         public EntitlementGroupController() : base(DBEntitiesFactory.GetEntity(MODELS.EntitlementGroup)) { }
 
+        public override bool Validate<M>(M model) {
+            return base.Validate(model);
+        }
+
         public void Initialize() {
             var egsdynamic = new string[] {
                 "Security",

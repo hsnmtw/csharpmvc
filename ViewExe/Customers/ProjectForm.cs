@@ -1,7 +1,6 @@
 ﻿using MVCHIS.Common;
 using MVCHIS.Utils;
 using System;
-using MVCHIS.Common;
 
 namespace MVCHIS.Customers {
     [ForModel(Common.MODELS.Project)]
@@ -11,7 +10,7 @@ namespace MVCHIS.Customers {
         
 
         public ProjectForm() {
-            InitializeComponent(); if(Site != null && Site.DesignMode) return;
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;; //(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
             base.Controller = (ProjectController)DBControllersFactory.GetController(Common.MODELS.Project);
             //template
             Mapper["Id"] = txtId;
@@ -21,6 +20,8 @@ namespace MVCHIS.Customers {
             Mapper["UpdatedOn"] = txtUpdatedOn;
             Mapper["ReadOnly"] = chkReadOnly;
             //data
+            Mapper["ProjectName"] = txtProjectName;
+            Mapper["ClientShortName"] = txtClientShortName;
             //actions
             SaveButton = btnSave;
             DeleteButton = btnDelete;
