@@ -62,16 +62,15 @@ namespace MVCHIS.Configurations {
 
         public static byte[] Unzip(byte[] bytes)
         {
-            using (var msi = new MemoryStream(bytes))
-            using (var mso = new MemoryStream())
-            {
-                using (var gs = new GZipStream(msi, CompressionMode.Decompress))
-                {
-                    //gs.CopyTo(mso);
-                    CopyTo(gs, mso);
-                }
+            using (var msi = new MemoryStream(bytes)) {
+                using (var mso = new MemoryStream()) {
+                    using (var gs = new GZipStream(msi, CompressionMode.Decompress)) {
+                        //gs.CopyTo(mso);
+                        CopyTo(gs, mso);
+                    }
 
-                return mso.ToArray();
+                    return mso.ToArray();
+                }
             }
         }
 

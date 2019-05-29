@@ -83,9 +83,9 @@ namespace MVCHIS.Common {
             if(Site != null && Site.DesignMode || isInitialized) return;
 
             if (this.controller == null) {
-                Entities num;
+                MODELS num;
 
-                if (!Enum.TryParse<Entities>(this.Controller, out num)) {
+                if (!Enum.TryParse<MODELS>(this.Controller, out num)) {
                     throw new ArgumentException($"Controller: {this.Controller} cannot be found");
                 }
                 this.controller = DBControllersFactory.GetController(num);

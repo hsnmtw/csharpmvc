@@ -6,11 +6,11 @@ using System.Linq;
 using ViewWinform.Common;
 
 namespace MVCHIS.Security.Users {
-    [ForEntity(Entities.User)]
+    [ForModel(Common.MODELS.User)]
     public partial class UserForm: UserView {
         public UserForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
-            Controller = (UserController)DBControllersFactory.GetController(Entities.User);
+            base.Controller = (UserController)DBControllersFactory.GetController(Common.MODELS.User);
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -46,7 +46,7 @@ namespace MVCHIS.Security.Users {
             Model = new UserModel();
             profileEntitlements = 
                 (from row 
-                   in DBControllersFactory.GetController(Entities.ProfileEntitlement).Read<ProfileEntitlementsModel>()
+                   in DBControllersFactory.GetController(Common.MODELS.ProfileEntitlement).Read<ProfileEntitlementsModel>()
                select row).ToList();
         }
 

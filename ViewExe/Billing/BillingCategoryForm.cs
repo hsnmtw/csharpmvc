@@ -6,7 +6,7 @@ using ViewWinform.Common;
 
 namespace MVCHIS.Billing {
     
-    [ForEntity(Entities.BillingCategory)]
+    [ForModel(Common.MODELS.BillingCategory)]
     public partial class BillingCategoryForm: BillingCategoryView {
 
         //private FoodClassController fcController;
@@ -16,11 +16,11 @@ namespace MVCHIS.Billing {
 
         public BillingCategoryForm() {
             InitializeComponent(); if (Site != null && Site.DesignMode) return;
-            Controller = (BillingCategoryController)DBControllersFactory.GetController(Entities.BillingCategory);
+            base.Controller = (BillingCategoryController)DBControllersFactory.GetController(Common.MODELS.BillingCategory);
             this.Controllers = new System.Collections.Generic.Dictionary<string, IDBController> {
-                ["FoodClass"  ] = DBControllersFactory.GetController(Entities.FoodClass),
-                ["FoodType"   ] = DBControllersFactory.GetController(Entities.FoodType),
-                ["AccommClass"] = DBControllersFactory.GetController(Entities.AccommClass)
+                ["FoodClass"  ] = DBControllersFactory.GetController(Common.MODELS.FoodClass),
+                ["FoodType"   ] = DBControllersFactory.GetController(Common.MODELS.FoodType),
+                ["AccommClass"] = DBControllersFactory.GetController(Common.MODELS.AccommClass)
             };
             //template
             Mapper["Id"] = txtId;

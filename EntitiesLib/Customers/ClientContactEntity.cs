@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace MVCHIS.Customers {
-    [ForEntity(Entities.ClientContact)]
+    [ForModel(MODELS.ClientContact)]
     public class ClientContactEntity : AbstractDBEntity {
         public override MetaData MetaData => new MetaData() {
               GetModelType        = typeof(ClientContactModel)

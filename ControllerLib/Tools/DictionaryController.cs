@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace MVCHIS.Tools {
-    [ForEntityAttribute(Entities.Dictionary, Enabled = true)]
+    [ForModel(MODELS.Dictionary, Enabled = true)]
     public class DictionaryController : AbstractDBController {
 
         
@@ -22,7 +22,11 @@ namespace MVCHIS.Tools {
             }
         }
 
-        public DictionaryController() : base(DBEntitiesFactory.GetEntity(Entities.Dictionary)) {
+        public DictionaryController() : base(DBEntitiesFactory.GetEntity(MODELS.Dictionary)) {
+            ReadDictionary();
+        }
+
+        public void ReadDictionary() { 
             try {
                 foreach (var row in Read<DictionaryModel>()) {
                     var WordInArabic = row.WordInArabic;

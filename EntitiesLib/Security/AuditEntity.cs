@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace MVCHIS.Security {
-    [ForEntity(Entities.Audit)]
+    [ForModel(MODELS.Audit)]
     public class AuditEntity : AbstractDBEntity {
         public override MetaData MetaData => new MetaData() {
               GetModelType = typeof(AuditModel)

@@ -7,12 +7,12 @@ using System.Windows.Forms;
 using ViewWinform.Common;
 
 namespace MVCHIS.Billing {
-    [ForEntity(Entities.AccommClass)]
+    [ForModel(Common.MODELS.AccommClass)]
     public partial class AccommClassForm : AccommClassView {
 
         public AccommClassForm () : base() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;            
-            Controller = (AccommClassController)DBControllersFactory.GetController(Entities.AccommClass);
+            base.Controller = (AccommClassController)DBControllersFactory.GetController(Common.MODELS.AccommClass);
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;

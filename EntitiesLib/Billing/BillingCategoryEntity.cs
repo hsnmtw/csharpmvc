@@ -1,8 +1,8 @@
 ﻿using MVCHIS.Common;
 using System.Collections.Generic;
 
-namespace MVCHIS.Customers {
-    [ForEntity(Entities.BillingCategory)]
+namespace MVCHIS.Billing {
+    [ForModel(MODELS.BillingCategory)]
     public class BillingCategoryEntity : AbstractDBEntity {
         public override MetaData MetaData => new MetaData() {
               GetModelType        = typeof(BillingCategoryModel)
@@ -20,11 +20,3 @@ namespace MVCHIS.Customers {
         };
     }
 }
-/*
-    ["BillingCategory"    ] = 50
-   ,["BillingCategoryDesc"] = 50
-   ,["AccommClass"         ] = 50
-   ,["FoodClass"          ] = 50
-   ,["FoodType"           ] = 50
-   ,["ReservationOnly"    ] = BOOLEAN
-*/

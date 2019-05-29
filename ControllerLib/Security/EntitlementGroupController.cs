@@ -1,10 +1,10 @@
 ﻿using MVCHIS.Common;
 
 namespace MVCHIS.Security {
-    [ForEntityAttribute(Entities.EntitlementGroup, Enabled = true)]
+    [ForModel(MODELS.EntitlementGroup, Enabled = true)]
     public class EntitlementGroupController : AbstractDBController {
 
-        public EntitlementGroupController() : base(DBEntitiesFactory.GetEntity(Entities.EntitlementGroup)) { }
+        public EntitlementGroupController() : base(DBEntitiesFactory.GetEntity(MODELS.EntitlementGroup)) { }
 
         public void Initialize() {
             var egsdynamic = new string[] {

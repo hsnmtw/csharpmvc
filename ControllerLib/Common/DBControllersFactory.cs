@@ -4,17 +4,17 @@ using System.Linq;
 
 namespace MVCHIS.Common {
     public static class DBControllersFactory {
-        private static Dictionary<Entities, IDBController> ControllersMap = null;
+        private static Dictionary<MODELS, IDBController> ControllersMap = null;
 
         public static void Initialize(){
             
 
-            ControllersMap = new Dictionary<Entities, IDBController>() {
+            ControllersMap = new Dictionary<MODELS, IDBController>() {
            };
 
-           foreach(Entities num in typeof(Entities).GetEnumValues()) {
+           foreach(MODELS num in typeof(MODELS).GetEnumValues()) {
                 foreach(var type in ControllersRegistery.Instance[num]) {
-                    ForEntityAttribute forca = (ForEntityAttribute)type.GetCustomAttributes(true).OfType<ForEntityAttribute>().First();
+                    ForModelAttribute forca = (ForModelAttribute)type.GetCustomAttributes(true).OfType<ForModelAttribute>().First();
                     if (forca.Enabled) {
                         DBControllersFactory.ControllersMap[num] = (IDBController)Activator.CreateInstance(type);
                     }
@@ -26,16 +26,16 @@ namespace MVCHIS.Common {
             return (IDBController)Activator.CreateInstance(Type.GetType(typeName));
         }
 
-        public static Dictionary<Entities, IDBController> GetControllersMap() {
+        public static Dictionary<MODELS, IDBController> GetControllersMap() {
             return ControllersMap;
 		}
 
-        public static IDBController GetController(Entities ce){
+        public static IDBController GetController(Common.MODELS ce){
             if (ControllersMap == null) Initialize();
             return ControllersMap[ce];
         }
 
-        public static void SetController(Entities ce,IDBController bc) {
+        public static void SetController(MODELS ce,IDBController bc) {
             if (ControllersMap == null) Initialize();
             ControllersMap[ce] = bc;
         }

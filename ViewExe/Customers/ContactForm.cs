@@ -4,14 +4,14 @@ using System;
 using ViewWinform.Common;
 
 namespace MVCHIS.Customers {
-    [ForEntity(Entities.Contact)]
+    [ForModel(Common.MODELS.Contact)]
     public partial class ContactForm: ContactView {
 
          
         
         public ContactForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
-            Controller = (ContactController)DBControllersFactory.GetController(Entities.Contact);
+            base.Controller = (ContactController)DBControllersFactory.GetController(Common.MODELS.Contact);
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;

@@ -2,8 +2,8 @@
 
 
 namespace MVCHIS.Housing {
-    [ForEntityAttribute(Entities.Building, Enabled = true)]
+    [ForModel(MODELS.Building, Enabled = true)]
     public class BuildingController : AbstractDBController {
-        public BuildingController() : base(DBEntitiesFactory.GetEntity(Entities.Building)) { }
+        public BuildingController() : base(DBEntitiesFactory.GetEntity(MODELS.Building)) { }
     }
 }

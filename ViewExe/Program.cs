@@ -10,9 +10,9 @@ namespace MVCHIS {
 
     static class Program
     {
-        [DllImport("kernel32.dll")]
-        static extern bool AttachConsole(int dwProcessId);
-        private const int ATTACHPARENTPROCESS = -1;
+        //[DllImport("kernel32.dll")]
+        //static bool AttachConsole(int dwProcessId);
+        //const int ATTACHPARENTPROCESS = -1;
 
         /// <summary>
         /// The main entry point for the application.
@@ -20,7 +20,7 @@ namespace MVCHIS {
         [STAThread]
         static void Main()
         {
-            AttachConsole(ATTACHPARENTPROCESS);
+           // AttachConsole(ATTACHPARENTPROCESS);
             Session.Instance.Initialize();
             Application.CurrentCulture = Thread.CurrentThread.CurrentUICulture;
             Application.EnableVisualStyles();

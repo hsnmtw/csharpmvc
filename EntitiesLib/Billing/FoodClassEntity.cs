@@ -1,8 +1,8 @@
 ﻿using MVCHIS.Common;
 using System.Collections.Generic;
 
-namespace MVCHIS.Customers {
-    [ForEntity(Entities.FoodClass)]
+namespace MVCHIS.Billing {
+    [ForModel(MODELS.FoodClass)]
     public class FoodClassEntity : AbstractDBEntity {
         public override MetaData MetaData => new MetaData() {
               GetModelType        = typeof(FoodClassModel)

@@ -5,10 +5,10 @@ using ViewWinform.Common;
 
 namespace MVCHIS.Common {
     public static class DBViewsFactory {
-        private static Dictionary<Entities, Type> ViewsMap = null;
+        private static Dictionary<MODELS, Type> ViewsMap = null;
 
         public static void InitViewsMap(){
-            ViewsMap = new Dictionary<Entities, Type>();
+            ViewsMap = new Dictionary<MODELS, Type>();
 
             var type = typeof(IView);
             var types = AppDomain.CurrentDomain.GetAssemblies()
@@ -19,18 +19,18 @@ namespace MVCHIS.Common {
             Console.WriteLine("--------------------------------------------------------");
             foreach (var t in types) {
                 //try {
-                var FORs = t.GetCustomAttributes(typeof(ForEntityAttribute), false);
+                var FORs = t.GetCustomAttributes(typeof(ForModelAttribute), false);
                 if (FORs.Count() == 0) continue;
-                var FOR = (ForEntityAttribute)FORs.First();
-                Console.WriteLine($"{FOR.Entity}\t{t}");
-                ViewsMap[FOR.Entity] = t; // (ISingleForm)Activator.CreateInstance(t);
+                var FOR = (ForModelAttribute)FORs.First();
+                Console.WriteLine($"{FOR.Model}\t{t}");
+                ViewsMap[FOR.Model] = t; // (ISingleForm)Activator.CreateInstance(t);
                 //} catch { }
             }
             Console.WriteLine("--------------------------------------------------------");
 
         }
 
-        public static IView GetView(Entities ce){
+        public static IView GetView(MODELS ce){
             if (ViewsMap == null) InitViewsMap();
             return (IView)Activator.CreateInstance(ViewsMap[ce]);
         }

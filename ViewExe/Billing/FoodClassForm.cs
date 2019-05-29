@@ -5,14 +5,14 @@ using System;
 using ViewWinform.Common;
 
 namespace MVCHIS.Billing {
-    [ForEntity(Entities.FoodClass)]
+    [ForModel(Common.MODELS.FoodClass)]
     public partial class FoodClassForm: FoodClassView {
 
         
         
         public FoodClassForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
-            Controller = (FoodClassController)DBControllersFactory.GetController(Entities.FoodClass);
+            base.Controller = (FoodClassController)DBControllersFactory.GetController(Common.MODELS.FoodClass);
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;

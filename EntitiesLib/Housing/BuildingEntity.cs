@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace MVCHIS.Housing {
-    [ForEntity(Entities.Building)]
+    [ForModel(MODELS.Building)]
     public class BuildingEntity : AbstractDBEntity,IDBEntity {
 
         public override MetaData MetaData => new MetaData() {

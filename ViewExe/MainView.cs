@@ -38,9 +38,9 @@ namespace MVCHIS {
         private MainView()
         {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
-            this.dictionaryController = (DictionaryController)DBControllersFactory.GetController(Entities.Dictionary);
-            this.egController = (EntitlementGroupController)DBControllersFactory.GetController(Entities.EntitlementGroup);
-            this.eController = (EntitlementController)DBControllersFactory.GetController(Entities.Entitlement);
+            this.dictionaryController = (DictionaryController)DBControllersFactory.GetController(Common.MODELS.Dictionary);
+            this.egController = (EntitlementGroupController)DBControllersFactory.GetController(Common.MODELS.EntitlementGroup);
+            this.eController = (EntitlementController)DBControllersFactory.GetController(Common.MODELS.Entitlement);
 
         }
 
@@ -86,7 +86,7 @@ namespace MVCHIS {
                     ce.Tag = crow.EntityName;
                     ce.Click += (s, ea) => {
                         if (s == null || !typeof(ToolStripMenuItem).Equals(s.GetType()) || ((ToolStripMenuItem)s).Tag == null || ((ToolStripMenuItem)s).Tag.ToString().Equals("")) return;
-                        if (Enum.TryParse<Entities>(((ToolStripMenuItem)s).Tag.ToString(), out Entities num)) {
+                        if (Enum.TryParse<MODELS>(((ToolStripMenuItem)s).Tag.ToString(), out MODELS num)) {
                             var view = ((Form)DBViewsFactory.GetView(num));
                             view.MdiParent = this;
                             view.Show();
@@ -133,7 +133,7 @@ namespace MVCHIS {
 
         public void WhenAuthenticated(UserModel model) {
             Session.Instance.CurrentUser = model;
-            var pec = (ProfileEntitlementsController)DBControllersFactory.GetController(Entities.ProfileEntitlement);
+            var pec = (ProfileEntitlementsController)DBControllersFactory.GetController(Common.MODELS.ProfileEntitlement);
             var entitlements = pec.Read(new ProfileEntitlementsModel() {
                 ProfileName = Session.Instance.CurrentUser.ProfileName,
                 AllowRead = true
@@ -233,15 +233,15 @@ namespace MVCHIS {
         }
 
         private void InitializeToolStripMenuItem_Click(object sender, EventArgs e) {
-            var entities = new Entities[] {
-                 Entities.Entity
-                ,Entities.EntitlementGroup
-                ,Entities.Profile
-                ,Entities.Entitlement
-                ,Entities.ProfileEntitlement
-                ,Entities.User
-                ,Entities.Country
-                ,Entities.Dictionary
+            var entities = new MODELS[] {
+                 MODELS.Entity
+                ,MODELS.EntitlementGroup
+                ,MODELS.Profile
+                ,MODELS.Entitlement
+                ,MODELS.ProfileEntitlement
+                ,MODELS.User
+                ,MODELS.Country
+                ,MODELS.Dictionary
             };
             int i = 0;
             foreach (var entity in entities) {

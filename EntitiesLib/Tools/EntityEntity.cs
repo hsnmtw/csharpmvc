@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 namespace MVCHIS.Common {
-    [ForEntity(Entities.Entity)]
+    [ForModel(MODELS.Entity)]
     public class EntityEntity : AbstractDBEntity {
 
         public override MetaData MetaData => new MetaData() {

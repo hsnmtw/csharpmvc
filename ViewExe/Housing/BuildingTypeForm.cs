@@ -6,7 +6,7 @@ using System.Linq;
 using ViewWinform.Common;
 
 namespace MVCHIS.Housing.BuildingTypes {
-    [ForEntity(Entities.BuildingType)]
+    [ForModel(Common.MODELS.BuildingType)]
     public partial class BuildingTypeForm: BuildingTypeView {
 
         private IDBController bldgCntrlr;
@@ -14,8 +14,8 @@ namespace MVCHIS.Housing.BuildingTypes {
         
         public BuildingTypeForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
-            bldgCntrlr = DBControllersFactory.GetController(Entities.Building);
-            Controller = (BuildingTypeController)DBControllersFactory.GetController(Entities.BuildingType);
+            bldgCntrlr = DBControllersFactory.GetController(Common.MODELS.Building);
+            base.Controller = (BuildingTypeController)DBControllersFactory.GetController(Common.MODELS.BuildingType);
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;

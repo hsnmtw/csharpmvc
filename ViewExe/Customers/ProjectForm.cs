@@ -4,7 +4,7 @@ using System;
 using ViewWinform.Common;
 
 namespace MVCHIS.Customers {
-    [ForEntity(Entities.Project)]
+    [ForModel(Common.MODELS.Project)]
     public partial class ProjectForm: ProjectView {
 
         
@@ -12,7 +12,7 @@ namespace MVCHIS.Customers {
 
         public ProjectForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
-            Controller = (ProjectController)DBControllersFactory.GetController(Entities.Project);
+            base.Controller = (ProjectController)DBControllersFactory.GetController(Common.MODELS.Project);
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;

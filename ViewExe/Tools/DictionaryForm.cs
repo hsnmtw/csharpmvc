@@ -3,13 +3,13 @@ using System;
 using ViewWinform.Common;
 
 namespace MVCHIS.Tools {
-    [ForEntity(Entities.Dictionary)]
+    [ForModel(Common.MODELS.Dictionary)]
     public partial class DictionaryForm: DictionaryView {
 
 
         public DictionaryForm() : base() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
-            Controller = (DictionaryController)DBControllersFactory.GetController(Entities.Dictionary);
+            base.Controller = (DictionaryController)DBControllersFactory.GetController(Common.MODELS.Dictionary);
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;

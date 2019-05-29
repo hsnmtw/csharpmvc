@@ -3,7 +3,7 @@
 namespace MVCHIS.Common {
     [Serializable]
     [Flags]
-    public enum Entities {
+    public enum MODELS {
           BillingCategory
         , AccommClass
         , Audit                 

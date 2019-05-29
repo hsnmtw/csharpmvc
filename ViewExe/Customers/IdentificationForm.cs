@@ -4,14 +4,14 @@ using System;
 using ViewWinform.Common;
 
 namespace MVCHIS.Customers {
-    [ForEntity(Entities.Identification)]
+    [ForModel(Common.MODELS.Identification)]
     public partial class IdentificationForm: IdentificationView {
 
         
         
         public IdentificationForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
-            Controller = (IdentificationController)DBControllersFactory.GetController(Entities.Identification);
+            base.Controller = (IdentificationController)DBControllersFactory.GetController(Common.MODELS.Identification);
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;

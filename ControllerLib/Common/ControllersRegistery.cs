@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace MVCHIS.Common {
     public class ControllersRegistery {
-        private static Dictionary<Entities, List<Type>> ControllersMap = new Dictionary<Entities, List<Type>>();
+        private static Dictionary<MODELS, List<Type>> ControllersMap = new Dictionary<MODELS, List<Type>>();
         private static ControllersRegistery instance = null;
         public static ControllersRegistery Instance {
             get {
@@ -13,7 +13,7 @@ namespace MVCHIS.Common {
             }
         }
 
-        public List<Type> this[Entities controllersEnum] {
+        public List<Type> this[MODELS controllersEnum] {
             get {
                 return ControllersMap[controllersEnum];
             }
@@ -26,7 +26,7 @@ namespace MVCHIS.Common {
         }
 
         private void init() { 
-            foreach(Entities num in typeof(Entities).GetEnumValues()) {
+            foreach(MODELS num in typeof(MODELS).GetEnumValues()) {
                 ControllersMap[num] = new List<Type>();
             }
 
@@ -38,9 +38,9 @@ namespace MVCHIS.Common {
             Console.WriteLine("--------------------------------------------------------");
             foreach (var t in types) {
                 try {
-                    var FOR = (ForEntityAttribute)t.GetCustomAttributes(typeof(ForEntityAttribute), false).First();
-                    Console.WriteLine($"{FOR.Entity}\t{t}");
-                    ControllersMap[FOR.Entity].Add(t);
+                    var FOR = (ForModelAttribute)t.GetCustomAttributes(typeof(ForModelAttribute), false).First();
+                    Console.WriteLine($"{FOR.Model}\t{t}");
+                    ControllersMap[FOR.Model].Add(t);
                 } catch { }
             }
             Console.WriteLine("--------------------------------------------------------");

@@ -3,7 +3,7 @@ using System;
 using ViewWinform.Common;
 
 namespace MVCHIS.Security {
-    [ForEntity(Entities.Audit)]
+    [ForModel(Common.MODELS.Audit)]
     public partial class AuditForm: AuditView {
         private MVCAdaptor<AuditController> adaptor;
 

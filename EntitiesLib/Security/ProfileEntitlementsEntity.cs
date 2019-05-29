@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace MVCHIS.Security {
-    [ForEntity(Entities.ProfileEntitlement)]
+    [ForModel(MODELS.ProfileEntitlement)]
     public class ProfileEntitlementsEntity : AbstractDBEntity {
 
         public override MetaData MetaData => new MetaData() {

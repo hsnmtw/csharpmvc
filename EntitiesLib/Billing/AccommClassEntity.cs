@@ -1,8 +1,8 @@
 ﻿using MVCHIS.Common;
 using System.Collections.Generic;
 
-namespace MVCHIS.Customers {
-    [ForEntity(Entities.AccommClass)]
+namespace MVCHIS.Billing {
+    [ForModel(MODELS.AccommClass)]
     public class AccommClassEntity : AbstractDBEntity {
         public override MetaData MetaData => new MetaData() {
               GetModelType        = typeof(AccommClassModel)

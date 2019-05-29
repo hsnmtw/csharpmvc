@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace MVCHIS.Tools {
-    [ForEntity(Entities.Dictionary)]
+    [ForModel(MODELS.Dictionary)]
     public class DictionaryEntity : AbstractDBEntity {
 
         public override MetaData MetaData => new MetaData() {

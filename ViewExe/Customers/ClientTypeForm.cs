@@ -4,14 +4,14 @@ using System;
 using ViewWinform.Common;
 
 namespace MVCHIS.Customers {
-    [ForEntity(Entities.ClientType)]
+    [ForModel(Common.MODELS.ClientType)]
     public partial class ClientTypeForm: ClientTypeView {
 
          
         
         public ClientTypeForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
-            Controller = (ClientTypeController)DBControllersFactory.GetController(Entities.ClientType);
+            base.Controller = (ClientTypeController)DBControllersFactory.GetController(Common.MODELS.ClientType);
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;

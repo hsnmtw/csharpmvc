@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace MVCHIS.Housing {
-    [ForEntity(Entities.Room)]
+    [ForModel(MODELS.Room)]
     public class RoomEntity : AbstractDBEntity {
         public override MetaData MetaData => new MetaData() {
             GetModelType = typeof(RoomModel)

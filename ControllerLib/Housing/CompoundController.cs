@@ -1,8 +1,8 @@
 ﻿using MVCHIS.Common;
 
 namespace MVCHIS.Housing {
-    [ForEntityAttribute(Entities.Compound, Enabled = true)]
+    [ForModel(MODELS.Compound, Enabled = true)]
     public class CompoundController : AbstractDBController {
-        public CompoundController() : base(DBEntitiesFactory.GetEntity(Entities.Compound)) { }
+        public CompoundController() : base(DBEntitiesFactory.GetEntity(MODELS.Compound)) { }
     }
 }

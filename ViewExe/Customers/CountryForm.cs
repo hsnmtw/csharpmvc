@@ -5,14 +5,14 @@ using System.Windows.Forms;
 using ViewWinform.Common;
 
 namespace MVCHIS.Customers {
-    [ForEntity(Entities.Country)]
+    [ForModel(Common.MODELS.Country)]
     public partial class CountryForm: CountryView {
 
         
 
         public CountryForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
-            Controller = (CountryController)DBControllersFactory.GetController(Entities.Country);
+            base.Controller = (CountryController)DBControllersFactory.GetController(Common.MODELS.Country);
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;

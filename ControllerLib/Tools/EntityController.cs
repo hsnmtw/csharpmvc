@@ -1,7 +1,7 @@
 ﻿namespace MVCHIS.Common {
-    [ForModel(MODELS.Entity, Enabled = true)]
+    [ForModelAttribute(Models.Entity, Enabled = true)]
     public class EntityController : AbstractDBController {
-        public EntityController() : base(DBEntitiesFactory.GetEntity(MODELS.Entity)) { }
+        public EntityController() : base(DBEntitiesFactory.GetEntity(Models.Entity)) { }
 
         public void Initialize() {
             string[][] data = {

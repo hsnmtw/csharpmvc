@@ -3,10 +3,10 @@ using MVCHIS.Configurations;
 using System;
 
 namespace MVCHIS.Security {
-    [ForEntityAttribute(Entities.User, Enabled = true)]
+    [ForModel(MODELS.User, Enabled = true)]
     public class UserController : AbstractDBController {
 
-        public UserController() : base(DBEntitiesFactory.GetEntity(Entities.User)) { }
+        public UserController() : base(DBEntitiesFactory.GetEntity(MODELS.User)) { }
        
         public void Initialize() {
             Save(new UserModel() {
@@ -40,7 +40,7 @@ namespace MVCHIS.Security {
                 model.UserPassword = new CryptoController().Process(new CryptoModel() { InputText = model.UserPassword }).Encrypted;
             }
 
-            var audit = (AuditController)DBControllersFactory.GetController(Entities.Audit);
+            var audit = (AuditController)DBControllersFactory.GetController(Common.MODELS.Audit);
 
             model.IsActive = true;
             UserModel modelf = Find(model, "UserName", "UserPassword", "IsActive");
@@ -85,7 +85,7 @@ namespace MVCHIS.Security {
             model.FailedLoginAttempts = 0;
             this.Save(model);
 
-            var audit = (AuditController)DBControllersFactory.GetController(Entities.Audit);
+            var audit = (AuditController)DBControllersFactory.GetController(Common.MODELS.Audit);
             audit.registerEvent(new AuditModel() {
                 UserName = model.UserName,
                 EventComments = $"reset login counter : {model.UserName}"
@@ -100,7 +100,7 @@ namespace MVCHIS.Security {
             model.UserPassword = password;
             model.LastChangePassword = DateTime.Now;
             Save(model);
-            var audit = (AuditController)DBControllersFactory.GetController(Entities.Audit);
+            var audit = (AuditController)DBControllersFactory.GetController(Common.MODELS.Audit);
             audit.registerEvent(new AuditModel() {
                 UserName = model.UserName,
                 EventComments = "password reset for user : " + model.UserName

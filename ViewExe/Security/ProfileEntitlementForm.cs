@@ -3,13 +3,13 @@ using System;
 using ViewWinform.Common;
 
 namespace MVCHIS.Security {
-    [ForEntity(Entities.ProfileEntitlement)]
+    [ForModel(Common.MODELS.ProfileEntitlement)]
     public partial class ProfileEntitlementForm: ProfileEntitlementsView {
 
 
         public ProfileEntitlementForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
-            Controller = (ProfileEntitlementsController)DBControllersFactory.GetController(Entities.ProfileEntitlement);
+            base.Controller = (ProfileEntitlementsController)DBControllersFactory.GetController(Common.MODELS.ProfileEntitlement);
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;

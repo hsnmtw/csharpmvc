@@ -4,10 +4,10 @@ using System.Linq;
 
 namespace MVCHIS.Common {
     public static class DBEntitiesFactory {
-        private static Dictionary<Entities, IDBEntity> EntitiesMap = null;
+        private static Dictionary<MODELS, IDBEntity> EntitiesMap = null;
 
         public static void Initialize(){
-            EntitiesMap = new Dictionary<Entities, IDBEntity>();
+            EntitiesMap = new Dictionary<MODELS, IDBEntity>();
 
             var type = typeof(IDBEntity);
             var types = AppDomain.CurrentDomain.GetAssemblies()
@@ -17,20 +17,20 @@ namespace MVCHIS.Common {
             //Console.WriteLine("--------------------------------------------------------");
             foreach (var t in types) {
                 //try {
-                var FORs = t.GetCustomAttributes(typeof(ForEntityAttribute), false);
+                var FORs = t.GetCustomAttributes(typeof(ForModelAttribute), false);
                 if (FORs.Count() == 0) continue;
-                var FOR = (ForEntityAttribute)FORs.First();
+                var FOR = (ForModelAttribute)FORs.First();
                 //Console.WriteLine($"{FOR.Entity}\t{t}");
-                EntitiesMap[FOR.Entity] = (IDBEntity)Activator.CreateInstance(t);
+                EntitiesMap[FOR.Model] = (IDBEntity)Activator.CreateInstance(t);
                 //} catch { }
-                Console.WriteLine(EntitiesMap[FOR.Entity].GetDDL());
+                Console.WriteLine(EntitiesMap[FOR.Model].GetDDL());
                 //Console.WriteLine("go");
             }
             //Console.WriteLine("--------------------------------------------------------");
             
         }
 
-        public static IDBEntity GetEntity(Entities ce){
+        public static IDBEntity GetEntity(MODELS ce){
             if (EntitiesMap == null) Initialize();
             return EntitiesMap[ce];
         }

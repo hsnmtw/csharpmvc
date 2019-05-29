@@ -6,21 +6,22 @@ using System.Linq;
 using ViewWinform.Common;
 
 namespace MVCHIS.Security {
-    [ForEntity(Entities.Profile)]
+    [ForModel(Common.MODELS.Profile)]
     public partial class ProfileForm: ProfileView {
         const char C = 'C', R = 'R', U = 'U', D = 'D', E = '-';
         private Dictionary<string, List<string>> entitlementsByGroup = new Dictionary<string, List<string>>();
         private List<string> allEntitlements = new List<string>();
 
-        private IDBController eController;
-        private IDBController peController;
-
-
         public ProfileForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
-            Controller = (ProfileController)DBControllersFactory.GetController(Entities.Profile);
-            eController = DBControllersFactory.GetController(Entities.Entitlement);
-            peController = DBControllersFactory.GetController(Entities.ProfileEntitlement);
+            base.Controller = (ProfileController)DBControllersFactory.GetController(Common.MODELS.Profile);
+
+            Controllers = new Dictionary<string, IDBController> {
+                ["e" ] = DBControllersFactory.GetController(Common.MODELS.Entitlement),
+                ["pe"] = DBControllersFactory.GetController(Common.MODELS.ProfileEntitlement),
+                ["eg"] = DBControllersFactory.GetController(Common.MODELS.EntitlementGroup),
+            };
+
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -50,7 +51,7 @@ namespace MVCHIS.Security {
             }
             this.lstEntitlements.Items.AddRange((
                     from ProfileEntitlementsModel row
-                      in peController.Read(new ProfileEntitlementsModel() { ProfileName= Model.ProfileName }, "ProfileName" )
+                      in Controllers["pe"].Read(new ProfileEntitlementsModel() { ProfileName= Model.ProfileName }, "ProfileName" )
                    where filter.Contains(row.EntitlementName)
                  orderby row.EntitlementName
                   select $"{(row.AllowCreate?C:E)}{(row.AllowRead?R:E)}{(row.AllowUpdate?U:E)}{(row.AllowDelete?D:E)}  {row.EntitlementName}"
@@ -59,22 +60,24 @@ namespace MVCHIS.Security {
 
         private void ProfileFormLoad(object sender, EventArgs e) {
             
-            this.cmbEntitelmentsGroup.Items.Clear();
-            this.cmbEntitelmentsGroup.Items.Add("All");
-            this.cmbEntitelmentsGroup.Text = "All";
-            this.cmbEntitelmentsGroup.Items.AddRange((
+            cmbEntitelmentsGroup.Items.Clear();
+            cmbEntitelmentsGroup.Items.Add("All");
+            cmbEntitelmentsGroup.Text = "All";
+            
+            cmbEntitelmentsGroup.Items.AddRange((
                from eg
-               in DBControllersFactory.GetController(Entities.EntitlementGroup).Read<EntitlementGroupModel>()
+               in Controllers["eg"].Read<EntitlementGroupModel>()
                orderby eg.EntitlementGroupName
                select eg.EntitlementGroupName
             ).ToArray());
 
-            foreach (var em in DBControllersFactory.GetController(Entities.Entitlement).Read<EntitlementModel>().OrderBy(x => x.EntitlementName)) {
-                if (this.entitlementsByGroup.ContainsKey(em.EntitlementGroupName) == false) {
-                    this.entitlementsByGroup[em.EntitlementGroupName] = new List<string>();
+            
+            foreach (var em in Controllers["e"].Read<EntitlementModel>().OrderBy(x => x.EntitlementName)) {
+                if (entitlementsByGroup.ContainsKey(em.EntitlementGroupName) == false) {
+                    entitlementsByGroup[em.EntitlementGroupName] = new List<string>();
                 }
-                this.entitlementsByGroup[em.EntitlementGroupName].Add(em.EntitlementName);
-                this.allEntitlements.Add(em.EntitlementName);
+                entitlementsByGroup[em.EntitlementGroupName].Add(em.EntitlementName);
+                allEntitlements.Add(em.EntitlementName);
             }
         }
 
@@ -84,11 +87,11 @@ namespace MVCHIS.Security {
 
         private void BtnInitializeEntitlements_Click(object sender, EventArgs e) {
             //remove all existing records for this profile
-            foreach (ProfileEntitlementsModel row in peController.Read(new ProfileEntitlementsModel() { ProfileName=Model.ProfileName },"ProfileName")) {
-                peController.Delete(row);
+            foreach (ProfileEntitlementsModel row in Controllers["pe"].Read(new ProfileEntitlementsModel() { ProfileName=Model.ProfileName },"ProfileName")) {
+                Controllers["pe"].Delete(row);
             }
-            foreach(var row in eController.Read<EntitlementModel>()) {
-                peController.Save(new ProfileEntitlementsModel() {
+            foreach(var row in Controllers["e"].Read<EntitlementModel>()) {
+                Controllers["pe"].Save(new ProfileEntitlementsModel() {
                     ProfileName = Model.ProfileName,
                     EntitlementName = row.EntitlementName,
                     AllowRead = row.EntitlementGroupName.Equals("Security") == false
@@ -121,7 +124,7 @@ namespace MVCHIS.Security {
             if (this.lstEntitlements.SelectedIndex < 0) return;
             string profile = this.txtProfileName.Text;
             string entitlement = $"{this.lstEntitlements.Items[this.lstEntitlements.SelectedIndex]}".Substring(6).Trim();
-            ((ProfileEntitlementsController)peController).ChangePermissions(profile, entitlement, true, true, true, true);
+            ((ProfileEntitlementsController)Controllers["pe"]).ChangePermissions(profile, entitlement, true, true, true, true);
             this.lstEntitlements.Items[this.lstEntitlements.SelectedIndex] = $"{C}{R}{U}{D}  {entitlement}";
             //Utils.FormsHelper.Success("All entitlements were allowed");
             MainView.Instance.setProgress("All entitlements were allowed", 100);
@@ -131,7 +134,7 @@ namespace MVCHIS.Security {
             if (this.lstEntitlements.SelectedIndex < 0) return;
             string profile = this.txtProfileName.Text;
             string entitlement = $"{this.lstEntitlements.Items[this.lstEntitlements.SelectedIndex]}".Substring(6).Trim();
-            ((ProfileEntitlementsController)peController).ChangePermissions(profile, entitlement, false, false, false, false);
+            ((ProfileEntitlementsController)Controllers["pe"]).ChangePermissions(profile, entitlement, false, false, false, false);
             this.lstEntitlements.Items[this.lstEntitlements.SelectedIndex] = $"{E}{E}{E}{E}  {entitlement}";
             //Utils.FormsHelper.Success("All entitlements were un-allowed");
             MainView.Instance.setProgress("All entitlements were un-allowed", 100);

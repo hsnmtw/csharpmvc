@@ -2,10 +2,10 @@
 using System.Linq;
 
 namespace MVCHIS.Security {
-    [ForEntityAttribute(Entities.Entitlement, Enabled = true)]
+    [ForModel(MODELS.Entitlement, Enabled = true)]
     public class EntitlementController : AbstractDBController {
 
-        public EntitlementController() : base(DBEntitiesFactory.GetEntity(Entities.Entitlement)) { }
+        public EntitlementController() : base(DBEntitiesFactory.GetEntity(MODELS.Entitlement)) { }
 
         public void Initialize() {
             string[][] data = {

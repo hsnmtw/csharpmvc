@@ -3,14 +3,14 @@ using System;
 using ViewWinform.Common;
 
 namespace MVCHIS.Common {
-    [ForEntity(Entities.Entity)]
+    [ForModel(Common.MODELS.Entity)]
     public partial class EntityForm: EntityView {
 
         
         
         public EntityForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
-            Controller = (EntityController)DBControllersFactory.GetController(Entities.Entity);
+            base.Controller = (EntityController)DBControllersFactory.GetController(Common.MODELS.Entity);
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using ViewWinform.Common;
 
 namespace MVCHIS.Housing.Rooms {
-    [ForEntity(Entities.Room)]
+    [ForModel(Common.MODELS.Room)]
     public partial class RoomForm: RoomView {
 
 
@@ -12,7 +12,7 @@ namespace MVCHIS.Housing.Rooms {
 
         public RoomForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
-            Controller = (RoomController)DBControllersFactory.GetController(Entities.Room);
+            base.Controller = (RoomController)DBControllersFactory.GetController(Common.MODELS.Room);
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;

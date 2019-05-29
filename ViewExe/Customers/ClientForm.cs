@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using ViewWinform.Common;
 
 namespace MVCHIS.Customers {
-    [ForEntity(Entities.Client)]
+    [ForModel(Common.MODELS.Client)]
     public partial class ClientForm: ClientView {
 
         private ClientTypeController ctController;
@@ -19,13 +19,13 @@ namespace MVCHIS.Customers {
 
         public ClientForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
-            Controller   = (ClientController)              DBControllersFactory.GetController(Entities.Client);
-            ctController = (ClientTypeController)          DBControllersFactory.GetController(Entities.ClientType);
-            cController  = (ContactController)             DBControllersFactory.GetController(Entities.Contact);
-            ccController = (ClientContactController)       DBControllersFactory.GetController(Entities.ClientContact);
-            iController  = (IdentificationController)      DBControllersFactory.GetController(Entities.Identification);
-            ciController = (ClientIdentificationController)DBControllersFactory.GetController(Entities.ClientIdentification);
-            nController  = (CountryController)             DBControllersFactory.GetController(Entities.Country);
+            base.Controller   = (ClientController)DBControllersFactory.GetController(Common.MODELS.Client);
+            ctController = (ClientTypeController)DBControllersFactory.GetController(Common.MODELS.ClientType);
+            cController = (ContactController)DBControllersFactory.GetController(Common.MODELS.Contact);
+            ccController = (ClientContactController)DBControllersFactory.GetController(Common.MODELS.ClientContact);
+            iController = (IdentificationController)DBControllersFactory.GetController(Common.MODELS.Identification);
+            ciController = (ClientIdentificationController)DBControllersFactory.GetController(Common.MODELS.ClientIdentification);
+            nController = (CountryController)DBControllersFactory.GetController(Common.MODELS.Country);
 
             //template
             Mapper["Id"] = txtId;
@@ -71,7 +71,7 @@ namespace MVCHIS.Customers {
         }
 
         private void BtnAddIdentification_Click(object sender, EventArgs e) {
-            var form = ((IdentificationForm)DBViewsFactory.GetView(Entities.Identification));
+            var form = ((IdentificationForm)DBViewsFactory.GetView(Common.MODELS.Identification));
             form.AfterSave = delegate() {
                 _ = ciController.Save(new ClientIdentificationModel() {
                     ClientId = this.Model.Id,
@@ -104,7 +104,7 @@ namespace MVCHIS.Customers {
         }
 
         private void BtnAddContact_Click(object sender, EventArgs e) {
-            var form = ((ContactForm)DBViewsFactory.GetView(Entities.Contact));
+            var form = ((ContactForm)DBViewsFactory.GetView(Common.MODELS.Contact));
             form.AfterSave = delegate () {
                 _ = ccController.Save(new ClientContactModel() {
                     ClientId = this.Model.Id,

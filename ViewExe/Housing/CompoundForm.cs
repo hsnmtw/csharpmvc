@@ -3,14 +3,14 @@ using System;
 using ViewWinform.Common;
 
 namespace MVCHIS.Housing {
-    [ForEntity(Entities.Compound)]
+    [ForModel(Common.MODELS.Compound)]
     public partial class CompoundForm: CompoundView {
 
         
 
         public CompoundForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
-            Controller = (CompoundController)DBControllersFactory.GetController(Entities.Compound);
+            base.Controller = (CompoundController)DBControllersFactory.GetController(Common.MODELS.Compound);
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;

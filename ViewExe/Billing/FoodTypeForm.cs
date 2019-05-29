@@ -9,7 +9,7 @@ using ViewWinform.Common;
 
 namespace MVCHIS.Billing {
 
-    [ForEntity(Entities.FoodType)]
+    [ForModel(Common.MODELS.FoodType)]
     public partial class FoodTypeForm: FoodTypeView {
 
         
@@ -18,7 +18,7 @@ namespace MVCHIS.Billing {
         public FoodTypeForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
             
-            Controller = (FoodTypeController)DBControllersFactory.GetController(Entities.FoodType);
+            base.Controller = (FoodTypeController)DBControllersFactory.GetController(Common.MODELS.FoodType);
 
             var type = typeof(FoodTypeModel);
             //template

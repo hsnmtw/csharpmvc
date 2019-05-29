@@ -1,8 +1,8 @@
 ﻿using MVCHIS.Common;
 
 namespace MVCHIS.Billing {
-    [ForEntityAttribute(Entities.FoodType, Enabled = true)]
+    [ForModel(MODELS.FoodType, Enabled = true)]
     public class FoodTypeController : AbstractDBController {
-        public FoodTypeController() : base(DBEntitiesFactory.GetEntity(Entities.FoodType)) {}
+        public FoodTypeController() : base(DBEntitiesFactory.GetEntity(MODELS.FoodType)) {}
     }
 }

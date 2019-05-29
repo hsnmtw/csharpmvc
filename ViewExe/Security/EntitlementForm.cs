@@ -3,12 +3,12 @@ using System;
 using ViewWinform.Common;
 
 namespace MVCHIS.Security {
-    [ForEntity(Entities.Entitlement)]
+    [ForModel(Common.MODELS.Entitlement)]
     public partial class EntitlementForm: EntitlementView {
 
         public EntitlementForm() {
             InitializeComponent(); if(Site != null && Site.DesignMode) return;
-            Controller = (EntitlementController)DBControllersFactory.GetController(Entities.Entitlement);
+            base.Controller = (EntitlementController)DBControllersFactory.GetController(Common.MODELS.Entitlement);
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;

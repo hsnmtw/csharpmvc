@@ -1,8 +1,8 @@
 ﻿using MVCHIS.Common;
 
 namespace MVCHIS.Customers {
-    [ForEntityAttribute(Entities.Client, Enabled = true)]
+    [ForModel(MODELS.Client, Enabled = true)]
     public class ClientController : AbstractDBController {
-        public ClientController() : base(DBEntitiesFactory.GetEntity(Entities.Client)) {}
+        public ClientController() : base(DBEntitiesFactory.GetEntity(MODELS.Client)) {}
     }
 }

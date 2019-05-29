@@ -4,14 +4,14 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace MVCHIS.Security {
-    [ForEntityAttribute(Entities.ProfileEntitlement, Enabled = true)]
+    [ForModel(MODELS.ProfileEntitlement, Enabled = true)]
     public class ProfileEntitlementsController : AbstractDBController {
 
-        public ProfileEntitlementsController() : base(DBEntitiesFactory.GetEntity(Entities.ProfileEntitlement)) { }
+        public ProfileEntitlementsController() : base(DBEntitiesFactory.GetEntity(MODELS.ProfileEntitlement)) { }
 
         public void Initialize() {
-            var es = DBControllersFactory.GetController(Entities.Entitlement).Read<EntitlementModel>();
-            var ps = DBControllersFactory.GetController(Entities.Profile).Read<ProfileModel>();
+            var es = DBControllersFactory.GetController(Common.MODELS.Entitlement).Read<EntitlementModel>();
+            var ps = DBControllersFactory.GetController(Common.MODELS.Profile).Read<ProfileModel>();
             foreach(ProfileModel p in ps) {
                 foreach(EntitlementModel e in es) {
                     Save(new ProfileEntitlementsModel() {
