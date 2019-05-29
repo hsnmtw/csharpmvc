@@ -13,6 +13,7 @@ namespace MVCHIS.Common {
         int Delete<M>(M model, params string[] whereFields);
         DataTable GetData<M>(M model, bool like = false, params string[] whereFields);
         MetaData MetaData { get; }
+        bool Validate<M>(M model);
         string GetDDL();
     }
 }

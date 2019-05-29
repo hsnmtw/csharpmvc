@@ -15,6 +15,13 @@ namespace MVCHIS.Common {
         public AbstractDBEntity() : base() {
         }
 
+        public virtual bool Validate<M>(M model) {
+            var p = MetaData.RequiredFields;
+            var q = p.Select(x => "".Equals($"{model.GetType().GetProperty(x).GetValue(model)}"));
+            var w = q.All(y => !y);
+            return w;
+        }
+
         public DataTable GetDataById<M>(M model, IEnumerable<int> Ids) {
             if (Ids == null || Ids.Count() == 0) return new DataTable();
             var tpl = GetSQLAndParameters(model, false, "Id");

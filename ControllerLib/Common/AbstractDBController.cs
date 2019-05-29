@@ -11,10 +11,7 @@ namespace MVCHIS.Common {
             BaseEntity = baseEntity ?? throw new ArgumentNullException("baseEntity");
         }
         public virtual bool Validate<M>(M model) {
-            var p = GetMetaData().RequiredFields;
-            var q = p.Select(x => "".Equals($"{model.GetType().GetProperty(x).GetValue(model)}"));
-            var w = q.All(y => !y);
-            return w;
+            return BaseEntity.Validate(model);
         }
         public virtual DataTable GetDataById<M>(IEnumerable<int> Ids) => BaseEntity.GetDataById(NewModel<M>(), Ids);
         public virtual IEnumerable<M> FindById<M>(IEnumerable<int> Ids) => BaseEntity.FindById(NewModel<M>(), Ids);
