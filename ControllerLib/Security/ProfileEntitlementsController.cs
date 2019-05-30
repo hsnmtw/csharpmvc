@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace MVCHIS.Security {
-    [ForModel(MODELS.ProfileEntitlement, Enabled = true)]
+    //[ForModel(MODELS.ProfileEntitlement, Enabled = true)]
     public class ProfileEntitlementsController : AbstractDBController {
 
         public ProfileEntitlementsController() : base(DBEntitiesFactory.GetEntity(MODELS.ProfileEntitlement)) { }

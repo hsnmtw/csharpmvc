@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 
 namespace MVCHIS.Housing.Buildings {
-    [ForModel(Common.MODELS.Building)]
+    //[ForModel(Common.MODELS.Building)]
     public partial class BuildingForm: BuildingView {
 
         private IDBController roomCntrlr;

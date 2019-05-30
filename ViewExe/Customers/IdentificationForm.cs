@@ -3,7 +3,7 @@ using MVCHIS.Utils;
 using System;
 
 namespace MVCHIS.Customers {
-    [ForModel(Common.MODELS.Identification)]
+    //[ForModel(Common.MODELS.Identification)]
     public partial class IdentificationForm: IdentificationView {
 
         

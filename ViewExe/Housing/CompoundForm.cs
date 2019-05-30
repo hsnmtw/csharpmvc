@@ -2,7 +2,7 @@
 using System;
 
 namespace MVCHIS.Housing {
-    [ForModel(Common.MODELS.Compound)]
+    //[ForModel(Common.MODELS.Compound)]
     public partial class CompoundForm: CompoundView {
 
         

@@ -3,7 +3,7 @@ using MVCHIS.Configurations;
 using System;
 
 namespace MVCHIS.Security {
-    [ForModel(MODELS.User, Enabled = true)]
+    //[ForModel(MODELS.User, Enabled = true)]
     public class UserController : AbstractDBController {
 
         public UserController() : base(DBEntitiesFactory.GetEntity(MODELS.User)) { }

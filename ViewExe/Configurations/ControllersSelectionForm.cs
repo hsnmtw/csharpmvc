@@ -18,9 +18,9 @@ namespace MVCHIS.Configurations {
             int sn = 0;
             foreach (MODELS num in typeof(MODELS).GetEnumValues()) {
                 foreach (Type type in ControllersRegistery.Instance[num]) {
-                    var forca = (ForModelAttribute)type.GetCustomAttributes(true).OfType<ForModelAttribute>().First();
-                    bool isEnabled = type.Equals(DBControllersFactory.GetController(num).GetType());
-                    listBox1.Items.Add(string.Format(WIDTHS, sn++,num,type,isEnabled? FormsHelper.TICK : ""));
+                    //var forca = (ForModelAttribute)type.GetCustomAttributes(true).OfType<ForModelAttribute>().First();
+                    //bool isEnabled = type.Equals(DBControllersFactory.GetController(num).GetType());
+                    listBox1.Items.Add(string.Format(WIDTHS, sn++,num,type, FormsHelper.TICK ));
                 }
             }
 

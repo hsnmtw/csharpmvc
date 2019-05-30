@@ -26,8 +26,8 @@ namespace MVCHIS.Common {
         , Room                  
         , User
         , Entity
-        , Contact,
-        ClientContact,
-        ClientIdentification
+        , Contact
+        , ClientContact
+        , ClientIdentification
     }
 }

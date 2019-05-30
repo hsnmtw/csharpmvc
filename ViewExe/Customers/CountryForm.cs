@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 
 namespace MVCHIS.Customers {
-    [ForModel(Common.MODELS.Country)]
+    //[ForModel(Common.MODELS.Country)]
     public partial class CountryForm: CountryView {
 
         

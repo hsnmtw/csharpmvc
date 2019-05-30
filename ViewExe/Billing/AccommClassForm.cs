@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Windows.Forms;
 
 namespace MVCHIS.Billing {
-    [ForModel(Common.MODELS.AccommClass)]
+    //[ForModel(Common.MODELS.AccommClass)]
     public partial class AccommClassForm : AccommClassView {
 
         public AccommClassForm () : base() {

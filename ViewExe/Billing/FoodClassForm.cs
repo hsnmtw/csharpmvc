@@ -4,7 +4,7 @@ using MVCHIS.Utils;
 using System;
 
 namespace MVCHIS.Billing {
-    [ForModel(Common.MODELS.FoodClass)]
+    //[ForModel(Common.MODELS.FoodClass)]
     public partial class FoodClassForm: FoodClassView {
 
         

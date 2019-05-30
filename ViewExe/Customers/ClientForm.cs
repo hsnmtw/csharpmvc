@@ -6,7 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 
 namespace MVCHIS.Customers {
-    [ForModel(Common.MODELS.Client)]
+    //[ForModel(Common.MODELS.Client)]
     public partial class ClientForm: ClientView {
 
         public ClientForm() {
@@ -40,7 +40,7 @@ namespace MVCHIS.Customers {
             Mapper["PhoneNumber"   ] = txtPhoneNumber;
             Mapper["FaxNumber"     ] = txtFaxNumber;
             Mapper["Website"       ] = txtWebsite;
-            Mapper["Nationality"   ] = txtNationalityCode;
+            Mapper["CountryId"     ] = txtCountryId;
             //actions
             SaveButton = btnSave;
             DeleteButton = btnDelete;
@@ -112,7 +112,9 @@ namespace MVCHIS.Customers {
         }
 
         private void TxtNationalityCode_TextChanged(object sender, EventArgs e) {
-            txtNationalityDesc.Text = Controllers["n"].Find(new CountryModel() { CountryCode = txtNationalityCode.Text }, "CountryCode")?.CountryEnglish;
+            var country = Controllers["n"].FindById<CountryModel>(new int[] { int.Parse($"0{txtCountryId.Text}") } ).FirstOrDefault();
+            txtCountryCode.Text = country?.CountryCode;
+            txtCountryEnglish.Text = country?.CountryEnglish;
         }
 
         private void BtnDateOfBirth_Click(object sender, EventArgs e) {

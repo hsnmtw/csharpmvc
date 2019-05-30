@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace MVCHIS.Billing {
 
-    [ForModel(Common.MODELS.FoodType)]
+    //[ForModel(Common.MODELS.FoodType)]
     public partial class FoodTypeForm: FoodTypeView {
 
         

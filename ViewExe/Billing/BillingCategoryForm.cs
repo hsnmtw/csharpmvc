@@ -5,7 +5,7 @@ using System;
 
 namespace MVCHIS.Billing {
     
-    [ForModel(Common.MODELS.BillingCategory)]
+    //[ForModel(Common.MODELS.BillingCategory)]
     public partial class BillingCategoryForm: BillingCategoryView {
 
         //private FoodClassController fcController;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace MVCHIS.Customers {
-    [ForModel(MODELS.Project, Enabled = true)]
+    //[ForModel(MODELS.Project, Enabled = true)]
     public class ProjectController : AbstractDBController {
         public ProjectController() : base(DBEntitiesFactory.GetEntity(MODELS.Project)) {}
 

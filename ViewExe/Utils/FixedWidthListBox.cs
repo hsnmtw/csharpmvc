@@ -70,6 +70,7 @@ namespace MVCHIS.Utils {
                     view.RowFilter = Filter;// string.Format("{0} Like '%{1}%'", ShownColumns[0], this.lblSearch.Text);
                     view.Sort = $"{ShownColumns[0]} ASC";
                     table = view.ToTable(false, ShownColumns.ToArray());
+                    //var widths = (from row)
                 }
             } catch (Exception e) {
                 FormsHelper.Error(e.Message);
@@ -79,6 +80,8 @@ namespace MVCHIS.Utils {
             //var table = view.ToTable(false, ShownColumns.ToArray());
             if (!columnsInitialized) {
                 ColumnsWidths = new int[ShownColumns.Count()];
+
+                //var widths = (from row in table.Rows select)
 
                 for (int j = 0; j < ColumnsWidths.Length; j++) {
                     ColumnsWidths[j] = Math.Max(ColumnsWidths[j], ShownColumns[j].Length);

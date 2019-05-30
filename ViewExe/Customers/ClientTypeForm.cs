@@ -3,7 +3,7 @@ using MVCHIS.Utils;
 using System;
 
 namespace MVCHIS.Customers {
-    [ForModel(Common.MODELS.ClientType)]
+    //[ForModel(Common.MODELS.ClientType)]
     public partial class ClientTypeForm: ClientTypeView {
 
          

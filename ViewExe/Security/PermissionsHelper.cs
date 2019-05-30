@@ -11,14 +11,17 @@ using System.Windows.Forms;
 namespace MVCHIS.Security {
     public class PermissionsHelper<M,C> where M:BaseModel where C:IDBController {
         public PermissionsHelper(BaseView<M,C> view) {
+            if(view==null) throw new ArgumentException("view cannot be null");
+            //if(model==default) throw new ArgumentException("model cannot be null");
             var ecn = DBControllersFactory.GetController(Common.MODELS.Entitlement);
             var pec = DBControllersFactory.GetController(Common.MODELS.ProfileEntitlement);
             var usr = Session.Instance.CurrentUser;
 
-            var mdl = view?.GetType().GetCustomAttributes().OfType<ForModelAttribute>().FirstOrDefault();
-            if (mdl == null) return;
+            if (usr == null) return;
+            //var mdl = view?.GetType().GetCustomAttributes().OfType<ForModelAttribute>().FirstOrDefault();
+            //if (mdl == null) return;
 
-            var ent = ecn.Find(new EntitlementModel() { EntityName = $"{mdl.Model}" }, "EntityName");
+            var ent = ecn.Find(new EntitlementModel() { EntityName = $"{typeof(M).Name}".Replace("Model","") }, "EntityName");
             if (ent == null) return;
             
             var pen = pec.Find(new ProfileEntitlementsModel() {

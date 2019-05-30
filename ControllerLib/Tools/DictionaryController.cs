@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace MVCHIS.Tools {
-    [ForModel(MODELS.Dictionary, Enabled = true)]
+    //[ForModel(MODELS.Dictionary, Enabled = true)]
     public class DictionaryController : AbstractDBController {
 
         

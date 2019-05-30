@@ -12,6 +12,7 @@ namespace MVCHIS.Common {
         /// </summary>
         /// <returns></returns>
         public IEnumerable<string> GetFields => (from propinfo in ModelType.GetProperties() orderby propinfo.Name select propinfo.Name).ToArray();
+        public Dictionary<string, Tuple<string,string>> ForeignKeys { get; set; }
 
         public Dictionary<string, int> GetSizes  {get;set;}
         /// <summary>
@@ -20,11 +21,11 @@ namespace MVCHIS.Common {
         /// <returns>eg. Database table from/to which data is stored</returns>
         public string Source { get; set; }
         /// <summary>
-        /// get list of fields that collectively make the primary key.
+        /// gets the name of the primary key field.
         /// this should be used to verify uniqueness
         /// </summary>
         /// <returns>list of fields names that are part of the primary key</returns>
-        public IEnumerable<string> PrimaryKeyFields { get; set; }
+        public string PrimaryKeyField { get; set; }
         /// <summary>
         /// get list of fields that are marked UNIQUE.
         /// this should be used to verify uniqueness

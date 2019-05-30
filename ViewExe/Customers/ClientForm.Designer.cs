@@ -77,13 +77,14 @@
             this.btnUnassociateContact = new System.Windows.Forms.Button();
             this.btnOpenContact = new System.Windows.Forms.Button();
             this.btnAddContact = new System.Windows.Forms.Button();
-            this.txtNationalityCode = new System.Windows.Forms.TextBox();
-            this.txtNationalityDesc = new System.Windows.Forms.TextBox();
+            this.txtCountryId = new System.Windows.Forms.TextBox();
+            this.txtCountryCode = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.lookUpButtonNationality = new MVCHIS.Common.LookUpButton();
             this.label14 = new System.Windows.Forms.Label();
             this.txtDateOfBirth = new System.Windows.Forms.TextBox();
             this.btnDateOfBirth = new System.Windows.Forms.Button();
+            this.txtCountryEnglish = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tpIdentifications.SuspendLayout();
             this.tpContacts.SuspendLayout();
@@ -632,26 +633,27 @@
             this.btnAddContact.UseVisualStyleBackColor = true;
             this.btnAddContact.Click += new System.EventHandler(this.BtnAddContact_Click);
             // 
-            // txtNationalityCode
+            // txtCountryId
             // 
-            this.txtNationalityCode.BackColor = System.Drawing.Color.White;
-            this.txtNationalityCode.Location = new System.Drawing.Point(161, 366);
-            this.txtNationalityCode.Name = "txtNationalityCode";
-            this.txtNationalityCode.ReadOnly = true;
-            this.txtNationalityCode.Size = new System.Drawing.Size(43, 20);
-            this.txtNationalityCode.TabIndex = 5;
-            this.txtNationalityCode.Tag = "ClientType";
-            this.txtNationalityCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtNationalityCode.TextChanged += new System.EventHandler(this.TxtNationalityCode_TextChanged);
+            this.txtCountryId.BackColor = System.Drawing.Color.White;
+            this.txtCountryId.Location = new System.Drawing.Point(161, 366);
+            this.txtCountryId.Name = "txtCountryId";
+            this.txtCountryId.ReadOnly = true;
+            this.txtCountryId.Size = new System.Drawing.Size(43, 20);
+            this.txtCountryId.TabIndex = 5;
+            this.txtCountryId.Tag = "ClientType";
+            this.txtCountryId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCountryId.TextChanged += new System.EventHandler(this.TxtNationalityCode_TextChanged);
             // 
-            // txtNationalityDesc
+            // txtCountryCode
             // 
-            this.txtNationalityDesc.Enabled = false;
-            this.txtNationalityDesc.Location = new System.Drawing.Point(227, 366);
-            this.txtNationalityDesc.Name = "txtNationalityDesc";
-            this.txtNationalityDesc.Size = new System.Drawing.Size(146, 20);
-            this.txtNationalityDesc.TabIndex = 7;
-            this.txtNationalityDesc.Tag = "ClientType";
+            this.txtCountryCode.Enabled = false;
+            this.txtCountryCode.Location = new System.Drawing.Point(227, 366);
+            this.txtCountryCode.Name = "txtCountryCode";
+            this.txtCountryCode.Size = new System.Drawing.Size(37, 20);
+            this.txtCountryCode.TabIndex = 7;
+            this.txtCountryCode.Tag = "";
+            this.txtCountryCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label13
             // 
@@ -664,15 +666,16 @@
             // 
             // lookUpButtonNationality
             // 
-            this.lookUpButtonNationality.AssociatedControl = "txtNationalityCode";
+            this.lookUpButtonNationality.AssociatedControl = "txtCountryId";
             this.lookUpButtonNationality.Controller = "Country";
             this.lookUpButtonNationality.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonNationality.Location = new System.Drawing.Point(204, 365);
             this.lookUpButtonNationality.Name = "lookUpButtonNationality";
-            this.lookUpButtonNationality.SelectedValueIndex = 0;
+            this.lookUpButtonNationality.SelectedValueIndex = 3;
             this.lookUpButtonNationality.ShowFieldsInLookUp.Add("CountryCode");
             this.lookUpButtonNationality.ShowFieldsInLookUp.Add("CountryEnglish");
             this.lookUpButtonNationality.ShowFieldsInLookUp.Add("CountryArabic");
+            this.lookUpButtonNationality.ShowFieldsInLookUp.Add("Id");
             this.lookUpButtonNationality.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonNationality.TabIndex = 6;
             this.lookUpButtonNationality.TabStop = false;
@@ -709,6 +712,15 @@
             this.btnDateOfBirth.Text = "📅";
             this.btnDateOfBirth.UseVisualStyleBackColor = true;
             this.btnDateOfBirth.Click += new System.EventHandler(this.BtnDateOfBirth_Click);
+            // 
+            // txtCountryEnglish
+            // 
+            this.txtCountryEnglish.Enabled = false;
+            this.txtCountryEnglish.Location = new System.Drawing.Point(264, 366);
+            this.txtCountryEnglish.Name = "txtCountryEnglish";
+            this.txtCountryEnglish.Size = new System.Drawing.Size(108, 20);
+            this.txtCountryEnglish.TabIndex = 7;
+            this.txtCountryEnglish.Tag = "ClientType";
             // 
             // ClientForm
             // 
@@ -762,8 +774,9 @@
             this.Controls.Add(this.txtLongName);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label17);
-            this.Controls.Add(this.txtNationalityDesc);
-            this.Controls.Add(this.txtNationalityCode);
+            this.Controls.Add(this.txtCountryEnglish);
+            this.Controls.Add(this.txtCountryCode);
+            this.Controls.Add(this.txtCountryId);
             this.Controls.Add(this.txtClientType);
             this.Controls.Add(this.txtClientTypeId);
             this.Name = "ClientForm";
@@ -832,12 +845,13 @@
         private System.Windows.Forms.Button btnUnassociateContact;
         private System.Windows.Forms.Button btnOpenContact;
         private System.Windows.Forms.Button btnAddContact;
-        private System.Windows.Forms.TextBox txtNationalityCode;
-        private System.Windows.Forms.TextBox txtNationalityDesc;
+        private System.Windows.Forms.TextBox txtCountryId;
+        private System.Windows.Forms.TextBox txtCountryCode;
         private System.Windows.Forms.Label label13;
         private Common.LookUpButton lookUpButtonNationality;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtDateOfBirth;
         private System.Windows.Forms.Button btnDateOfBirth;
+        private System.Windows.Forms.TextBox txtCountryEnglish;
     }
 }

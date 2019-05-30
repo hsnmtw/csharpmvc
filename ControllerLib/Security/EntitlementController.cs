@@ -2,7 +2,7 @@
 using System.Linq;
 
 namespace MVCHIS.Security {
-    [ForModel(MODELS.Entitlement, Enabled = true)]
+    //[ForModel(MODELS.Entitlement, Enabled = true)]
     public class EntitlementController : AbstractDBController {
 
         public EntitlementController() : base(DBEntitiesFactory.GetEntity(MODELS.Entitlement)) { }

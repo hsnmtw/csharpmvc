@@ -3,7 +3,7 @@ using MVCHIS.Utils;
 using System;
 
 namespace MVCHIS.Customers {
-    [ForModel(Common.MODELS.Contact)]
+    //[ForModel(Common.MODELS.Contact)]
     public partial class ContactForm: ContactView {
 
          

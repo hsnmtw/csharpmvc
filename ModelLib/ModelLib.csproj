@@ -46,11 +46,10 @@
     <Compile Include="Billing\FoodClassModel.cs" />
     <Compile Include="Billing\FoodTypeModel.cs" />
     <Compile Include="Common\BaseModel.cs" />
+    <Compile Include="Common\MetaData.cs" />
     <Compile Include="Common\MODELS.cs" />
     <Compile Include="Common\EntityModel.cs" />
-    <Compile Include="Common\ForModelAttribute.cs" />
     <Compile Include="Common\IModel.cs" />
-    <Compile Include="Common\MetaData.cs" />
     <Compile Include="Configurations\CryptoModel.cs" />
     <Compile Include="Customers\ClientContactModel.cs" />
     <Compile Include="Customers\ClientIdentificationModel.cs" />

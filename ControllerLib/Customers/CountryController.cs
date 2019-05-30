@@ -1,7 +1,7 @@
 ﻿using MVCHIS.Common;
 
 namespace MVCHIS.Customers {
-    [ForModel(MODELS.Country, Enabled = true)]
+    //[ForModel(MODELS.Country, Enabled = true)]
     public class CountryController : AbstractDBController {
         public CountryController() : base(DBEntitiesFactory.GetEntity(MODELS.Country)) {}
 

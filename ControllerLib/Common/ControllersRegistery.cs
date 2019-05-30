@@ -26,24 +26,24 @@ namespace MVCHIS.Common {
         }
 
         private void init() { 
-            foreach(MODELS num in typeof(MODELS).GetEnumValues()) {
-                ControllersMap[num] = new List<Type>();
-            }
+            //foreach(MODELS num in typeof(MODELS).GetEnumValues()) {
+            //    ControllersMap[num] = new List<Type>();
+            //}
 
-            var type = typeof(IDBController);
-            var types = AppDomain.CurrentDomain.GetAssemblies()
-                        .SelectMany(s => s.GetTypes())
-                        .Where(p => type.IsAssignableFrom(p));
+            //var type = typeof(IDBController);
+            //var types = AppDomain.CurrentDomain.GetAssemblies()
+            //            .SelectMany(s => s.GetTypes())
+            //            .Where(p => type.IsAssignableFrom(p));
 
-            Console.WriteLine("--------------------------------------------------------");
-            foreach (var t in types) {
-                try {
-                    var FOR = (ForModelAttribute)t.GetCustomAttributes(typeof(ForModelAttribute), false).First();
-                    Console.WriteLine($"{FOR.Model}\t{t}");
-                    ControllersMap[FOR.Model].Add(t);
-                } catch { }
-            }
-            Console.WriteLine("--------------------------------------------------------");
+            //Console.WriteLine("--------------------------------------------------------");
+            //foreach (var t in types) {
+            //    try {
+            //        var FOR = (ForModelAttribute)t.GetCustomAttributes(typeof(ForModelAttribute), false).First();
+            //        Console.WriteLine($"{FOR.Model}\t{t}");
+            //        ControllersMap[FOR.Model].Add(t);
+            //    } catch { }
+            //}
+            //Console.WriteLine("--------------------------------------------------------");
         }
 
     }

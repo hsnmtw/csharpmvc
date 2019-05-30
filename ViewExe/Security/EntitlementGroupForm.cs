@@ -2,7 +2,7 @@
 using System;
 
 namespace MVCHIS.Security {
-    [ForModel(Common.MODELS.EntitlementGroup)]
+    //[ForModel(Common.MODELS.EntitlementGroup)]
     public partial class EntitlementGroupForm: EntitlementGroupView {
 
  

@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 
 namespace MVCHIS.Security {
-    [ForModel(MODELS.ProfileEntitlement)]
+    //[ForModel(MODELS.ProfileEntitlement)]
     public class ProfileEntitlementsEntity : AbstractDBEntity {
 
         public override MetaData MetaData => new MetaData() {
-            ModelType = typeof(ProfileEntitlementsModel)
-            , PrimaryKeyFields = new string[]{ "Id" }
-            , RequiredFields = new string[] { "Id", "ProfileName", "EntitlementName" }
-            , UniqueKeyFields = new string[] { "ProfileName", "EntitlementName" }
+              ModelType       = typeof(ProfileEntitlementsModel)
+            , PrimaryKeyField = "Id" 
+            , RequiredFields  = new List<string> { "Id", "ProfileName", "EntitlementName" }
+            , UniqueKeyFields = new List<string> { "ProfileName", "EntitlementName" }
+            , ForeignKeys     = new Dictionary<string, System.Tuple<string, string>> {
+            }
             , GetSizes = new Dictionary<string, int> { ["CreatedBy"] = 50, ["UpdatedBy"] = 50,
                 ["EntitlementName"] = 50,
                 ["ProfileName"    ] = 50

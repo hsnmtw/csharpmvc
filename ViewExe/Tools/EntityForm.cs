@@ -3,7 +3,7 @@ using System;
 using MVCHIS.Common;
 
 namespace MVCHIS.Common {
-    [ForModel(Common.MODELS.Entity)]
+    //[ForModel(Common.MODELS.Entity)]
     public partial class EntityForm: EntityView {
 
         

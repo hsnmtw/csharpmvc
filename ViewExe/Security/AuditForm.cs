@@ -2,7 +2,7 @@
 using System;
 
 namespace MVCHIS.Security {
-    [ForModel(Common.MODELS.Audit)]
+    //[ForModel(Common.MODELS.Audit)]
     public partial class AuditForm: AuditView {
         private MVCAdaptor<AuditController> adaptor;
 

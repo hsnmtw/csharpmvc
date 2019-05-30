@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 
 namespace MVCHIS.Security {
-    [ForModel(Common.MODELS.Profile)]
+    //[ForModel(Common.MODELS.Profile)]
     public partial class ProfileForm: ProfileView {
         const char C = 'C', R = 'R', U = 'U', D = 'D', E = '-';
         private Dictionary<string, List<string>> entitlementsByGroup = new Dictionary<string, List<string>>();

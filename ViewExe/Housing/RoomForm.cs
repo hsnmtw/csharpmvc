@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 
 namespace MVCHIS.Housing.Rooms {
-    [ForModel(Common.MODELS.Room)]
+    //[ForModel(Common.MODELS.Room)]
     public partial class RoomForm: RoomView {
 
 

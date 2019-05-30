@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 
 namespace MVCHIS.Billing {
-    [ForModel(MODELS.FoodType)]
+    //[ForModel(MODELS.FoodType)]
     public class FoodTypeEntity : AbstractDBEntity {
         public override MetaData MetaData => new MetaData() {
               ModelType        = typeof(FoodTypeModel)
-            , PrimaryKeyFields = new string[] { "Id" }
-            , RequiredFields   = new string[] { "Id", "FoodTypeCode","FoodTypeDesc" }
-            , UniqueKeyFields  = new string[] { "FoodTypeCode" }
+            , PrimaryKeyField  = "Id" 
+            , RequiredFields   = new List<string> { "Id", "FoodTypeCode","FoodTypeDesc" }
+            , UniqueKeyFields  = new List<string> { "FoodTypeCode" }
+            , ForeignKeys      = new Dictionary<string, System.Tuple<string, string>> {
+            }
             , GetSizes = new Dictionary<string, int> { ["CreatedBy"] = 50, ["UpdatedBy"] = 50,
                 ["FoodTypeCode"]      = 50,
                 ["FoodTypeDesc"]      = 100,

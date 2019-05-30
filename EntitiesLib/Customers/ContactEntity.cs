@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 
 namespace MVCHIS.Customers {
-    [ForModel(MODELS.Contact)]
+    //[ForModel(MODELS.Contact)]
     public class ContactEntity : AbstractDBEntity {
         public override MetaData MetaData => new MetaData() {
               ModelType        = typeof(ContactModel)
-            , PrimaryKeyFields = new string[] { "Id" }
-            , RequiredFields   = new string[] { "Id", "MobileNumber", "FullName" }
-            , UniqueKeyFields  = new string[] { "MobileNumber" }
+            , PrimaryKeyField  = "Id" 
+            , RequiredFields   = new List<string> { "Id", "MobileNumber", "FullName" }
+            , UniqueKeyFields  = new List<string> { "MobileNumber" }
+            , ForeignKeys      = new Dictionary<string, System.Tuple<string, string>> {
+            }
             , GetSizes = new Dictionary<string, int> { ["CreatedBy"] = 50, ["UpdatedBy"] = 50,
                  ["MobileNumber"] = 15
                 ,["Email"       ] = 100

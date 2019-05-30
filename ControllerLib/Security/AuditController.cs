@@ -3,7 +3,7 @@ using MVCHIS.Common;
 using System;
 
 namespace MVCHIS.Security {
-    [ForModel(MODELS.Audit, Enabled = true)]
+    //[ForModel(MODELS.Audit, Enabled = true)]
     public class AuditController : AbstractDBController {
 
         public AuditController() : base(DBEntitiesFactory.GetEntity(MODELS.Audit)) { }

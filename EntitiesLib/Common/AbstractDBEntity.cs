@@ -128,10 +128,11 @@ namespace MVCHIS.Common {
             var dtps = from p in cols where p!="Id" select ddltype(this.MetaData.ModelType.GetProperty(p).PropertyType, size.ContainsKey(p) ? size[p] : -1);
             var rqrd = MetaData.RequiredFields;
             var uniq = string.Join(",",MetaData.UniqueKeyFields );
-            var pkey = string.Join(",",MetaData.PrimaryKeyFields);
+            var pkey = string.Join(",",MetaData.PrimaryKeyField);
             var cdef = from tpl in cols.Zip(dtps,(a,b) => new Tuple<string,string>(a,b)) select $@"{tpl.Item1} {tpl.Item2} {(rqrd.Contains(tpl.Item1) ? "NOT NULL" : "")}";
             cdef = cdef.Concat(new string[] { "Id INTEGER IDENTITY(1,1) NOT NULL" });
-            return $@"CREATE TABLE {MetaData.Source} ({string.Join(",",cdef)}, PRIMARY KEY({pkey}), UNIQUE ({uniq}))";
+            var fkey = string.Join("",from k in MetaData.ForeignKeys select $",FOREIGN KEY({k.Key}) REFERENCES {k.Value.Item1}({k.Value.Item2})");
+            return $@"CREATE TABLE {MetaData.Source} ({string.Join(",",cdef)}, PRIMARY KEY({pkey}), UNIQUE ({uniq}) {fkey})";
         }
 
         private string ddltype(Type propertyType,int size) {

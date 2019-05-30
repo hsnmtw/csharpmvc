@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 
 namespace MVCHIS.Security.Users {
-    [ForModel(Common.MODELS.User)]
+    //[ForModel(Common.MODELS.User)]
     public partial class UserForm: UserView {
         public UserForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;

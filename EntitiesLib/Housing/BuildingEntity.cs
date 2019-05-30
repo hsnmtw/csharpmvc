@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 
 namespace MVCHIS.Housing {
-    [ForModel(MODELS.Building)]
+    //[ForModel(MODELS.Building)]
     public class BuildingEntity : AbstractDBEntity,IDBEntity {
 
         public override MetaData MetaData => new MetaData() {
               ModelType = typeof(BuildingModel)
-            , PrimaryKeyFields = new string[] { "Id" }
-            , RequiredFields   = new string[] { "Id","BuildingName","BuildingType","CompoundName" }
-            , UniqueKeyFields  = new string[] { "BuildingName" }
+            , PrimaryKeyField  = "Id" 
+            , RequiredFields   = new List<string> { "Id","BuildingName","BuildingType","CompoundName" }
+            , UniqueKeyFields  = new List<string> { "BuildingName" }
+            , ForeignKeys      = new Dictionary<string, System.Tuple<string, string>> {
+            }
             , GetSizes = new Dictionary<string, int> { ["CreatedBy"] = 50, ["UpdatedBy"] = 50,
                  ["BuildingName"] = 50
                 ,["BuildingType"] = 50

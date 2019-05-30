@@ -2,7 +2,7 @@
 using System;
 
 namespace MVCHIS.Tools {
-    [ForModel(Common.MODELS.Dictionary)]
+    //[ForModel(Common.MODELS.Dictionary)]
     public partial class DictionaryForm: DictionaryView {
 
 

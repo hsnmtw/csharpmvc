@@ -1,5 +1,5 @@
 ﻿namespace MVCHIS.Common {
-    [ForModel(MODELS.Entity, Enabled = true)]
+    //[ForModel(MODELS.Entity, Enabled = true)]
     public class EntityController : AbstractDBController {
         public EntityController() : base(DBEntitiesFactory.GetEntity(MODELS.Entity)) { }
         public override bool Validate<M>(M model) {

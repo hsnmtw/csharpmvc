@@ -72,6 +72,7 @@ namespace MVCHIS.Common {
         public Action ModelChanged { get; set; }
 
         public BaseView() : base() {
+            Name = GetType().Name;
             if (DesignMode||(Site!=null && Site.DesignMode)) return;;
             //MdiParent = MainView.Instance;
             Controllers = new Dictionary<string, IDBController>();
@@ -88,15 +89,16 @@ namespace MVCHIS.Common {
                                                   || Prop(x).PropertyType == typeof(Double));
 
             Load += (s, e) => {
+                if (DesignMode || (Site != null && Site.DesignMode)) return; 
                 new PermissionsHelper<M, C>(this);
                 if (SaveButton != null) {
                     SaveButton.Enabled = SaveButtonEnabled;
                     SaveButton.Click += (bs, be) => {
-                        try {
+                        //try {
                             Controller.Save(Model);
                             Model = Controller.Find(Model, Controller.GetMetaData().UniqueKeyFields.ToArray());
                             AfterSave?.Invoke();
-                        }catch(Exception ex) {
+                        try{}catch(Exception ex) {
                             FormsHelper.Error(ex.Message);
                         }
                     };

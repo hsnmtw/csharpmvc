@@ -2,7 +2,7 @@
 
 namespace MVCHIS.Customers {
     public class ProjectModel : BaseModel {
-        public string ClientShortName   { get; set; }
-        public string ProjectName       { get; set; }
+        public int    ClientId       { get; set; }
+        public string ProjectName    { get; set; }
     }
 }
