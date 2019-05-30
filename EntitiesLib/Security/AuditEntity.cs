@@ -11,7 +11,9 @@ namespace MVCHIS.Security {
             , UniqueKeyFields  = new List<string> { "Id" }
             , ForeignKeys      = new Dictionary<string, System.Tuple<string, string>> {
             }
-            , GetSizes = new Dictionary<string, int> { ["CreatedBy"] = 50, ["UpdatedBy"] = 50,
+            , GetSizes = new Dictionary<string, int> {
+                ["CreatedBy"    ] = 50,
+                ["UpdatedBy"    ] = 50,
                 ["EventComments"] = 1000,
                 ["UserName"     ] = 50 
             }

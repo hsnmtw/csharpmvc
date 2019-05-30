@@ -8,14 +8,16 @@ namespace MVCHIS.Housing {
         public override MetaData MetaData => new MetaData() {
               ModelType = typeof(BuildingModel)
             , PrimaryKeyField  = "Id" 
-            , RequiredFields   = new List<string> { "Id","BuildingName","BuildingType","CompoundName" }
+            , RequiredFields   = new List<string> { "Id","BuildingName","BuildingTypeId","CompoundId" }
             , UniqueKeyFields  = new List<string> { "BuildingName" }
             , ForeignKeys      = new Dictionary<string, System.Tuple<string, string>> {
             }
-            , GetSizes = new Dictionary<string, int> { ["CreatedBy"] = 50, ["UpdatedBy"] = 50,
-                 ["BuildingName"] = 50
-                ,["BuildingType"] = 50
-                ,["CompoundName"] = 50
+            , GetSizes = new Dictionary<string, int> {
+                 ["CreatedBy"   ] = 50
+                ,["UpdatedBy"   ] = 50
+                ,["BuildingName"] = 50
+                //,["BuildingType"] = 50
+                //,["CompoundName"] = 50
             }
             , Source = "HousingBuilding"
             

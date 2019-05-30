@@ -7,13 +7,5 @@ namespace MVCHIS.Security {
         public override bool Validate<M>(M model) {
             return base.Validate(model);
         }
-
-        public void Initialize() {
-            foreach(var profile in new string[] { "Admin","Users" })Save(new ProfileModel() {
-                ProfileName=profile,
-                ProfileDesc=$"{profile} Profile",
-                ReadOnly=true
-            });
-        }
     }
 }

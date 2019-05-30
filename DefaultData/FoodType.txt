@@ -1,0 +1,4 @@
+"FoodTypeCode","FoodTypeDesc"
+"DFLT","Default"
+"ARB" ,"Arab" 
+"CHN" ,"China"

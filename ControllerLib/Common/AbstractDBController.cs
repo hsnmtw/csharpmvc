@@ -13,6 +13,8 @@ namespace MVCHIS.Common {
         public virtual bool Validate<M>(M model) {
             return BaseEntity.Validate(model);
         }
+        //public abstract void Initialize();
+
         public virtual DataTable GetDataById<M>(IEnumerable<int> Ids) => BaseEntity.GetDataById(NewModel<M>(), Ids);
         public virtual IEnumerable<M> FindById<M>(IEnumerable<int> Ids) => BaseEntity.FindById(NewModel<M>(), Ids);
         public virtual M Find<M>(M model, params string[] whereFields) => BaseEntity.Find(model,whereFields);

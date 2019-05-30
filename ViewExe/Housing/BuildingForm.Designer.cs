@@ -23,7 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent(){
-            this.txtCompoundName = new System.Windows.Forms.TextBox();
+            this.txtCompoundId = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
@@ -44,17 +44,20 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lookUpButtonBuildingType = new MVCHIS.Common.LookUpButton();
-            this.txtBuildingType = new System.Windows.Forms.TextBox();
+            this.txtBuildingTypeId = new System.Windows.Forms.TextBox();
+            this.txtCompoundName = new System.Windows.Forms.TextBox();
+            this.txtBuildingTypeCode = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // txtCompoundName
+            // txtCompoundId
             // 
-            this.txtCompoundName.BackColor = System.Drawing.SystemColors.Window;
-            this.txtCompoundName.Location = new System.Drawing.Point(149, 104);
-            this.txtCompoundName.Name = "txtCompoundName";
-            this.txtCompoundName.ReadOnly = true;
-            this.txtCompoundName.Size = new System.Drawing.Size(154, 20);
-            this.txtCompoundName.TabIndex = 5;
+            this.txtCompoundId.BackColor = System.Drawing.SystemColors.Window;
+            this.txtCompoundId.Location = new System.Drawing.Point(149, 105);
+            this.txtCompoundId.Name = "txtCompoundId";
+            this.txtCompoundId.ReadOnly = true;
+            this.txtCompoundId.Size = new System.Drawing.Size(33, 20);
+            this.txtCompoundId.TabIndex = 5;
+            this.txtCompoundId.TextChanged += new System.EventHandler(this.TxtCompoundId_TextChanged);
             // 
             // btnDelete
             // 
@@ -146,9 +149,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(21, 107);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 13);
+            this.label2.Size = new System.Drawing.Size(88, 13);
             this.label2.TabIndex = 43;
-            this.label2.Text = "Comound Name";
+            this.label2.Text = "Compound Name";
             // 
             // txtId
             // 
@@ -195,7 +198,6 @@
             this.lookUpButton1.Name = "lookUpButton1";
             this.lookUpButton1.SelectedValueIndex = 0;
             this.lookUpButton1.ShowFieldsInLookUp.Add("BuildingName");
-            this.lookUpButton1.ShowFieldsInLookUp.Add("CompoundName");
             this.lookUpButton1.Size = new System.Drawing.Size(22, 22);
             this.lookUpButton1.TabIndex = 2;
             this.lookUpButton1.TabStop = false;
@@ -203,13 +205,14 @@
             // 
             // lookupComound
             // 
-            this.lookupComound.AssociatedControl = "txtCompoundName";
+            this.lookupComound.AssociatedControl = "txtCompoundId";
             this.lookupComound.Controller = "Compound";
             this.lookupComound.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookupComound.Location = new System.Drawing.Point(304, 103);
+            this.lookupComound.Location = new System.Drawing.Point(184, 104);
             this.lookupComound.Name = "lookupComound";
-            this.lookupComound.SelectedValueIndex = 0;
+            this.lookupComound.SelectedValueIndex = 1;
             this.lookupComound.ShowFieldsInLookUp.Add("CompoundName");
+            this.lookupComound.ShowFieldsInLookUp.Add("Id");
             this.lookupComound.Size = new System.Drawing.Size(22, 22);
             this.lookupComound.TabIndex = 6;
             this.lookupComound.TabStop = false;
@@ -244,25 +247,43 @@
             // 
             // lookUpButtonBuildingType
             // 
-            this.lookUpButtonBuildingType.AssociatedControl = "txtBuildingType";
+            this.lookUpButtonBuildingType.AssociatedControl = "txtBuildingTypeId";
             this.lookUpButtonBuildingType.Controller = "BuildingType";
             this.lookUpButtonBuildingType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonBuildingType.Location = new System.Drawing.Point(304, 75);
+            this.lookUpButtonBuildingType.Location = new System.Drawing.Point(184, 76);
             this.lookUpButtonBuildingType.Name = "lookUpButtonBuildingType";
-            this.lookUpButtonBuildingType.SelectedValueIndex = 0;
+            this.lookUpButtonBuildingType.SelectedValueIndex = 1;
             this.lookUpButtonBuildingType.ShowFieldsInLookUp.Add("BuildingTypeCode");
+            this.lookUpButtonBuildingType.ShowFieldsInLookUp.Add("Id");
             this.lookUpButtonBuildingType.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonBuildingType.TabIndex = 4;
             this.lookUpButtonBuildingType.TabStop = false;
             // 
-            // txtBuildingType
+            // txtBuildingTypeId
             // 
-            this.txtBuildingType.BackColor = System.Drawing.SystemColors.Window;
-            this.txtBuildingType.Location = new System.Drawing.Point(149, 76);
-            this.txtBuildingType.Name = "txtBuildingType";
-            this.txtBuildingType.ReadOnly = true;
-            this.txtBuildingType.Size = new System.Drawing.Size(154, 20);
-            this.txtBuildingType.TabIndex = 3;
+            this.txtBuildingTypeId.BackColor = System.Drawing.SystemColors.Window;
+            this.txtBuildingTypeId.Location = new System.Drawing.Point(149, 77);
+            this.txtBuildingTypeId.Name = "txtBuildingTypeId";
+            this.txtBuildingTypeId.ReadOnly = true;
+            this.txtBuildingTypeId.Size = new System.Drawing.Size(33, 20);
+            this.txtBuildingTypeId.TabIndex = 3;
+            this.txtBuildingTypeId.TextChanged += new System.EventHandler(this.TxtBuildingTypeId_TextChanged);
+            // 
+            // txtCompoundName
+            // 
+            this.txtCompoundName.Location = new System.Drawing.Point(208, 105);
+            this.txtCompoundName.Name = "txtCompoundName";
+            this.txtCompoundName.ReadOnly = true;
+            this.txtCompoundName.Size = new System.Drawing.Size(152, 20);
+            this.txtCompoundName.TabIndex = 5;
+            // 
+            // txtBuildingTypeCode
+            // 
+            this.txtBuildingTypeCode.Location = new System.Drawing.Point(208, 77);
+            this.txtBuildingTypeCode.Name = "txtBuildingTypeCode";
+            this.txtBuildingTypeCode.ReadOnly = true;
+            this.txtBuildingTypeCode.Size = new System.Drawing.Size(152, 20);
+            this.txtBuildingTypeCode.TabIndex = 3;
             // 
             // BuildingForm
             // 
@@ -272,13 +293,11 @@
             this.Controls.Add(this.chkReadOnly);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.txtBuildingType);
             this.Controls.Add(this.txtUpdatedOn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtUpdatedBy);
             this.Controls.Add(this.lookupComound);
             this.Controls.Add(this.txtId);
-            this.Controls.Add(this.txtCompoundName);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.lookUpButtonBuildingType);
             this.Controls.Add(this.lookUpButton1);
@@ -291,6 +310,10 @@
             this.Controls.Add(this.txtBuildingName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtCreatedOn);
+            this.Controls.Add(this.txtBuildingTypeCode);
+            this.Controls.Add(this.txtCompoundName);
+            this.Controls.Add(this.txtBuildingTypeId);
+            this.Controls.Add(this.txtCompoundId);
             this.Name = "BuildingForm";
             this.Text = "Buildings";
             this.Load += new System.EventHandler(this.BuildingFormLoad);
@@ -302,7 +325,7 @@
         #endregion
 
         private Common.LookUpButton lookupComound;
-        private System.Windows.Forms.TextBox txtCompoundName;
+        private System.Windows.Forms.TextBox txtCompoundId;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnNew;
@@ -320,8 +343,10 @@
         private Common.LookUpButton lookUpButton1;
         private System.Windows.Forms.Label label4;
         private Common.LookUpButton lookUpButtonBuildingType;
-        private System.Windows.Forms.TextBox txtBuildingType;
+        private System.Windows.Forms.TextBox txtBuildingTypeId;
         private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtCompoundName;
+        private System.Windows.Forms.TextBox txtBuildingTypeCode;
     }
 }

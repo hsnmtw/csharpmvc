@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using MVCHIS.Common;
+using System.Collections.Generic;
 
-namespace MVCHIS.Common {
+namespace MVCHIS.Tools {
     //[ForModel(MODELS.Entity)]
     public class EntityEntity : AbstractDBEntity {
 
@@ -17,7 +18,7 @@ namespace MVCHIS.Common {
                 ["EntityName"] = 50,
                 ["EntityDesc"] = 100
             }
-            , Source = "CommonEntites"
+            , Source = "ToolsEntity"
             };
     }
 }

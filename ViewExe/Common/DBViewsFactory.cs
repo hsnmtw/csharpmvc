@@ -14,59 +14,34 @@ using MVCHIS.Tools;
 
 namespace MVCHIS.Common {
     public static class DBViewsFactory {
-        private static Dictionary<MODELS, Type> ViewsMap = new Dictionary<MODELS, Type> {
-              [MODELS.BillingCategory      ] = typeof(BillingCategoryForm)
-            , [MODELS.AccommClass          ] = typeof(AccommClassForm)
-            , [MODELS.Audit                ] = typeof(AuditForm)
-            , [MODELS.Building             ] = typeof(BuildingForm)
-            , [MODELS.BuildingType         ] = typeof(BuildingTypeForm)
-            , [MODELS.Client               ] = typeof(ClientForm)
-            , [MODELS.ClientType           ] = typeof(ClientTypeForm)
-            , [MODELS.Compound             ] = typeof(CompoundForm)
-            , [MODELS.Dictionary           ] = typeof(DictionaryForm)
-            , [MODELS.Entitlement          ] = typeof(EntitlementForm)
-            , [MODELS.EntitlementGroup     ] = typeof(EntitlementGroupForm)
-            , [MODELS.FoodClass            ] = typeof(FoodClassForm)
-            , [MODELS.FoodType             ] = typeof(FoodTypeForm)
-            , [MODELS.Identification       ] = typeof(IdentificationForm)
-            , [MODELS.IdentificationType   ] = typeof(IdentificationTypeForm)
-            , [MODELS.Country              ] = typeof(CountryForm)
-            , [MODELS.Profile              ] = typeof(ProfileForm)
-            , [MODELS.ProfileEntitlement   ] = typeof(ProfileEntitlementForm)
-            , [MODELS.Project              ] = typeof(ProjectForm)
-            , [MODELS.Room                 ] = typeof(RoomForm)
-            , [MODELS.User                 ] = typeof(UserForm)
-            , [MODELS.Entity               ] = typeof(EntityForm)
-            , [MODELS.Contact              ] = typeof(ContactForm)
-            , [MODELS.ClientContact        ] = null // typeof(ClientContactForm)
-            , [MODELS.ClientIdentification ] = null // typeof(ClientIdentificationForm)
-        };
+        private static Dictionary<MODELS, Type> ViewsMap = new Dictionary<MODELS, Type> { };
 
-        public static void Initialize(){
-            //ViewsMap = new Dictionary<MODELS, Type>();
-
-            //var type = typeof(IView);
-            //var types = AppDomain.CurrentDomain.GetAssemblies()
-            //            .SelectMany(s => s.GetTypes())
-            //            .Where(p => type.IsAssignableFrom(p));
-
-
-            //Console.WriteLine("--------------------------------------------------------");
-            //foreach (var t in types) {
-            //    //try {
-            //    var FORs = t.GetCustomAttributes(typeof(ForModelAttribute), false);
-            //    if (FORs.Count() == 0) continue;
-            //    var FOR = (ForModelAttribute)FORs.First();
-            //    Console.WriteLine($"{FOR.Model}\t{t}");
-            //    ViewsMap[FOR.Model] = t; // (ISingleForm)Activator.CreateInstance(t);
-            //    //} catch { }
-            //}
-            //Console.WriteLine("--------------------------------------------------------");
+        public static IView GetView(MODELS model) {
+            if (ViewsMap.ContainsKey(model) == false) {
+                InitializeView(model);
+            }
+            return (IView)Activator.CreateInstance(ViewsMap[model]);
         }
 
-        public static IView GetView(MODELS ce){
-            //if (ViewsMap == null) Initialize();
-            return (IView)Activator.CreateInstance(ViewsMap[ce]);
+        private static void InitializeView(MODELS model) {
+            var type = typeof(IView);
+            var view = AppDomain.CurrentDomain.GetAssemblies()
+                        .SelectMany(s => s.GetTypes())
+                        .Where(p => type.IsAssignableFrom(p))
+                        .Where(x => x.Name.Equals($"{model}Form"))
+                        .FirstOrDefault();
+
+            if (view != null) {
+                if (Enum.TryParse(view.Name.Substring(0, (view.Name.Length) - ("Form".Length)), out MODELS num)) {
+                    ViewsMap[num] = view;
+                    Console.WriteLine($" + [View] : {num}:{view}");
+                } else {
+                    throw new Exception($"no Enum was defined for {view}");
+                }
+            }
         }
+
+
+
     }
 }

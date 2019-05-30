@@ -29,5 +29,6 @@ namespace MVCHIS.Common {
         , Contact
         , ClientContact
         , ClientIdentification
+        , BillingCycle
     }
 }

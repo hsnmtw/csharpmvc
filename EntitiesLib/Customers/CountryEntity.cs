@@ -11,10 +11,12 @@ namespace MVCHIS.Customers {
             , UniqueKeyFields  = new List<string> { "CountryCode" }
             , ForeignKeys      = new Dictionary<string, System.Tuple<string, string>> {
             }
-            , GetSizes = new Dictionary<string, int> { ["CreatedBy"] = 50, ["UpdatedBy"] = 50,
-                 ["CountryCode"]    = 50
+            , GetSizes = new Dictionary<string, int> {
+                 ["CreatedBy"     ] = 50
+                ,["UpdatedBy"     ] = 50
+                ,["CountryCode"   ]    = 50
                 ,["CountryEnglish"] = 100
-                ,["CountryArabic"]  = 100
+                ,["CountryArabic" ]  = 100
             }
             , Source           = "CustomersCountry"
         };

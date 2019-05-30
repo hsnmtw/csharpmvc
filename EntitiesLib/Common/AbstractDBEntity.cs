@@ -42,10 +42,10 @@ namespace MVCHIS.Common {
         public virtual M Find<M>(M model, params string[] whereFields) {
             var mdl = NewModel<M>();
             var prp = (from PropertyInfo pinfo in mdl.GetType().GetProperties() orderby pinfo.Name select pinfo.Name);
-            var slc = string.Join(",", prp);
+            var slc = string.Join("],[", prp);
             var src = MetaData.Source;
-            var whr = string.Join(" AND ", (from c in whereFields select $"{c}=@{c}"));
-            var sql = $"SELECT {slc} FROM {src} {(whereFields.Length>0? $" WHERE ({whr})" : "")}";
+            var whr = string.Join(" AND ", (from c in whereFields select $"[{c}]=@{c}"));
+            var sql = $"SELECT [{slc}] FROM [{src}] {(whereFields.Length>0? $" WHERE ({whr})" : "")}";
             var prm = (from c in whereFields select new KeyValuePair<string,object>($"@{c}", PrepareParameter(model.GetType().GetProperty(c).GetValue(model))))?.ToArray();
             var tbl = DBConnectionManager.Instance.Query(model,sql, prm);
             return tbl.FirstOrDefault();
@@ -55,9 +55,9 @@ namespace MVCHIS.Common {
             var xcl = new string[] { "Id", "UpdatedBy", "UpdatedOn" };
             var prp = (from pinfo in model.GetType().GetProperties() where !xcl.Contains(pinfo.Name) select pinfo.Name);
             var src = MetaData.Source;
-            var col = string.Join(",",(from c in prp select $"{c}"));
+            var col = string.Join(",",(from c in prp select $"[{c}]"));
             var val = string.Join(",",(from c in prp select $"@{c}"));
-            var sql = $"INSERT INTO {src} ({col}) VALUES ({val})";
+            var sql = $"INSERT INTO [{src}] ({col}) VALUES ({val})";
             var prm = (from c in prp select new KeyValuePair<string, object>($"@{c}", PrepareParameter(model.GetType().GetProperty(c).GetValue(model))))?.ToArray();
             return DBConnectionManager.Instance.Execute(sql, prm);
         }
@@ -89,9 +89,9 @@ namespace MVCHIS.Common {
             var xcl = new string[] { "Id", "CreatedBy", "CreatedOn" };
             var prp = (from pinfo in model.GetType().GetProperties() where !xcl.Contains(pinfo.Name) select pinfo.Name);
             var src = MetaData.Source;
-            var cvl = string.Join(",", (from c in prp select $"{c}=@{c}"));
-            var whr = string.Join(" AND ", (from c in whereFields select $"{c}=@{c}"));
-            var sql = $"UPDATE {src} SET {cvl} WHERE ({whr}) AND (ReadOnly='0')";
+            var cvl = string.Join(",", (from c in prp select $"[{c}]=@{c}"));
+            var whr = string.Join(" AND ", (from c in whereFields select $"[{c}]=@{c}"));
+            var sql = $"UPDATE [{src}] SET {cvl} WHERE ({whr}) AND (ReadOnly='0')";
             var prm = (from c in prp.Concat(whereFields) select new KeyValuePair<string, object>($"@{c}", PrepareParameter(model.GetType().GetProperty(c).GetValue(model))))?.ToArray();
             return DBConnectionManager.Instance.Execute(sql, prm);
         }
@@ -99,8 +99,8 @@ namespace MVCHIS.Common {
         public virtual int Delete<M>(M model,params string[]whereFields) {
             if (whereFields.Length == 0) whereFields = new string[] { "Id" };
             var src = MetaData.Source;
-            var whr = string.Join(" AND ", (from c in whereFields select $"{c}=@{c}"));
-            var sql = $"DELETE FROM {src} WHERE ({whr}) AND (ReadOnly='0')";
+            var whr = string.Join(" AND ", (from c in whereFields select $"[{c}]=@{c}"));
+            var sql = $"DELETE FROM [{src}] WHERE ({whr}) AND (ReadOnly='0')";
             var prm = (from c in whereFields select new KeyValuePair<string, object>($"@{c}", PrepareParameter(model.GetType().GetProperty(c).GetValue(model))))?.ToArray();
             return DBConnectionManager.Instance.Execute(sql, prm);
         }

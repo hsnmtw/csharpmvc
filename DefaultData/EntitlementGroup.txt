@@ -1,0 +1,13 @@
+"EntitlementGroupName","Dynamic"
+"Security",1
+"Operations",1
+"Billing",1
+"Housing",1
+"Customers",1
+"Reports",1
+"Tools",1
+"File",0
+"Window",0
+"Developer",0
+"Help",0
+            

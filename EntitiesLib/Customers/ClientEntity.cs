@@ -13,7 +13,9 @@ namespace MVCHIS.Customers {
                 ["ClientTypeId"] = new System.Tuple<string, string>(DBEntitiesFactory.GetEntity(MODELS.ClientType).MetaData.Source,"Id"),
                 ["CountryId"]    = new System.Tuple<string, string>(DBEntitiesFactory.GetEntity(MODELS.Country).MetaData.Source, "Id"),
             }
-            , GetSizes = new Dictionary<string, int> { ["CreatedBy"] = 50, ["UpdatedBy"] = 50
+            , GetSizes = new Dictionary<string, int> {
+                  ["CreatedBy"     ] = 50
+                , ["UpdatedBy"     ] = 50
                 , ["ShortName"     ] = 50
                 , ["LongName"      ] = 150
                 , ["Email"         ] = 100

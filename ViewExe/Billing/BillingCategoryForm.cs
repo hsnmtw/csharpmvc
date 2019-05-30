@@ -2,6 +2,7 @@
 using MVCHIS.Customers;
 using MVCHIS.Utils;
 using System;
+using System.Linq;
 
 namespace MVCHIS.Billing {
     
@@ -29,11 +30,11 @@ namespace MVCHIS.Billing {
             Mapper["UpdatedOn"] = txtUpdatedOn;
             Mapper["ReadOnly"] = chkReadOnly;
             //data
-            Mapper["AccommClass"] = txtAccommClassCode;
-            Mapper["BillingCategory"] = txtBillingCategory;
+            Mapper["AccommClassId"] = txtAccommClassId;
+            Mapper["BillingCategoryCode"] = txtBillingCategoryCode;
             Mapper["BillingCategoryDesc"] = txtBillingCategoryDesc;
-            Mapper["FoodType"] = txtFoodTypeCode;
-            Mapper["FoodClass"] = txtFoodClassCode;
+            Mapper["FoodTypeId"] = txtFoodTypeId;
+            Mapper["FoodClassId"] = txtFoodClassId;
             Mapper["ReservationOnly"] = chkReservationOnly;
             //actions
             SaveButton = btnSave;
@@ -43,7 +44,7 @@ namespace MVCHIS.Billing {
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
             string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            Model = Controller.Find(new BillingCategoryModel() { BillingCategory = selected }, "BillingCategory");
+            Model = Controller.Find(new BillingCategoryModel() { BillingCategoryCode = selected }, "BillingCategory");
 
         }
 
@@ -51,16 +52,22 @@ namespace MVCHIS.Billing {
             
         }
 
-        private void TxtAccommClassCode_TextChanged(object sender, EventArgs e) {
-            txtAccommClassDesc.Text = Controllers["AccommClass"].Find(new AccommClassModel() { AccommClassCode = txtAccommClassCode.Text }, "AccommClassCode")?.AccommClassDesc;
+        private void TxtAccommClassId_TextChanged(object sender, EventArgs e) {
+            var acmodel = Controllers["AccommClass"].Find(new AccommClassModel { Id = int.Parse($"0{txtAccommClassId.Text}") },"Id");
+            txtAccommClassDesc.Text = acmodel?.AccommClassDesc;
+            txtAccommClassCode.Text = acmodel?.AccommClassCode;
         }
 
-        private void TxtFoodClassCode_TextChanged(object sender, EventArgs e) {
-            txtFoodClassDesc.Text = Controllers["FoodClass"].Find(new FoodClassModel() { FoodClassCode = txtFoodClassCode.Text }, "FoodClassCode")?.FoodClassDesc;
+        private void TxtFoodClassId_TextChanged(object sender, EventArgs e) {
+            var fcmodel = Controllers["FoodClass"].Find(new FoodClassModel { Id = int.Parse($"0{txtFoodClassId.Text}") },"Id");
+            txtFoodClassDesc.Text = fcmodel?.FoodClassDesc;
+            txtFoodClassCode.Text = fcmodel?.FoodClassCode;
         }
 
-        private void TxtFoodTypeCode_TextChanged(object sender, EventArgs e) {
-            txtFoodTypeDesc.Text = Controllers["FoodType"].Find(new FoodTypeModel() { FoodTypeCode = txtFoodTypeCode.Text }, "FoodTypeCode")?.FoodTypeDesc;
+        private void TxtFoodTypeId_TextChanged(object sender, EventArgs e) {
+            var ftmodel = Controllers["FoodType"].Find(new FoodTypeModel { Id = int.Parse($"0{txtFoodTypeId.Text}") },"Id");
+            txtFoodTypeDesc.Text = ftmodel?.FoodTypeDesc;
+            txtFoodTypeCode.Text = ftmodel?.FoodTypeCode;
         }
     }
     public class BillingCategoryView : BaseView<BillingCategoryModel, BillingCategoryController> { }

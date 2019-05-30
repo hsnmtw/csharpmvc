@@ -8,13 +8,17 @@ namespace MVCHIS.Housing.Buildings {
     //[ForModel(Common.MODELS.Building)]
     public partial class BuildingForm: BuildingView {
 
-        private IDBController roomCntrlr;
+        //private IDBController roomCntrlr;
         
         
         public BuildingForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
-            roomCntrlr = DBControllersFactory.GetController(Common.MODELS.Room);
+            //roomCntrlr = DBControllersFactory.GetController(Common.MODELS.Room);
             base.Controller = (BuildingController)DBControllersFactory.GetController(Common.MODELS.Building);
+            Controllers = new System.Collections.Generic.Dictionary<string, IDBController> {
+                ["bt"] = DBControllersFactory.GetController(MODELS.BuildingType),
+                ["c" ] = DBControllersFactory.GetController(MODELS.Compound),
+            };
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -24,8 +28,8 @@ namespace MVCHIS.Housing.Buildings {
             Mapper["ReadOnly"] = chkReadOnly;
             //data
             Mapper["BuildingName"] = txtBuildingName;
-            Mapper["BuildingType"] = txtBuildingType;
-            Mapper["CompoundName"] = txtCompoundName;
+            Mapper["BuildingTypeId"] = txtBuildingTypeId;
+            Mapper["CompoundId"] = txtCompoundId;
             //actions
             SaveButton = btnSave;
             DeleteButton = btnDelete;
@@ -39,7 +43,16 @@ namespace MVCHIS.Housing.Buildings {
         }
 
         private void BuildingFormLoad(object sender, EventArgs e) {
+        }
 
+        private void TxtBuildingTypeId_TextChanged(object sender, EventArgs e) {
+            int id = int.Parse($"0{txtBuildingTypeId.Text}");
+            txtBuildingTypeCode.Text = Controllers["bt"].Find(new BuildingTypeModel() { Id = id }, "Id")?.BuildingTypeCode;
+        }
+
+        private void TxtCompoundId_TextChanged(object sender, EventArgs e) {
+            int id = int.Parse($"0{txtCompoundId.Text}");
+            txtCompoundName.Text = Controllers["c"].Find(new CompoundModel() { Id = id }, "Id")?.CompoundName;
         }
     }
     public class BuildingView : BaseView<BuildingModel, BuildingController> { }

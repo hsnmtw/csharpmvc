@@ -12,7 +12,8 @@ namespace MVCHIS.Billing {
             , ForeignKeys      = new Dictionary<string, System.Tuple<string, string>> {
             }
             , GetSizes = new Dictionary<string, int> {
-                ["CreatedBy"] = 50, ["UpdatedBy"] = 50,
+                ["CreatedBy"] = 50,
+                ["UpdatedBy"] = 50,
                 ["FoodClassCode"    ] = 50,
                 ["FoodClassDesc"    ] = 100,
             }  

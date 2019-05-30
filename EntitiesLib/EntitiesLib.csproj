@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Billing\AccommClassEntity.cs" />
+    <Compile Include="Billing\BillingCycleEntity.cs" />
     <Compile Include="Billing\BillingCategoryEntity.cs" />
     <Compile Include="Billing\FoodClassEntity.cs" />
     <Compile Include="Billing\FoodTypeEntity.cs" />
@@ -68,7 +69,7 @@
     <Compile Include="Security\AuditEntity.cs" />
     <Compile Include="Security\EntitlementEntity.cs" />
     <Compile Include="Security\EntitlementGroupEntity.cs" />
-    <Compile Include="Security\ProfileEntitlementsEntity.cs" />
+    <Compile Include="Security\ProfileEntitlementEntity.cs" />
     <Compile Include="Security\ProfileEntity.cs" />
     <Compile Include="Security\UserEntity.cs" />
     <Compile Include="Tools\DictionaryEntity.cs" />

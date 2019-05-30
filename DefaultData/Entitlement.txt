@@ -1,0 +1,37 @@
+"EntitlementName","EntitlementGroupName","EntityName"
+"Rooms","Housing","Room"
+"Buildings","Housing","Building"
+"Compounds","Housing","Compound"
+"Billing Categories","Billing","BillingCategory"
+"Residents","Customers",null
+"Billing Cycles","Billing","BillingCycle"
+"Projects","Customers","Project"
+"Entitlements","Security","Entitlement"
+"Profiles","Security","Profile"
+"Residents Search","Reports",null
+"New Check In","Operations",null
+"SQL Viewer","Developer",null
+"Check In","Operations",null
+"Check Out","Operations",null
+"Room Movement","Operations",null
+"Encryption Tool","Developer",null
+"Users","Security","User"
+"Country","Customers","Country"
+"Bills","Billing",null
+"Audit","Security","Audit"
+"Contracts","Billing",null
+"Building Types","Housing","BuildingType"
+"Clients","Customers","Client"
+"Client Types","Customers","ClientType"
+"Accommodation Classes","Billing","AccommClass"
+"Food Classes","Billing","FoodClass"
+"Food Types","Billing","FoodType"
+"Identification Types","Customers","IdentificationType"
+"Entitlement Groups","Security","EntitlementGroup"
+"Identification","Customers","Identification"
+"Date Conversion","Tools",null
+"Dictionary","Tools","Dictionary"
+"Profile Entitlements","Security","ProfileEntitlement"
+"Contacts","Customers","Contact"
+"Initialize","File",null
+"Entities","Tools","Entity"

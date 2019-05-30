@@ -1,0 +1,8 @@
+"AccommClassCode","AccommClassDesc"
+"EXE","Executive Accommodation" 
+"1x1","Senior Accommodation" 
+"2x1","Junior (2x1) Accommodation"
+"3x1","Junior (3x1) Accommodation"
+"4x1","Labour (4x1) Accommodation"
+"6x1","Labour (6x1) Accommodation"
+"8x1","Labour (8x1) Accommodation"

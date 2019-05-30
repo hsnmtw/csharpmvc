@@ -1,14 +1,14 @@
-﻿namespace MVCHIS.Housing {
-    partial class CompoundForm {
-        /// <summary>
+﻿namespace MVCHIS.Billing {
+    partial class BillingCycleForm {
+        /// <summaryClient
         /// Required designer variable.
-        /// </summary>
+        /// </summaryClient
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
+        /// <summaryClient
         /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// </summaryClient
+        /// <param name="disposing"Clienttrue if managed resources should be disposed; otherwise, false.</paramClient
         protected override void Dispose(bool disposing) {
             if (disposing && (components != null)) {
                 components.Dispose();
@@ -18,10 +18,10 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
+        /// <summaryClient
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
-        /// </summary>
+        /// </summaryClient
         private void InitializeComponent(){
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -32,112 +32,105 @@
             this.txtCreatedOn = new System.Windows.Forms.TextBox();
             this.txtCreatedBy = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtCompoundName = new System.Windows.Forms.TextBox();
-            this.CompoundNameLookupButton = new MVCHIS.Common.LookUpButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtBillingCycleYear = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.lookUpButtonBillingCycle = new MVCHIS.Common.LookUpButton();
+            this.txtBillingCycleMonth = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(40, 202);
+            this.btnDelete.Location = new System.Drawing.Point(60, 255);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 9;
+            this.btnDelete.TabIndex = 11;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(148, 202);
+            this.btnSave.Location = new System.Drawing.Point(168, 255);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 7;
+            this.btnSave.TabIndex = 9;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(256, 202);
+            this.btnNew.Location = new System.Drawing.Point(276, 255);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 23);
-            this.btnNew.TabIndex = 8;
+            this.btnNew.TabIndex = 10;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = true;
             // 
             // txtUpdatedOn
             // 
             this.txtUpdatedOn.BackColor = System.Drawing.SystemColors.Control;
-            this.txtUpdatedOn.Location = new System.Drawing.Point(194, 136);
+            this.txtUpdatedOn.Location = new System.Drawing.Point(214, 181);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
             this.txtUpdatedOn.Size = new System.Drawing.Size(137, 20);
-            this.txtUpdatedOn.TabIndex = 6;
+            this.txtUpdatedOn.TabIndex = 7;
             this.txtUpdatedOn.TabStop = false;
             // 
             // txtUpdatedBy
             // 
             this.txtUpdatedBy.BackColor = System.Drawing.SystemColors.Control;
-            this.txtUpdatedBy.Location = new System.Drawing.Point(120, 136);
+            this.txtUpdatedBy.Location = new System.Drawing.Point(140, 181);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
             this.txtUpdatedBy.Size = new System.Drawing.Size(69, 20);
-            this.txtUpdatedBy.TabIndex = 5;
+            this.txtUpdatedBy.TabIndex = 6;
             this.txtUpdatedBy.TabStop = false;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(20, 142);
+            this.label6.Location = new System.Drawing.Point(13, 184);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(63, 13);
-            this.label6.TabIndex = 29;
+            this.label6.TabIndex = 44;
             this.label6.Text = "Updated by";
             // 
             // txtCreatedOn
             // 
             this.txtCreatedOn.BackColor = System.Drawing.SystemColors.Control;
-            this.txtCreatedOn.Location = new System.Drawing.Point(194, 110);
+            this.txtCreatedOn.Location = new System.Drawing.Point(214, 155);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
             this.txtCreatedOn.Size = new System.Drawing.Size(137, 20);
-            this.txtCreatedOn.TabIndex = 4;
+            this.txtCreatedOn.TabIndex = 5;
             this.txtCreatedOn.TabStop = false;
             // 
             // txtCreatedBy
             // 
             this.txtCreatedBy.BackColor = System.Drawing.SystemColors.Control;
-            this.txtCreatedBy.Location = new System.Drawing.Point(120, 110);
+            this.txtCreatedBy.Location = new System.Drawing.Point(140, 155);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
             this.txtCreatedBy.Size = new System.Drawing.Size(69, 20);
-            this.txtCreatedBy.TabIndex = 3;
+            this.txtCreatedBy.TabIndex = 4;
             this.txtCreatedBy.TabStop = false;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 116);
+            this.label5.Location = new System.Drawing.Point(13, 158);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 13);
-            this.label5.TabIndex = 31;
+            this.label5.TabIndex = 45;
             this.label5.Text = "Created by";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 54);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 13);
-            this.label2.TabIndex = 28;
-            this.label2.Text = "Compound Name";
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(120, 21);
+            this.txtId.Location = new System.Drawing.Point(140, 32);
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(68, 20);
@@ -148,77 +141,107 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 27);
+            this.label1.Location = new System.Drawing.Point(13, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 13);
-            this.label1.TabIndex = 27;
+            this.label1.TabIndex = 42;
             this.label1.Text = "Record Id";
             // 
-            // txtCompoundName
+            // label3
             // 
-            this.txtCompoundName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtCompoundName.Location = new System.Drawing.Point(120, 51);
-            this.txtCompoundName.Name = "txtCompoundName";
-            this.txtCompoundName.Size = new System.Drawing.Size(154, 20);
-            this.txtCompoundName.TabIndex = 1;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 64);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 13);
+            this.label3.TabIndex = 43;
+            this.label3.Text = "Year";
             // 
-            // CompoundNameLookupButton
+            // txtBillingCycleYear
             // 
-            this.CompoundNameLookupButton.AssociatedControl = "txtCompoundName";
-            this.CompoundNameLookupButton.Controller = "Compound";
-            this.CompoundNameLookupButton.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.CompoundNameLookupButton.Location = new System.Drawing.Point(275, 50);
-            this.CompoundNameLookupButton.Name = "CompoundNameLookupButton";
-            this.CompoundNameLookupButton.SelectedValueIndex = 0;
-            this.CompoundNameLookupButton.ShowFieldsInLookUp.Add("CompoundName");
-            this.CompoundNameLookupButton.Size = new System.Drawing.Size(22, 22);
-            this.CompoundNameLookupButton.TabIndex = 2;
-            this.CompoundNameLookupButton.TabStop = false;
-            this.CompoundNameLookupButton.LookUpSelected += new System.EventHandler(this.CompoundNameLookupButtonLookUpSelected);
+            this.txtBillingCycleYear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtBillingCycleYear.Location = new System.Drawing.Point(140, 61);
+            this.txtBillingCycleYear.Name = "txtBillingCycleYear";
+            this.txtBillingCycleYear.Size = new System.Drawing.Size(69, 20);
+            this.txtBillingCycleYear.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 93);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(37, 13);
+            this.label2.TabIndex = 49;
+            this.label2.Text = "Month";
             // 
             // chkReadOnly
             // 
             this.chkReadOnly.AutoSize = true;
             this.chkReadOnly.Enabled = false;
-            this.chkReadOnly.Location = new System.Drawing.Point(121, 166);
+            this.chkReadOnly.Location = new System.Drawing.Point(140, 215);
             this.chkReadOnly.Name = "chkReadOnly";
             this.chkReadOnly.Size = new System.Drawing.Size(15, 14);
-            this.chkReadOnly.TabIndex = 44;
+            this.chkReadOnly.TabIndex = 8;
             this.chkReadOnly.UseVisualStyleBackColor = true;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(20, 165);
+            this.label10.Location = new System.Drawing.Point(13, 215);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(57, 13);
-            this.label10.TabIndex = 45;
+            this.label10.TabIndex = 47;
             this.label10.Text = "Read Only";
             // 
-            // CompoundForm
+            // lookUpButtonBillingCycle
+            // 
+            this.lookUpButtonBillingCycle.AssociatedControl = "txtId";
+            this.lookUpButtonBillingCycle.Controller = "BillingCycle";
+            this.lookUpButtonBillingCycle.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.lookUpButtonBillingCycle.Location = new System.Drawing.Point(210, 31);
+            this.lookUpButtonBillingCycle.Name = "lookUpButtonBillingCycle";
+            this.lookUpButtonBillingCycle.SelectedValueIndex = 2;
+            this.lookUpButtonBillingCycle.ShowFieldsInLookUp.Add("BillingCycleYear");
+            this.lookUpButtonBillingCycle.ShowFieldsInLookUp.Add("BillingCycleMonth");
+            this.lookUpButtonBillingCycle.ShowFieldsInLookUp.Add("Id");
+            this.lookUpButtonBillingCycle.Size = new System.Drawing.Size(22, 22);
+            this.lookUpButtonBillingCycle.TabIndex = 1;
+            this.lookUpButtonBillingCycle.TabStop = false;
+            this.lookUpButtonBillingCycle.LookUpSelected += new System.EventHandler(this.LookUpButton1LookUpSelected);
+            // 
+            // txtBillingCycleMonth
+            // 
+            this.txtBillingCycleMonth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtBillingCycleMonth.Location = new System.Drawing.Point(140, 89);
+            this.txtBillingCycleMonth.Name = "txtBillingCycleMonth";
+            this.txtBillingCycleMonth.Size = new System.Drawing.Size(69, 20);
+            this.txtBillingCycleMonth.TabIndex = 3;
+            // 
+            // BillingCycleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(366, 237);
-            this.Controls.Add(this.chkReadOnly);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.CompoundNameLookupButton);
-            this.Controls.Add(this.txtCompoundName);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnNew);
-            this.Controls.Add(this.txtUpdatedOn);
-            this.Controls.Add(this.txtUpdatedBy);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtCreatedOn);
-            this.Controls.Add(this.txtCreatedBy);
-            this.Controls.Add(this.label5);
+            this.ClientSize = new System.Drawing.Size(378, 311);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtId);
+            this.Controls.Add(this.chkReadOnly);
+            this.Controls.Add(this.txtUpdatedOn);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.txtUpdatedBy);
             this.Controls.Add(this.label1);
-            this.Name = "CompoundForm";
-            this.Text = "Compounds";
-            this.Load += new System.EventHandler(this.CompoundFormLoad1);
+            this.Controls.Add(this.btnNew);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lookUpButtonBillingCycle);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.txtBillingCycleMonth);
+            this.Controls.Add(this.txtBillingCycleYear);
+            this.Controls.Add(this.txtCreatedOn);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtCreatedBy);
+            this.Name = "BillingCycleForm";
+            this.Text = "Food Types";
+            this.Load += new System.EventHandler(this.BillingCycleFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,13 +257,14 @@
         private System.Windows.Forms.TextBox txtCreatedOn;
         private System.Windows.Forms.TextBox txtCreatedBy;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtCompoundName;
-        private Common.LookUpButton CompoundNameLookupButton;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtBillingCycleYear;
+        private Common.LookUpButton lookUpButtonBillingCycle;
         private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
-        //private Common.LookUpButton CompoundNameLookupButton;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtBillingCycleMonth;
     }
 }

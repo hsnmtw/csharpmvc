@@ -12,15 +12,6 @@ namespace MVCHIS.Security {
             return base.Validate(model);
         }
 
-        public void Initialize() {
-            Save(new UserModel() {
-                UserName = "Admin",
-                UserPassword = "123",
-                ProfileName = "Admin",
-                FullName = "Administrator",
-                IsActive = true,
-            });
-        }
 
         public override int Save(BaseModel userModel) {
             UserModel model = (UserModel)userModel;

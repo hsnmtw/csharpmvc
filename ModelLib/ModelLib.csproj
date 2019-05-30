@@ -43,12 +43,13 @@
   <ItemGroup>
     <Compile Include="Billing\AccommClassModel.cs" />
     <Compile Include="Billing\BillingCategoryModel.cs" />
+    <Compile Include="Billing\BillingCycleModel.cs" />
     <Compile Include="Billing\FoodClassModel.cs" />
     <Compile Include="Billing\FoodTypeModel.cs" />
     <Compile Include="Common\BaseModel.cs" />
     <Compile Include="Common\MetaData.cs" />
     <Compile Include="Common\MODELS.cs" />
-    <Compile Include="Common\EntityModel.cs" />
+    <Compile Include="Tools\EntityModel.cs" />
     <Compile Include="Common\IModel.cs" />
     <Compile Include="Configurations\CryptoModel.cs" />
     <Compile Include="Customers\ClientContactModel.cs" />
@@ -68,7 +69,7 @@
     <Compile Include="Security\AuditModel.cs" />
     <Compile Include="Security\EntitlementGroupModel.cs" />
     <Compile Include="Security\EntitlementModel.cs" />
-    <Compile Include="Security\ProfileEntitlementsModel.cs" />
+    <Compile Include="Security\ProfileEntitlementModel.cs" />
     <Compile Include="Security\ProfileModel.cs" />
     <Compile Include="Security\UserModel.cs" />
     <Compile Include="Tools\DictionaryModel.cs" />

@@ -11,8 +11,10 @@ namespace MVCHIS.Customers {
             , UniqueKeyFields  = new List<string> { "IdNumber", "IdType" }
             , ForeignKeys      = new Dictionary<string, System.Tuple<string, string>> {
             }
-            , GetSizes = new Dictionary<string, int> { ["CreatedBy"] = 50, ["UpdatedBy"] = 50,
-                 ["IdNumber"       ] = 15
+            , GetSizes = new Dictionary<string, int> {
+                 ["CreatedBy"      ] = 50
+                ,["UpdatedBy"      ] = 50
+                ,["IdNumber"       ] = 15
                 ,["IdType"         ] = 50
                 ,["IssuingCountry" ] = 50
             }
@@ -21,11 +23,3 @@ namespace MVCHIS.Customers {
         };
     }
 }
-/*
-IdNumber      
-IdType        
-IssuingCountry
-IssueDate     
-ExpiryDate    
-IsActive      
-*/

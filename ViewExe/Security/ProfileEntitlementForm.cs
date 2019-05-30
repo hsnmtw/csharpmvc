@@ -8,7 +8,7 @@ namespace MVCHIS.Security {
 
         public ProfileEntitlementForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-            base.Controller = (ProfileEntitlementsController)DBControllersFactory.GetController(Common.MODELS.ProfileEntitlement);
+            base.Controller = (ProfileEntitlementController)DBControllersFactory.GetController(Common.MODELS.ProfileEntitlement);
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -36,12 +36,12 @@ namespace MVCHIS.Security {
         private void LookUpButton2_LookUpSelected(object sender, EventArgs e) {
             //this.Model = new ProfileEntitlementsModel();
             int id = int.Parse($"0{((LookupEventArgs)e).SelectedValueFromLookup}");
-            Model = Controller.Find(new ProfileEntitlementsModel() { Id = id }, "Id");
+            Model = Controller.Find(new ProfileEntitlementModel() { Id = id }, "Id");
         }
 
         private void Button1_Click(object sender, EventArgs e) {
             this.Close();
         }
     }
-    public class ProfileEntitlementsView : BaseView<ProfileEntitlementsModel, ProfileEntitlementsController> { }
+    public class ProfileEntitlementsView : BaseView<ProfileEntitlementModel, ProfileEntitlementController> { }
 }

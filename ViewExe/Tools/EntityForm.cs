@@ -1,6 +1,7 @@
 ﻿using MVCHIS.Utils;
 using System;
 using MVCHIS.Common;
+using MVCHIS.Tools;
 
 namespace MVCHIS.Common {
     //[ForModel(Common.MODELS.Entity)]

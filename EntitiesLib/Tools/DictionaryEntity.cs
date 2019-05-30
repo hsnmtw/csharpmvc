@@ -12,9 +12,11 @@ namespace MVCHIS.Tools {
             , UniqueKeyFields = new List<string> { "WordInEnglish" }
             , ForeignKeys     = new Dictionary<string, System.Tuple<string, string>> {
             }
-            , GetSizes = new Dictionary<string, int> { ["CreatedBy"] = 50, ["UpdatedBy"] = 50,
+            , GetSizes = new Dictionary<string, int> {
+                ["CreatedBy"    ] = 50,
+                ["UpdatedBy"    ] = 50,
                 ["WordInEnglish"] = 250,
-                ["WordInArabic"] = 250
+                ["WordInArabic" ] = 250
             }
             , Source = "ToolsDictionary"
         };

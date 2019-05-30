@@ -43,14 +43,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Billing\AccomClassController.cs" />
+    <Compile Include="Billing\BillingCycleController.cs" />
     <Compile Include="Billing\BillingCategoryController.cs" />
     <Compile Include="Billing\FoodClassController.cs" />
     <Compile Include="Billing\FoodTypeController.cs" />
     <Compile Include="Common\AbstractDBController.cs" />
     <Compile Include="Common\ConfigLoader.cs" />
+    <Compile Include="Common\ControllersInitializer.cs" />
     <Compile Include="Common\ControllersRegistery.cs" />
     <Compile Include="Common\DBControllersFactory.cs" />
-    <Compile Include="Common\EntityController.cs" />
+    <Compile Include="Tools\EntityController.cs" />
     <Compile Include="Common\IController.cs" />
     <Compile Include="Common\ICrypto.cs" />
     <Compile Include="Common\IDBController.cs" />
@@ -77,7 +79,7 @@
     <Compile Include="Security\EntitlementController.cs" />
     <Compile Include="Security\EntitlementGroupController.cs" />
     <Compile Include="Security\ProfileController.cs" />
-    <Compile Include="Security\ProfileEntitlementsController.cs" />
+    <Compile Include="Security\ProfileEntitlementController.cs" />
     <Compile Include="Security\UserController.cs" />
     <Compile Include="Tools\CalendarController.cs" />
     <Compile Include="Tools\DictionaryController.cs" />

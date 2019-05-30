@@ -8,7 +8,7 @@ namespace MVCHIS.Common {
         private static Session instance = null;
 
         public UserModel CurrentUser { get; set; }
-        public IEnumerable<ProfileEntitlementsModel> UserEntitlements { get; set;}
+        public IEnumerable<ProfileEntitlementModel> UserEntitlements { get; set;}
 
         private Session() {
         }
@@ -35,9 +35,6 @@ namespace MVCHIS.Common {
             DBConnectionManager.FACTORY = ConfigLoader.DatabaseFactory;
             DBConnectionManager.CONNECTION_STRING = ConfigLoader.ConnectionString;
 
-
-            DBEntitiesFactory.Initialize();
-            DBControllersFactory.Initialize();
         }
 
         public static Session Instance { get { if (instance == null) { instance = new Session(); }  return instance; } }

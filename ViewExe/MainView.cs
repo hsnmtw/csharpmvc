@@ -133,13 +133,13 @@ namespace MVCHIS {
 
         public void WhenAuthenticated(UserModel model) {
             Session.Instance.CurrentUser = model;
-            var pec = (ProfileEntitlementsController)DBControllersFactory.GetController(Common.MODELS.ProfileEntitlement);
-            var pes = pec.Read(new ProfileEntitlementsModel() {
+            var pec = (ProfileEntitlementController)DBControllersFactory.GetController(Common.MODELS.ProfileEntitlement);
+            var pes = pec.Read(new ProfileEntitlementModel() {
                 ProfileName = Session.Instance.CurrentUser.ProfileName,
                 AllowRead = true
             }, "ProfileName", "AllowRead");
 
-            foreach (ProfileEntitlementsModel row in pes) {
+            foreach (ProfileEntitlementModel row in pes) {
                 var EntitlementName = row.EntitlementName;
                 if (this.menus.ContainsKey(EntitlementName)) { 
                     this.menus[EntitlementName].Enabled = true;

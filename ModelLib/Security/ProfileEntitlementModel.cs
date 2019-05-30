@@ -1,7 +1,7 @@
 ﻿using MVCHIS.Common;
 
 namespace MVCHIS.Security {
-    public class ProfileEntitlementsModel : BaseModel
+    public class ProfileEntitlementModel : BaseModel
     {
         public string ProfileName     { get; set; }
         public string EntitlementName { get; set; }

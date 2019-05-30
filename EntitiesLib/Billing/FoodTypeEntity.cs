@@ -11,7 +11,9 @@ namespace MVCHIS.Billing {
             , UniqueKeyFields  = new List<string> { "FoodTypeCode" }
             , ForeignKeys      = new Dictionary<string, System.Tuple<string, string>> {
             }
-            , GetSizes = new Dictionary<string, int> { ["CreatedBy"] = 50, ["UpdatedBy"] = 50,
+            , GetSizes = new Dictionary<string, int> {
+                ["CreatedBy"] = 50,
+                ["UpdatedBy"] = 50,
                 ["FoodTypeCode"]      = 50,
                 ["FoodTypeDesc"]      = 100,
             }

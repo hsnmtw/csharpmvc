@@ -1,0 +1,3 @@
+"ProfileName","ProfileDesc","ReadOnly"
+"Admin","Administrators",1
+"Users","Normal Users",0

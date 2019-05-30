@@ -24,7 +24,7 @@ namespace MVCHIS.Security {
             var ent = ecn.Find(new EntitlementModel() { EntityName = $"{typeof(M).Name}".Replace("Model","") }, "EntityName");
             if (ent == null) return;
             
-            var pen = pec.Find(new ProfileEntitlementsModel() {
+            var pen = pec.Find(new ProfileEntitlementModel() {
                 ProfileName = usr.ProfileName,
                 EntitlementName = ent.EntitlementName
             }, "ProfileName", "EntitlementName");

@@ -1,32 +1,37 @@
-﻿namespace MVCHIS.Common {
-    [ForModelAttribute(Models.Entity, Enabled = true)]
-    public class EntityController : AbstractDBController {
-        public EntityController() : base(DBEntitiesFactory.GetEntity(Models.Entity)) { }
+﻿using MVCHIS.Common;
 
+namespace MVCHIS.Tools {
+    //[ForModel(MODELS.Entity, Enabled = true)]
+    public class EntityController : AbstractDBController {
+        public EntityController() : base(DBEntitiesFactory.GetEntity(MODELS.Entity)) { }
+        public override bool Validate<M>(M model) {
+            return base.Validate(model);
+        }
         public void Initialize() {
             string[][] data = {
-                new string[]{"BillingCategory","BillingCategories"},
-                new string[]{"AccommClass","BillingAccomodationClasses"},
+                new string[]{"BillingCategory","BillingCategory"},
+                new string[]{"BillingCycle","BillingCycle"},
+                new string[]{"AccommClass","BillingAccomodationClass"},
                 new string[]{"Audit","SecurityAudit"},
                 new string[]{"Building","HousingBuilding"},
-                new string[]{"BuildingType","HousingBuildingTypes"},
+                new string[]{"BuildingType","HousingBuildingType"},
                 new string[]{"Client","CustomersClient"},
-                new string[]{"ClientType","CustomersClientTypes"},
-                new string[]{"Compound","HousingCompounds"},
+                new string[]{"ClientType","CustomersClientType"},
+                new string[]{"Compound","HousingCompound"},
                 new string[]{"Dictionary","ToolsDictionary"},
-                new string[]{"Entitlement","SecurityEntitlements"},
-                new string[]{"EntitlementGroup","SecurityEntitlementGroups"},
-                new string[]{"FoodClass","BillingFoodClasses"},
-                new string[]{"FoodType","BillingFoodTypes"},
+                new string[]{"Entitlement","SecurityEntitlement"},
+                new string[]{"EntitlementGroup","SecurityEntitlementGroup"},
+                new string[]{"FoodClass","BillingFoodClass"},
+                new string[]{"FoodType","BillingFoodType"},
                 new string[]{"Identification","CustomersIdentification"},
                 new string[]{"IdentificationType","IdentificationType"},
                 new string[]{"Country","CustomersCountry"},
-                new string[]{"Profile","SecurityProfiles"},
-                new string[]{"ProfileEntitlement","SecurityProfileEntitlements"},
+                new string[]{"Profile","SecurityProfile"},
+                new string[]{"ProfileEntitlement","SecurityProfileEntitlement"},
                 new string[]{"Project","CustomersProject"},
                 new string[]{"Room","HousingRoom"},
-                new string[]{"User","SecurityUsers"},
-                new string[]{"Entity","CommonEntites"},
+                new string[]{"User","SecurityUser"},
+                new string[]{"Entity","ToolsEntity"},
                 new string[]{"Contact","CustomersContact"}
             };
             foreach(var entity in data) {

@@ -35,7 +35,7 @@ namespace MVCHIS.Security.Users {
 
 
         //private UserController Controller => (UserController)DBControllersFactory.GetController(Entities.User);
-        private List<ProfileEntitlementsModel> profileEntitlements;
+        private List<ProfileEntitlementModel> profileEntitlements;
 
 
         
@@ -45,7 +45,7 @@ namespace MVCHIS.Security.Users {
             Model = new UserModel();
             profileEntitlements = 
                 (from row 
-                   in DBControllersFactory.GetController(Common.MODELS.ProfileEntitlement).Read<ProfileEntitlementsModel>()
+                   in DBControllersFactory.GetController(Common.MODELS.ProfileEntitlement).Read<ProfileEntitlementModel>()
                select row).ToList();
         }
 
@@ -71,7 +71,7 @@ namespace MVCHIS.Security.Users {
         private void ProfileNameTextBoxTextChanged(object sender, EventArgs e) {
             this.lstEntitlements.Items.Clear();
             this.lstEntitlements.Items.AddRange((
-                from ProfileEntitlementsModel model in profileEntitlements
+                from ProfileEntitlementModel model in profileEntitlements
                 where model.ProfileName.Equals(txtProfileName.Text)
                 orderby model.EntitlementName
                 select model.EntitlementName

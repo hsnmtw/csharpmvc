@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace MVCHIS.Security {
     //[ForModel(MODELS.ProfileEntitlement, Enabled = true)]
-    public class ProfileEntitlementsController : AbstractDBController {
+    public class ProfileEntitlementController : AbstractDBController {
 
-        public ProfileEntitlementsController() : base(DBEntitiesFactory.GetEntity(MODELS.ProfileEntitlement)) { }
+        public ProfileEntitlementController() : base(DBEntitiesFactory.GetEntity(MODELS.ProfileEntitlement)) { }
 
         public override bool Validate<M>(M model) {
             return base.Validate(model);
@@ -18,21 +18,23 @@ namespace MVCHIS.Security {
             var ps = DBControllersFactory.GetController(Common.MODELS.Profile).Read<ProfileModel>();
             foreach(ProfileModel p in ps) {
                 foreach(EntitlementModel e in es) {
-                    Save(new ProfileEntitlementsModel() {
+                    Save(new ProfileEntitlementModel() {
                         ProfileName=p.ProfileName,
                         EntitlementName=e.EntitlementName,
-                        AllowRead=true
+                        AllowRead=true,
+                        AllowUpdate=true,
+                        AllowCreate=true,
                     });
                 }
             }
         }
 
         public void ChangePermissions(string profile,string entitlement,bool create, bool read,bool update,bool delete) {
-            var pes = Read(new ProfileEntitlementsModel() {
+            var pes = Read(new ProfileEntitlementModel() {
                 ProfileName = profile,
                 EntitlementName = entitlement
             }, false, "ProfileName", "EntitlementName" );
-            foreach (ProfileEntitlementsModel pe in pes) {
+            foreach (ProfileEntitlementModel pe in pes) {
                 pe.AllowCreate = create  ; 
                 pe.AllowRead   = read    ; 
                 pe.AllowUpdate = update  ; 

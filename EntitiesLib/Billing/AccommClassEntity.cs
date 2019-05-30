@@ -11,9 +11,11 @@ namespace MVCHIS.Billing {
             , UniqueKeyFields  = new List<string> { "AccommClassCode" }
             , ForeignKeys      = new Dictionary<string, System.Tuple<string, string>> {
             }
-            , GetSizes = new Dictionary<string, int> { ["CreatedBy"] = 50, ["UpdatedBy"] = 50,
-                   ["AccommClassCode"] = 50,
-                   ["AccommClassDesc"] = 100,
+            , GetSizes = new Dictionary<string, int> {
+                ["CreatedBy"] = 50,
+                ["UpdatedBy"] = 50,
+                ["AccommClassCode"] = 50,
+                ["AccommClassDesc"] = 100,
 
             }
             , Source           = "BillingAccommClass"

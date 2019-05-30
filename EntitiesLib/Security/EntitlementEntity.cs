@@ -12,10 +12,12 @@ namespace MVCHIS.Security {
             , UniqueKeyFields = new List<string> { "EntitlementName" }
             , ForeignKeys     = new Dictionary<string, System.Tuple<string, string>> {
             }
-            , GetSizes = new Dictionary<string, int> { ["CreatedBy"] = 50, ["UpdatedBy"] = 50,
-                ["EntitlementName"] = 50,
+            , GetSizes = new Dictionary<string, int> {
+                ["CreatedBy"           ] = 50,
+                ["UpdatedBy"           ] = 50,
+                ["EntitlementName"     ] = 50,
                 ["EntitlementGroupName"] = 50,
-                ["EntityName"] = 50
+                ["EntityName"          ] = 50
             }
             , Source = "SecurityEntitlement"
             

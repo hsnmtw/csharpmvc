@@ -2,11 +2,11 @@
 
 namespace MVCHIS.Billing {
     public class BillingCategoryModel : BaseModel {
-        public string BillingCategory      { get; set; }
-        public string BillingCategoryDesc  { get; set; }
-        public string AccommClass           { get; set; }
-        public string FoodClass            { get; set; }
-        public string FoodType             { get; set; }
-        public bool   ReservationOnly      { get; set; }
+        public string BillingCategoryCode { get; set; }
+        public string BillingCategoryDesc { get; set; }
+        public int   AccommClassId        { get; set; }
+        public int   FoodClassId          { get; set; }
+        public int   FoodTypeId           { get; set; }
+        public bool  ReservationOnly      { get; set; }
     }
 }

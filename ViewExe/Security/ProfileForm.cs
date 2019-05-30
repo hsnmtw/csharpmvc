@@ -49,8 +49,8 @@ namespace MVCHIS.Security {
                 filter = new List<string>();
             }
             this.lstEntitlements.Items.AddRange((
-                    from ProfileEntitlementsModel row
-                      in Controllers["pe"].Read(new ProfileEntitlementsModel() { ProfileName= Model.ProfileName }, "ProfileName" )
+                    from ProfileEntitlementModel row
+                      in Controllers["pe"].Read(new ProfileEntitlementModel() { ProfileName= Model.ProfileName }, "ProfileName" )
                    where filter.Contains(row.EntitlementName)
                  orderby row.EntitlementName
                   select $"{(row.AllowCreate?C:E)}{(row.AllowRead?R:E)}{(row.AllowUpdate?U:E)}{(row.AllowDelete?D:E)}  {row.EntitlementName}"
@@ -86,11 +86,11 @@ namespace MVCHIS.Security {
 
         private void BtnInitializeEntitlements_Click(object sender, EventArgs e) {
             //remove all existing records for this profile
-            foreach (ProfileEntitlementsModel row in Controllers["pe"].Read(new ProfileEntitlementsModel() { ProfileName=Model.ProfileName },"ProfileName")) {
+            foreach (ProfileEntitlementModel row in Controllers["pe"].Read(new ProfileEntitlementModel() { ProfileName=Model.ProfileName },"ProfileName")) {
                 Controllers["pe"].Delete(row);
             }
             foreach(var row in Controllers["e"].Read<EntitlementModel>()) {
-                Controllers["pe"].Save(new ProfileEntitlementsModel() {
+                Controllers["pe"].Save(new ProfileEntitlementModel() {
                     ProfileName = Model.ProfileName,
                     EntitlementName = row.EntitlementName,
                     AllowRead = row.EntitlementGroupName.Equals("Security") == false
@@ -104,7 +104,7 @@ namespace MVCHIS.Security {
             string profile = this.txtProfileName.Text;
             string entitlement = $"{this.lstEntitlements.Items[this.lstEntitlements.SelectedIndex]}".Substring(6).Trim();
             var pef = new ProfileEntitlementForm();
-            var pem = (ProfileEntitlementsModel)pef.Controller.Find(new ProfileEntitlementsModel() {
+            var pem = (ProfileEntitlementModel)pef.Controller.Find(new ProfileEntitlementModel() {
                 ProfileName = profile,
                 EntitlementName = entitlement
             }, "ProfileName", "EntitlementName" );
@@ -123,7 +123,7 @@ namespace MVCHIS.Security {
             if (this.lstEntitlements.SelectedIndex < 0) return;
             string profile = this.txtProfileName.Text;
             string entitlement = $"{this.lstEntitlements.Items[this.lstEntitlements.SelectedIndex]}".Substring(6).Trim();
-            ((ProfileEntitlementsController)Controllers["pe"]).ChangePermissions(profile, entitlement, true, true, true, true);
+            ((ProfileEntitlementController)Controllers["pe"]).ChangePermissions(profile, entitlement, true, true, true, true);
             this.lstEntitlements.Items[this.lstEntitlements.SelectedIndex] = $"{C}{R}{U}{D}  {entitlement}";
             //Utils.FormsHelper.Success("All entitlements were allowed");
             MainView.Instance.setProgress("All entitlements were allowed", 100);
@@ -133,7 +133,7 @@ namespace MVCHIS.Security {
             if (this.lstEntitlements.SelectedIndex < 0) return;
             string profile = this.txtProfileName.Text;
             string entitlement = $"{this.lstEntitlements.Items[this.lstEntitlements.SelectedIndex]}".Substring(6).Trim();
-            ((ProfileEntitlementsController)Controllers["pe"]).ChangePermissions(profile, entitlement, false, false, false, false);
+            ((ProfileEntitlementController)Controllers["pe"]).ChangePermissions(profile, entitlement, false, false, false, false);
             this.lstEntitlements.Items[this.lstEntitlements.SelectedIndex] = $"{E}{E}{E}{E}  {entitlement}";
             //Utils.FormsHelper.Success("All entitlements were un-allowed");
             MainView.Instance.setProgress("All entitlements were un-allowed", 100);

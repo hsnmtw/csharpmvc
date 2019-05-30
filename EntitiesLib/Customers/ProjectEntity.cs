@@ -12,8 +12,10 @@ namespace MVCHIS.Customers {
             , ForeignKeys      = new Dictionary<string, System.Tuple<string, string>> {
                 ["ClientId"]   = new System.Tuple<string, string>(DBEntitiesFactory.GetEntity(MODELS.Client).MetaData.Source,"Id")
             }
-            , GetSizes = new Dictionary<string, int> { ["CreatedBy"] = 50, ["UpdatedBy"] = 50,
-                 ["ProjectName"     ] = 50
+            , GetSizes = new Dictionary<string, int> {
+                  ["CreatedBy"  ] = 50
+                , ["UpdatedBy"  ] = 50
+                , ["ProjectName"] = 50
             }
             , Source           = "CustomersProject"
             
