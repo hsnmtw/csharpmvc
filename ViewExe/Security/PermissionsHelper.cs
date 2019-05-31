@@ -37,7 +37,7 @@ namespace MVCHIS.Security {
                 FormsHelper.Error($"You don't have enough permissions to open {view}.");
                 view.GotFocus += (x, y) => {
                     view.Enabled = false;
-                    view.BeginInvoke(new MethodInvoker(view.Close));
+                    view.BeginInvoke(new MethodInvoker(view.Hide));
                 };
             }
             

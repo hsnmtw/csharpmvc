@@ -40,5 +40,5 @@ namespace MVCHIS.Housing.BuildingTypes {
 
         }
     }
-    public class BuildingTypeView : BaseView<BuildingTypeModel, BuildingTypeController> { }
+    
 }

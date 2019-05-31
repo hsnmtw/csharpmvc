@@ -14,14 +14,14 @@ using System.Windows.Forms;
 
 namespace MVCHIS.Common {
 
-    public class BaseView<M,C> : UserControl, IView where M:BaseModel where C:IDBController {
+    public class BaseBinder<M> : IBinder<M>  {
 
         public Action AfterSave { get; set; }
-        public virtual C Controller { get; set; } 
+        public virtual IDBController Controller { get; set; } 
         private M model;
         public virtual M Model {
             get {
-                if (model == null) { model = Activator.CreateInstance<M>(); }
+                if (model == null) { model = Controller.NewModel<M>(); }
                 foreach (var x in Mapper.Keys) {
                     string text = Mapper[x].Text;
                     Mapper[x].Text = text.Trim();
@@ -35,7 +35,7 @@ namespace MVCHIS.Common {
                 return model;
             }
             set {
-                if (value == null) { model = Activator.CreateInstance<M>(); } else { model = value; }
+                if (value == null) { model = Controller.NewModel<M>(); } else { model = value; }
                 foreach (var x in Mapper.Keys) {
                     if (isBoolean(x)) {
                         ((CheckBox)Mapper[x]).Checked = Convert.ToBoolean(Prop(x).GetValue(model));
@@ -58,6 +58,7 @@ namespace MVCHIS.Common {
         private readonly Func<string, bool> isDouble,isInt32,isInt64,isBoolean,isDateTime;
         private readonly Func<string, PropertyInfo> Prop;
 
+        public Control DefaultControl { get; set; }
         
         public Dictionary<string, Control> Mapper { get; set; }
         public Dictionary<string, IDBController> Controllers { get; set; }
@@ -67,14 +68,12 @@ namespace MVCHIS.Common {
 
         public bool   SaveButtonEnabled { get; set; }
         public bool    NewButtonEnabled { get; set; }
+
         public bool DeleteButtonEnabled { get; set; }
 
         public Action ModelChanged { get; set; }
 
-        public BaseView() : base() {
-            Name = GetType().Name;
-            if (DesignMode||(Site!=null && Site.DesignMode)) return;;
-            //MdiParent = MainView.Instance;
+        public BaseBinder() : base() {
             Controllers = new Dictionary<string, IDBController>();
             Mapper = new Dictionary<string, Control>();
             Prop = new Func<string, PropertyInfo>(x => typeof(M).GetProperty(x));
@@ -88,17 +87,30 @@ namespace MVCHIS.Common {
             isDouble   = new Func<string, bool>(x => Prop(x).PropertyType == typeof(double)
                                                   || Prop(x).PropertyType == typeof(Double));
 
-            Load += (s, e) => {
-                if (DesignMode || (Site != null && Site.DesignMode)) return; 
-                new PermissionsHelper<M, C>(this);
+            //Load += (s, e) => {
+            //    if (DesignMode || (Site != null && Site.DesignMode)) return; 
+                new PermissionsHelper<M>(this);
+                foreach(var control in Mapper.Values.OrderBy(x => x.TabIndex)) {
+                    if (DefaultControl == null && control.TabStop) DefaultControl = control;
+                    control.KeyDown += delegate (object sender, KeyEventArgs ea) {
+                        if (ea.KeyCode == Keys.Enter) {
+                            ea.SuppressKeyPress = true;
+                            ea.Handled = true;
+                            SendKeys.Send("\t");
+                        }
+                    };
+                }
+                DefaultControl?.Focus();
                 if (SaveButton != null) {
                     SaveButton.Enabled = SaveButtonEnabled;
                     SaveButton.Click += (bs, be) => {
-                        //try {
+                        try {
                             Controller.Save(Model);
                             Model = Controller.Find(Model, Controller.GetMetaData().UniqueKeyFields.ToArray());
                             AfterSave?.Invoke();
-                        try{}catch(Exception ex) {
+                            DefaultControl.Focus();
+                            DefaultControl.Select();
+                        }catch(Exception ex) {
                             FormsHelper.Error(ex.Message);
                         }
                     };
@@ -111,26 +123,15 @@ namespace MVCHIS.Common {
                     NewButton.Enabled = NewButtonEnabled;
                     NewButton.Click += (bs, be) => { Model = Controller.NewModel<M>(); };
                 }
-                var controls = (from cntrl in Mapper.Values orderby cntrl.TabIndex where cntrl.TabStop select cntrl);
-                foreach(var cntrl in controls) {
-                    cntrl.KeyDown += (se, ee) => {
-                        if(ee.KeyCode == Keys.Enter) {
-                            ee.Handled = true;
-                            ee.SuppressKeyPress = true;
-                            SendKeys.Send("\t");
-                        }
-                    };
-                }
-                controls.FirstOrDefault()?.Focus();
-            };
+            //};
 
         }
 
-        public void ValidateDate(TextBoxBase textbox) {
-            if (DateTime.TryParse(textbox.Text, out DateTime date)) {
-                textbox.Text = date.ToString(FormsHelper.DATE_FORMAT);
+        public string ValidateDate(string text) {
+            if (DateTime.TryParse(text, out DateTime date)) {
+                return date.ToString(FormsHelper.DATE_FORMAT);
             } else {
-                textbox.Text = "";
+                return "";
             }
         }
 

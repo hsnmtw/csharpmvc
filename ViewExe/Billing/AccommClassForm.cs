@@ -37,5 +37,5 @@ namespace MVCHIS.Billing {
             
         }
     }
-    public class AccommClassView : BaseView<AccommClassModel, AccommClassController> { }
+    
 }

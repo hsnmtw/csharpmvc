@@ -36,7 +36,7 @@ namespace MVCHIS.Common {
             if (!isInitialized) init();
             lookup = new Common.LookUpForm(this.controller.GetData<BaseModel>(), this.ShowFieldsInLookUp.ToArray());
             lookup.SelectedValueIndex = this.SelectedValueIndex;
-            lookup.MdiParent = MainView.Instance;
+            
             lookup.FormClosed += (s, ee) => {
                 ValueFromLookup = lookup.SelectedValue;
                 if (this.controlValu != null) {

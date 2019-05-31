@@ -44,7 +44,7 @@ namespace MVCHIS.Billing {
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
             string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            Model = Controller.Find(new BillingCategoryModel() { BillingCategoryCode = selected }, "BillingCategory");
+            Model = Controller.Find(new BillingCategoryModel() { BillingCategoryCode = selected }, "BillingCategoryCode");
 
         }
 
@@ -70,5 +70,5 @@ namespace MVCHIS.Billing {
             txtFoodTypeCode.Text = ftmodel?.FoodTypeCode;
         }
     }
-    public class BillingCategoryView : BaseView<BillingCategoryModel, BillingCategoryController> { }
+    
 }

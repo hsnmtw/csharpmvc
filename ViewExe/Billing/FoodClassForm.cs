@@ -39,5 +39,5 @@ namespace MVCHIS.Billing {
            
         }
     }
-    public class FoodClassView : BaseView<FoodClassModel, FoodClassController> { }
+   
 }

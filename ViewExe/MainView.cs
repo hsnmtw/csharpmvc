@@ -86,10 +86,8 @@ namespace MVCHIS {
                     ce.Click += (s, ea) => {
                         if (s == null || !typeof(ToolStripMenuItem).Equals(s.GetType()) || ((ToolStripMenuItem)s).Tag == null || ((ToolStripMenuItem)s).Tag.ToString().Equals("")) return;;
                         if (Enum.TryParse<MODELS>(((ToolStripMenuItem)s).Tag.ToString(), out MODELS num)) {
-                            var view = ((Form)DBViewsFactory.GetView(num));
-                            view.MdiParent = this;
-                            
-                            view.Show();
+                            Control view = (Control)DBViewsFactory.GetView(num);
+                            ShowView(view);
                             FormsHelper.ApplyLanguageLocalization(view);
                         } else {
                             FormsHelper.Error("Not implemented");
@@ -99,7 +97,7 @@ namespace MVCHIS {
             }
 
             foreach (ToolStripMenuItem mi in this.menuStrip1.Items) {
-                if (mi.Text.Contains("File") || mi.Text.Contains("Window") || mi.Text.Contains("Developer")) continue;
+                if (new string[] { "File","Edit","Developer" }.Contains(mi.Text)) continue;
                 foreach (var mii in mi.DropDownItems) {
                     if (mii.GetType().Equals(typeof(ToolStripMenuItem))) {
                         var tsmi = ((ToolStripMenuItem)mii);
@@ -118,12 +116,13 @@ namespace MVCHIS {
             //LogInToolStripMenuItemClick(sender, e);
             tsProgressBar.Value = 100;
 
-            var login = new UsersLoginView() { MdiParent = this };
-            login.Show();
-            //login.Model = new UserModel() { UserName = "Admin", UserPassword = "123" };
-            tsProgressBar.Value = 0;
+            ShowView(new UsersLoginView() { Dock = DockStyle.Top });
         }
 
+        public void ShowView(Control view) {
+            panel1.Controls.Clear();
+            panel1.Controls.Add(view);
+        }
 
         private void ExitToolStripMenuItemClick(object sender, EventArgs e)
         {
@@ -149,9 +148,7 @@ namespace MVCHIS {
         }
 
         private void SQLViewerToolStripMenuItemClick(object sender, EventArgs e) {
-            var sqlview = new Utils.SQLView() {
-                MdiParent = this
-            };
+            var sqlview = new Utils.SQLView();
             //sqlview.WindowState = FormWindowState.Maximized;
             sqlview.Size = new Size(sqlview.Width + 20, sqlview.Height + 120);
             sqlview.Show();
@@ -169,7 +166,7 @@ namespace MVCHIS {
             }
             var userPasswordResetView = new Security.Users.UserPasswordResetView();
             userPasswordResetView.Model = (Session.Instance.CurrentUser);
-            userPasswordResetView.ShowDialog();
+            userPasswordResetView.Show();
         }
 
         private void CloseAllToolStripMenuItemClick(object sender, EventArgs e) {

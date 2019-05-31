@@ -81,6 +81,7 @@
     </Compile>
     <Compile Include="Common\DBViewsFactory.cs" />
     <Compile Include="Common\IView.cs" />
+    <Compile Include="Common\ViewsBinding.cs" />
     <Compile Include="Configurations\ControllersSelectionForm.cs">
       <SubType>Form</SubType>
     </Compile>

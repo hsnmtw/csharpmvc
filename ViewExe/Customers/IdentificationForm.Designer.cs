@@ -44,20 +44,20 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.txtExpiryDate = new System.Windows.Forms.TextBox();
-            this.txtIdType = new System.Windows.Forms.TextBox();
+            this.txtIdTypeId = new System.Windows.Forms.TextBox();
             this.lookUpButtonIdentificationType = new MVCHIS.Common.LookUpButton();
             this.lookUpButtonCountryOfIssue = new MVCHIS.Common.LookUpButton();
-            this.txtIssuingCountry = new System.Windows.Forms.TextBox();
+            this.txtCountryId = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.btnIssueDateCalendar = new System.Windows.Forms.Button();
             this.txtIssueDate = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.chkIsActive = new System.Windows.Forms.CheckBox();
-            this.lblIdTypeEnglish = new System.Windows.Forms.Label();
             this.lblIssueDateHG = new System.Windows.Forms.Label();
             this.lblExpiryDateHG = new System.Windows.Forms.Label();
-            this.lblIssuingCountryEnglish = new System.Windows.Forms.Label();
+            this.txtCountryEnglish = new System.Windows.Forms.TextBox();
+            this.txtIdTypeEnglish = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnDelete
@@ -269,28 +269,29 @@
             this.txtExpiryDate.Tag = "yyyy-MM-dd";
             this.txtExpiryDate.Leave += new System.EventHandler(this.TxtExpiryDate_Leave);
             // 
-            // txtIdType
+            // txtIdTypeId
             // 
-            this.txtIdType.BackColor = System.Drawing.Color.White;
-            this.txtIdType.Location = new System.Drawing.Point(159, 77);
-            this.txtIdType.Name = "txtIdType";
-            this.txtIdType.ReadOnly = true;
-            this.txtIdType.Size = new System.Drawing.Size(55, 20);
-            this.txtIdType.TabIndex = 3;
-            this.txtIdType.Tag = "PhoneNumber";
-            this.txtIdType.TextChanged += new System.EventHandler(this.TxtIdType_TextChanged);
+            this.txtIdTypeId.BackColor = System.Drawing.Color.White;
+            this.txtIdTypeId.Location = new System.Drawing.Point(159, 77);
+            this.txtIdTypeId.Name = "txtIdTypeId";
+            this.txtIdTypeId.ReadOnly = true;
+            this.txtIdTypeId.Size = new System.Drawing.Size(36, 20);
+            this.txtIdTypeId.TabIndex = 3;
+            this.txtIdTypeId.Tag = "PhoneNumber";
+            this.txtIdTypeId.TextChanged += new System.EventHandler(this.TxtIdType_TextChanged);
             // 
             // lookUpButtonIdentificationType
             // 
-            this.lookUpButtonIdentificationType.AssociatedControl = "txtIdType";
+            this.lookUpButtonIdentificationType.AssociatedControl = "txtIdTypeId";
             this.lookUpButtonIdentificationType.Controller = "IdentificationType";
             this.lookUpButtonIdentificationType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonIdentificationType.Location = new System.Drawing.Point(217, 76);
+            this.lookUpButtonIdentificationType.Location = new System.Drawing.Point(198, 76);
             this.lookUpButtonIdentificationType.Name = "lookUpButtonIdentificationType";
-            this.lookUpButtonIdentificationType.SelectedValueIndex = 0;
+            this.lookUpButtonIdentificationType.SelectedValueIndex = 3;
             this.lookUpButtonIdentificationType.ShowFieldsInLookUp.Add("IdTypeCode");
             this.lookUpButtonIdentificationType.ShowFieldsInLookUp.Add("IdTypeEnglish");
             this.lookUpButtonIdentificationType.ShowFieldsInLookUp.Add("IdTypeArabic");
+            this.lookUpButtonIdentificationType.ShowFieldsInLookUp.Add("Id");
             this.lookUpButtonIdentificationType.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonIdentificationType.TabIndex = 4;
             this.lookUpButtonIdentificationType.TabStop = false;
@@ -298,30 +299,31 @@
             // 
             // lookUpButtonCountryOfIssue
             // 
-            this.lookUpButtonCountryOfIssue.AssociatedControl = "txtIssuingCountry";
+            this.lookUpButtonCountryOfIssue.AssociatedControl = "txtCountryId";
             this.lookUpButtonCountryOfIssue.Controller = "Country";
             this.lookUpButtonCountryOfIssue.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonCountryOfIssue.Location = new System.Drawing.Point(217, 155);
+            this.lookUpButtonCountryOfIssue.Location = new System.Drawing.Point(198, 155);
             this.lookUpButtonCountryOfIssue.Name = "lookUpButtonCountryOfIssue";
-            this.lookUpButtonCountryOfIssue.SelectedValueIndex = 0;
+            this.lookUpButtonCountryOfIssue.SelectedValueIndex = 3;
             this.lookUpButtonCountryOfIssue.ShowFieldsInLookUp.Add("CountryCode");
             this.lookUpButtonCountryOfIssue.ShowFieldsInLookUp.Add("CountryEnglish");
             this.lookUpButtonCountryOfIssue.ShowFieldsInLookUp.Add("CountryArabic");
+            this.lookUpButtonCountryOfIssue.ShowFieldsInLookUp.Add("Id");
             this.lookUpButtonCountryOfIssue.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonCountryOfIssue.TabIndex = 13;
             this.lookUpButtonCountryOfIssue.TabStop = false;
             this.lookUpButtonCountryOfIssue.Tag = "lblIssuingCountryEnglish";
             // 
-            // txtIssuingCountry
+            // txtCountryId
             // 
-            this.txtIssuingCountry.BackColor = System.Drawing.Color.White;
-            this.txtIssuingCountry.Location = new System.Drawing.Point(159, 156);
-            this.txtIssuingCountry.Name = "txtIssuingCountry";
-            this.txtIssuingCountry.ReadOnly = true;
-            this.txtIssuingCountry.Size = new System.Drawing.Size(55, 20);
-            this.txtIssuingCountry.TabIndex = 12;
-            this.txtIssuingCountry.Tag = "PhoneNumber";
-            this.txtIssuingCountry.TextChanged += new System.EventHandler(this.TxtIssuingCountry_TextChanged);
+            this.txtCountryId.BackColor = System.Drawing.Color.White;
+            this.txtCountryId.Location = new System.Drawing.Point(159, 156);
+            this.txtCountryId.Name = "txtCountryId";
+            this.txtCountryId.ReadOnly = true;
+            this.txtCountryId.Size = new System.Drawing.Size(36, 20);
+            this.txtCountryId.TabIndex = 12;
+            this.txtCountryId.Tag = "PhoneNumber";
+            this.txtCountryId.TextChanged += new System.EventHandler(this.TxtIssuingCountry_TextChanged);
             // 
             // label23
             // 
@@ -383,15 +385,6 @@
             this.chkIsActive.Tag = "ReadOnly";
             this.chkIsActive.UseVisualStyleBackColor = true;
             // 
-            // lblIdTypeEnglish
-            // 
-            this.lblIdTypeEnglish.AutoSize = true;
-            this.lblIdTypeEnglish.Location = new System.Drawing.Point(243, 81);
-            this.lblIdTypeEnglish.Name = "lblIdTypeEnglish";
-            this.lblIdTypeEnglish.Size = new System.Drawing.Size(11, 13);
-            this.lblIdTypeEnglish.TabIndex = 51;
-            this.lblIdTypeEnglish.Text = "-";
-            // 
             // lblIssueDateHG
             // 
             this.lblIssueDateHG.AutoSize = true;
@@ -410,28 +403,38 @@
             this.lblExpiryDateHG.TabIndex = 51;
             this.lblExpiryDateHG.Text = "-";
             // 
-            // lblIssuingCountryEnglish
+            // txtCountryEnglish
             // 
-            this.lblIssuingCountryEnglish.AutoSize = true;
-            this.lblIssuingCountryEnglish.Location = new System.Drawing.Point(242, 159);
-            this.lblIssuingCountryEnglish.Name = "lblIssuingCountryEnglish";
-            this.lblIssuingCountryEnglish.Size = new System.Drawing.Size(11, 13);
-            this.lblIssuingCountryEnglish.TabIndex = 51;
-            this.lblIssuingCountryEnglish.Text = "-";
+            this.txtCountryEnglish.BackColor = System.Drawing.SystemColors.Control;
+            this.txtCountryEnglish.Location = new System.Drawing.Point(224, 156);
+            this.txtCountryEnglish.Name = "txtCountryEnglish";
+            this.txtCountryEnglish.ReadOnly = true;
+            this.txtCountryEnglish.Size = new System.Drawing.Size(146, 20);
+            this.txtCountryEnglish.TabIndex = 53;
+            this.txtCountryEnglish.TabStop = false;
+            // 
+            // txtIdTypeEnglish
+            // 
+            this.txtIdTypeEnglish.BackColor = System.Drawing.SystemColors.Control;
+            this.txtIdTypeEnglish.Location = new System.Drawing.Point(223, 77);
+            this.txtIdTypeEnglish.Name = "txtIdTypeEnglish";
+            this.txtIdTypeEnglish.ReadOnly = true;
+            this.txtIdTypeEnglish.Size = new System.Drawing.Size(147, 20);
+            this.txtIdTypeEnglish.TabIndex = 52;
+            this.txtIdTypeEnglish.TabStop = false;
             // 
             // IdentificationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(481, 343);
-            this.Controls.Add(this.lblIssuingCountryEnglish);
+            this.Controls.Add(this.txtCountryEnglish);
+            this.Controls.Add(this.txtIdTypeEnglish);
             this.Controls.Add(this.lblExpiryDateHG);
             this.Controls.Add(this.lblIssueDateHG);
-            this.Controls.Add(this.lblIdTypeEnglish);
             this.Controls.Add(this.btnIssueDateCalendar);
             this.Controls.Add(this.btnExpiryDate);
-            this.Controls.Add(this.txtIdType);
-            this.Controls.Add(this.txtIssuingCountry);
+            this.Controls.Add(this.txtIdTypeId);
+            this.Controls.Add(this.txtCountryId);
             this.Controls.Add(this.chkIsActive);
             this.Controls.Add(this.txtIssueDate);
             this.Controls.Add(this.chkReadOnly);
@@ -460,7 +463,7 @@
             this.Controls.Add(this.lookUpButtonShortName);
             this.Controls.Add(this.txtId);
             this.Name = "IdentificationForm";
-            this.Text = "Identification";
+            this.Size = new System.Drawing.Size(481, 343);
             this.Load += new System.EventHandler(this.ClientTypeFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -487,21 +490,21 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtExpiryDate;
-        private System.Windows.Forms.TextBox txtIdType;
+        private System.Windows.Forms.TextBox txtIdTypeId;
         private System.Windows.Forms.TextBox txtIdNumber;
         private Common.LookUpButton lookUpButtonIdentificationType;
         private System.Windows.Forms.Button btnExpiryDate;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox txtIssuingCountry;
+        private System.Windows.Forms.TextBox txtCountryId;
         private Common.LookUpButton lookUpButtonCountryOfIssue;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.CheckBox chkIsActive;
         private System.Windows.Forms.Button btnIssueDateCalendar;
         private System.Windows.Forms.TextBox txtIssueDate;
         private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label lblIdTypeEnglish;
         private System.Windows.Forms.Label lblIssueDateHG;
         private System.Windows.Forms.Label lblExpiryDateHG;
-        private System.Windows.Forms.Label lblIssuingCountryEnglish;
+        private System.Windows.Forms.TextBox txtCountryEnglish;
+        private System.Windows.Forms.TextBox txtIdTypeEnglish;
     }
 }

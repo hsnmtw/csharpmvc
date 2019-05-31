@@ -55,5 +55,5 @@ namespace MVCHIS.Housing.Buildings {
             txtCompoundName.Text = Controllers["c"].Find(new CompoundModel() { Id = id }, "Id")?.CompoundName;
         }
     }
-    public class BuildingView : BaseView<BuildingModel, BuildingController> { }
+    
 }

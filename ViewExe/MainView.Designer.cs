@@ -27,7 +27,6 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent(){
-   
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsslCurrentUser = new System.Windows.Forms.ToolStripStatusLabel();
@@ -63,6 +62,7 @@
             this.dateConversionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -293,13 +293,18 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
             // 
+            // panel1
+            // 
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            // 
             // MainView
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
-            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainView";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainViewFormClosing);
@@ -349,6 +354,7 @@
         private System.Windows.Forms.ToolStripMenuItem ArabicToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem initializeToolStripMenuItem;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

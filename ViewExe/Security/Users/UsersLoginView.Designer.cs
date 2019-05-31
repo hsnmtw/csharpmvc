@@ -27,7 +27,6 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent(){
-        
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsersLoginView));
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
@@ -40,8 +39,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.UserNameLookup = new MVCHIS.Common.LookUpButton();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.rdoArabic = new System.Windows.Forms.RadioButton();
-            this.rdoEnglish = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -94,7 +91,6 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.Window;
-            //this.pictureBox1.Image = global::ViewWinform.Properties.Resources.icons8_web_design_64;
             resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
@@ -102,7 +98,6 @@
             // UserNameLookup
             // 
             this.UserNameLookup.AssociatedControl = "txtUserName";
-            this.UserNameLookup.Tag = null;
             this.UserNameLookup.Controller = "User";
             resources.ApplyResources(this.UserNameLookup, "UserNameLookup");
             this.UserNameLookup.Name = "UserNameLookup";
@@ -117,28 +112,10 @@
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.TabStop = false;
             // 
-            // rdoArabic
-            // 
-            resources.ApplyResources(this.rdoArabic, "rdoArabic");
-            this.rdoArabic.Name = "rdoArabic";
-            this.rdoArabic.UseVisualStyleBackColor = true;
-            this.rdoArabic.CheckedChanged += new System.EventHandler(this.RdoArabic_CheckedChanged);
-            // 
-            // rdoEnglish
-            // 
-            resources.ApplyResources(this.rdoEnglish, "rdoEnglish");
-            this.rdoEnglish.Checked = true;
-            this.rdoEnglish.Name = "rdoEnglish";
-            this.rdoEnglish.TabStop = true;
-            this.rdoEnglish.UseVisualStyleBackColor = true;
-            this.rdoEnglish.CheckedChanged += new System.EventHandler(this.RdoEnglish_CheckedChanged);
-            // 
             // UsersLoginView
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.rdoEnglish);
-            this.Controls.Add(this.rdoArabic);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -150,9 +127,6 @@
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "UsersLoginView";
             this.Load += new System.EventHandler(this.UsersLoginView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -175,7 +149,5 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.RadioButton rdoArabic;
-        private System.Windows.Forms.RadioButton rdoEnglish;
     }
 }

@@ -39,5 +39,5 @@ namespace MVCHIS.Customers {
         private void ContactFormLoad(object sender, EventArgs e) {
         }
     }
-    public class ContactView : BaseView<ContactModel, ContactController> { }
+    
 }

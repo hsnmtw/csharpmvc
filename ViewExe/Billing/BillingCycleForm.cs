@@ -42,5 +42,5 @@ namespace MVCHIS.Billing {
             
         }
     }
-    public class BillingCycleView : BaseView<BillingCycleModel, BillingCycleController> { }
+    
 }

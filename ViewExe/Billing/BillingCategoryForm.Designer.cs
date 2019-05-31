@@ -65,7 +65,7 @@
             this.btnDelete.Location = new System.Drawing.Point(168, 288);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 17;
+            this.btnDelete.TabIndex = 24;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
@@ -74,7 +74,7 @@
             this.btnSave.Location = new System.Drawing.Point(276, 288);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 15;
+            this.btnSave.TabIndex = 22;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             // 
@@ -83,7 +83,7 @@
             this.btnNew.Location = new System.Drawing.Point(384, 288);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 23);
-            this.btnNew.TabIndex = 16;
+            this.btnNew.TabIndex = 23;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = true;
             // 
@@ -94,7 +94,7 @@
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
             this.txtUpdatedOn.Size = new System.Drawing.Size(137, 20);
-            this.txtUpdatedOn.TabIndex = 14;
+            this.txtUpdatedOn.TabIndex = 20;
             this.txtUpdatedOn.TabStop = false;
             // 
             // txtUpdatedBy
@@ -104,7 +104,7 @@
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
             this.txtUpdatedBy.Size = new System.Drawing.Size(69, 20);
-            this.txtUpdatedBy.TabIndex = 13;
+            this.txtUpdatedBy.TabIndex = 19;
             this.txtUpdatedBy.TabStop = false;
             // 
             // label6
@@ -123,7 +123,7 @@
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
             this.txtCreatedOn.Size = new System.Drawing.Size(137, 20);
-            this.txtCreatedOn.TabIndex = 12;
+            this.txtCreatedOn.TabIndex = 18;
             this.txtCreatedOn.TabStop = false;
             // 
             // txtCreatedBy
@@ -133,7 +133,7 @@
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
             this.txtCreatedBy.Size = new System.Drawing.Size(69, 20);
-            this.txtCreatedBy.TabIndex = 11;
+            this.txtCreatedBy.TabIndex = 17;
             this.txtCreatedBy.TabStop = false;
             // 
             // label5
@@ -203,7 +203,7 @@
             this.chkReadOnly.Location = new System.Drawing.Point(140, 261);
             this.chkReadOnly.Name = "chkReadOnly";
             this.chkReadOnly.Size = new System.Drawing.Size(15, 14);
-            this.chkReadOnly.TabIndex = 10;
+            this.chkReadOnly.TabIndex = 21;
             this.chkReadOnly.UseVisualStyleBackColor = true;
             // 
             // chkReservationOnly
@@ -212,7 +212,7 @@
             this.chkReservationOnly.Location = new System.Drawing.Point(140, 179);
             this.chkReservationOnly.Name = "chkReservationOnly";
             this.chkReservationOnly.Size = new System.Drawing.Size(15, 14);
-            this.chkReservationOnly.TabIndex = 10;
+            this.chkReservationOnly.TabIndex = 16;
             this.chkReservationOnly.UseVisualStyleBackColor = true;
             // 
             // lookUpButtonFoodType
@@ -220,14 +220,14 @@
             this.lookUpButtonFoodType.AssociatedControl = "txtFoodTypeId";
             this.lookUpButtonFoodType.Controller = "FoodType";
             this.lookUpButtonFoodType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonFoodType.Location = new System.Drawing.Point(188, 149);
+            this.lookUpButtonFoodType.Location = new System.Drawing.Point(189, 150);
             this.lookUpButtonFoodType.Name = "lookUpButtonFoodType";
             this.lookUpButtonFoodType.SelectedValueIndex = 2;
             this.lookUpButtonFoodType.ShowFieldsInLookUp.Add("FoodTypeCode");
             this.lookUpButtonFoodType.ShowFieldsInLookUp.Add("FoodTypeDesc");
             this.lookUpButtonFoodType.ShowFieldsInLookUp.Add("Id");
             this.lookUpButtonFoodType.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonFoodType.TabIndex = 9;
+            this.lookUpButtonFoodType.TabIndex = 13;
             this.lookUpButtonFoodType.TabStop = false;
             // 
             // lookUpButtonFood
@@ -235,14 +235,14 @@
             this.lookUpButtonFood.AssociatedControl = "txtFoodClassId";
             this.lookUpButtonFood.Controller = "FoodClass";
             this.lookUpButtonFood.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonFood.Location = new System.Drawing.Point(188, 122);
+            this.lookUpButtonFood.Location = new System.Drawing.Point(189, 123);
             this.lookUpButtonFood.Name = "lookUpButtonFood";
             this.lookUpButtonFood.SelectedValueIndex = 2;
             this.lookUpButtonFood.ShowFieldsInLookUp.Add("FoodClassCode");
             this.lookUpButtonFood.ShowFieldsInLookUp.Add("FoodClassDesc");
             this.lookUpButtonFood.ShowFieldsInLookUp.Add("Id");
             this.lookUpButtonFood.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonFood.TabIndex = 7;
+            this.lookUpButtonFood.TabIndex = 9;
             this.lookUpButtonFood.TabStop = false;
             // 
             // lookUpButtonAccommClass
@@ -250,7 +250,7 @@
             this.lookUpButtonAccommClass.AssociatedControl = "txtAccommClassId";
             this.lookUpButtonAccommClass.Controller = "AccommClass";
             this.lookUpButtonAccommClass.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonAccommClass.Location = new System.Drawing.Point(188, 95);
+            this.lookUpButtonAccommClass.Location = new System.Drawing.Point(189, 96);
             this.lookUpButtonAccommClass.Name = "lookUpButtonAccommClass";
             this.lookUpButtonAccommClass.SelectedValueIndex = 2;
             this.lookUpButtonAccommClass.ShowFieldsInLookUp.Add("AccommClassCode");
@@ -267,7 +267,7 @@
             this.txtFoodTypeId.Name = "txtFoodTypeId";
             this.txtFoodTypeId.ReadOnly = true;
             this.txtFoodTypeId.Size = new System.Drawing.Size(47, 20);
-            this.txtFoodTypeId.TabIndex = 8;
+            this.txtFoodTypeId.TabIndex = 12;
             this.txtFoodTypeId.TextChanged += new System.EventHandler(this.TxtFoodTypeId_TextChanged);
             // 
             // txtFoodClassId
@@ -277,7 +277,7 @@
             this.txtFoodClassId.Name = "txtFoodClassId";
             this.txtFoodClassId.ReadOnly = true;
             this.txtFoodClassId.Size = new System.Drawing.Size(47, 20);
-            this.txtFoodClassId.TabIndex = 6;
+            this.txtFoodClassId.TabIndex = 8;
             this.txtFoodClassId.TextChanged += new System.EventHandler(this.TxtFoodClassId_TextChanged);
             // 
             // txtBillingCategoryDesc
@@ -353,57 +353,62 @@
             // 
             // txtAccommClassDesc
             // 
-            this.txtAccommClassDesc.Location = new System.Drawing.Point(278, 96);
+            this.txtAccommClassDesc.Location = new System.Drawing.Point(281, 97);
             this.txtAccommClassDesc.Name = "txtAccommClassDesc";
             this.txtAccommClassDesc.ReadOnly = true;
             this.txtAccommClassDesc.Size = new System.Drawing.Size(237, 20);
-            this.txtAccommClassDesc.TabIndex = 4;
+            this.txtAccommClassDesc.TabIndex = 7;
+            this.txtAccommClassDesc.TabStop = false;
             // 
             // txtFoodClassDesc
             // 
-            this.txtFoodClassDesc.Location = new System.Drawing.Point(278, 123);
+            this.txtFoodClassDesc.Location = new System.Drawing.Point(281, 124);
             this.txtFoodClassDesc.Name = "txtFoodClassDesc";
             this.txtFoodClassDesc.ReadOnly = true;
             this.txtFoodClassDesc.Size = new System.Drawing.Size(237, 20);
-            this.txtFoodClassDesc.TabIndex = 6;
+            this.txtFoodClassDesc.TabIndex = 11;
+            this.txtFoodClassDesc.TabStop = false;
             // 
             // txtFoodTypeDesc
             // 
-            this.txtFoodTypeDesc.Location = new System.Drawing.Point(278, 150);
+            this.txtFoodTypeDesc.Location = new System.Drawing.Point(281, 151);
             this.txtFoodTypeDesc.Name = "txtFoodTypeDesc";
             this.txtFoodTypeDesc.ReadOnly = true;
             this.txtFoodTypeDesc.Size = new System.Drawing.Size(237, 20);
-            this.txtFoodTypeDesc.TabIndex = 8;
+            this.txtFoodTypeDesc.TabIndex = 15;
+            this.txtFoodTypeDesc.TabStop = false;
             // 
             // txtAccommClassCode
             // 
-            this.txtAccommClassCode.Location = new System.Drawing.Point(211, 96);
+            this.txtAccommClassCode.Location = new System.Drawing.Point(213, 97);
             this.txtAccommClassCode.Name = "txtAccommClassCode";
             this.txtAccommClassCode.ReadOnly = true;
             this.txtAccommClassCode.Size = new System.Drawing.Size(65, 20);
-            this.txtAccommClassCode.TabIndex = 4;
+            this.txtAccommClassCode.TabIndex = 6;
+            this.txtAccommClassCode.TabStop = false;
             // 
             // txtFoodClassCode
             // 
-            this.txtFoodClassCode.Location = new System.Drawing.Point(211, 123);
+            this.txtFoodClassCode.Location = new System.Drawing.Point(213, 124);
             this.txtFoodClassCode.Name = "txtFoodClassCode";
             this.txtFoodClassCode.ReadOnly = true;
             this.txtFoodClassCode.Size = new System.Drawing.Size(65, 20);
-            this.txtFoodClassCode.TabIndex = 6;
+            this.txtFoodClassCode.TabIndex = 10;
+            this.txtFoodClassCode.TabStop = false;
             // 
             // txtFoodTypeCode
             // 
-            this.txtFoodTypeCode.Location = new System.Drawing.Point(211, 150);
+            this.txtFoodTypeCode.Location = new System.Drawing.Point(213, 151);
             this.txtFoodTypeCode.Name = "txtFoodTypeCode";
             this.txtFoodTypeCode.ReadOnly = true;
             this.txtFoodTypeCode.Size = new System.Drawing.Size(65, 20);
-            this.txtFoodTypeCode.TabIndex = 8;
+            this.txtFoodTypeCode.TabIndex = 14;
+            this.txtFoodTypeCode.TabStop = false;
             // 
             // BillingCategoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(595, 351);
             this.Controls.Add(this.chkReadOnly);
             this.Controls.Add(this.chkReservationOnly);
             this.Controls.Add(this.label1);
@@ -440,7 +445,7 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
             this.Name = "BillingCategoryForm";
-            this.Text = "Billing Categories";
+            this.Size = new System.Drawing.Size(595, 351);
             this.Load += new System.EventHandler(this.AccomCategoryFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();

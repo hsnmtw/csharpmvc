@@ -1,4 +1,5 @@
 ﻿using MVCHIS.Common;
+using MVCHIS.Customers;
 using System;
 using System.Collections.Generic;
 
@@ -6,12 +7,13 @@ namespace MVCHIS.Housing.Rooms {
     //[ForModel(Common.MODELS.Room)]
     public partial class RoomForm: RoomView {
 
-
-        
-
         public RoomForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-            base.Controller = (RoomController)DBControllersFactory.GetController(Common.MODELS.Room);
+            base.Controller = (RoomController)DBControllersFactory.GetController(MODELS.Room);
+            Controllers = new Dictionary<string, IDBController> {
+                ["country" ] = DBControllersFactory.GetController(MODELS.Country),
+                ["building"] = DBControllersFactory.GetController(MODELS.Building),
+            };
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -22,9 +24,9 @@ namespace MVCHIS.Housing.Rooms {
             //data
             Mapper["RoomName"] = txtRoomName;
             Mapper["NumberOfWindows"] = txtNumberOfWindows;
-            Mapper["CountryCode"] = txtCountryCode;
+            Mapper["CountryId"] = txtCountryId;
             Mapper["BedCapacity"] = txtBedCapacity;
-            Mapper["BuildingName"] = txtBuildingName;
+            Mapper["BuildingId"] = txtBuildingId;
             //actions
             SaveButton = btnSave;
             DeleteButton = btnDelete;
@@ -36,20 +38,30 @@ namespace MVCHIS.Housing.Rooms {
             Model = Controller.Find(new RoomModel() { RoomName = selected }, "RoomName");
         }
 
-        private void Button1Click(object sender, EventArgs e) {
-            Reporting.ReportTemplate report = new Reporting.ReportTemplate(this.printDocument1);
-            report.Header = "MY COMPANY";
-            report.Footer = "COME BACK AGAIN !!! Thank you";
-            report.Body = new List<string>();
-            for (int i =0; i < 200; i++) {
-                report.Body.Add($"Item {i}     Price 0.00 SAR");
-            }
-            this.printPreviewDialog1.ShowDialog();
+        //private void Button1Click(object sender, EventArgs e) {
+        //    Reporting.ReportTemplate report = new Reporting.ReportTemplate(this.printDocument1);
+        //    report.Header = "MY COMPANY";
+        //    report.Footer = "COME BACK AGAIN !!! Thank you";
+        //    report.Body = new List<string>();
+        //    for (int i =0; i < 200; i++) {
+        //        report.Body.Add($"Item {i}     Price 0.00 SAR");
+        //    }
+        //    this.printPreviewDialog1.ShowDialog();
+        //}
+
+
+        private void TxtBuildingId_TextChanged(object sender, EventArgs e) {
+            int selected = Convert.ToInt32(txtBuildingId.Text);
+            var building = Controllers["building"].Find(new BuildingModel() { Id = selected }, "Id");
+            txtBuildingName.Text = building?.BuildingName;
         }
 
-        private void RoomFormLoad(object sender, EventArgs e) {
-
+        private void TxtCountryId_TextChanged(object sender, EventArgs e) {
+            int selected = Convert.ToInt32(txtCountryId.Text);
+            var country = Controllers["country"].Find(new CountryModel() { Id = selected }, "Id");
+            txtCountryCode.Text = country?.CountryCode;
+            txtCountryEnglish.Text = country?.CountryEnglish;
         }
     }
-    public class RoomView : BaseView<RoomModel, RoomController> { }
+    
 }

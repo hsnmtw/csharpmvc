@@ -647,6 +647,7 @@
             // 
             // txtCountryCode
             // 
+            this.txtCountryCode.BackColor = System.Drawing.SystemColors.Control;
             this.txtCountryCode.Enabled = false;
             this.txtCountryCode.Location = new System.Drawing.Point(227, 366);
             this.txtCountryCode.Name = "txtCountryCode";
@@ -715,6 +716,7 @@
             // 
             // txtCountryEnglish
             // 
+            this.txtCountryEnglish.BackColor = System.Drawing.SystemColors.Control;
             this.txtCountryEnglish.Enabled = false;
             this.txtCountryEnglish.Location = new System.Drawing.Point(264, 366);
             this.txtCountryEnglish.Name = "txtCountryEnglish";
@@ -726,7 +728,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(771, 402);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnDateOfBirth);
             this.Controls.Add(this.chkIsActive);
@@ -780,7 +781,7 @@
             this.Controls.Add(this.txtClientType);
             this.Controls.Add(this.txtClientTypeId);
             this.Name = "ClientForm";
-            this.Text = "Clients";
+            this.Size = new System.Drawing.Size(771, 402);
             this.Load += new System.EventHandler(this.ClientTypeFormLoad);
             this.tabControl1.ResumeLayout(false);
             this.tpIdentifications.ResumeLayout(false);

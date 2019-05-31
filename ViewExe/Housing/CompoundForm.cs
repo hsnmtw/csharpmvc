@@ -35,5 +35,5 @@ namespace MVCHIS.Housing {
             Model = Controller.Find(new CompoundModel() { CompoundName = selected }, "CompoundName");
         }
     }
-    public class CompoundView : BaseView<CompoundModel, CompoundController> { }
+    
 }

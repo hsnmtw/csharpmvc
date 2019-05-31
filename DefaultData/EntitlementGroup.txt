@@ -7,7 +7,7 @@
 "Reports",1
 "Tools",1
 "File",0
-"Window",0
+"Edit",0
 "Developer",0
 "Help",0
             

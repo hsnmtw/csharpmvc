@@ -66,16 +66,18 @@ namespace MVCHIS.Customers {
         }
 
         private void BtnAddIdentification_Click(object sender, EventArgs e) {
-            var form = ((IdentificationForm)DBViewsFactory.GetView(Common.MODELS.Identification));
-            form.AfterSave = delegate() {
-                _ = Controllers["ci"].Save(new ClientIdentificationModel() {
+            var form = new Form();
+            var view = ((IdentificationForm)DBViewsFactory.GetView(Common.MODELS.Identification));
+            view.AfterSave = delegate() {
+                Controllers["ci"].Save(new ClientIdentificationModel() {
                     ClientId = this.Model.Id,
-                    IdentificationId = form.Model.Id
+                    IdentificationId = view.Model.Id
                 });
                 form.DialogResult = DialogResult.OK;
                 form.Close();
                 RequeryIdentification();
             };
+            form.Controls.Add(view);
             form.Show();
         }
 
@@ -104,8 +106,8 @@ namespace MVCHIS.Customers {
                     ClientId  = Model.Id,
                     ContactId = form.Model.Id
                 });
-                form.DialogResult = DialogResult.OK;
-                form.Close();
+                //form.DialogResult = DialogResult.OK;
+                form.Hide();
                 RequeryContact();
             };
             form?.Show();
@@ -125,5 +127,5 @@ namespace MVCHIS.Customers {
             ValidateDate(txtDateOfBirth);
         }
     }
-    public class ClientView : BaseView<ClientModel, ClientController> { }
+    
 }

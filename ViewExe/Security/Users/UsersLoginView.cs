@@ -9,7 +9,7 @@ namespace MVCHIS.Security.Users {
     public partial class UsersLoginView: UserView
     {
         
-        public CryptoController Encryption;
+       // public CryptoController Encryption;
 
         public UsersLoginView()
         {
@@ -27,9 +27,9 @@ namespace MVCHIS.Security.Users {
             {
                 this.Model = model;
                 MainView.Instance.WhenAuthenticated(model);
-                this.DialogResult = DialogResult.OK;
+                //this.DialogResult = DialogResult.OK;
                 MainView.Instance.Show();
-                this.Visible = false;
+                this.Hide();
                 
             }
             else
@@ -41,19 +41,7 @@ namespace MVCHIS.Security.Users {
 
         private void UsersLoginView_Load(object sender, EventArgs e) {
             if(Site!=null && Site.DesignMode) return;
-            Encryption = new CryptoController();
-        }
-
-        private void RdoArabic_CheckedChanged(object sender, EventArgs e) {
-            DictionaryController.LanguageState = LanguageState.Arabic;
-            FormsHelper.ApplyLanguageLocalization(this);
-            FormsHelper.ApplyLanguageLocalization(MainView.Instance);
-        }
-
-        private void RdoEnglish_CheckedChanged(object sender, EventArgs e) {
-            DictionaryController.LanguageState = LanguageState.English;
-            FormsHelper.ApplyLanguageLocalization(this);
-            FormsHelper.ApplyLanguageLocalization(MainView.Instance);
+            //Encryption = new CryptoController();
         }
     }
 }

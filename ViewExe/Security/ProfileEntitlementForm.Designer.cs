@@ -379,9 +379,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
+
             this.Name = "ProfileEntitlementForm";
             this.Text = "Profile Entitlements";
             this.Load += new System.EventHandler(this.EntitlementFormLoad);

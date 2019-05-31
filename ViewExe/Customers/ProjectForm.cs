@@ -43,5 +43,5 @@ namespace MVCHIS.Customers {
             txtClientShortName.Text = Controllers["c"].FindById<ClientModel>(new int[] { int.Parse($"0{txtClientId.Text}") }).FirstOrDefault()?.ShortName;
         }
     }
-    public class ProjectView : BaseView<ProjectModel, ProjectController> { }
+    
 }

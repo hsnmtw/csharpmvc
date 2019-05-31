@@ -47,5 +47,5 @@ namespace MVCHIS.Customers {
             Model = Controller.Find(new CountryModel() { CountryCode = selected }, "CountryCode");
         }
     }
-    public class CountryView : BaseView<CountryModel, CountryController> { }
+    
 }

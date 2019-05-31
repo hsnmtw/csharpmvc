@@ -149,9 +149,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(21, 107);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 13);
+            this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 43;
-            this.label2.Text = "Compound Name";
+            this.label2.Text = "Compound";
             // 
             // txtId
             // 
@@ -271,6 +271,7 @@
             // 
             // txtCompoundName
             // 
+            this.txtCompoundName.Enabled = false;
             this.txtCompoundName.Location = new System.Drawing.Point(208, 105);
             this.txtCompoundName.Name = "txtCompoundName";
             this.txtCompoundName.ReadOnly = true;
@@ -279,6 +280,7 @@
             // 
             // txtBuildingTypeCode
             // 
+            this.txtBuildingTypeCode.Enabled = false;
             this.txtBuildingTypeCode.Location = new System.Drawing.Point(208, 77);
             this.txtBuildingTypeCode.Name = "txtBuildingTypeCode";
             this.txtBuildingTypeCode.ReadOnly = true;
@@ -289,7 +291,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(406, 286);
             this.Controls.Add(this.chkReadOnly);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label10);
@@ -315,7 +316,7 @@
             this.Controls.Add(this.txtBuildingTypeId);
             this.Controls.Add(this.txtCompoundId);
             this.Name = "BuildingForm";
-            this.Text = "Buildings";
+            this.Size = new System.Drawing.Size(406, 286);
             this.Load += new System.EventHandler(this.BuildingFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();

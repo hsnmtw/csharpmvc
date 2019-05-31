@@ -19,7 +19,7 @@ namespace MVCHIS.Security.Users {
         }
 
         private void Button2Click(object sender, EventArgs e) {
-            this.Close();
+            //this.Close();
         }
     }
 }

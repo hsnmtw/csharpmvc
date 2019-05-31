@@ -17,5 +17,5 @@ namespace MVCHIS.Security {
             this.adaptor.Requery();
         }
     }
-    public class AuditView : BaseView<AuditModel, AuditController> { }
+    
 }

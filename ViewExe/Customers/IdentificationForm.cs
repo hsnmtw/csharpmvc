@@ -12,7 +12,7 @@ namespace MVCHIS.Customers {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
             base.Controller = (IdentificationController)DBControllersFactory.GetController(Common.MODELS.Identification);
             Controllers = new System.Collections.Generic.Dictionary<string, IDBController> {
-                ["c"]  = DBControllersFactory.GetController(Common.MODELS.Country),
+                ["c" ]  = DBControllersFactory.GetController(Common.MODELS.Country),
                 ["it"] = DBControllersFactory.GetController(Common.MODELS.IdentificationType),
             };
             //template
@@ -25,9 +25,9 @@ namespace MVCHIS.Customers {
             //data
             Mapper["ExpiryDate"] = txtExpiryDate;
             Mapper["IssueDate"] = txtIssueDate;
-            Mapper["IssuingCountry"] = txtIssuingCountry;
+            Mapper["CountryId"] = txtCountryId;
             Mapper["IdNumber"] = txtIdNumber;
-            Mapper["IdType"] = txtIdType;
+            Mapper["IdTypeId"] = txtIdTypeId;
             //actions
             SaveButton = btnSave;
             DeleteButton = btnDelete;
@@ -51,12 +51,12 @@ namespace MVCHIS.Customers {
         }
 
         private void TxtIdType_TextChanged(object sender, EventArgs e) {
-            lblIdTypeEnglish.Text = Controllers["it"].Find(new IdentificationTypeModel() { IdTypeCode = txtIdType.Text }, "IdTypeCode")?.IdTypeEnglish;
+            txtIdTypeEnglish.Text = Controllers["it"].Find(new IdentificationTypeModel() { Id = int.Parse(txtIdTypeId.Text) }, "Id")?.IdTypeEnglish;
         }
 
         private void TxtIssuingCountry_TextChanged(object sender, EventArgs e) {
-            lblIssuingCountryEnglish.Text = Controllers["c"].Find(new CountryModel() { CountryCode = txtIssuingCountry.Text }, "CountryCode")?.CountryEnglish;
+            txtCountryEnglish.Text = Controllers["c"].Find(new CountryModel() { Id =int.Parse(txtCountryId.Text) }, "Id")?.CountryEnglish;
         }
     }
-    public class IdentificationView : BaseView<IdentificationModel, IdentificationController> { }
+    
 }

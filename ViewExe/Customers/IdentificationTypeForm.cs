@@ -36,5 +36,5 @@ namespace MVCHIS.Customers {
         private void IdentificationTypeFormLoad(object sender, EventArgs e) {
         }
     }
-    public class IdentificationTypeView : BaseView<IdentificationTypeModel, IdentificationTypeController> { }
+    
 }

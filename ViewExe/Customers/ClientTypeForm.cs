@@ -35,5 +35,5 @@ namespace MVCHIS.Customers {
         private void ClientTypeFormLoad(object sender, EventArgs e) {
         }
     }
-    public class ClientTypeView : BaseView<ClientTypeModel, ClientTypeController> { }
+    
 }
