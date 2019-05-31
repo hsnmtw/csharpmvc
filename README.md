@@ -11,13 +11,13 @@ This application is built with the following considerations:
 Dependencies
 ============
 
-[V] -> [M]
-[V] -> [C]
+- [V] -> [M]
+- [V] -> [C]
 
-[C] -> [E]
-[C] -> [M]
+- [C] -> [E]
+- [C] -> [M]
 
-[E] -> [M]
+- [E] -> [M]
 
 V: Views
 M: Models
