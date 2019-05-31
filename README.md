@@ -10,19 +10,17 @@ This application is built with the following considerations:
 
 Dependencies
 ============
-
+<pre>
 - [V] -> [M]
 - [V] -> [C]
-
 - [C] -> [E]
 - [C] -> [M]
-
 - [E] -> [M]
 
 V: Views
 M: Models
 C: Controllers
 E: Entities
-
+</pre>
 ** The goal is not to have [V] on right side 
 ** and all others depend on [M]
