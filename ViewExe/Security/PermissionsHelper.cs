@@ -13,8 +13,10 @@ namespace MVCHIS.Security {
         public PermissionsHelper(BaseView<M,C> view) {
             if(view==null) throw new ArgumentException("view cannot be null");
             //if(model==default) throw new ArgumentException("model cannot be null");
-            var ecn = DBControllersFactory.GetController(Common.MODELS.Entitlement);
-            var pec = DBControllersFactory.GetController(Common.MODELS.ProfileEntitlement);
+            var ecn = DBControllersFactory.GetController(MODELS.Entitlement);
+            var pec = DBControllersFactory.GetController(MODELS.ProfileEntitlement);
+            var pc  = DBControllersFactory.GetController(MODELS.Profile);
+
             var usr = Session.Instance.CurrentUser;
 
             if (usr == null) return;
@@ -25,9 +27,9 @@ namespace MVCHIS.Security {
             if (ent == null) return;
             
             var pen = pec.Find(new ProfileEntitlementModel() {
-                ProfileName = usr.ProfileName,
-                EntitlementName = ent.EntitlementName
-            }, "ProfileName", "EntitlementName");
+                ProfileId = usr.ProfileId ,
+                EntitlementId = ent.Id
+            }, "ProfileId", "EntitlementId");
 
             view.NewButtonEnabled = pen.AllowCreate;
             view.SaveButtonEnabled = pen.AllowUpdate;

@@ -27,6 +27,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent(){
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsslCurrentUser = new System.Windows.Forms.ToolStripStatusLabel();
@@ -63,6 +64,8 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tsDateTime = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -73,9 +76,12 @@
             this.tsslCurrentUser,
             this.toolStripStatusLabel2,
             this.tsProgressBar,
-            this.tssLabelStatus});
+            this.tssLabelStatus,
+            this.tsDateTime});
             resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.statusStrip1.ShowItemToolTips = true;
             // 
             // tsslCurrentUser
             // 
@@ -108,6 +114,7 @@
             this.helpToolStripMenuItem});
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             // 
             // fileToolStripMenuItem
             // 
@@ -298,6 +305,19 @@
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
+            // tsDateTime
+            // 
+            resources.ApplyResources(this.tsDateTime, "tsDateTime");
+            this.tsDateTime.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
+            this.tsDateTime.Name = "tsDateTime";
+            this.tsDateTime.Spring = true;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
+            // 
             // MainView
             // 
             resources.ApplyResources(this, "$this");
@@ -355,6 +375,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem initializeToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripStatusLabel tsDateTime;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

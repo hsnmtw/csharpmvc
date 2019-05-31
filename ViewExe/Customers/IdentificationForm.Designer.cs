@@ -156,7 +156,7 @@
             this.txtId.TabIndex = 0;
             this.txtId.TabStop = false;
             this.txtId.Tag = "Id";
-            this.txtId.Text = "0";
+            
             // 
             // label1
             // 

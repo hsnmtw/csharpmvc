@@ -44,8 +44,11 @@
     <Compile Include="Billing\AccommClassModel.cs" />
     <Compile Include="Billing\BillingCategoryModel.cs" />
     <Compile Include="Billing\BillingCycleModel.cs" />
+    <Compile Include="Billing\ContractModel.cs" />
     <Compile Include="Billing\FoodClassModel.cs" />
     <Compile Include="Billing\FoodTypeModel.cs" />
+    <Compile Include="Billing\CurrencyModel.cs" />
+    <Compile Include="Billing\ServiceModel.cs" />
     <Compile Include="Common\BaseModel.cs" />
     <Compile Include="Common\MetaData.cs" />
     <Compile Include="Common\MODELS.cs" />

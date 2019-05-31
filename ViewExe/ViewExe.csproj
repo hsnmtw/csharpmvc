@@ -70,11 +70,29 @@
     <Compile Include="Billing\BillingCycleForm.Designer.cs">
       <DependentUpon>BillingCycleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Billing\ContractForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Billing\ContractForm.Designer.cs">
+      <DependentUpon>ContractForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Billing\CurrencyFormy.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Billing\CurrencyFormy.Designer.cs">
+      <DependentUpon>CurrencyFormy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Billing\FoodTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Billing\FoodTypeForm.Designer.cs">
       <DependentUpon>FoodTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Billing\ServiceForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Billing\ServiceForm.Designer.cs">
+      <DependentUpon>ServiceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\BaseView.cs">
       <SubType>Form</SubType>
@@ -281,8 +299,17 @@
     <EmbeddedResource Include="Billing\BillingCycleForm.resx">
       <DependentUpon>BillingCycleForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Billing\ContractForm.resx">
+      <DependentUpon>ContractForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Billing\CurrencyFormy.resx">
+      <DependentUpon>CurrencyFormy.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Billing\FoodTypeForm.resx">
       <DependentUpon>FoodTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Billing\ServiceForm.resx">
+      <DependentUpon>ServiceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Configurations\ControllersSelectionForm.resx">
       <DependentUpon>ControllersSelectionForm.cs</DependentUpon>

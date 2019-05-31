@@ -136,7 +136,7 @@
             this.txtId.Size = new System.Drawing.Size(68, 20);
             this.txtId.TabIndex = 0;
             this.txtId.TabStop = false;
-            this.txtId.Text = "0";
+            
             // 
             // label1
             // 
@@ -185,13 +185,13 @@
             // 
             // lookUpButtonFoodClass
             // 
-            this.lookUpButtonFoodClass.AssociatedControl = "txtFoodClass";
+            this.lookUpButtonFoodClass.AssociatedControl = "txtFoodClassCode";
             this.lookUpButtonFoodClass.Controller = "FoodClass";
             this.lookUpButtonFoodClass.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonFoodClass.Location = new System.Drawing.Point(305, 56);
             this.lookUpButtonFoodClass.Name = "lookUpButtonFoodClass";
             this.lookUpButtonFoodClass.SelectedValueIndex = 0;
-            this.lookUpButtonFoodClass.ShowFieldsInLookUp.Add("FoodClass");
+            this.lookUpButtonFoodClass.ShowFieldsInLookUp.Add("FoodClassCode");
             this.lookUpButtonFoodClass.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonFoodClass.TabIndex = 2;
             this.lookUpButtonFoodClass.TabStop = false;
@@ -217,7 +217,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(399, 311);
             this.Controls.Add(this.txtFoodClassDesc);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtId);
@@ -237,7 +236,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtCreatedBy);
             this.Name = "FoodClassForm";
-            this.Text = "Food Classes";
+            this.Size = new System.Drawing.Size(399, 311);
             this.Load += new System.EventHandler(this.FoodClassFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();

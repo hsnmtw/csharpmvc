@@ -18,39 +18,47 @@ namespace MVCHIS.Common {
 
         public Action AfterSave { get; set; }
         public virtual C Controller { get; set; } 
-        private M model;
+        //private M model;
         public virtual M Model {
             get {
-                if (model == null) { model = Activator.CreateInstance<M>(); }
+                M getmodel = Activator.CreateInstance<M>();
                 foreach (var x in Mapper.Keys) {
                     string text = Mapper[x].Text;
                     Mapper[x].Text = text.Trim();
-                         if (isBoolean(x))  Prop(x).SetValue(model, ((CheckBox)Mapper[x]).Checked);
-                    else if (isDateTime(x)) Prop(x).SetValue(model, text.Equals("") ? default(DateTime?) : Convert.ToDateTime(text));
-                    else if (isDouble(x))   Prop(x).SetValue(model, Convert.ToDouble($"0{text}"));
-                    else if (isInt32(x))    Prop(x).SetValue(model, Convert.ToInt32($"0{text}"));
-                    else if (isInt64(x))    Prop(x).SetValue(model, Convert.ToInt64($"0{text}"));
-                    else Prop(x).SetValue(model, text);
+                         if (isBoolean(x))  Prop(x).SetValue(getmodel, ((CheckBox)Mapper[x]).Checked);
+                    else if (isDateTime(x)) Prop(x).SetValue(getmodel, text.Equals("") ? default(DateTime?) : Convert.ToDateTime(text));
+                    else if (isDouble(x))   Prop(x).SetValue(getmodel, Convert.ToDouble($"0{text}"));
+                    else if (isInt32(x))    Prop(x).SetValue(getmodel, Convert.ToInt32($"0{text}"));
+                    else if (isInt64(x))    Prop(x).SetValue(getmodel, Convert.ToInt64($"0{text}"));
+                    else Prop(x).SetValue(getmodel, text);
                 }
-                return model;
+                return getmodel;
             }
             set {
+                M model;
                 if (value == null) { model = Activator.CreateInstance<M>(); } else { model = value; }
+                //model = value;
+                Console.WriteLine("++++"+model);
                 foreach (var x in Mapper.Keys) {
                     if (isBoolean(x)) {
                         ((CheckBox)Mapper[x]).Checked = Convert.ToBoolean(Prop(x).GetValue(model));
                     } else if (isDateTime(x)) {
                         var date = Prop(x).GetValue(model);
-                        if (date == null) {
+                        if (date == null || ((DateTime)date).Equals(new DateTime(1, 1, 1))) {
                             Mapper[x].Text = "";
                         } else {
-                            var dateFormat = (x.Contains("On") ? $"{FormsHelper.DATE_FORMAT} {FormsHelper.TIME_FORMAT}" : (x.Contains("Time")? FormsHelper.TIME_FORMAT : FormsHelper.DATE_FORMAT));
+                            var dateFormat = (x.Contains("On") ? $"{FormsHelper.DATE_FORMAT} {FormsHelper.TIME_FORMAT}" : (x.Contains("Time") ? FormsHelper.TIME_FORMAT : FormsHelper.DATE_FORMAT));
                             Mapper[x].Text = ((DateTime)Prop(x).GetValue(model)).ToString($"{Mapper[x].Tag}".Equals("") ? dateFormat : $"{Mapper[x].Tag}");
                         }
+                    } else if(isDouble(x)){
+                        Mapper[x].Text = ((double)Prop(x).GetValue(model)).ToString("0.00");
                     } else {
-                        Mapper[x].Text = Convert.ToString(Prop(x).GetValue(model));
+                        var val = Prop(x).GetValue(model);
+                        if (x.EndsWith("Id") && "0".Equals($"{val}")) Mapper[x].Text = "";
+                        else Mapper[x].Text = Convert.ToString(val);
                     }
                 }
+                Console.WriteLine("++++" + model);
                 ModelChanged?.Invoke();
             }
         }
@@ -70,11 +78,14 @@ namespace MVCHIS.Common {
         public bool DeleteButtonEnabled { get; set; }
 
         public Action ModelChanged { get; set; }
+        public Control DefaultControl { get; set; }
+        public Action AfterNew { get; set; }
+        public Action AfterDelete { get; set; }
 
         public BaseView() : base() {
             Name = GetType().Name;
             if (DesignMode||(Site!=null && Site.DesignMode)) return;;
-            //MdiParent = MainView.Instance;
+
             Controllers = new Dictionary<string, IDBController>();
             Mapper = new Dictionary<string, Control>();
             Prop = new Func<string, PropertyInfo>(x => typeof(M).GetProperty(x));
@@ -88,6 +99,7 @@ namespace MVCHIS.Common {
             isDouble   = new Func<string, bool>(x => Prop(x).PropertyType == typeof(double)
                                                   || Prop(x).PropertyType == typeof(Double));
 
+            //model = Activator.CreateInstance<M>();
             Load += (s, e) => {
                 if (DesignMode || (Site != null && Site.DesignMode)) return; 
                 new PermissionsHelper<M, C>(this);
@@ -105,11 +117,11 @@ namespace MVCHIS.Common {
                 }
                 if (DeleteButton != null) {
                     DeleteButton.Enabled = DeleteButtonEnabled;
-                    DeleteButton.Click += (bs, be) => { Controller.Delete(Model); NewButton?.PerformClick(); };
+                    DeleteButton.Click += (bs, be) => { Controller.Delete(Model); NewButton?.PerformClick(); AfterDelete?.Invoke(); };
                 }
                 if (NewButton != null) {
                     NewButton.Enabled = NewButtonEnabled;
-                    NewButton.Click += (bs, be) => { Model = Controller.NewModel<M>(); };
+                    NewButton.Click += (bs, be) => { Model = Controller.NewModel<M>(); DefaultControl?.Select(); AfterNew?.Invoke(); };
                 }
                 var controls = (from cntrl in Mapper.Values orderby cntrl.TabIndex where cntrl.TabStop select cntrl);
                 foreach(var cntrl in controls) {
@@ -121,7 +133,8 @@ namespace MVCHIS.Common {
                         }
                     };
                 }
-                controls.FirstOrDefault()?.Focus();
+                DefaultControl = controls.FirstOrDefault();
+                DefaultControl?.Focus();
             };
 
         }
@@ -134,5 +147,10 @@ namespace MVCHIS.Common {
             }
         }
 
+        public void SetModel(BaseModel model) {
+            Model = (M)model;// Controller.FindById<M>(new int[] { Model.Id }).FirstOrDefault();
+        }
+
+        public BaseModel GetModel() => Model;
     }
 }

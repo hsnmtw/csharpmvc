@@ -46,7 +46,9 @@ namespace MVCHIS {
 
 
         private void MainViewLoad(object sender, EventArgs e) {
-                LoadForm();
+            tsDateTime.Alignment = ToolStripItemAlignment.Right;
+            
+            LoadForm();
             
               try{}
             catch(Exception ex) {
@@ -132,19 +134,25 @@ namespace MVCHIS {
 
         public void WhenAuthenticated(UserModel model) {
             Session.Instance.CurrentUser = model;
-            var pec = (ProfileEntitlementController)DBControllersFactory.GetController(Common.MODELS.ProfileEntitlement);
-            var pes = pec.Read(new ProfileEntitlementModel() {
-                ProfileName = Session.Instance.CurrentUser.ProfileName,
-                AllowRead = true
-            }, "ProfileName", "AllowRead");
+            var pec = DBControllersFactory.GetController(MODELS.ProfileEntitlement);
+            //var pc = DBControllersFactory.GetController(MODELS.Profile);
+            var ec = DBControllersFactory.GetController(MODELS.Entitlement);
 
+            var pes = pec.Read(new ProfileEntitlementModel() {
+                ProfileId = Session.Instance.CurrentUser.ProfileId,
+                AllowRead = true
+            }, "ProfileId", "AllowRead");
+
+            Dictionary<int, EntitlementModel> es = ec.Read<EntitlementModel>().ToDictionary(x => x.Id, x => x);
             foreach (ProfileEntitlementModel row in pes) {
-                var EntitlementName = row.EntitlementName;
-                if (this.menus.ContainsKey(EntitlementName)) { 
-                    this.menus[EntitlementName].Enabled = true;
+                var eid = row.EntitlementId;
+                if (menus.ContainsKey(es[eid].EntitlementName)) { 
+                    menus[es[eid].EntitlementName].Enabled = true;
                 }
             }
             Session.Instance.UserEntitlements = pes;
+            tsslCurrentUser.Text = model.UserName;
+            setProgress("Login successful", 0);
         }
 
         private void SQLViewerToolStripMenuItemClick(object sender, EventArgs e) {
@@ -200,11 +208,12 @@ namespace MVCHIS {
         }
 
         private void NewToolStripMenuItemClick(object sender, EventArgs e) {
-            ((IView)ActiveMdiChild)?.NewButton?.PerformClick();
+            ((IView)panel1.Controls[0])?.NewButton?.PerformClick();
         }
 
         private void SaveToolStripMenuItemClick(object sender, EventArgs e) {
-            ((IView)ActiveMdiChild)?.SaveButton?.PerformClick();
+            if (panel1.Controls.Count < 1) return;
+            ((IView)panel1.Controls[0])?.SaveButton?.PerformClick();
         }
 
         private void CloseToolStripMenuItemClick(object sender, EventArgs e) {
@@ -216,7 +225,8 @@ namespace MVCHIS {
         
 
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e) {
-            ((IView)ActiveMdiChild)?.DeleteButton?.PerformClick();
+            if (panel1.Controls.Count < 1) return;
+            ((IView)panel1.Controls[0])?.DeleteButton?.PerformClick();
         }
 
         private void EnglishToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -250,6 +260,10 @@ namespace MVCHIS {
             FormsHelper.Success("Initialization compeleted !");
             setProgress("Initialization compeleted !", 0);
             initializeToolStripMenuItem.Visible = false;
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e) {
+            tsDateTime.Text = DateTime.Now.ToString(ConfigLoader.CultureInfoDateTimeFormatLongDatePattern);
         }
     }
 }

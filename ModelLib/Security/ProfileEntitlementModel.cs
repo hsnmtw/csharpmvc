@@ -3,8 +3,8 @@
 namespace MVCHIS.Security {
     public class ProfileEntitlementModel : BaseModel
     {
-        public string ProfileName     { get; set; }
-        public string EntitlementName { get; set; }
+        public int    ProfileId       { get; set; }
+        public int    EntitlementId   { get; set; }
         public bool   AllowCreate     { get; set; }
         public bool   AllowRead       { get; set; }
         public bool   AllowUpdate     { get; set; }

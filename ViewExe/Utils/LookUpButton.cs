@@ -25,25 +25,25 @@ namespace MVCHIS.Common {
 
         public LookUpButton() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
-            this.button1.Text = ARROW;
-            this.Font = new Font("Consolas", 10, FontStyle.Bold);
-            this.ShowFieldsInLookUp = new List<string>();
+            button1.Text = ARROW;
+            Font = new Font("Consolas", 10, FontStyle.Bold);
+            ShowFieldsInLookUp = new List<string>();
             //this.button1.Click += Button1Click;
             //this.AssociatedControl = null;
         }
 
         private void Button1Click(object sender, EventArgs e) {
             if (!isInitialized) init();
-            lookup = new Common.LookUpForm(this.controller.GetData<BaseModel>(), this.ShowFieldsInLookUp.ToArray());
-            lookup.SelectedValueIndex = this.SelectedValueIndex;
+            lookup = new LookUpForm(controller.GetData<BaseModel>(), ShowFieldsInLookUp.ToArray());
+            lookup.SelectedValueIndex = SelectedValueIndex;
             
             lookup.FormClosed += (s, ee) => {
                 ValueFromLookup = lookup.SelectedValue;
-                if (this.controlValu != null) {
+                if (controlValu != null && lookup.ValueHasBeenSelected) {
                     controlValu.Text = $"{ValueFromLookup}".Trim();
-                    //SendKeys.Send("\t");
+                    SendKeys.Send("\t");
+                    LookUpSelected?.Invoke(sender, new LookupEventArgs(ValueFromLookup));
                 }
-                this.LookUpSelected?.Invoke(sender, new LookupEventArgs(ValueFromLookup));
             };
             lookup.Show();
         }
@@ -104,14 +104,14 @@ namespace MVCHIS.Common {
                 controlValu = vControlsValu.Count() == 0 ? null : vControlsValu.First();
             }
 
-            
 
-            //if (controlValu != null && ((TextBoxBase)controlValu).ReadOnly) {
-            //    controlValu.KeyPress += delegate (object s, KeyPressEventArgs ea) {
-            //        lookup.SearchText = $"{ea.KeyChar}";
-            //        Button1Click(null, null);
-            //    };
-            //}
+
+            if (controlValu != null && ((TextBoxBase)controlValu).ReadOnly) {
+                controlValu.KeyPress += delegate (object s, KeyPressEventArgs ea) {
+                    if (lookup == null || !lookup.Visible) button1.PerformClick();
+                    lookup.SearchText = $"{ea.KeyChar}";
+                };
+            }
             isInitialized = true;
         }
     }

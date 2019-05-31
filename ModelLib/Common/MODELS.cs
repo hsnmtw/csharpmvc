@@ -30,5 +30,8 @@ namespace MVCHIS.Common {
         , ClientContact
         , ClientIdentification
         , BillingCycle
+        , Contract
+        , Service,
+        Currency
     }
 }

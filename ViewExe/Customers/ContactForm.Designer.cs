@@ -147,7 +147,7 @@
             this.txtId.Size = new System.Drawing.Size(68, 20);
             this.txtId.TabIndex = 0;
             this.txtId.TabStop = false;
-            this.txtId.Text = "0";
+            
             // 
             // label1
             // 

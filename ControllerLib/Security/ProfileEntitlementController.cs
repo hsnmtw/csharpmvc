@@ -19,8 +19,8 @@ namespace MVCHIS.Security {
             foreach(ProfileModel p in ps) {
                 foreach(EntitlementModel e in es) {
                     Save(new ProfileEntitlementModel() {
-                        ProfileName=p.ProfileName,
-                        EntitlementName=e.EntitlementName,
+                        ProfileId=p.Id,
+                        EntitlementId=e.Id,
                         AllowRead=true,
                         AllowUpdate=true,
                         AllowCreate=true,
@@ -29,10 +29,10 @@ namespace MVCHIS.Security {
             }
         }
 
-        public void ChangePermissions(string profile,string entitlement,bool create, bool read,bool update,bool delete) {
+        public void ChangePermissions(int profileId,int entitlementId,bool create, bool read,bool update,bool delete) {
             var pes = Read(new ProfileEntitlementModel() {
-                ProfileName = profile,
-                EntitlementName = entitlement
+                ProfileId = profileId,
+                EntitlementId = entitlementId
             }, false, "ProfileName", "EntitlementName" );
             foreach (ProfileEntitlementModel pe in pes) {
                 pe.AllowCreate = create  ; 

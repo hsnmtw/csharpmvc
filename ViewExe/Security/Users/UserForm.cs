@@ -9,7 +9,10 @@ namespace MVCHIS.Security.Users {
     public partial class UserForm: UserView {
         public UserForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-            base.Controller = (UserController)DBControllersFactory.GetController(Common.MODELS.User);
+            base.Controller = (UserController)DBControllersFactory.GetController(MODELS.User);
+            Controllers = new Dictionary<string, IDBController> {
+                ["p"] = DBControllersFactory.GetController(MODELS.Profile)
+            };
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -18,65 +21,46 @@ namespace MVCHIS.Security.Users {
             Mapper["UpdatedOn"] = txtUpdatedOn;
             Mapper["ReadOnly"] = chkReadOnly;
             //data
-            Mapper["FullName           ".Trim()] = txtFullName;
-            Mapper["UserName           ".Trim()] = txtUserName;
-            Mapper["UserPassword       ".Trim()] = txtUserPassword;
-            Mapper["FailedLoginAttempts".Trim()] = txtFailedLoginAttempts;
-            Mapper["LastChangePassword ".Trim()] = txtLastPasswordReset;
-            Mapper["LastLoginDate      ".Trim()] = txtLastLoginDate;
-            Mapper["IsActive           ".Trim()] = chkIsActive;
-            Mapper["ProfileName        ".Trim()] = txtProfileName;
-            Mapper["Email              ".Trim()] = txtEmail;
+            Mapper["FullName"           ] = txtFullName;
+            Mapper["UserName"           ] = txtUserName;
+            Mapper["UserPassword"       ] = txtUserPassword;
+            Mapper["FailedLoginAttempts"] = txtFailedLoginAttempts;
+            Mapper["LastChangePassword" ] = txtLastPasswordReset;
+            Mapper["LastLoginDate"      ] = txtLastLoginDate;
+            Mapper["IsActive"           ] = chkIsActive;
+            Mapper["ProfileId"          ] = txtProfileId;
+            Mapper["Email"              ] = txtEmail;
             //actions
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
         }
 
-
-        //private UserController Controller => (UserController)DBControllersFactory.GetController(Entities.User);
-        private List<ProfileEntitlementModel> profileEntitlements;
-
-
-        
-
-        private void UserFormLoad(object sender, EventArgs e) {
+        private void UserFormLoad(object sender, EventArgs e) {            
             
-            Model = new UserModel();
-            profileEntitlements = 
-                (from row 
-                   in DBControllersFactory.GetController(Common.MODELS.ProfileEntitlement).Read<ProfileEntitlementModel>()
-               select row).ToList();
         }
 
         private void Button1Click(object sender, EventArgs e) {
-            if (this.Controller.ResetLoginCounter(this.Model)) {
-                this.txtFailedLoginAttempts.Text = "0";
+            if (Controller.ResetLoginCounter(Model)) {
+                txtFailedLoginAttempts.Text = "0";
                 Utils.FormsHelper.Success("Failed Login attempts counter has been reset");
             } else {
                 Utils.FormsHelper.Error("Something went wrong, please try again later...");
             }
         }
 
-        private void ProfileNameLookupLookUpSelected(object sender, EventArgs e) {
-
-        }
-
-        private void UserNameLookupLookUpSelected(object sender, EventArgs e) {
-            var selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            //this.txtUserName.Text  = selected;
-            Model = Controller.Find(new UserModel() { UserName=selected }, "UserName");
-        }
-
         private void ProfileNameTextBoxTextChanged(object sender, EventArgs e) {
-            this.lstEntitlements.Items.Clear();
-            this.lstEntitlements.Items.AddRange((
-                from ProfileEntitlementModel model in profileEntitlements
-                where model.ProfileName.Equals(txtProfileName.Text)
-                orderby model.EntitlementName
-                select model.EntitlementName
-            ).ToArray());
+
+        }
+
+        private void TxtProfileId_TextChanged(object sender, EventArgs e) {
+            int.TryParse(txtProfileId.Text, out int profileId);
+            txtProfileName.Text = Controllers["p"].Find(new ProfileModel() { Id = profileId }, "Id")?.ProfileName;
+        }
+
+        private void UserNameLookup_LookUpSelected(object sender, EventArgs e) {
+            var selected = ((LookupEventArgs)e).SelectedValueFromLookup;
+            Model = Controller.Find(new UserModel() { UserName = selected }, "UserName");
         }
     }
-    public class UserView : BaseView<UserModel, UserController> { }
 }

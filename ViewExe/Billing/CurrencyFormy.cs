@@ -8,16 +8,16 @@ using System.Windows.Forms;
 
 namespace MVCHIS.Billing {
 
-    //[ForModel(Common.MODELS.FoodType)]
-    public partial class FoodTypeForm: FoodTypeView {
+    //[ForModel(Common.MODELS.Currency)]
+    public partial class CurrencyForm: CurrencyView {
 
         
 
         
-        public FoodTypeForm() {
+        public CurrencyForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
             
-            base.Controller = (FoodTypeController)DBControllersFactory.GetController(MODELS.FoodType);
+            base.Controller = (CurrencyController)DBControllersFactory.GetController(MODELS.Currency);
 
             //template
             Mapper["Id"       ] = txtId;
@@ -27,8 +27,10 @@ namespace MVCHIS.Billing {
             Mapper["UpdatedOn"] = txtUpdatedOn;
             Mapper["ReadOnly"] = chkReadOnly;
             //data
-            Mapper["FoodTypeCode"] = txtFoodTypeCode;
-            Mapper["FoodTypeDesc"] = txtFoodTypeDesc;
+            Mapper["CurrencyCode"] = txtCurrencyCode;
+            Mapper["CurrencyEnglish"] = txtCurrencyEnglish;
+            Mapper["CurrencyArabic"] = txtCurrencyArabic;
+            Mapper["CurrencySymbol"] = txtCurrencySymbol;
             //actions
             SaveButton = btnSave;
             DeleteButton = btnDelete;
@@ -37,10 +39,10 @@ namespace MVCHIS.Billing {
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
             string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            Model = Controller.Find(new FoodTypeModel() { FoodTypeCode = selected }, "FoodTypeCode");
+            Model = Controller.Find(new CurrencyModel() { CurrencyCode = selected }, "CurrencyCode");
         }
 
-        private void FoodTypeFormLoad(object sender, EventArgs e) {
+        private void CurrencyFormLoad(object sender, EventArgs e) {
             
         }
     }

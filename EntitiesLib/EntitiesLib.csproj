@@ -42,6 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Billing\CurrencyEntity.cs" />
+    <Compile Include="Billing\ServiceEntity.cs" />
+    <Compile Include="Billing\ContractEntity.cs" />
     <Compile Include="Billing\AccommClassEntity.cs" />
     <Compile Include="Billing\BillingCycleEntity.cs" />
     <Compile Include="Billing\BillingCategoryEntity.cs" />

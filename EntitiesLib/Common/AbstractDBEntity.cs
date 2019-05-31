@@ -17,8 +17,9 @@ namespace MVCHIS.Common {
 
         public virtual bool Validate<M>(M model) {
             var p = MetaData.RequiredFields;
+            var i = p.Select(x => x.EndsWith("Id") && x.Length>2 && "0".Equals($"{model.GetType().GetProperty(x).GetValue(model)}".Trim()));
             var q = p.Select(x => "".Equals($"{model.GetType().GetProperty(x).GetValue(model)}".Trim()));
-            var w = q.All(y => !y);
+            var w = q.All(y => !y) && i.All(y => !y);
             return w;
         }
 
@@ -143,7 +144,7 @@ namespace MVCHIS.Common {
                 ,[typeof(Int64)]     = "INTEGER IDENTITY(1,1)"
                 ,[typeof(int)]       = "INTEGER"
                 ,[typeof(bool)]      = "CHAR(1)"
-                ,[typeof(double)]    = "NUMBER"
+                ,[typeof(double)]    = "DECIMAL(5,2)"
                 ,[typeof(DateTime)]  = "DATETIME"
                 ,[typeof(DateTime?)] = "DATETIME"
             }

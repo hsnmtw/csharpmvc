@@ -136,7 +136,7 @@
             this.txtId.Size = new System.Drawing.Size(68, 20);
             this.txtId.TabIndex = 0;
             this.txtId.TabStop = false;
-            this.txtId.Text = "0";
+            
             // 
             // label1
             // 
@@ -201,7 +201,7 @@
             // 
             // lookUpButtonFoodType
             // 
-            this.lookUpButtonFoodType.AssociatedControl = "txtFoodType";
+            this.lookUpButtonFoodType.AssociatedControl = "txtFoodTypeCode";
             this.lookUpButtonFoodType.Controller = "FoodType";
             this.lookUpButtonFoodType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonFoodType.Location = new System.Drawing.Point(295, 60);
@@ -218,7 +218,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(378, 311);
             this.Controls.Add(this.txtFoodTypeDesc);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtId);
@@ -238,7 +237,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtCreatedBy);
             this.Name = "FoodTypeForm";
-            this.Text = "Food Types";
+            this.Size = new System.Drawing.Size(378, 311);
             this.Load += new System.EventHandler(this.FoodTypeFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();

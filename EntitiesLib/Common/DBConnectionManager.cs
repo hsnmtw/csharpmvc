@@ -71,8 +71,10 @@ namespace MVCHIS.Common {
                         object model = Activator.CreateInstance(modelType);
                         foreach (var name in names) {
                             if (record[name].Equals(DBNull.Value)) continue;
-                            if(prps[name].PropertyType == typeof(bool)) {
+                            if (prps[name].PropertyType == typeof(bool)) {
                                 prps[name].SetValue(model, !"0".Equals(record[name]));
+                            } else if (prps[name].PropertyType == typeof(double)) {
+                                prps[name].SetValue(model, double.Parse($"{record[name]}"));
                             } else {
                                 prps[name].SetValue(model, record[name]);
                             }

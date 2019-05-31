@@ -16,13 +16,13 @@ namespace MVCHIS.Common {
 
         public string SearchText {
             set {
-                this.lblSearch.Text = value;
+                lblSearch.Text = value;
             }
         }
 
         private string[] shownColumns;
 
-        
+        public bool ValueHasBeenSelected { get; set; }
         public LookUpForm(DataTable data,params string[]shownColumns) {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
             this.shownColumns = shownColumns;
@@ -50,15 +50,16 @@ namespace MVCHIS.Common {
         private void LstView_KeyDown(object sender, KeyEventArgs e) {
             switch (e.KeyCode) {
                 case Keys.Back:
-                    if (this.lblSearch.Text.Length > 0) {
-                        this.lblSearch.Text = this.lblSearch.Text.Substring(0, this.lblSearch.Text.Length - 1);
+                    if (lblSearch.Text.Length > 0) {
+                        lblSearch.Text = lblSearch.Text.Substring(0, lblSearch.Text.Length - 1);
                     }
                     e.SuppressKeyPress = true;
                     e.Handled = true;
                     break;
                 case Keys.Enter:
-                    if (this.lstView.Text.Length>0) this.DialogResult = DialogResult.OK;
-                    this.Close();
+                    ValueHasBeenSelected = lstView.Text.Length > 0;
+                    if (ValueHasBeenSelected) DialogResult = DialogResult.OK;
+                    Close();
                     e.SuppressKeyPress = true;
                     e.Handled = true;
                     break;

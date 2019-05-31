@@ -14,7 +14,7 @@ namespace MVCHIS.Common {
             if (EntitiesMap.ContainsKey(model) == false) {
                 InitializeEntity(model);
             }
-            Console.WriteLine(EntitiesMap[model].GetDDL());
+            
             return EntitiesMap[model];
         }
 
@@ -30,6 +30,7 @@ namespace MVCHIS.Common {
                 if (Enum.TryParse(entity.Name.Substring(0, (entity.Name.Length)-("Entity".Length)), out MODELS num)) {
                     EntitiesMap[num] = (IDBEntity)Activator.CreateInstance(entity);
                     Console.WriteLine($" + [Entity] : {num}:{entity}");
+                    Console.WriteLine(EntitiesMap[model].GetDDL());
                 } else {
                     throw new Exception($"no Enum was defined for {entity}");
                 }

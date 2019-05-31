@@ -1,14 +1,22 @@
 ﻿using MVCHIS.Common;
 using System;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace MVCHIS.Security {
     //[ForModel(Common.MODELS.ProfileEntitlement)]
     public partial class ProfileEntitlementForm: ProfileEntitlementsView {
 
+        private Dictionary<int, string> entitlements;
+        private Dictionary<int, string> profiles;
 
         public ProfileEntitlementForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-            base.Controller = (ProfileEntitlementController)DBControllersFactory.GetController(Common.MODELS.ProfileEntitlement);
+            base.Controller = (ProfileEntitlementController)DBControllersFactory.GetController(MODELS.ProfileEntitlement);
+            Controllers = new Dictionary<string, IDBController> {
+                ["e"] = DBControllersFactory.GetController(MODELS.Entitlement),
+                ["p"] = DBControllersFactory.GetController(MODELS.Profile)
+            };
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -17,8 +25,9 @@ namespace MVCHIS.Security {
             Mapper["UpdatedOn"] = txtUpdatedOn;
             Mapper["ReadOnly"]  = chkReadOnly;
             //data
-            Mapper["ProfileName"] = txtProfileName;
-            Mapper["EntitlementName"] = txtEntitlementName;
+            Mapper["ProfileId"] = txtProfileId;
+            Mapper["EntitlementId"] = txtEntitlementId;
+
             Mapper["AllowRead"] = chkAllowRead;
             Mapper["AllowDelete"] = chkAllowDelete;
             Mapper["AllowCreate"] = chkAllowCreate;
@@ -30,7 +39,8 @@ namespace MVCHIS.Security {
         }        
 
         private void EntitlementFormLoad(object sender, EventArgs e) {
-
+            entitlements = Controllers["e"].Read<EntitlementModel>().ToDictionary(x => x.Id, x => x.EntitlementName);
+            profiles = Controllers["p"].Read<ProfileModel>().ToDictionary(x => x.Id, x => x.ProfileName);
         }
 
         private void LookUpButton2_LookUpSelected(object sender, EventArgs e) {
@@ -41,6 +51,16 @@ namespace MVCHIS.Security {
 
         private void Button1_Click(object sender, EventArgs e) {
             //this.Close();
+        }
+
+        private void TxtEntitlementId_TextChanged(object sender, EventArgs e) {
+            int.TryParse(txtEntitlementId.Text, out int eid);
+            txtEntitlementName.Text = entitlements[eid];
+        }
+
+        private void TxtProfileId_TextChanged(object sender, EventArgs e) {
+            int.TryParse(txtProfileId.Text, out int pid);
+            txtProfileName.Text = profiles[pid];
         }
     }
     

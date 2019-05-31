@@ -42,7 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Billing\CurrencyController.cs" />
+    <Compile Include="Billing\ServiceController.cs" />
     <Compile Include="Billing\AccomClassController.cs" />
+    <Compile Include="Billing\ContractController.cs" />
     <Compile Include="Billing\BillingCycleController.cs" />
     <Compile Include="Billing\BillingCategoryController.cs" />
     <Compile Include="Billing\FoodClassController.cs" />

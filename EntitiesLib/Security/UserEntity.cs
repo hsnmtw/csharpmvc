@@ -8,10 +8,10 @@ namespace MVCHIS.Security {
         public override MetaData MetaData => new MetaData() {
             ModelType = typeof(UserModel)
             , PrimaryKeyField = "Id" 
-            , RequiredFields  = new List<string> {"Id","UserName","FullName","UserPassword","ProfileName"}
+            , RequiredFields  = new List<string> {"Id","UserName","FullName","UserPassword","ProfileId"}
             , UniqueKeyFields = new List<string> { "UserName" }
             , ForeignKeys     = new Dictionary<string, System.Tuple<string, string>> {
-                ["ProfileName"] = new System.Tuple<string, string>(DBEntitiesFactory.GetEntity(MODELS.Profile).MetaData.Source,"ProfileName") 
+                ["ProfileId"] = new System.Tuple<string, string>(DBEntitiesFactory.GetEntity(MODELS.Profile).MetaData.Source,"Id") 
             }
             , GetSizes = new Dictionary<string, int> {
                 ["CreatedBy"   ] = 50,
@@ -19,7 +19,6 @@ namespace MVCHIS.Security {
                 ["UserName"    ] = 50,
                 ["FullName"    ] = 100,
                 ["UserPassword"] = 100,
-                ["ProfileName" ] = 50,
                 ["Email"       ] = 100,
             }
             , Source = "SecurityUser"
