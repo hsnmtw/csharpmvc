@@ -32,6 +32,7 @@ namespace MVCHIS.Common {
         , BillingCycle
         , Contract
         , Service,
-        Currency
+        Currency,
+        VAT
     }
 }

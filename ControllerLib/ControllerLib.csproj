@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Billing\CurrencyController.cs" />
+    <Compile Include="Billing\VATController.cs" />
     <Compile Include="Billing\ServiceController.cs" />
     <Compile Include="Billing\AccomClassController.cs" />
     <Compile Include="Billing\ContractController.cs" />

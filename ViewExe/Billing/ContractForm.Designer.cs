@@ -24,6 +24,7 @@
         /// </summaryClient
         private void InitializeComponent(){
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             MVCHIS.Billing.ContractModel contractModel1 = new MVCHIS.Billing.ContractModel();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -61,10 +62,13 @@
             this.label11 = new System.Windows.Forms.Label();
             this.chkIsActive = new System.Windows.Forms.CheckBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.BillingCategoryColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.EffectiveFromColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExpiredColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.CurrencyColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.PriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.VATColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -167,7 +171,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 26);
+            this.label1.Location = new System.Drawing.Point(13, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 42;
@@ -337,11 +341,11 @@
             // txtConditions
             // 
             this.txtConditions.Font = new System.Drawing.Font("Consolas", 8F);
-            this.txtConditions.Location = new System.Drawing.Point(396, 30);
+            this.txtConditions.Location = new System.Drawing.Point(402, 30);
             this.txtConditions.Multiline = true;
             this.txtConditions.Name = "txtConditions";
             this.txtConditions.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtConditions.Size = new System.Drawing.Size(250, 123);
+            this.txtConditions.Size = new System.Drawing.Size(334, 123);
             this.txtConditions.TabIndex = 10;
             this.txtConditions.Text = "1-\r\n2-\r\n3-\r\n4-";
             // 
@@ -360,7 +364,7 @@
             this.btnDeleteService.Enabled = false;
             this.btnDeleteService.Font = new System.Drawing.Font("Tahoma", 13F);
             this.btnDeleteService.ForeColor = System.Drawing.Color.Red;
-            this.btnDeleteService.Location = new System.Drawing.Point(650, 167);
+            this.btnDeleteService.Location = new System.Drawing.Point(740, 167);
             this.btnDeleteService.Name = "btnDeleteService";
             this.btnDeleteService.Size = new System.Drawing.Size(32, 28);
             this.btnDeleteService.TabIndex = 12;
@@ -376,7 +380,7 @@
             this.btnEditService.Enabled = false;
             this.btnEditService.Font = new System.Drawing.Font("Tahoma", 13F);
             this.btnEditService.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnEditService.Location = new System.Drawing.Point(650, 208);
+            this.btnEditService.Location = new System.Drawing.Point(740, 208);
             this.btnEditService.Name = "btnEditService";
             this.btnEditService.Size = new System.Drawing.Size(32, 28);
             this.btnEditService.TabIndex = 13;
@@ -392,7 +396,7 @@
             this.btnAddService.Enabled = false;
             this.btnAddService.Font = new System.Drawing.Font("Tahoma", 13F);
             this.btnAddService.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnAddService.Location = new System.Drawing.Point(650, 249);
+            this.btnAddService.Location = new System.Drawing.Point(740, 249);
             this.btnAddService.Name = "btnAddService";
             this.btnAddService.Size = new System.Drawing.Size(32, 28);
             this.btnAddService.TabIndex = 14;
@@ -414,7 +418,6 @@
             // chkIsActive
             // 
             this.chkIsActive.AutoSize = true;
-            this.chkIsActive.Enabled = false;
             this.chkIsActive.Location = new System.Drawing.Point(141, 295);
             this.chkIsActive.Name = "chkIsActive";
             this.chkIsActive.Size = new System.Drawing.Size(15, 14);
@@ -431,8 +434,11 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.BillingCategoryColumn,
+            this.EffectiveFromColumn,
+            this.ExpiredColumn,
             this.CurrencyColumn,
-            this.PriceColumn});
+            this.PriceColumn,
+            this.VATColumn});
             this.dataGridView1.DataSource = this.bindingSource1;
             this.dataGridView1.Location = new System.Drawing.Point(141, 158);
             this.dataGridView1.MultiSelect = false;
@@ -444,7 +450,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowCellErrors = false;
             this.dataGridView1.ShowEditingIcon = false;
-            this.dataGridView1.Size = new System.Drawing.Size(503, 131);
+            this.dataGridView1.Size = new System.Drawing.Size(593, 131);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 54;
             // 
@@ -452,11 +458,29 @@
             // 
             this.BillingCategoryColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.BillingCategoryColumn.DataPropertyName = "BillingCategoryId";
-            this.BillingCategoryColumn.HeaderText = "Billing Category";
+            this.BillingCategoryColumn.HeaderText = "Category";
             this.BillingCategoryColumn.Name = "BillingCategoryColumn";
             this.BillingCategoryColumn.ReadOnly = true;
             this.BillingCategoryColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.BillingCategoryColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // EffectiveFromColumn
+            // 
+            this.EffectiveFromColumn.DataPropertyName = "EffectiveFromDate";
+            dataGridViewCellStyle1.Format = "yyyy-MM-dd";
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.EffectiveFromColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.EffectiveFromColumn.HeaderText = "Effective";
+            this.EffectiveFromColumn.Name = "EffectiveFromColumn";
+            this.EffectiveFromColumn.ReadOnly = true;
+            // 
+            // ExpiredColumn
+            // 
+            this.ExpiredColumn.DataPropertyName = "Expired";
+            this.ExpiredColumn.HeaderText = "Expired";
+            this.ExpiredColumn.Name = "ExpiredColumn";
+            this.ExpiredColumn.ReadOnly = true;
             // 
             // CurrencyColumn
             // 
@@ -473,6 +497,15 @@
             this.PriceColumn.HeaderText = "Price";
             this.PriceColumn.Name = "PriceColumn";
             this.PriceColumn.ReadOnly = true;
+            // 
+            // VATColumn
+            // 
+            this.VATColumn.DataPropertyName = "VATId";
+            this.VATColumn.HeaderText = "VAT";
+            this.VATColumn.Name = "VATColumn";
+            this.VATColumn.ReadOnly = true;
+            this.VATColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.VATColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // ContractForm
             // 
@@ -527,7 +560,7 @@
             contractModel1.UpdatedOn = null;
             this.Model = contractModel1;
             this.Name = "ContractForm";
-            this.Size = new System.Drawing.Size(687, 464);
+            this.Size = new System.Drawing.Size(785, 452);
             this.Load += new System.EventHandler(this.ContractFormLoad);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
@@ -573,9 +606,12 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.CheckBox chkIsActive;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.DataGridViewComboBoxColumn BillingCategoryColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EffectiveFromColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ExpiredColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn CurrencyColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn PriceColumn;
-        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn VATColumn;
     }
 }

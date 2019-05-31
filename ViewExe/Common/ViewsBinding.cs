@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 namespace MVCHIS.Common {
     public class ViewsBinding {
     }
+    public class VATView : BaseView<VATModel, VATController> { }
     public class UserView : BaseView<UserModel, UserController> { }
     public class CurrencyView : BaseView<CurrencyModel, CurrencyController> { }
     public class ServiceView : BaseView<ServiceModel, ServiceController> { }

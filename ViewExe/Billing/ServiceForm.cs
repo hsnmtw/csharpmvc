@@ -18,7 +18,8 @@ namespace MVCHIS.Billing {
             Controllers = new Dictionary<string, IDBController> {
                 ["b"] = DBControllersFactory.GetController(MODELS.BillingCategory),
                 ["c"] = DBControllersFactory.GetController(MODELS.Contract),
-                ["x"] = DBControllersFactory.GetController(MODELS.Currency)
+                ["x"] = DBControllersFactory.GetController(MODELS.Currency),
+                ["v"] = DBControllersFactory.GetController(MODELS.VAT)
             };
             //template
             Mapper["Id"] = txtId;
@@ -32,6 +33,9 @@ namespace MVCHIS.Billing {
             Mapper["ContractId"] = txtContractId;
             Mapper["CurrencyId"] = txtCurrencyId;
             Mapper["Price"] = txtPrice;
+            Mapper["Expired"] = chkExpired;
+            Mapper["EffectiveFromDate"] = txtEffectiveFromDate;
+            Mapper["VATId"] = lblVATId;
             //actions
             SaveButton = btnSave;
             DeleteButton = btnDelete;
@@ -59,6 +63,30 @@ namespace MVCHIS.Billing {
             var currency = Controllers["x"].Find(new CurrencyModel() { Id = selected }, "Id");
             txtCurrencyCode.Text = currency?.CurrencyCode;
             txtCurrencyEnglish.Text = currency?.CurrencyEnglish;
+        }
+
+        private void ServiceForm_Load(object sender, EventArgs e) {
+            cmbVATId.DataSource = Controllers["v"].Read<VATModel>().OrderBy(x => -x.VATAmount).ToList();
+            cmbVATId.DisplayMember = "VATCode";
+            cmbVATId.ValueMember = "Id";
+            cmbVATId.SelectedIndex = 0;
+        }
+
+        private void TxtEffectiveFromDate_Leave(object sender, EventArgs e) {
+            ValidateDate(txtEffectiveFromDate);
+        }
+
+        private void TxtId_TextChanged(object sender, EventArgs e) {
+            cmbVATId.SelectedIndex = 0;
+        }
+
+        private void CmbVATId_SelectedIndexChanged(object sender, EventArgs e) {
+            if (cmbVATId.SelectedValue is VATModel) {
+                lblVATId.Text = ((VATModel)cmbVATId.SelectedValue)?.Id.ToString();
+            } else {
+                lblVATId.Text = cmbVATId.SelectedValue?.ToString();
+            }
+
         }
     }
 }

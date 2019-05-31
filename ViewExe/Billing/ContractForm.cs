@@ -21,10 +21,11 @@ namespace MVCHIS.Billing {
 
             base.Controller = (ContractController)DBControllersFactory.GetController(Common.MODELS.Contract);
             Controllers = new Dictionary<string, IDBController> {
-                ["client"] = DBControllersFactory.GetController(MODELS.Client),
+                ["client"  ] = DBControllersFactory.GetController(MODELS.Client),
                 ["category"] = DBControllersFactory.GetController(MODELS.BillingCategory),
-                ["service"] = DBControllersFactory.GetController(MODELS.Service),
+                ["service" ] = DBControllersFactory.GetController(MODELS.Service),
                 ["currency"] = DBControllersFactory.GetController(MODELS.Currency),
+                ["VAT"     ] = DBControllersFactory.GetController(MODELS.VAT),
             };
             //template
             Mapper["Id"] = txtId;
@@ -62,13 +63,17 @@ namespace MVCHIS.Billing {
         }
 
         private void ContractFormLoad(object sender, EventArgs e) {
-            BillingCategoryColumn.DataSource = Controllers["category"].Read<BillingCategoryModel>();
+            BillingCategoryColumn.DataSource = Controllers["category"].Read<BillingCategoryModel>().ToList();
             BillingCategoryColumn.DisplayMember = "BillingCategoryCode";
             BillingCategoryColumn.ValueMember = "Id";
 
-            CurrencyColumn.DataSource = Controllers["currency"].Read<CurrencyModel>();
+            CurrencyColumn.DataSource = Controllers["currency"].Read<CurrencyModel>().ToList();
             CurrencyColumn.DisplayMember = "CurrencyCode";
             CurrencyColumn.ValueMember = "Id";
+
+            VATColumn.DataSource = Controllers["VAT"].Read<VATModel>().ToList();
+            VATColumn.DisplayMember = "VATCode";
+            VATColumn.ValueMember = "Id";
         }
 
         private void TxtClient_TextChanged(object sender, EventArgs e) {
@@ -105,7 +110,7 @@ namespace MVCHIS.Billing {
             form.Controls.Add(view);
             form.FormBorderStyle = FormBorderStyle.FixedToolWindow;
             form.StartPosition = FormStartPosition.CenterScreen;
-            form.Size = new System.Drawing.Size(400, 400);
+            form.Size = new System.Drawing.Size(430, 430);
             view.NewButtonEnabled = false;
             view.DeleteButtonEnabled = false;
             view.DisableChangeContract();

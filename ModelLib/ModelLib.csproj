@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Billing\VATModel.cs" />
     <Compile Include="Billing\AccommClassModel.cs" />
     <Compile Include="Billing\BillingCategoryModel.cs" />
     <Compile Include="Billing\BillingCycleModel.cs" />

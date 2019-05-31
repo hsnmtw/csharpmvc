@@ -82,6 +82,12 @@
     <Compile Include="Billing\CurrencyFormy.Designer.cs">
       <DependentUpon>CurrencyFormy.cs</DependentUpon>
     </Compile>
+    <Compile Include="Billing\VATForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Billing\VATForm.Designer.cs">
+      <DependentUpon>VATForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Billing\FoodTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -304,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Billing\CurrencyFormy.resx">
       <DependentUpon>CurrencyFormy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Billing\VATForm.resx">
+      <DependentUpon>VATForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Billing\FoodTypeForm.resx">
       <DependentUpon>FoodTypeForm.cs</DependentUpon>
