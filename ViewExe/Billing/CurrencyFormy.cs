@@ -12,10 +12,9 @@ namespace MVCHIS.Billing {
     public partial class CurrencyForm: CurrencyView {
 
         public CurrencyForm() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-
+            InitializeComponent();
             //template
-            Mapper["Id"       ] = txtId;
+            Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
             Mapper["CreatedOn"] = txtCreatedOn;
             Mapper["UpdatedBy"] = txtUpdatedBy;
@@ -37,8 +36,8 @@ namespace MVCHIS.Billing {
             Model = Controller.Find(new CurrencyModel() { CurrencyCode = selected }, "CurrencyCode");
         }
 
-        private void CurrencyFormLoad(object sender, EventArgs e) {
-            
+        private void CurrencyFormLoad(object sender, EventArgs e) { if (DesignMode) return;
+
         }
     }
    

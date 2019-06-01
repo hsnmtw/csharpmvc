@@ -8,8 +8,7 @@ namespace MVCHIS.Housing {
         
 
         public CompoundForm() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
-            //base.Controller = (CompoundController)DBControllersFactory.GetController(Common.MODELS.Compound);
+            InitializeComponent();
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -19,20 +18,20 @@ namespace MVCHIS.Housing {
             Mapper["ReadOnly"] = chkReadOnly;
             //data
             Mapper["CompoundName"] = txtCompoundName;
+            Mapper["CompoundLocation"] = txtCompoundLocation;
             //actions
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
         }
-        
-
-        private void CompoundFormLoad1(object sender, EventArgs e) {
-
-        }
 
         private void CompoundNameLookupButtonLookUpSelected(object sender, EventArgs e) {
             var selected = ((LookupEventArgs)e).SelectedValueFromLookup;
             Model = Controller.Find(new CompoundModel() { CompoundName = selected }, "CompoundName");
+        }
+
+        private void CompoundForm_Load(object sender, EventArgs e) { if (DesignMode) return;
+
         }
     }
     

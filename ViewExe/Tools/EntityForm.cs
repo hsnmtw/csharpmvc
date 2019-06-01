@@ -8,7 +8,7 @@ namespace MVCHIS.Common {
     public partial class EntityForm: EntityView {
         
         public EntityForm() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
+            InitializeComponent();
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -32,7 +32,7 @@ namespace MVCHIS.Common {
 
         }
 
-        private void EntityFormLoad(object sender, EventArgs e) {
+        private void EntityFormLoad(object sender, EventArgs e) { if (DesignMode) return;
         }
     }
     

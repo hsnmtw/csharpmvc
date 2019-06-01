@@ -24,7 +24,6 @@
         /// </summary>
         private void InitializeComponent(){
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EntitlementForm));
-            MVCHIS.Security.EntitlementModel entitlementModel1 = new MVCHIS.Security.EntitlementModel();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
@@ -246,16 +245,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.label1);
-            entitlementModel1.CreatedBy = null;
-            entitlementModel1.CreatedOn = null;
-            entitlementModel1.EntitlementGroupId = 0;
-            entitlementModel1.EntitlementName = null;
-            entitlementModel1.EntityId = 0;
-            entitlementModel1.Id = 0;
-            entitlementModel1.ReadOnly = false;
-            entitlementModel1.UpdatedBy = null;
-            entitlementModel1.UpdatedOn = null;
-            this.Model = entitlementModel1;
             this.Name = "EntitlementForm";
             this.Load += new System.EventHandler(this.EntitlementFormLoad);
             this.ResumeLayout(false);

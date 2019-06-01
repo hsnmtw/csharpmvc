@@ -15,10 +15,7 @@ namespace MVCHIS.Security {
         private IDBController<EntityModel>           CntrlET;// = DBControllersFactory.GetController<EntityModel>();
 
         public EntitlementForm() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-            CntrlEG = DBControllersFactory.GetController<EntitlementGroupModel>();
-            CntrlET = DBControllersFactory.GetController<EntityModel>();
-
+            InitializeComponent();
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -27,7 +24,7 @@ namespace MVCHIS.Security {
             Mapper["UpdatedOn"] = txtUpdatedOn;
             Mapper["ReadOnly"] = chkReadOnly;
             //data
-            
+
             Mapper["EntitlementName"] = txtEntitlementName;
             Mapper["EntitlementGroupId"] = txtEntitlementGroupId;
             Mapper["EntityId"] = txtEntityId;
@@ -40,7 +37,13 @@ namespace MVCHIS.Security {
 
 
 
-        private void EntitlementFormLoad(object sender, EventArgs e) {
+        private void EntitlementFormLoad(object sender, EventArgs e) { if (DesignMode) return;
+            
+            CntrlEG = DBControllersFactory.GetController<EntitlementGroupModel>();
+            CntrlET = DBControllersFactory.GetController<EntityModel>();
+
+
+
             egs = CntrlEG.Read().ToDictionary(x => x.Id, x => x);
             ets = CntrlET.Read().ToDictionary(x => x.Id, x => x);
         }

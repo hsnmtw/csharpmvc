@@ -13,7 +13,7 @@ namespace MVCHIS.Security {
             var ets = new EntityController().Read().ToDictionary(x => x.EntityName, x => x.Id);
 
             foreach (MODELS t in Enum.GetValues(typeof(MODELS))) {
-                var e = DBEntitiesFactory.GetEntity(t);
+                var e = DBControllersFactory.GetController(t);
                 Console.WriteLine($"-------------{e}");
                 if ("".Equals(e)) continue;
                 Save(new EntitlementModel() {

@@ -7,7 +7,7 @@ namespace MVCHIS.Customers {
     public partial class IdentificationTypeForm: IdentificationTypeView {
 
         public IdentificationTypeForm() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
+            InitializeComponent();
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -30,7 +30,8 @@ namespace MVCHIS.Customers {
             Model = Controller.Find(new IdentificationTypeModel() { IdTypeCode = selected }, "IdTypeCode");
         }
 
-        private void IdentificationTypeFormLoad(object sender, EventArgs e) {
+        private void IdentificationTypeFormLoad(object sender, EventArgs e) { if (DesignMode) return;
+
         }
     }
     

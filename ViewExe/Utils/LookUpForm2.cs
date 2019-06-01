@@ -9,14 +9,15 @@ namespace MVCHIS.Common {
 
         DataTable source;
         private int[] columnsWidths;
-        
+
+        public bool ValueHasBeenSelected => listView1.SelectedIndices.Count > 0;
+
         public LookUpForm2() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
+            InitializeComponent();
             //this.values = new Dictionary<string, string>();
         }
 
         public int SelectedValueIndex       { get; set; }
-        public int SelectedDescriptionIndex { get; set; }
 
         public string SearchText {
             set {
@@ -29,29 +30,29 @@ namespace MVCHIS.Common {
 
         
         public LookUpForm2(DataTable data,params string[]shownColumns) {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
+            InitializeComponent();
+            this.listView1.Columns.Clear();
+            this.listView1.Items.Clear();
             this.shownColumns = shownColumns;
             //Controller = controller;
             source = data;
+            listView1.Columns.AddRange((from c in shownColumns select new ColumnHeader(c) { Text = c }).ToArray());
         }
 
-        public string SelectedValue => this.listBox1.SelectedIndex < 0 ? null : this.listBox1.Text.Split('|')[SelectedValueIndex];
-        public string SelectedDescription => this.listBox1.SelectedIndex < 0? null : this.listBox1.Text.Split('|')[SelectedDescriptionIndex];
+        public string SelectedValue => ValueHasBeenSelected == false ? null : (SelectedValueIndex==0 ?  this.listView1.SelectedItems[0].Text : this.listView1.SelectedItems[0].SubItems[SelectedValueIndex].Text);
 
-        private void LookUpLoad(object sender, EventArgs e) {
+        private void LookUpLoad(object sender, EventArgs e) { if (DesignMode) return;
             //this.lblSearch.Text = "";
             Requery();
-            listBox1.Select();
-            listBox1.Focus();
+            listView1.Select();
+            listView1.Focus();
         }
-
-        private bool columnsInitialized { get; set; }
 
         public void Requery() {
             
             if (source.Rows.Count == 0) {
-                this.lblRowHeader.Text = "Empty resultset !!!";
-                listBox1.Items.Clear();
+                //this.lblRowHeader.Text = "Empty resultset !!!";
+                listView1.Items.Clear();
                 return;
             }
             if (shownColumns == null || shownColumns.Length == 0) {
@@ -59,51 +60,37 @@ namespace MVCHIS.Common {
             }
             
             var view = new DataView(source);
-            view.RowFilter = string.Format("{0} Like '%{1}%'", shownColumns[0], this.lblSearch.Text);
-            view.Sort = $"{shownColumns[0]} ASC";
-
+            try {
+                view.RowFilter = string.Format("{0} Like '{1}%'", shownColumns[0], this.lblSearch.Text);
+                view.Sort = $"{shownColumns[0]} ASC";
+            } catch { }
+            
             var table = view.ToTable(false, shownColumns);
-            if (!columnsInitialized) {
-                this.columnsWidths = new int[shownColumns.Length];
-                for (int j = 0; j < table.Columns.Count; j++) {
-                    this.columnsWidths[j] = Math.Max(this.columnsWidths[j], table.Columns[j].ColumnName.Length);
+            listView1.Items.Clear();
+            foreach (DataRow row in table.Rows) {
+                var item = new ListViewItem(row[0].ToString());
+                for(int i = 1; i < shownColumns.Length; i++) {
+                    item.SubItems.Add(row[i].ToString());
                 }
-                for (int i = 0; i < table.Rows.Count; i++) {
-                    for (int j = 0; j < table.Columns.Count; j++) {
-                        this.columnsWidths[j] = Math.Max(this.columnsWidths[j], table.Rows[i][j].ToString().Length);
-                    }
-                    
-                }
-                columnsInitialized = true;
+                listView1.Items.Add(item);
             }
-
-
-            //var sb = new StringBuilder();
-
-            string[] sb = new string[columnsWidths.Length];
-
-            for (int j = 0; j < table.Columns.Count; j++) {
-                sb[j] = string.Format(string.Join(""," {0,-" ,columnsWidths[j] ,"} "), table.Columns[j].ColumnName);
+            listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            if (listView1.Columns.Count > 0) {
+                listView1.Columns[listView1.Columns.Count-1].Width -= 5;
             }
-            this.lblRowHeader.Text = string.Join("|",sb);
-
-            this.listBox1.Items.Clear();
-            for (int i = 0; i < table.Rows.Count; i++) {
-                //sb = new StringBuilder();
-                for (int j = 0; j < table.Columns.Count; j++) {
-                    sb[j] = (string.Format(" {0,-"+ columnsWidths[j] +"} ", table.Rows[i][j]));
-                }
-                //values[$"{table.Rows[i][SelectedValueIndex]}"] = $"{table.Rows[i][table.Columns.Count > 1 ? 1 : 0]}";
-                this.listBox1.Items.Add(string.Join("|", sb));
+            if (listView1.Items.Count > 0) {
+                listView1.Items[0].Selected = true;
+                listView1.Select();
+                listView1.Focus();
             }
-            if (this.listBox1.Items.Count > 0) this.listBox1.SelectedIndex = 0;
         }
 
         private void LookUpKeyDown(object sender, KeyEventArgs e) {
 
         }
 
-        private void DataGridView1KeyDown(object sender, KeyEventArgs e) {
+        private void ListView1KeyDown(object sender, KeyEventArgs e) {
             switch (e.KeyCode) {
                 case Keys.Back:
                     if (this.lblSearch.Text.Length > 0) {
@@ -113,7 +100,7 @@ namespace MVCHIS.Common {
                     e.Handled = true;
                     break;
                 case Keys.Enter:
-                    if (this.listBox1.SelectedIndex > -1) this.DialogResult = DialogResult.OK;
+                    if (this.listView1.SelectedIndices.Count > 0) this.DialogResult = DialogResult.OK;
                     this.Close();
                     e.SuppressKeyPress = true;
                     e.Handled = true;
@@ -125,8 +112,9 @@ namespace MVCHIS.Common {
             }
             
         }
-        public void DataGridView1KeyPress(object sender, KeyPressEventArgs e) {
+        public void ListView1KeyPress(object sender, KeyPressEventArgs e) {
             this.lblSearch.Text += e.KeyChar;
+            e.Handled = true;
             
         }
 
@@ -137,8 +125,9 @@ namespace MVCHIS.Common {
             Requery();
         }
 
-        private void DataGridView1DoubleClick(object sender, EventArgs e) {
-            this.DataGridView1KeyDown(sender, new KeyEventArgs(Keys.Enter));
+
+        private void ListView1_DoubleClick(object sender, EventArgs e) {
+            this.ListView1KeyDown(sender, new KeyEventArgs(Keys.Enter));
         }
     }
 }

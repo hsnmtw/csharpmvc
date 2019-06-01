@@ -6,11 +6,8 @@ namespace MVCHIS.Customers {
     //[ForModel(Common.MODELS.Contact)]
     public partial class ContactForm: ContactView {
 
-         
-        
         public ContactForm() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-            //base.Controller = (ContactController)DBControllersFactory.GetController(Common.MODELS.Contact);
+            InitializeComponent();
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -28,6 +25,7 @@ namespace MVCHIS.Customers {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
+
         }
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
@@ -36,7 +34,7 @@ namespace MVCHIS.Customers {
             Model = Controller.Find(new ContactModel() { MobileNumber=selected }, "MobileNumber");
         }
 
-        private void ContactFormLoad(object sender, EventArgs e) {
+        private void ContactFormLoad(object sender, EventArgs e) { if (DesignMode) return;
         }
     }
     

@@ -187,7 +187,6 @@
             this.txtId.Size = new System.Drawing.Size(68, 20);
             this.txtId.TabIndex = 0;
             this.txtId.TabStop = false;
-            
             // 
             // label1
             // 
@@ -398,6 +397,7 @@
             this.Controls.Add(this.lookupBuilding);
             this.Name = "RoomForm";
             this.Size = new System.Drawing.Size(382, 340);
+            this.Load += new System.EventHandler(this.RoomForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

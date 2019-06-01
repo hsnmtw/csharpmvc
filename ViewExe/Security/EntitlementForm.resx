@@ -714,12 +714,12 @@
     <value>6, 13</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>427, 285</value>
+    <value>409, 281</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>EntitlementForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>MVCHIS.Security.EntitlementView, ViewExe, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>MVCHIS.Common.EntitlementView, ViewExe, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

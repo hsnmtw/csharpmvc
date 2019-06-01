@@ -12,11 +12,9 @@ namespace MVCHIS.Billing {
     public partial class BillingCycleForm: BillingCycleView {
 
         public BillingCycleForm() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-            
-            var type = typeof(BillingCycleModel);
+            InitializeComponent();
             //template
-            Mapper["Id"       ] = txtId;
+            Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
             Mapper["CreatedOn"] = txtCreatedOn;
             Mapper["UpdatedBy"] = txtUpdatedBy;
@@ -36,8 +34,8 @@ namespace MVCHIS.Billing {
             Model = Controller.Find(new BillingCycleModel() { Id = int.Parse($"0{selected}") }, "Id");
         }
 
-        private void BillingCycleFormLoad(object sender, EventArgs e) {
-            
+        private void BillingCycleFormLoad(object sender, EventArgs e) { if (DesignMode) return;
+            var type = typeof(BillingCycleModel);
         }
     }
     

@@ -12,9 +12,7 @@ namespace MVCHIS.Housing.Rooms {
 
 
         public RoomForm() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-            CntrlBD = (BuildingController)DBControllersFactory.GetController<BuildingModel>();
-            CntrlCY = (CountryController)DBControllersFactory.GetController<CountryModel>();
+            InitializeComponent();
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -32,6 +30,11 @@ namespace MVCHIS.Housing.Rooms {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
+        }
+        private void RoomForm_Load(object sender, EventArgs e) { if (DesignMode) return;
+            CntrlBD = (BuildingController)DBControllersFactory.GetController<BuildingModel>();
+            CntrlCY = (CountryController)DBControllersFactory.GetController<CountryModel>();
+
         }
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
@@ -63,6 +66,8 @@ namespace MVCHIS.Housing.Rooms {
             txtCountryCode.Text = country?.CountryCode;
             txtCountryEnglish.Text = country?.CountryEnglish;
         }
+
+
     }
     
 }

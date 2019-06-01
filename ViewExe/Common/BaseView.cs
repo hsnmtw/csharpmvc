@@ -20,7 +20,8 @@ namespace MVCHIS.Common {
         public virtual C Controller { get; set; } 
         public virtual M Model {
             get {
-                M getmodel = Activator.CreateInstance<M>();
+                if (Controller == null) return null;
+                M getmodel = Controller.NewModel();
                 foreach (var x in Mapper.Keys) {
                     string text = Mapper[x].Text;
                     Mapper[x].Text = text.Trim();
@@ -35,7 +36,7 @@ namespace MVCHIS.Common {
             }
             set {
                 M model;
-                if (value == null) { model = Activator.CreateInstance<M>(); } else { model = value; }
+                if (value == null && Controller!=null) { model = Controller.NewModel(); } else { model = value; }
                 //model = value;
                 Console.WriteLine("++++"+model);
                 foreach (var x in Mapper.Keys) {
@@ -81,9 +82,10 @@ namespace MVCHIS.Common {
         public Action AfterDelete { get; set; }
 
         public BaseView() : base() {
-            Controller = (C)DBControllersFactory.GetController<M>();
+           
+            
             Name = GetType().Name;
-            if (DesignMode||(Site!=null && Site.DesignMode)) return;;
+            if (DesignMode||(Site!=null && Site.DesignMode)) return;
 
             Mapper = new Dictionary<string, Control>();
             Prop = new Func<string, PropertyInfo>(x => typeof(M).GetProperty(x));
@@ -99,8 +101,9 @@ namespace MVCHIS.Common {
 
             //model = Activator.CreateInstance<M>();
             Load += (s, e) => {
-                if (DesignMode || (Site != null && Site.DesignMode)) return; 
-                new PermissionsHelper<M, C>(this);
+                if (DesignMode) return;
+                Controller = (C)DBControllersFactory.GetController<M>();
+                new PermissionsHelper<M,C>(this);
                 if (SaveButton != null) {
                     SaveButton.Enabled = SaveButtonEnabled;
                     SaveButton.Click += (bs, be) => {

@@ -7,23 +7,21 @@ namespace MVCHIS.Security {
     //[ForModel(Common.MODELS.ProfileEntitlement)]
     public partial class ProfileEntitlementForm: ProfileEntitlementsView {
 
-        private readonly ProfileController     CntrlPR;
-        private readonly EntitlementController CntrlEN;
+        private ProfileController     CntrlPR;
+        private EntitlementController CntrlEN;
 
         private Dictionary<int, string> entitlements;
         private Dictionary<int, string> profiles;
 
         public ProfileEntitlementForm() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-            CntrlPR = (ProfileController)DBControllersFactory.GetController<ProfileModel>();
-            CntrlEN = (EntitlementController)DBControllersFactory.GetController<EntitlementModel>();
+            InitializeComponent();
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
             Mapper["CreatedOn"] = txtCreatedOn;
             Mapper["UpdatedBy"] = txtUpdatedBy;
             Mapper["UpdatedOn"] = txtUpdatedOn;
-            Mapper["ReadOnly"]  = chkReadOnly;
+            Mapper["ReadOnly"] = chkReadOnly;
             //data
             Mapper["ProfileId"] = txtProfileId;
             Mapper["EntitlementId"] = txtEntitlementId;
@@ -38,7 +36,11 @@ namespace MVCHIS.Security {
             NewButton = btnNew;
         }        
 
-        private void EntitlementFormLoad(object sender, EventArgs e) {
+        private void EntitlementFormLoad(object sender, EventArgs e) { if (DesignMode) return;
+            CntrlPR = (ProfileController)DBControllersFactory.GetController<ProfileModel>();
+            CntrlEN = (EntitlementController)DBControllersFactory.GetController<EntitlementModel>();
+
+
             entitlements = CntrlEN.Read().ToDictionary(x => x.Id, x => x.EntitlementName);
             profiles = CntrlPR.Read().ToDictionary(x => x.Id, x => x.ProfileName);
         }

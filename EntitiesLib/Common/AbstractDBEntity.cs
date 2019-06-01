@@ -13,11 +13,32 @@ namespace MVCHIS.Common {
         public abstract MetaData MetaData { get; }
 
         public AbstractDBEntity() : base() {
+
+        }
+        public void ValidateMetaData() { 
             var mfields = new HashSet<string>(typeof(M).GetProperties().Select(x => x.Name));
-            var efields = new HashSet<string>(MetaData.Fields);
+            var efields = MetaData.Fields;
             if (!mfields.SetEquals(efields)) {
-                throw new Exception($"MODEL and ENTITY are not in SYNC : M:[\"{string.Join("\",\"",mfields.OrderBy(x=>x))}\"] != E:[\"{string.Join("\",\"",efields.OrderBy(x => x))}\"]");
+                throw new Exception($"MODEL and ENTITY are not in SYNC : \n M:[\"{string.Join("\",\"",mfields.OrderBy(x=>x))}\"] \n E:[\"{string.Join("\",\"",efields.OrderBy(x => x))}\"]");
             }
+            var rfields = MetaData.RequiredFields;
+            if(!rfields.Select(x => mfields.Contains(x)).All(x => x)) {
+                throw new Exception($"ENTITY Required fields are not in MODEL : \n M:[\"{string.Join("\",\"", mfields.OrderBy(x => x))}\"] \n E:[\"{string.Join("\",\"", rfields.OrderBy(x => x))}\"]");
+            }
+            var ufields = MetaData.UniqueKeyFields;
+            if (!ufields.Select(x => mfields.Contains(x)).All(x => x)) {
+                throw new Exception($"ENTITY Unique fields are not in MODEL : \n M:[\"{string.Join("\",\"", mfields.OrderBy(x => x))}\"] \n E:[\"{string.Join("\",\"", ufields.OrderBy(x => x))}\"]");
+            }
+            var pfield = MetaData.PrimaryKeyField;
+            if (!mfields.Contains(pfield)) {
+                throw new Exception($"ENTITY Primary fields are not in MODEL : \n M:[\"{string.Join("\",\"", mfields.OrderBy(x => x))}\"] \n E:[\"{pfield}\"]");
+            }
+            var ffields = MetaData.ForeignKeys.Keys;
+            if (!ffields.Select(x => mfields.Contains(x)).All(x => x)) {
+                throw new Exception($"ENTITY Primary fields are not in MODEL : \n M:[\"{string.Join("\",\"", mfields.OrderBy(x => x))}\"] \n E:[\"{string.Join("\",\"", ffields.OrderBy(x => x))}\"]");
+            }
+
+
         }
 
         public virtual bool Validate(M model) {
@@ -137,8 +158,9 @@ namespace MVCHIS.Common {
             var pkey = string.Join(",",MetaData.PrimaryKeyField);
             var cdef = from tpl in cols.Zip(dtps,(a,b) => new Tuple<string,string>(a,b)) select $@"{tpl.Item1} {tpl.Item2} {(rqrd.Contains(tpl.Item1) ? "NOT NULL" : "")}";
             cdef = cdef.Concat(new string[] { "Id INTEGER IDENTITY(1,1) NOT NULL" });
-            var fkey = string.Join("",from k in MetaData.ForeignKeys select $", CONSTRAINT {MetaData.Source}_FK_{k.Key} FOREIGN KEY({k.Key}) REFERENCES {k.Value.Item1}({k.Value.Item2})");
-            return $@"CREATE TABLE {MetaData.Source} ({string.Join(",",cdef)}, CONSTRAINT {MetaData.Source}_PK PRIMARY KEY({pkey}), CONSTRAINT {MetaData.Source}_UK UNIQUE ({uniq}) {fkey})";
+            //var fkey = string.Join("",from k in MetaData.ForeignKeys select $", CONSTRAINT {MetaData.Source}_FK_{k.Key} FOREIGN KEY({k.Key}) REFERENCES {k.Value.Item1}({k.Value.Item2})");
+            //return $@"CREATE TABLE {MetaData.Source} ({string.Join(",",cdef)}, CONSTRAINT {MetaData.Source}_PK PRIMARY KEY({pkey}), CONSTRAINT {MetaData.Source}_UK UNIQUE ({uniq}) {fkey});";
+            return $@"CREATE TABLE {MetaData.Source} ({string.Join(",", cdef)});";
         }
 
         private string ddltype(Type propertyType,int size) {

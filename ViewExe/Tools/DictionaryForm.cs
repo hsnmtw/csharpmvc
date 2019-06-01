@@ -7,7 +7,11 @@ namespace MVCHIS.Tools {
 
 
         public DictionaryForm() : base() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
+            InitializeComponent();
+        }
+        
+
+        private void DictionaryFormLoad1(object sender, EventArgs e) {
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -21,11 +25,6 @@ namespace MVCHIS.Tools {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
-        }
-        
-
-        private void DictionaryFormLoad1(object sender, EventArgs e) {
-
         }
 
         private void DictionaryNameLookupButtonLookUpSelected(object sender, EventArgs e) {

@@ -18,15 +18,7 @@ namespace MVCHIS.Customers {
 
 
         public ClientForm() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
-
-            CntrlCT = (ClientTypeController          )DBControllersFactory.GetController<ClientTypeModel          >();
-            CntrlCO = (ContactController             )DBControllersFactory.GetController<ContactModel             >();
-            CntrlCC = (ClientContactController       )DBControllersFactory.GetController<ClientContactModel       >();
-            CntrlID = (IdentificationController      )DBControllersFactory.GetController<IdentificationModel      >();
-            CntrlCI = (ClientIdentificationController)DBControllersFactory.GetController<ClientIdentificationModel>();
-            CntrlCY = (CountryController             )DBControllersFactory.GetController<CountryModel             >();
-
+            InitializeComponent();
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -35,29 +27,38 @@ namespace MVCHIS.Customers {
             Mapper["UpdatedOn"] = txtUpdatedOn;
             Mapper["ReadOnly"] = chkReadOnly;
             //data
-            Mapper["ClientTypeId"  ] = txtClientTypeId;
-            Mapper["ShortName"     ] = txtShortName;
-            Mapper["LongName"      ] = txtLongName;
-            Mapper["NameArabic"    ] = txtNameArabic;
-            Mapper["DateOfBirth"   ] = txtDateOfBirth;
-            Mapper["IsActive"      ] = chkIsActive;
+            Mapper["ClientTypeId"] = txtClientTypeId;
+            Mapper["ShortName"] = txtShortName;
+            Mapper["LongName"] = txtLongName;
+            Mapper["NameArabic"] = txtNameArabic;
+            Mapper["DateOfBirth"] = txtDateOfBirth;
+            Mapper["IsActive"] = chkIsActive;
             Mapper["BillingAddress"] = txtBillingAddress;
-            Mapper["PhoneNumber"   ] = txtPhoneNumber;
-            Mapper["FaxNumber"     ] = txtFaxNumber;
-            Mapper["Website"       ] = txtWebsite;
-            Mapper["CountryId"     ] = txtCountryId;
+            Mapper["PhoneNumber"] = txtPhoneNumber;
+            Mapper["FaxNumber"] = txtFaxNumber;
+            Mapper["Website"] = txtWebsite;
+            Mapper["CountryId"] = txtCountryId;
             //actions
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
-            ModelChanged = delegate () {
-                RequeryIdentification();
-                RequeryContact(); 
-            };
         }
 
-        private void ClientTypeFormLoad(object sender, EventArgs e) {
-            foreach(Control tab in this.tabControl1.TabPages) FormsHelper.ApplyLanguageLocalization(tab);
+        private void ClientTypeFormLoad(object sender, EventArgs e) { if (DesignMode) return;
+
+            CntrlCT = (ClientTypeController)DBControllersFactory.GetController<ClientTypeModel>();
+            CntrlCO = (ContactController)DBControllersFactory.GetController<ContactModel>();
+            CntrlCC = (ClientContactController)DBControllersFactory.GetController<ClientContactModel>();
+            CntrlID = (IdentificationController)DBControllersFactory.GetController<IdentificationModel>();
+            CntrlCI = (ClientIdentificationController)DBControllersFactory.GetController<ClientIdentificationModel>();
+            CntrlCY = (CountryController)DBControllersFactory.GetController<CountryModel>();
+
+            ModelChanged = delegate () {
+                RequeryIdentification();
+                RequeryContact();
+            };
+
+            foreach (Control tab in this.tabControl1.TabPages) FormsHelper.ApplyLanguageLocalization(tab);
         }
 
         private void LookUpButtonShortNameLookUpSelected(object sender, EventArgs e) {
@@ -83,6 +84,7 @@ namespace MVCHIS.Customers {
                 RequeryIdentification();
             };
             form.Controls.Add(view);
+            form.Size = new System.Drawing.Size(430, 430);
             form.Show();
         }
 
@@ -105,17 +107,19 @@ namespace MVCHIS.Customers {
         }
 
         private void BtnAddContact_Click(object sender, EventArgs e) {
-            var form = ((ContactForm)DBViewsFactory.GetView(Common.MODELS.Contact));
-            form.AfterSave = delegate () {
+            var form = new Form() { Text = "Add Contact" };
+            var view = ((ContactForm)DBViewsFactory.GetView(Common.MODELS.Contact));
+            view.AfterSave = delegate () {
                 CntrlCC.Save(new ClientContactModel() {
                     ClientId  = Model.Id,
-                    ContactId = form.Model.Id
+                    ContactId = view.Model.Id
                 });
-                //form.DialogResult = DialogResult.OK;
-                form.Hide();
                 RequeryContact();
             };
-            form?.Show();
+            view.Dock = DockStyle.Fill;
+            form.Controls.Add(view);
+            form.Size = new System.Drawing.Size(430, 430);
+            form.Show();
         }
 
         private void TxtNationalityCode_TextChanged(object sender, EventArgs e) {

@@ -20,7 +20,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>0</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -47,25 +47,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Billing\AccommClassForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Billing\AccommClassForm.Designer.cs">
       <DependentUpon>AccommClassForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Billing\BillingCategoryForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Billing\BillingCategoryForm.Designer.cs">
       <DependentUpon>BillingCategoryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Billing\FoodClassForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Billing\FoodClassForm.Designer.cs">
       <DependentUpon>FoodClassForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Billing\BillingCycleForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Billing\BillingCycleForm.Designer.cs">
       <DependentUpon>BillingCycleForm.cs</DependentUpon>
@@ -89,7 +89,7 @@
       <DependentUpon>VATForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Billing\FoodTypeForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Billing\FoodTypeForm.Designer.cs">
       <DependentUpon>FoodTypeForm.cs</DependentUpon>
@@ -101,7 +101,7 @@
       <DependentUpon>ServiceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\BaseView.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Common\DBViewsFactory.cs" />
     <Compile Include="Common\IView.cs" />
@@ -119,67 +119,73 @@
       <DependentUpon>CryptoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Customers\ClientForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Customers\ClientForm.Designer.cs">
       <DependentUpon>ClientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Customers\ClientTypeForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Customers\ClientTypeForm.Designer.cs">
       <DependentUpon>ClientTypeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Customers\ContactForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Customers\ContactForm.Designer.cs">
       <DependentUpon>ContactForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Customers\CityForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Customers\CityForm.Designer.cs">
+      <DependentUpon>CityForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customers\CountryForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Customers\CountryForm.Designer.cs">
       <DependentUpon>CountryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Customers\IdentificationForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Customers\IdentificationForm.Designer.cs">
       <DependentUpon>IdentificationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Customers\IdentificationTypeForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Customers\IdentificationTypeForm.Designer.cs">
       <DependentUpon>IdentificationTypeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Customers\ProjectForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Customers\ProjectForm.Designer.cs">
       <DependentUpon>ProjectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Housing\BuildingForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Housing\BuildingForm.Designer.cs">
       <DependentUpon>BuildingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Housing\BuildingTypeForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Housing\BuildingTypeForm.Designer.cs">
       <DependentUpon>BuildingTypeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Housing\CompoundForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Housing\CompoundForm.Designer.cs">
       <DependentUpon>CompoundForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Housing\RoomForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Housing\RoomForm.Designer.cs">
       <DependentUpon>RoomForm.cs</DependentUpon>
@@ -193,62 +199,62 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\AuditForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Security\AuditForm.Designer.cs">
       <DependentUpon>AuditForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Security\EntitlementForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Security\EntitlementForm.Designer.cs">
       <DependentUpon>EntitlementForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Security\EntitlementGroupForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Security\EntitlementGroupForm.Designer.cs">
       <DependentUpon>EntitlementGroupForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Security\PermissionsHelper.cs" />
     <Compile Include="Security\ProfileEntitlementForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Security\ProfileEntitlementForm.Designer.cs">
       <DependentUpon>ProfileEntitlementForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Security\ProfileForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Security\ProfileForm.Designer.cs">
       <DependentUpon>ProfileForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Security\Users\UserForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Security\Users\UserForm.Designer.cs">
       <DependentUpon>UserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Security\Users\UserPasswordResetView.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Security\Users\UserPasswordResetView.Designer.cs">
       <DependentUpon>UserPasswordResetView.cs</DependentUpon>
     </Compile>
     <Compile Include="Security\Users\UsersLoginView.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Security\Users\UsersLoginView.Designer.cs">
       <DependentUpon>UsersLoginView.cs</DependentUpon>
     </Compile>
     <Compile Include="Tools\DictionaryForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Tools\DictionaryForm.Designer.cs">
       <DependentUpon>DictionaryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Tools\EntityForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Tools\EntityForm.Designer.cs">
       <DependentUpon>EntityForm.cs</DependentUpon>
@@ -260,6 +266,9 @@
       <DependentUpon>FixedWidthListBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\FormsHelper.cs" />
+    <Compile Include="Utils\ListViewControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Utils\LookUpButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -334,6 +343,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Customers\ContactForm.resx">
       <DependentUpon>ContactForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customers\CityForm.resx">
+      <DependentUpon>CityForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Customers\CountryForm.resx">
       <DependentUpon>CountryForm.cs</DependentUpon>

@@ -16,11 +16,7 @@ namespace MVCHIS.Billing {
         private CurrencyController        CntrlCU;
         private VATController             CntrlVT;
         public ServiceForm() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-            CntrlCN = (ContractController       )DBControllersFactory.GetController<ContractModel       >();
-            CntrlCG = (BillingCategoryController)DBControllersFactory.GetController<BillingCategoryModel>();
-            CntrlCU = (CurrencyController       )DBControllersFactory.GetController<CurrencyModel       >();
-            CntrlVT = (VATController            )DBControllersFactory.GetController<VATModel            >();
+            InitializeComponent();
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -65,7 +61,13 @@ namespace MVCHIS.Billing {
             txtCurrencyEnglish.Text = currency?.CurrencyEnglish;
         }
 
-        private void ServiceForm_Load(object sender, EventArgs e) {
+        private void ServiceForm_Load(object sender, EventArgs e) { if (DesignMode) return;
+
+            CntrlCN = (ContractController)DBControllersFactory.GetController<ContractModel>();
+            CntrlCG = (BillingCategoryController)DBControllersFactory.GetController<BillingCategoryModel>();
+            CntrlCU = (CurrencyController)DBControllersFactory.GetController<CurrencyModel>();
+            CntrlVT = (VATController)DBControllersFactory.GetController<VATModel>();
+
             cmbVATId.DataSource = CntrlVT.Read().OrderBy(x => -x.VATAmount).ToList();
             cmbVATId.DisplayMember = "VATCode";
             cmbVATId.ValueMember = "Id";

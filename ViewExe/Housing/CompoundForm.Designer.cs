@@ -39,6 +39,8 @@
             this.CompoundNameLookupButton = new MVCHIS.Common.LookUpButton();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtCompoundLocation = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnDelete
@@ -46,7 +48,7 @@
             this.btnDelete.Location = new System.Drawing.Point(40, 202);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 9;
+            this.btnDelete.TabIndex = 11;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
@@ -55,7 +57,7 @@
             this.btnSave.Location = new System.Drawing.Point(148, 202);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 7;
+            this.btnSave.TabIndex = 9;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             // 
@@ -64,7 +66,7 @@
             this.btnNew.Location = new System.Drawing.Point(256, 202);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 23);
-            this.btnNew.TabIndex = 8;
+            this.btnNew.TabIndex = 10;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = true;
             // 
@@ -75,7 +77,7 @@
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
             this.txtUpdatedOn.Size = new System.Drawing.Size(137, 20);
-            this.txtUpdatedOn.TabIndex = 6;
+            this.txtUpdatedOn.TabIndex = 7;
             this.txtUpdatedOn.TabStop = false;
             // 
             // txtUpdatedBy
@@ -85,7 +87,7 @@
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
             this.txtUpdatedBy.Size = new System.Drawing.Size(69, 20);
-            this.txtUpdatedBy.TabIndex = 5;
+            this.txtUpdatedBy.TabIndex = 6;
             this.txtUpdatedBy.TabStop = false;
             // 
             // label6
@@ -104,7 +106,7 @@
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
             this.txtCreatedOn.Size = new System.Drawing.Size(137, 20);
-            this.txtCreatedOn.TabIndex = 4;
+            this.txtCreatedOn.TabIndex = 5;
             this.txtCreatedOn.TabStop = false;
             // 
             // txtCreatedBy
@@ -114,7 +116,7 @@
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
             this.txtCreatedBy.Size = new System.Drawing.Size(69, 20);
-            this.txtCreatedBy.TabIndex = 3;
+            this.txtCreatedBy.TabIndex = 4;
             this.txtCreatedBy.TabStop = false;
             // 
             // label5
@@ -143,7 +145,6 @@
             this.txtId.Size = new System.Drawing.Size(68, 20);
             this.txtId.TabIndex = 0;
             this.txtId.TabStop = false;
-            
             // 
             // label1
             // 
@@ -183,7 +184,7 @@
             this.chkReadOnly.Location = new System.Drawing.Point(121, 166);
             this.chkReadOnly.Name = "chkReadOnly";
             this.chkReadOnly.Size = new System.Drawing.Size(15, 14);
-            this.chkReadOnly.TabIndex = 44;
+            this.chkReadOnly.TabIndex = 8;
             this.chkReadOnly.UseVisualStyleBackColor = true;
             // 
             // label10
@@ -195,14 +196,31 @@
             this.label10.TabIndex = 45;
             this.label10.Text = "Read Only";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(20, 80);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(47, 13);
+            this.label3.TabIndex = 28;
+            this.label3.Text = "Location";
+            // 
+            // txtCompoundLocation
+            // 
+            this.txtCompoundLocation.BackColor = System.Drawing.Color.White;
+            this.txtCompoundLocation.Location = new System.Drawing.Point(120, 77);
+            this.txtCompoundLocation.Name = "txtCompoundLocation";
+            this.txtCompoundLocation.Size = new System.Drawing.Size(211, 20);
+            this.txtCompoundLocation.TabIndex = 3;
+            // 
             // CompoundForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(366, 237);
             this.Controls.Add(this.chkReadOnly);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.CompoundNameLookupButton);
+            this.Controls.Add(this.txtCompoundLocation);
             this.Controls.Add(this.txtCompoundName);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
@@ -212,13 +230,14 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtCreatedOn);
             this.Controls.Add(this.txtCreatedBy);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.label1);
             this.Name = "CompoundForm";
-            this.Text = "Compounds";
-            this.Load += new System.EventHandler(this.CompoundFormLoad1);
+            this.Size = new System.Drawing.Size(366, 237);
+            this.Load += new System.EventHandler(this.CompoundForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -241,6 +260,8 @@
         private Common.LookUpButton CompoundNameLookupButton;
         private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtCompoundLocation;
         //private Common.LookUpButton CompoundNameLookupButton;
     }
 }

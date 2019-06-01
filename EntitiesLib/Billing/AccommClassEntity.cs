@@ -7,7 +7,6 @@ namespace MVCHIS.Billing {
     //[ForModel(MODELS.AccommClass)]
     public class AccommClassEntity : AbstractDBEntity<AccommClassModel> {
         public override MetaData MetaData => new MetaData() {
-            ////  ModelType        = typeof(AccommClassModel)
               PrimaryKeyField  = "Id" 
             , Fields           = new HashSet<string> {"ReadOnly","Id","CreatedBy","CreatedOn","UpdatedBy","UpdatedOn",
                                                       "AccommClassCode", "AccommClassDesc" }

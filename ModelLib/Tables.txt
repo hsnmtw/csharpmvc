@@ -7,7 +7,7 @@ create login hisuser with
     password         = 'hisuser123@.', 
     default_database = his,
     CHECK_POLICY     = OFF,
-    CHECK_EXPIRATION = OFF;;
+    CHECK_EXPIRATION = OFF;
 go
 ------------------------------------------------------------------
 create user hisuser for login hisuser with default_schema=his;
@@ -64,29 +64,85 @@ go
 use his
 go
 
- DROP TABLE ToolsDictionary              
-;DROP TABLE SecurityAudit                
-;DROP TABLE SecurityEntitlement          
-;DROP TABLE SecurityEntitlementGroup     
-;DROP TABLE SecurityProfileEntitlement   
-;DROP TABLE SecurityProfile              
-;DROP TABLE SecurityUser                 
-;DROP TABLE HousingBuilding              
-;DROP TABLE HousingBuildingType          
-;DROP TABLE HousingCompound              
-;DROP TABLE HousingRoom                  
-;DROP TABLE BillingAccommClass           
-;DROP TABLE BillingCategory              
-;DROP TABLE BillingFoodClass             
-;DROP TABLE BillingFoodType              
-;DROP TABLE CustomersContact             
-;DROP TABLE CustomersClient              
-;DROP TABLE CustomersClientType          
-;DROP TABLE CustomersCountry             
-;DROP TABLE CustomersIdentification      
-;DROP TABLE CustomersIdentificationType  
-;DROP TABLE CustomersProject             
-;DROP TABLE CommonEntites                
+use his
+go
+
+EXEC sp_MSForEachTable 'ALTER TABLE ? NOCHECK CONSTRAINT ALL'
+go
+
+;drop table BillingCategory
+;drop table BillingAccommClass
+;drop table SecurityAudit
+;drop table HousingBuilding
+;drop table HousingBuildingType
+;drop table CustomersClient
+;drop table CustomersClientType
+;drop table HousingCompound
+;drop table ToolsDictionary
+;drop table SecurityEntitlement
+;drop table SecurityEntitlementGroup
+;drop table BillingFoodClass
+;drop table BillingFoodType
+;drop table CustomersIdentification
+;drop table CustomersIdentificationType
+;drop table CustomersCountry
+;drop table SecurityProfile
+;drop table SecurityProfileEntitlement
+;drop table CustomersProject
+;drop table HousingRoom
+;drop table SecurityUser
+;drop table ToolsEntity
+;drop table CustomersContact
+;drop table CustomersClientContact
+;drop table CustomersClientIdentification
+;drop table BillingCycle
+;drop table BillingContract
+;drop table BillingService
+;drop table BillingCurrency
+;drop table BillingVAT
+;drop table CustomersCity
+
+go
+
+EXEC sp_MSForEachTable 'ALTER TABLE ? CHECK CONSTRAINT ALL'
+go
+
+-- RELAXED
+
+CREATE TABLE BillingFoodType (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,FoodTypeCode VARCHAR(50) NOT NULL,FoodTypeDesc VARCHAR(100) NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE BillingFoodClass (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,FoodClassCode VARCHAR(50) NOT NULL,FoodClassDesc VARCHAR(100) NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE BillingAccommClass (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,AccommClassCode VARCHAR(50) NOT NULL,AccommClassDesc VARCHAR(100) NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE BillingCategory (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,BillingCategoryCode VARCHAR(150) NOT NULL,BillingCategoryDesc VARCHAR(250) NOT NULL,AccommClassId INTEGER NOT NULL,FoodClassId INTEGER NOT NULL,FoodTypeId INTEGER NOT NULL,ReservationOnly CHAR(1) ,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE SecurityProfile (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,ProfileName VARCHAR(50) NOT NULL,ProfileDesc VARCHAR(100) ,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE SecurityUser (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,UserName VARCHAR(50) NOT NULL,FullName VARCHAR(100) NOT NULL,UserPassword VARCHAR(100) NOT NULL,ProfileId INTEGER NOT NULL,IsActive CHAR(1) ,Email VARCHAR(100) ,FailedLoginAttempts INTEGER ,LastLoginDate DATETIME ,LastChangePassword DATETIME ,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE SecurityAudit (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,UserName VARCHAR(50) ,EventDate DATETIME NOT NULL,EventComments VARCHAR(200) NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE HousingBuilding (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,BuildingName VARCHAR(50) NOT NULL,BuildingTypeId INTEGER NOT NULL,CompoundId INTEGER NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE HousingBuildingType (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,BuildingTypeCode VARCHAR(50) NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE CustomersClientType (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,ClientTypeCode VARCHAR(50) NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE CustomersCountry (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,CountryCode VARCHAR(50) NOT NULL,CountryEnglish VARCHAR(100) NOT NULL,CountryArabic VARCHAR(100) ,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE CustomersClient (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,ClientTypeId INTEGER NOT NULL,ShortName VARCHAR(50) NOT NULL,LongName VARCHAR(150) NOT NULL,NameArabic VARCHAR(150) ,DateOfBirth DATETIME ,IsActive CHAR(1) ,BillingAddress VARCHAR(255) ,PhoneNumber VARCHAR(20) ,FaxNumber VARCHAR(20) ,Website VARCHAR(100) ,CountryId INTEGER ,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE HousingCompound (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,CompoundName VARCHAR(50) NOT NULL,CompoundLocation VARCHAR(100) ,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE ToolsDictionary (CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,ReadOnly CHAR(1) ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,WordInArabic VARCHAR(250) NOT NULL,WordInEnglish VARCHAR(250) NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE ToolsEntity (CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,ReadOnly CHAR(1) ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,EntityName VARCHAR(50) NOT NULL,EntityDesc VARCHAR(100) NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE SecurityEntitlementGroup (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,EntitlementGroupName VARCHAR(50) NOT NULL,Dynamic CHAR(1) ,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE SecurityEntitlement (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,EntitlementName VARCHAR(50) NOT NULL,EntitlementGroupId INTEGER NOT NULL,EntityId INTEGER NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE CustomersCity (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,CountryId INTEGER NOT NULL,CityEnglish VARCHAR(100) NOT NULL,CityArabic VARCHAR(100) NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE CustomersIdentificationType (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,IdTypeCode VARCHAR(50) NOT NULL,IdTypeEnglish VARCHAR(100) ,IdTypeArabic VARCHAR(100) ,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE CustomersIdentification (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,IdNumber VARCHAR(15) NOT NULL,IdTypeId INTEGER NOT NULL,CityId INTEGER NOT NULL,IssueDate DATETIME ,ExpiryDate DATETIME ,IsActive CHAR(1) ,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE SecurityProfileEntitlement (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,ProfileId INTEGER NOT NULL,EntitlementId INTEGER NOT NULL,AllowCreate CHAR(1) ,AllowRead CHAR(1) ,AllowUpdate CHAR(1) ,AllowDelete CHAR(1) ,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE CustomersProject (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,ProjectName VARCHAR(50) NOT NULL,ClientId INTEGER NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE HousingRoom (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,RoomName VARCHAR(50) NOT NULL,BuildingId INTEGER NOT NULL,BedCapacity INTEGER NOT NULL,CountryId INTEGER ,NumberOfWindows INTEGER ,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE CustomersContact (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,MobileNumber VARCHAR(15) NOT NULL,Email VARCHAR(100) ,FaxNumber VARCHAR(15) ,PhoneNumber VARCHAR(15) ,FullName VARCHAR(100) NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE CustomersClientContact (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,ClientId INTEGER NOT NULL,ContactId INTEGER NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE CustomersClientIdentification (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,ClientId INTEGER NOT NULL,IdentificationId INTEGER NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE BillingCycle (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,BillingCycleYear INTEGER NOT NULL,BillingCycleMonth INTEGER NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE BillingContract (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,ContractCode VARCHAR(20) NOT NULL,StartDate DATETIME NOT NULL,EndDate DATETIME ,IsActive CHAR(1) ,Conditions VARCHAR(1000) ,ClientId INTEGER NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE BillingCurrency (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,CurrencyCode VARCHAR(3) NOT NULL,CurrencyEnglish VARCHAR(50) NOT NULL,CurrencyArabic VARCHAR(50) NOT NULL,CurrencySymbol VARCHAR(2) ,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE BillingVAT (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,VATCode VARCHAR(5) NOT NULL,VATAmount DECIMAL(5,2) NOT NULL,VATDesc VARCHAR(50) NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL);
+CREATE TABLE BillingService (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,BillingCategoryId INTEGER NOT NULL,ContractId INTEGER NOT NULL,Price DECIMAL(5,2) NOT NULL,CurrencyId INTEGER NOT NULL,EffectiveFromDate DATETIME NOT NULL,Expired CHAR(1) ,VATId INTEGER NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL);
+
+
+-- STRICT
 
 ;CREATE TABLE BillingFoodType (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,FoodTypeCode VARCHAR(50) NOT NULL,FoodTypeDesc VARCHAR(100) NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL, CONSTRAINT BillingFoodType_PK PRIMARY KEY(Id), CONSTRAINT BillingFoodType_UK UNIQUE (FoodTypeCode) )
 ;CREATE TABLE BillingFoodClass (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,FoodClassCode VARCHAR(50) NOT NULL,FoodClassDesc VARCHAR(100) NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL, CONSTRAINT BillingFoodClass_PK PRIMARY KEY(Id), CONSTRAINT BillingFoodClass_UK UNIQUE (FoodClassCode) )
@@ -105,8 +161,9 @@ go
 ;CREATE TABLE ToolsEntity (CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,ReadOnly CHAR(1) ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,EntityName VARCHAR(50) NOT NULL,EntityDesc VARCHAR(100) NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL, CONSTRAINT ToolsEntity_PK PRIMARY KEY(Id), CONSTRAINT ToolsEntity_UK UNIQUE (EntityName) )
 ;CREATE TABLE SecurityEntitlementGroup (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,EntitlementGroupName VARCHAR(50) NOT NULL,Dynamic CHAR(1) ,Id INTEGER IDENTITY(1,1) NOT NULL, CONSTRAINT SecurityEntitlementGroup_PK PRIMARY KEY(Id), CONSTRAINT SecurityEntitlementGroup_UK UNIQUE (EntitlementGroupName) )
 ;CREATE TABLE SecurityEntitlement (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,EntitlementName VARCHAR(50) NOT NULL,EntitlementGroupId INTEGER NOT NULL,EntityId INTEGER NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL, CONSTRAINT SecurityEntitlement_PK PRIMARY KEY(Id), CONSTRAINT SecurityEntitlement_UK UNIQUE (EntitlementName) , CONSTRAINT SecurityEntitlement_FK_EntityId FOREIGN KEY(EntityId) REFERENCES ToolsEntity(Id), CONSTRAINT SecurityEntitlement_FK_EntitlementGroupId FOREIGN KEY(EntitlementGroupId) REFERENCES SecurityEntitlementGroup(Id))
+;CREATE TABLE CustomersCity (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,CountryId INTEGER NOT NULL,CityEnglish VARCHAR(100) NOT NULL,CityArabic VARCHAR(100) NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL, CONSTRAINT CustomersCity_PK PRIMARY KEY(Id), CONSTRAINT CustomersCity_UK UNIQUE (CityEnglish) , CONSTRAINT CustomersCity_FK_CountryId FOREIGN KEY(CountryId) REFERENCES CustomersCountry(Id))
 ;CREATE TABLE CustomersIdentificationType (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,IdTypeCode VARCHAR(50) NOT NULL,IdTypeEnglish VARCHAR(100) ,IdTypeArabic VARCHAR(100) ,Id INTEGER IDENTITY(1,1) NOT NULL, CONSTRAINT CustomersIdentificationType_PK PRIMARY KEY(Id), CONSTRAINT CustomersIdentificationType_UK UNIQUE (IdTypeCode) )
-;CREATE TABLE CustomersIdentification (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,IdNumber VARCHAR(15) NOT NULL,IdTypeId INTEGER NOT NULL,CountryId INTEGER NOT NULL,IssueDate DATETIME ,ExpiryDate DATETIME ,IsActive CHAR(1) ,Id INTEGER IDENTITY(1,1) NOT NULL, CONSTRAINT CustomersIdentification_PK PRIMARY KEY(Id), CONSTRAINT CustomersIdentification_UK UNIQUE (IdNumber,IdTypeId,CountryId) , CONSTRAINT CustomersIdentification_FK_CountryId FOREIGN KEY(CountryId) REFERENCES CustomersCountry(Id), CONSTRAINT CustomersIdentification_FK_IdTypeId FOREIGN KEY(IdTypeId) REFERENCES CustomersIdentificationType(Id))
+;CREATE TABLE CustomersIdentification (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,IdNumber VARCHAR(15) NOT NULL,IdTypeId INTEGER NOT NULL,CityId INTEGER NOT NULL,IssueDate DATETIME ,ExpiryDate DATETIME ,IsActive CHAR(1) ,Id INTEGER IDENTITY(1,1) NOT NULL, CONSTRAINT CustomersIdentification_PK PRIMARY KEY(Id), CONSTRAINT CustomersIdentification_UK UNIQUE (IdNumber,IdTypeId,CityId) , CONSTRAINT CustomersIdentification_FK_CityId FOREIGN KEY(CityId) REFERENCES CustomersCity(Id), CONSTRAINT CustomersIdentification_FK_IdTypeId FOREIGN KEY(IdTypeId) REFERENCES CustomersIdentificationType(Id))
 ;CREATE TABLE SecurityProfileEntitlement (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,ProfileId INTEGER NOT NULL,EntitlementId INTEGER NOT NULL,AllowCreate CHAR(1) ,AllowRead CHAR(1) ,AllowUpdate CHAR(1) ,AllowDelete CHAR(1) ,Id INTEGER IDENTITY(1,1) NOT NULL, CONSTRAINT SecurityProfileEntitlement_PK PRIMARY KEY(Id), CONSTRAINT SecurityProfileEntitlement_UK UNIQUE (ProfileId,EntitlementId) , CONSTRAINT SecurityProfileEntitlement_FK_ProfileId FOREIGN KEY(ProfileId) REFERENCES SecurityProfile(Id), CONSTRAINT SecurityProfileEntitlement_FK_EntitlementId FOREIGN KEY(EntitlementId) REFERENCES SecurityEntitlement(Id))
 ;CREATE TABLE CustomersProject (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,ProjectName VARCHAR(50) NOT NULL,ClientId INTEGER NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL, CONSTRAINT CustomersProject_PK PRIMARY KEY(Id), CONSTRAINT CustomersProject_UK UNIQUE (ProjectName) , CONSTRAINT CustomersProject_FK_ClientId FOREIGN KEY(ClientId) REFERENCES CustomersClient(Id))
 ;CREATE TABLE HousingRoom (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,RoomName VARCHAR(50) NOT NULL,BuildingId INTEGER NOT NULL,BedCapacity INTEGER NOT NULL,CountryId INTEGER ,NumberOfWindows INTEGER ,Id INTEGER IDENTITY(1,1) NOT NULL, CONSTRAINT HousingRoom_PK PRIMARY KEY(Id), CONSTRAINT HousingRoom_UK UNIQUE (RoomName) , CONSTRAINT HousingRoom_FK_BuildingId FOREIGN KEY(BuildingId) REFERENCES HousingBuilding(Id), CONSTRAINT HousingRoom_FK_CountryId FOREIGN KEY(CountryId) REFERENCES CustomersCountry(Id))
@@ -118,7 +175,7 @@ go
 ;CREATE TABLE BillingCurrency (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,CurrencyCode VARCHAR(3) NOT NULL,CurrencyEnglish VARCHAR(50) NOT NULL,CurrencyArabic VARCHAR(50) NOT NULL,CurrencySymbol VARCHAR(2) ,Id INTEGER IDENTITY(1,1) NOT NULL, CONSTRAINT BillingCurrency_PK PRIMARY KEY(Id), CONSTRAINT BillingCurrency_UK UNIQUE (CurrencyCode) )
 ;CREATE TABLE BillingVAT (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,VATCode VARCHAR(5) NOT NULL,VATAmount DECIMAL(5,2) NOT NULL,VATDesc VARCHAR(50) NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL, CONSTRAINT BillingVAT_PK PRIMARY KEY(Id), CONSTRAINT BillingVAT_UK UNIQUE (VATCode) )
 ;CREATE TABLE BillingService (ReadOnly CHAR(1) ,CreatedBy VARCHAR(50) ,CreatedOn DATETIME ,UpdatedBy VARCHAR(50) ,UpdatedOn DATETIME ,BillingCategoryId INTEGER NOT NULL,ContractId INTEGER NOT NULL,Price DECIMAL(5,2) NOT NULL,CurrencyId INTEGER NOT NULL,EffectiveFromDate DATETIME NOT NULL,Expired CHAR(1) ,VATId INTEGER NOT NULL,Id INTEGER IDENTITY(1,1) NOT NULL, CONSTRAINT BillingService_PK PRIMARY KEY(Id), CONSTRAINT BillingService_UK UNIQUE (BillingCategoryId,ContractId) , CONSTRAINT BillingService_FK_ContractId FOREIGN KEY(ContractId) REFERENCES BillingContract(Id), CONSTRAINT BillingService_FK_BillingCategoryId FOREIGN KEY(BillingCategoryId) REFERENCES BillingCategory(Id), CONSTRAINT BillingService_FK_CurrencyId FOREIGN KEY(CurrencyId) REFERENCES BillingCurrency(Id), CONSTRAINT BillingService_FK_VATId FOREIGN KEY(VATId) REFERENCES BillingVAT(Id))
-
+go
 
 ------------------------------
 -- use his

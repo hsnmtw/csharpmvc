@@ -37,7 +37,7 @@ namespace MVCHIS {
 
         private MainView()
         {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;; //(); if(DesignMode || (Site != null && Site.DesignMode)) return;;
+            InitializeComponent(); //(); if(DesignMode || (Site != null && Site.DesignMode)) return;
             this.dictionaryController = (DictionaryController)DBControllersFactory.GetController(Common.MODELS.Dictionary);
             this.egController = (EntitlementGroupController)DBControllersFactory.GetController(Common.MODELS.EntitlementGroup);
             this.eController = (EntitlementController)DBControllersFactory.GetController(Common.MODELS.Entitlement);
@@ -46,19 +46,22 @@ namespace MVCHIS {
 
 
 
-        private void MainViewLoad(object sender, EventArgs e) {
+        private void MainViewLoad(object sender, EventArgs e) { if (DesignMode) return;
             //tsDateTime.Alignment = ToolStripItemAlignment.Right;
+            try {
+                //this.StartPosition = FormStartPosition.CenterScreen;
+                SetBounds(100, 100, 1000, 600);
+                
+                LoadForm();
             
-            LoadForm();
-            
-              try{}
+              }
             catch(Exception ex) {
                 FormsHelper.Error(ex.Message);
             }
         }
 
         public void LoadForm() {
-            if (DesignMode || (Site != null && Site.DesignMode)) return;;
+           ;
             initializeToolStripMenuItem.Visible = false;
             initializeToolStripMenuItem.Visible = (null == eController.Find(new EntitlementModel() { EntitlementName = "Profile" }, "EntitlementName"));
 
@@ -88,11 +91,15 @@ namespace MVCHIS {
                     
                     ce.Tag = entities[crow.EntityId];
                     ce.Click += (s, ea) => {
-                        if (s == null || !typeof(ToolStripMenuItem).Equals(s.GetType()) || ((ToolStripMenuItem)s).Tag == null || ((ToolStripMenuItem)s).Tag.ToString().Equals("")) return;;
+                        if (s == null || !typeof(ToolStripMenuItem).Equals(s.GetType()) || ((ToolStripMenuItem)s).Tag == null || ((ToolStripMenuItem)s).Tag.ToString().Equals("")) return;
                         if (Enum.TryParse<MODELS>(((EntityModel)((ToolStripMenuItem)s).Tag).EntityName, out MODELS num)) {
-                            Control view = (Control)DBViewsFactory.GetView(num);
-                            ShowView(view);
-                            FormsHelper.ApplyLanguageLocalization(view);
+                            try {
+                                Control view = (Control)DBViewsFactory.GetView(num);
+                                ShowView(view);
+                                FormsHelper.ApplyLanguageLocalization(view);
+                            } catch (Exception ex){
+                                Console.WriteLine($"~ ERROR : {ex.Message}");
+                            }
                         } else {
                             FormsHelper.Error("Not implemented");
                         }

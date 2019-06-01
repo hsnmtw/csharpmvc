@@ -10,8 +10,7 @@ namespace MVCHIS.Housing.BuildingTypes {
  
         
         public BuildingTypeForm() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
-
+            InitializeComponent();
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -33,7 +32,7 @@ namespace MVCHIS.Housing.BuildingTypes {
             Model = Controller.Find(new BuildingTypeModel() { BuildingTypeCode=selected }, "BuildingTypeCode");
         }
 
-        private void BuildingTypeFormLoad(object sender, EventArgs e) {
+        private void BuildingTypeFormLoad(object sender, EventArgs e) { if (DesignMode) return;
 
         }
     }

@@ -34,6 +34,7 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.tssLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsDateTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,7 +65,6 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tsDateTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -103,6 +103,13 @@
             // 
             this.tssLabelStatus.Name = "tssLabelStatus";
             resources.ApplyResources(this.tssLabelStatus, "tssLabelStatus");
+            // 
+            // tsDateTime
+            // 
+            resources.ApplyResources(this.tsDateTime, "tsDateTime");
+            this.tsDateTime.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
+            this.tsDateTime.Name = "tsDateTime";
+            this.tsDateTime.Spring = true;
             // 
             // menuStrip1
             // 
@@ -304,13 +311,6 @@
             // 
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            // 
-            // tsDateTime
-            // 
-            resources.ApplyResources(this.tsDateTime, "tsDateTime");
-            this.tsDateTime.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
-            this.tsDateTime.Name = "tsDateTime";
-            this.tsDateTime.Spring = true;
             // 
             // timer1
             // 

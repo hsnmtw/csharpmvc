@@ -12,10 +12,9 @@ namespace MVCHIS.Billing {
     public partial class FoodTypeForm: FoodTypeView {
 
         public FoodTypeForm() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-            
+            InitializeComponent();
             //template
-            Mapper["Id"       ] = txtId;
+            Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
             Mapper["CreatedOn"] = txtCreatedOn;
             Mapper["UpdatedBy"] = txtUpdatedBy;
@@ -35,8 +34,8 @@ namespace MVCHIS.Billing {
             Model = Controller.Find(new FoodTypeModel() { FoodTypeCode = selected }, "FoodTypeCode");
         }
 
-        private void FoodTypeFormLoad(object sender, EventArgs e) {
-            
+        private void FoodTypeFormLoad(object sender, EventArgs e) { if (DesignMode) return;
+
         }
     }
    

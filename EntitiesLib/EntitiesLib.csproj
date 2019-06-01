@@ -20,7 +20,8 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>2</WarningLevel>
+    <DocumentationFile>bin\Debug\EntitiesLib.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -61,6 +62,7 @@
     <Compile Include="Customers\ClientIdentificationEntity.cs" />
     <Compile Include="Customers\ClientTypeEntity.cs" />
     <Compile Include="Customers\ContactEntity.cs" />
+    <Compile Include="Customers\CityEntity.cs" />
     <Compile Include="Customers\CountryEntity.cs" />
     <Compile Include="Customers\IdentificationEntity.cs" />
     <Compile Include="Customers\IdentificationTypeEntity.cs" />

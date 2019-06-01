@@ -33,6 +33,7 @@ namespace MVCHIS.Common {
         , Contract
         , Service,
         Currency,
-        VAT
+        VAT,
+        City
     }
 }

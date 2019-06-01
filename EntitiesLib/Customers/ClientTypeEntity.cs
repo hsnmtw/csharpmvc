@@ -8,15 +8,18 @@ namespace MVCHIS.Customers {
         public override MetaData MetaData => new MetaData() {
             ////  ModelType        = typeof(ClientTypeModel)
               PrimaryKeyField  = "Id" 
-            , Fields           = new HashSet<string> {"ReadOnly", "Id", "CreatedBy", "CreatedOn", "UpdatedBy", "UpdatedOn", "ClientTypeCode" }
-            , RequiredFields   = new HashSet<string> { "Id","ClientTypeCode" }            
+            , Fields           = new HashSet<string> {"ReadOnly", "Id", "CreatedBy", "CreatedOn", "UpdatedBy", "UpdatedOn",
+                                                      "ClientTypeCode","ClientTypeEnglish","ClientTypeArabic" }
+            , RequiredFields   = new HashSet<string> { "Id","ClientTypeCode","ClientTypeEnglish","ClientTypeArabic" }            
             , UniqueKeyFields  = new HashSet<string> { "ClientTypeCode" }
             , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
             }
             , Sizes = new Dictionary<string, int> {
                 ["CreatedBy"] = 50,
                 ["UpdatedBy"] = 50,
-                ["ClientTypeCode"] = 50
+                ["ClientTypeCode"] = 10,
+                ["ClientTypeEnglish"] = 50,
+                ["ClientTypeArabic"] = 50,
             }
             , Source = "CustomersClientType"
         };

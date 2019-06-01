@@ -136,7 +136,6 @@
             this.txtId.Size = new System.Drawing.Size(68, 20);
             this.txtId.TabIndex = 0;
             this.txtId.TabStop = false;
-            
             // 
             // label1
             // 
@@ -185,7 +184,7 @@
             // 
             // lookUpButtonAccommClass
             // 
-            this.lookUpButtonAccommClass.AssociatedControl = "txtAccomodationClass";
+            this.lookUpButtonAccommClass.AssociatedControl = "txtAccommClassCode";
             this.lookUpButtonAccommClass.Controller = "AccommClass";
             this.lookUpButtonAccommClass.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonAccommClass.Location = new System.Drawing.Point(355, 45);
@@ -218,7 +217,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(492, 314);
             this.Controls.Add(this.chkReadOnly);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtId);
@@ -238,7 +236,7 @@
             this.Controls.Add(this.txtCreatedBy);
             this.Controls.Add(this.btnDelete);
             this.Name = "AccommClassForm";
-            this.Text = "Accomm Classes";
+            this.Size = new System.Drawing.Size(460, 305);
             this.Load += new System.EventHandler(this.AccommClassFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();

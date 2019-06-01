@@ -25,7 +25,7 @@ namespace MVCHIS.Configurations {
         }
 
         public CryptoForm() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
+            InitializeComponent();
             this.controller = new CryptoController();
         }
 

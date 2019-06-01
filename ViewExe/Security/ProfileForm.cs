@@ -17,12 +17,7 @@ namespace MVCHIS.Security {
         private EntitlementGroupController   CntrlEG;
 
         public ProfileForm() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-            
-            CntrlEN  = (EntitlementController       )DBControllersFactory.GetController<EntitlementModel       >();
-            CntrlPE = (ProfileEntitlementController)DBControllersFactory.GetController<ProfileEntitlementModel>();
-            CntrlEG = (EntitlementGroupController  )DBControllersFactory.GetController<EntitlementGroupModel  >();
-
+            InitializeComponent();
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -39,27 +34,11 @@ namespace MVCHIS.Security {
             NewButton = btnNew;
         }        
 
-        public void RequeryEntitlements() {
-            this.lstEntitlements.Items.Clear();
-            List<EntitlementModel> filter;
-            string eg = $"{this.cmbEntitelmentsGroup.SelectedItem}";
-            if ("All".Equals(eg)) {
-                filter = allEntitlements.Values.ToList();
-            } else if (this.entitlementsByGroup.ContainsKey(eg)) { 
-                filter = this.entitlementsByGroup[eg];
-            } else {
-                filter = new List<EntitlementModel>();
-            }
-            this.lstEntitlements.Items.AddRange((
-                    from ProfileEntitlementModel row
-                      in CntrlPE.Read(new ProfileEntitlementModel() { ProfileId= Model.Id }, "ProfileId" )
-                   where filter.Exists(x => x.Id == row.EntitlementId)
-                  select $"{(row.AllowCreate?C:E)}{(row.AllowRead?R:E)}{(row.AllowUpdate?U:E)}{(row.AllowDelete?D:E)}  {allEntitlements[row.EntitlementId].EntitlementName}"
-            ).ToArray());
-        }
+        private void ProfileFormLoad(object sender, EventArgs e) { if (DesignMode) return;
+            CntrlEN = (EntitlementController)DBControllersFactory.GetController<EntitlementModel>();
+            CntrlPE = (ProfileEntitlementController)DBControllersFactory.GetController<ProfileEntitlementModel>();
+            CntrlEG = (EntitlementGroupController)DBControllersFactory.GetController<EntitlementGroupModel>();
 
-        private void ProfileFormLoad(object sender, EventArgs e) {
-            
             cmbEntitelmentsGroup.Items.Clear();
             cmbEntitelmentsGroup.Items.Add("All");
             cmbEntitelmentsGroup.Text = "All";
@@ -84,6 +63,26 @@ namespace MVCHIS.Security {
                 allEntitlements[em.Id] = em;
             }
         }
+        public void RequeryEntitlements() {
+            this.lstEntitlements.Items.Clear();
+            List<EntitlementModel> filter;
+            string eg = $"{this.cmbEntitelmentsGroup.SelectedItem}";
+            if ("All".Equals(eg)) {
+                filter = allEntitlements.Values.ToList();
+            } else if (this.entitlementsByGroup.ContainsKey(eg)) { 
+                filter = this.entitlementsByGroup[eg];
+            } else {
+                filter = new List<EntitlementModel>();
+            }
+            this.lstEntitlements.Items.AddRange((
+                    from ProfileEntitlementModel row
+                      in CntrlPE.Read(new ProfileEntitlementModel() { ProfileId= Model.Id }, "ProfileId" )
+                   where filter.Exists(x => x.Id == row.EntitlementId)
+                  select $"{(row.AllowCreate?C:E)}{(row.AllowRead?R:E)}{(row.AllowUpdate?U:E)}{(row.AllowDelete?D:E)}  {allEntitlements[row.EntitlementId].EntitlementName}"
+            ).ToArray());
+        }
+
+
 
         private void CmbEntitelmentsGroup_SelectedIndexChanged(object sender, EventArgs e) {
             try {
@@ -152,5 +151,5 @@ namespace MVCHIS.Security {
             MainView.Instance.setProgress("All entitlements were un-allowed", 100);
         }
     }
-    public class ProfileView : BaseView<ProfileModel, ProfileController> { }
+    
 }

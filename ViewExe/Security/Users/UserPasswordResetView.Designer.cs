@@ -113,7 +113,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(251, 194);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(17, 13);
+            this.label5.Size = new System.Drawing.Size(54, 13);
             this.label5.TabIndex = 6;
             this.label5.Text = "Record Id";
             // 
@@ -131,7 +131,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 145);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtId);
@@ -142,8 +141,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtConfirmPassword);
             this.Controls.Add(this.label2);
-
             this.Name = "UserPasswordResetView";
+            this.Size = new System.Drawing.Size(341, 145);
+            this.Load += new System.EventHandler(this.UserPasswordResetView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

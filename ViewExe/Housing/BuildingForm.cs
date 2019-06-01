@@ -14,10 +14,7 @@ namespace MVCHIS.Housing.Buildings {
 
 
         public BuildingForm() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-            CntrlBT = (BuildingTypeController)DBControllersFactory.GetController<BuildingTypeModel>();
-            CntrlCM = (CompoundController)DBControllersFactory.GetController<CompoundModel>();
-
+            InitializeComponent();
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -41,7 +38,11 @@ namespace MVCHIS.Housing.Buildings {
 
         }
 
-        private void BuildingFormLoad(object sender, EventArgs e) {
+        private void BuildingFormLoad(object sender, EventArgs e) { if (DesignMode) return;
+            CntrlBT = (BuildingTypeController)DBControllersFactory.GetController<BuildingTypeModel>();
+            CntrlCM = (CompoundController)DBControllersFactory.GetController<CompoundModel>();
+
+
         }
 
         private void TxtBuildingTypeId_TextChanged(object sender, EventArgs e) {

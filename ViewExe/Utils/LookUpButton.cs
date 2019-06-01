@@ -19,12 +19,12 @@ namespace MVCHIS.Common {
         public event EventHandler LookUpSelected;
 
         public string ValueFromLookup { get; private set; }
-        private LookUpForm lookup;
+        private LookUpForm2 lookup;
         private Control controlValu = null;
         private IController controller = null;
 
         public LookUpButton() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
+            InitializeComponent();
             button1.Text = ARROW;
             Font = new Font("Consolas", 10, FontStyle.Bold);
             ShowFieldsInLookUp = new List<string>();
@@ -34,10 +34,11 @@ namespace MVCHIS.Common {
 
         private void Button1Click(object sender, EventArgs e) {
             if (!isInitialized) init();
-            lookup = new LookUpForm(controller.GetData(), ShowFieldsInLookUp.ToArray());
+            lookup = new LookUpForm2(controller.GetData(), ShowFieldsInLookUp.ToArray());
             lookup.SelectedValueIndex = SelectedValueIndex;
             
             lookup.FormClosed += (s, ee) => {
+                if (lookup.DialogResult != DialogResult.OK) return;
                 ValueFromLookup = lookup.SelectedValue;
                 if (controlValu != null && lookup.ValueHasBeenSelected) {
                     controlValu.Text = $"{ValueFromLookup}".Trim();
@@ -74,7 +75,7 @@ namespace MVCHIS.Common {
 
         public override string Text { get => button1.Text; set => button1.Text = value; }
 
-        private void LookUpButtonLoad(object sender, EventArgs e) {
+        private void LookUpButtonLoad(object sender, EventArgs e) { if (DesignMode) return;
             init();
         }
 

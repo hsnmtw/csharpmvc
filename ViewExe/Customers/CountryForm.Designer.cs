@@ -61,7 +61,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(28, 97);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(91, 13);
+            this.label4.Size = new System.Drawing.Size(79, 13);
             this.label4.TabIndex = 14;
             this.label4.Text = "Country Arabic";
             // 
@@ -78,7 +78,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(28, 71);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 13);
+            this.label3.Size = new System.Drawing.Size(82, 13);
             this.label3.TabIndex = 15;
             this.label3.Text = "Country English";
             // 
@@ -99,14 +99,13 @@
             this.txtId.Size = new System.Drawing.Size(60, 20);
             this.txtId.TabIndex = 0;
             this.txtId.TabStop = false;
-            
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(28, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(17, 13);
+            this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 12;
             this.label1.Text = "Record Id";
             // 
@@ -202,10 +201,12 @@
             this.CountryCodeLookupButton.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.CountryCodeLookupButton.Location = new System.Drawing.Point(213, 37);
             this.CountryCodeLookupButton.Name = "CountryCodeLookupButton";
+            this.CountryCodeLookupButton.SelectedValueIndex = 0;
             this.CountryCodeLookupButton.ShowFieldsInLookUp.Add("CountryCode");
             this.CountryCodeLookupButton.ShowFieldsInLookUp.Add("CountryEnglish");
             this.CountryCodeLookupButton.Size = new System.Drawing.Size(22, 22);
             this.CountryCodeLookupButton.TabIndex = 2;
+            this.CountryCodeLookupButton.TabStop = false;
             this.CountryCodeLookupButton.LookUpSelected += new System.EventHandler(this.CountryCodeTextBoxLookUpSelected);
             // 
             // txtCountryCode
@@ -269,7 +270,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(369, 267);
             this.Controls.Add(this.chkReadOnly);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.lblMetaDataCountryArabic);
@@ -294,7 +294,7 @@
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.label1);
             this.Name = "CountryForm";
-            this.Text = "Country";
+            this.Size = new System.Drawing.Size(369, 267);
             this.Load += new System.EventHandler(this.CountryFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();

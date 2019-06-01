@@ -20,7 +20,8 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>2</WarningLevel>
+    <DocumentationFile>bin\Debug\ControllerLib.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -56,6 +57,7 @@
     <Compile Include="Common\ControllersInitializer.cs" />
     <Compile Include="Common\ControllersRegistery.cs" />
     <Compile Include="Common\DBControllersFactory.cs" />
+    <Compile Include="Customers\CityController.cs" />
     <Compile Include="Tools\EntityController.cs" />
     <Compile Include="Common\IController.cs" />
     <Compile Include="Common\ICrypto.cs" />

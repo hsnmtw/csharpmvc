@@ -161,7 +161,6 @@
             this.txtId.Size = new System.Drawing.Size(68, 20);
             this.txtId.TabIndex = 0;
             this.txtId.TabStop = false;
-            
             // 
             // label1
             // 
@@ -316,7 +315,7 @@
             this.Controls.Add(this.txtBuildingTypeId);
             this.Controls.Add(this.txtCompoundId);
             this.Name = "BuildingForm";
-            this.Size = new System.Drawing.Size(406, 286);
+            this.Size = new System.Drawing.Size(393, 286);
             this.Load += new System.EventHandler(this.BuildingFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();

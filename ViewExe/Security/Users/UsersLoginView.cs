@@ -11,18 +11,19 @@ namespace MVCHIS.Security.Users {
         
        // public CryptoController Encryption;
 
-        public UsersLoginView()
-        {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-            //base.Controller = (UserController)DBControllersFactory.GetController(Common.MODELS.User);
-            Mapper["UserName"     ] = txtUserName;
-            Mapper["UserPassword" ] = txtPassword;
+        public UsersLoginView(){
+            InitializeComponent();
+            Mapper["UserName"] = txtUserName;
+            Mapper["UserPassword"] = txtPassword;
+        }
+        private void UsersLoginView_Load(object sender, EventArgs e) { if (DesignMode) return;
+
         }
 
         private void Button1Click(object sender, EventArgs e)
         {
             
-            var model = Controller.Autheniticate(this.Model);
+            var model = ((UserController)Controller).Autheniticate(this.Model);
             if (model != null)
             {
                 this.Model = model;
@@ -39,9 +40,6 @@ namespace MVCHIS.Security.Users {
             
         }
 
-        private void UsersLoginView_Load(object sender, EventArgs e) {
-            if(Site!=null && Site.DesignMode) return;
-            //Encryption = new CryptoController();
-        }
+
     }
 }

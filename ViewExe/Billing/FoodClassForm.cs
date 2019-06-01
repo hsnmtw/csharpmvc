@@ -10,7 +10,7 @@ namespace MVCHIS.Billing {
         
         
         public FoodClassForm() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
+            InitializeComponent();
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -29,13 +29,12 @@ namespace MVCHIS.Billing {
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
             string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            //this.txtFoodClass.Text = selected;
             Model = Controller.Find(new FoodClassModel() { FoodClassCode = selected }, "FoodClassCode");
 
         }
 
-        private void FoodClassFormLoad(object sender, EventArgs e) {
-           
+        private void FoodClassFormLoad(object sender, EventArgs e) { if (DesignMode) return;
+
         }
     }
    

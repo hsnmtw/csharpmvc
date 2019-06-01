@@ -9,7 +9,9 @@ using System.Threading;
 using System.Windows.Forms;
 
 namespace MVCHIS {
-
+    /// <summary>
+    /// 
+    /// </summary>
     static class Program
     {
         //[DllImport("kernel32.dll")]
@@ -25,7 +27,27 @@ namespace MVCHIS {
            // AttachConsole(ATTACHPARENTPROCESS);
             Session.Instance.Initialize();
 
-            
+            //((Customers.CountryController)DBControllersFactory.GetController<Customers.CountryModel>()).Initialize();
+            //System.Collections.Generic.List<object> tables = new System.Collections.Generic.List<object>();
+            ////var f = typeof(IDBController<BaseModel>).GetMethod("GetMetaData");
+                
+            //foreach (MODELS m in Enum.GetValues(typeof(MODELS))) {
+            //    var c = DBControllersFactory.GetController(m);
+            //    var f = c.GetType().GetMethod("GetMetaData");
+            //    var d = f.Invoke(c, null);
+            //    tables.Add( d.GetType().GetProperty("Source").GetValue(d) );
+            //}
+            //foreach (var t in tables) {
+                
+            //    try {
+            //        new SQLController().Execute("drop table " + t);
+            //        Console.WriteLine("DROPPED : "+t);
+            //    } catch {
+            //        Console.WriteLine("NOT THERE : " + t);
+            //    }
+            //    //Application.Exit();
+            //}
+
             Application.CurrentCulture = Thread.CurrentThread.CurrentUICulture;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

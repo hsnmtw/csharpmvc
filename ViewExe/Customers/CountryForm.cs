@@ -10,7 +10,7 @@ namespace MVCHIS.Customers {
         
 
         public CountryForm() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
+            InitializeComponent();
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -28,7 +28,9 @@ namespace MVCHIS.Customers {
             NewButton = btnNew;
         }
 
-        private void CountryFormLoad(object sender, EventArgs e) {
+        private void CountryFormLoad(object sender, EventArgs e) { if (DesignMode) return;
+
+
             Label[] fieldsmarkers = { lblMetaDataCountryArabic,lblMetaDataCountryCode,lblMetaDataCountryEnglish };
 
             foreach(var required in fieldsmarkers) {

@@ -9,7 +9,7 @@ namespace MVCHIS.Customers {
          
         
         public ClientTypeForm() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
+            InitializeComponent();
             //base.Controller = (ClientTypeController)DBControllersFactory.GetController(Common.MODELS.ClientType);
             //template
             Mapper["Id"] = txtId;
@@ -20,6 +20,8 @@ namespace MVCHIS.Customers {
             Mapper["ReadOnly"] = chkReadOnly;
             //data
             Mapper["ClientTypeCode"] = txtClientTypeCode;
+            Mapper["ClientTypeEnglish"] = txtClientTypeEnglish;
+            Mapper["ClientTypeArabic"] = txtClientTypeArabic;
             //actions
             SaveButton = btnSave;
             DeleteButton = btnDelete;
@@ -32,7 +34,7 @@ namespace MVCHIS.Customers {
 
         }
 
-        private void ClientTypeFormLoad(object sender, EventArgs e) {
+        private void ClientTypeFormLoad(object sender, EventArgs e) { if (DesignMode) return;
         }
     }
     

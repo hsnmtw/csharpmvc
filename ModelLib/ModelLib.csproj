@@ -20,7 +20,8 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>2</WarningLevel>
+    <DocumentationFile>bin\Debug\ModelLib.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -53,6 +54,7 @@
     <Compile Include="Common\BaseModel.cs" />
     <Compile Include="Common\MetaData.cs" />
     <Compile Include="Common\MODELS.cs" />
+    <Compile Include="Customers\CityModel.cs" />
     <Compile Include="Tools\EntityModel.cs" />
     <Compile Include="Common\IModel.cs" />
     <Compile Include="Configurations\CryptoModel.cs" />

@@ -145,7 +145,6 @@
             this.txtId.Size = new System.Drawing.Size(68, 20);
             this.txtId.TabIndex = 0;
             this.txtId.TabStop = false;
-            
             // 
             // label1
             // 
@@ -167,7 +166,6 @@
             // EntitlementGroupNameLookup
             // 
             this.EntitlementGroupNameLookup.AssociatedControl = "txtEntitlementGroupName";
-            this.EntitlementGroupNameLookup.Tag = null;
             this.EntitlementGroupNameLookup.Controller = "EntitlementGroup";
             this.EntitlementGroupNameLookup.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.EntitlementGroupNameLookup.Location = new System.Drawing.Point(351, 41);
@@ -219,7 +217,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(427, 229);
             this.Controls.Add(this.chkDynamic);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.chkReadOnly);
@@ -239,7 +236,7 @@
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.label1);
             this.Name = "EntitlementGroupForm";
-            this.Text = "Entitlement Groups";
+            this.Size = new System.Drawing.Size(388, 229);
             this.Load += new System.EventHandler(this.EntitlementGroupFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();

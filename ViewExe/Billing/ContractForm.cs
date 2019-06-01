@@ -21,12 +21,7 @@ namespace MVCHIS.Billing {
         private List<ServiceModel> Services;
 
         public ContractForm() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-            CntrlCL = (ClientController)DBControllersFactory.GetController<ClientModel>();
-            CntrlCG = (BillingCategoryController)DBControllersFactory.GetController<BillingCategoryModel>();
-            CntrlSR = (ServiceController)DBControllersFactory.GetController<ServiceModel>();
-            CntrlCU = (CurrencyController)DBControllersFactory.GetController<CurrencyModel>();
-            CntrlVT = (VATController)DBControllersFactory.GetController<VATModel>();
+            InitializeComponent();
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -45,6 +40,15 @@ namespace MVCHIS.Billing {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
+        }
+
+        private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
+            string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
+
+            Model = Controller.Find(new ContractModel() { ContractCode = selected }, "ContractCode");
+        }
+
+        private void ContractFormLoad(object sender, EventArgs e) { if (DesignMode) return;
 
             Services = new List<ServiceModel>();
             dataGridView1.AutoGenerateColumns = false;
@@ -54,15 +58,13 @@ namespace MVCHIS.Billing {
             ModelChanged = delegate () {
                 Console.WriteLine("-==================== model changed");
             };
-        }
 
-        private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
+            CntrlCL = (ClientController)DBControllersFactory.GetController<ClientModel>();
+            CntrlCG = (BillingCategoryController)DBControllersFactory.GetController<BillingCategoryModel>();
+            CntrlSR = (ServiceController)DBControllersFactory.GetController<ServiceModel>();
+            CntrlCU = (CurrencyController)DBControllersFactory.GetController<CurrencyModel>();
+            CntrlVT = (VATController)DBControllersFactory.GetController<VATModel>();
 
-            Model = Controller.Find(new ContractModel() { ContractCode = selected }, "ContractCode");
-        }
-
-        private void ContractFormLoad(object sender, EventArgs e) {
             BillingCategoryColumn.DataSource = CntrlCG.Read().ToList();
             BillingCategoryColumn.DisplayMember = "BillingCategoryCode";
             BillingCategoryColumn.ValueMember = "Id";

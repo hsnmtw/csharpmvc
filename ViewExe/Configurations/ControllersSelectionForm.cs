@@ -8,10 +8,10 @@ namespace MVCHIS.Configurations {
     public partial class ControllersSelectionForm : Form {
 
         public ControllersSelectionForm() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
+            InitializeComponent();
         }
 
-        private void ControllersSelectionFormLoad(object sender, EventArgs e) {
+        private void ControllersSelectionFormLoad(object sender, EventArgs e) { if (DesignMode) return;
             string WIDTHS = "{0,2}   {1,-25} {2,-70} {3}";
             this.label1.Text = string.Format(WIDTHS, "SN", "Controller", "Implementation", "Status");
             this.listBox1.Items.Clear();

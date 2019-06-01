@@ -11,7 +11,7 @@ namespace MVCHIS.Utils {
         const string NEWLINE = "\r\n";
         public SQLView()
         {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
+            InitializeComponent();
         }
 
         private void Button1Click(object sender, EventArgs e) {

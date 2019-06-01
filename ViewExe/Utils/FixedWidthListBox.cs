@@ -21,7 +21,7 @@ namespace MVCHIS.Utils {
         public List<string> ShownColumns { get; set; }
         public DataTable DataSource {
             get { return source; }
-            set { source = value; if (DesignMode||(Site!=null && Site.DesignMode)) return;; }
+            set { source = value; if (DesignMode||(Site!=null && Site.DesignMode)) return; }
         }
         private string filter;
         [Category("(Lookup)")]
@@ -30,7 +30,7 @@ namespace MVCHIS.Utils {
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public string Filter {
             get { return filter; }
-            set { filter = value; if (DesignMode||(Site!=null && Site.DesignMode)) return;; }
+            set { filter = value; if (DesignMode||(Site!=null && Site.DesignMode)) return; }
         }
 
         [Category("(Lookup)")]
@@ -44,9 +44,9 @@ namespace MVCHIS.Utils {
         public override string Text => lstView.Text; 
 
         public FixedWidthListBox() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;; //();
+            InitializeComponent(); //();
             ShownColumns = new List<string>();
-            if (DesignMode||(Site!=null && Site.DesignMode)) return;;
+            if (DesignMode||(Site!=null && Site.DesignMode)) return;
         }
 
         public int SelectedIndex => lstView.SelectedIndex;

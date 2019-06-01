@@ -7,8 +7,7 @@ namespace MVCHIS.Security {
 
  
         public EntitlementGroupForm() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
-            ////base.Controller = (EntitlementGroupController)DBControllersFactory.GetController<EntitlementGroupModel>();
+            InitializeComponent();
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -25,7 +24,7 @@ namespace MVCHIS.Security {
             NewButton = btnNew;
         }
 
-        private void EntitlementGroupFormLoad(object sender, EventArgs e) {
+        private void EntitlementGroupFormLoad(object sender, EventArgs e) { if (DesignMode) return;
 
         }
 

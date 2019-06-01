@@ -13,17 +13,12 @@ namespace MVCHIS.Billing {
         //private FoodTypeController ftController;
         //private AccommClassController acController;
 
-        private FoodClassController   CntrlFC;//= (FoodClassController  )DBControllersFactory.GetController<FoodClassModel  >();
-        private FoodTypeController    CntrlFT;//= (FoodTypeController   )DBControllersFactory.GetController<FoodTypeModel   >();
-        private AccommClassController CntrlAC;// (AccommClassController)DBControllersFactory.GetController<AccommClassModel>();
+        private FoodClassController   CntrlFC;
+        private FoodTypeController    CntrlFT;
+        private AccommClassController CntrlAC;
 
         public BillingCategoryForm() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;; //(); if (DesignMode||(Site!=null && Site.DesignMode)) return;;
-            
-            CntrlFC = (FoodClassController  )DBControllersFactory.GetController<FoodClassModel  >();
-            CntrlFT = (FoodTypeController   )DBControllersFactory.GetController<FoodTypeModel   >();
-            CntrlAC = (AccommClassController)DBControllersFactory.GetController<AccommClassModel>();
-            
+            InitializeComponent();
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -50,8 +45,10 @@ namespace MVCHIS.Billing {
 
         }
 
-        private void AccomCategoryFormLoad(object sender, EventArgs e) {
-            
+        private void AccomCategoryFormLoad(object sender, EventArgs e) { if (DesignMode) return;
+            CntrlFC = (FoodClassController)DBControllersFactory.GetController<FoodClassModel>();
+            CntrlFT = (FoodTypeController)DBControllersFactory.GetController<FoodTypeModel>();
+            CntrlAC = (AccommClassController)DBControllersFactory.GetController<AccommClassModel>();
         }
 
         private void TxtAccommClassId_TextChanged(object sender, EventArgs e) {

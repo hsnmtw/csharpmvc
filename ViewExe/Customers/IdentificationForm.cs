@@ -7,14 +7,13 @@ namespace MVCHIS.Customers {
     public partial class IdentificationForm: IdentificationView {
 
         private CountryController CntrlCY;//= (CountryController)DBControllersFactory.GetController<CountryModel>();
+        private CityController CntrlCT;//= (CountryController)DBControllersFactory.GetController<CountryModel>();
+
         private IdentificationTypeController CntrlIT;// = (IdentificationTypeController)DBControllersFactory.GetController<IdentificationTypeModel>();
 
 
         public IdentificationForm() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
-            CntrlCY = (CountryController)DBControllersFactory.GetController<CountryModel>();
-            CntrlIT = (IdentificationTypeController)DBControllersFactory.GetController<IdentificationTypeModel>();
-
+            InitializeComponent();
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -25,7 +24,7 @@ namespace MVCHIS.Customers {
             //data
             Mapper["ExpiryDate"] = txtExpiryDate;
             Mapper["IssueDate"] = txtIssueDate;
-            Mapper["CountryId"] = txtCountryId;
+            Mapper["CityId"] = txtCityId;
             Mapper["IdNumber"] = txtIdNumber;
             Mapper["IdTypeId"] = txtIdTypeId;
             //actions
@@ -34,7 +33,11 @@ namespace MVCHIS.Customers {
             NewButton = btnNew;
         }
 
-        private void ClientTypeFormLoad(object sender, EventArgs e) {
+        private void ClientTypeFormLoad(object sender, EventArgs e) { if (DesignMode) return;
+            CntrlCT = (CityController)DBControllersFactory.GetController<CityModel>();
+            CntrlCY = (CountryController)DBControllersFactory.GetController<CountryModel>();
+            CntrlIT = (IdentificationTypeController)DBControllersFactory.GetController<IdentificationTypeModel>();
+
         }
 
         private void LookUpButtonShortNameLookUpSelected(object sender, EventArgs e) {
@@ -51,11 +54,16 @@ namespace MVCHIS.Customers {
         }
 
         private void TxtIdType_TextChanged(object sender, EventArgs e) {
-            txtIdTypeEnglish.Text = CntrlIT.Find(new IdentificationTypeModel() { Id = int.Parse(txtIdTypeId.Text) }, "Id")?.IdTypeEnglish;
+            int.TryParse(txtIdTypeId.Text,out int id);
+            txtIdTypeEnglish.Text = CntrlIT.Find(new IdentificationTypeModel() { Id = id }, "Id")?.IdTypeEnglish;
         }
 
         private void TxtIssuingCountry_TextChanged(object sender, EventArgs e) {
-            txtCountryEnglish.Text = CntrlCY.Find(new CountryModel() { Id =int.Parse(txtCountryId.Text) }, "Id")?.CountryEnglish;
+            int.TryParse(txtCityId.Text, out int id);
+            var city = CntrlCT.Find(new CityModel() { Id = id }, "Id");
+            txtCityEnglish.Text = city?.CityEnglish;
+            int.TryParse($"{city?.CountryId}", out id);
+            txtCountryEnglish.Text = CntrlCY.Find(new CountryModel() { Id = id }, "Id")?.CountryEnglish;
         }
     }
     
