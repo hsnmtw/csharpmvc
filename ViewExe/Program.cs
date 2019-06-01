@@ -1,5 +1,6 @@
 ﻿using MVCHIS.Common;
 using MVCHIS.Security;
+using MVCHIS.Tools;
 using MVCHIS.Utils;
 using System;
 using System.Globalization;
@@ -23,11 +24,13 @@ namespace MVCHIS {
         {
            // AttachConsole(ATTACHPARENTPROCESS);
             Session.Instance.Initialize();
-            //((ProfileEntitlementController)DBControllersFactory.GetController(MODELS.ProfileEntitlement)).Initialize();
+
+            
             Application.CurrentCulture = Thread.CurrentThread.CurrentUICulture;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(MainView.Instance);
+            //Application.Run(new SQLView());
             
         }
     }

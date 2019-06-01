@@ -126,7 +126,7 @@
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnDelete.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="btnDelete.Text" xml:space="preserve">
     <value>Remove</value>
@@ -141,7 +141,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnDelete.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">
     <value>187, 236</value>
@@ -150,7 +150,7 @@
     <value>75, 23</value>
   </data>
   <data name="btnSave.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="btnSave.Text" xml:space="preserve">
     <value>Save</value>
@@ -165,7 +165,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnSave.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="btnNew.Location" type="System.Drawing.Point, System.Drawing">
     <value>295, 236</value>
@@ -174,7 +174,7 @@
     <value>75, 23</value>
   </data>
   <data name="btnNew.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="btnNew.Text" xml:space="preserve">
     <value>New</value>
@@ -189,7 +189,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnNew.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="txtUpdatedOn.Location" type="System.Drawing.Point, System.Drawing">
     <value>233, 174</value>
@@ -198,7 +198,7 @@
     <value>137, 20</value>
   </data>
   <data name="txtUpdatedOn.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="&gt;&gt;txtUpdatedOn.Name" xml:space="preserve">
     <value>txtUpdatedOn</value>
@@ -210,7 +210,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtUpdatedOn.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="txtUpdatedBy.Location" type="System.Drawing.Point, System.Drawing">
     <value>159, 174</value>
@@ -219,7 +219,7 @@
     <value>69, 20</value>
   </data>
   <data name="txtUpdatedBy.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="&gt;&gt;txtUpdatedBy.Name" xml:space="preserve">
     <value>txtUpdatedBy</value>
@@ -231,7 +231,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtUpdatedBy.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -258,7 +258,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
   </data>
   <data name="txtCreatedOn.Location" type="System.Drawing.Point, System.Drawing">
     <value>233, 148</value>
@@ -267,7 +267,7 @@
     <value>137, 20</value>
   </data>
   <data name="txtCreatedOn.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="&gt;&gt;txtCreatedOn.Name" xml:space="preserve">
     <value>txtCreatedOn</value>
@@ -279,7 +279,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtCreatedOn.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>18</value>
   </data>
   <data name="txtCreatedBy.Location" type="System.Drawing.Point, System.Drawing">
     <value>159, 148</value>
@@ -288,7 +288,7 @@
     <value>69, 20</value>
   </data>
   <data name="txtCreatedBy.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;txtCreatedBy.Name" xml:space="preserve">
     <value>txtCreatedBy</value>
@@ -300,7 +300,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtCreatedBy.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>19</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -327,7 +327,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>20</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -354,7 +354,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>21</value>
   </data>
   <data name="txtId.Location" type="System.Drawing.Point, System.Drawing">
     <value>159, 12</value>
@@ -378,7 +378,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtId.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>22</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -405,7 +405,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>23</value>
   </data>
   <data name="txtEntitlementName.Location" type="System.Drawing.Point, System.Drawing">
     <value>159, 42</value>
@@ -426,7 +426,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtEntitlementName.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="EntitlementNameLookup.Font" type="System.Drawing.Font, System.Drawing">
     <value>Consolas, 10pt, style=Bold</value>
@@ -450,13 +450,13 @@
     <value>EntitlementNameLookup</value>
   </data>
   <data name="&gt;&gt;EntitlementNameLookup.Type" xml:space="preserve">
-    <value>MVCHIS.Common.LookUpButton, MVCHIS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>MVCHIS.Common.LookUpButton, ViewExe, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;EntitlementNameLookup.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;EntitlementNameLookup.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="chkReadOnly.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -471,7 +471,7 @@
     <value>15, 14</value>
   </data>
   <data name="chkReadOnly.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="&gt;&gt;chkReadOnly.Name" xml:space="preserve">
     <value>chkReadOnly</value>
@@ -483,7 +483,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkReadOnly.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="label10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -510,16 +510,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="txtEntitlementGroupName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>159, 69</value>
+    <value>200, 69</value>
   </data>
   <data name="txtEntitlementGroupName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 20</value>
+    <value>151, 20</value>
   </data>
   <data name="txtEntitlementGroupName.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;txtEntitlementGroupName.Name" xml:space="preserve">
     <value>txtEntitlementGroupName</value>
@@ -531,7 +531,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtEntitlementGroupName.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="EntitlementGroupNameLookup.Font" type="System.Drawing.Font, System.Drawing">
     <value>Consolas, 10pt, style=Bold</value>
@@ -539,23 +539,29 @@
   <data name="EntitlementGroupNameLookup.Location" type="System.Drawing.Point, System.Drawing">
     <value>351, 68</value>
   </data>
+  <data name="EntitlementGroupNameLookup.ShowFieldsInLookUp" xml:space="preserve">
+    <value>EntitlementGroupName</value>
+  </data>
+  <data name="EntitlementGroupNameLookup.ShowFieldsInLookUp1" xml:space="preserve">
+    <value>Id</value>
+  </data>
   <data name="EntitlementGroupNameLookup.Size" type="System.Drawing.Size, System.Drawing">
     <value>22, 22</value>
   </data>
   <data name="EntitlementGroupNameLookup.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;EntitlementGroupNameLookup.Name" xml:space="preserve">
     <value>EntitlementGroupNameLookup</value>
   </data>
   <data name="&gt;&gt;EntitlementGroupNameLookup.Type" xml:space="preserve">
-    <value>MVCHIS.Common.LookUpButton, MVCHIS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>MVCHIS.Common.LookUpButton, ViewExe, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;EntitlementGroupNameLookup.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;EntitlementGroupNameLookup.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -582,7 +588,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -609,7 +615,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="lookUpEntityName.Font" type="System.Drawing.Font, System.Drawing">
     <value>Consolas, 10pt, style=Bold</value>
@@ -617,32 +623,38 @@
   <data name="lookUpEntityName.Location" type="System.Drawing.Point, System.Drawing">
     <value>351, 94</value>
   </data>
+  <data name="lookUpEntityName.ShowFieldsInLookUp" xml:space="preserve">
+    <value>EntityName</value>
+  </data>
+  <data name="lookUpEntityName.ShowFieldsInLookUp1" xml:space="preserve">
+    <value>Id</value>
+  </data>
   <data name="lookUpEntityName.Size" type="System.Drawing.Size, System.Drawing">
     <value>22, 22</value>
   </data>
   <data name="lookUpEntityName.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;lookUpEntityName.Name" xml:space="preserve">
     <value>lookUpEntityName</value>
   </data>
   <data name="&gt;&gt;lookUpEntityName.Type" xml:space="preserve">
-    <value>MVCHIS.Common.LookUpButton, MVCHIS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>MVCHIS.Common.LookUpButton, ViewExe, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lookUpEntityName.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lookUpEntityName.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="txtEntityName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>159, 95</value>
+    <value>200, 95</value>
   </data>
   <data name="txtEntityName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 20</value>
+    <value>151, 20</value>
   </data>
   <data name="txtEntityName.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;txtEntityName.Name" xml:space="preserve">
     <value>txtEntityName</value>
@@ -654,6 +666,48 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtEntityName.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtEntitlementGroupId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>159, 69</value>
+  </data>
+  <data name="txtEntitlementGroupId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 20</value>
+  </data>
+  <data name="txtEntitlementGroupId.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txtEntitlementGroupId.Name" xml:space="preserve">
+    <value>txtEntitlementGroupId</value>
+  </data>
+  <data name="&gt;&gt;txtEntitlementGroupId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtEntitlementGroupId.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtEntitlementGroupId.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtEntityId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>159, 95</value>
+  </data>
+  <data name="txtEntityId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 20</value>
+  </data>
+  <data name="txtEntityId.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;txtEntityId.Name" xml:space="preserve">
+    <value>txtEntityId</value>
+  </data>
+  <data name="&gt;&gt;txtEntityId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtEntityId.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtEntityId.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -662,16 +716,13 @@
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>427, 285</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Entitlements</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>EntitlementForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>MVCHIS.Common.SingleForm, MVCHIS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>MVCHIS.Security.EntitlementView, ViewExe, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

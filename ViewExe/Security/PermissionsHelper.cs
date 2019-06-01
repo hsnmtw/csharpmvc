@@ -1,4 +1,5 @@
 ﻿using MVCHIS.Common;
+using MVCHIS.Tools;
 using MVCHIS.Utils;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace MVCHIS.Security {
             var ecn = DBControllersFactory.GetController(MODELS.Entitlement);
             var pec = DBControllersFactory.GetController(MODELS.ProfileEntitlement);
             var pc  = DBControllersFactory.GetController(MODELS.Profile);
+            var enc = DBControllersFactory.GetController(MODELS.Entity);
 
             var usr = Session.Instance.CurrentUser;
 
@@ -23,7 +25,9 @@ namespace MVCHIS.Security {
             //var mdl = view?.GetType().GetCustomAttributes().OfType<ForModelAttribute>().FirstOrDefault();
             //if (mdl == null) return;
 
-            var ent = ecn.Find(new EntitlementModel() { EntityName = $"{typeof(M).Name}".Replace("Model","") }, "EntityName");
+            var entity = enc.Find(new EntityModel() { EntityName = $"{typeof(M).Name}".Replace("Model", "") }, "EntityName");
+
+            var ent = ecn.Find(new EntitlementModel() { EntityId = entity.Id }, "EntityId");
             if (ent == null) return;
             
             var pen = pec.Find(new ProfileEntitlementModel() {

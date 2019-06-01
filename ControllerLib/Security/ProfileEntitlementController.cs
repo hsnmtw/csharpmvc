@@ -13,7 +13,8 @@ namespace MVCHIS.Security {
             return base.Validate(model);
         }
 
-        public void Initialize() {
+        public void InitializeDBValues() {
+            foreach (var pe in Read<ProfileEntitlementModel>()) { Delete(pe); }
             var es = DBControllersFactory.GetController(Common.MODELS.Entitlement).Read<EntitlementModel>();
             var ps = DBControllersFactory.GetController(Common.MODELS.Profile).Read<ProfileModel>();
             foreach(ProfileModel p in ps) {

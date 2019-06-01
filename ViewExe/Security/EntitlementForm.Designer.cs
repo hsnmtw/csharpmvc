@@ -24,6 +24,7 @@
         /// </summary>
         private void InitializeComponent(){
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EntitlementForm));
+            MVCHIS.Security.EntitlementModel entitlementModel1 = new MVCHIS.Security.EntitlementModel();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
@@ -46,6 +47,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.lookUpEntityName = new MVCHIS.Common.LookUpButton();
             this.txtEntityName = new System.Windows.Forms.TextBox();
+            this.txtEntitlementGroupId = new System.Windows.Forms.TextBox();
+            this.txtEntityId = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnDelete
@@ -134,7 +137,6 @@
             // EntitlementNameLookup
             // 
             this.EntitlementNameLookup.AssociatedControl = "txtEntitlementName";
-            this.EntitlementNameLookup.Tag = null;
             this.EntitlementNameLookup.Controller = "Entitlement";
             resources.ApplyResources(this.EntitlementNameLookup, "EntitlementNameLookup");
             this.EntitlementNameLookup.Name = "EntitlementNameLookup";
@@ -157,19 +159,19 @@
             // 
             // txtEntitlementGroupName
             // 
-            this.txtEntitlementGroupName.BackColor = System.Drawing.SystemColors.Window;
+            this.txtEntitlementGroupName.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.txtEntitlementGroupName, "txtEntitlementGroupName");
             this.txtEntitlementGroupName.Name = "txtEntitlementGroupName";
-            this.txtEntitlementGroupName.ReadOnly = true;
             // 
             // EntitlementGroupNameLookup
             // 
-            this.EntitlementGroupNameLookup.AssociatedControl = "txtEntitlementGroupName";
-            this.EntitlementGroupNameLookup.Tag = null;
+            this.EntitlementGroupNameLookup.AssociatedControl = "txtEntitlementGroupId";
             this.EntitlementGroupNameLookup.Controller = "EntitlementGroup";
             resources.ApplyResources(this.EntitlementGroupNameLookup, "EntitlementGroupNameLookup");
             this.EntitlementGroupNameLookup.Name = "EntitlementGroupNameLookup";
-            this.EntitlementGroupNameLookup.SelectedValueIndex = 0;
+            this.EntitlementGroupNameLookup.SelectedValueIndex = 1;
+            this.EntitlementGroupNameLookup.ShowFieldsInLookUp.Add(resources.GetString("EntitlementGroupNameLookup.ShowFieldsInLookUp"));
+            this.EntitlementGroupNameLookup.ShowFieldsInLookUp.Add(resources.GetString("EntitlementGroupNameLookup.ShowFieldsInLookUp1"));
             this.EntitlementGroupNameLookup.TabStop = false;
             // 
             // label3
@@ -184,26 +186,44 @@
             // 
             // lookUpEntityName
             // 
-            this.lookUpEntityName.AssociatedControl = "txtEntityName";
-            this.lookUpEntityName.Tag = null;
+            this.lookUpEntityName.AssociatedControl = "txtEntityId";
             this.lookUpEntityName.Controller = "Entity";
             resources.ApplyResources(this.lookUpEntityName, "lookUpEntityName");
             this.lookUpEntityName.Name = "lookUpEntityName";
             this.lookUpEntityName.SelectedValueIndex = 0;
+            this.lookUpEntityName.ShowFieldsInLookUp.Add(resources.GetString("lookUpEntityName.ShowFieldsInLookUp"));
+            this.lookUpEntityName.ShowFieldsInLookUp.Add(resources.GetString("lookUpEntityName.ShowFieldsInLookUp1"));
             this.lookUpEntityName.TabStop = false;
             // 
             // txtEntityName
             // 
-            this.txtEntityName.BackColor = System.Drawing.SystemColors.Window;
+            this.txtEntityName.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.txtEntityName, "txtEntityName");
             this.txtEntityName.Name = "txtEntityName";
-            this.txtEntityName.ReadOnly = true;
+            // 
+            // txtEntitlementGroupId
+            // 
+            this.txtEntitlementGroupId.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.txtEntitlementGroupId, "txtEntitlementGroupId");
+            this.txtEntitlementGroupId.Name = "txtEntitlementGroupId";
+            this.txtEntitlementGroupId.ReadOnly = true;
+            this.txtEntitlementGroupId.TextChanged += new System.EventHandler(this.TxtEntitlementGroupId_TextChanged);
+            // 
+            // txtEntityId
+            // 
+            this.txtEntityId.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.txtEntityId, "txtEntityId");
+            this.txtEntityId.Name = "txtEntityId";
+            this.txtEntityId.ReadOnly = true;
+            this.txtEntityId.TextChanged += new System.EventHandler(this.TxtEntityId_TextChanged);
             // 
             // EntitlementForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtEntityId);
             this.Controls.Add(this.txtEntityName);
+            this.Controls.Add(this.txtEntitlementGroupId);
             this.Controls.Add(this.txtEntitlementGroupName);
             this.Controls.Add(this.lookUpEntityName);
             this.Controls.Add(this.EntitlementGroupNameLookup);
@@ -225,6 +245,16 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.label1);
+            entitlementModel1.CreatedBy = null;
+            entitlementModel1.CreatedOn = null;
+            entitlementModel1.EntitlementGroupId = 0;
+            entitlementModel1.EntitlementName = null;
+            entitlementModel1.EntityId = 0;
+            entitlementModel1.Id = 0;
+            entitlementModel1.ReadOnly = false;
+            entitlementModel1.UpdatedBy = null;
+            entitlementModel1.UpdatedOn = null;
+            this.Model = entitlementModel1;
             this.Name = "EntitlementForm";
             this.Load += new System.EventHandler(this.EntitlementFormLoad);
             this.ResumeLayout(false);
@@ -256,5 +286,7 @@
         private System.Windows.Forms.Label label7;
         private Common.LookUpButton lookUpEntityName;
         private System.Windows.Forms.TextBox txtEntityName;
+        private System.Windows.Forms.TextBox txtEntitlementGroupId;
+        private System.Windows.Forms.TextBox txtEntityId;
     }
 }

@@ -35,3 +35,6 @@
 "Contacts","Customers","Contact"
 "Initialize","File",null
 "Entities","Tools","Entity"
+"VAT","Billing","VAT"
+"Contract","Billing","Contract"
+"Service","Billing","Service"

@@ -10,6 +10,7 @@ namespace MVCHIS.Security {
         const char C = 'C', R = 'R', U = 'U', D = 'D', E = '-';
         private Dictionary<string, List<EntitlementModel>> entitlementsByGroup = new Dictionary<string, List<EntitlementModel>>();
         private Dictionary<int,EntitlementModel> allEntitlements;
+        private Dictionary<int, EntitlementGroupModel> entitlementmentGroups;
 
         public ProfileForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
@@ -71,12 +72,14 @@ namespace MVCHIS.Security {
                select eg.EntitlementGroupName
             ).ToArray());
 
+            entitlementmentGroups = Controllers["eg"].Read<EntitlementGroupModel>().ToDictionary(x => x.Id, x => x);
             
             foreach (var em in Controllers["e"].Read<EntitlementModel>().OrderBy(x => x.EntitlementName)) {
-                if (entitlementsByGroup.ContainsKey(em.EntitlementGroupName) == false) {
-                    entitlementsByGroup[em.EntitlementGroupName] = new List<EntitlementModel>();
+                var egname = entitlementmentGroups[em.EntitlementGroupId].EntitlementGroupName;
+                if (entitlementsByGroup.ContainsKey(egname) == false) {
+                    entitlementsByGroup[egname] = new List<EntitlementModel>();
                 }
-                entitlementsByGroup[em.EntitlementGroupName].Add(em);
+                entitlementsByGroup[egname].Add(em);
                 allEntitlements.Add(em.Id,em);
             }
         }
@@ -94,7 +97,7 @@ namespace MVCHIS.Security {
                 Controllers["pe"].Save(new ProfileEntitlementModel() {
                     ProfileId = Model.Id,
                     EntitlementId = entitlement.Id,
-                    AllowRead = entitlement.EntitlementGroupName.Equals("Security") == false
+                    AllowRead = entitlementmentGroups[entitlement.EntitlementGroupId].EntitlementGroupName.Equals("Security") == false
                 });
             }
             this.Model = this.Model;

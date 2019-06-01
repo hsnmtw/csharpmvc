@@ -378,7 +378,6 @@
             // chkExpired
             // 
             this.chkExpired.AutoSize = true;
-            this.chkExpired.Enabled = false;
             this.chkExpired.Location = new System.Drawing.Point(152, 190);
             this.chkExpired.Name = "chkExpired";
             this.chkExpired.Size = new System.Drawing.Size(15, 14);

@@ -17,6 +17,7 @@ namespace MVCHIS {
         public DictionaryController dictionaryController;
         public EntitlementGroupController egController;
         public EntitlementController eController;
+        public EntityController tController;
 
         private readonly Dictionary<string, ToolStripMenuItem> menus = new Dictionary<string, ToolStripMenuItem>();
 
@@ -40,13 +41,13 @@ namespace MVCHIS {
             this.dictionaryController = (DictionaryController)DBControllersFactory.GetController(Common.MODELS.Dictionary);
             this.egController = (EntitlementGroupController)DBControllersFactory.GetController(Common.MODELS.EntitlementGroup);
             this.eController = (EntitlementController)DBControllersFactory.GetController(Common.MODELS.Entitlement);
-
+            this.tController = (EntityController)DBControllersFactory.GetController(Common.MODELS.Entity);
         }
 
 
 
         private void MainViewLoad(object sender, EventArgs e) {
-            tsDateTime.Alignment = ToolStripItemAlignment.Right;
+            //tsDateTime.Alignment = ToolStripItemAlignment.Right;
             
             LoadForm();
             
@@ -63,6 +64,7 @@ namespace MVCHIS {
 
             var entitlements = eController.Read<EntitlementModel>().OrderBy(x => x.EntitlementName);
             var egroups = egController.Read<EntitlementGroupModel>().Where(r => r.Dynamic).OrderBy(x => x.EntitlementGroupName);
+            var entities = tController.Read<EntityModel>().ToDictionary(x => x.Id, x => x);
 
             foreach (var row in egroups) {
                 var egn = row.EntitlementGroupName;
@@ -74,7 +76,7 @@ namespace MVCHIS {
                     eg = exist.First();
                 }
                 
-                foreach (var crow in entitlements.Where(x => egn.Equals(x.EntitlementGroupName))) {
+                foreach (var crow in entitlements.Where(x => x.EntitlementGroupId == row.Id)) {
                     var cen = crow.EntitlementName;
                     var ce = new ToolStripMenuItem(cen);
                     exist = eg.DropDownItems.OfType<ToolStripMenuItem>().Where(x => x.Text.Equals(cen));
@@ -84,10 +86,10 @@ namespace MVCHIS {
                         ce = exist.First();
                     }
                     
-                    ce.Tag = crow.EntityName;
+                    ce.Tag = entities[crow.EntityId];
                     ce.Click += (s, ea) => {
                         if (s == null || !typeof(ToolStripMenuItem).Equals(s.GetType()) || ((ToolStripMenuItem)s).Tag == null || ((ToolStripMenuItem)s).Tag.ToString().Equals("")) return;;
-                        if (Enum.TryParse<MODELS>(((ToolStripMenuItem)s).Tag.ToString(), out MODELS num)) {
+                        if (Enum.TryParse<MODELS>(((EntityModel)((ToolStripMenuItem)s).Tag).EntityName, out MODELS num)) {
                             Control view = (Control)DBViewsFactory.GetView(num);
                             ShowView(view);
                             FormsHelper.ApplyLanguageLocalization(view);
@@ -241,22 +243,18 @@ namespace MVCHIS {
             }
         }
 
-        private void InitializeToolStripMenuItem_Click(object sender, EventArgs e) {
-            var entities = new MODELS[] {
-                 MODELS.Entity
-                ,MODELS.EntitlementGroup
-                ,MODELS.Profile
-                ,MODELS.Entitlement
-                ,MODELS.ProfileEntitlement
-                ,MODELS.User
-                ,MODELS.Country
-                ,MODELS.Dictionary
-            };
-            int i = 0;
-            foreach (var entity in entities) {
-                DBControllersFactory.GetController(entity).Dispatch("Initialize");
-                setProgress($"Intialized {entity}", 100 * ++i / entities.Length);
-            }
+        private void InitializeToolStripMenuItem_Click(object sender, EventArgs ea) {
+
+            var ec = new Security.EntitlementController();
+            var pec = new Security.ProfileEntitlementController();
+            foreach (var e in pec.Read<Security.ProfileEntitlementModel>()) { pec.Delete(e); }
+            foreach (var e in ec.Read<Security.EntitlementModel>()) { ec.Delete(e); }
+
+            ((EntityController)DBControllersFactory.GetController(MODELS.Entity)).InitializeDBValues();
+            ((EntitlementGroupController)DBControllersFactory.GetController(MODELS.EntitlementGroup)).InitializeDBValues();
+            ((EntitlementController)DBControllersFactory.GetController(MODELS.Entitlement)).InitializeDBValues();
+            ((ProfileEntitlementController)DBControllersFactory.GetController(MODELS.ProfileEntitlement)).InitializeDBValues();
+
             FormsHelper.Success("Initialization compeleted !");
             setProgress("Initialization compeleted !", 0);
             initializeToolStripMenuItem.Visible = false;
