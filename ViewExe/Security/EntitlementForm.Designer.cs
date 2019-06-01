@@ -142,7 +142,6 @@
             this.EntitlementNameLookup.Name = "EntitlementNameLookup";
             this.EntitlementNameLookup.SelectedValueIndex = 0;
             this.EntitlementNameLookup.ShowFieldsInLookUp.Add(resources.GetString("EntitlementNameLookup.ShowFieldsInLookUp"));
-            this.EntitlementNameLookup.ShowFieldsInLookUp.Add(resources.GetString("EntitlementNameLookup.ShowFieldsInLookUp1"));
             this.EntitlementNameLookup.TabStop = false;
             this.EntitlementNameLookup.LookUpSelected += new System.EventHandler(this.EntitlementNameLookupLookUpSelected);
             // 
@@ -162,6 +161,7 @@
             this.txtEntitlementGroupName.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.txtEntitlementGroupName, "txtEntitlementGroupName");
             this.txtEntitlementGroupName.Name = "txtEntitlementGroupName";
+            this.txtEntitlementGroupName.TabStop = false;
             // 
             // EntitlementGroupNameLookup
             // 
@@ -190,7 +190,7 @@
             this.lookUpEntityName.Controller = "Entity";
             resources.ApplyResources(this.lookUpEntityName, "lookUpEntityName");
             this.lookUpEntityName.Name = "lookUpEntityName";
-            this.lookUpEntityName.SelectedValueIndex = 0;
+            this.lookUpEntityName.SelectedValueIndex = 1;
             this.lookUpEntityName.ShowFieldsInLookUp.Add(resources.GetString("lookUpEntityName.ShowFieldsInLookUp"));
             this.lookUpEntityName.ShowFieldsInLookUp.Add(resources.GetString("lookUpEntityName.ShowFieldsInLookUp1"));
             this.lookUpEntityName.TabStop = false;
@@ -200,6 +200,7 @@
             this.txtEntityName.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.txtEntityName, "txtEntityName");
             this.txtEntityName.Name = "txtEntityName";
+            this.txtEntityName.TabStop = false;
             // 
             // txtEntitlementGroupId
             // 

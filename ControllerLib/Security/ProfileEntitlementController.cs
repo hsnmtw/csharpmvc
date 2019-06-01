@@ -34,7 +34,7 @@ namespace MVCHIS.Security {
             var pes = Read(new ProfileEntitlementModel() {
                 ProfileId = profileId,
                 EntitlementId = entitlementId
-            }, false, "ProfileName", "EntitlementName" );
+            }, false, "ProfileId", "EntitlementId" );
             foreach (ProfileEntitlementModel pe in pes) {
                 pe.AllowCreate = create  ; 
                 pe.AllowRead   = read    ; 

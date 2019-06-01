@@ -80,12 +80,14 @@ namespace MVCHIS.Security {
                     entitlementsByGroup[egname] = new List<EntitlementModel>();
                 }
                 entitlementsByGroup[egname].Add(em);
-                allEntitlements.Add(em.Id,em);
+                allEntitlements[em.Id] = em;
             }
         }
 
         private void CmbEntitelmentsGroup_SelectedIndexChanged(object sender, EventArgs e) {
-            RequeryEntitlements();
+            try {
+                RequeryEntitlements();
+            } catch { }
         }
 
         private void BtnInitializeEntitlements_Click(object sender, EventArgs e) {
@@ -128,7 +130,7 @@ namespace MVCHIS.Security {
             if (this.lstEntitlements.SelectedIndex < 0) return;
             string profile = this.txtProfileName.Text;
             string entitlement = $"{this.lstEntitlements.Items[this.lstEntitlements.SelectedIndex]}".Substring(6).Trim();
-            int entitlementId = (from EntitlementModel ent in allEntitlements where ent.EntitlementName.Equals(entitlement) select ent).FirstOrDefault().Id;
+            int entitlementId = (from EntitlementModel ent in allEntitlements.Values where ent.EntitlementName.Equals(entitlement) select ent).FirstOrDefault().Id;
             int.TryParse(txtId.Text, out int profileId);
             ((ProfileEntitlementController)Controllers["pe"]).ChangePermissions(profileId, entitlementId, true, true, true, true);
             this.lstEntitlements.Items[this.lstEntitlements.SelectedIndex] = $"{C}{R}{U}{D}  {entitlement}";
