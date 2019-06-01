@@ -24,3 +24,47 @@ E: Entities
 </pre>
 ** The goal is not to have [V] on right side 
 ** and all others depend on [M]
+
+Example code
+=============
+```
+  
+  // Model
+  public class ExampleModel : BaseModel{
+    public string ExampleProperty {get; set;}
+  }
+  
+  //Entity
+  public class ExampleEntity : AbstractDBEntity {
+         public override MetaData MetaData => new MetaData() {
+              ModelType        = typeof(ExampleModel)
+            , PrimaryKeyField  = "Id" 
+            , RequiredFields   = new List<string> { "Id", "ExampleProperty" }
+            , UniqueKeyFields  = new List<string> { "ExampleProperty" }
+            , ForeignKeys      = new Dictionary<string, System.Tuple<string, string>> {
+            }
+            , GetSizes = new Dictionary<string, int> {
+                ["CreatedBy"       ] = 50,
+                ["UpdatedBy"       ] = 50,
+                ["ExampleProperty" ] = 25,
+            }
+            , Source           = "ExampleTable"
+
+        };
+    }
+  }
+ 
+  //Controller
+   public class ExampleController : AbstractDBController {
+        public ExampleController() : base(DBEntitiesFactory.GetEntity(MODELS.Example)) {}
+
+        public override bool Validate<M>(M model) {
+            return base.Validate(model);
+        }
+    }
+ 
+ //View extends UserControl
+ public class ExampleView : BaseView<ExampleModel, ExampleController> { 
+ 
+ }
+```
