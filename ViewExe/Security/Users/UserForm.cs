@@ -7,12 +7,14 @@ using System.Linq;
 namespace MVCHIS.Security.Users {
     //[ForModel(Common.MODELS.User)]
     public partial class UserForm: UserView {
+
+        private ProfileController CntrlPR;
+
+
         public UserForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-            base.Controller = (UserController)DBControllersFactory.GetController(MODELS.User);
-            Controllers = new Dictionary<string, IDBController> {
-                ["p"] = DBControllersFactory.GetController(MODELS.Profile)
-            };
+            CntrlPR = (ProfileController)DBControllersFactory.GetController<ProfileModel>();
+
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -55,7 +57,7 @@ namespace MVCHIS.Security.Users {
 
         private void TxtProfileId_TextChanged(object sender, EventArgs e) {
             int.TryParse(txtProfileId.Text, out int profileId);
-            txtProfileName.Text = Controllers["p"].Find(new ProfileModel() { Id = profileId }, "Id")?.ProfileName;
+            txtProfileName.Text = CntrlPR.Find(new ProfileModel() { Id = profileId }, "Id")?.ProfileName;
         }
 
         private void UserNameLookup_LookUpSelected(object sender, EventArgs e) {

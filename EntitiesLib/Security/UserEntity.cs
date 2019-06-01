@@ -1,19 +1,24 @@
 ﻿using MVCHIS.Common;
+using System;
 using System.Collections.Generic;
 
 namespace MVCHIS.Security {
     //[ForModel(MODELS.User)]
-    public class UserEntity : AbstractDBEntity{
+    public class UserEntity : AbstractDBEntity <UserModel> {
 
         public override MetaData MetaData => new MetaData() {
-            ModelType = typeof(UserModel)
-            , PrimaryKeyField = "Id" 
-            , RequiredFields  = new List<string> {"Id","UserName","FullName","UserPassword","ProfileId"}
-            , UniqueKeyFields = new List<string> { "UserName" }
-            , ForeignKeys     = new Dictionary<string, System.Tuple<string, string>> {
-                ["ProfileId"] = new System.Tuple<string, string>(DBEntitiesFactory.GetEntity(MODELS.Profile).MetaData.Source,"Id") 
+            //ModelType = typeof(UserModel)
+              PrimaryKeyField = "Id" 
+            , Fields           = new HashSet<string> {"ReadOnly","Id","CreatedBy","CreatedOn","UpdatedBy","UpdatedOn",
+                                                     "UserName", "FullName", "UserPassword", "ProfileId",
+                                                     "IsActive", "Email", "FailedLoginAttempts",
+                                                     "LastLoginDate", "LastChangePassword" }
+            , RequiredFields  = new HashSet<string> {"Id","UserName","FullName","UserPassword","ProfileId"}
+            , UniqueKeyFields = new HashSet<string> {"UserName"}
+            , ForeignKeys     = new Dictionary<string, Tuple<string, string>> {
+                ["ProfileId"] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<ProfileModel>().MetaData.Source,"Id") 
             }
-            , GetSizes = new Dictionary<string, int> {
+            , Sizes = new Dictionary<string, int> {
                 ["CreatedBy"   ] = 50,
                 ["UpdatedBy"   ] = 50,
                 ["UserName"    ] = 50,

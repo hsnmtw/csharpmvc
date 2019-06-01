@@ -59,7 +59,7 @@
             this.label26 = new System.Windows.Forms.Label();
             this.chkIsActive = new System.Windows.Forms.CheckBox();
             this.label30 = new System.Windows.Forms.Label();
-            this.txtClientType = new System.Windows.Forms.TextBox();
+            this.txtClientTypeCode = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtPhoneNumber = new System.Windows.Forms.TextBox();
@@ -449,12 +449,12 @@
             // 
             // txtClientType
             // 
-            this.txtClientType.Enabled = false;
-            this.txtClientType.Location = new System.Drawing.Point(218, 128);
-            this.txtClientType.Name = "txtClientType";
-            this.txtClientType.Size = new System.Drawing.Size(154, 20);
-            this.txtClientType.TabIndex = 7;
-            this.txtClientType.Tag = "ClientType";
+            this.txtClientTypeCode.Enabled = false;
+            this.txtClientTypeCode.Location = new System.Drawing.Point(218, 128);
+            this.txtClientTypeCode.Name = "txtClientType";
+            this.txtClientTypeCode.Size = new System.Drawing.Size(154, 20);
+            this.txtClientTypeCode.TabIndex = 7;
+            this.txtClientTypeCode.Tag = "ClientType";
             // 
             // label4
             // 
@@ -778,7 +778,7 @@
             this.Controls.Add(this.txtCountryEnglish);
             this.Controls.Add(this.txtCountryCode);
             this.Controls.Add(this.txtCountryId);
-            this.Controls.Add(this.txtClientType);
+            this.Controls.Add(this.txtClientTypeCode);
             this.Controls.Add(this.txtClientTypeId);
             this.Name = "ClientForm";
             this.Size = new System.Drawing.Size(771, 402);
@@ -828,7 +828,7 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.TextBox txtClientType;
+        private System.Windows.Forms.TextBox txtClientTypeCode;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtPhoneNumber;

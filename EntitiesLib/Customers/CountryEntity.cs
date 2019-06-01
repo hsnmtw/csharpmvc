@@ -1,17 +1,20 @@
 ﻿using MVCHIS.Common;
+using System;
 using System.Collections.Generic;
 
 namespace MVCHIS.Customers {
     //[ForModel(MODELS.Country)]
-    public class CountryEntity : AbstractDBEntity {
+    public class CountryEntity : AbstractDBEntity<CountryModel> {
         public override MetaData MetaData => new MetaData() {
-              ModelType        = typeof(CountryModel)
-            , PrimaryKeyField  = "Id" 
-            , RequiredFields   = new List<string> { "Id", "CountryCode", "CountryEnglish" }
-            , UniqueKeyFields  = new List<string> { "CountryCode" }
-            , ForeignKeys      = new Dictionary<string, System.Tuple<string, string>> {
+            //  ModelType        = typeof(CountryModel)
+              PrimaryKeyField  = "Id" 
+            , Fields           = new HashSet<string> {"ReadOnly","Id","CreatedBy","CreatedOn","UpdatedBy","UpdatedOn",
+                                                      "CountryCode", "CountryEnglish","CountryArabic" }
+            , RequiredFields   = new HashSet<string> { "Id", "CountryCode", "CountryEnglish" }
+            , UniqueKeyFields  = new HashSet<string> { "CountryCode" }
+            , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
             }
-            , GetSizes = new Dictionary<string, int> {
+            , Sizes = new Dictionary<string, int> {
                  ["CreatedBy"     ] = 50
                 ,["UpdatedBy"     ] = 50
                 ,["CountryCode"   ]    = 50

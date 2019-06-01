@@ -9,16 +9,15 @@ namespace MVCHIS.Housing.Buildings {
     public partial class BuildingForm: BuildingView {
 
         //private IDBController roomCntrlr;
-        
-        
+        private BuildingTypeController CntrlBT;//= (BuildingTypeController)DBControllersFactory.GetController<BuildingTypeModel>();
+        private CompoundController     CntrlCM;//= (CompoundController)DBControllersFactory.GetController<CompoundModel>();
+
+
         public BuildingForm() {
-            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
-            //roomCntrlr = DBControllersFactory.GetController(Common.MODELS.Room);
-            base.Controller = (BuildingController)DBControllersFactory.GetController(Common.MODELS.Building);
-            Controllers = new System.Collections.Generic.Dictionary<string, IDBController> {
-                ["bt"] = DBControllersFactory.GetController(MODELS.BuildingType),
-                ["c" ] = DBControllersFactory.GetController(MODELS.Compound),
-            };
+            InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
+            CntrlBT = (BuildingTypeController)DBControllersFactory.GetController<BuildingTypeModel>();
+            CntrlCM = (CompoundController)DBControllersFactory.GetController<CompoundModel>();
+
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -47,12 +46,12 @@ namespace MVCHIS.Housing.Buildings {
 
         private void TxtBuildingTypeId_TextChanged(object sender, EventArgs e) {
             int id = int.Parse($"0{txtBuildingTypeId.Text}");
-            txtBuildingTypeCode.Text = Controllers["bt"].Find(new BuildingTypeModel() { Id = id }, "Id")?.BuildingTypeCode;
+            txtBuildingTypeCode.Text = CntrlBT.Find(new BuildingTypeModel() { Id = id }, "Id")?.BuildingTypeCode;
         }
 
         private void TxtCompoundId_TextChanged(object sender, EventArgs e) {
             int id = int.Parse($"0{txtCompoundId.Text}");
-            txtCompoundName.Text = Controllers["c"].Find(new CompoundModel() { Id = id }, "Id")?.CompoundName;
+            txtCompoundName.Text = CntrlCM.Find(new CompoundModel() { Id = id }, "Id")?.CompoundName;
         }
     }
     

@@ -9,7 +9,7 @@ namespace MVCHIS.Housing {
 
         public CompoundForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
-            base.Controller = (CompoundController)DBControllersFactory.GetController(Common.MODELS.Compound);
+            //base.Controller = (CompoundController)DBControllersFactory.GetController(Common.MODELS.Compound);
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;

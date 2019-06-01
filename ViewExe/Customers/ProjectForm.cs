@@ -7,12 +7,11 @@ namespace MVCHIS.Customers {
     //[ForModel(Common.MODELS.Project)]
     public partial class ProjectForm: ProjectView {
 
+        private ClientController CntrlCL;
+
         public ProjectForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
-            base.Controller = (ProjectController)DBControllersFactory.GetController(Common.MODELS.Project);
-            Controllers = new System.Collections.Generic.Dictionary<string, IDBController> {
-                ["c"] = DBControllersFactory.GetController(MODELS.Client)
-            };
+            CntrlCL = (ClientController)DBControllersFactory.GetController<ClientModel>();
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -40,7 +39,7 @@ namespace MVCHIS.Customers {
         }
 
         private void TxtClientId_TextChanged(object sender, EventArgs e) {
-            txtClientShortName.Text = Controllers["c"].FindById<ClientModel>(new int[] { int.Parse($"0{txtClientId.Text}") }).FirstOrDefault()?.ShortName;
+            txtClientShortName.Text = CntrlCL.FindById(new int[] { int.Parse($"0{txtClientId.Text}") }).FirstOrDefault()?.ShortName;
         }
     }
     

@@ -1,19 +1,23 @@
 ﻿using MVCHIS.Common;
+using MVCHIS.Customers;
+using System;
 using System.Collections.Generic;
 
 namespace MVCHIS.Housing {
     //[ForModel(MODELS.Room)]
-    public class RoomEntity : AbstractDBEntity {
+    public class RoomEntity : AbstractDBEntity<RoomModel> {
         public override MetaData MetaData => new MetaData() {
-              ModelType        = typeof(RoomModel)
-            , PrimaryKeyField  = "Id" 
-            , RequiredFields   = new List<string> { "Id", "RoomName", "BuildingId", "BedCapacity" }
-            , UniqueKeyFields  = new List<string> { "RoomName" }
-            , ForeignKeys      = new Dictionary<string, System.Tuple<string, string>> {
-                ["BuildingId"] = new System.Tuple<string, string>(DBEntitiesFactory.GetEntity(MODELS.Building).MetaData.Source,"Id"),
-                ["CountryId" ] = new System.Tuple<string, string>(DBEntitiesFactory.GetEntity(MODELS.Country ).MetaData.Source, "Id"),
+            //  ModelType        = typeof(RoomModel)
+              PrimaryKeyField  = "Id"
+            , Fields           = new HashSet<string> {"ReadOnly","Id","CreatedBy","CreatedOn","UpdatedBy","UpdatedOn",
+                                                      "RoomName","BuildingId","BedCapacity","CountryId","NumberOfWindows" }
+            , RequiredFields   = new HashSet<string> { "Id", "RoomName", "BuildingId", "BedCapacity" }
+            , UniqueKeyFields  = new HashSet<string> { "RoomName" }
+            , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
+                ["BuildingId"] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<BuildingModel>().MetaData.Source,"Id"),
+                ["CountryId" ] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<CountryModel>().MetaData.Source, "Id"),
             }
-            , GetSizes = new Dictionary<string, int> {
+            , Sizes = new Dictionary<string, int> {
                  ["CreatedBy"   ] = 50
                 ,["UpdatedBy"   ] = 50
                 ,["RoomName"    ] = 50

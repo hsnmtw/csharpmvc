@@ -1,18 +1,20 @@
 ﻿using MVCHIS.Common;
+using System;
 using System.Collections.Generic;
 
 namespace MVCHIS.Tools {
     //[ForModel(MODELS.Dictionary)]
-    public class DictionaryEntity : AbstractDBEntity {
+    public class DictionaryEntity : AbstractDBEntity<DictionaryModel> {
 
         public override MetaData MetaData => new MetaData() {
-            ModelType = typeof(DictionaryModel)
-            , PrimaryKeyField = "Id" 
-            , RequiredFields  = new List<string> { "Id", "WordInEnglish", "WordInArabic" }
-            , UniqueKeyFields = new List<string> { "WordInEnglish" }
-            , ForeignKeys     = new Dictionary<string, System.Tuple<string, string>> {
+            //ModelType = typeof(DictionaryModel)
+              PrimaryKeyField = "Id" 
+            , Fields          = new HashSet<string> { "CreatedBy","CreatedOn","Id","ReadOnly","UpdatedBy","UpdatedOn","WordInArabic","WordInEnglish" }
+            , RequiredFields  = new HashSet<string> { "Id", "WordInEnglish", "WordInArabic" }
+            , UniqueKeyFields = new HashSet<string> { "WordInEnglish" }
+            , ForeignKeys     = new Dictionary<string, Tuple<string, string>> {
             }
-            , GetSizes = new Dictionary<string, int> {
+            , Sizes = new Dictionary<string, int> {
                 ["CreatedBy"    ] = 50,
                 ["UpdatedBy"    ] = 50,
                 ["WordInEnglish"] = 250,

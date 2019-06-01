@@ -9,39 +9,44 @@ using System.Linq;
 
 namespace MVCHIS.Common {
     public static class DBControllersFactory {
-        private static Dictionary<MODELS, IDBController> ControllersMap = new Dictionary<MODELS, IDBController> { };
+        private static Dictionary<Type, object> ControllersMap = new Dictionary<Type, object> { };
 
-        public static IDBController GetController(MODELS model) {
-            if (ControllersMap.ContainsKey(model) == false) {
-                InitializeController(model);
-            }
-            return ControllersMap[model];
+        public static IDBController<M> GetController<M>() where M:BaseModel {
+            Type mtype = typeof(M);
+            return (IDBController<M>)GetController(mtype);
         }
 
-        private static void InitializeController(MODELS model) {
-            var type = typeof(AbstractDBController);
+        public static object GetController(Type mtype) {
             var cntrlr = AppDomain.CurrentDomain.GetAssemblies()
                         .SelectMany(s => s.GetTypes())
-                        .Where(p => type.IsAssignableFrom(p))
-                        .Where(x => x.Name.Equals($"{model}Controller"))
+                        .Where(x => x.Name.Equals($"{mtype.Name.Replace("Model", "")}Controller") || (x.Name.EndsWith("Controller") &&  x.Name.Equals(mtype.Name)) )
                         .FirstOrDefault();
+
+            if (ControllersMap.ContainsKey(cntrlr) == false) {
+                InitializeController(cntrlr);
+            }
+            return ControllersMap[cntrlr];
+        }
+
+        public static object GetController(MODELS num) {
+            var cntrlr = AppDomain.CurrentDomain.GetAssemblies()
+                        .SelectMany(s => s.GetTypes())
+                        .Where(x => x.Name.Equals($"{num}Controller"))
+                        .FirstOrDefault();
+            return GetController(cntrlr);
+        }
+
+        private static void InitializeController(Type cntrlr) {// where M:BaseModel{
+
 
             if (cntrlr != null) {
                 if (Enum.TryParse(cntrlr.Name.Substring(0, (cntrlr.Name.Length) - ("Controller".Length)), out MODELS num)) {
-                    ControllersMap[num] = (IDBController)Activator.CreateInstance(cntrlr);
+                    ControllersMap[cntrlr] = Activator.CreateInstance(cntrlr);
                     Console.WriteLine($" + [Controller] : {num}:{cntrlr}");
                 } else {
                     throw new Exception($"no Enum was defined for {cntrlr}");
                 }
             }
-        }
-
-        public static IDBController GetController(string v) {
-            throw new NotImplementedException();
-        }
-
-        public static void SetController(MODELS num, IDBController iDBController) {
-            throw new NotImplementedException();
         }
     }
 }

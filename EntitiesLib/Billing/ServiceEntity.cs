@@ -1,21 +1,24 @@
 ﻿using MVCHIS.Common;
+using System;
 using System.Collections.Generic;
 
 namespace MVCHIS.Billing {
     //[ForModel(MODELS.Service)]
-    public class ServiceEntity : AbstractDBEntity {
+    public class ServiceEntity : AbstractDBEntity<ServiceModel> {
         public override MetaData MetaData => new MetaData() {
-              ModelType        = typeof(ServiceModel)
-            , PrimaryKeyField  = "Id" 
-            , RequiredFields   = new List<string> { "Id", "BillingCategoryId", "ContractId", "Price", "CurrencyId","EffectiveFromDate","VATId" }
-            , UniqueKeyFields  = new List<string> { "BillingCategoryId", "ContractId" }
-            , ForeignKeys      = new Dictionary<string, System.Tuple<string, string>> {
-                ["ContractId"       ] = new System.Tuple<string, string>(DBEntitiesFactory.GetEntity(MODELS.Contract).MetaData.Source,"Id"),
-                ["BillingCategoryId"] = new System.Tuple<string, string>(DBEntitiesFactory.GetEntity(MODELS.BillingCategory).MetaData.Source, "Id"),
-                ["CurrencyId"       ] = new System.Tuple<string, string>(DBEntitiesFactory.GetEntity(MODELS.Currency).MetaData.Source, "Id"),
-                ["VATId"            ] = new System.Tuple<string, string>(DBEntitiesFactory.GetEntity(MODELS.VAT).MetaData.Source, "Id")
+            //  ModelType        = typeof(ServiceModel)
+              PrimaryKeyField  = "Id" 
+            , Fields           = new HashSet<string> {"ReadOnly","Id","CreatedBy","CreatedOn","UpdatedBy","UpdatedOn",
+                                                  "BillingCategoryId","ContractId","Price","CurrencyId","EffectiveFromDate","Expired","VATId" }
+            , RequiredFields   = new HashSet<string> { "Id", "BillingCategoryId", "ContractId", "Price", "CurrencyId","EffectiveFromDate","VATId" }
+            , UniqueKeyFields  = new HashSet<string> { "BillingCategoryId", "ContractId" }
+            , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
+                ["ContractId"       ] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<ContractModel>().MetaData.Source,"Id"),
+                ["BillingCategoryId"] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<BillingCategoryModel>().MetaData.Source, "Id"),
+                ["CurrencyId"       ] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<CurrencyModel>().MetaData.Source, "Id"),
+                ["VATId"            ] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<VATModel>().MetaData.Source, "Id")
             }
-            , GetSizes = new Dictionary<string, int> {
+            , Sizes = new Dictionary<string, int> {
                 ["CreatedBy"   ] = 50,
                 ["UpdatedBy"   ] = 50,
             }

@@ -14,7 +14,7 @@ namespace MVCHIS.Security.Users {
         public UsersLoginView()
         {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-            base.Controller = (UserController)DBControllersFactory.GetController(Common.MODELS.User);
+            //base.Controller = (UserController)DBControllersFactory.GetController(Common.MODELS.User);
             Mapper["UserName"     ] = txtUserName;
             Mapper["UserPassword" ] = txtPassword;
         }

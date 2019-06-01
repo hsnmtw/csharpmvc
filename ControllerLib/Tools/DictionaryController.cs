@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace MVCHIS.Tools {
     //[ForModel(MODELS.Dictionary, Enabled = true)]
-    public class DictionaryController : AbstractDBController {
+    public class DictionaryController : AbstractDBController<DictionaryModel> {
 
         
         private static Dictionary<string, string> en = new Dictionary<string, string>();
@@ -22,17 +22,14 @@ namespace MVCHIS.Tools {
             }
         }
 
-        public DictionaryController() : base(DBEntitiesFactory.GetEntity(MODELS.Dictionary)) {
+        public DictionaryController() : base() {
             ReadDictionary();
         }
 
-        public override bool Validate<M>(M model) {
-            return base.Validate(model);
-        }
 
         public void ReadDictionary() { 
             try {
-                foreach (var row in Read<DictionaryModel>()) {
+                foreach (var row in Read()) {
                     var WordInArabic = row.WordInArabic;
                     var WordInEnglish = row.WordInEnglish;
                     en[WordInEnglish] = WordInArabic;

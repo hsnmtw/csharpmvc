@@ -3,7 +3,7 @@ using System;
 using System.Data;
 
 namespace MVCHIS.Common {
-    class MVCAdaptor<C> where C : IDBController {
+    class MVCAdaptor<M,C> where C:IDBController<M> where M : BaseModel {
         public C Controller { get; private set; }
         private DataTable recordset { get; set; }
 
@@ -19,11 +19,11 @@ namespace MVCHIS.Common {
         }
 
         public MVCAdaptor() {
-            Controller = Activator.CreateInstance<C>();
+            Controller = (C)DBControllersFactory.GetController(typeof(C));
         }
 
         public void Requery() {
-            recordset = Controller.GetData<AuditModel>();
+            recordset = Controller.GetData();
             Count = recordset.Rows.Count;
         }
     }

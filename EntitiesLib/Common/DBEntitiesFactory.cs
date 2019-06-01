@@ -9,28 +9,42 @@ using System.Linq;
 
 namespace MVCHIS.Common {
     public static class DBEntitiesFactory {
-        private static Dictionary<MODELS, IDBEntity> EntitiesMap = new Dictionary<MODELS, IDBEntity> { };
-        public static IDBEntity GetEntity(MODELS model){
-            if (EntitiesMap.ContainsKey(model) == false) {
-                InitializeEntity(model);
-            }
-            
-            return EntitiesMap[model];
+        private static Dictionary<Type, object> EntitysMap = new Dictionary<Type, object> { };
+
+        public static IDBEntity<M> GetEntity<M>() where M : BaseModel {
+            Type mtype = typeof(M);
+            return (IDBEntity<M>)GetEntity(mtype);
         }
 
-        private static void InitializeEntity(MODELS model) {
-            var type = typeof(AbstractDBEntity);
+        public static object GetEntity(Type mtype) {
             var entity = AppDomain.CurrentDomain.GetAssemblies()
                         .SelectMany(s => s.GetTypes())
-                        .Where(p => type.IsAssignableFrom(p))
-                        .Where(x => x.Name.Equals($"{model}Entity"))
+                        .Where(x => x.Name.Equals($"{mtype.Name.Replace("Model", "")}Entity") || (x.Name.EndsWith("Entity") && x.Name.Equals(mtype.Name)))
                         .FirstOrDefault();
 
-            if(entity != null) {
-                if (Enum.TryParse(entity.Name.Substring(0, (entity.Name.Length)-("Entity".Length)), out MODELS num)) {
-                    EntitiesMap[num] = (IDBEntity)Activator.CreateInstance(entity);
+            if (EntitysMap.ContainsKey(entity) == false) {
+                InitializeEntity(entity);
+            }
+            return EntitysMap[entity];
+        }
+
+        public static object GetEntity(MODELS num) {
+            var entity = AppDomain.CurrentDomain.GetAssemblies()
+                        .SelectMany(s => s.GetTypes())
+                        .Where(x => x.Name.Equals($"{num}Entity"))
+                        .FirstOrDefault();
+            return GetEntity(entity);
+        }
+
+        private static void InitializeEntity(Type entity) {// where M:BaseModel{
+
+
+            if (entity != null) {
+                if (Enum.TryParse(entity.Name.Substring(0, (entity.Name.Length) - ("Entity".Length)), out MODELS num)) {
+                    EntitysMap[entity] = Activator.CreateInstance(entity);
                     Console.WriteLine($" + [Entity] : {num}:{entity}");
-                    Console.WriteLine(EntitiesMap[model].GetDDL());
+                    Console.WriteLine(EntitysMap[entity].GetType().GetMethod("GetDDL").Invoke(EntitysMap[entity],null));
+
                 } else {
                     throw new Exception($"no Enum was defined for {entity}");
                 }

@@ -2,6 +2,6 @@
 
 namespace MVCHIS.Customers {
     public class ClientTypeModel : BaseModel {
-        public string ClientType   { get; set; }
+        public string ClientTypeCode   { get; set; }
     }
 }

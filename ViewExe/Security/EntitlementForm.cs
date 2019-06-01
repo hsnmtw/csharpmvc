@@ -11,13 +11,14 @@ namespace MVCHIS.Security {
         private Dictionary<int, EntitlementGroupModel> egs;
         private Dictionary<int, EntityModel> ets;
 
+        private IDBController<EntitlementGroupModel> CntrlEG;// = DBControllersFactory.GetController<EntitlementGroupModel>();
+        private IDBController<EntityModel>           CntrlET;// = DBControllersFactory.GetController<EntityModel>();
+
         public EntitlementForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-            base.Controller = (EntitlementController)DBControllersFactory.GetController(Common.MODELS.Entitlement);
-            Controllers = new Dictionary<string, IDBController> {
-                ["eg"] = DBControllersFactory.GetController(MODELS.EntitlementGroup),
-                ["et"] = DBControllersFactory.GetController(MODELS.Entity),
-            };
+            CntrlEG = DBControllersFactory.GetController<EntitlementGroupModel>();
+            CntrlET = DBControllersFactory.GetController<EntityModel>();
+
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -40,8 +41,8 @@ namespace MVCHIS.Security {
 
 
         private void EntitlementFormLoad(object sender, EventArgs e) {
-            egs = Controllers["eg"].Read<EntitlementGroupModel>().ToDictionary(x => x.Id, x => x);
-            ets = Controllers["et"].Read<EntityModel>().ToDictionary(x => x.Id, x => x);
+            egs = CntrlEG.Read().ToDictionary(x => x.Id, x => x);
+            ets = CntrlET.Read().ToDictionary(x => x.Id, x => x);
         }
 
         private void EntitlementNameLookupLookUpSelected(object sender, EventArgs e) {
@@ -61,5 +62,5 @@ namespace MVCHIS.Security {
             } catch { }
         }
     }
-    public class EntitlementView : BaseView<EntitlementModel, EntitlementController> { }
+    
 }

@@ -11,10 +11,10 @@ namespace MVCHIS.Common {
         /// the list of fields that make up the model
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<string> GetFields => (from propinfo in ModelType.GetProperties() orderby propinfo.Name select propinfo.Name).ToArray();
+        public HashSet<string> Fields { get; set; }//=> (from propinfo in ModelType.GetProperties() orderby propinfo.Name select propinfo.Name).ToArray();
         public Dictionary<string, Tuple<string,string>> ForeignKeys { get; set; }
 
-        public Dictionary<string, int> GetSizes  {get;set;}
+        public Dictionary<string, int> Sizes  {get;set;}
         /// <summary>
         /// the source of data to populate the model
         /// </summary>
@@ -31,7 +31,7 @@ namespace MVCHIS.Common {
         /// this should be used to verify uniqueness
         /// </summary>
         /// <returns>list of fields names that are marked UNIQUE</returns>
-        public IEnumerable<string> UniqueKeyFields { get; set; }
+        public HashSet<string> UniqueKeyFields { get; set; }
         /// <summary>
         /// gets the list of properties/fields that are mandatory
         /// this should be used for validation before saving a model
@@ -39,10 +39,6 @@ namespace MVCHIS.Common {
         /// contain data in them, i.e. NOT NULL
         /// </summary>
         /// <returns>list of fields names that are marked REQUIRED</returns>
-        public IEnumerable<string> RequiredFields { get; set; }
-        /// <summary>
-        /// the type of the model for this collection
-        /// </summary>
-        public Type ModelType { get; set; }
+        public HashSet<string> RequiredFields { get; set; }
     }
 }

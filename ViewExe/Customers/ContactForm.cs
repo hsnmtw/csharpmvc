@@ -10,7 +10,7 @@ namespace MVCHIS.Customers {
         
         public ContactForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-            base.Controller = (ContactController)DBControllersFactory.GetController(Common.MODELS.Contact);
+            //base.Controller = (ContactController)DBControllersFactory.GetController(Common.MODELS.Contact);
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;

@@ -5,18 +5,11 @@ using System.Collections.Generic;
 
 namespace MVCHIS.Security {
     //[ForModel(MODELS.ProfileEntitlement, Enabled = true)]
-    public class ProfileEntitlementController : AbstractDBController {
-
-        public ProfileEntitlementController() : base(DBEntitiesFactory.GetEntity(MODELS.ProfileEntitlement)) { }
-
-        public override bool Validate<M>(M model) {
-            return base.Validate(model);
-        }
-
+    public class ProfileEntitlementController : AbstractDBController<ProfileEntitlementModel> {
         public void InitializeDBValues() {
-            foreach (var pe in Read<ProfileEntitlementModel>()) { Delete(pe); }
-            var es = DBControllersFactory.GetController(Common.MODELS.Entitlement).Read<EntitlementModel>();
-            var ps = DBControllersFactory.GetController(Common.MODELS.Profile).Read<ProfileModel>();
+            foreach (var pe in Read()) { Delete(pe); }
+            var es = DBControllersFactory.GetController<EntitlementModel>().Read();
+            var ps = DBControllersFactory.GetController<ProfileModel>().Read();
             foreach(ProfileModel p in ps) {
                 foreach(EntitlementModel e in es) {
                     Save(new ProfileEntitlementModel() {

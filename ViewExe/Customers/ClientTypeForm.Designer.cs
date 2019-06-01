@@ -35,7 +35,7 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtClientType = new System.Windows.Forms.TextBox();
+            this.txtClientTypeCode = new System.Windows.Forms.TextBox();
             this.lookUpButtonClientType = new MVCHIS.Common.LookUpButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -162,11 +162,11 @@
             // 
             // txtClientType
             // 
-            this.txtClientType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtClientType.Location = new System.Drawing.Point(151, 73);
-            this.txtClientType.Name = "txtClientType";
-            this.txtClientType.Size = new System.Drawing.Size(154, 20);
-            this.txtClientType.TabIndex = 1;
+            this.txtClientTypeCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtClientTypeCode.Location = new System.Drawing.Point(151, 73);
+            this.txtClientTypeCode.Name = "txtClientType";
+            this.txtClientTypeCode.Size = new System.Drawing.Size(154, 20);
+            this.txtClientTypeCode.TabIndex = 1;
             // 
             // lookUpButtonClientType
             // 
@@ -219,7 +219,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtId);
             this.panel1.Controls.Add(this.lookUpButtonClientType);
-            this.panel1.Controls.Add(this.txtClientType);
+            this.panel1.Controls.Add(this.txtClientTypeCode);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.txtCreatedBy);
@@ -285,7 +285,7 @@
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtClientType;
+        private System.Windows.Forms.TextBox txtClientTypeCode;
         private Common.LookUpButton lookUpButtonClientType;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ListBox listBox1;

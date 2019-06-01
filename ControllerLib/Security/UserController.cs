@@ -4,25 +4,18 @@ using System;
 
 namespace MVCHIS.Security {
     //[ForModel(MODELS.User, Enabled = true)]
-    public class UserController : AbstractDBController {
+    public class UserController : AbstractDBController<UserModel> {
 
-        public UserController() : base(DBEntitiesFactory.GetEntity(MODELS.User)) { }
-
-        public override bool Validate<M>(M model) {
-            return base.Validate(model);
-        }
-
-
-        public override int Save(BaseModel userModel) {
-            UserModel model = (UserModel)userModel;
+        public override int Save(UserModel model) {
+            //UserModel model = (UserModel)userModel;
             if (model.UserPassword.StartsWith("{ENC}") == false) {
                 model.UserPassword = CryptoFactory.Encrypt(model.UserPassword);
             }
             return base.Save(model);
         }
 
-        public override int Delete(BaseModel userModel) {
-            var model = Find((UserModel)userModel, "Id" );
+        public override int Delete(UserModel model) {
+            //var model = Find((UserModel)userModel, "Id" );
             if ("admin".Equals($"{model.UserName}".ToLower())) {
                 throw new ArgumentException("You cannot delete Admin user");
             }
@@ -35,7 +28,7 @@ namespace MVCHIS.Security {
                 model.UserPassword = new CryptoController().Process(new CryptoModel() { InputText = model.UserPassword }).Encrypted;
             }
 
-            var audit = (AuditController)DBControllersFactory.GetController(Common.MODELS.Audit);
+            var audit = (AuditController)DBControllersFactory.GetController<AuditModel>();
 
             model.IsActive = true;
             UserModel modelf = Find(model, "UserName", "UserPassword", "IsActive");
@@ -50,7 +43,7 @@ namespace MVCHIS.Security {
                     }
                     Save(user);
                     
-                    audit.registerEvent(new AuditModel() {
+                    audit.RegisterEvent(new AuditModel() {
                         UserName = model.UserName,
                         EventComments = $"Login denied : {user}"
                     });
@@ -63,7 +56,7 @@ namespace MVCHIS.Security {
             model.LastLoginDate = DateTime.Now;
             Save(model);
 
-            audit.registerEvent(new AuditModel() {
+            audit.RegisterEvent(new AuditModel() {
                 UserName = model.UserName,
                 EventComments = "Login successful"
             });
@@ -80,8 +73,8 @@ namespace MVCHIS.Security {
             model.FailedLoginAttempts = 0;
             this.Save(model);
 
-            var audit = (AuditController)DBControllersFactory.GetController(Common.MODELS.Audit);
-            audit.registerEvent(new AuditModel() {
+            var audit = (AuditController)DBControllersFactory.GetController<AuditModel>();
+            audit.RegisterEvent(new AuditModel() {
                 UserName = model.UserName,
                 EventComments = $"reset login counter : {model.UserName}"
             });
@@ -95,8 +88,8 @@ namespace MVCHIS.Security {
             model.UserPassword = password;
             model.LastChangePassword = DateTime.Now;
             Save(model);
-            var audit = (AuditController)DBControllersFactory.GetController(Common.MODELS.Audit);
-            audit.registerEvent(new AuditModel() {
+            var audit = (AuditController)DBControllersFactory.GetController<AuditModel>();
+            audit.RegisterEvent(new AuditModel() {
                 UserName = model.UserName,
                 EventComments = "password reset for user : " + model.UserName
             });

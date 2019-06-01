@@ -35,15 +35,15 @@ Example code
   }
   
   //Entity
-  public class ExampleEntity : AbstractDBEntity {
+  public class ExampleEntity : AbstractDBEntity<ExampleModel> {
          public override MetaData MetaData => new MetaData() {
-              ModelType        = typeof(ExampleModel)
-            , PrimaryKeyField  = "Id" 
-            , RequiredFields   = new List<string> { "Id", "ExampleProperty" }
-            , UniqueKeyFields  = new List<string> { "ExampleProperty" }
-            , ForeignKeys      = new Dictionary<string, System.Tuple<string, string>> {
+              PrimaryKeyField  = "Id" 
+			, Fields           = new HashSet<string> { "ReadOnly","Id","CreatedBy","CreatedOn","UpdatedBy","UpdatedOn", "ExampleProperty" }  
+            , RequiredFields   = new HashSet<string> { "Id", "ExampleProperty" }
+            , UniqueKeyFields  = new HashSet<string> { "ExampleProperty" }
+            , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
             }
-            , GetSizes = new Dictionary<string, int> {
+            , Sizes            = new Dictionary<string, int> {
                 ["CreatedBy"       ] = 50,
                 ["UpdatedBy"       ] = 50,
                 ["ExampleProperty" ] = 25,
@@ -54,17 +54,20 @@ Example code
     }
   }
  
-  //Controller
-   public class ExampleController : AbstractDBController {
-        public ExampleController() : base(DBEntitiesFactory.GetEntity(MODELS.Example)) {}
-
-        public override bool Validate<M>(M model) {
-            return base.Validate(model);
-        }
-    }
+ //Controller
+ public class ExampleController : AbstractDBController<ExampleModel> {
+ }
  
- //View extends UserControl
- public class ExampleView : BaseView<ExampleModel, ExampleController> { 
- 
+ //View
+ public class ExampleView : BaseView<ExampleModel, ExampleController> {  
+    public ExampleView(){
+	
+	   Mapper["ExampleProperty"] = txtExampleProperty;  // this will bind textbox to model value
+	   
+	   //define actions
+	   SaveButton   = btnSave;                          
+	   DeleteButton = btnDelete;                        
+	   NewButton    = btnNew;
+	}
  }
 ```

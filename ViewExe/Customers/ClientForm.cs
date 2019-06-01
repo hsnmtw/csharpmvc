@@ -9,18 +9,23 @@ namespace MVCHIS.Customers {
     //[ForModel(Common.MODELS.Client)]
     public partial class ClientForm: ClientView {
 
+        private ClientTypeController            CntrlCT;
+        private ContactController               CntrlCO;
+        private ClientContactController         CntrlCC;
+        private IdentificationController        CntrlID;
+        private ClientIdentificationController  CntrlCI;
+        private CountryController               CntrlCY;
+
+
         public ClientForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
-            base.Controller   = (ClientController)DBControllersFactory.GetController(Common.MODELS.Client);
 
-            Controllers = new System.Collections.Generic.Dictionary<string, IDBController> { 
-                ["ct"]  = DBControllersFactory.GetController(Common.MODELS.ClientType),
-                ["c"]   = DBControllersFactory.GetController(Common.MODELS.Contact),
-                ["cc"]  = DBControllersFactory.GetController(Common.MODELS.ClientContact),
-                ["i"]   = DBControllersFactory.GetController(Common.MODELS.Identification),
-                ["ci"]  = DBControllersFactory.GetController(Common.MODELS.ClientIdentification),
-                ["n"]   = DBControllersFactory.GetController(Common.MODELS.Country),
-            };
+            CntrlCT = (ClientTypeController          )DBControllersFactory.GetController<ClientTypeModel          >();
+            CntrlCO = (ContactController             )DBControllersFactory.GetController<ContactModel             >();
+            CntrlCC = (ClientContactController       )DBControllersFactory.GetController<ClientContactModel       >();
+            CntrlID = (IdentificationController      )DBControllersFactory.GetController<IdentificationModel      >();
+            CntrlCI = (ClientIdentificationController)DBControllersFactory.GetController<ClientIdentificationModel>();
+            CntrlCY = (CountryController             )DBControllersFactory.GetController<CountryModel             >();
 
             //template
             Mapper["Id"] = txtId;
@@ -62,14 +67,14 @@ namespace MVCHIS.Customers {
 
         private void TxtClientTypeId_TextChanged(object sender, EventArgs e) {
            // txtClientType.Text = "";
-            txtClientType.Text = Controllers["ct"].Find(new ClientTypeModel() { Id = int.Parse($"0{txtClientTypeId.Text}") }, "Id")?.ClientType;
+            txtClientTypeCode.Text = CntrlCT.Find(new ClientTypeModel() { Id = int.Parse($"0{txtClientTypeId.Text}") }, "Id")?.ClientTypeCode;
         }
 
         private void BtnAddIdentification_Click(object sender, EventArgs e) {
             var form = new Form();
             var view = ((IdentificationForm)DBViewsFactory.GetView(Common.MODELS.Identification));
             view.AfterSave = delegate() {
-                Controllers["ci"].Save(new ClientIdentificationModel() {
+                CntrlCI.Save(new ClientIdentificationModel() {
                     ClientId = this.Model.Id,
                     IdentificationId = view.Model.Id
                 });
@@ -83,18 +88,18 @@ namespace MVCHIS.Customers {
 
         private void RequeryIdentification() {
             var identifications = from record
-                        in Controllers["ci"].Read(new ClientIdentificationModel() { ClientId = Model.Id }, "ClientId")
+                        in CntrlCI.Read(new ClientIdentificationModel() { ClientId = Model.Id }, "ClientId")
                                   select record.IdentificationId;
-            var source = Controllers["i"].GetDataById<IdentificationModel>(identifications);
+            var source = CntrlID.GetDataById(identifications);
             this.lstIdentifications.DataSource = source;
             this.lstIdentifications.Requery();
         }
 
         private void RequeryContact() {
             var contacts = from record
-                        in Controllers["cc"].Read(new ClientContactModel() { ClientId = Model.Id }, "ClientId")
+                        in CntrlCC.Read(new ClientContactModel() { ClientId = Model.Id }, "ClientId")
                                   select record.ContactId;
-            var source = Controllers["c"].GetDataById<ContactModel>(contacts);
+            var source = CntrlCO.GetDataById(contacts);
             this.lstContacts.DataSource = source;
             this.lstContacts.Requery();
         }
@@ -102,7 +107,7 @@ namespace MVCHIS.Customers {
         private void BtnAddContact_Click(object sender, EventArgs e) {
             var form = ((ContactForm)DBViewsFactory.GetView(Common.MODELS.Contact));
             form.AfterSave = delegate () {
-                Controllers["cc"].Save(new ClientContactModel() {
+                CntrlCC.Save(new ClientContactModel() {
                     ClientId  = Model.Id,
                     ContactId = form.Model.Id
                 });
@@ -114,7 +119,7 @@ namespace MVCHIS.Customers {
         }
 
         private void TxtNationalityCode_TextChanged(object sender, EventArgs e) {
-            var country = Controllers["n"].FindById<CountryModel>(new int[] { int.Parse($"0{txtCountryId.Text}") } ).FirstOrDefault();
+            var country = CntrlCY.FindById(new int[] { int.Parse($"0{txtCountryId.Text}") } ).FirstOrDefault();
             txtCountryCode.Text = country?.CountryCode;
             txtCountryEnglish.Text = country?.CountryEnglish;
         }

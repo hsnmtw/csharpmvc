@@ -11,13 +11,8 @@ namespace MVCHIS.Billing {
     //[ForModel(Common.MODELS.Currency)]
     public partial class CurrencyForm: CurrencyView {
 
-        
-
-        
         public CurrencyForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-            
-            base.Controller = (CurrencyController)DBControllersFactory.GetController(MODELS.Currency);
 
             //template
             Mapper["Id"       ] = txtId;

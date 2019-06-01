@@ -8,7 +8,6 @@ namespace MVCHIS.Tools {
 
         public DictionaryForm() : base() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
-            base.Controller = (DictionaryController)DBControllersFactory.GetController(Common.MODELS.Dictionary);
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -34,5 +33,5 @@ namespace MVCHIS.Tools {
             Model = Controller.Find(new DictionaryModel() { WordInEnglish = selected }, "WordInEnglish");
         }
     }
-    public class DictionaryView : BaseView<DictionaryModel, DictionaryController> { }
+    
 }

@@ -5,17 +5,12 @@ using System.Linq;
 
 namespace MVCHIS.Security {
     //[ForModel(MODELS.Entitlement, Enabled = true)]
-    public class EntitlementController : AbstractDBController {
-
-        public EntitlementController() : base(DBEntitiesFactory.GetEntity(MODELS.Entitlement)) { }
+    public class EntitlementController : AbstractDBController<EntitlementModel> {
 
         public void InitializeDBValues() {
-
-
-
-            foreach (var e in Read<EntitlementModel>()) { Delete(e); }
-            var egs = new EntitlementGroupController().Read<EntitlementGroupModel>().ToDictionary(x=>x.EntitlementGroupName,x=>x.Id);
-            var ets = new EntityController().Read<EntityModel>().ToDictionary(x => x.EntityName, x => x.Id);
+            foreach (var e in Read()) { Delete(e); }
+            var egs = new EntitlementGroupController().Read().ToDictionary(x => x.EntitlementGroupName, x => x.Id);
+            var ets = new EntityController().Read().ToDictionary(x => x.EntityName, x => x.Id);
 
             foreach (MODELS t in Enum.GetValues(typeof(MODELS))) {
                 var e = DBEntitiesFactory.GetEntity(t);
@@ -27,11 +22,6 @@ namespace MVCHIS.Security {
                     EntityId = ets[t.ToString()]
                 });
             }
-
-        }
-
-        public override bool Validate<M>(M model) {
-            return base.Validate(model);
         }
     }
 }

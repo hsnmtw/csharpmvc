@@ -1,0 +1,12 @@
+﻿ClientTypeController            CntrlCT = (ClientTypeController          )DBControllersFactory.GetController<ClientTypeModel          >();
+ContactController               CntrlCO = (ContactController             )DBControllersFactory.GetController<ContactModel             >();
+ClientContactController         CntrlCC = (ClientContactController       )DBControllersFactory.GetController<ClientContactModel       >();
+IdentificationController        CntrlID = (IdentificationController      )DBControllersFactory.GetController<IdentificationModel      >();
+ClientIdentificationController  CntrlID = (ClientIdentificationController)DBControllersFactory.GetController<ClientIdentificationModel>();
+CountryController               CntrlCY = (CountryController             )DBControllersFactory.GetController<CountryModel             >();
+IdentificationTypeController    CntrlID = (IdentificationTypeController  )DBControllersFactory.GetController<IdentificationTypeModel  >();
+ClientController                CntrlCL = (ClientController              )DBControllersFactory.GetController<ClientModel              >();
+ContractController              CntrlCN = (ContractController            )DBControllersFactory.GetController<ContractModel            >();
+BillingCategoryController       CntrlCG = (BillingCategoryController     )DBControllersFactory.GetController<BillingCategoryModel     >();
+CurrencyController              CntrlCU = (CurrencyController            )DBControllersFactory.GetController<CurrencyModel            >();
+VATController                   CntrlVT = (VATController                 )DBControllersFactory.GetController<VATModel                 >();

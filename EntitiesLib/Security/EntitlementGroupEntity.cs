@@ -1,18 +1,21 @@
 ﻿using MVCHIS.Common;
+using System;
 using System.Collections.Generic;
 
 namespace MVCHIS.Security {
     //[ForModel(MODELS.EntitlementGroup)]
-    public class EntitlementGroupEntity : AbstractDBEntity{
+    public class EntitlementGroupEntity : AbstractDBEntity<EntitlementGroupModel> {
 
         public override MetaData MetaData => new MetaData() {
-              ModelType       = typeof(EntitlementGroupModel)
-            , PrimaryKeyField = "Id" 
-            , RequiredFields  = new List<string> { "Id","EntitlementGroupName" }
-            , UniqueKeyFields = new List<string> { "EntitlementGroupName" }
-            , ForeignKeys     = new Dictionary<string, System.Tuple<string, string>> {
+            //  ModelType       = typeof(EntitlementGroupModel)
+              PrimaryKeyField = "Id"
+            , Fields           = new HashSet<string> {"ReadOnly","Id","CreatedBy","CreatedOn","UpdatedBy","UpdatedOn",
+                                                      "EntitlementGroupName","Dynamic" }
+            , RequiredFields  = new HashSet<string> { "Id","EntitlementGroupName" }
+            , UniqueKeyFields = new HashSet<string> { "EntitlementGroupName" }
+            , ForeignKeys     = new Dictionary<string, Tuple<string, string>> {
             }
-            , GetSizes = new Dictionary<string, int> {
+            , Sizes = new Dictionary<string, int> {
                 ["CreatedBy"           ] = 50,
                 ["UpdatedBy"           ] = 50,
                 ["EntitlementGroupName"] = 50

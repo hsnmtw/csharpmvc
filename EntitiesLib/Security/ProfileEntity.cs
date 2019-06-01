@@ -1,18 +1,20 @@
 ﻿using MVCHIS.Common;
+using System;
 using System.Collections.Generic;
 
 namespace MVCHIS.Security {
     //[ForModel(MODELS.Profile)]
-    public class ProfileEntity : AbstractDBEntity {
+    public class ProfileEntity : AbstractDBEntity<ProfileModel> {
 
         public override MetaData MetaData => new MetaData() {
-            ModelType = typeof(ProfileModel)
-            , PrimaryKeyField = "Id" 
-            , RequiredFields  = new List<string> { "Id", "ProfileName" }
-            , UniqueKeyFields = new List<string> { "ProfileName" }
-            , ForeignKeys     = new Dictionary<string, System.Tuple<string, string>> {
+            //ModelType = typeof(ProfileModel)
+              PrimaryKeyField = "Id"
+            , Fields          = new HashSet<string> { "ReadOnly","Id", "CreatedBy", "CreatedOn", "UpdatedBy", "UpdatedOn", "ProfileName", "ProfileDesc" }
+            , RequiredFields  = new HashSet<string> { "Id", "ProfileName" }
+            , UniqueKeyFields = new HashSet<string> { "ProfileName" }
+            , ForeignKeys     = new Dictionary<string, Tuple<string, string>> {
             }
-            , GetSizes = new Dictionary<string, int> {
+            , Sizes = new Dictionary<string, int> {
                 ["CreatedBy"  ] = 50,
                 ["UpdatedBy"  ] = 50,
                 ["ProfileName"] = 50,

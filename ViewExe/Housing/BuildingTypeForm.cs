@@ -7,14 +7,11 @@ using System.Linq;
 namespace MVCHIS.Housing.BuildingTypes {
     //[ForModel(Common.MODELS.BuildingType)]
     public partial class BuildingTypeForm: BuildingTypeView {
-
-        private IDBController bldgCntrlr;
-         
+ 
         
         public BuildingTypeForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
-            bldgCntrlr = DBControllersFactory.GetController(Common.MODELS.Building);
-            base.Controller = (BuildingTypeController)DBControllersFactory.GetController(Common.MODELS.BuildingType);
+
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;

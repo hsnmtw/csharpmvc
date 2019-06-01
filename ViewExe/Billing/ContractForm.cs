@@ -12,21 +12,21 @@ namespace MVCHIS.Billing {
     //[ForModel(Common.MODELS.Contract)]
     public partial class ContractForm : ContractView {
 
+        private ClientController          CntrlCL ;
+        private BillingCategoryController CntrlCG ;
+        private ServiceController         CntrlSR ;
+        private CurrencyController        CntrlCU ;
+        private VATController             CntrlVT ;
 
-        //private Dictionary<int, BillingCategoryModel> billingCategories;
         private List<ServiceModel> Services;
 
         public ContractForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-
-            base.Controller = (ContractController)DBControllersFactory.GetController(Common.MODELS.Contract);
-            Controllers = new Dictionary<string, IDBController> {
-                ["client"  ] = DBControllersFactory.GetController(MODELS.Client),
-                ["category"] = DBControllersFactory.GetController(MODELS.BillingCategory),
-                ["service" ] = DBControllersFactory.GetController(MODELS.Service),
-                ["currency"] = DBControllersFactory.GetController(MODELS.Currency),
-                ["VAT"     ] = DBControllersFactory.GetController(MODELS.VAT),
-            };
+            CntrlCL = (ClientController)DBControllersFactory.GetController<ClientModel>();
+            CntrlCG = (BillingCategoryController)DBControllersFactory.GetController<BillingCategoryModel>();
+            CntrlSR = (ServiceController)DBControllersFactory.GetController<ServiceModel>();
+            CntrlCU = (CurrencyController)DBControllersFactory.GetController<CurrencyModel>();
+            CntrlVT = (VATController)DBControllersFactory.GetController<VATModel>();
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -63,22 +63,22 @@ namespace MVCHIS.Billing {
         }
 
         private void ContractFormLoad(object sender, EventArgs e) {
-            BillingCategoryColumn.DataSource = Controllers["category"].Read<BillingCategoryModel>().ToList();
+            BillingCategoryColumn.DataSource = CntrlCG.Read().ToList();
             BillingCategoryColumn.DisplayMember = "BillingCategoryCode";
             BillingCategoryColumn.ValueMember = "Id";
 
-            CurrencyColumn.DataSource = Controllers["currency"].Read<CurrencyModel>().ToList();
+            CurrencyColumn.DataSource = CntrlCU.Read().ToList();
             CurrencyColumn.DisplayMember = "CurrencyCode";
             CurrencyColumn.ValueMember = "Id";
 
-            VATColumn.DataSource = Controllers["VAT"].Read<VATModel>().ToList();
+            VATColumn.DataSource = CntrlVT.Read().ToList();
             VATColumn.DisplayMember = "VATCode";
             VATColumn.ValueMember = "Id";
         }
 
         private void TxtClient_TextChanged(object sender, EventArgs e) {
             int.TryParse(txtClientId.Text,out int selected);
-            txtClientShortName.Text = Controllers["client"].Find(new ClientModel() { Id = selected }, "Id")?.ShortName;
+            txtClientShortName.Text = CntrlCL.Find(new ClientModel() { Id = selected }, "Id")?.ShortName;
         }
 
         private void TxtId_TextChanged(object sender, EventArgs e) {
@@ -92,7 +92,7 @@ namespace MVCHIS.Billing {
                 btnDeleteService.Enabled = id > 0;
             }
             if (id > 0) {
-                Services = Controllers["service"].Read<ServiceModel>(new ServiceModel() { ContractId = Model.Id }, "ContractId").ToList();
+                Services = CntrlSR.Read(new ServiceModel() { ContractId = Model.Id }, "ContractId").ToList();
             } else {
                 Services = new List<ServiceModel>();
             }
@@ -138,7 +138,7 @@ namespace MVCHIS.Billing {
 
         private void BtnDeleteService_Click(object sender, EventArgs e) {
             if (this.dataGridView1.SelectedRows.Count < 1) return;
-            Controllers["service"].Delete(Services[bindingSource1.Position]);
+            CntrlSR.Delete(Services[bindingSource1.Position]);
             RequeryGrid();
         }
 

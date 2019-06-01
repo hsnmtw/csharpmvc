@@ -13,15 +13,17 @@ namespace MVCHIS.Billing {
         //private FoodTypeController ftController;
         //private AccommClassController acController;
 
+        private FoodClassController   CntrlFC;//= (FoodClassController  )DBControllersFactory.GetController<FoodClassModel  >();
+        private FoodTypeController    CntrlFT;//= (FoodTypeController   )DBControllersFactory.GetController<FoodTypeModel   >();
+        private AccommClassController CntrlAC;// (AccommClassController)DBControllersFactory.GetController<AccommClassModel>();
 
         public BillingCategoryForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;; //(); if (DesignMode||(Site!=null && Site.DesignMode)) return;;
-            base.Controller = (BillingCategoryController)DBControllersFactory.GetController(Common.MODELS.BillingCategory);
-            this.Controllers = new System.Collections.Generic.Dictionary<string, IDBController> {
-                ["FoodClass"  ] = DBControllersFactory.GetController(Common.MODELS.FoodClass),
-                ["FoodType"   ] = DBControllersFactory.GetController(Common.MODELS.FoodType),
-                ["AccommClass"] = DBControllersFactory.GetController(Common.MODELS.AccommClass)
-            };
+            
+            CntrlFC = (FoodClassController  )DBControllersFactory.GetController<FoodClassModel  >();
+            CntrlFT = (FoodTypeController   )DBControllersFactory.GetController<FoodTypeModel   >();
+            CntrlAC = (AccommClassController)DBControllersFactory.GetController<AccommClassModel>();
+            
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -53,19 +55,19 @@ namespace MVCHIS.Billing {
         }
 
         private void TxtAccommClassId_TextChanged(object sender, EventArgs e) {
-            var acmodel = Controllers["AccommClass"].Find(new AccommClassModel { Id = int.Parse($"0{txtAccommClassId.Text}") },"Id");
+            var acmodel = CntrlAC.Find(new AccommClassModel { Id = int.Parse($"0{txtAccommClassId.Text}") },"Id");
             txtAccommClassDesc.Text = acmodel?.AccommClassDesc;
             txtAccommClassCode.Text = acmodel?.AccommClassCode;
         }
 
         private void TxtFoodClassId_TextChanged(object sender, EventArgs e) {
-            var fcmodel = Controllers["FoodClass"].Find(new FoodClassModel { Id = int.Parse($"0{txtFoodClassId.Text}") },"Id");
+            var fcmodel = CntrlFC.Find(new FoodClassModel { Id = int.Parse($"0{txtFoodClassId.Text}") },"Id");
             txtFoodClassDesc.Text = fcmodel?.FoodClassDesc;
             txtFoodClassCode.Text = fcmodel?.FoodClassCode;
         }
 
         private void TxtFoodTypeId_TextChanged(object sender, EventArgs e) {
-            var ftmodel = Controllers["FoodType"].Find(new FoodTypeModel { Id = int.Parse($"0{txtFoodTypeId.Text}") },"Id");
+            var ftmodel = CntrlFT.Find(new FoodTypeModel { Id = int.Parse($"0{txtFoodTypeId.Text}") },"Id");
             txtFoodTypeDesc.Text = ftmodel?.FoodTypeDesc;
             txtFoodTypeCode.Text = ftmodel?.FoodTypeCode;
         }

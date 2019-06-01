@@ -7,16 +7,16 @@ namespace MVCHIS.Security {
     //[ForModel(Common.MODELS.ProfileEntitlement)]
     public partial class ProfileEntitlementForm: ProfileEntitlementsView {
 
+        private readonly ProfileController     CntrlPR;
+        private readonly EntitlementController CntrlEN;
+
         private Dictionary<int, string> entitlements;
         private Dictionary<int, string> profiles;
 
         public ProfileEntitlementForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-            base.Controller = (ProfileEntitlementController)DBControllersFactory.GetController(MODELS.ProfileEntitlement);
-            Controllers = new Dictionary<string, IDBController> {
-                ["e"] = DBControllersFactory.GetController(MODELS.Entitlement),
-                ["p"] = DBControllersFactory.GetController(MODELS.Profile)
-            };
+            CntrlPR = (ProfileController)DBControllersFactory.GetController<ProfileModel>();
+            CntrlEN = (EntitlementController)DBControllersFactory.GetController<EntitlementModel>();
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -39,8 +39,8 @@ namespace MVCHIS.Security {
         }        
 
         private void EntitlementFormLoad(object sender, EventArgs e) {
-            entitlements = Controllers["e"].Read<EntitlementModel>().ToDictionary(x => x.Id, x => x.EntitlementName);
-            profiles = Controllers["p"].Read<ProfileModel>().ToDictionary(x => x.Id, x => x.ProfileName);
+            entitlements = CntrlEN.Read().ToDictionary(x => x.Id, x => x.EntitlementName);
+            profiles = CntrlPR.Read().ToDictionary(x => x.Id, x => x.ProfileName);
         }
 
         private void LookUpButton2_LookUpSelected(object sender, EventArgs e) {

@@ -1,18 +1,21 @@
 ﻿using MVCHIS.Common;
+using System;
 using System.Collections.Generic;
 
 namespace MVCHIS.Housing {
     //[ForModel(MODELS.Compound)]
-    public class CompoundEntity : AbstractDBEntity {
+    public class CompoundEntity : AbstractDBEntity<CompoundModel> {
 
         public override MetaData MetaData => new MetaData() {
-              ModelType        = typeof(CompoundModel)
-            , PrimaryKeyField  = "Id" 
-            , RequiredFields   = new List<string> { "Id", "CompoundName" }
-            , UniqueKeyFields  = new List<string> { "CompoundName" }
-            , ForeignKeys      = new Dictionary<string, System.Tuple<string, string>> {
+            ////  ModelType        = typeof(CompoundModel)
+              PrimaryKeyField  = "Id"
+            , Fields           = new HashSet<string> {"ReadOnly", "Id", "CreatedBy", "CreatedOn", "UpdatedBy", "UpdatedOn",
+                                                       "CompoundName", "CompoundLocation" }
+            , RequiredFields   = new HashSet<string> { "Id", "CompoundName" }
+            , UniqueKeyFields  = new HashSet<string> { "CompoundName" }
+            , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
             }
-            , GetSizes = new Dictionary<string, int> {
+            , Sizes = new Dictionary<string, int> {
                 ["CreatedBy"       ] = 50,
                 ["UpdatedBy"       ] = 50,
                 ["CompoundName"    ] = 50,

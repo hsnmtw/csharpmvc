@@ -10,7 +10,7 @@ namespace MVCHIS.Customers {
         
         public ClientTypeForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
-            base.Controller = (ClientTypeController)DBControllersFactory.GetController(Common.MODELS.ClientType);
+            //base.Controller = (ClientTypeController)DBControllersFactory.GetController(Common.MODELS.ClientType);
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -19,7 +19,7 @@ namespace MVCHIS.Customers {
             Mapper["UpdatedOn"] = txtUpdatedOn;
             Mapper["ReadOnly"] = chkReadOnly;
             //data
-            Mapper["ClientType"] = txtClientType;
+            Mapper["ClientTypeCode"] = txtClientTypeCode;
             //actions
             SaveButton = btnSave;
             DeleteButton = btnDelete;
@@ -28,7 +28,7 @@ namespace MVCHIS.Customers {
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
             string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            Model = Controller.Find(new ClientTypeModel() { ClientType=selected }, "ClientType");
+            Model = Controller.Find(new ClientTypeModel() { ClientTypeCode=selected }, "ClientTypeCode");
 
         }
 

@@ -1,20 +1,23 @@
 ﻿using MVCHIS.Common;
+using System;
 using System.Collections.Generic;
 
 namespace MVCHIS.Security {
     //[ForModel(MODELS.ProfileEntitlement)]
-    public class ProfileEntitlementEntity : AbstractDBEntity {
+    public class ProfileEntitlementEntity : AbstractDBEntity<ProfileEntitlementModel> {
 
         public override MetaData MetaData => new MetaData() {
-              ModelType       = typeof(ProfileEntitlementModel)
-            , PrimaryKeyField = "Id" 
-            , RequiredFields  = new List<string> { "Id", "ProfileId", "EntitlementId" }
-            , UniqueKeyFields = new List<string> { "ProfileId", "EntitlementId" }
-            , ForeignKeys     = new Dictionary<string, System.Tuple<string, string>> {
-                ["ProfileId"    ] = new System.Tuple<string, string>(DBEntitiesFactory.GetEntity(MODELS.Profile).MetaData.Source, "Id"),
-                ["EntitlementId"] = new System.Tuple<string, string>(DBEntitiesFactory.GetEntity(MODELS.Entitlement).MetaData.Source, "Id"),
+            //  ModelType       = typeof(ProfileEntitlementModel)
+              PrimaryKeyField = "Id"
+            , Fields           = new HashSet<string> {"ReadOnly","Id","CreatedBy","CreatedOn","UpdatedBy","UpdatedOn",
+                                                     "ProfileId","EntitlementId","AllowCreate","AllowRead","AllowUpdate","AllowDelete" }
+            , RequiredFields  = new HashSet<string> { "Id", "ProfileId", "EntitlementId" }
+            , UniqueKeyFields = new HashSet<string> { "ProfileId", "EntitlementId" }
+            , ForeignKeys     = new Dictionary<string, Tuple<string, string>> {
+                ["ProfileId"    ] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<ProfileModel    >().MetaData.Source, "Id"),
+                ["EntitlementId"] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<EntitlementModel>().MetaData.Source, "Id"),
             }
-            , GetSizes = new Dictionary<string, int> {
+            , Sizes = new Dictionary<string, int> {
                 ["CreatedBy"      ] = 50,
                 ["UpdatedBy"      ] = 50,
             }

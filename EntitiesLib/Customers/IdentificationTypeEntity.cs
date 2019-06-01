@@ -1,17 +1,20 @@
 ﻿using MVCHIS.Common;
+using System;
 using System.Collections.Generic;
 
 namespace MVCHIS.Customers {
     //[ForModel(MODELS.IdentificationType)]
-    public class IdentificationTypeEntity : AbstractDBEntity {
+    public class IdentificationTypeEntity : AbstractDBEntity<IdentificationTypeModel> {
         public override MetaData MetaData => new MetaData() {
-              ModelType        = typeof(IdentificationTypeModel)
-            , PrimaryKeyField  = "Id" 
-            , RequiredFields   = new List<string> { "Id", "IdTypeCode" }
-            , UniqueKeyFields  = new List<string> { "IdTypeCode" }
-            , ForeignKeys      = new Dictionary<string, System.Tuple<string, string>> {
+            //  ModelType        = typeof(IdentificationTypeModel)
+              PrimaryKeyField  = "Id"
+            , Fields           = new HashSet<string> {"ReadOnly","Id","CreatedBy","CreatedOn","UpdatedBy","UpdatedOn",
+                                                      "IdTypeCode","IdTypeEnglish","IdTypeArabic" }
+            , RequiredFields   = new HashSet<string> { "Id", "IdTypeCode" }
+            , UniqueKeyFields  = new HashSet<string> { "IdTypeCode" }
+            , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
             }
-            , GetSizes = new Dictionary<string, int> {
+            , Sizes = new Dictionary<string, int> {
                  ["CreatedBy"    ] = 50
                 ,["UpdatedBy"    ] = 50
                 ,["IdTypeCode"   ] = 50

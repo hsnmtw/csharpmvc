@@ -14,11 +14,10 @@ using System.Windows.Forms;
 
 namespace MVCHIS.Common {
 
-    public class BaseView<M,C> : UserControl, IView where M:BaseModel where C:IDBController {
+    public class BaseView<M,C> : UserControl, IView where C:IDBController<M> where M:BaseModel  {
 
         public Action AfterSave { get; set; }
         public virtual C Controller { get; set; } 
-        //private M model;
         public virtual M Model {
             get {
                 M getmodel = Activator.CreateInstance<M>();
@@ -68,7 +67,6 @@ namespace MVCHIS.Common {
 
         
         public Dictionary<string, Control> Mapper { get; set; }
-        public Dictionary<string, IDBController> Controllers { get; set; }
         public Button SaveButton { get; set; }
         public Button NewButton { get; set; }
         public Button DeleteButton { get; set; }
@@ -83,10 +81,10 @@ namespace MVCHIS.Common {
         public Action AfterDelete { get; set; }
 
         public BaseView() : base() {
+            Controller = (C)DBControllersFactory.GetController<M>();
             Name = GetType().Name;
             if (DesignMode||(Site!=null && Site.DesignMode)) return;;
 
-            Controllers = new Dictionary<string, IDBController>();
             Mapper = new Dictionary<string, Control>();
             Prop = new Func<string, PropertyInfo>(x => typeof(M).GetProperty(x));
             isBoolean  = new Func<string, bool>(x => Mapper[x].GetType() == typeof(CheckBox) 
@@ -121,7 +119,7 @@ namespace MVCHIS.Common {
                 }
                 if (NewButton != null) {
                     NewButton.Enabled = NewButtonEnabled;
-                    NewButton.Click += (bs, be) => { Model = Controller.NewModel<M>(); DefaultControl?.Select(); AfterNew?.Invoke(); };
+                    NewButton.Click += (bs, be) => { Model = Controller.NewModel(); DefaultControl?.Select(); AfterNew?.Invoke(); };
                 }
                 var controls = (from cntrl in Mapper.Values orderby cntrl.TabIndex where cntrl.TabStop select cntrl);
                 foreach(var cntrl in controls) {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 
 namespace MVCHIS.Common {
-    public abstract class AbstractDBEntity : IDBEntity {
+    public abstract class AbstractDBEntity<M> : IDBEntity<M> where M:BaseModel {
 
         private const string EQ = "IN";
         private const string LIKE = "LIKE";
@@ -13,9 +13,14 @@ namespace MVCHIS.Common {
         public abstract MetaData MetaData { get; }
 
         public AbstractDBEntity() : base() {
+            var mfields = new HashSet<string>(typeof(M).GetProperties().Select(x => x.Name));
+            var efields = new HashSet<string>(MetaData.Fields);
+            if (!mfields.SetEquals(efields)) {
+                throw new Exception($"MODEL and ENTITY are not in SYNC : M:[\"{string.Join("\",\"",mfields.OrderBy(x=>x))}\"] != E:[\"{string.Join("\",\"",efields.OrderBy(x => x))}\"]");
+            }
         }
 
-        public virtual bool Validate<M>(M model) {
+        public virtual bool Validate(M model) {
             var p = MetaData.RequiredFields;
             var i = p.Select(x => x.EndsWith("Id") && x.Length>2 && "0".Equals($"{model.GetType().GetProperty(x).GetValue(model)}".Trim()));
             var q = p.Select(x => "".Equals($"{model.GetType().GetProperty(x).GetValue(model)}".Trim()));
@@ -23,25 +28,25 @@ namespace MVCHIS.Common {
             return w;
         }
 
-        public DataTable GetDataById<M>(M model, IEnumerable<int> Ids) {
+        public DataTable GetDataById(M model, IEnumerable<int> Ids) {
             if (Ids == null || Ids.Count() == 0) return new DataTable();
             var tpl = GetSQLAndParameters(model, false, "Id");
             var sql = tpl.Item1.Replace("@Id", string.Join(",", Ids));
             return DBConnectionManager.Instance.GetData(sql);
         }
 
-        public IEnumerable<M> FindById<M>(M model, IEnumerable<int> Ids) {
+        public IEnumerable<M> FindById(M model, IEnumerable<int> Ids) {
             if (Ids==null || Ids.Count() == 0) return new List<M>();
             var tpl = GetSQLAndParameters(model,false,"Id");
             var sql = tpl.Item1.Replace("@Id", string.Join(",", Ids));
             return DBConnectionManager.Instance.Query(model, sql);
         }
 
-        public M NewModel<M>() {
-            return (M)Activator.CreateInstance(MetaData.ModelType);
+        public M NewModel() {
+            return Activator.CreateInstance<M>();
         }
-        public virtual M Find<M>(M model, params string[] whereFields) {
-            var mdl = NewModel<M>();
+        public virtual M Find(M model, params string[] whereFields) {
+            var mdl = NewModel();
             var prp = (from PropertyInfo pinfo in mdl.GetType().GetProperties() orderby pinfo.Name select pinfo.Name);
             var slc = string.Join("],[", prp);
             var src = MetaData.Source;
@@ -52,7 +57,7 @@ namespace MVCHIS.Common {
             return tbl.FirstOrDefault();
         }
 
-        public virtual int Create<M>(M model) {
+        public virtual int Create(M model) {
             var xcl = new string[] { "Id", "UpdatedBy", "UpdatedOn" };
             var prp = (from pinfo in model.GetType().GetProperties() where !xcl.Contains(pinfo.Name) select pinfo.Name);
             var src = MetaData.Source;
@@ -63,7 +68,7 @@ namespace MVCHIS.Common {
             return DBConnectionManager.Instance.Execute(sql, prm);
         }
 
-        public virtual Tuple<string, KeyValuePair<string, object>[]> GetSQLAndParameters<M>(M model, bool like = false, params string[] whereFields) {
+        public virtual Tuple<string, KeyValuePair<string, object>[]> GetSQLAndParameters(M model, bool like = false, params string[] whereFields) {
             var prp = (from pinfo in model.GetType().GetProperties() orderby pinfo.Name select pinfo.Name);
             var slc = string.Join(",", prp); if ("".Equals(slc.Trim())) slc = "*";
             var src = MetaData.Source;
@@ -74,18 +79,18 @@ namespace MVCHIS.Common {
             return new Tuple<string, KeyValuePair<string, object>[]>(sql,prm);
         }
 
-        public virtual IEnumerable<M> Read<M>(M model, bool like = false, params string[] whereFields) {
+        public virtual IEnumerable<M> Read(M model, bool like = false, params string[] whereFields) {
             var tpl = GetSQLAndParameters(model, like, whereFields);
             return DBConnectionManager.Instance.Query(model,tpl.Item1,tpl.Item2);
         }
 
-        public DataTable GetData<M>(M model, bool like = false, params string[] whereFields) {
+        public DataTable GetData(M model, bool like = false, params string[] whereFields) {
             var tpl = GetSQLAndParameters(model, like, whereFields);
             return DBConnectionManager.Instance.GetData(tpl.Item1,tpl.Item2);
         }
 
 
-        public virtual int Update<M>(M model, params string[] whereFields) {
+        public virtual int Update(M model, params string[] whereFields) {
             if (whereFields.Length == 0) whereFields = new string[] { "Id" };
             var xcl = new string[] { "Id", "CreatedBy", "CreatedOn" };
             var prp = (from pinfo in model.GetType().GetProperties() where !xcl.Contains(pinfo.Name) select pinfo.Name);
@@ -97,7 +102,7 @@ namespace MVCHIS.Common {
             return DBConnectionManager.Instance.Execute(sql, prm);
         }
         
-        public virtual int Delete<M>(M model,params string[]whereFields) {
+        public virtual int Delete(M model,params string[]whereFields) {
             if (whereFields.Length == 0) whereFields = new string[] { "Id" };
             var src = MetaData.Source;
             var whr = string.Join(" AND ", (from c in whereFields select $"[{c}]=@{c}"));
@@ -124,16 +129,16 @@ namespace MVCHIS.Common {
 
 
         public string GetDDL() {
-            var cols = from c in MetaData.GetFields where c!="Id" select c;
-            var size = MetaData.GetSizes;
-            var dtps = from p in cols where p!="Id" select ddltype(this.MetaData.ModelType.GetProperty(p).PropertyType, size.ContainsKey(p) ? size[p] : -1);
+            var cols = from c in MetaData.Fields where c!="Id" select c;
+            var size = MetaData.Sizes;
+            var dtps = from p in cols where p!="Id" select ddltype(typeof(M).GetProperty(p).PropertyType, size.ContainsKey(p) ? size[p] : -1);
             var rqrd = MetaData.RequiredFields;
             var uniq = string.Join(",",MetaData.UniqueKeyFields );
             var pkey = string.Join(",",MetaData.PrimaryKeyField);
             var cdef = from tpl in cols.Zip(dtps,(a,b) => new Tuple<string,string>(a,b)) select $@"{tpl.Item1} {tpl.Item2} {(rqrd.Contains(tpl.Item1) ? "NOT NULL" : "")}";
             cdef = cdef.Concat(new string[] { "Id INTEGER IDENTITY(1,1) NOT NULL" });
-            var fkey = string.Join("",from k in MetaData.ForeignKeys select $",FOREIGN KEY({k.Key}) REFERENCES {k.Value.Item1}({k.Value.Item2})");
-            return $@"CREATE TABLE {MetaData.Source} ({string.Join(",",cdef)}, PRIMARY KEY({pkey}), UNIQUE ({uniq}) {fkey})";
+            var fkey = string.Join("",from k in MetaData.ForeignKeys select $", CONSTRAINT {MetaData.Source}_FK_{k.Key} FOREIGN KEY({k.Key}) REFERENCES {k.Value.Item1}({k.Value.Item2})");
+            return $@"CREATE TABLE {MetaData.Source} ({string.Join(",",cdef)}, CONSTRAINT {MetaData.Source}_PK PRIMARY KEY({pkey}), CONSTRAINT {MetaData.Source}_UK UNIQUE ({uniq}) {fkey})";
         }
 
         private string ddltype(Type propertyType,int size) {

@@ -13,8 +13,6 @@ namespace MVCHIS.Billing {
 
         public VATForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-            
-            base.Controller = (VATController)DBControllersFactory.GetController(MODELS.VAT);
 
             //template
             Mapper["Id"       ] = txtId;

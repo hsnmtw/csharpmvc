@@ -21,7 +21,7 @@ namespace MVCHIS.Common {
         public string ValueFromLookup { get; private set; }
         private LookUpForm lookup;
         private Control controlValu = null;
-        private IDBController controller = null;
+        private IController controller = null;
 
         public LookUpButton() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
@@ -34,7 +34,7 @@ namespace MVCHIS.Common {
 
         private void Button1Click(object sender, EventArgs e) {
             if (!isInitialized) init();
-            lookup = new LookUpForm(controller.GetData<BaseModel>(), ShowFieldsInLookUp.ToArray());
+            lookup = new LookUpForm(controller.GetData(), ShowFieldsInLookUp.ToArray());
             lookup.SelectedValueIndex = SelectedValueIndex;
             
             lookup.FormClosed += (s, ee) => {
@@ -89,7 +89,7 @@ namespace MVCHIS.Common {
                 if (!Enum.TryParse<MODELS>(this.Controller, out num)) {
                     throw new ArgumentException($"Controller: {this.Controller} cannot be found");
                 }
-                this.controller = DBControllersFactory.GetController(num);
+                this.controller = (IController)DBControllersFactory.GetController(num);
             }
 
             if (this.ShowFieldsInLookUp.Count == 0) {

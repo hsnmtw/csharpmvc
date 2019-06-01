@@ -60,11 +60,11 @@ namespace MVCHIS {
         public void LoadForm() {
             if (DesignMode || (Site != null && Site.DesignMode)) return;;
             initializeToolStripMenuItem.Visible = false;
-            initializeToolStripMenuItem.Visible = (null == eController.Find(new EntitlementModel() { EntitlementName = "Initialize" }, "EntitlementName"));
+            initializeToolStripMenuItem.Visible = (null == eController.Find(new EntitlementModel() { EntitlementName = "Profile" }, "EntitlementName"));
 
-            var entitlements = eController.Read<EntitlementModel>().OrderBy(x => x.EntitlementName);
-            var egroups = egController.Read<EntitlementGroupModel>().Where(r => r.Dynamic).OrderBy(x => x.EntitlementGroupName);
-            var entities = tController.Read<EntityModel>().ToDictionary(x => x.Id, x => x);
+            var entitlements = eController.Read().OrderBy(x => x.EntitlementName);
+            var egroups = egController.Read().Where(r => r.Dynamic).OrderBy(x => x.EntitlementGroupName);
+            var entities = tController.Read().ToDictionary(x => x.Id, x => x);
 
             foreach (var row in egroups) {
                 var egn = row.EntitlementGroupName;
@@ -136,16 +136,15 @@ namespace MVCHIS {
 
         public void WhenAuthenticated(UserModel model) {
             Session.Instance.CurrentUser = model;
-            var pec = DBControllersFactory.GetController(MODELS.ProfileEntitlement);
-            //var pc = DBControllersFactory.GetController(MODELS.Profile);
-            var ec = DBControllersFactory.GetController(MODELS.Entitlement);
+            var CntrlPE = (ProfileEntitlementController)DBControllersFactory.GetController(typeof(ProfileEntitlementController));
+            var CntrlEN  = (EntitlementController)DBControllersFactory.GetController(typeof(EntitlementController));
 
-            var pes = pec.Read(new ProfileEntitlementModel() {
+            var pes = CntrlPE.Read(new ProfileEntitlementModel() {
                 ProfileId = Session.Instance.CurrentUser.ProfileId,
                 AllowRead = true
             }, "ProfileId", "AllowRead");
 
-            Dictionary<int, EntitlementModel> es = ec.Read<EntitlementModel>().ToDictionary(x => x.Id, x => x);
+            Dictionary<int, EntitlementModel> es = CntrlEN.Read().ToDictionary(x => x.Id, x => x);
             foreach (ProfileEntitlementModel row in pes) {
                 var eid = row.EntitlementId;
                 if (menus.ContainsKey(es[eid].EntitlementName)) { 
@@ -247,8 +246,8 @@ namespace MVCHIS {
 
             var ec = new Security.EntitlementController();
             var pec = new Security.ProfileEntitlementController();
-            foreach (var e in pec.Read<Security.ProfileEntitlementModel>()) { pec.Delete(e); }
-            foreach (var e in ec.Read<Security.EntitlementModel>()) { ec.Delete(e); }
+            foreach (var e in pec.Read()) { pec.Delete(e); }
+            foreach (var e in ec.Read()) { ec.Delete(e); }
 
             ((EntityController)DBControllersFactory.GetController(MODELS.Entity)).InitializeDBValues();
             ((EntitlementGroupController)DBControllersFactory.GetController(MODELS.EntitlementGroup)).InitializeDBValues();

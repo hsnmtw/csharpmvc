@@ -51,5 +51,13 @@ namespace MVCHIS.Tools {
             }
             return calendar;
         }
+
+        public MetaData GetMetaData() {
+            throw new NotImplementedException();
+        }
+
+        public DataTable GetData() {
+            throw new NotImplementedException();
+        }
     }
 }

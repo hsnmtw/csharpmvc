@@ -14,8 +14,6 @@ namespace MVCHIS.Billing {
         public BillingCycleForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
             
-            base.Controller = (BillingCycleController)DBControllersFactory.GetController(Common.MODELS.BillingCycle);
-
             var type = typeof(BillingCycleModel);
             //template
             Mapper["Id"       ] = txtId;

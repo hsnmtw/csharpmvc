@@ -29,8 +29,10 @@ namespace MVCHIS {
             Application.CurrentCulture = Thread.CurrentThread.CurrentUICulture;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            foreach(MODELS m in Enum.GetValues(typeof(MODELS))) {
+                DBControllersFactory.GetController(m);
+            }
             Application.Run(MainView.Instance);
-            //Application.Run(new SQLView());
             
         }
     }

@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MVCHIS.Security {
-    public class PermissionsHelper<M,C> where M:BaseModel where C:IDBController {
+    public class PermissionsHelper<M,C> where C:IDBController<M> where M : BaseModel {
         public PermissionsHelper(BaseView<M,C> view) {
             if(view==null) throw new ArgumentException("view cannot be null");
             //if(model==default) throw new ArgumentException("model cannot be null");
-            var ecn = DBControllersFactory.GetController(MODELS.Entitlement);
-            var pec = DBControllersFactory.GetController(MODELS.ProfileEntitlement);
-            var pc  = DBControllersFactory.GetController(MODELS.Profile);
-            var enc = DBControllersFactory.GetController(MODELS.Entity);
+            var ecn = DBControllersFactory.GetController<EntitlementModel>(); //ODELS.Entitlement);
+            var pec = DBControllersFactory.GetController<ProfileEntitlementModel>(); //ODELS.ProfileEntitlement);
+            var pc  = DBControllersFactory.GetController<ProfileModel>(); //ODELS.Profile);
+            var enc = DBControllersFactory.GetController<EntityModel>(); //MODELS.Entity);
 
             var usr = Session.Instance.CurrentUser;
 

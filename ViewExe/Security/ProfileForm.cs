@@ -12,15 +12,16 @@ namespace MVCHIS.Security {
         private Dictionary<int,EntitlementModel> allEntitlements;
         private Dictionary<int, EntitlementGroupModel> entitlementmentGroups;
 
+        private EntitlementController        CntrlEN;
+        private ProfileEntitlementController CntrlPE;
+        private EntitlementGroupController   CntrlEG;
+
         public ProfileForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-            base.Controller = (ProfileController)DBControllersFactory.GetController(Common.MODELS.Profile);
-
-            Controllers = new Dictionary<string, IDBController> {
-                ["e" ] = DBControllersFactory.GetController(Common.MODELS.Entitlement),
-                ["pe"] = DBControllersFactory.GetController(Common.MODELS.ProfileEntitlement),
-                ["eg"] = DBControllersFactory.GetController(Common.MODELS.EntitlementGroup),
-            };
+            
+            CntrlEN  = (EntitlementController       )DBControllersFactory.GetController<EntitlementModel       >();
+            CntrlPE = (ProfileEntitlementController)DBControllersFactory.GetController<ProfileEntitlementModel>();
+            CntrlEG = (EntitlementGroupController  )DBControllersFactory.GetController<EntitlementGroupModel  >();
 
             //template
             Mapper["Id"] = txtId;
@@ -51,7 +52,7 @@ namespace MVCHIS.Security {
             }
             this.lstEntitlements.Items.AddRange((
                     from ProfileEntitlementModel row
-                      in Controllers["pe"].Read(new ProfileEntitlementModel() { ProfileId= Model.Id }, "ProfileId" )
+                      in CntrlPE.Read(new ProfileEntitlementModel() { ProfileId= Model.Id }, "ProfileId" )
                    where filter.Exists(x => x.Id == row.EntitlementId)
                   select $"{(row.AllowCreate?C:E)}{(row.AllowRead?R:E)}{(row.AllowUpdate?U:E)}{(row.AllowDelete?D:E)}  {allEntitlements[row.EntitlementId].EntitlementName}"
             ).ToArray());
@@ -63,18 +64,18 @@ namespace MVCHIS.Security {
             cmbEntitelmentsGroup.Items.Add("All");
             cmbEntitelmentsGroup.Text = "All";
 
-            allEntitlements = Controllers["e"].Read<EntitlementModel>().ToDictionary(x => x.Id, x => x);
+            allEntitlements = CntrlEN.Read().ToDictionary(x => x.Id, x => x);
 
             cmbEntitelmentsGroup.Items.AddRange((
                from eg
-               in Controllers["eg"].Read<EntitlementGroupModel>()
+               in CntrlEG.Read()
                orderby eg.EntitlementGroupName
                select eg.EntitlementGroupName
             ).ToArray());
 
-            entitlementmentGroups = Controllers["eg"].Read<EntitlementGroupModel>().ToDictionary(x => x.Id, x => x);
+            entitlementmentGroups = CntrlEG.Read().ToDictionary(x => x.Id, x => x);
             
-            foreach (var em in Controllers["e"].Read<EntitlementModel>().OrderBy(x => x.EntitlementName)) {
+            foreach (var em in CntrlEN.Read().OrderBy(x => x.EntitlementName)) {
                 var egname = entitlementmentGroups[em.EntitlementGroupId].EntitlementGroupName;
                 if (entitlementsByGroup.ContainsKey(egname) == false) {
                     entitlementsByGroup[egname] = new List<EntitlementModel>();
@@ -92,11 +93,11 @@ namespace MVCHIS.Security {
 
         private void BtnInitializeEntitlements_Click(object sender, EventArgs e) {
             //remove all existing records for this profile
-            foreach (var pemodel in Controllers["pe"].Read(new ProfileEntitlementModel() { ProfileId=Model.Id },"ProfileId")) {
-                Controllers["pe"].Delete(pemodel);
+            foreach (var pemodel in CntrlPE.Read(new ProfileEntitlementModel() { ProfileId=Model.Id },"ProfileId")) {
+                CntrlPE.Delete(pemodel);
             }
-            foreach(var entitlement in Controllers["e"].Read<EntitlementModel>()) {
-                Controllers["pe"].Save(new ProfileEntitlementModel() {
+            foreach(var entitlement in CntrlEN.Read()) {
+                CntrlPE.Save(new ProfileEntitlementModel() {
                     ProfileId = Model.Id,
                     EntitlementId = entitlement.Id,
                     AllowRead = entitlementmentGroups[entitlement.EntitlementGroupId].EntitlementGroupName.Equals("Security") == false
@@ -132,7 +133,7 @@ namespace MVCHIS.Security {
             string entitlement = $"{this.lstEntitlements.Items[this.lstEntitlements.SelectedIndex]}".Substring(6).Trim();
             int entitlementId = (from EntitlementModel ent in allEntitlements.Values where ent.EntitlementName.Equals(entitlement) select ent).FirstOrDefault().Id;
             int.TryParse(txtId.Text, out int profileId);
-            ((ProfileEntitlementController)Controllers["pe"]).ChangePermissions(profileId, entitlementId, true, true, true, true);
+            ((ProfileEntitlementController)CntrlPE).ChangePermissions(profileId, entitlementId, true, true, true, true);
             this.lstEntitlements.Items[this.lstEntitlements.SelectedIndex] = $"{C}{R}{U}{D}  {entitlement}";
             //Utils.FormsHelper.Success("All entitlements were allowed");
             MainView.Instance.setProgress("All entitlements were allowed", 100);
@@ -145,7 +146,7 @@ namespace MVCHIS.Security {
             int entitlementId = (from EntitlementModel ent in allEntitlements where ent.EntitlementName.Equals(entitlement) select ent).FirstOrDefault().Id;
             int.TryParse(txtId.Text, out int profileId);
 
-            ((ProfileEntitlementController)Controllers["pe"]).ChangePermissions(profileId, entitlementId, false, false, false, false);
+            ((ProfileEntitlementController)CntrlPE).ChangePermissions(profileId, entitlementId, false, false, false, false);
             this.lstEntitlements.Items[this.lstEntitlements.SelectedIndex] = $"{E}{E}{E}{E}  {entitlement}";
             //Utils.FormsHelper.Success("All entitlements were un-allowed");
             MainView.Instance.setProgress("All entitlements were un-allowed", 100);

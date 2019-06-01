@@ -13,6 +13,5 @@ namespace MVCHIS.Billing{
         public bool      IsActive           { get; set; }
         public string    Conditions         { get;set;}
         public int       ClientId           { get; set; }
-        //public int       BillingCategoryId  { get; set; }
     }
 }

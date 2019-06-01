@@ -1,19 +1,21 @@
 ﻿using MVCHIS.Common;
+using System;
 using System.Collections.Generic;
 
 namespace MVCHIS.Customers {
     //[ForModel(MODELS.ClientContact)]
-    public class ClientContactEntity : AbstractDBEntity {
+    public class ClientContactEntity : AbstractDBEntity<ClientContactModel> {
         public override MetaData MetaData => new MetaData() {
-              ModelType        = typeof(ClientContactModel)
-            , PrimaryKeyField = "Id" 
-            , RequiredFields   = new List<string> { "Id", "ClientId", "ContactId" }
-            , UniqueKeyFields  = new List<string> { "ClientId", "ContactId" }
-            , ForeignKeys = new Dictionary<string, System.Tuple<string, string>> {
-                ["ClientId"]  = new System.Tuple<string, string>(DBEntitiesFactory.GetEntity(MODELS.Client).MetaData.Source, "Id"),
-                ["ContactId"] = new System.Tuple<string, string>(DBEntitiesFactory.GetEntity(MODELS.Contact).MetaData.Source, "Id"),
+            ////  ModelType        = typeof(ClientContactModel)
+              PrimaryKeyField  = "Id" 
+            , Fields           = new HashSet<string> {"ReadOnly", "Id", "CreatedBy", "CreatedOn", "UpdatedBy", "UpdatedOn", "ClientId", "ContactId" }
+            , RequiredFields   = new HashSet<string> { "Id", "ClientId", "ContactId" }
+            , UniqueKeyFields  = new HashSet<string> { "ClientId", "ContactId" }
+            , ForeignKeys = new Dictionary<string, Tuple<string, string>> {
+                ["ClientId"]  = new Tuple<string, string>(DBEntitiesFactory.GetEntity<ClientModel >().MetaData.Source, "Id"),
+                ["ContactId"] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<ContactModel>().MetaData.Source, "Id"),
             }
-            , GetSizes = new Dictionary<string, int> {
+            , Sizes = new Dictionary<string, int> {
                 ["CreatedBy"] = 50,
                 ["UpdatedBy"] = 50,
             }

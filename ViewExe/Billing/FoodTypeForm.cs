@@ -11,14 +11,9 @@ namespace MVCHIS.Billing {
     //[ForModel(Common.MODELS.FoodType)]
     public partial class FoodTypeForm: FoodTypeView {
 
-        
-
-        
         public FoodTypeForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
             
-            base.Controller = (FoodTypeController)DBControllersFactory.GetController(MODELS.FoodType);
-
             //template
             Mapper["Id"       ] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;

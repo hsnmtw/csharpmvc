@@ -27,13 +27,14 @@ namespace MVCHIS.Configurations {
         }
 
         private void Button1Click(object sender, EventArgs e) {
-            if (this.listBox1.SelectedIndex > -1) {
-                var row = this.listBox1.SelectedItem.ToString();
-                MODELS num;
-                Enum.TryParse( row.Substring(4,25).Trim(), out num);
-                DBControllersFactory.SetController(num, DBControllersFactory.GetController( row.Substring(31,70).Trim() ));
-            }
-            ControllersSelectionFormLoad(sender, e);
+            throw new NotImplementedException();
+            //if (this.listBox1.SelectedIndex > -1) {
+            //    var row = this.listBox1.SelectedItem.ToString();
+            //    MODELS num;
+            //    Enum.TryParse( row.Substring(4,25).Trim(), out num);
+            //    DBControllersFactory.SetController(num, DBControllersFactory.GetController( row.Substring(31,70).Trim() ));
+            //}
+            //ControllersSelectionFormLoad(sender, e);
         }
     }
 }

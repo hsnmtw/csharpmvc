@@ -1,20 +1,24 @@
 ﻿using MVCHIS.Common;
+using MVCHIS.Tools;
+using System;
 using System.Collections.Generic;
 
 namespace MVCHIS.Security {
     //[ForModel(MODELS.Entitlement)]
-    public class EntitlementEntity : AbstractDBEntity{
+    public class EntitlementEntity : AbstractDBEntity<EntitlementModel> {
 
         public override MetaData MetaData => new MetaData() {
-              ModelType       = typeof(EntitlementModel)
-            , PrimaryKeyField = "Id" 
-            , RequiredFields  = new List<string> { "Id","EntitlementName","EntitlementGroupId","EntityId" }
-            , UniqueKeyFields = new List<string> { "EntitlementName" }
-            , ForeignKeys     = new Dictionary<string, System.Tuple<string, string>> {
-                ["EntityId"]  = new System.Tuple<string, string>(DBEntitiesFactory.GetEntity(MODELS.Entity).MetaData.Source,"Id"),
-                ["EntitlementGroupId"] = new System.Tuple<string, string>(DBEntitiesFactory.GetEntity(MODELS.EntitlementGroup).MetaData.Source, "Id")
+            //  ModelType       = typeof(EntitlementModel)
+              PrimaryKeyField = "Id"
+            , Fields           = new HashSet<string> {"ReadOnly","Id","CreatedBy","CreatedOn","UpdatedBy","UpdatedOn",
+                                                     "EntitlementName","EntitlementGroupId","EntityId" }
+            , RequiredFields  = new HashSet<string> { "Id","EntitlementName","EntitlementGroupId","EntityId" }
+            , UniqueKeyFields = new HashSet<string> { "EntitlementName" }
+            , ForeignKeys     = new Dictionary<string, Tuple<string, string>> {
+                ["EntityId"          ] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<EntityModel>().MetaData.Source,"Id"),
+                ["EntitlementGroupId"] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<EntitlementGroupModel>().MetaData.Source, "Id")
             }
-            , GetSizes = new Dictionary<string, int> {
+            , Sizes = new Dictionary<string, int> {
                 ["CreatedBy"           ] = 50,
                 ["UpdatedBy"           ] = 50,
                 ["EntitlementName"     ] = 50,

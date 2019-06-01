@@ -6,7 +6,7 @@ namespace MVCHIS.Security.Users {
     public partial class UserPasswordResetView : UserView {
         public UserPasswordResetView() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-            base.Controller = (UserController)DBControllersFactory.GetController(Common.MODELS.User);
+            //base.Controller = (UserController)DBControllersFactory.GetController(Common.MODELS.User);
         }
 
         private void Button1Click(object sender, EventArgs e) {

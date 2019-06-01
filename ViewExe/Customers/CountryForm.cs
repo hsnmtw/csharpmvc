@@ -11,7 +11,6 @@ namespace MVCHIS.Customers {
 
         public CountryForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-            base.Controller = (CountryController)DBControllersFactory.GetController(Common.MODELS.Country);
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;

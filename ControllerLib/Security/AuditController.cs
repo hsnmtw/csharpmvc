@@ -4,15 +4,13 @@ using System;
 
 namespace MVCHIS.Security {
     //[ForModel(MODELS.Audit, Enabled = true)]
-    public class AuditController : AbstractDBController {
+    public class AuditController : AbstractDBController<AuditModel> {
 
-        public AuditController() : base(DBEntitiesFactory.GetEntity(MODELS.Audit)) { }
-
-        public override bool Validate<M>(M model) {
+        public override bool Validate(AuditModel model) {
             return base.Validate(model);
         }
 
-        public void registerEvent(AuditModel model) {
+        public void RegisterEvent(AuditModel model) {
             model.UpdatedBy = "SYSTEM";
             model.CreatedBy = "SYSTEM";
             model.EventDate = DateTime.Now;

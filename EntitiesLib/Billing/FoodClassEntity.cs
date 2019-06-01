@@ -1,17 +1,19 @@
 ﻿using MVCHIS.Common;
+using System;
 using System.Collections.Generic;
 
 namespace MVCHIS.Billing {
     //[ForModel(MODELS.FoodClass)]
-    public class FoodClassEntity : AbstractDBEntity {
+    public class FoodClassEntity : AbstractDBEntity<FoodClassModel> {
         public override MetaData MetaData => new MetaData() {
-              ModelType        = typeof(FoodClassModel)
-            , PrimaryKeyField = "Id" 
-            , RequiredFields   = new List<string> { "Id", "FoodClassCode","FoodClassDesc" }
-            , UniqueKeyFields  = new List<string> { "FoodClassCode" }
-            , ForeignKeys      = new Dictionary<string, System.Tuple<string, string>> {
+            //  ModelType        = typeof(FoodClassModel)
+              PrimaryKeyField  = "Id" 
+            , Fields           = new HashSet<string> {"ReadOnly", "Id", "CreatedBy", "CreatedOn", "UpdatedBy", "UpdatedOn", "FoodClassCode", "FoodClassDesc" }
+            , RequiredFields   = new HashSet<string> { "Id", "FoodClassCode","FoodClassDesc" }
+            , UniqueKeyFields  = new HashSet<string> { "FoodClassCode" }
+            , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
             }
-            , GetSizes = new Dictionary<string, int> {
+            , Sizes = new Dictionary<string, int> {
                 ["CreatedBy"] = 50,
                 ["UpdatedBy"] = 50,
                 ["FoodClassCode"    ] = 50,

@@ -6,12 +6,9 @@ using MVCHIS.Tools;
 namespace MVCHIS.Common {
     //[ForModel(Common.MODELS.Entity)]
     public partial class EntityForm: EntityView {
-
-        
         
         public EntityForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
-            base.Controller = (EntityController)DBControllersFactory.GetController(Common.MODELS.Entity);
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -38,5 +35,5 @@ namespace MVCHIS.Common {
         private void EntityFormLoad(object sender, EventArgs e) {
         }
     }
-    public class EntityView : BaseView<EntityModel, EntityController> { }
+    
 }

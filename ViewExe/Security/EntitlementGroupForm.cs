@@ -8,7 +8,7 @@ namespace MVCHIS.Security {
  
         public EntitlementGroupForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
-            base.Controller = (EntitlementGroupController)DBControllersFactory.GetController(Common.MODELS.EntitlementGroup);
+            ////base.Controller = (EntitlementGroupController)DBControllersFactory.GetController<EntitlementGroupModel>();
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -34,5 +34,5 @@ namespace MVCHIS.Security {
             Model = Controller.Find(new EntitlementGroupModel() { EntitlementGroupName = selected }, "EntitlementGroupName");
         }
     }
-    public class EntitlementGroupView : BaseView<EntitlementGroupModel, EntitlementGroupController> { }
+    
 }

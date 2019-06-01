@@ -11,16 +11,16 @@ using MVCHIS.Common;
 
 namespace MVCHIS.Billing {
     public partial class ServiceForm : ServiceView {
+        private ContractController        CntrlCN;
+        private BillingCategoryController CntrlCG;
+        private CurrencyController        CntrlCU;
+        private VATController             CntrlVT;
         public ServiceForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;
-
-            base.Controller = (ServiceController)DBControllersFactory.GetController(MODELS.Service);
-            Controllers = new Dictionary<string, IDBController> {
-                ["b"] = DBControllersFactory.GetController(MODELS.BillingCategory),
-                ["c"] = DBControllersFactory.GetController(MODELS.Contract),
-                ["x"] = DBControllersFactory.GetController(MODELS.Currency),
-                ["v"] = DBControllersFactory.GetController(MODELS.VAT)
-            };
+            CntrlCN = (ContractController       )DBControllersFactory.GetController<ContractModel       >();
+            CntrlCG = (BillingCategoryController)DBControllersFactory.GetController<BillingCategoryModel>();
+            CntrlCU = (CurrencyController       )DBControllersFactory.GetController<CurrencyModel       >();
+            CntrlVT = (VATController            )DBControllersFactory.GetController<VATModel            >();
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -50,23 +50,23 @@ namespace MVCHIS.Billing {
 
         private void TxtContractId_TextChanged(object sender, EventArgs e) {
             int selected = Convert.ToInt32(txtContractId.Text);
-            txtContractCode.Text = Controllers["c"].Find(new ContractModel() { Id = selected }, "Id")?.ContractCode;
+            txtContractCode.Text = CntrlCN.Find(new ContractModel() { Id = selected }, "Id")?.ContractCode;
         }
 
         private void TxtBillingCategoryId_TextChanged(object sender, EventArgs e) {
             int selected = Convert.ToInt32(txtBillingCategoryId.Text);
-            txtBillingCategoryCode.Text = Controllers["b"].Find(new BillingCategoryModel() { Id = selected }, "Id")?.BillingCategoryCode;
+            txtBillingCategoryCode.Text = CntrlCG.Find(new BillingCategoryModel() { Id = selected }, "Id")?.BillingCategoryCode;
         }
 
         private void TxtCurrencyId_TextChanged(object sender, EventArgs e) {
             int selected = Convert.ToInt32(txtCurrencyId.Text);
-            var currency = Controllers["x"].Find(new CurrencyModel() { Id = selected }, "Id");
+            var currency = CntrlCU.Find(new CurrencyModel() { Id = selected }, "Id");
             txtCurrencyCode.Text = currency?.CurrencyCode;
             txtCurrencyEnglish.Text = currency?.CurrencyEnglish;
         }
 
         private void ServiceForm_Load(object sender, EventArgs e) {
-            cmbVATId.DataSource = Controllers["v"].Read<VATModel>().OrderBy(x => -x.VATAmount).ToList();
+            cmbVATId.DataSource = CntrlVT.Read().OrderBy(x => -x.VATAmount).ToList();
             cmbVATId.DisplayMember = "VATCode";
             cmbVATId.ValueMember = "Id";
             cmbVATId.SelectedIndex = 0;

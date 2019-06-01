@@ -1,19 +1,24 @@
 ﻿using MVCHIS.Common;
+using System;
 using System.Collections.Generic;
 
 namespace MVCHIS.Customers {
     //[ForModel(MODELS.Client)]
-    public class ClientEntity : AbstractDBEntity {
+    public class ClientEntity : AbstractDBEntity<ClientModel> {
         public override MetaData MetaData => new MetaData() {
-              ModelType       = typeof(ClientModel)
-            , PrimaryKeyField = "Id" 
-            , RequiredFields  = new List<string> { "Id", "ShortName", "LongName", "ClientTypeId" }
-            , UniqueKeyFields = new List<string> { "ShortName" }
-            , ForeignKeys     = new Dictionary<string, System.Tuple<string, string>> {
-                ["ClientTypeId"] = new System.Tuple<string, string>(DBEntitiesFactory.GetEntity(MODELS.ClientType).MetaData.Source,"Id"),
-                ["CountryId"]    = new System.Tuple<string, string>(DBEntitiesFactory.GetEntity(MODELS.Country).MetaData.Source, "Id"),
+            //  ModelType       = typeof(ClientModel)
+              PrimaryKeyField = "Id" 
+            , Fields           = new HashSet<string> {"ReadOnly","Id","CreatedBy","CreatedOn","UpdatedBy","UpdatedOn",
+                                                  "ClientTypeId","ShortName","LongName","NameArabic",
+                                                  "DateOfBirth","IsActive","BillingAddress","PhoneNumber",
+                                                  "FaxNumber","Website","CountryId" }
+            , RequiredFields  = new HashSet<string> { "Id", "ShortName", "LongName", "ClientTypeId" }
+            , UniqueKeyFields = new HashSet<string> { "ShortName" }
+            , ForeignKeys     = new Dictionary<string, Tuple<string, string>> {
+                ["ClientTypeId"] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<ClientTypeModel>().MetaData.Source,"Id"),
+                ["CountryId"]    = new Tuple<string, string>(DBEntitiesFactory.GetEntity<CountryModel>().MetaData.Source, "Id"),
             }
-            , GetSizes = new Dictionary<string, int> {
+            , Sizes = new Dictionary<string, int> {
                   ["CreatedBy"     ] = 50
                 , ["UpdatedBy"     ] = 50
                 , ["ShortName"     ] = 50

@@ -6,11 +6,8 @@ namespace MVCHIS.Customers {
     //[ForModel(Common.MODELS.IdentificationType)]
     public partial class IdentificationTypeForm: IdentificationTypeView {
 
-        
-        
         public IdentificationTypeForm() {
             InitializeComponent(); if (DesignMode || (Site != null && Site.DesignMode)) return;;
-            base.Controller = (IdentificationTypeController)DBControllersFactory.GetController(Common.MODELS.IdentificationType);
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
