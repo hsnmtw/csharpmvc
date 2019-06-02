@@ -21,6 +21,10 @@ namespace MVCHIS.Tools {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
+
+            AfterSave += delegate (bool status) {
+                this.Controller[Model.WordInEnglish] = Model.WordInArabic;
+            };
         }
         
 

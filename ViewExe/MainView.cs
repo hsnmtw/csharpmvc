@@ -126,6 +126,7 @@ namespace MVCHIS {
             tsslCurrentUser.Text = model.UserName;
             setProgress("Login successful", 0);
             this.treeViewMenu.ExpandAll();
+            FormsHelper.ApplyLanguageLocalization(this);
         }
 
         private void SQLViewerToolStripMenuItemClick(object sender, EventArgs e) {
@@ -209,9 +210,6 @@ namespace MVCHIS {
         private void ArabicToolStripMenuItem_Click(object sender, EventArgs e) {
             DictionaryController.LanguageState = DictionaryController.LanguageState == LanguageState.Arabic ? LanguageState.English : LanguageState.Arabic;
             FormsHelper.ApplyLanguageLocalization(this);
-            foreach(var form in this.MdiChildren) {
-                FormsHelper.ApplyLanguageLocalization(form);
-            }
         }
 
         private void InitializeToolStripMenuItem_Click(object sender, EventArgs ea) {
@@ -247,7 +245,27 @@ namespace MVCHIS {
             panel1.Controls.Clear();
             lblHeading.Text = node.Text;
             panel1.Controls.Add((Control)view);
+            FormsHelper.ApplyLanguageLocalization((Control)view);
+            view.AfterSave += AfterViewSave;
+            view.AfterDelete += AfterViewDelete;
+            view.AfterNew += AfterViewNew;
+            view.ModelChanged += ViewModelChanged;
+        }
+
+        private void ViewModelChanged() {
+            lblActionStatus.Visible = false;
+        }
+
+        private void AfterViewNew(bool status) {
             
+        }
+
+        private void AfterViewDelete(bool status) {
+            lblActionStatus.Visible = status;
+        }
+
+        private void AfterViewSave(bool status) {
+            lblActionStatus.Visible = status;
         }
 
         private void TreeView1_KeyDown(object sender, KeyEventArgs e) {

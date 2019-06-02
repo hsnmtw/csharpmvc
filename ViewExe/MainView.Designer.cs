@@ -71,10 +71,13 @@
             this.txtSearchMenu = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblHeading = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lblActionStatus = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -371,12 +374,29 @@
             this.lblHeading.ForeColor = System.Drawing.Color.White;
             this.lblHeading.Name = "lblHeading";
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.SystemColors.Control;
+            this.panel4.Controls.Add(this.lblActionStatus);
+            resources.ApplyResources(this.panel4, "panel4");
+            this.panel4.Name = "panel4";
+            // 
+            // lblActionStatus
+            // 
+            this.lblActionStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.lblActionStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.lblActionStatus, "lblActionStatus");
+            this.lblActionStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblActionStatus.ForeColor = System.Drawing.Color.Black;
+            this.lblActionStatus.Name = "lblActionStatus";
+            // 
             // MainView
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.statusStrip1);
@@ -392,6 +412,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -441,6 +462,8 @@
         private System.Windows.Forms.TextBox txtSearchMenu;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lblHeading;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label lblActionStatus;
     }
 }
 

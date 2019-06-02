@@ -20,6 +20,8 @@ namespace MVCHIS.Utils {
         //    base.OnHandleCreated(e);
         //}
 
+        public string Filter { get; set; }
+
         public ListViewControl() {
             Font = new System.Drawing.Font("Consolas", 9F);
             FullRowSelect = true;
@@ -59,9 +61,35 @@ namespace MVCHIS.Utils {
             LoadFKCompleted?.Invoke();
         }
 
-        public void LoadData<M>(string filter, List<M> data, params string[] shownColumns) {
+        internal void AddRowFromModel<M>(M model) {
+            if (model == null) return;
+            AddRowFromArray((from ColumnHeader c in Columns select typeof(M).GetProperty(c.Name).GetValue(model))?.ToArray());
+        }
+
+        public void AddRowFromArray(object[] cells) {
+            var val = cells[0];
+            if (FK.Keys.Contains(Columns[0].Name)) {
+                val = FK[Columns[0].Name][(int)val];
+            }
+            var item = new ListViewItem(val.ToString());
+            for (int i = 1; i < Columns.Count; i++) {
+                val = cells[i];
+                if (FK.Keys.Contains(Columns[i].Name)) {
+                    val = FK[Columns[i].Name][(int)val];
+                }
+                item.SubItems.Add(val.ToString());
+
+            }
+            if ((item + ":" + string.Join("|", item.SubItems.OfType<ListViewItem.ListViewSubItem>().Select(x => x.Text))).ToLower().Contains(Filter.ToLower())) {
+                Items.Add(item);
+            }
+        }
+
+
+        public void LoadData<M>(string filter, IEnumerable<M> data, params string[] shownColumns) {
+            Filter = filter;
             BeginUpdate();
-            if (data.Count == 0) {
+            if (data.Count() == 0) {
                 Items.Clear();
                 return;
             }
@@ -70,7 +98,7 @@ namespace MVCHIS.Utils {
             }
 
             if (Columns.Count == 0) {
-                Columns.AddRange((from c in shownColumns select new ColumnHeader(c) { Text = c.FromCamelCaseToWords() }).ToArray());
+                LoadColumns(shownColumns);
             }
 
             if (shownColumns.Where(x => x.Length > 2 && x.EndsWith("Id") && !FK.ContainsKey(x)).Count()>0) {
@@ -79,27 +107,9 @@ namespace MVCHIS.Utils {
 
             Items.Clear();
             foreach (M row in data) {
-                var row0 = typeof(M).GetProperty(shownColumns[0]).GetValue(row);
-                var val = row0.ToString();
-                if (FK.Keys.Contains(shownColumns[0])) {
-                    val = FK[shownColumns[0]][(int)row0];
-                }
-                var item = new ListViewItem(val);
-                for (int i = 1; i < shownColumns.Length; i++) {
-                    var rowi = typeof(M).GetProperty(shownColumns[i]).GetValue(row);
-                    val = rowi.ToString();
-
-                    if (FK.Keys.Contains(shownColumns[i])) {
-                        val = FK[shownColumns[i]][(int)rowi];
-                    }
-                    item.SubItems.Add(val);
-
-                }
-                if ((item + ":" + string.Join("|", item.SubItems.OfType<ListViewItem.ListViewSubItem>().Select(x => x.Text))).ToLower().Contains(filter.ToLower())) {
-                    Items.Add(item);
-                }
-
+                AddRowFromModel(row);
             }
+            
             AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             if (Columns.Count > 0) {
@@ -113,7 +123,29 @@ namespace MVCHIS.Utils {
             EndUpdate();
         }
 
+
+
+        private void LoadColumns(params string[] columns) {
+
+            for(int i = 0; i < columns.Length; i++) {
+                string n = columns[i];
+                string t = n.FromCamelCaseToWords();
+
+                if (n.Length > 2 && n.EndsWith("Id")) t = t.Substring(0, t.Length - 2);
+                if (n.Length > 2 && n.EndsWith("Code")) t = t.Substring(0, t.Length - 4);
+
+                Columns.Add(new ColumnHeader() { Name=n, Text=t.Trim() });
+            }
+
+            //var colsi = from c in columns select (c.Length > 2 && c.EndsWith("Id")) ? c.Substring(0, c.Length - 2) : c;
+            //var colsw = from c in colsi select (c.Length > 2 && c.EndsWith("Code")) ? c.Substring(0, c.Length - 4) : c;
+            //Columns.AddRange((from c in colsw select new ColumnHeader() { Name = c,Text = c.FromCamelCaseToWords() }).ToArray());
+
+            Utils.FormsHelper.ApplyLanguageLocalization(this);
+        }
+
         public void LoadData(string filter,DataTable data,params string[] shownColumns) {
+            Filter = filter;
             BeginUpdate();
             if (data.Rows.Count == 0) {
                 Items.Clear();
@@ -123,37 +155,18 @@ namespace MVCHIS.Utils {
                 shownColumns = (from DataColumn column in data.Columns select column.ColumnName).ToArray();
             }
             if (Columns.Count == 0) {
-                Columns.AddRange((from c in shownColumns select new ColumnHeader(c) { Text = c.FromCamelCaseToWords() }).ToArray());
+                LoadColumns(shownColumns);
             }
 
             if (shownColumns.Where(x => x.Length > 2 && x.EndsWith("Id") && !FK.ContainsKey(x)).Count() > 0) {
                 LoadFKs(shownColumns);
             }
 
-            var view = new DataView(data);
-
-            var table = view.ToTable(false, shownColumns);
             Items.Clear();
-            foreach (DataRow row in table.Rows) {
-                var val = row[0].ToString();
-                if (FK.Keys.Contains(shownColumns[0])) {
-                    val = FK[shownColumns[0]][(int)row[0]];
-                }
-                var item = new ListViewItem(val);
-                for (int i = 1; i < shownColumns.Length; i++) {
-                    val = row[i].ToString();
-
-                    if (FK.Keys.Contains(shownColumns[i])) {
-                        val = FK[shownColumns[i]][(int)row[i]];
-                    }
-                    item.SubItems.Add(val);
-                    
-                }
-                if((item+":"+string.Join("|", item.SubItems.OfType<ListViewItem.ListViewSubItem>().Select(x => x.Text))).ToLower().Contains(filter.ToLower())) {
-                    Items.Add(item);
-                }
-                
+            foreach (DataRow row in data.Rows) {
+                AddRowFromArray((from string col in shownColumns select row[col].ToString()).ToArray());                
             }
+
             AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             if (Columns.Count > 0) {

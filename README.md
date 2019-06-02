@@ -28,6 +28,7 @@ E: Entities
 ```
 ** The goal is to have [V] on right side 
 ** and all others depend on [M]
+** [V] should not communicate directly to [E]
 
 ## Example code
 ```
@@ -64,8 +65,22 @@ E: Entities
   
   //View
   public class ExampleView : BaseView<ExampleModel, ExampleController> {  
-     public ExampleView(){
-     
+     private Label   lblExampleProperty;
+	 private TextBox txtExampleProperty;
+	 private Button  btnSave, btnDelete, btnNew;
+	 
+	 public void InitializeComponent(){
+		lblExampleProperty = new Label()  { Text = "Example:" , Left = 10, Top = 10 };
+		txtExampleProperty = new TextBox(){ Text = ""         , Left = 10, Top = 30 };
+		btnDelete = new Button()          { Text = "Delete"   , Left = 10, Top = 55 };
+		btnSave   = new Button()          { Text = "Save"     , Left = 10, Top = 75 };
+		btnNew    = new Button()          { Text = "New"      , Left = 10, Top = 95 };		
+		Controls.AddRange(new Control[]{ txtExampleProperty,btnDelete, btnNew, btnSave });
+	 }
+	 
+	 public ExampleView(){
+		InitializeComponent();
+		
         Mapper["ExampleProperty"] = txtExampleProperty;  // this will bind textbox to model value
         
         //define actions
@@ -74,4 +89,15 @@ E: Entities
         NewButton    = btnNew;
      }
   }
+  
+  //Main view
+  public class MainView{
+	public static void Main(){
+		var form = new Form(){ Width = 400, Height = 400 };
+		form.Controls.Add(new ExampleView(){ Dock = DockStyle.Fill });
+		Application.EnableVisualStyles();
+		Application.Run(form);
+	}
+  }
+  
 ```

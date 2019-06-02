@@ -23,7 +23,6 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            MVCHIS.Billing.ServiceModel serviceModel1 = new MVCHIS.Billing.ServiceModel();
             this.label2 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
@@ -261,8 +260,9 @@
             this.lookUpButtonContract.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonContract.Location = new System.Drawing.Point(345, 44);
             this.lookUpButtonContract.Name = "lookUpButtonContract";
-            this.lookUpButtonContract.SelectedValueIndex = 1;
+            this.lookUpButtonContract.SelectedValueIndex = 2;
             this.lookUpButtonContract.ShowFieldsInLookUp.Add("ContractCode");
+            this.lookUpButtonContract.ShowFieldsInLookUp.Add("ClientId");
             this.lookUpButtonContract.ShowFieldsInLookUp.Add("Id");
             this.lookUpButtonContract.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonContract.TabIndex = 3;
@@ -467,20 +467,6 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtCreatedBy);
-            serviceModel1.BillingCategoryId = 0;
-            serviceModel1.ContractId = 0;
-            serviceModel1.CreatedBy = null;
-            serviceModel1.CreatedOn = null;
-            serviceModel1.CurrencyId = 0;
-            serviceModel1.EffectiveFromDate = new System.DateTime(((long)(0)));
-            serviceModel1.Expired = false;
-            serviceModel1.Id = 0;
-            serviceModel1.Price = 0D;
-            serviceModel1.ReadOnly = false;
-            serviceModel1.UpdatedBy = null;
-            serviceModel1.UpdatedOn = null;
-            serviceModel1.VATId = 0;
-            this.Model = serviceModel1;
             this.Name = "ServiceForm";
             this.Size = new System.Drawing.Size(391, 394);
             this.Load += new System.EventHandler(this.ServiceForm_Load);
@@ -492,7 +478,6 @@
         #endregion
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.TextBox txtUpdatedOn;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtUpdatedBy;
@@ -521,10 +506,11 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtEffectiveFromDate;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.CheckBox chkExpired;
         private System.Windows.Forms.Button btnDateOfBirth;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cmbVATId;
         private System.Windows.Forms.Label lblVATId;
+        private Utils.ForcedFocusCheckBox chkReadOnly;
+        private Utils.ForcedFocusCheckBox chkExpired;
     }
 }

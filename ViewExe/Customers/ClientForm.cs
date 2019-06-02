@@ -74,7 +74,7 @@ namespace MVCHIS.Customers {
         private void BtnAddIdentification_Click(object sender, EventArgs e) {
             var form = new Form();
             var view = ((IdentificationForm)DBViewsFactory.GetView(Common.MODELS.Identification));
-            view.AfterSave = delegate() {
+            view.AfterSave = delegate(bool status) {
                 CntrlCI.Save(new ClientIdentificationModel() {
                     ClientId = this.Model.Id,
                     IdentificationId = view.Model.Id
@@ -106,20 +106,24 @@ namespace MVCHIS.Customers {
             this.lstContacts.Requery();
         }
 
+        private ContactForm ContactFormView;
         private void BtnAddContact_Click(object sender, EventArgs e) {
             var form = new Form() { Text = "Add Contact" };
-            var view = ((ContactForm)DBViewsFactory.GetView(Common.MODELS.Contact));
-            view.AfterSave = delegate () {
-                CntrlCC.Save(new ClientContactModel() {
-                    ClientId  = Model.Id,
-                    ContactId = view.Model.Id
-                });
-                RequeryContact();
-            };
-            view.Dock = DockStyle.Fill;
-            form.Controls.Add(view);
+            ContactFormView = ((ContactForm)DBViewsFactory.GetView(Common.MODELS.Contact));
+            ContactFormView.AfterSave = AfterModelSave;
+            ContactFormView.Dock = DockStyle.Fill;
+            form.Controls.Add(ContactFormView);
             form.Size = new System.Drawing.Size(430, 430);
             form.Show();
+        }
+
+        private void AfterModelSave(bool status) {
+            if (!status) return;
+            CntrlCC.Save(new ClientContactModel() {
+                ClientId = Model.Id,
+                ContactId = ContactFormView.Model.Id
+            });
+            RequeryContact();
         }
 
         private void TxtNationalityCode_TextChanged(object sender, EventArgs e) {

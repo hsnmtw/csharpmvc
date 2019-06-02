@@ -35,8 +35,7 @@ namespace MVCHIS.Common {
         private void Button1Click(object sender, EventArgs e) {
             if (!isInitialized) init();
             lookup = new LookUpForm2(controller.GetData(), ShowFieldsInLookUp.ToArray());
-            lookup.SelectedValueIndex = SelectedValueIndex;
-            
+            lookup.SelectedValueIndex = SelectedValueIndex;           
             lookup.FormClosed += (s, ee) => {
                 if (lookup.DialogResult != DialogResult.OK) return;
                 ValueFromLookup = lookup.SelectedValue;
@@ -47,6 +46,7 @@ namespace MVCHIS.Common {
                 }
             };
             lookup.Show();
+            
         }
 
         [Category("(Lookup)")]

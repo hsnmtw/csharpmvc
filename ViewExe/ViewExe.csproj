@@ -269,6 +269,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Utils\FormsHelper.cs" />
+    <Compile Include="Utils\InputBoxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\InputBoxForm.Designer.cs">
+      <DependentUpon>InputBoxForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\ListViewControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -419,6 +425,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\FixedWidthListBox.resx">
       <DependentUpon>FixedWidthListBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\InputBoxForm.resx">
+      <DependentUpon>InputBoxForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\LookUpButton.resx">
       <DependentUpon>LookUpButton.cs</DependentUpon>

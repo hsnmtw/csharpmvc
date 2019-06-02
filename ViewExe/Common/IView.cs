@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace MVCHIS.Common {
     public interface IView {
-        Action AfterSave     { get; set; }
-        Action AfterNew      { get; set; }
-        Action AfterDelete   { get; set; }
+        Action<bool> AfterSave     { get; set; }
+        Action<bool> AfterNew      { get; set; }
+        Action<bool> AfterDelete   { get; set; }
         Action ModelChanged { get; set; }
         Dictionary<string, Control> Mapper { get; set; }
         Button SaveButton { get; set; }

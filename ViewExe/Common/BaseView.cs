@@ -16,7 +16,7 @@ namespace MVCHIS.Common {
 
     public class BaseView<M,C> : UserControl, IView where C:IDBController<M> where M:BaseModel  {
 
-        public Action AfterSave { get; set; }
+        public Action<bool> AfterSave { get; set; }
         public virtual C Controller { get; set; } 
         public virtual M Model {
             get {
@@ -78,8 +78,8 @@ namespace MVCHIS.Common {
 
         public Action ModelChanged { get; set; }
         public Control DefaultControl { get; set; }
-        public Action AfterNew { get; set; }
-        public Action AfterDelete { get; set; }
+        public Action<bool> AfterNew { get; set; }
+        public Action<bool> AfterDelete { get; set; }
 
         public BaseView() : base() {
            
@@ -108,9 +108,9 @@ namespace MVCHIS.Common {
                     SaveButton.Enabled = SaveButtonEnabled;
                     SaveButton.Click += (bs, be) => {
                         //try {
-                            Controller.Save(Model);
-                            Model = Controller.Find(Model, Controller.GetMetaData().UniqueKeyFields.ToArray());
-                            AfterSave?.Invoke();
+                            int saveresult = Controller.Save(Model);
+                            if(saveresult>0) Model = Controller.Find(Model, Controller.GetMetaData().UniqueKeyFields.ToArray());
+                            AfterSave?.Invoke(saveresult>0);
                         try{}catch(Exception ex) {
                             FormsHelper.Error(ex.Message);
                         }
@@ -118,15 +118,27 @@ namespace MVCHIS.Common {
                 }
                 if (DeleteButton != null) {
                     DeleteButton.Enabled = DeleteButtonEnabled;
-                    DeleteButton.Click += (bs, be) => { Controller.Delete(Model); NewButton?.PerformClick(); AfterDelete?.Invoke(); };
+                    DeleteButton.Click += (bs, be) => {
+                        int deleteresult = Controller.Delete(Model);
+                        if(deleteresult>0) NewButton?.PerformClick();
+                        AfterDelete?.Invoke(deleteresult>0);
+                    };
                 }
                 if (NewButton != null) {
                     NewButton.Enabled = NewButtonEnabled;
-                    NewButton.Click += (bs, be) => { Model = Controller.NewModel(); DefaultControl?.Select(); AfterNew?.Invoke(); };
+                    NewButton.Click += (bs, be) => {
+                        Model = Controller.NewModel();
+                        DefaultControl?.Select();
+                        AfterNew?.Invoke(true);
+                    };
                 }
-                var controls = (from cntrl in Mapper.Values orderby cntrl.TabIndex where cntrl.TabStop select cntrl);
-                foreach(var cntrl in controls) {
-                    cntrl.KeyDown += (se, ee) => {
+                //var controls = (from cntrl in Mapper.Values orderby cntrl.TabIndex where cntrl.TabStop select cntrl);
+                var sizes = Controller.GetMetaData().Sizes;
+                foreach (var cntrl in Mapper.Keys) {
+                    if(sizes.ContainsKey(cntrl) && Mapper[cntrl] is TextBox) {
+                        ((TextBox)Mapper[cntrl]).MaxLength = sizes[cntrl];
+                    }
+                    Mapper[cntrl].KeyDown += (se, ee) => {
                         if(ee.KeyCode == Keys.Enter) {
                             ee.Handled = true;
                             ee.SuppressKeyPress = true;
@@ -134,7 +146,7 @@ namespace MVCHIS.Common {
                         }
                     };
                 }
-                DefaultControl = controls.FirstOrDefault();
+                DefaultControl = Mapper.Values.Where(x=>x.TabStop).OrderBy(x=>x.TabIndex).FirstOrDefault();
                 DefaultControl?.Focus();
             };
 

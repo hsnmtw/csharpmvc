@@ -22,6 +22,13 @@ namespace MVCHIS.Billing {
 
         public ContractForm() {
             InitializeComponent();
+
+            CntrlCL = (ClientController)DBControllersFactory.GetController<ClientModel>();
+            CntrlCG = (BillingCategoryController)DBControllersFactory.GetController<BillingCategoryModel>();
+            CntrlSR = (ServiceController)DBControllersFactory.GetController<ServiceModel>();
+            CntrlCU = (CurrencyController)DBControllersFactory.GetController<CurrencyModel>();
+            CntrlVT = (VATController)DBControllersFactory.GetController<VATModel>();
+
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -40,31 +47,20 @@ namespace MVCHIS.Billing {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
-        }
-
-        private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-
-            Model = Controller.Find(new ContractModel() { ContractCode = selected }, "ContractCode");
-        }
-
-        private void ContractFormLoad(object sender, EventArgs e) { if (DesignMode) return;
 
             Services = new List<ServiceModel>();
 
-
-            //listViewControlServices.LoadFKs("BillingCategoryId", "CurrencyId", "VATId");
-
             ModelChanged = delegate () {
                 Console.WriteLine("-==================== model changed");
+                RequeryServicesGrid();
             };
+        }
 
-            CntrlCL = (ClientController)DBControllersFactory.GetController<ClientModel>();
-            CntrlCG = (BillingCategoryController)DBControllersFactory.GetController<BillingCategoryModel>();
-            CntrlSR = (ServiceController)DBControllersFactory.GetController<ServiceModel>();
-            CntrlCU = (CurrencyController)DBControllersFactory.GetController<CurrencyModel>();
-            CntrlVT = (VATController)DBControllersFactory.GetController<VATModel>();
+        private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
+            Model = Controller.Find(new ContractModel() { ContractCode = txtContractCode.Text }, "ContractCode");
+        }
 
+        private void ContractFormLoad(object sender, EventArgs e) { if (DesignMode) return;
 
         }
 
@@ -74,10 +70,10 @@ namespace MVCHIS.Billing {
         }
 
         private void TxtId_TextChanged(object sender, EventArgs e) {
-            RequeryGrid();
+            this.listViewControlServices.Items.Clear();
         }
 
-        private void RequeryGrid() { 
+        private void RequeryServicesGrid() { 
             if(int.TryParse(txtId.Text,out int id)) {
                 btnAddService.Enabled = id > 0;
                 btnEditService.Enabled = id > 0;
@@ -90,10 +86,9 @@ namespace MVCHIS.Billing {
             }
 
             this.listViewControlServices.LoadData("", Services, "BillingCategoryId", "EffectiveFromDate", "Expired", "CurrencyId", "VATId", "Price");
-
         }
 
-        private IView OpenService(ServiceModel service) {
+        private ServiceView OpenService(ServiceModel service) {
             var form = new Form();
             var view = (ServiceForm)DBViewsFactory.GetView(MODELS.Service);
             service.ContractId = Model.Id;
@@ -106,7 +101,7 @@ namespace MVCHIS.Billing {
             view.NewButtonEnabled = false;
             view.DeleteButtonEnabled = false;
             view.DisableChangeContract();
-            view.AfterNew = delegate () {
+            view.AfterNew = delegate (bool status) {
                 view.SetModel(new ServiceModel() { ContractId = Model.Id });
             };
             form.Show();
@@ -115,23 +110,32 @@ namespace MVCHIS.Billing {
 
         private void BtnAddService_Click(object sender, EventArgs e) {
             var view = OpenService(new ServiceModel());
-            view.AfterSave += delegate() {
-                RequeryGrid();
+            view.AfterSave += delegate(bool status) {
+                if (status) {
+                    Services.Add(view.Model);
+                    listViewControlServices.AddRowFromModel(view.Model);
+                    listViewControlServices.Items[Services.Count - 1].Selected = true;
+                }
             };
         }
 
         private void BtnEditService_Click(object sender, EventArgs e) {
             if (listViewControlServices.SelectedIndices.Count < 1) return;
             var view = OpenService(Services[listViewControlServices.SelectedIndices[0]]);
-            view.AfterSave += delegate () {
-                RequeryGrid();
+            view.AfterSave += delegate (bool status) {
+                //RequeryGrid();
+                if (status) {
+                    listViewControlServices.Items.RemoveAt(listViewControlServices.SelectedIndices[0]);
+                    listViewControlServices.AddRowFromModel(view.Model);
+                    listViewControlServices.Items[Services.Count - 1].Selected = true;
+                }
             };
         }
 
         private void BtnDeleteService_Click(object sender, EventArgs e) {
             if (listViewControlServices.SelectedIndices.Count < 1) return;
             CntrlSR.Delete(Services[listViewControlServices.SelectedIndices[0]]);
-            RequeryGrid();
+            listViewControlServices.Items.RemoveAt(listViewControlServices.SelectedIndices[0]);
         }
 
         private void TxtStartDate_Leave(object sender, EventArgs e) {

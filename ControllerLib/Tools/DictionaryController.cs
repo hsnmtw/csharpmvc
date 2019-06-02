@@ -20,6 +20,9 @@ namespace MVCHIS.Tools {
                 else
                     return ar.ContainsKey(word) ? ar[word] : word;
             }
+            set {
+                en[word] = value;
+            }
         }
 
         public DictionaryController() : base() {
