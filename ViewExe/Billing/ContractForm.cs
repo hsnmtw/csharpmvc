@@ -51,9 +51,9 @@ namespace MVCHIS.Billing {
         private void ContractFormLoad(object sender, EventArgs e) { if (DesignMode) return;
 
             Services = new List<ServiceModel>();
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.EnableHeadersVisualStyles = false;
 
+
+            //listViewControlServices.LoadFKs("BillingCategoryId", "CurrencyId", "VATId");
 
             ModelChanged = delegate () {
                 Console.WriteLine("-==================== model changed");
@@ -65,17 +65,7 @@ namespace MVCHIS.Billing {
             CntrlCU = (CurrencyController)DBControllersFactory.GetController<CurrencyModel>();
             CntrlVT = (VATController)DBControllersFactory.GetController<VATModel>();
 
-            BillingCategoryColumn.DataSource = CntrlCG.Read().ToList();
-            BillingCategoryColumn.DisplayMember = "BillingCategoryCode";
-            BillingCategoryColumn.ValueMember = "Id";
 
-            CurrencyColumn.DataSource = CntrlCU.Read().ToList();
-            CurrencyColumn.DisplayMember = "CurrencyCode";
-            CurrencyColumn.ValueMember = "Id";
-
-            VATColumn.DataSource = CntrlVT.Read().ToList();
-            VATColumn.DisplayMember = "VATCode";
-            VATColumn.ValueMember = "Id";
         }
 
         private void TxtClient_TextChanged(object sender, EventArgs e) {
@@ -98,9 +88,9 @@ namespace MVCHIS.Billing {
             } else {
                 Services = new List<ServiceModel>();
             }
-            bindingSource1.DataSource = Services;
-            //dataGridView1.DataSource = bindingSource1;
-            //bindingSource1.EndEdit();
+
+            this.listViewControlServices.LoadData("", Services, "BillingCategoryId", "EffectiveFromDate", "Expired", "CurrencyId", "VATId", "Price");
+
         }
 
         private IView OpenService(ServiceModel service) {
@@ -131,16 +121,16 @@ namespace MVCHIS.Billing {
         }
 
         private void BtnEditService_Click(object sender, EventArgs e) {
-            if (this.dataGridView1.SelectedRows.Count < 1) return;
-            var view = OpenService(Services[bindingSource1.Position]);
+            if (listViewControlServices.SelectedIndices.Count < 1) return;
+            var view = OpenService(Services[listViewControlServices.SelectedIndices[0]]);
             view.AfterSave += delegate () {
                 RequeryGrid();
             };
         }
 
         private void BtnDeleteService_Click(object sender, EventArgs e) {
-            if (this.dataGridView1.SelectedRows.Count < 1) return;
-            CntrlSR.Delete(Services[bindingSource1.Position]);
+            if (listViewControlServices.SelectedIndices.Count < 1) return;
+            CntrlSR.Delete(Services[listViewControlServices.SelectedIndices[0]]);
             RequeryGrid();
         }
 
@@ -150,6 +140,9 @@ namespace MVCHIS.Billing {
 
         private void TxtEndDate_Leave(object sender, EventArgs e) {
             ValidateDate(txtEndDate);
+        }
+
+        private void BindingSource1_DataSourceChanged(object sender, EventArgs e) {
         }
     }
    

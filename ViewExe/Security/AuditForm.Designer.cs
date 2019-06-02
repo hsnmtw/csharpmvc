@@ -31,7 +31,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.chkReadOnly = new System.Windows.Forms.CheckBox();
+            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 

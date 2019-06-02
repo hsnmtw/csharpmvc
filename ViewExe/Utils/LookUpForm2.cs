@@ -1,7 +1,9 @@
-﻿using System;
+﻿using MVCHIS.Utils;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace MVCHIS.Common {
@@ -28,62 +30,33 @@ namespace MVCHIS.Common {
         //private IDBController Controller;
         private string[] shownColumns;
 
-        
-        public LookUpForm2(DataTable data,params string[]shownColumns) {
-            InitializeComponent();
+        public LookUpForm2(DataTable data,params string[]shownColumns) : this() {
             this.listView1.Columns.Clear();
             this.listView1.Items.Clear();
             this.shownColumns = shownColumns;
             //Controller = controller;
             source = data;
-            listView1.Columns.AddRange((from c in shownColumns select new ColumnHeader(c) { Text = c }).ToArray());
+            //listView1.Columns.AddRange((from c in shownColumns select new ColumnHeader(c) { Text = c }).ToArray());
+            listView1.LoadFKs(shownColumns);
         }
+
+
 
         public string SelectedValue => ValueHasBeenSelected == false ? null : (SelectedValueIndex==0 ?  this.listView1.SelectedItems[0].Text : this.listView1.SelectedItems[0].SubItems[SelectedValueIndex].Text);
 
         private void LookUpLoad(object sender, EventArgs e) { if (DesignMode) return;
             //this.lblSearch.Text = "";
-            Requery();
+            if (0 == Interlocked.Exchange(ref listView1.LoadingFKs, 1)) {
+                Requery();
+            } else {
+                listView1.LoadFKCompleted += Requery;
+            }
             listView1.Select();
             listView1.Focus();
         }
 
         public void Requery() {
-            
-            if (source.Rows.Count == 0) {
-                //this.lblRowHeader.Text = "Empty resultset !!!";
-                listView1.Items.Clear();
-                return;
-            }
-            if (shownColumns == null || shownColumns.Length == 0) {
-                shownColumns = (from DataColumn column in source.Columns select column.ColumnName).ToArray();
-            }
-            
-            var view = new DataView(source);
-            try {
-                view.RowFilter = string.Format("{0} Like '{1}%'", shownColumns[0], this.lblSearch.Text);
-                view.Sort = $"{shownColumns[0]} ASC";
-            } catch { }
-            
-            var table = view.ToTable(false, shownColumns);
-            listView1.Items.Clear();
-            foreach (DataRow row in table.Rows) {
-                var item = new ListViewItem(row[0].ToString());
-                for(int i = 1; i < shownColumns.Length; i++) {
-                    item.SubItems.Add(row[i].ToString());
-                }
-                listView1.Items.Add(item);
-            }
-            listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-            listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-            if (listView1.Columns.Count > 0) {
-                listView1.Columns[listView1.Columns.Count-1].Width -= 5;
-            }
-            if (listView1.Items.Count > 0) {
-                listView1.Items[0].Selected = true;
-                listView1.Select();
-                listView1.Focus();
-            }
+            listView1.LoadData(lblSearch.Text, source, shownColumns);
         }
 
         private void LookUpKeyDown(object sender, KeyEventArgs e) {

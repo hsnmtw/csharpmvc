@@ -37,7 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtProjectName = new System.Windows.Forms.TextBox();
             this.lookUpButtonClient = new MVCHIS.Common.LookUpButton();
-            this.chkReadOnly = new System.Windows.Forms.CheckBox();
+            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.lblMetaDataCountryEnglish = new System.Windows.Forms.Label();

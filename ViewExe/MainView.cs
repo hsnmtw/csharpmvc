@@ -8,16 +8,18 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace MVCHIS {
     public partial class MainView : Form, IDisposable
     {
 
-        public DictionaryController dictionaryController;
-        public EntitlementGroupController egController;
-        public EntitlementController eController;
-        public EntityController tController;
+        public   DictionaryController         CntrlDC;
+        private  EntitlementGroupController   CntrlEG;
+        private  EntitlementController        CntrlEN;
+        private  EntityController             CntrlET;
+        private  ProfileEntitlementController CntrlPE;
 
         private readonly Dictionary<string, ToolStripMenuItem> menus = new Dictionary<string, ToolStripMenuItem>();
 
@@ -38,10 +40,11 @@ namespace MVCHIS {
         private MainView()
         {
             InitializeComponent(); //(); if(DesignMode || (Site != null && Site.DesignMode)) return;
-            this.dictionaryController = (DictionaryController)DBControllersFactory.GetController(Common.MODELS.Dictionary);
-            this.egController = (EntitlementGroupController)DBControllersFactory.GetController(Common.MODELS.EntitlementGroup);
-            this.eController = (EntitlementController)DBControllersFactory.GetController(Common.MODELS.Entitlement);
-            this.tController = (EntityController)DBControllersFactory.GetController(Common.MODELS.Entity);
+            this.CntrlDC = (DictionaryController)DBControllersFactory.GetController(Common.MODELS.Dictionary);
+            this.CntrlEG = (EntitlementGroupController)DBControllersFactory.GetController(Common.MODELS.EntitlementGroup);
+            this.CntrlEN = (EntitlementController)DBControllersFactory.GetController(Common.MODELS.Entitlement);
+            this.CntrlET = (EntityController)DBControllersFactory.GetController(Common.MODELS.Entity);
+            this.CntrlPE = ((ProfileEntitlementController)DBControllersFactory.GetController(MODELS.ProfileEntitlement));
         }
 
 
@@ -50,7 +53,7 @@ namespace MVCHIS {
             //tsDateTime.Alignment = ToolStripItemAlignment.Right;
             try {
                 //this.StartPosition = FormStartPosition.CenterScreen;
-                SetBounds(100, 100, 1000, 600);
+                SetBounds(100, 50, 1200, 680);
                 
                 LoadForm();
             
@@ -63,60 +66,10 @@ namespace MVCHIS {
         public void LoadForm() {
            ;
             initializeToolStripMenuItem.Visible = false;
-            initializeToolStripMenuItem.Visible = (null == eController.Find(new EntitlementModel() { EntitlementName = "Profile" }, "EntitlementName"));
+            initializeToolStripMenuItem.Visible = (null == CntrlEN.Find(new EntitlementModel() { EntitlementName = "Profile" }, "EntitlementName"));
 
-            var entitlements = eController.Read().OrderBy(x => x.EntitlementName);
-            var egroups = egController.Read().Where(r => r.Dynamic).OrderBy(x => x.EntitlementGroupName);
-            var entities = tController.Read().ToDictionary(x => x.Id, x => x);
 
-            foreach (var row in egroups) {
-                var egn = row.EntitlementGroupName;
-                var eg = new ToolStripMenuItem(egn);
-                var exist = menuStrip1.Items.OfType<ToolStripMenuItem>().Where(x => x.Text.Equals(egn));
-                if (exist.Count() == 0) {
-                    this.menuStrip1.Items.Add(eg);
-                } else {
-                    eg = exist.First();
-                }
-                
-                foreach (var crow in entitlements.Where(x => x.EntitlementGroupId == row.Id)) {
-                    var cen = crow.EntitlementName;
-                    var ce = new ToolStripMenuItem(cen);
-                    exist = eg.DropDownItems.OfType<ToolStripMenuItem>().Where(x => x.Text.Equals(cen));
-                    if (exist.Count() == 0) {
-                        eg.DropDownItems.Add(ce);
-                    } else {
-                        ce = exist.First();
-                    }
-                    
-                    ce.Tag = entities[crow.EntityId];
-                    ce.Click += (s, ea) => {
-                        if (s == null || !typeof(ToolStripMenuItem).Equals(s.GetType()) || ((ToolStripMenuItem)s).Tag == null || ((ToolStripMenuItem)s).Tag.ToString().Equals("")) return;
-                        if (Enum.TryParse<MODELS>(((EntityModel)((ToolStripMenuItem)s).Tag).EntityName, out MODELS num)) {
-                            try {
-                                Control view = (Control)DBViewsFactory.GetView(num);
-                                ShowView(view);
-                                FormsHelper.ApplyLanguageLocalization(view);
-                            } catch (Exception ex){
-                                Console.WriteLine($"~ ERROR : {ex.Message}");
-                            }
-                        } else {
-                            FormsHelper.Error("Not implemented");
-                        }
-                    };
-                }
-            }
 
-            foreach (ToolStripMenuItem mi in this.menuStrip1.Items) {
-                if (new string[] { "File","Edit","Developer" }.Contains(mi.Text)) continue;
-                foreach (var mii in mi.DropDownItems) {
-                    if (mii.GetType().Equals(typeof(ToolStripMenuItem))) {
-                        var tsmi = ((ToolStripMenuItem)mii);
-                        tsmi.Enabled = false;
-                        menus[tsmi.Text] = tsmi;
-                    }
-                }
-            }
 
             tsProgressBar.Value = 0;
 
@@ -140,27 +93,39 @@ namespace MVCHIS {
             Application.Exit();
         }
 
-
+        Dictionary<string, List<TreeNode>> menu = new Dictionary<string, List<TreeNode>>();
         public void WhenAuthenticated(UserModel model) {
             Session.Instance.CurrentUser = model;
-            var CntrlPE = (ProfileEntitlementController)DBControllersFactory.GetController(typeof(ProfileEntitlementController));
-            var CntrlEN  = (EntitlementController)DBControllersFactory.GetController(typeof(EntitlementController));
 
             var pes = CntrlPE.Read(new ProfileEntitlementModel() {
                 ProfileId = Session.Instance.CurrentUser.ProfileId,
                 AllowRead = true
             }, "ProfileId", "AllowRead");
 
-            Dictionary<int, EntitlementModel> es = CntrlEN.Read().ToDictionary(x => x.Id, x => x);
-            foreach (ProfileEntitlementModel row in pes) {
-                var eid = row.EntitlementId;
-                if (menus.ContainsKey(es[eid].EntitlementName)) { 
-                    menus[es[eid].EntitlementName].Enabled = true;
+            
+            var entitlements = CntrlEN.Read().Where(x => pes.Any(y => y.EntitlementId==x.Id) ).OrderBy(x => x.EntitlementName);
+            var egroups = CntrlEG.Read().Where(r => r.Dynamic).Where(x => entitlements.Any(y => y.EntitlementGroupId == x.Id)).OrderBy(x => x.EntitlementGroupName);
+            var entities = CntrlET.Read().ToDictionary(x => x.Id, x => x);
+
+            foreach (var row in egroups) {
+                var egn = row.EntitlementGroupName;
+
+                TreeNode node = this.treeViewMenu.Nodes.Add(egn);
+                node.ForeColor = Color.Red;
+                menu[egn] = new List<TreeNode>();
+                foreach (var crow in entitlements.Where(x => x.EntitlementGroupId == row.Id)) {
+                    crow.EntitlementName = crow.EntitlementName.FromCamelCaseToWords();
+                    
+                    TreeNode ce = node.Nodes.Add(crow.EntitlementName);
+                    ce.Tag = entities[crow.EntityId];
+                    menu[egn].Add(ce);
                 }
             }
+
             Session.Instance.UserEntitlements = pes;
             tsslCurrentUser.Text = model.UserName;
             setProgress("Login successful", 0);
+            this.treeViewMenu.ExpandAll();
         }
 
         private void SQLViewerToolStripMenuItemClick(object sender, EventArgs e) {
@@ -256,10 +221,10 @@ namespace MVCHIS {
             foreach (var e in pec.Read()) { pec.Delete(e); }
             foreach (var e in ec.Read()) { ec.Delete(e); }
 
-            ((EntityController)DBControllersFactory.GetController(MODELS.Entity)).InitializeDBValues();
-            ((EntitlementGroupController)DBControllersFactory.GetController(MODELS.EntitlementGroup)).InitializeDBValues();
-            ((EntitlementController)DBControllersFactory.GetController(MODELS.Entitlement)).InitializeDBValues();
-            ((ProfileEntitlementController)DBControllersFactory.GetController(MODELS.ProfileEntitlement)).InitializeDBValues();
+            CntrlET.InitializeDBValues();
+            CntrlEG.InitializeDBValues();
+            CntrlEN.InitializeDBValues();
+            CntrlPE.InitializeDBValues();
 
             FormsHelper.Success("Initialization compeleted !");
             setProgress("Initialization compeleted !", 0);
@@ -268,6 +233,61 @@ namespace MVCHIS {
 
         private void Timer1_Tick(object sender, EventArgs e) {
             tsDateTime.Text = DateTime.Now.ToString(ConfigLoader.CultureInfoDateTimeFormatLongDatePattern);
+        }
+
+        private void TreeView1_DoubleClick(object s, EventArgs e) {
+
+        }
+
+        private void TreeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e) {
+            TreeNode node = e.Node;
+            if (node.Tag == null) return;
+            EntityModel entity = (EntityModel)node.Tag;
+            IView view = (IView)DBViewsFactory.GetView((MODELS)Enum.Parse(typeof(MODELS), entity.EntityName));
+            panel1.Controls.Clear();
+            lblHeading.Text = node.Text;
+            panel1.Controls.Add((Control)view);
+            
+        }
+
+        private void TreeView1_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                TreeView1_NodeMouseDoubleClick(sender, new TreeNodeMouseClickEventArgs(treeViewMenu.SelectedNode, MouseButtons.Left, 2, 0, 0));
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void TxtSearchMenu_TextChanged(object sender, EventArgs e) {
+            treeViewMenu.BeginUpdate();
+            treeViewMenu.Nodes.Clear();
+            foreach (string row in menu.Keys) {
+                TreeNode node = this.treeViewMenu.Nodes.Add(row);
+                node.ForeColor = Color.Red;
+                foreach (TreeNode crow in menu[row].Where(x => x.Text.ToLower().Contains(txtSearchMenu.Text.ToLower()))) {
+                    node.Nodes.Add(crow);
+                    if (treeViewMenu.SelectedNode == null) treeViewMenu.SelectedNode = crow;
+                }
+            }
+            treeViewMenu.ExpandAll();
+            treeViewMenu.EndUpdate();
+        }
+
+        private void TreeViewMenu_DrawNode(object sender, DrawTreeNodeEventArgs e) {
+
+        }
+        TreeNode previous = null;
+        private void TreeViewMenu_BeforeSelect(object sender, TreeViewCancelEventArgs e) {
+            
+        }
+
+        private void TreeViewMenu_AfterSelect(object sender, TreeViewEventArgs e) {
+            treeViewMenu.BeginUpdate();
+            if (previous != null) previous.NodeFont = new Font("Verdana", 8, FontStyle.Regular);
+            e.Node.NodeFont = new Font("Verdana", 8, FontStyle.Bold);
+            previous = e.Node;
+            treeViewMenu.EndUpdate();
+            treeViewMenu.Invalidate();
         }
     }
 }

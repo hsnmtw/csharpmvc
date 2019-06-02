@@ -37,7 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtShortName = new System.Windows.Forms.TextBox();
             this.lookUpButtonShortName = new MVCHIS.Common.LookUpButton();
-            this.chkReadOnly = new System.Windows.Forms.CheckBox();
+            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -57,7 +57,7 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.chkIsActive = new System.Windows.Forms.CheckBox();
+            this.chkIsActive = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.label30 = new System.Windows.Forms.Label();
             this.txtClientTypeCode = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();

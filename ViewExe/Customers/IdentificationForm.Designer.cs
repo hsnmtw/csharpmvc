@@ -37,7 +37,7 @@
             this.txtIdNumber = new System.Windows.Forms.TextBox();
             this.lookUpButtonShortName = new MVCHIS.Common.LookUpButton();
             this.btnExpiryDate = new System.Windows.Forms.Button();
-            this.chkReadOnly = new System.Windows.Forms.CheckBox();
+            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -53,7 +53,7 @@
             this.txtIssueDate = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.chkIsActive = new System.Windows.Forms.CheckBox();
+            this.chkIsActive = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.lblIssueDateHG = new System.Windows.Forms.Label();
             this.lblExpiryDateHG = new System.Windows.Forms.Label();
             this.txtCityEnglish = new System.Windows.Forms.TextBox();

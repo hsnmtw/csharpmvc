@@ -40,7 +40,7 @@
             this.txtProfileDesc = new System.Windows.Forms.TextBox();
             this.ProfileNameLookup = new MVCHIS.Common.LookUpButton();
             this.txtProfileName = new System.Windows.Forms.TextBox();
-            this.chkReadOnly = new System.Windows.Forms.CheckBox();
+            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.lstEntitlements = new System.Windows.Forms.ListBox();
             this.btnOpen = new System.Windows.Forms.Button();

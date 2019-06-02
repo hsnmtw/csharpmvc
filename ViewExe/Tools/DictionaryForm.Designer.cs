@@ -37,7 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtWordInEnglish = new System.Windows.Forms.TextBox();
             this.DictionaryNameLookupButton = new MVCHIS.Common.LookUpButton();
-            this.chkReadOnly = new System.Windows.Forms.CheckBox();
+            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtWordInArabic = new System.Windows.Forms.TextBox();
@@ -145,7 +145,6 @@
             this.txtId.Size = new System.Drawing.Size(68, 20);
             this.txtId.TabIndex = 0;
             this.txtId.TabStop = false;
-            
             // 
             // label1
             // 
@@ -171,6 +170,7 @@
             this.DictionaryNameLookupButton.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.DictionaryNameLookupButton.Location = new System.Drawing.Point(275, 50);
             this.DictionaryNameLookupButton.Name = "DictionaryNameLookupButton";
+            this.DictionaryNameLookupButton.SelectedValueIndex = 0;
             this.DictionaryNameLookupButton.Size = new System.Drawing.Size(22, 22);
             this.DictionaryNameLookupButton.TabIndex = 2;
             this.DictionaryNameLookupButton.TabStop = false;
@@ -216,7 +216,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(366, 237);
             this.Controls.Add(this.chkReadOnly);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.DictionaryNameLookupButton);
@@ -236,7 +235,7 @@
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.label1);
             this.Name = "DictionaryForm";
-            this.Text = "Dictionary";
+            this.Size = new System.Drawing.Size(366, 237);
             this.Load += new System.EventHandler(this.DictionaryFormLoad1);
             this.ResumeLayout(false);
             this.PerformLayout();

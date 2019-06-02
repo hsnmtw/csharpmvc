@@ -64,6 +64,14 @@ namespace MVCHIS.Security {
             int.TryParse(txtProfileId.Text, out int pid);
             txtProfileName.Text = profiles[pid];
         }
+
+        bool current = false;
+        private void BtnSelectUnselectAll_Click(object sender, EventArgs e) {
+            current = !current;
+            var chkboxes = new System.Windows.Forms.CheckBox[] { chkAllowCreate,chkAllowDelete,chkAllowRead,chkAllowUpdate };
+            foreach (var c in chkboxes) c.Checked = current;
+            
+        }
     }
     
 }

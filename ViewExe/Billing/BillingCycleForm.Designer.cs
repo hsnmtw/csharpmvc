@@ -37,7 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtBillingCycleYear = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.chkReadOnly = new System.Windows.Forms.CheckBox();
+            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.lookUpButtonBillingCycle = new MVCHIS.Common.LookUpButton();
             this.txtBillingCycleMonth = new System.Windows.Forms.TextBox();

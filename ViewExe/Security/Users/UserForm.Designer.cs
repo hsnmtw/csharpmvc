@@ -49,7 +49,7 @@
             this.txtUserPassword = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.chkIsActive = new System.Windows.Forms.CheckBox();
+            this.chkIsActive = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtUserPasswordConfirm = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -57,7 +57,7 @@
             this.txtProfileName = new System.Windows.Forms.TextBox();
             this.ProfileNameLookup = new MVCHIS.Common.LookUpButton();
             this.UserNameLookup = new MVCHIS.Common.LookUpButton();
-            this.chkReadOnly = new System.Windows.Forms.CheckBox();
+            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtProfileId = new System.Windows.Forms.TextBox();
             this.SuspendLayout();

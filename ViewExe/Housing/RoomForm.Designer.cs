@@ -48,7 +48,7 @@
             this.lookUpButton1 = new MVCHIS.Common.LookUpButton();
             this.lookupCountry = new MVCHIS.Common.LookUpButton();
             this.lookupBuilding = new MVCHIS.Common.LookUpButton();
-            this.chkReadOnly = new System.Windows.Forms.CheckBox();
+            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtNumberOfWindows = new System.Windows.Forms.TextBox();
             this.txtBedCapacity = new System.Windows.Forms.TextBox();

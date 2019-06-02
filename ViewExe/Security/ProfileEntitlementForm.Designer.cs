@@ -34,18 +34,18 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtEntitlementName = new System.Windows.Forms.TextBox();
-            this.chkReadOnly = new System.Windows.Forms.CheckBox();
+            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.chkAllowDelete = new System.Windows.Forms.CheckBox();
+            this.chkAllowDelete = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.chkAllowUpdate = new System.Windows.Forms.CheckBox();
+            this.chkAllowUpdate = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.chkAllowRead = new System.Windows.Forms.CheckBox();
+            this.chkAllowRead = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtProfileName = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.chkAllowCreate = new System.Windows.Forms.CheckBox();
+            this.chkAllowCreate = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.lookuptxtProfile = new MVCHIS.Common.LookUpButton();
             this.lookUpButtonEntitlement = new MVCHIS.Common.LookUpButton();
             this.btnNew = new System.Windows.Forms.Button();
@@ -53,6 +53,7 @@
             this.lookupId = new MVCHIS.Common.LookUpButton();
             this.txtEntitlementId = new System.Windows.Forms.TextBox();
             this.txtProfileId = new System.Windows.Forms.TextBox();
+            this.btnSelectUnselectAll = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSave
@@ -186,7 +187,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(33, 186);
+            this.label3.Location = new System.Drawing.Point(294, 129);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 13);
             this.label3.TabIndex = 51;
@@ -195,7 +196,7 @@
             // chkAllowDelete
             // 
             this.chkAllowDelete.AutoSize = true;
-            this.chkAllowDelete.Location = new System.Drawing.Point(161, 180);
+            this.chkAllowDelete.Location = new System.Drawing.Point(273, 129);
             this.chkAllowDelete.Name = "chkAllowDelete";
             this.chkAllowDelete.Size = new System.Drawing.Size(15, 14);
             this.chkAllowDelete.TabIndex = 11;
@@ -204,7 +205,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(33, 158);
+            this.label4.Location = new System.Drawing.Point(294, 105);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(70, 13);
             this.label4.TabIndex = 51;
@@ -213,7 +214,7 @@
             // chkAllowUpdate
             // 
             this.chkAllowUpdate.AutoSize = true;
-            this.chkAllowUpdate.Location = new System.Drawing.Point(161, 155);
+            this.chkAllowUpdate.Location = new System.Drawing.Point(273, 104);
             this.chkAllowUpdate.Name = "chkAllowUpdate";
             this.chkAllowUpdate.Size = new System.Drawing.Size(15, 14);
             this.chkAllowUpdate.TabIndex = 10;
@@ -222,7 +223,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(33, 130);
+            this.label7.Location = new System.Drawing.Point(182, 130);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(60, 13);
             this.label7.TabIndex = 51;
@@ -259,7 +260,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(33, 102);
+            this.label9.Location = new System.Drawing.Point(182, 105);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(68, 13);
             this.label9.TabIndex = 51;
@@ -356,10 +357,21 @@
             this.txtProfileId.TabIndex = 5;
             this.txtProfileId.TextChanged += new System.EventHandler(this.TxtProfileId_TextChanged);
             // 
+            // btnSelectUnselectAll
+            // 
+            this.btnSelectUnselectAll.Location = new System.Drawing.Point(161, 163);
+            this.btnSelectUnselectAll.Name = "btnSelectUnselectAll";
+            this.btnSelectUnselectAll.Size = new System.Drawing.Size(144, 23);
+            this.btnSelectUnselectAll.TabIndex = 52;
+            this.btnSelectUnselectAll.Text = "Select / Unselect all";
+            this.btnSelectUnselectAll.UseVisualStyleBackColor = true;
+            this.btnSelectUnselectAll.Click += new System.EventHandler(this.BtnSelectUnselectAll_Click);
+            // 
             // ProfileEntitlementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnSelectUnselectAll);
             this.Controls.Add(this.lookUpButtonEntitlement);
             this.Controls.Add(this.lookupId);
             this.Controls.Add(this.lookuptxtProfile);
@@ -410,18 +422,18 @@
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtEntitlementName;
-        private System.Windows.Forms.CheckBox chkReadOnly;
+        private MVCHIS.Utils.ForcedFocusCheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox chkAllowDelete;
+        private MVCHIS.Utils.ForcedFocusCheckBox chkAllowDelete;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckBox chkAllowUpdate;
+        private MVCHIS.Utils.ForcedFocusCheckBox chkAllowUpdate;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.CheckBox chkAllowRead;
+        private MVCHIS.Utils.ForcedFocusCheckBox chkAllowRead;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtProfileName;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.CheckBox chkAllowCreate;
+        private MVCHIS.Utils.ForcedFocusCheckBox chkAllowCreate;
         private Common.LookUpButton lookuptxtProfile;
         private Common.LookUpButton lookUpButtonEntitlement;
         private System.Windows.Forms.Button btnNew;
@@ -429,5 +441,6 @@
         private Common.LookUpButton lookupId;
         private System.Windows.Forms.TextBox txtEntitlementId;
         private System.Windows.Forms.TextBox txtProfileId;
+        private System.Windows.Forms.Button btnSelectUnselectAll;
     }
 }

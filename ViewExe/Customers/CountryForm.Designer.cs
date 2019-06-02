@@ -44,7 +44,7 @@
             this.lblMetaDataCountryCode = new System.Windows.Forms.Label();
             this.lblMetaDataCountryEnglish = new System.Windows.Forms.Label();
             this.lblMetaDataCountryArabic = new System.Windows.Forms.Label();
-            this.chkReadOnly = new System.Windows.Forms.CheckBox();
+            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 

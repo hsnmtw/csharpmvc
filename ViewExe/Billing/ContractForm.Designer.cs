@@ -24,8 +24,6 @@
         /// </summaryClient
         private void InitializeComponent(){
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            MVCHIS.Billing.ContractModel contractModel1 = new MVCHIS.Billing.ContractModel();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
@@ -41,7 +39,7 @@
             this.txtContractCode = new System.Windows.Forms.TextBox();
             this.txtStartDate = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.chkReadOnly = new System.Windows.Forms.CheckBox();
+            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.lookUpButtonContract = new MVCHIS.Common.LookUpButton();
             this.btnDateOfBirth = new System.Windows.Forms.Button();
@@ -60,17 +58,8 @@
             this.btnAddService = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.label11 = new System.Windows.Forms.Label();
-            this.chkIsActive = new System.Windows.Forms.CheckBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.BillingCategoryColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.EffectiveFromColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExpiredColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.CurrencyColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.PriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VATColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.chkIsActive = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.listViewControlServices = new MVCHIS.Utils.ListViewControl();
             this.SuspendLayout();
             // 
             // btnDelete
@@ -424,94 +413,27 @@
             this.chkIsActive.TabIndex = 15;
             this.chkIsActive.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // listViewControlServices
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.BillingCategoryColumn,
-            this.EffectiveFromColumn,
-            this.ExpiredColumn,
-            this.CurrencyColumn,
-            this.PriceColumn,
-            this.VATColumn});
-            this.dataGridView1.DataSource = this.bindingSource1;
-            this.dataGridView1.Location = new System.Drawing.Point(141, 158);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 30;
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.ShowCellErrors = false;
-            this.dataGridView1.ShowEditingIcon = false;
-            this.dataGridView1.Size = new System.Drawing.Size(593, 131);
-            this.dataGridView1.StandardTab = true;
-            this.dataGridView1.TabIndex = 54;
-            // 
-            // BillingCategoryColumn
-            // 
-            this.BillingCategoryColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.BillingCategoryColumn.DataPropertyName = "BillingCategoryId";
-            this.BillingCategoryColumn.HeaderText = "Category";
-            this.BillingCategoryColumn.Name = "BillingCategoryColumn";
-            this.BillingCategoryColumn.ReadOnly = true;
-            this.BillingCategoryColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.BillingCategoryColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // EffectiveFromColumn
-            // 
-            this.EffectiveFromColumn.DataPropertyName = "EffectiveFromDate";
-            dataGridViewCellStyle1.Format = "yyyy-MM-dd";
-            dataGridViewCellStyle1.NullValue = null;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.EffectiveFromColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.EffectiveFromColumn.HeaderText = "Effective";
-            this.EffectiveFromColumn.Name = "EffectiveFromColumn";
-            this.EffectiveFromColumn.ReadOnly = true;
-            // 
-            // ExpiredColumn
-            // 
-            this.ExpiredColumn.DataPropertyName = "Expired";
-            this.ExpiredColumn.HeaderText = "Expired";
-            this.ExpiredColumn.Name = "ExpiredColumn";
-            this.ExpiredColumn.ReadOnly = true;
-            // 
-            // CurrencyColumn
-            // 
-            this.CurrencyColumn.DataPropertyName = "CurrencyId";
-            this.CurrencyColumn.HeaderText = "Currency";
-            this.CurrencyColumn.Name = "CurrencyColumn";
-            this.CurrencyColumn.ReadOnly = true;
-            this.CurrencyColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CurrencyColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // PriceColumn
-            // 
-            this.PriceColumn.DataPropertyName = "Price";
-            this.PriceColumn.HeaderText = "Price";
-            this.PriceColumn.Name = "PriceColumn";
-            this.PriceColumn.ReadOnly = true;
-            // 
-            // VATColumn
-            // 
-            this.VATColumn.DataPropertyName = "VATId";
-            this.VATColumn.HeaderText = "VAT";
-            this.VATColumn.Name = "VATColumn";
-            this.VATColumn.ReadOnly = true;
-            this.VATColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.VATColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.listViewControlServices.Font = new System.Drawing.Font("Consolas", 8F);
+            this.listViewControlServices.FullRowSelect = true;
+            this.listViewControlServices.GridLines = true;
+            this.listViewControlServices.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listViewControlServices.HideSelection = false;
+            this.listViewControlServices.LabelWrap = false;
+            this.listViewControlServices.Location = new System.Drawing.Point(141, 159);
+            this.listViewControlServices.MultiSelect = false;
+            this.listViewControlServices.Name = "listViewControlServices";
+            this.listViewControlServices.Size = new System.Drawing.Size(593, 130);
+            this.listViewControlServices.TabIndex = 11;
+            this.listViewControlServices.UseCompatibleStateImageBehavior = false;
+            this.listViewControlServices.View = System.Windows.Forms.View.Details;
             // 
             // ContractForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.listViewControlServices);
             this.Controls.Add(this.btnAddService);
             this.Controls.Add(this.btnEditService);
             this.Controls.Add(this.btnDeleteService);
@@ -546,24 +468,9 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtCreatedBy);
-            contractModel1.ClientId = 0;
-            contractModel1.Conditions = null;
-            contractModel1.ContractCode = null;
-            contractModel1.CreatedBy = null;
-            contractModel1.CreatedOn = null;
-            contractModel1.EndDate = null;
-            contractModel1.Id = 0;
-            contractModel1.IsActive = false;
-            contractModel1.ReadOnly = false;
-            contractModel1.StartDate = new System.DateTime(((long)(0)));
-            contractModel1.UpdatedBy = null;
-            contractModel1.UpdatedOn = null;
-            this.Model = contractModel1;
             this.Name = "ContractForm";
             this.Size = new System.Drawing.Size(785, 452);
             this.Load += new System.EventHandler(this.ContractFormLoad);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -584,7 +491,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtContractCode;
         private Common.LookUpButton lookUpButtonContract;
-        private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtStartDate;
         private System.Windows.Forms.Label label2;
@@ -604,14 +510,8 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button btnAddService;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.CheckBox chkIsActive;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.BindingSource bindingSource1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn BillingCategoryColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EffectiveFromColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ExpiredColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn CurrencyColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PriceColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn VATColumn;
+        private Utils.ForcedFocusCheckBox chkReadOnly;
+        private Utils.ForcedFocusCheckBox chkIsActive;
+        private Utils.ListViewControl listViewControlServices;
     }
 }

@@ -43,7 +43,7 @@
             this.lblMetaDataCityCode = new System.Windows.Forms.Label();
             this.lblMetaDataCityEnglish = new System.Windows.Forms.Label();
             this.lblMetaDataCityArabic = new System.Windows.Forms.Label();
-            this.chkReadOnly = new System.Windows.Forms.CheckBox();
+            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.lookUpButtonNationality = new MVCHIS.Common.LookUpButton();
             this.txtCountryEnglish = new System.Windows.Forms.TextBox();

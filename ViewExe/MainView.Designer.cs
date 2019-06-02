@@ -66,8 +66,15 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.treeViewMenu = new System.Windows.Forms.TreeView();
+            this.txtSearchMenu = new System.Windows.Forms.TextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.lblHeading = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -309,6 +316,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
@@ -318,11 +326,59 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.panel2.Controls.Add(this.treeViewMenu);
+            this.panel2.Controls.Add(this.txtSearchMenu);
+            resources.ApplyResources(this.panel2, "panel2");
+            this.panel2.Name = "panel2";
+            // 
+            // treeViewMenu
+            // 
+            this.treeViewMenu.BackColor = System.Drawing.SystemColors.Menu;
+            resources.ApplyResources(this.treeViewMenu, "treeViewMenu");
+            this.treeViewMenu.FullRowSelect = true;
+            this.treeViewMenu.HideSelection = false;
+            this.treeViewMenu.ItemHeight = 15;
+            this.treeViewMenu.Name = "treeViewMenu";
+            this.treeViewMenu.ShowLines = false;
+            this.treeViewMenu.ShowPlusMinus = false;
+            this.treeViewMenu.ShowRootLines = false;
+            this.treeViewMenu.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.TreeViewMenu_DrawNode);
+            this.treeViewMenu.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.TreeViewMenu_BeforeSelect);
+            this.treeViewMenu.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeViewMenu_AfterSelect);
+            this.treeViewMenu.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.TreeView1_NodeMouseDoubleClick);
+            this.treeViewMenu.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TreeView1_KeyDown);
+            // 
+            // txtSearchMenu
+            // 
+            resources.ApplyResources(this.txtSearchMenu, "txtSearchMenu");
+            this.txtSearchMenu.Name = "txtSearchMenu";
+            this.txtSearchMenu.TextChanged += new System.EventHandler(this.TxtSearchMenu_TextChanged);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.Control;
+            this.panel3.Controls.Add(this.lblHeading);
+            resources.ApplyResources(this.panel3, "panel3");
+            this.panel3.Name = "panel3";
+            // 
+            // lblHeading
+            // 
+            this.lblHeading.BackColor = System.Drawing.Color.Gray;
+            resources.ApplyResources(this.lblHeading, "lblHeading");
+            this.lblHeading.ForeColor = System.Drawing.Color.White;
+            this.lblHeading.Name = "lblHeading";
+            // 
             // MainView
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -333,6 +389,9 @@
             this.statusStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -377,6 +436,11 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripStatusLabel tsDateTime;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TreeView treeViewMenu;
+        private System.Windows.Forms.TextBox txtSearchMenu;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label lblHeading;
     }
 }
 

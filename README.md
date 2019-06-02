@@ -10,15 +10,14 @@ This application is built with the following considerations:
 
 
 ## Dependencies
-===============
 ```
-        [C]  
-      ↗  ↓   ↘ 
-  [V] → [M] ← [E]
+      [C]  
+    ↗  ↓   ↘ 
+[V] → [M] ← [E]
 
-[V] → [M]                 
-[V] → [C]        
 [C] → [E]        
+[V] → [C]        
+[V] → [M]                 
 [C] → [M]
 [E] → [M]
 
@@ -31,7 +30,6 @@ E: Entities
 ** and all others depend on [M]
 
 ## Example code
-===============
 ```
   
   // Model

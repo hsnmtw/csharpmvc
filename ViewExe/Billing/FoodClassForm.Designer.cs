@@ -36,7 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtFoodClassCode = new System.Windows.Forms.TextBox();
-            this.chkReadOnly = new System.Windows.Forms.CheckBox();
+            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.lookUpButtonFoodClass = new MVCHIS.Common.LookUpButton();
             this.txtFoodClassDesc = new System.Windows.Forms.TextBox();

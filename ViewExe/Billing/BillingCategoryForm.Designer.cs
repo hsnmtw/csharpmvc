@@ -37,8 +37,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtBillingCategoryCode = new System.Windows.Forms.TextBox();
             this.lookUpButtonAccomCategory = new MVCHIS.Common.LookUpButton();
-            this.chkReadOnly = new System.Windows.Forms.CheckBox();
-            this.chkReservationOnly = new System.Windows.Forms.CheckBox();
+            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReservationOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.lookUpButtonFoodType = new MVCHIS.Common.LookUpButton();
             this.lookUpButtonFood = new MVCHIS.Common.LookUpButton();
             this.lookUpButtonAccommClass = new MVCHIS.Common.LookUpButton();

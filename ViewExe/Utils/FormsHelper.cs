@@ -33,8 +33,8 @@ namespace MVCHIS.Utils {
                 form = form.Parent;
             }
             
-            form.Text = MainView.Instance.dictionaryController[form.Text];
-            if(form!=cntrl) cntrl.Text = MainView.Instance.dictionaryController[cntrl.Text];
+            form.Text = MainView.Instance.CntrlDC[form.Text];
+            if(form!=cntrl) cntrl.Text = MainView.Instance.CntrlDC[cntrl.Text];
 
             var languageEnabledTypes = new Type[]{
                 typeof(Label),
@@ -48,22 +48,22 @@ namespace MVCHIS.Utils {
 
             foreach (Control control in cntrl.Controls) {
                 if (languageEnabledTypes.Contains(control.GetType())) {
-                    control.Text = MainView.Instance.dictionaryController[control.Text];
+                    control.Text = MainView.Instance.CntrlDC[control.Text];
                     if (control.GetType().Equals(typeof(Panel))) {
                         foreach (var pcontrol in control.Controls.OfType<Label>()) {
-                            pcontrol.Text = MainView.Instance.dictionaryController[pcontrol.Text];
+                            pcontrol.Text = MainView.Instance.CntrlDC[pcontrol.Text];
                         }
                     }
                     else if (control.GetType().Equals(typeof(GroupBox))) {
                         foreach (var pcontrol in control.Controls.OfType<Label>()) {
-                            pcontrol.Text = MainView.Instance.dictionaryController[pcontrol.Text];
+                            pcontrol.Text = MainView.Instance.CntrlDC[pcontrol.Text];
                         }
                     }
                     else if (control.GetType().Equals(typeof(MenuStrip))) {
                         foreach(var menu in ((MenuStrip)control).Items.OfType<ToolStripMenuItem>()) {
-                            menu.Text = MainView.Instance.dictionaryController[menu.Text];
+                            menu.Text = MainView.Instance.CntrlDC[menu.Text];
                             foreach(var cmenu in menu.DropDownItems.OfType<ToolStripMenuItem>()) {
-                                cmenu.Text = MainView.Instance.dictionaryController[cmenu.Text];
+                                cmenu.Text = MainView.Instance.CntrlDC[cmenu.Text];
                             }
                         }
                     }

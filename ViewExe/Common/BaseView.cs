@@ -89,7 +89,7 @@ namespace MVCHIS.Common {
 
             Mapper = new Dictionary<string, Control>();
             Prop = new Func<string, PropertyInfo>(x => typeof(M).GetProperty(x));
-            isBoolean  = new Func<string, bool>(x => Mapper[x].GetType() == typeof(CheckBox) 
+            isBoolean  = new Func<string, bool>(x => (Mapper[x] is CheckBox )
                                                   && Prop(x).PropertyType == typeof(bool));
             isDateTime = new Func<string, bool>(x => Prop(x).PropertyType == typeof(DateTime) 
                                                   || Prop(x).PropertyType == typeof(DateTime?));

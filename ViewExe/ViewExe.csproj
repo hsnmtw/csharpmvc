@@ -265,6 +265,9 @@
     <Compile Include="Utils\FixedWidthListBox.Designer.cs">
       <DependentUpon>FixedWidthListBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\ForcedFocusCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Utils\FormsHelper.cs" />
     <Compile Include="Utils\ListViewControl.cs">
       <SubType>Component</SubType>
@@ -302,6 +305,7 @@
     <Compile Include="Utils\SQLView.Designer.cs">
       <DependentUpon>SQLView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Strings.cs" />
     <EmbeddedResource Include="Billing\AccommClassForm.resx">
       <DependentUpon>AccommClassForm.cs</DependentUpon>
     </EmbeddedResource>

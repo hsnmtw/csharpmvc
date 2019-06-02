@@ -17,6 +17,10 @@ namespace MVCHIS.Billing {
         private VATController             CntrlVT;
         public ServiceForm() {
             InitializeComponent();
+            CntrlCN = (ContractController)DBControllersFactory.GetController<ContractModel>();
+            CntrlCG = (BillingCategoryController)DBControllersFactory.GetController<BillingCategoryModel>();
+            CntrlCU = (CurrencyController)DBControllersFactory.GetController<CurrencyModel>();
+            CntrlVT = (VATController)DBControllersFactory.GetController<VATModel>();
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -45,29 +49,24 @@ namespace MVCHIS.Billing {
         }
 
         private void TxtContractId_TextChanged(object sender, EventArgs e) {
-            int selected = Convert.ToInt32(txtContractId.Text);
-            txtContractCode.Text = CntrlCN.Find(new ContractModel() { Id = selected }, "Id")?.ContractCode;
+            int.TryParse(txtContractId.Text,out int id);
+            txtContractCode.Text = CntrlCN.Find(new ContractModel() { Id = id }, "Id")?.ContractCode;
         }
 
         private void TxtBillingCategoryId_TextChanged(object sender, EventArgs e) {
-            int selected = Convert.ToInt32(txtBillingCategoryId.Text);
-            txtBillingCategoryCode.Text = CntrlCG.Find(new BillingCategoryModel() { Id = selected }, "Id")?.BillingCategoryCode;
+            int.TryParse(txtBillingCategoryId.Text, out int id);
+            txtBillingCategoryCode.Text = CntrlCG.Find(new BillingCategoryModel() { Id = id }, "Id")?.BillingCategoryCode;
         }
 
         private void TxtCurrencyId_TextChanged(object sender, EventArgs e) {
-            int selected = Convert.ToInt32(txtCurrencyId.Text);
-            var currency = CntrlCU.Find(new CurrencyModel() { Id = selected }, "Id");
+            //int selected = Convert.ToInt32(txtCurrencyId.Text);
+            int.TryParse(txtCurrencyId.Text, out int id);
+            var currency = CntrlCU.Find(new CurrencyModel() { Id = id }, "Id");
             txtCurrencyCode.Text = currency?.CurrencyCode;
             txtCurrencyEnglish.Text = currency?.CurrencyEnglish;
         }
 
         private void ServiceForm_Load(object sender, EventArgs e) { if (DesignMode) return;
-
-            CntrlCN = (ContractController)DBControllersFactory.GetController<ContractModel>();
-            CntrlCG = (BillingCategoryController)DBControllersFactory.GetController<BillingCategoryModel>();
-            CntrlCU = (CurrencyController)DBControllersFactory.GetController<CurrencyModel>();
-            CntrlVT = (VATController)DBControllersFactory.GetController<VATModel>();
-
             cmbVATId.DataSource = CntrlVT.Read().OrderBy(x => -x.VATAmount).ToList();
             cmbVATId.DisplayMember = "VATCode";
             cmbVATId.ValueMember = "Id";

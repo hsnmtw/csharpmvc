@@ -38,7 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtEntitlementName = new System.Windows.Forms.TextBox();
             this.EntitlementNameLookup = new MVCHIS.Common.LookUpButton();
-            this.chkReadOnly = new System.Windows.Forms.CheckBox();
+            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtEntitlementGroupName = new System.Windows.Forms.TextBox();
             this.EntitlementGroupNameLookup = new MVCHIS.Common.LookUpButton();

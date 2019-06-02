@@ -26,7 +26,7 @@
             MVCHIS.Billing.ServiceModel serviceModel1 = new MVCHIS.Billing.ServiceModel();
             this.label2 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
-            this.chkReadOnly = new System.Windows.Forms.CheckBox();
+            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.txtUpdatedOn = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtUpdatedBy = new System.Windows.Forms.TextBox();
@@ -55,7 +55,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtEffectiveFromDate = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.chkExpired = new System.Windows.Forms.CheckBox();
+            this.chkExpired = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.btnDateOfBirth = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.cmbVATId = new System.Windows.Forms.ComboBox();
