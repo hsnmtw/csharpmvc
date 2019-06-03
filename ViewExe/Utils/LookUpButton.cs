@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVCHIS.Utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -46,7 +47,7 @@ namespace MVCHIS.Common {
                 }
             };
             lookup.Show();
-            
+            FormsHelper.ApplyLanguageLocalization(lookup);
         }
 
         [Category("(Lookup)")]

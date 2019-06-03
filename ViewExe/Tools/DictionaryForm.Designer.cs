@@ -158,9 +158,9 @@
             // txtWordInEnglish
             // 
             this.txtWordInEnglish.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtWordInEnglish.Location = new System.Drawing.Point(120, 51);
+            this.txtWordInEnglish.Location = new System.Drawing.Point(120, 49);
             this.txtWordInEnglish.Name = "txtWordInEnglish";
-            this.txtWordInEnglish.Size = new System.Drawing.Size(154, 20);
+            this.txtWordInEnglish.Size = new System.Drawing.Size(188, 20);
             this.txtWordInEnglish.TabIndex = 1;
             // 
             // DictionaryNameLookupButton
@@ -168,9 +168,11 @@
             this.DictionaryNameLookupButton.AssociatedControl = "txtWordInEnglish";
             this.DictionaryNameLookupButton.Controller = "Dictionary";
             this.DictionaryNameLookupButton.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.DictionaryNameLookupButton.Location = new System.Drawing.Point(275, 50);
+            this.DictionaryNameLookupButton.Location = new System.Drawing.Point(309, 48);
             this.DictionaryNameLookupButton.Name = "DictionaryNameLookupButton";
             this.DictionaryNameLookupButton.SelectedValueIndex = 0;
+            this.DictionaryNameLookupButton.ShowFieldsInLookUp.Add("WordInEnglish");
+            this.DictionaryNameLookupButton.ShowFieldsInLookUp.Add("WordInArabic");
             this.DictionaryNameLookupButton.Size = new System.Drawing.Size(22, 22);
             this.DictionaryNameLookupButton.TabIndex = 2;
             this.DictionaryNameLookupButton.TabStop = false;
@@ -209,7 +211,7 @@
             this.txtWordInArabic.BackColor = System.Drawing.Color.White;
             this.txtWordInArabic.Location = new System.Drawing.Point(120, 77);
             this.txtWordInArabic.Name = "txtWordInArabic";
-            this.txtWordInArabic.Size = new System.Drawing.Size(154, 20);
+            this.txtWordInArabic.Size = new System.Drawing.Size(211, 20);
             this.txtWordInArabic.TabIndex = 3;
             // 
             // DictionaryForm
@@ -257,10 +259,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtWordInEnglish;
         private Common.LookUpButton DictionaryNameLookupButton;
-        private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtWordInArabic;
+        private Utils.ForcedFocusCheckBox chkReadOnly;
         //private Common.LookUpButton DictionaryNameLookupButton;
     }
 }
