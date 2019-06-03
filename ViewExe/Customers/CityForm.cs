@@ -10,7 +10,7 @@ namespace MVCHIS.Customers {
         private CountryController CntrlCY;
 
         public CityForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -28,7 +28,7 @@ namespace MVCHIS.Customers {
             NewButton = btnNew;
         }
 
-        private void CityFormLoad(object sender, EventArgs e) { if (DesignMode) return;
+        private void CityFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
             CntrlCY = (CountryController)DBControllersFactory.GetController(MODELS.Country);
 
             Label[] fieldsmarkers = { lblMetaDataCityArabic,lblMetaDataCityCode,lblMetaDataCityEnglish };

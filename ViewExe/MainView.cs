@@ -39,7 +39,7 @@ namespace MVCHIS {
 
         private MainView()
         {
-            InitializeComponent(); //(); if(DesignMode || (Site != null && Site.DesignMode)) return;
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return; //(); if(DesignMode || (Site != null && Site.DesignMode)) return;
             this.CntrlDC = (DictionaryController)DBControllersFactory.GetController(Common.MODELS.Dictionary);
             this.CntrlEG = (EntitlementGroupController)DBControllersFactory.GetController(Common.MODELS.EntitlementGroup);
             this.CntrlEN = (EntitlementController)DBControllersFactory.GetController(Common.MODELS.Entitlement);
@@ -49,7 +49,7 @@ namespace MVCHIS {
 
 
 
-        private void MainViewLoad(object sender, EventArgs e) { if (DesignMode) return;
+        private void MainViewLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //tsDateTime.Alignment = ToolStripItemAlignment.Right;
             try {
                 //this.StartPosition = FormStartPosition.CenterScreen;
@@ -240,16 +240,19 @@ namespace MVCHIS {
         private void TreeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e) {
             TreeNode node = e.Node;
             if (node.Tag == null) return;
-            EntityModel entity = (EntityModel)node.Tag;
-            IView view = (IView)DBViewsFactory.GetView((MODELS)Enum.Parse(typeof(MODELS), entity.EntityName));
+            var entity = (EntityModel)node.Tag;
+            var view = (UserControl)DBViewsFactory.GetView((MODELS)Enum.Parse(typeof(MODELS), entity.EntityName));
             panel1.Controls.Clear();
             lblHeading.Text = node.Text;
-            panel1.Controls.Add((Control)view);
-            FormsHelper.ApplyLanguageLocalization((Control)view);
-            view.AfterSave += AfterViewSave;
-            view.AfterDelete += AfterViewDelete;
-            view.AfterNew += AfterViewNew;
-            view.ModelChanged += ViewModelChanged;
+            panel1.Controls.Add(view);
+            FormsHelper.ApplyLanguageLocalization(view);
+            if (view is IView) {
+                var iview = (IView)view;
+                iview.AfterSave += AfterViewSave;
+                iview.AfterDelete += AfterViewDelete;
+                iview.AfterNew += AfterViewNew;
+                iview.ModelChanged += ViewModelChanged;
+            }
         }
 
         private void ViewModelChanged() {

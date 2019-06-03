@@ -7,7 +7,7 @@ namespace MVCHIS.Customers {
     public partial class ContactForm: ContactView {
 
         public ContactForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -34,7 +34,7 @@ namespace MVCHIS.Customers {
             Model = Controller.Find(new ContactModel() { MobileNumber=selected }, "MobileNumber");
         }
 
-        private void ContactFormLoad(object sender, EventArgs e) { if (DesignMode) return;
+        private void ContactFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
         }
     }
     

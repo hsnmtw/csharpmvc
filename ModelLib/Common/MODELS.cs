@@ -31,9 +31,10 @@ namespace MVCHIS.Common {
         , ClientIdentification
         , BillingCycle
         , Contract
-        , Service,
-        Currency,
-        VAT,
-        City
+        , Service
+        , Currency
+        , VAT
+        , City
+        , DateConversion
     }
 }

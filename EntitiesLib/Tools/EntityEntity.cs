@@ -11,12 +11,12 @@ namespace MVCHIS.Tools {
               PrimaryKeyField = "Id" 
             , Fields          = new HashSet<string> { "CreatedBy", "CreatedOn", "Id", "ReadOnly", "UpdatedBy", "UpdatedOn", "EntityName", "EntityDesc" }
             , RequiredFields  = new HashSet<string> { "Id", "EntityName", "EntityDesc" }
-            , UniqueKeyFields = new HashSet<string> { "EntityName" }
+            , UniqueKeyFields = new HashSet<HashSet<string>> { new HashSet<string> { "EntityName" } }
             , ForeignKeys     = new Dictionary<string, Tuple<string, string>> {
             }
             , Sizes = new Dictionary<string, int> {
-                ["CreatedBy"]  = 50,
-                ["UpdatedBy"]  = 50,
+                ["CreatedBy"]  = 10,
+                ["UpdatedBy"]  = 10,
                 ["EntityName"] = 50,
                 ["EntityDesc"] = 100
             }

@@ -12,7 +12,7 @@ namespace MVCHIS.Housing.Rooms {
 
 
         public RoomForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -31,7 +31,7 @@ namespace MVCHIS.Housing.Rooms {
             DeleteButton = btnDelete;
             NewButton = btnNew;
         }
-        private void RoomForm_Load(object sender, EventArgs e) { if (DesignMode) return;
+        private void RoomForm_Load(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
             CntrlBD = (BuildingController)DBControllersFactory.GetController<BuildingModel>();
             CntrlCY = (CountryController)DBControllersFactory.GetController<CountryModel>();
 

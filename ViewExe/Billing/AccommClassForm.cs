@@ -10,7 +10,7 @@ namespace MVCHIS.Billing {
     public partial class AccommClassForm : AccommClassView {
 
         public AccommClassForm () : base() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -32,7 +32,7 @@ namespace MVCHIS.Billing {
             Model = Controller.Find(new AccommClassModel() { AccommClassCode = selected }, "AccommClassCode");
         }
 
-        private void AccommClassFormLoad(object sender, EventArgs e) { if (DesignMode) return;
+        private void AccommClassFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
 
         }
     }    

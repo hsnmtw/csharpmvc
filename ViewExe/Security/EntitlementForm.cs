@@ -15,7 +15,7 @@ namespace MVCHIS.Security {
         private IDBController<EntityModel>           CntrlET;// = DBControllersFactory.GetController<EntityModel>();
 
         public EntitlementForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -37,7 +37,7 @@ namespace MVCHIS.Security {
 
 
 
-        private void EntitlementFormLoad(object sender, EventArgs e) { if (DesignMode) return;
+        private void EntitlementFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
             
             CntrlEG = DBControllersFactory.GetController<EntitlementGroupModel>();
             CntrlET = DBControllersFactory.GetController<EntityModel>();

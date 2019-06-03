@@ -415,6 +415,7 @@
             // 
             // listViewControlServices
             // 
+            this.listViewControlServices.Filter = null;
             this.listViewControlServices.Font = new System.Drawing.Font("Consolas", 8F);
             this.listViewControlServices.FullRowSelect = true;
             this.listViewControlServices.GridLines = true;

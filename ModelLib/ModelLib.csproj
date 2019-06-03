@@ -55,6 +55,7 @@
     <Compile Include="Common\MetaData.cs" />
     <Compile Include="Common\MODELS.cs" />
     <Compile Include="Customers\CityModel.cs" />
+    <Compile Include="Tools\DateConversionModel.cs" />
     <Compile Include="Tools\EntityModel.cs" />
     <Compile Include="Common\IModel.cs" />
     <Compile Include="Configurations\CryptoModel.cs" />

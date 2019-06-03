@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 namespace MVCHIS.Common {
     public class ViewsBinding {
     }
+    public class DateConversionView         : BaseView<DateConversionModel       ,DateConversionController    >{}
     public class CityView                   : BaseView<CityModel                 ,CityController              >{}
     public class ProfileView                : BaseView<ProfileModel              ,ProfileController           >{}
     public class EntityView                 : BaseView<EntityModel               ,EntityController            >{}

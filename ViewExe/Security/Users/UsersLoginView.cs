@@ -12,11 +12,11 @@ namespace MVCHIS.Security.Users {
        // public CryptoController Encryption;
 
         public UsersLoginView(){
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             Mapper["UserName"] = txtUserName;
             Mapper["UserPassword"] = txtPassword;
         }
-        private void UsersLoginView_Load(object sender, EventArgs e) { if (DesignMode) return;
+        private void UsersLoginView_Load(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
 
         }
 

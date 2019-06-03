@@ -14,7 +14,7 @@ namespace MVCHIS.Security {
         private Dictionary<int, string> profiles;
 
         public ProfileEntitlementForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -36,7 +36,7 @@ namespace MVCHIS.Security {
             NewButton = btnNew;
         }        
 
-        private void EntitlementFormLoad(object sender, EventArgs e) { if (DesignMode) return;
+        private void EntitlementFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
             CntrlPR = (ProfileController)DBControllersFactory.GetController<ProfileModel>();
             CntrlEN = (EntitlementController)DBControllersFactory.GetController<EntitlementModel>();
 

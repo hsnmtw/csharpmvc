@@ -9,7 +9,7 @@ namespace MVCHIS.Customers {
          
         
         public ClientTypeForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //base.Controller = (ClientTypeController)DBControllersFactory.GetController(Common.MODELS.ClientType);
             //template
             Mapper["Id"] = txtId;
@@ -34,7 +34,7 @@ namespace MVCHIS.Customers {
 
         }
 
-        private void ClientTypeFormLoad(object sender, EventArgs e) { if (DesignMode) return;
+        private void ClientTypeFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
         }
     }
     

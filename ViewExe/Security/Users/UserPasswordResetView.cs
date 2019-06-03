@@ -5,9 +5,9 @@ using System.Windows.Forms;
 namespace MVCHIS.Security.Users {
     public partial class UserPasswordResetView : UserView {
         public UserPasswordResetView() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
         }
-        private void UserPasswordResetView_Load(object sender, EventArgs e) { if (DesignMode) return;
+        private void UserPasswordResetView_Load(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
 
         }
 

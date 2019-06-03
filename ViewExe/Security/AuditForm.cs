@@ -9,10 +9,10 @@ namespace MVCHIS.Security {
         public virtual void UpdateModel() { var _ = Model; }
 
         public AuditForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
         }
 
-        private void AuditView_Load(object sender, EventArgs e) { if (DesignMode) return;
+        private void AuditView_Load(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
             this.adaptor = new MVCAdaptor<AuditModel,AuditController>();
             this.adaptor.Requery();
         }

@@ -12,13 +12,13 @@ namespace MVCHIS.Billing {
             , Fields           = new HashSet<string> {"ReadOnly","Id","CreatedBy","CreatedOn","UpdatedBy","UpdatedOn",
                                                      "ContractCode","StartDate","EndDate","IsActive","Conditions","ClientId" }
             , RequiredFields   = new HashSet<string> { "Id", "ContractCode","ClientId", "StartDate" }
-            , UniqueKeyFields  = new HashSet<string> { "ContractCode" }
+            , UniqueKeyFields = new HashSet<HashSet<string>> { new HashSet<string> { "ContractCode" } }
             , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
                 ["ClientId"] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<ClientModel>().MetaData.Source,"Id")
             }
             , Sizes = new Dictionary<string, int> {
-                ["CreatedBy"   ] = 50,
-                ["UpdatedBy"   ] = 50,
+                ["CreatedBy"   ] = 10,
+                ["UpdatedBy"   ] = 10,
                 ["ContractCode"] = 20,
                 ["Conditions"  ] = 1000,
             }

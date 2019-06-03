@@ -10,7 +10,7 @@ namespace MVCHIS.Billing {
         
         
         public FoodClassForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -33,7 +33,7 @@ namespace MVCHIS.Billing {
 
         }
 
-        private void FoodClassFormLoad(object sender, EventArgs e) { if (DesignMode) return;
+        private void FoodClassFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
 
         }
     }

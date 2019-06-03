@@ -12,7 +12,7 @@ namespace MVCHIS.Common {
         Action<bool> AfterNew      { get; set; }
         Action<bool> AfterDelete   { get; set; }
         Action ModelChanged { get; set; }
-        Dictionary<string, Control> Mapper { get; set; }
+        Dictionary<string, Control> Mapper { get; }
         Button SaveButton { get; set; }
         Button NewButton { get; set; }
         Button DeleteButton { get; set; }

@@ -56,7 +56,7 @@ namespace MVCHIS.Utils {
 
             if (cms.Items.Count == 0) InitContextMenuTranslate();
 
-            if (control.ContextMenuStrip == null && control is Label) {
+            if (control.ContextMenuStrip == null){// && control is Label) {
                 var txt = control.Text;
                 var trn = MainView.Instance.CntrlDC[txt];
 

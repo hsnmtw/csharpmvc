@@ -45,7 +45,7 @@ E: Entities
             , Fields           = new HashSet<string> { "ReadOnly","Id","CreatedBy","CreatedOn",
                                                        "UpdatedBy","UpdatedOn", "ExampleProperty" }  
             , RequiredFields   = new HashSet<string> { "Id", "ExampleProperty" }
-            , UniqueKeyFields  = new HashSet<string> { "ExampleProperty" }
+            , UniqueKeyFields  = new HashSet<HashSet<string>> { new HashSet<string> { "ExampleProperty" } }
             , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
             }
             , Sizes            = new Dictionary<string, int> {

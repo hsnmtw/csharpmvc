@@ -12,7 +12,7 @@ namespace MVCHIS.Billing {
     public partial class VATForm: VATView {
 
         public VATForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -35,7 +35,7 @@ namespace MVCHIS.Billing {
             Model = Controller.Find(new VATModel() { VATCode = selected }, "VATCode");
         }
 
-        private void VATFormLoad(object sender, EventArgs e) { if (DesignMode) return;
+        private void VATFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
 
         }
     }

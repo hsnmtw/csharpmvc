@@ -52,7 +52,7 @@ namespace MVCHIS.Common {
         }
 
         public RecordsNavigator() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
         }
 
         private void Button5Click(object sender, EventArgs e) {

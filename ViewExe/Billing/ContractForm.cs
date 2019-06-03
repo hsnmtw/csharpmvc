@@ -6,11 +6,14 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace MVCHIS.Billing {
 
     //[ForModel(Common.MODELS.Contract)]
     public partial class ContractForm : ContractView {
+
+        public readonly string[] SERVICE_COLUMNS = { "BillingCategoryId", "EffectiveFromDate", "Expired", "CurrencyId", "VATId", "Price" };
 
         private ClientController          CntrlCL ;
         private BillingCategoryController CntrlCG ;
@@ -21,7 +24,7 @@ namespace MVCHIS.Billing {
         private List<ServiceModel> Services;
 
         public ContractForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
 
             CntrlCL = (ClientController)DBControllersFactory.GetController<ClientModel>();
             CntrlCG = (BillingCategoryController)DBControllersFactory.GetController<BillingCategoryModel>();
@@ -60,8 +63,8 @@ namespace MVCHIS.Billing {
             Model = Controller.Find(new ContractModel() { ContractCode = txtContractCode.Text }, "ContractCode");
         }
 
-        private void ContractFormLoad(object sender, EventArgs e) { if (DesignMode) return;
-
+        private void ContractFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
+            listViewControlServices.LoadData("", new ServiceModel[] { }, SERVICE_COLUMNS);
         }
 
         private void TxtClient_TextChanged(object sender, EventArgs e) {
@@ -85,7 +88,7 @@ namespace MVCHIS.Billing {
                 Services = new List<ServiceModel>();
             }
 
-            this.listViewControlServices.LoadData("", Services, "BillingCategoryId", "EffectiveFromDate", "Expired", "CurrencyId", "VATId", "Price");
+            this.listViewControlServices.LoadData("", Services, SERVICE_COLUMNS);
         }
 
         private ServiceView OpenService(ServiceModel service) {
@@ -144,9 +147,6 @@ namespace MVCHIS.Billing {
 
         private void TxtEndDate_Leave(object sender, EventArgs e) {
             ValidateDate(txtEndDate);
-        }
-
-        private void BindingSource1_DataSourceChanged(object sender, EventArgs e) {
         }
     }
    

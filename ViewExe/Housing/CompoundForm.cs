@@ -8,7 +8,7 @@ namespace MVCHIS.Housing {
         
 
         public CompoundForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -30,7 +30,7 @@ namespace MVCHIS.Housing {
             Model = Controller.Find(new CompoundModel() { CompoundName = selected }, "CompoundName");
         }
 
-        private void CompoundForm_Load(object sender, EventArgs e) { if (DesignMode) return;
+        private void CompoundForm_Load(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
 
         }
     }

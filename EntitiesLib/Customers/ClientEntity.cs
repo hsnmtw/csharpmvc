@@ -13,14 +13,14 @@ namespace MVCHIS.Customers {
                                                   "DateOfBirth","IsActive","BillingAddress","PhoneNumber",
                                                   "FaxNumber","Website","CountryId" }
             , RequiredFields  = new HashSet<string> { "Id", "ShortName", "LongName", "ClientTypeId" }
-            , UniqueKeyFields = new HashSet<string> { "ShortName" }
+            , UniqueKeyFields = new HashSet<HashSet<string>> { new HashSet<string> { "ShortName" } }
             , ForeignKeys     = new Dictionary<string, Tuple<string, string>> {
                 ["ClientTypeId"] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<ClientTypeModel>().MetaData.Source,"Id"),
                 ["CountryId"]    = new Tuple<string, string>(DBEntitiesFactory.GetEntity<CountryModel>().MetaData.Source, "Id"),
             }
             , Sizes = new Dictionary<string, int> {
-                  ["CreatedBy"     ] = 50
-                , ["UpdatedBy"     ] = 50
+                  ["CreatedBy"     ] = 10
+                , ["UpdatedBy"     ] = 10
                 , ["ShortName"     ] = 50
                 , ["LongName"      ] = 150
                 , ["Email"         ] = 100

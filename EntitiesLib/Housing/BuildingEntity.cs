@@ -12,12 +12,12 @@ namespace MVCHIS.Housing {
             , Fields           = new HashSet<string> {"ReadOnly", "Id", "CreatedBy", "CreatedOn", "UpdatedBy", "UpdatedOn",
                                                        "BuildingName", "BuildingTypeId", "CompoundId" }
             , RequiredFields   = new HashSet<string> { "Id","BuildingName","BuildingTypeId","CompoundId" }
-            , UniqueKeyFields  = new HashSet<string> { "BuildingName" }
+            , UniqueKeyFields = new HashSet<HashSet<string>> { new HashSet<string> { "BuildingName" } }
             , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
             }
             , Sizes = new Dictionary<string, int> {
-                 ["CreatedBy"   ] = 50
-                ,["UpdatedBy"   ] = 50
+                 ["CreatedBy"   ] = 10
+                ,["UpdatedBy"   ] = 10
                 ,["BuildingName"] = 50
                 //,["BuildingType"] = 50
                 //,["CompoundName"] = 50

@@ -79,6 +79,7 @@
     <Compile Include="Security\ProfileEntity.cs" />
     <Compile Include="Security\UserEntity.cs" />
     <Compile Include="Tools\DictionaryEntity.cs" />
+    <Compile Include="Tools\DateConversionEntity.cs" />
     <Compile Include="Tools\EntityEntity.cs" />
   </ItemGroup>
   <ItemGroup>

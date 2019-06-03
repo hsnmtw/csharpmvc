@@ -11,12 +11,12 @@ namespace MVCHIS.Customers {
             , Fields           = new HashSet<string> {"ReadOnly","Id","CreatedBy","CreatedOn","UpdatedBy","UpdatedOn",
                                                       "IdTypeCode","IdTypeEnglish","IdTypeArabic" }
             , RequiredFields   = new HashSet<string> { "Id", "IdTypeCode" }
-            , UniqueKeyFields  = new HashSet<string> { "IdTypeCode" }
+            , UniqueKeyFields  = new HashSet<HashSet<string>> { new HashSet<string> { "IdTypeCode" } }
             , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
             }
             , Sizes = new Dictionary<string, int> {
-                 ["CreatedBy"    ] = 50
-                ,["UpdatedBy"    ] = 50
+                 ["CreatedBy"    ] = 10
+                ,["UpdatedBy"    ] = 10
                 ,["IdTypeCode"   ] = 50
                 ,["IdTypeEnglish"] = 100
                 ,["IdTypeArabic" ] = 100

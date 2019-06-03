@@ -25,7 +25,7 @@ namespace MVCHIS.Common {
             if(!rfields.Select(x => mfields.Contains(x)).All(x => x)) {
                 throw new Exception($"ENTITY Required fields are not in MODEL : \n M:[\"{string.Join("\",\"", mfields.OrderBy(x => x))}\"] \n E:[\"{string.Join("\",\"", rfields.OrderBy(x => x))}\"]");
             }
-            var ufields = MetaData.UniqueKeyFields;
+            var ufields = new HashSet<string>(MetaData.UniqueKeyFields.SelectMany(x => x).ToList());
             if (!ufields.Select(x => mfields.Contains(x)).All(x => x)) {
                 throw new Exception($"ENTITY Unique fields are not in MODEL : \n M:[\"{string.Join("\",\"", mfields.OrderBy(x => x))}\"] \n E:[\"{string.Join("\",\"", ufields.OrderBy(x => x))}\"]");
             }
@@ -150,20 +150,19 @@ namespace MVCHIS.Common {
 
 
         public string GetDDL() {
-            var cols = from c in MetaData.Fields where c!="Id" select c;
+            var cols = from c in MetaData.Fields where c != "Id" select c;
             var size = MetaData.Sizes;
-            var dtps = from p in cols where p!="Id" select ddltype(typeof(M).GetProperty(p).PropertyType, size.ContainsKey(p) ? size[p] : -1);
-            var rqrd = MetaData.RequiredFields;
-            var uniq = string.Join(",",MetaData.UniqueKeyFields );
-            var pkey = string.Join(",",MetaData.PrimaryKeyField);
-            var cdef = from tpl in cols.Zip(dtps,(a,b) => new Tuple<string,string>(a,b)) select $@"{tpl.Item1} {tpl.Item2} {(rqrd.Contains(tpl.Item1) ? "NOT NULL" : "")}";
+            var dtps = from p in cols where p != "Id" select ddltype(typeof(M).GetProperty(p).PropertyType, size.ContainsKey(p) ? size[p] : -1); var rqrd = MetaData.RequiredFields;
+            var ukey = string.Join(",", MetaData.UniqueKeyFields.Select((x, i) => $"CONSTRAINT {MetaData.Source}_UK{i + 1} UNIQUE ({string.Join(",", x)})"));
+            var pkey = string.Join(",", MetaData.PrimaryKeyField);
+            var cdef = from tpl in cols.Zip(dtps, (a, b) => new Tuple<string, string>(a, b)) select $@"{tpl.Item1} {tpl.Item2} {(rqrd.Contains(tpl.Item1) ? "NOT NULL" : "")}";
             cdef = cdef.Concat(new string[] { "Id INTEGER IDENTITY(1,1) NOT NULL" });
-            //var fkey = string.Join("",from k in MetaData.ForeignKeys select $", CONSTRAINT {MetaData.Source}_FK_{k.Key} FOREIGN KEY({k.Key}) REFERENCES {k.Value.Item1}({k.Value.Item2})");
-            //return $@"CREATE TABLE {MetaData.Source} ({string.Join(",",cdef)}, CONSTRAINT {MetaData.Source}_PK PRIMARY KEY({pkey}), CONSTRAINT {MetaData.Source}_UK UNIQUE ({uniq}) {fkey});";
+            //var fkey = string.Join("", from k in MetaData.ForeignKeys select $", CONSTRAINT {MetaData.Source}_FK_{k.Key} FOREIGN KEY({k.Key}) REFERENCES {k.Value.Item1}({k.Value.Item2})");
+            //return $@"CREATE TABLE {MetaData.Source} ({string.Join(",", cdef)}, CONSTRAINT {MetaData.Source}_PK PRIMARY KEY({pkey}), {ukey} {fkey});";
             return $@"CREATE TABLE {MetaData.Source} ({string.Join(",", cdef)});";
         }
 
-        private string ddltype(Type propertyType,int size) {
+        private static string ddltype(Type propertyType,int size) {
 
             return new Dictionary<Type, string> 
             {

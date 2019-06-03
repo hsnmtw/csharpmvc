@@ -12,7 +12,7 @@ namespace MVCHIS.Utils {
     public partial class InputBoxForm : Form {
         public readonly static InputBoxForm Instance = new InputBoxForm();
         private InputBoxForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
         }
 
         public static string Prompt(string title,string prompt) {

@@ -8,7 +8,7 @@ namespace MVCHIS.Common {
     public partial class LookUpForm : Form {
         
         public LookUpForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
         }
 
         public int SelectedValueIndex       { get; set; }
@@ -24,7 +24,7 @@ namespace MVCHIS.Common {
 
         public bool ValueHasBeenSelected { get; set; }
         public LookUpForm(DataTable data,params string[]shownColumns) {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             this.shownColumns = shownColumns;
             lstView.ShownColumns = shownColumns.ToList();
             lstView.DataSource = data;
@@ -34,7 +34,7 @@ namespace MVCHIS.Common {
         public string SelectedValue => lstView.SelectedIndex < 0 ? null : lstView.Text.Split('|')[SelectedValueIndex];
         public string SelectedDescription => lstView.SelectedIndex < 0 ? null : lstView.Text.Split('|')[SelectedDescriptionIndex];
 
-        private void LookUpLoad(object sender, EventArgs e) { if (DesignMode) return;
+        private void LookUpLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
         }
 
      

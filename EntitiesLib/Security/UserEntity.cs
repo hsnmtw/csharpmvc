@@ -14,14 +14,14 @@ namespace MVCHIS.Security {
                                                      "IsActive", "Email", "FailedLoginAttempts",
                                                      "LastLoginDate", "LastChangePassword" }
             , RequiredFields  = new HashSet<string> {"Id","UserName","FullName","UserPassword","ProfileId"}
-            , UniqueKeyFields = new HashSet<string> {"UserName"}
+            , UniqueKeyFields = new HashSet<HashSet<string>> { new HashSet<string> { "UserName" } }
             , ForeignKeys     = new Dictionary<string, Tuple<string, string>> {
                 ["ProfileId"] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<ProfileModel>().MetaData.Source,"Id") 
             }
             , Sizes = new Dictionary<string, int> {
-                ["CreatedBy"   ] = 50,
-                ["UpdatedBy"   ] = 50,
-                ["UserName"    ] = 50,
+                ["CreatedBy"   ] = 10,
+                ["UpdatedBy"   ] = 10,
+                ["UserName"    ] = 10,
                 ["FullName"    ] = 100,
                 ["UserPassword"] = 100,
                 ["Email"       ] = 100,

@@ -31,7 +31,7 @@ namespace MVCHIS.Common {
         /// this should be used to verify uniqueness
         /// </summary>
         /// <returns>list of fields names that are marked UNIQUE</returns>
-        public HashSet<string> UniqueKeyFields { get; set; }
+        public HashSet<HashSet<string>> UniqueKeyFields { get; set; }
         /// <summary>
         /// gets the list of properties/fields that are mandatory
         /// this should be used for validation before saving a model

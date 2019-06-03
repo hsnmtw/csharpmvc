@@ -10,7 +10,7 @@ namespace MVCHIS.Customers {
         private ClientController CntrlCL;
 
         public ProjectForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -28,7 +28,7 @@ namespace MVCHIS.Customers {
         }
 
 
-        private void ProjectTypeFormLoad(object sender, EventArgs e) { if (DesignMode) return;
+        private void ProjectTypeFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
             CntrlCL = (ClientController)DBControllersFactory.GetController<ClientModel>();
 
         }

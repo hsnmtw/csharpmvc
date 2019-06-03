@@ -18,7 +18,7 @@ namespace MVCHIS.Customers {
 
 
         public ClientForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -44,7 +44,7 @@ namespace MVCHIS.Customers {
             NewButton = btnNew;
         }
 
-        private void ClientTypeFormLoad(object sender, EventArgs e) { if (DesignMode) return;
+        private void ClientTypeFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
 
             CntrlCT = (ClientTypeController)DBControllersFactory.GetController<ClientTypeModel>();
             CntrlCO = (ContactController)DBControllersFactory.GetController<ContactModel>();

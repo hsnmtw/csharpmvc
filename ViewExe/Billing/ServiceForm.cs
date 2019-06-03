@@ -16,7 +16,7 @@ namespace MVCHIS.Billing {
         private CurrencyController        CntrlCU;
         private VATController             CntrlVT;
         public ServiceForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             CntrlCN = (ContractController)DBControllersFactory.GetController<ContractModel>();
             CntrlCG = (BillingCategoryController)DBControllersFactory.GetController<BillingCategoryModel>();
             CntrlCU = (CurrencyController)DBControllersFactory.GetController<CurrencyModel>();
@@ -66,7 +66,7 @@ namespace MVCHIS.Billing {
             txtCurrencyEnglish.Text = currency?.CurrencyEnglish;
         }
 
-        private void ServiceForm_Load(object sender, EventArgs e) { if (DesignMode) return;
+        private void ServiceForm_Load(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
             cmbVATId.DataSource = CntrlVT.Read().OrderBy(x => -x.VATAmount).ToList();
             cmbVATId.DisplayMember = "VATCode";
             cmbVATId.ValueMember = "Id";

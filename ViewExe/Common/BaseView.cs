@@ -11,13 +11,16 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace MVCHIS.Common {
 
     public class BaseView<M,C> : UserControl, IView where C:IDBController<M> where M:BaseModel  {
-
+        [Browsable(false),EditorBrowsable(EditorBrowsableState.Never),DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Action<bool> AfterSave { get; set; }
-        public virtual C Controller { get; set; } 
+        [Browsable(false),EditorBrowsable(EditorBrowsableState.Never),DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public virtual C Controller { get; set; }
+        [Browsable(false),EditorBrowsable(EditorBrowsableState.Never),DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual M Model {
             get {
                 if (Controller == null) return null;
@@ -66,8 +69,9 @@ namespace MVCHIS.Common {
         private readonly Func<string, bool> isDouble,isInt32,isInt64,isBoolean,isDateTime;
         private readonly Func<string, PropertyInfo> Prop;
 
-        
-        public Dictionary<string, Control> Mapper { get; set; }
+        private Dictionary<string, Control> mapper = new Dictionary<string, Control>();
+        [Browsable(false),EditorBrowsable(EditorBrowsableState.Never),DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public Dictionary<string, Control> Mapper => mapper;
         public Button SaveButton { get; set; }
         public Button NewButton { get; set; }
         public Button DeleteButton { get; set; }
@@ -75,10 +79,12 @@ namespace MVCHIS.Common {
         public bool   SaveButtonEnabled { get; set; }
         public bool    NewButtonEnabled { get; set; }
         public bool DeleteButtonEnabled { get; set; }
-
+        [Browsable(false),EditorBrowsable(EditorBrowsableState.Never),DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Action ModelChanged { get; set; }
         public Control DefaultControl { get; set; }
+        [Browsable(false),EditorBrowsable(EditorBrowsableState.Never),DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Action<bool> AfterNew { get; set; }
+        [Browsable(false),EditorBrowsable(EditorBrowsableState.Never),DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Action<bool> AfterDelete { get; set; }
 
         public BaseView() : base() {
@@ -87,7 +93,6 @@ namespace MVCHIS.Common {
             Name = GetType().Name;
             if (DesignMode||(Site!=null && Site.DesignMode)) return;
 
-            Mapper = new Dictionary<string, Control>();
             Prop = new Func<string, PropertyInfo>(x => typeof(M).GetProperty(x));
             isBoolean  = new Func<string, bool>(x => (Mapper[x] is CheckBox )
                                                   && Prop(x).PropertyType == typeof(bool));
@@ -101,55 +106,62 @@ namespace MVCHIS.Common {
 
             //model = Activator.CreateInstance<M>();
             Load += (s, e) => {
-                if (DesignMode) return;
+                if (DesignMode||(Site!=null && Site.DesignMode)) return;
                 Controller = (C)DBControllersFactory.GetController<M>();
                 new PermissionsHelper<M,C>(this);
                 if (SaveButton != null) {
                     SaveButton.Enabled = SaveButtonEnabled;
-                    SaveButton.Click += (bs, be) => {
-                        //try {
-                            int saveresult = Controller.Save(Model);
-                            if(saveresult>0) Model = Controller.Find(Model, Controller.GetMetaData().UniqueKeyFields.ToArray());
-                            AfterSave?.Invoke(saveresult>0);
-                        try{}catch(Exception ex) {
-                            FormsHelper.Error(ex.Message);
-                        }
-                    };
+                    SaveButton.Click += SaveModelEvent;
                 }
                 if (DeleteButton != null) {
                     DeleteButton.Enabled = DeleteButtonEnabled;
-                    DeleteButton.Click += (bs, be) => {
-                        int deleteresult = Controller.Delete(Model);
-                        if(deleteresult>0) NewButton?.PerformClick();
-                        AfterDelete?.Invoke(deleteresult>0);
-                    };
+                    DeleteButton.Click += DeleteModelEvent;
                 }
                 if (NewButton != null) {
                     NewButton.Enabled = NewButtonEnabled;
-                    NewButton.Click += (bs, be) => {
-                        Model = Controller.NewModel();
-                        DefaultControl?.Select();
-                        AfterNew?.Invoke(true);
-                    };
-                }
+                    NewButton.Click += NewModelEvent;                }
                 //var controls = (from cntrl in Mapper.Values orderby cntrl.TabIndex where cntrl.TabStop select cntrl);
                 var sizes = Controller.GetMetaData().Sizes;
                 foreach (var cntrl in Mapper.Keys) {
                     if(sizes.ContainsKey(cntrl) && Mapper[cntrl] is TextBox) {
                         ((TextBox)Mapper[cntrl]).MaxLength = sizes[cntrl];
                     }
-                    Mapper[cntrl].KeyDown += (se, ee) => {
-                        if(ee.KeyCode == Keys.Enter) {
-                            ee.Handled = true;
-                            ee.SuppressKeyPress = true;
-                            SendKeys.Send("\t");
-                        }
-                    };
+                    Mapper[cntrl].KeyDown += MapperControlKeyDownEvent;
                 }
                 DefaultControl = Mapper.Values.Where(x=>x.TabStop).OrderBy(x=>x.TabIndex).FirstOrDefault();
                 DefaultControl?.Focus();
             };
 
+        }
+
+        private void SaveModelEvent(object sender, EventArgs e) {
+            //try {
+            int saveresult = Controller.Save(Model);
+            if (saveresult > 0) Model = Controller.Find(Model, Controller.GetMetaData().UniqueKeyFields.FirstOrDefault().ToArray());
+            AfterSave?.Invoke(saveresult > 0);
+            try { } catch (Exception ex) {
+                FormsHelper.Error(ex.Message);
+            };
+        }
+
+        private void MapperControlKeyDownEvent(object sender, KeyEventArgs ee) {
+            if (ee.KeyCode == Keys.Enter) {
+                ee.Handled = true;
+                ee.SuppressKeyPress = true;
+                SendKeys.Send("\t");
+            }
+        }
+
+        private void NewModelEvent(object sender, EventArgs e) {
+            Model = Controller.NewModel();
+            DefaultControl?.Select();
+            AfterNew?.Invoke(true);
+        }
+
+        public void DeleteModelEvent(object sender, EventArgs e) {
+            int deleteresult = Controller.Delete(Model);
+            if (deleteresult > 0) NewButton?.PerformClick();
+            AfterDelete?.Invoke(deleteresult > 0);
         }
 
         public void ValidateDate(TextBoxBase textbox) {
@@ -163,7 +175,7 @@ namespace MVCHIS.Common {
         public void SetModel(BaseModel model) {
             Model = (M)model;// Controller.FindById<M>(new int[] { Model.Id }).FirstOrDefault();
         }
-
+        [Browsable(false),EditorBrowsable(EditorBrowsableState.Never),DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public BaseModel GetModel() => Model;
     }
 }

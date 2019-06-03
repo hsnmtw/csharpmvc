@@ -24,7 +24,7 @@ namespace MVCHIS.Common {
         private IController controller = null;
 
         public LookUpButton() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             button1.Text = ARROW;
             Font = new Font("Consolas", 10, FontStyle.Bold);
             ShowFieldsInLookUp = new List<string>();
@@ -75,7 +75,7 @@ namespace MVCHIS.Common {
 
         public override string Text { get => button1.Text; set => button1.Text = value; }
 
-        private void LookUpButtonLoad(object sender, EventArgs e) { if (DesignMode) return;
+        private void LookUpButtonLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
             init();
         }
 
@@ -94,7 +94,7 @@ namespace MVCHIS.Common {
             }
 
             if (this.ShowFieldsInLookUp.Count == 0) {
-                this.ShowFieldsInLookUp.AddRange(this.controller.GetMetaData().UniqueKeyFields);
+                this.ShowFieldsInLookUp.AddRange(this.controller.GetMetaData().UniqueKeyFields.FirstOrDefault());
             }
 
 

@@ -58,6 +58,7 @@
     <Compile Include="Common\ControllersRegistery.cs" />
     <Compile Include="Common\DBControllersFactory.cs" />
     <Compile Include="Customers\CityController.cs" />
+    <Compile Include="Tools\DateConversionController.cs" />
     <Compile Include="Tools\EntityController.cs" />
     <Compile Include="Common\IController.cs" />
     <Compile Include="Common\ICrypto.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Tools\CalendarController.cs" />
     <Compile Include="Tools\DictionaryController.cs" />
     <Compile Include="Tools\LanguageState.cs" />
+    <Compile Include="Tools\SupportedCalendar.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EntitiesLib\EntitiesLib.csproj">

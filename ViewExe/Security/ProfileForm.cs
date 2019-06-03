@@ -17,7 +17,7 @@ namespace MVCHIS.Security {
         private EntitlementGroupController   CntrlEG;
 
         public ProfileForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -34,7 +34,7 @@ namespace MVCHIS.Security {
             NewButton = btnNew;
         }        
 
-        private void ProfileFormLoad(object sender, EventArgs e) { if (DesignMode) return;
+        private void ProfileFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
             CntrlEN = (EntitlementController)DBControllersFactory.GetController<EntitlementModel>();
             CntrlPE = (ProfileEntitlementController)DBControllersFactory.GetController<ProfileEntitlementModel>();
             CntrlEG = (EntitlementGroupController)DBControllersFactory.GetController<EntitlementGroupModel>();

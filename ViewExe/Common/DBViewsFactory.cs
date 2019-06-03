@@ -24,10 +24,9 @@ namespace MVCHIS.Common {
         }
 
         private static void InitializeView(MODELS model) {
-            var type = typeof(IView);
+            
             var view = AppDomain.CurrentDomain.GetAssemblies()
                         .SelectMany(s => s.GetTypes())
-                        .Where(p => type.IsAssignableFrom(p))
                         .Where(x => x.Name.Equals($"{model}Form"))
                         .FirstOrDefault();
 

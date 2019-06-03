@@ -11,14 +11,14 @@ namespace MVCHIS.Customers {
             , Fields           = new HashSet<string> {"ReadOnly","Id","CreatedBy","CreatedOn","UpdatedBy","UpdatedOn",
                                                       "IdNumber","IdTypeId","CityId","IssueDate","ExpiryDate","IsActive" }
             , RequiredFields   = new HashSet<string> { "Id", "IdTypeId", "IdNumber", "CityId" }
-            , UniqueKeyFields  = new HashSet<string> { "IdNumber", "IdTypeId", "CityId" }
+            , UniqueKeyFields  = new HashSet<HashSet<string>> { new HashSet<string> { "IdNumber", "IdTypeId", "CityId" } }
             , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
                 ["CityId" ]    = new Tuple<string, string>(DBEntitiesFactory.GetEntity<CityModel              >().MetaData.Source, "Id"),
                 ["IdTypeId"  ] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<IdentificationTypeModel>().MetaData.Source, "Id"),
             }
             , Sizes = new Dictionary<string, int> {
-                 ["CreatedBy"      ] = 50
-                ,["UpdatedBy"      ] = 50
+                 ["CreatedBy"      ] = 10
+                ,["UpdatedBy"      ] = 10
                 ,["IdNumber"       ] = 15
             }
             , Source           = "CustomersIdentification"

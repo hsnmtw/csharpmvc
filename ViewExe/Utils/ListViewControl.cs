@@ -19,6 +19,7 @@ namespace MVCHIS.Utils {
         //    SetWindowTheme(this.Handle, "", "");
         //    base.OnHandleCreated(e);
         //}
+        private List<object> theList;
 
         public string Filter { get; set; }
 
@@ -45,7 +46,7 @@ namespace MVCHIS.Utils {
                     Interlocked.Exchange(ref LoadingFKs, 1); // lock
                     if (Enum.TryParse<MODELS>(key.Substring(0, key.Length - 2), out MODELS m)) {
                         IController Cntrl = (IController)DBControllersFactory.GetController(m);
-                        var UniqueKeys = Cntrl.GetMetaData().UniqueKeyFields.ToArray().Concat(new string[] { "Id" }).ToArray();
+                        var UniqueKeys = Cntrl.GetMetaData().UniqueKeyFields.Flatten().ToArray().Concat(new string[] { "Id" }).ToArray();
                         var fkdata = new DataView(Cntrl.GetData()).ToTable(false, UniqueKeys);
                         FK[key] = new Dictionary<int, string>();
                         foreach (DataRow row in fkdata.Rows) {
@@ -71,13 +72,13 @@ namespace MVCHIS.Utils {
             if (FK.Keys.Contains(Columns[0].Name)) {
                 val = FK[Columns[0].Name][(int)val];
             }
-            var item = new ListViewItem(val.ToString());
+            var item = new ListViewItem(val.ToSortableString());
             for (int i = 1; i < Columns.Count; i++) {
                 val = cells[i];
                 if (FK.Keys.Contains(Columns[i].Name)) {
                     val = FK[Columns[i].Name][(int)val];
                 }
-                item.SubItems.Add(val.ToString());
+                item.SubItems.Add(val.ToSortableString());
 
             }
             if ((item + ":" + string.Join("|", item.SubItems.OfType<ListViewItem.ListViewSubItem>().Select(x => x.Text))).ToLower().Contains(Filter.ToLower())) {
@@ -128,13 +129,13 @@ namespace MVCHIS.Utils {
         private void LoadColumns(params string[] columns) {
 
             for(int i = 0; i < columns.Length; i++) {
-                string n = columns[i];
-                string t = n.FromCamelCaseToWords();
+                string c = columns[i];
+                string t = c;
 
-                if (n.Length > 2 && n.EndsWith("Id")) t = t.Substring(0, t.Length - 2);
-                if (n.Length > 2 && n.EndsWith("Code")) t = t.Substring(0, t.Length - 4);
+                if (c.Length > 2 && c.EndsWith("Id")) t = c.Substring(0, c.Length - 2);
+                if (c.Length > 2 && c.EndsWith("Code")) t = c.Substring(0, c.Length - 4);
 
-                Columns.Add(new ColumnHeader() { Name=n, Text=t.Trim() });
+                Columns.Add(new ColumnHeader() { Name=c, Text=c.FromCamelCaseToWords() });
             }
 
             //var colsi = from c in columns select (c.Length > 2 && c.EndsWith("Id")) ? c.Substring(0, c.Length - 2) : c;

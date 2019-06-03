@@ -12,7 +12,7 @@ namespace MVCHIS.Security.Users {
 
 
         public UserForm() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -36,7 +36,7 @@ namespace MVCHIS.Security.Users {
             NewButton = btnNew;
         }
 
-        private void UserFormLoad(object sender, EventArgs e) { if (DesignMode) return;
+        private void UserFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
             CntrlPR = (ProfileController)DBControllersFactory.GetController<ProfileModel>();
 
 

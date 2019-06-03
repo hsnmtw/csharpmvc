@@ -7,7 +7,7 @@ namespace MVCHIS.Tools {
 
 
         public DictionaryForm() : base() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;

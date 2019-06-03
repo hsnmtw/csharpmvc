@@ -11,12 +11,12 @@ namespace MVCHIS.Security {
               PrimaryKeyField = "Id"
             , Fields          = new HashSet<string> { "ReadOnly","Id", "CreatedBy", "CreatedOn", "UpdatedBy", "UpdatedOn", "ProfileName", "ProfileDesc" }
             , RequiredFields  = new HashSet<string> { "Id", "ProfileName" }
-            , UniqueKeyFields = new HashSet<string> { "ProfileName" }
+            , UniqueKeyFields = new HashSet<HashSet<string>> { new HashSet<string> { "ProfileName" } }
             , ForeignKeys     = new Dictionary<string, Tuple<string, string>> {
             }
             , Sizes = new Dictionary<string, int> {
-                ["CreatedBy"  ] = 50,
-                ["UpdatedBy"  ] = 50,
+                ["CreatedBy"  ] = 10,
+                ["UpdatedBy"  ] = 10,
                 ["ProfileName"] = 50,
                 ["ProfileDesc"] = 100,
             }

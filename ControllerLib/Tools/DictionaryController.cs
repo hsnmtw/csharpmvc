@@ -22,6 +22,7 @@ namespace MVCHIS.Tools {
             }
             set {
                 en[word] = value;
+                ar[value] = word;
             }
         }
 

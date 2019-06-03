@@ -44,7 +44,7 @@ namespace MVCHIS.Utils {
         public override string Text => lstView.Text; 
 
         public FixedWidthListBox() {
-            InitializeComponent(); //();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return; //();
             ShownColumns = new List<string>();
             if (DesignMode||(Site!=null && Site.DesignMode)) return;
         }

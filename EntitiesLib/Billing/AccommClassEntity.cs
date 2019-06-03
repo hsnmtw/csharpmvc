@@ -11,12 +11,12 @@ namespace MVCHIS.Billing {
             , Fields           = new HashSet<string> {"ReadOnly","Id","CreatedBy","CreatedOn","UpdatedBy","UpdatedOn",
                                                       "AccommClassCode", "AccommClassDesc" }
             , RequiredFields   = new HashSet<string> { "Id", "AccommClassCode", "AccommClassDesc" }
-            , UniqueKeyFields  = new HashSet<string> { "AccommClassCode" }
+            , UniqueKeyFields  = new HashSet<HashSet<string>> { new HashSet<string> { "AccommClassCode" } }
             , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
             }
             , Sizes = new Dictionary<string, int> {
-                ["CreatedBy"] = 50,
-                ["UpdatedBy"] = 50,
+                ["CreatedBy"] = 10,
+                ["UpdatedBy"] = 10,
                 ["AccommClassCode"] = 50,
                 ["AccommClassDesc"] = 100,
 

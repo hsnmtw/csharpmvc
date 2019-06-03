@@ -15,7 +15,7 @@ namespace MVCHIS.Common {
         public bool ValueHasBeenSelected => listView1.SelectedIndices.Count > 0;
 
         public LookUpForm2() {
-            InitializeComponent();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //this.values = new Dictionary<string, string>();
         }
 
@@ -44,7 +44,7 @@ namespace MVCHIS.Common {
 
         public string SelectedValue => ValueHasBeenSelected == false ? null : (SelectedValueIndex==0 ?  this.listView1.SelectedItems[0].Text : this.listView1.SelectedItems[0].SubItems[SelectedValueIndex].Text);
 
-        private void LookUpLoad(object sender, EventArgs e) { if (DesignMode) return;
+        private void LookUpLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //this.lblSearch.Text = "";
             if (0 == Interlocked.Exchange(ref listView1.LoadingFKs, 1)) {
                 Requery();
