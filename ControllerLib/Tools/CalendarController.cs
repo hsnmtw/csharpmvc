@@ -59,5 +59,9 @@ namespace MVCHIS.Tools {
         public DataTable GetData() {
             throw new NotImplementedException();
         }
+
+        public Type GetModelType() {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using MVCHIS.Common;
 using MVCHIS.Customers;
+using MVCHIS.Utils;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace MVCHIS.Housing.Rooms {
@@ -34,6 +36,9 @@ namespace MVCHIS.Housing.Rooms {
         private void RoomForm_Load(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
             CntrlBD = (BuildingController)DBControllersFactory.GetController<BuildingModel>();
             CntrlCY = (CountryController)DBControllersFactory.GetController<CountryModel>();
+            if (ListViewControl.FK.ContainsKey("CountryId") == false) {
+                ListViewControl.FK["CountryId"] = CntrlCY.Read().ToDictionary(x=>x.Id,x=>x.CountryCode);
+            }
 
         }
 

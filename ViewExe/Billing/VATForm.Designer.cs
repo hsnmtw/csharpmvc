@@ -23,7 +23,6 @@
         /// the contents of this method with the code editor.
         /// </summaryClient
         private void InitializeComponent(){
-            MVCHIS.Billing.VATModel vatModel1 = new MVCHIS.Billing.VATModel();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
@@ -75,7 +74,7 @@
             // 
             // txtUpdatedOn
             // 
-            this.txtUpdatedOn.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtUpdatedOn.Location = new System.Drawing.Point(214, 181);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -85,7 +84,7 @@
             // 
             // txtUpdatedBy
             // 
-            this.txtUpdatedBy.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtUpdatedBy.Location = new System.Drawing.Point(141, 181);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -104,7 +103,7 @@
             // 
             // txtCreatedOn
             // 
-            this.txtCreatedOn.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtCreatedOn.Location = new System.Drawing.Point(214, 155);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -114,7 +113,7 @@
             // 
             // txtCreatedBy
             // 
-            this.txtCreatedBy.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtCreatedBy.Location = new System.Drawing.Point(141, 155);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -160,7 +159,6 @@
             // 
             // txtVATCode
             // 
-            this.txtVATCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtVATCode.Location = new System.Drawing.Point(141, 61);
             this.txtVATCode.Name = "txtVATCode";
             this.txtVATCode.Size = new System.Drawing.Size(154, 20);
@@ -257,16 +255,6 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtCreatedBy);
-            vatModel1.CreatedBy = null;
-            vatModel1.CreatedOn = null;
-            vatModel1.Id = 0;
-            vatModel1.ReadOnly = false;
-            vatModel1.UpdatedBy = null;
-            vatModel1.UpdatedOn = null;
-            vatModel1.VATAmount = 0D;
-            vatModel1.VATCode = null;
-            vatModel1.VATDesc = null;
-            this.Model = vatModel1;
             this.Name = "VATForm";
             this.Size = new System.Drawing.Size(378, 311);
             this.Load += new System.EventHandler(this.VATFormLoad);
@@ -290,11 +278,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtVATCode;
         private Common.LookUpButton lookUpButtonVAT;
-        private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtVATDesc;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.MaskedTextBox txtVATAmount;
+        private Utils.ForcedFocusCheckBox chkReadOnly;
     }
 }

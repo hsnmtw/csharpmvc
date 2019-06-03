@@ -72,7 +72,7 @@
             // 
             // txtUpdatedOn
             // 
-            this.txtUpdatedOn.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtUpdatedOn.Location = new System.Drawing.Point(233, 131);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -82,7 +82,7 @@
             // 
             // txtUpdatedBy
             // 
-            this.txtUpdatedBy.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtUpdatedBy.Location = new System.Drawing.Point(159, 131);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -101,7 +101,7 @@
             // 
             // txtCreatedOn
             // 
-            this.txtCreatedOn.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtCreatedOn.Location = new System.Drawing.Point(233, 105);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -111,7 +111,7 @@
             // 
             // txtCreatedBy
             // 
-            this.txtCreatedBy.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtCreatedBy.Location = new System.Drawing.Point(159, 105);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -157,7 +157,6 @@
             // 
             // txtEntitlementGroupName
             // 
-            this.txtEntitlementGroupName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtEntitlementGroupName.Location = new System.Drawing.Point(159, 42);
             this.txtEntitlementGroupName.Name = "txtEntitlementGroupName";
             this.txtEntitlementGroupName.Size = new System.Drawing.Size(192, 20);

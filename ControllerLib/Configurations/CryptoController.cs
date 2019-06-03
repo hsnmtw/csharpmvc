@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using MVCHIS.Common;
 
 namespace MVCHIS.Configurations {
@@ -10,6 +11,8 @@ namespace MVCHIS.Configurations {
         public MetaData GetMetaData() {
             throw new System.NotImplementedException();
         }
+
+        public Type GetModelType() => typeof(CryptoModel);
 
         public CryptoModel Process(CryptoModel model) {
             model.Encrypted = CryptoFactory.Encrypt(model.InputText);

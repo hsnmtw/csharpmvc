@@ -39,8 +39,6 @@
             this.lookUpButtonClient = new MVCHIS.Common.LookUpButton();
             this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.lblMetaDataCountryEnglish = new System.Windows.Forms.Label();
             this.txtClientId = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lookUpButtonProjectName = new MVCHIS.Common.LookUpButton();
@@ -76,7 +74,7 @@
             // 
             // txtUpdatedOn
             // 
-            this.txtUpdatedOn.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtUpdatedOn.Location = new System.Drawing.Point(226, 138);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -86,7 +84,7 @@
             // 
             // txtUpdatedBy
             // 
-            this.txtUpdatedBy.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtUpdatedBy.Location = new System.Drawing.Point(151, 138);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -105,7 +103,7 @@
             // 
             // txtCreatedOn
             // 
-            this.txtCreatedOn.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtCreatedOn.Location = new System.Drawing.Point(226, 111);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -115,7 +113,7 @@
             // 
             // txtCreatedBy
             // 
-            this.txtCreatedBy.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtCreatedBy.Location = new System.Drawing.Point(151, 111);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -140,7 +138,6 @@
             this.txtId.Size = new System.Drawing.Size(68, 20);
             this.txtId.TabIndex = 0;
             this.txtId.TabStop = false;
-            
             // 
             // label1
             // 
@@ -162,7 +159,6 @@
             // 
             // txtProjectName
             // 
-            this.txtProjectName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtProjectName.Location = new System.Drawing.Point(151, 48);
             this.txtProjectName.Name = "txtProjectName";
             this.txtProjectName.Size = new System.Drawing.Size(186, 20);
@@ -201,26 +197,6 @@
             this.label4.Size = new System.Drawing.Size(57, 13);
             this.label4.TabIndex = 50;
             this.label4.Text = "Read Only";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(137, 51);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(12, 13);
-            this.label10.TabIndex = 48;
-            this.label10.Text = "?";
-            // 
-            // lblMetaDataCountryEnglish
-            // 
-            this.lblMetaDataCountryEnglish.AutoSize = true;
-            this.lblMetaDataCountryEnglish.ForeColor = System.Drawing.Color.Red;
-            this.lblMetaDataCountryEnglish.Location = new System.Drawing.Point(137, 78);
-            this.lblMetaDataCountryEnglish.Name = "lblMetaDataCountryEnglish";
-            this.lblMetaDataCountryEnglish.Size = new System.Drawing.Size(12, 13);
-            this.lblMetaDataCountryEnglish.TabIndex = 48;
-            this.lblMetaDataCountryEnglish.Text = "?";
             // 
             // txtClientId
             // 
@@ -268,13 +244,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(395, 266);
             this.Controls.Add(this.chkReadOnly);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.txtUpdatedOn);
-            this.Controls.Add(this.lblMetaDataCountryEnglish);
             this.Controls.Add(this.txtUpdatedBy);
             this.Controls.Add(this.txtClientShortName);
             this.Controls.Add(this.txtClientId);
@@ -292,7 +265,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label5);
             this.Name = "ProjectForm";
-            this.Text = "Projects";
+            this.Size = new System.Drawing.Size(395, 266);
             this.Load += new System.EventHandler(this.ProjectTypeFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -314,13 +287,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtProjectName;
         private Common.LookUpButton lookUpButtonClient;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label lblMetaDataCountryEnglish;
         private System.Windows.Forms.TextBox txtClientId;
         private System.Windows.Forms.Label label2;
         private Common.LookUpButton lookUpButtonProjectName;
-        private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtClientShortName;
+        private Utils.ForcedFocusCheckBox chkReadOnly;
     }
 }

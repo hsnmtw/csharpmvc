@@ -70,7 +70,7 @@
             // 
             // txtUpdatedOn
             // 
-            this.txtUpdatedOn.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtUpdatedOn.Location = new System.Drawing.Point(213, 169);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -80,7 +80,7 @@
             // 
             // txtUpdatedBy
             // 
-            this.txtUpdatedBy.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtUpdatedBy.Location = new System.Drawing.Point(139, 169);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -99,7 +99,7 @@
             // 
             // txtCreatedOn
             // 
-            this.txtCreatedOn.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtCreatedOn.Location = new System.Drawing.Point(213, 143);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -109,7 +109,7 @@
             // 
             // txtCreatedBy
             // 
-            this.txtCreatedBy.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtCreatedBy.Location = new System.Drawing.Point(139, 143);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -156,7 +156,6 @@
             // 
             // txtBuildingTypeCode
             // 
-            this.txtBuildingTypeCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtBuildingTypeCode.Location = new System.Drawing.Point(139, 46);
             this.txtBuildingTypeCode.Name = "txtBuildingTypeCode";
             this.txtBuildingTypeCode.Size = new System.Drawing.Size(154, 20);

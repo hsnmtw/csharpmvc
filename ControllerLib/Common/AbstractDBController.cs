@@ -41,5 +41,7 @@ namespace MVCHIS.Common {
         public object Dispatch(string action, params object[] arguments) {
             return GetType().GetMethod(action).Invoke(this,arguments);
         }
+
+        public Type GetModelType() => typeof(M);
     }
 }

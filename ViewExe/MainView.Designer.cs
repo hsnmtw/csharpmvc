@@ -64,8 +64,10 @@
             this.lblHeading = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblActionStatus = new System.Windows.Forms.Label();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -249,7 +251,8 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.tabControl1);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
@@ -261,7 +264,6 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.Control;
             this.panel2.Controls.Add(this.treeViewMenu);
             this.panel2.Controls.Add(this.txtSearchMenu);
             resources.ApplyResources(this.panel2, "panel2");
@@ -292,21 +294,20 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.SystemColors.Control;
             this.panel3.Controls.Add(this.lblHeading);
             resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
             // 
             // lblHeading
             // 
-            this.lblHeading.BackColor = System.Drawing.Color.Gray;
+            this.lblHeading.BackColor = System.Drawing.SystemColors.ActiveCaption;
             resources.ApplyResources(this.lblHeading, "lblHeading");
             this.lblHeading.ForeColor = System.Drawing.Color.White;
             this.lblHeading.Name = "lblHeading";
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.SystemColors.Control;
+            this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.Controls.Add(this.lblActionStatus);
             resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Name = "panel4";
@@ -319,6 +320,12 @@
             this.lblActionStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblActionStatus.ForeColor = System.Drawing.Color.Black;
             this.lblActionStatus.Name = "lblActionStatus";
+            // 
+            // tabControl1
+            // 
+            resources.ApplyResources(this.tabControl1, "tabControl1");
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
             // 
             // MainView
             // 
@@ -339,6 +346,7 @@
             this.statusStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -385,6 +393,7 @@
         private System.Windows.Forms.Label lblHeading;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label lblActionStatus;
+        private System.Windows.Forms.TabControl tabControl1;
     }
 }
 

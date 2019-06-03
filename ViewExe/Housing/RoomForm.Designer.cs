@@ -59,7 +59,6 @@
             // 
             // txtRoomName
             // 
-            this.txtRoomName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtRoomName.Location = new System.Drawing.Point(129, 40);
             this.txtRoomName.Name = "txtRoomName";
             this.txtRoomName.Size = new System.Drawing.Size(154, 20);
@@ -67,7 +66,6 @@
             // 
             // txtBuildingId
             // 
-            this.txtBuildingId.BackColor = System.Drawing.SystemColors.Window;
             this.txtBuildingId.Location = new System.Drawing.Point(129, 70);
             this.txtBuildingId.Name = "txtBuildingId";
             this.txtBuildingId.ReadOnly = true;
@@ -105,7 +103,6 @@
             // 
             // txtUpdatedOn
             // 
-            this.txtUpdatedOn.BackColor = System.Drawing.SystemColors.Control;
             this.txtUpdatedOn.Location = new System.Drawing.Point(204, 214);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -115,7 +112,6 @@
             // 
             // txtUpdatedBy
             // 
-            this.txtUpdatedBy.BackColor = System.Drawing.SystemColors.Control;
             this.txtUpdatedBy.Location = new System.Drawing.Point(129, 214);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -134,7 +130,6 @@
             // 
             // txtCreatedOn
             // 
-            this.txtCreatedOn.BackColor = System.Drawing.SystemColors.Control;
             this.txtCreatedOn.Location = new System.Drawing.Point(204, 188);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -144,7 +139,6 @@
             // 
             // txtCreatedBy
             // 
-            this.txtCreatedBy.BackColor = System.Drawing.SystemColors.Control;
             this.txtCreatedBy.Location = new System.Drawing.Point(129, 188);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -208,7 +202,6 @@
             // 
             // txtCountryId
             // 
-            this.txtCountryId.BackColor = System.Drawing.SystemColors.Window;
             this.txtCountryId.Location = new System.Drawing.Point(129, 98);
             this.txtCountryId.Name = "txtCountryId";
             this.txtCountryId.ReadOnly = true;
@@ -255,7 +248,7 @@
             this.lookUpButton1.Name = "lookUpButton1";
             this.lookUpButton1.SelectedValueIndex = 0;
             this.lookUpButton1.ShowFieldsInLookUp.Add("RoomName");
-            this.lookUpButton1.ShowFieldsInLookUp.Add("CountryCode");
+            this.lookUpButton1.ShowFieldsInLookUp.Add("CountryId");
             this.lookUpButton1.ShowFieldsInLookUp.Add("BedCapacity");
             this.lookUpButton1.Size = new System.Drawing.Size(22, 22);
             this.lookUpButton1.TabIndex = 2;
@@ -331,7 +324,6 @@
             // 
             // txtCountryCode
             // 
-            this.txtCountryCode.BackColor = System.Drawing.SystemColors.Control;
             this.txtCountryCode.Enabled = false;
             this.txtCountryCode.Location = new System.Drawing.Point(184, 97);
             this.txtCountryCode.Name = "txtCountryCode";
@@ -342,7 +334,6 @@
             // 
             // txtBuildingName
             // 
-            this.txtBuildingName.BackColor = System.Drawing.SystemColors.Control;
             this.txtBuildingName.Enabled = false;
             this.txtBuildingName.Location = new System.Drawing.Point(184, 71);
             this.txtBuildingName.Name = "txtBuildingName";
@@ -353,7 +344,6 @@
             // 
             // txtCountryEnglish
             // 
-            this.txtCountryEnglish.BackColor = System.Drawing.SystemColors.Control;
             this.txtCountryEnglish.Enabled = false;
             this.txtCountryEnglish.Location = new System.Drawing.Point(220, 97);
             this.txtCountryEnglish.Name = "txtCountryEnglish";
@@ -430,10 +420,10 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtNumberOfWindows;
         private System.Windows.Forms.TextBox txtBedCapacity;
-        private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtCountryCode;
         private System.Windows.Forms.TextBox txtBuildingName;
         private System.Windows.Forms.TextBox txtCountryEnglish;
+        private Utils.ForcedFocusCheckBox chkReadOnly;
     }
 }

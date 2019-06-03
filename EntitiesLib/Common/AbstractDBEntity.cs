@@ -75,7 +75,8 @@ namespace MVCHIS.Common {
             var sql = $"SELECT [{slc}] FROM [{src}] {(whereFields.Length>0? $" WHERE ({whr})" : "")}";
             var prm = (from c in whereFields select new KeyValuePair<string,object>($"@{c}", PrepareParameter(model.GetType().GetProperty(c).GetValue(model))))?.ToArray();
             var tbl = DBConnectionManager.Instance.Query(model,sql, prm);
-            return tbl.FirstOrDefault();
+            var rsl = tbl.FirstOrDefault();
+            return rsl;// == null ? rsl : NewModel();
         }
 
         public virtual int Create(M model) {

@@ -91,7 +91,7 @@
             // 
             // txtUpdatedOn
             // 
-            this.txtUpdatedOn.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtUpdatedOn.Location = new System.Drawing.Point(233, 366);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -101,7 +101,7 @@
             // 
             // txtUpdatedBy
             // 
-            this.txtUpdatedBy.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtUpdatedBy.Location = new System.Drawing.Point(157, 366);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -120,7 +120,7 @@
             // 
             // txtCreatedOn
             // 
-            this.txtCreatedOn.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtCreatedOn.Location = new System.Drawing.Point(233, 336);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -130,7 +130,7 @@
             // 
             // txtCreatedBy
             // 
-            this.txtCreatedBy.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtCreatedBy.Location = new System.Drawing.Point(157, 336);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -336,7 +336,6 @@
             // 
             // txtUserName
             // 
-            this.txtUserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtUserName.Location = new System.Drawing.Point(157, 42);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(199, 20);
@@ -344,7 +343,6 @@
             // 
             // txtProfileName
             // 
-            this.txtProfileName.BackColor = System.Drawing.SystemColors.Control;
             this.txtProfileName.Location = new System.Drawing.Point(197, 101);
             this.txtProfileName.Name = "txtProfileName";
             this.txtProfileName.ReadOnly = true;
@@ -404,7 +402,6 @@
             // 
             // txtProfileId
             // 
-            this.txtProfileId.BackColor = System.Drawing.SystemColors.Window;
             this.txtProfileId.Location = new System.Drawing.Point(157, 101);
             this.txtProfileId.Name = "txtProfileId";
             this.txtProfileId.ReadOnly = true;

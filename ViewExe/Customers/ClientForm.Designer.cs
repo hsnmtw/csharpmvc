@@ -39,10 +39,6 @@
             this.lookUpButtonShortName = new MVCHIS.Common.LookUpButton();
             this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.lblMetaDataCountryEnglish = new System.Windows.Forms.Label();
             this.txtBillingAddress = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtClientTypeId = new System.Windows.Forms.TextBox();
@@ -52,18 +48,14 @@
             this.lookUpButtonClientType = new MVCHIS.Common.LookUpButton();
             this.txtWebsite = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
             this.txtNameArabic = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.chkIsActive = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.label30 = new System.Windows.Forms.Label();
             this.txtClientTypeCode = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtPhoneNumber = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtFaxNumber = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -81,7 +73,6 @@
             this.txtCountryCode = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.lookUpButtonNationality = new MVCHIS.Common.LookUpButton();
-            this.label14 = new System.Windows.Forms.Label();
             this.txtDateOfBirth = new System.Windows.Forms.TextBox();
             this.btnDateOfBirth = new System.Windows.Forms.Button();
             this.txtCountryEnglish = new System.Windows.Forms.TextBox();
@@ -119,7 +110,7 @@
             // 
             // txtUpdatedOn
             // 
-            this.txtUpdatedOn.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtUpdatedOn.Location = new System.Drawing.Point(608, 301);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -129,7 +120,7 @@
             // 
             // txtUpdatedBy
             // 
-            this.txtUpdatedBy.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtUpdatedBy.Location = new System.Drawing.Point(534, 301);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -149,7 +140,7 @@
             // 
             // txtCreatedOn
             // 
-            this.txtCreatedOn.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtCreatedOn.Location = new System.Drawing.Point(608, 275);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -160,7 +151,7 @@
             // 
             // txtCreatedBy
             // 
-            this.txtCreatedBy.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtCreatedBy.Location = new System.Drawing.Point(534, 275);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -208,7 +199,6 @@
             // 
             // txtShortName
             // 
-            this.txtShortName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtShortName.Location = new System.Drawing.Point(161, 50);
             this.txtShortName.Name = "txtShortName";
             this.txtShortName.Size = new System.Drawing.Size(129, 20);
@@ -249,46 +239,6 @@
             this.label19.Size = new System.Drawing.Size(57, 13);
             this.label19.TabIndex = 50;
             this.label19.Text = "Read Only";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.ForeColor = System.Drawing.Color.Red;
-            this.label12.Location = new System.Drawing.Point(146, 158);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(12, 13);
-            this.label12.TabIndex = 48;
-            this.label12.Text = "?";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(146, 53);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(12, 13);
-            this.label10.TabIndex = 48;
-            this.label10.Text = "?";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.ForeColor = System.Drawing.Color.Red;
-            this.label18.Location = new System.Drawing.Point(146, 133);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(12, 13);
-            this.label18.TabIndex = 48;
-            this.label18.Text = "?";
-            // 
-            // lblMetaDataCountryEnglish
-            // 
-            this.lblMetaDataCountryEnglish.AutoSize = true;
-            this.lblMetaDataCountryEnglish.ForeColor = System.Drawing.Color.Red;
-            this.lblMetaDataCountryEnglish.Location = new System.Drawing.Point(146, 80);
-            this.lblMetaDataCountryEnglish.Name = "lblMetaDataCountryEnglish";
-            this.lblMetaDataCountryEnglish.Size = new System.Drawing.Size(12, 13);
-            this.lblMetaDataCountryEnglish.TabIndex = 48;
-            this.lblMetaDataCountryEnglish.Text = "?";
             // 
             // txtBillingAddress
             // 
@@ -380,16 +330,6 @@
             this.label28.TabIndex = 47;
             this.label28.Text = "Website";
             // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.ForeColor = System.Drawing.Color.Red;
-            this.label27.Location = new System.Drawing.Point(146, 240);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(12, 13);
-            this.label27.TabIndex = 48;
-            this.label27.Text = "?";
-            // 
             // txtNameArabic
             // 
             this.txtNameArabic.BackColor = System.Drawing.Color.White;
@@ -407,16 +347,6 @@
             this.label24.Size = new System.Drawing.Size(67, 13);
             this.label24.TabIndex = 47;
             this.label24.Text = "Name Arabic";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.ForeColor = System.Drawing.Color.Red;
-            this.label25.Location = new System.Drawing.Point(146, 106);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(12, 13);
-            this.label25.TabIndex = 48;
-            this.label25.Text = "?";
             // 
             // label26
             // 
@@ -455,16 +385,6 @@
             this.txtClientTypeCode.TabIndex = 7;
             this.txtClientTypeCode.Tag = "ClientTypeCode";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(146, 266);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(12, 13);
-            this.label4.TabIndex = 48;
-            this.label4.Text = "?";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -482,16 +402,6 @@
             this.txtPhoneNumber.Size = new System.Drawing.Size(211, 20);
             this.txtPhoneNumber.TabIndex = 10;
             this.txtPhoneNumber.Tag = "PhoneNumber";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.Color.Red;
-            this.label8.Location = new System.Drawing.Point(146, 292);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(12, 13);
-            this.label8.TabIndex = 48;
-            this.label8.Text = "?";
             // 
             // label9
             // 
@@ -645,7 +555,6 @@
             // 
             // txtCountryCode
             // 
-            this.txtCountryCode.BackColor = System.Drawing.SystemColors.Control;
             this.txtCountryCode.Enabled = false;
             this.txtCountryCode.Location = new System.Drawing.Point(205, 366);
             this.txtCountryCode.Name = "txtCountryCode";
@@ -679,16 +588,6 @@
             this.lookUpButtonNationality.TabIndex = 18;
             this.lookUpButtonNationality.TabStop = false;
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.ForeColor = System.Drawing.Color.Red;
-            this.label14.Location = new System.Drawing.Point(146, 371);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(12, 13);
-            this.label14.TabIndex = 48;
-            this.label14.Text = "?";
-            // 
             // txtDateOfBirth
             // 
             this.txtDateOfBirth.BackColor = System.Drawing.Color.White;
@@ -714,7 +613,6 @@
             // 
             // txtCountryEnglish
             // 
-            this.txtCountryEnglish.BackColor = System.Drawing.SystemColors.Control;
             this.txtCountryEnglish.Enabled = false;
             this.txtCountryEnglish.Location = new System.Drawing.Point(243, 366);
             this.txtCountryEnglish.Name = "txtCountryEnglish";
@@ -735,30 +633,21 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label26);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.label12);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtDateOfBirth);
             this.Controls.Add(this.label28);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.label19);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.txtUpdatedOn);
-            this.Controls.Add(this.label27);
             this.Controls.Add(this.txtUpdatedBy);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.txtBillingAddress);
             this.Controls.Add(this.label30);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtCreatedOn);
             this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.label18);
             this.Controls.Add(this.txtCreatedBy);
-            this.Controls.Add(this.label25);
-            this.Controls.Add(this.lblMetaDataCountryEnglish);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtShortName);
@@ -803,33 +692,23 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtShortName;
         private Common.LookUpButton lookUpButtonShortName;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label lblMetaDataCountryEnglish;
         private System.Windows.Forms.TextBox txtLongName;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtBillingAddress;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox txtClientTypeId;
         private System.Windows.Forms.Label label17;
         private Common.LookUpButton lookUpButtonClientType;
-        private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox txtNameArabic;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.CheckBox chkIsActive;
         private System.Windows.Forms.TextBox txtWebsite;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.TextBox txtClientTypeCode;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtPhoneNumber;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtFaxNumber;
         private System.Windows.Forms.TabControl tabControl1;
@@ -847,9 +726,10 @@
         private System.Windows.Forms.TextBox txtCountryCode;
         private System.Windows.Forms.Label label13;
         private Common.LookUpButton lookUpButtonNationality;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtDateOfBirth;
         private System.Windows.Forms.Button btnDateOfBirth;
         private System.Windows.Forms.TextBox txtCountryEnglish;
+        private Utils.ForcedFocusCheckBox chkReadOnly;
+        private Utils.ForcedFocusCheckBox chkIsActive;
     }
 }

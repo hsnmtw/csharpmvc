@@ -67,7 +67,7 @@
             // 
             // txtUpdatedOn
             // 
-            this.txtUpdatedOn.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtUpdatedOn.Enabled = false;
             this.txtUpdatedOn.Location = new System.Drawing.Point(236, 236);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
@@ -78,7 +78,7 @@
             // 
             // txtUpdatedBy
             // 
-            this.txtUpdatedBy.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtUpdatedBy.Enabled = false;
             this.txtUpdatedBy.Location = new System.Drawing.Point(161, 236);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
@@ -98,7 +98,7 @@
             // 
             // txtCreatedOn
             // 
-            this.txtCreatedOn.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtCreatedOn.Enabled = false;
             this.txtCreatedOn.Location = new System.Drawing.Point(236, 205);
             this.txtCreatedOn.Name = "txtCreatedOn";
@@ -109,7 +109,7 @@
             // 
             // txtCreatedBy
             // 
-            this.txtCreatedBy.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtCreatedBy.Enabled = false;
             this.txtCreatedBy.Location = new System.Drawing.Point(161, 205);
             this.txtCreatedBy.Name = "txtCreatedBy";
@@ -157,7 +157,6 @@
             // 
             // txtEntitlementName
             // 
-            this.txtEntitlementName.BackColor = System.Drawing.SystemColors.Control;
             this.txtEntitlementName.Location = new System.Drawing.Point(203, 43);
             this.txtEntitlementName.Name = "txtEntitlementName";
             this.txtEntitlementName.ReadOnly = true;
@@ -249,7 +248,6 @@
             // 
             // txtProfileName
             // 
-            this.txtProfileName.BackColor = System.Drawing.SystemColors.Control;
             this.txtProfileName.Location = new System.Drawing.Point(203, 74);
             this.txtProfileName.Name = "txtProfileName";
             this.txtProfileName.ReadOnly = true;
@@ -339,7 +337,6 @@
             // 
             // txtEntitlementId
             // 
-            this.txtEntitlementId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtEntitlementId.Location = new System.Drawing.Point(161, 43);
             this.txtEntitlementId.Name = "txtEntitlementId";
             this.txtEntitlementId.ReadOnly = true;
@@ -349,7 +346,6 @@
             // 
             // txtProfileId
             // 
-            this.txtProfileId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtProfileId.Location = new System.Drawing.Point(161, 74);
             this.txtProfileId.Name = "txtProfileId";
             this.txtProfileId.ReadOnly = true;

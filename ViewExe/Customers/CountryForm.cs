@@ -29,18 +29,6 @@ namespace MVCHIS.Customers {
         }
 
         private void CountryFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
-
-
-            Label[] fieldsmarkers = { lblMetaDataCountryArabic,lblMetaDataCountryCode,lblMetaDataCountryEnglish };
-
-            foreach(var required in fieldsmarkers) {
-                string field = required.Name.Replace("lblMetaData", "");
-                if (this.Controller.GetMetaData().RequiredFields.Contains(field)) {
-                    required.Text = "*";
-                } else {
-                    required.Text = "";
-                }
-            }
         }
 
         private void CountryCodeTextBoxLookUpSelected(object sender, EventArgs e) {

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Threading;
 
 namespace MVCHIS.Billing {
 
@@ -64,7 +65,26 @@ namespace MVCHIS.Billing {
         }
 
         private void ContractFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
-            listViewControlServices.LoadData("", new ServiceModel[] { }, SERVICE_COLUMNS);
+            new Thread(LoadFKs).Start();
+            SuspendLayout();
+            this.listViewControl1.Items.Clear();
+            this.listViewControl1.Columns.Clear();
+            this.listViewControl1.LoadData("", new ServiceModel[] { }, SERVICE_COLUMNS) ;
+            ResumeLayout();
+        }
+
+        private void LoadFKs() {
+            if (!new string[] { "CurrencyId", "FromCurrencyId", "ToCurrencyId" }.All(x => ListViewControl.FK.ContainsKey(x))) {
+                ListViewControl.FK["CurrencyId"] = CntrlCU.Read().ToDictionary(x => x.Id, x => x.CurrencyCode);
+                ListViewControl.FK["FromCurrencyId"] = ListViewControl.FK["CurrencyId"];
+                ListViewControl.FK["ToCurrencyId"] = ListViewControl.FK["CurrencyId"];
+            }
+            if (!ListViewControl.FK.ContainsKey("VATId")) {
+                ListViewControl.FK["VATId"] = CntrlVT.Read().ToDictionary(x => x.Id, x => x.VATCode);
+            }
+            if (!ListViewControl.FK.ContainsKey("BillingCategoryId")) {
+                ListViewControl.FK["BillingCategoryId"] = CntrlCG.Read().ToDictionary(x => x.Id, x => x.BillingCategoryCode);
+            }
         }
 
         private void TxtClient_TextChanged(object sender, EventArgs e) {
@@ -73,7 +93,7 @@ namespace MVCHIS.Billing {
         }
 
         private void TxtId_TextChanged(object sender, EventArgs e) {
-            this.listViewControlServices.Items.Clear();
+            RequeryServicesGrid();
         }
 
         private void RequeryServicesGrid() { 
@@ -88,7 +108,7 @@ namespace MVCHIS.Billing {
                 Services = new List<ServiceModel>();
             }
 
-            this.listViewControlServices.LoadData("", Services, SERVICE_COLUMNS);
+            this.listViewControl1.LoadData("", Services, SERVICE_COLUMNS);
         }
 
         private ServiceView OpenService(ServiceModel service) {
@@ -116,29 +136,29 @@ namespace MVCHIS.Billing {
             view.AfterSave += delegate(bool status) {
                 if (status) {
                     Services.Add(view.Model);
-                    listViewControlServices.AddRowFromModel(view.Model);
-                    listViewControlServices.Items[Services.Count - 1].Selected = true;
+                    listViewControl1.AddRowFromModel(view.Model);
+                    listViewControl1.Items[Services.Count - 1].Selected = true;
                 }
             };
         }
 
         private void BtnEditService_Click(object sender, EventArgs e) {
-            if (listViewControlServices.SelectedIndices.Count < 1) return;
-            var view = OpenService(Services[listViewControlServices.SelectedIndices[0]]);
+            if (listViewControl1.SelectedIndices.Count < 1) return;
+            var view = OpenService(Services[listViewControl1.SelectedIndices[0]]);
             view.AfterSave += delegate (bool status) {
                 //RequeryGrid();
                 if (status) {
-                    listViewControlServices.Items.RemoveAt(listViewControlServices.SelectedIndices[0]);
-                    listViewControlServices.AddRowFromModel(view.Model);
-                    listViewControlServices.Items[Services.Count - 1].Selected = true;
+                    listViewControl1.Items.RemoveAt(listViewControl1.SelectedIndices[0]);
+                    listViewControl1.AddRowFromModel(view.Model);
+                    listViewControl1.Items[Services.Count - 1].Selected = true;
                 }
             };
         }
 
         private void BtnDeleteService_Click(object sender, EventArgs e) {
-            if (listViewControlServices.SelectedIndices.Count < 1) return;
-            CntrlSR.Delete(Services[listViewControlServices.SelectedIndices[0]]);
-            listViewControlServices.Items.RemoveAt(listViewControlServices.SelectedIndices[0]);
+            if (listViewControl1.SelectedIndices.Count < 1) return;
+            CntrlSR.Delete(Services[listViewControl1.SelectedIndices[0]]);
+            listViewControl1.Items.RemoveAt(listViewControl1.SelectedIndices[0]);
         }
 
         private void TxtStartDate_Leave(object sender, EventArgs e) {

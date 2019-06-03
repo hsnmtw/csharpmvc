@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Billing\CurrencyFXRateEntity.cs" />
+    <Compile Include="Billing\ReservationEntity.cs" />
     <Compile Include="Billing\CurrencyEntity.cs" />
     <Compile Include="Billing\VATEntity.cs" />
     <Compile Include="Billing\ServiceEntity.cs" />

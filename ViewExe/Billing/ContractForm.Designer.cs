@@ -24,6 +24,8 @@
         /// </summaryClient
         private void InitializeComponent(){
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Item1");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Item2");
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
@@ -59,7 +61,9 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.label11 = new System.Windows.Forms.Label();
             this.chkIsActive = new MVCHIS.Utils.ForcedFocusCheckBox();
-            this.listViewControlServices = new MVCHIS.Utils.ListViewControl();
+            this.listViewControl1 = new MVCHIS.Utils.ListViewControl();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btnDelete
@@ -91,7 +95,7 @@
             // 
             // txtUpdatedOn
             // 
-            this.txtUpdatedOn.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtUpdatedOn.Location = new System.Drawing.Point(221, 346);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -101,7 +105,7 @@
             // 
             // txtUpdatedBy
             // 
-            this.txtUpdatedBy.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtUpdatedBy.Location = new System.Drawing.Point(141, 346);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -120,7 +124,7 @@
             // 
             // txtCreatedOn
             // 
-            this.txtCreatedOn.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtCreatedOn.Location = new System.Drawing.Point(221, 320);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -130,7 +134,7 @@
             // 
             // txtCreatedBy
             // 
-            this.txtCreatedBy.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtCreatedBy.Location = new System.Drawing.Point(141, 320);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -177,7 +181,6 @@
             // 
             // txtContractCode
             // 
-            this.txtContractCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtContractCode.Location = new System.Drawing.Point(141, 49);
             this.txtContractCode.Name = "txtContractCode";
             this.txtContractCode.Size = new System.Drawing.Size(154, 20);
@@ -413,28 +416,43 @@
             this.chkIsActive.TabIndex = 15;
             this.chkIsActive.UseVisualStyleBackColor = true;
             // 
-            // listViewControlServices
+            // listViewControl1
             // 
-            this.listViewControlServices.Filter = null;
-            this.listViewControlServices.Font = new System.Drawing.Font("Consolas", 8F);
-            this.listViewControlServices.FullRowSelect = true;
-            this.listViewControlServices.GridLines = true;
-            this.listViewControlServices.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listViewControlServices.HideSelection = false;
-            this.listViewControlServices.LabelWrap = false;
-            this.listViewControlServices.Location = new System.Drawing.Point(141, 159);
-            this.listViewControlServices.MultiSelect = false;
-            this.listViewControlServices.Name = "listViewControlServices";
-            this.listViewControlServices.Size = new System.Drawing.Size(593, 130);
-            this.listViewControlServices.TabIndex = 11;
-            this.listViewControlServices.UseCompatibleStateImageBehavior = false;
-            this.listViewControlServices.View = System.Windows.Forms.View.Details;
+            this.listViewControl1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.listViewControl1.Filter = null;
+            this.listViewControl1.Font = new System.Drawing.Font("Consolas", 9F);
+            this.listViewControl1.FullRowSelect = true;
+            this.listViewControl1.GridLines = true;
+            this.listViewControl1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listViewControl1.HideSelection = false;
+            this.listViewControl1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2});
+            this.listViewControl1.LabelWrap = false;
+            this.listViewControl1.Location = new System.Drawing.Point(141, 158);
+            this.listViewControl1.MultiSelect = false;
+            this.listViewControl1.Name = "listViewControl1";
+            this.listViewControl1.Size = new System.Drawing.Size(595, 131);
+            this.listViewControl1.TabIndex = 54;
+            this.listViewControl1.UseCompatibleStateImageBehavior = false;
+            this.listViewControl1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "c1";
+            this.columnHeader1.Width = 226;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "c2";
             // 
             // ContractForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.listViewControlServices);
+            this.Controls.Add(this.listViewControl1);
             this.Controls.Add(this.btnAddService);
             this.Controls.Add(this.btnEditService);
             this.Controls.Add(this.btnDeleteService);
@@ -513,6 +531,8 @@
         private System.Windows.Forms.Label label11;
         private Utils.ForcedFocusCheckBox chkReadOnly;
         private Utils.ForcedFocusCheckBox chkIsActive;
-        private Utils.ListViewControl listViewControlServices;
+        private Utils.ListViewControl listViewControl1;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
     }
 }

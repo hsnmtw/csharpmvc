@@ -58,6 +58,18 @@
     <Compile Include="Billing\BillingCategoryForm.Designer.cs">
       <DependentUpon>BillingCategoryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Billing\CurrencyFXRateForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Billing\CurrencyFXRateForm.Designer.cs">
+      <DependentUpon>CurrencyFXRateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Billing\ReservationForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Billing\ReservationForm.Designer.cs">
+      <DependentUpon>ReservationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Billing\FoodClassForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -76,11 +88,11 @@
     <Compile Include="Billing\ContractForm.Designer.cs">
       <DependentUpon>ContractForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Billing\CurrencyFormy.cs">
+    <Compile Include="Billing\CurrencyForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Billing\CurrencyFormy.Designer.cs">
-      <DependentUpon>CurrencyFormy.cs</DependentUpon>
+    <Compile Include="Billing\CurrencyForm.Designer.cs">
+      <DependentUpon>CurrencyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Billing\VATForm.cs">
       <SubType>UserControl</SubType>
@@ -331,6 +343,12 @@
     <EmbeddedResource Include="Billing\BillingCategoryForm.resx">
       <DependentUpon>BillingCategoryForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Billing\CurrencyFXRateForm.resx">
+      <DependentUpon>CurrencyFXRateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Billing\ReservationForm.resx">
+      <DependentUpon>ReservationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Billing\FoodClassForm.resx">
       <DependentUpon>FoodClassForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -340,8 +358,8 @@
     <EmbeddedResource Include="Billing\ContractForm.resx">
       <DependentUpon>ContractForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Billing\CurrencyFormy.resx">
-      <DependentUpon>CurrencyFormy.cs</DependentUpon>
+    <EmbeddedResource Include="Billing\CurrencyForm.resx">
+      <DependentUpon>CurrencyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Billing\VATForm.resx">
       <DependentUpon>VATForm.cs</DependentUpon>

@@ -8,7 +8,7 @@ namespace MVCHIS.Security {
 
         public override int Save(UserModel model) {
             //UserModel model = (UserModel)userModel;
-            if (model.UserPassword.StartsWith("{ENC}") == false) {
+            if (model.UserPassword?.StartsWith("{ENC}") == false) {
                 model.UserPassword = CryptoFactory.Encrypt(model.UserPassword);
             }
             return base.Save(model);

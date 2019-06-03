@@ -72,7 +72,6 @@
             // 
             // txtUpdatedOn
             // 
-            this.txtUpdatedOn.BackColor = System.Drawing.SystemColors.Control;
             this.txtUpdatedOn.Location = new System.Drawing.Point(214, 181);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -82,7 +81,6 @@
             // 
             // txtUpdatedBy
             // 
-            this.txtUpdatedBy.BackColor = System.Drawing.SystemColors.Control;
             this.txtUpdatedBy.Location = new System.Drawing.Point(140, 181);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -101,7 +99,6 @@
             // 
             // txtCreatedOn
             // 
-            this.txtCreatedOn.BackColor = System.Drawing.SystemColors.Control;
             this.txtCreatedOn.Location = new System.Drawing.Point(214, 155);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -111,7 +108,6 @@
             // 
             // txtCreatedBy
             // 
-            this.txtCreatedBy.BackColor = System.Drawing.SystemColors.Control;
             this.txtCreatedBy.Location = new System.Drawing.Point(140, 155);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -158,7 +154,6 @@
             // 
             // txtBillingCycleYear
             // 
-            this.txtBillingCycleYear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtBillingCycleYear.Location = new System.Drawing.Point(140, 61);
             this.txtBillingCycleYear.Name = "txtBillingCycleYear";
             this.txtBillingCycleYear.Size = new System.Drawing.Size(69, 20);
@@ -210,7 +205,6 @@
             // 
             // txtBillingCycleMonth
             // 
-            this.txtBillingCycleMonth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtBillingCycleMonth.Location = new System.Drawing.Point(140, 89);
             this.txtBillingCycleMonth.Name = "txtBillingCycleMonth";
             this.txtBillingCycleMonth.Size = new System.Drawing.Size(69, 20);

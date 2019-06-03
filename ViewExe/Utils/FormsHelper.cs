@@ -48,9 +48,14 @@ namespace MVCHIS.Utils {
             };
         }
 
+        static System.Reflection.PropertyInfo aProp = typeof(System.Windows.Forms.Control)
+.GetProperty("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+System.Reflection.BindingFlags.Instance);
 
         public static void ApplyLanguageLocalization(Control control) {
             if (control == null || control is TextBox) return;
+
+            aProp.SetValue(control, true, null);
 
             control.Text = MainView.Instance.CntrlDC[control.Text];
 

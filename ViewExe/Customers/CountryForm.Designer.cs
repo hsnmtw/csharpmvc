@@ -41,9 +41,6 @@
             this.txtUpdatedOn = new System.Windows.Forms.TextBox();
             this.CountryCodeLookupButton = new MVCHIS.Common.LookUpButton();
             this.txtCountryCode = new System.Windows.Forms.TextBox();
-            this.lblMetaDataCountryCode = new System.Windows.Forms.Label();
-            this.lblMetaDataCountryEnglish = new System.Windows.Forms.Label();
-            this.lblMetaDataCountryArabic = new System.Windows.Forms.Label();
             this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -147,7 +144,7 @@
             // 
             // txtCreatedBy
             // 
-            this.txtCreatedBy.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtCreatedBy.Location = new System.Drawing.Point(140, 138);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -166,7 +163,7 @@
             // 
             // txtUpdatedBy
             // 
-            this.txtUpdatedBy.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtUpdatedBy.Location = new System.Drawing.Point(140, 164);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -176,7 +173,7 @@
             // 
             // txtCreatedOn
             // 
-            this.txtCreatedOn.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtCreatedOn.Location = new System.Drawing.Point(207, 138);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -186,7 +183,7 @@
             // 
             // txtUpdatedOn
             // 
-            this.txtUpdatedOn.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtUpdatedOn.Location = new System.Drawing.Point(207, 164);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -211,41 +208,10 @@
             // 
             // txtCountryCode
             // 
-            this.txtCountryCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtCountryCode.Location = new System.Drawing.Point(140, 38);
             this.txtCountryCode.Name = "txtCountryCode";
             this.txtCountryCode.Size = new System.Drawing.Size(72, 20);
             this.txtCountryCode.TabIndex = 1;
-            // 
-            // lblMetaDataCountryCode
-            // 
-            this.lblMetaDataCountryCode.AutoSize = true;
-            this.lblMetaDataCountryCode.ForeColor = System.Drawing.Color.Red;
-            this.lblMetaDataCountryCode.Location = new System.Drawing.Point(127, 41);
-            this.lblMetaDataCountryCode.Name = "lblMetaDataCountryCode";
-            this.lblMetaDataCountryCode.Size = new System.Drawing.Size(12, 13);
-            this.lblMetaDataCountryCode.TabIndex = 16;
-            this.lblMetaDataCountryCode.Text = "?";
-            // 
-            // lblMetaDataCountryEnglish
-            // 
-            this.lblMetaDataCountryEnglish.AutoSize = true;
-            this.lblMetaDataCountryEnglish.ForeColor = System.Drawing.Color.Red;
-            this.lblMetaDataCountryEnglish.Location = new System.Drawing.Point(127, 69);
-            this.lblMetaDataCountryEnglish.Name = "lblMetaDataCountryEnglish";
-            this.lblMetaDataCountryEnglish.Size = new System.Drawing.Size(12, 13);
-            this.lblMetaDataCountryEnglish.TabIndex = 16;
-            this.lblMetaDataCountryEnglish.Text = "?";
-            // 
-            // lblMetaDataCountryArabic
-            // 
-            this.lblMetaDataCountryArabic.AutoSize = true;
-            this.lblMetaDataCountryArabic.ForeColor = System.Drawing.Color.Red;
-            this.lblMetaDataCountryArabic.Location = new System.Drawing.Point(128, 94);
-            this.lblMetaDataCountryArabic.Name = "lblMetaDataCountryArabic";
-            this.lblMetaDataCountryArabic.Size = new System.Drawing.Size(12, 13);
-            this.lblMetaDataCountryArabic.TabIndex = 16;
-            this.lblMetaDataCountryArabic.Text = "?";
             // 
             // chkReadOnly
             // 
@@ -272,9 +238,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.chkReadOnly);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.lblMetaDataCountryArabic);
-            this.Controls.Add(this.lblMetaDataCountryEnglish);
-            this.Controls.Add(this.lblMetaDataCountryCode);
             this.Controls.Add(this.CountryCodeLookupButton);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
@@ -321,10 +284,7 @@
         private System.Windows.Forms.TextBox txtUpdatedOn;
         private Common.LookUpButton CountryCodeLookupButton;
         private System.Windows.Forms.TextBox txtCountryCode;
-        private System.Windows.Forms.Label lblMetaDataCountryCode;
-        private System.Windows.Forms.Label lblMetaDataCountryEnglish;
-        private System.Windows.Forms.Label lblMetaDataCountryArabic;
-        private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
+        private Utils.ForcedFocusCheckBox chkReadOnly;
     }
 }

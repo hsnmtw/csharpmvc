@@ -72,7 +72,6 @@
             // 
             // txtUpdatedOn
             // 
-            this.txtUpdatedOn.BackColor = System.Drawing.SystemColors.Control;
             this.txtUpdatedOn.Location = new System.Drawing.Point(224, 184);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -82,7 +81,6 @@
             // 
             // txtUpdatedBy
             // 
-            this.txtUpdatedBy.BackColor = System.Drawing.SystemColors.Control;
             this.txtUpdatedBy.Location = new System.Drawing.Point(149, 184);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -101,7 +99,6 @@
             // 
             // txtCreatedOn
             // 
-            this.txtCreatedOn.BackColor = System.Drawing.SystemColors.Control;
             this.txtCreatedOn.Location = new System.Drawing.Point(224, 158);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -111,7 +108,6 @@
             // 
             // txtCreatedBy
             // 
-            this.txtCreatedBy.BackColor = System.Drawing.SystemColors.Control;
             this.txtCreatedBy.Location = new System.Drawing.Point(149, 158);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -158,7 +154,6 @@
             // 
             // txtFoodClassCode
             // 
-            this.txtFoodClassCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtFoodClassCode.Location = new System.Drawing.Point(149, 57);
             this.txtFoodClassCode.Name = "txtFoodClassCode";
             this.txtFoodClassCode.Size = new System.Drawing.Size(154, 20);

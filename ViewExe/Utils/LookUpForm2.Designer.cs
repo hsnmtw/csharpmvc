@@ -47,7 +47,6 @@
             // 
             // lblSearch
             // 
-            this.lblSearch.BackColor = System.Drawing.SystemColors.Window;
             this.lblSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblSearch.Location = new System.Drawing.Point(3, 3);
             this.lblSearch.Name = "lblSearch";

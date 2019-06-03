@@ -51,7 +51,6 @@
             // 
             // txtCompoundId
             // 
-            this.txtCompoundId.BackColor = System.Drawing.SystemColors.Window;
             this.txtCompoundId.Location = new System.Drawing.Point(149, 105);
             this.txtCompoundId.Name = "txtCompoundId";
             this.txtCompoundId.ReadOnly = true;
@@ -88,7 +87,7 @@
             // 
             // txtUpdatedOn
             // 
-            this.txtUpdatedOn.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtUpdatedOn.Location = new System.Drawing.Point(223, 173);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -98,7 +97,7 @@
             // 
             // txtUpdatedBy
             // 
-            this.txtUpdatedBy.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtUpdatedBy.Location = new System.Drawing.Point(149, 173);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -117,7 +116,7 @@
             // 
             // txtCreatedOn
             // 
-            this.txtCreatedOn.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtCreatedOn.Location = new System.Drawing.Point(223, 147);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -127,7 +126,7 @@
             // 
             // txtCreatedBy
             // 
-            this.txtCreatedBy.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtCreatedBy.Location = new System.Drawing.Point(149, 147);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -182,7 +181,6 @@
             // 
             // txtBuildingName
             // 
-            this.txtBuildingName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtBuildingName.Location = new System.Drawing.Point(149, 46);
             this.txtBuildingName.Name = "txtBuildingName";
             this.txtBuildingName.Size = new System.Drawing.Size(154, 20);
@@ -260,7 +258,6 @@
             // 
             // txtBuildingTypeId
             // 
-            this.txtBuildingTypeId.BackColor = System.Drawing.SystemColors.Window;
             this.txtBuildingTypeId.Location = new System.Drawing.Point(149, 77);
             this.txtBuildingTypeId.Name = "txtBuildingTypeId";
             this.txtBuildingTypeId.ReadOnly = true;

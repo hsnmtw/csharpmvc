@@ -72,7 +72,7 @@
             // 
             // txtUpdatedOn
             // 
-            this.txtUpdatedOn.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtUpdatedOn.Location = new System.Drawing.Point(274, 190);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -82,7 +82,7 @@
             // 
             // txtUpdatedBy
             // 
-            this.txtUpdatedBy.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtUpdatedBy.Location = new System.Drawing.Point(199, 190);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -101,7 +101,6 @@
             // 
             // txtCreatedOn
             // 
-            this.txtCreatedOn.BackColor = System.Drawing.SystemColors.Control;
             this.txtCreatedOn.Location = new System.Drawing.Point(274, 164);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -111,7 +110,6 @@
             // 
             // txtCreatedBy
             // 
-            this.txtCreatedBy.BackColor = System.Drawing.SystemColors.Control;
             this.txtCreatedBy.Location = new System.Drawing.Point(199, 164);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -157,7 +155,6 @@
             // 
             // txtAccommClassCode
             // 
-            this.txtAccommClassCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtAccommClassCode.Location = new System.Drawing.Point(200, 46);
             this.txtAccommClassCode.Name = "txtAccommClassCode";
             this.txtAccommClassCode.Size = new System.Drawing.Size(154, 20);
@@ -258,9 +255,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtAccommClassCode;
         private Common.LookUpButton lookUpButtonAccommClass;
-        private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtAccommClassDesc;
+        private Utils.ForcedFocusCheckBox chkReadOnly;
     }
 }

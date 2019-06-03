@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Windows.Forms;
 using System.ComponentModel;
+using System.Drawing;
+using System.Threading;
 
 namespace MVCHIS.Common {
 
@@ -66,8 +68,8 @@ namespace MVCHIS.Common {
             }
         }
 
-        private readonly Func<string, bool> isDouble,isInt32,isInt64,isBoolean,isDateTime;
-        private readonly Func<string, PropertyInfo> Prop;
+        private Func<string, bool> isDouble,isInt32,isInt64,isBoolean,isDateTime;
+        private Func<string, PropertyInfo> Prop;
 
         private Dictionary<string, Control> mapper = new Dictionary<string, Control>();
         [Browsable(false),EditorBrowsable(EditorBrowsableState.Never),DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -88,10 +90,8 @@ namespace MVCHIS.Common {
         public Action<bool> AfterDelete { get; set; }
 
         public BaseView() : base() {
-           
-            
             Name = GetType().Name;
-            if (DesignMode||(Site!=null && Site.DesignMode)) return;
+            if (DesignMode || (Site != null && Site.DesignMode)) return;
 
             Prop = new Func<string, PropertyInfo>(x => typeof(M).GetProperty(x));
             isBoolean  = new Func<string, bool>(x => (Mapper[x] is CheckBox )
@@ -105,34 +105,64 @@ namespace MVCHIS.Common {
                                                   || Prop(x).PropertyType == typeof(Double));
 
             //model = Activator.CreateInstance<M>();
-            Load += (s, e) => {
-                if (DesignMode||(Site!=null && Site.DesignMode)) return;
-                Controller = (C)DBControllersFactory.GetController<M>();
-                new PermissionsHelper<M,C>(this);
-                if (SaveButton != null) {
-                    SaveButton.Enabled = SaveButtonEnabled;
-                    SaveButton.Click += SaveModelEvent;
-                }
-                if (DeleteButton != null) {
-                    DeleteButton.Enabled = DeleteButtonEnabled;
-                    DeleteButton.Click += DeleteModelEvent;
-                }
-                if (NewButton != null) {
-                    NewButton.Enabled = NewButtonEnabled;
-                    NewButton.Click += NewModelEvent;                }
-                //var controls = (from cntrl in Mapper.Values orderby cntrl.TabIndex where cntrl.TabStop select cntrl);
-                var sizes = Controller.GetMetaData().Sizes;
-                foreach (var cntrl in Mapper.Keys) {
-                    if(sizes.ContainsKey(cntrl) && Mapper[cntrl] is TextBox) {
-                        ((TextBox)Mapper[cntrl]).MaxLength = sizes[cntrl];
-                    }
-                    Mapper[cntrl].KeyDown += MapperControlKeyDownEvent;
-                }
-                DefaultControl = Mapper.Values.Where(x=>x.TabStop).OrderBy(x=>x.TabIndex).FirstOrDefault();
-                DefaultControl?.Focus();
-            };
-
+            Load += ViewLoadingEvent;
+            
         }
+
+        public void ViewLoadingEvent(object sender, EventArgs e) {
+            if (DesignMode || (Site != null && Site.DesignMode)) return;
+            new Thread(delegate() {
+                BeginInvoke((Action) delegate() { InitializeView(); });
+            }).Start();
+            
+        }
+        private void InitializeView() {
+            SuspendLayout();
+            
+            //Thread.Sleep(10);
+            Controller = (C)DBControllersFactory.GetController<M>();
+
+            var md = Controller.GetMetaData();
+            var uqkeys = md.UniqueKeyFields.Flatten();
+            var rqkeys = md.RequiredFields;
+            var sizes  = md.Sizes;
+
+            foreach(var cntrl in uqkeys.Where(x => Mapper.ContainsKey(x))) {
+                Mapper[cntrl].BackColor = Color.FromArgb(192, 255, 192);
+            }
+            foreach(var cntrl in rqkeys.Where(x => Mapper.ContainsKey(x))) {
+                Controls.Add(new Label() { Name = $"RQ_{cntrl}", Text = "*", ForeColor = Color.Red, Top = Mapper[cntrl].Top + 5, Left = Mapper[cntrl].Left - 15 });
+            }
+            foreach(var cntrl in sizes.Where(x => Mapper.ContainsKey(x.Key) && Mapper[x.Key] is TextBox)) {
+                ((TextBox)Mapper[cntrl.Key]).MaxLength = cntrl.Value;
+            }
+
+            new PermissionsHelper<M, C>(this);
+            if (SaveButton != null) {
+                SaveButton.Enabled = SaveButtonEnabled;
+                SaveButton.Click += SaveModelEvent;
+            }
+            if (DeleteButton != null) {
+                DeleteButton.Enabled = DeleteButtonEnabled;
+                DeleteButton.Click += DeleteModelEvent;
+            }
+            if (NewButton != null) {
+                NewButton.Enabled = NewButtonEnabled;
+                NewButton.Click += NewModelEvent;
+            }
+            //var controls = (from cntrl in Mapper.Values orderby cntrl.TabIndex where cntrl.TabStop select cntrl);
+            
+            foreach (string cntrl in Mapper.Keys) {
+                Mapper[cntrl].Name = cntrl;
+                Mapper[cntrl].KeyDown += MapperControlKeyDownEvent;
+            }
+            DefaultControl = Mapper.Values.Where(x => x.TabStop).OrderBy(x => x.TabIndex).FirstOrDefault();
+            DefaultControl?.Focus();
+            ResumeLayout();
+            Invalidate();
+        }
+
+
 
         private void SaveModelEvent(object sender, EventArgs e) {
             //try {

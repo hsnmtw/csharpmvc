@@ -9,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace MVCHIS {
@@ -80,13 +81,10 @@ namespace MVCHIS {
             //LogInToolStripMenuItemClick(sender, e);
             tsProgressBar.Value = 100;
 
-            ShowView(new UsersLoginView() { Dock = DockStyle.Top });
+            ShowView(new UsersLoginView() { Dock = DockStyle.Top },"Main");
         }
 
-        public void ShowView(Control view) {
-            panel1.Controls.Clear();
-            panel1.Controls.Add(view);
-        }
+
 
         private void ExitToolStripMenuItemClick(object sender, EventArgs e)
         {
@@ -208,8 +206,12 @@ namespace MVCHIS {
         }
 
         private void ArabicToolStripMenuItem_Click(object sender, EventArgs e) {
-            DictionaryController.LanguageState = DictionaryController.LanguageState == LanguageState.Arabic ? LanguageState.English : LanguageState.Arabic;
-            FormsHelper.ApplyLanguageLocalization(this);
+            new Thread(delegate () {
+                DictionaryController.LanguageState = DictionaryController.LanguageState == LanguageState.Arabic ? LanguageState.English : LanguageState.Arabic;
+                BeginInvoke((Action)delegate () {
+                    FormsHelper.ApplyLanguageLocalization(this);
+                });
+            }).Start();
         }
 
         private void InitializeToolStripMenuItem_Click(object sender, EventArgs ea) {
@@ -237,14 +239,9 @@ namespace MVCHIS {
 
         }
 
-        private void TreeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e) {
-            TreeNode node = e.Node;
-            if (node.Tag == null) return;
-            var entity = (EntityModel)node.Tag;
-            var view = (UserControl)DBViewsFactory.GetView((MODELS)Enum.Parse(typeof(MODELS), entity.EntityName));
-            panel1.Controls.Clear();
-            lblHeading.Text = node.Text;
-            panel1.Controls.Add(view);
+        public void ShowView(Control view,string name) {
+            //panel1.Controls.Clear();
+            //panel1.Controls.Add(view);
             FormsHelper.ApplyLanguageLocalization(view);
             if (view is IView) {
                 var iview = (IView)view;
@@ -253,6 +250,31 @@ namespace MVCHIS {
                 iview.AfterNew += AfterViewNew;
                 iview.ModelChanged += ViewModelChanged;
             }
+            var tpx = new TabPage(name);
+            tpx.Text = name;
+            tabControl1.TabPages.Add(tpx);
+            tpx.Controls.Add(view);
+            tabControl1.SelectedTab = tpx;
+        }
+
+
+        private void TreeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e) {
+            TreeNode node = e.Node;
+            if (node.Tag == null) return;
+            var entity = (EntityModel)node.Tag;
+            // = (UserControl)DBViewsFactory.GetView((MODELS)Enum.Parse(typeof(MODELS), entity.EntityName));
+            foreach (TabPage tp in tabControl1.TabPages) {
+                Control c = tp.Controls[0];
+                if (c.Tag !=null && c.Tag.Equals(node.Tag)) {
+                    tabControl1.SelectedTab = tp;
+                    return;
+                }
+            }
+
+            UserControl view = (UserControl)DBViewsFactory.GetView((MODELS)Enum.Parse(typeof(MODELS), entity.EntityName));
+            view.Tag = node.Tag;
+            lblHeading.Text = node.Text;
+            ShowView(view,node.Text);
         }
 
         private void ViewModelChanged() {

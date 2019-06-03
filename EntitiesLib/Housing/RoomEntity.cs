@@ -20,7 +20,7 @@ namespace MVCHIS.Housing {
             , Sizes = new Dictionary<string, int> {
                  ["CreatedBy"   ] = 10
                 ,["UpdatedBy"   ] = 10
-                ,["RoomName"    ] = 50
+                ,["RoomName"    ] = 10
             }
             , Source = "HousingRoom"
         };

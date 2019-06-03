@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Billing\CurrencyFXRateModel.cs" />
     <Compile Include="Billing\VATModel.cs" />
     <Compile Include="Billing\AccommClassModel.cs" />
     <Compile Include="Billing\BillingCategoryModel.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="Common\MetaData.cs" />
     <Compile Include="Common\MODELS.cs" />
     <Compile Include="Customers\CityModel.cs" />
+    <Compile Include="Billing\ReservationModel.cs" />
     <Compile Include="Tools\DateConversionModel.cs" />
     <Compile Include="Tools\EntityModel.cs" />
     <Compile Include="Common\IModel.cs" />

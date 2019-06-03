@@ -70,7 +70,7 @@
             // 
             // txtUpdatedOn
             // 
-            this.txtUpdatedOn.BackColor = System.Drawing.SystemColors.Control;
+            
             resources.ApplyResources(this.txtUpdatedOn, "txtUpdatedOn");
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -78,7 +78,7 @@
             // 
             // txtUpdatedBy
             // 
-            this.txtUpdatedBy.BackColor = System.Drawing.SystemColors.Control;
+            
             resources.ApplyResources(this.txtUpdatedBy, "txtUpdatedBy");
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -91,7 +91,7 @@
             // 
             // txtCreatedOn
             // 
-            this.txtCreatedOn.BackColor = System.Drawing.SystemColors.Control;
+            
             resources.ApplyResources(this.txtCreatedOn, "txtCreatedOn");
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -99,7 +99,7 @@
             // 
             // txtCreatedBy
             // 
-            this.txtCreatedBy.BackColor = System.Drawing.SystemColors.Control;
+            
             resources.ApplyResources(this.txtCreatedBy, "txtCreatedBy");
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -129,7 +129,6 @@
             // 
             // txtEntitlementName
             // 
-            this.txtEntitlementName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             resources.ApplyResources(this.txtEntitlementName, "txtEntitlementName");
             this.txtEntitlementName.Name = "txtEntitlementName";
             // 
@@ -157,7 +156,6 @@
             // 
             // txtEntitlementGroupName
             // 
-            this.txtEntitlementGroupName.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.txtEntitlementGroupName, "txtEntitlementGroupName");
             this.txtEntitlementGroupName.Name = "txtEntitlementGroupName";
             this.txtEntitlementGroupName.TabStop = false;
@@ -196,14 +194,12 @@
             // 
             // txtEntityName
             // 
-            this.txtEntityName.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.txtEntityName, "txtEntityName");
             this.txtEntityName.Name = "txtEntityName";
             this.txtEntityName.TabStop = false;
             // 
             // txtEntitlementGroupId
             // 
-            this.txtEntitlementGroupId.BackColor = System.Drawing.SystemColors.Window;
             resources.ApplyResources(this.txtEntitlementGroupId, "txtEntitlementGroupId");
             this.txtEntitlementGroupId.Name = "txtEntitlementGroupId";
             this.txtEntitlementGroupId.ReadOnly = true;
@@ -211,7 +207,6 @@
             // 
             // txtEntityId
             // 
-            this.txtEntityId.BackColor = System.Drawing.SystemColors.Window;
             resources.ApplyResources(this.txtEntityId, "txtEntityId");
             this.txtEntityId.Name = "txtEntityId";
             this.txtEntityId.ReadOnly = true;
@@ -268,7 +263,6 @@
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtEntitlementName;
-        private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtEntitlementGroupName;
         private Common.LookUpButton EntitlementGroupNameLookup;
@@ -278,5 +272,6 @@
         private System.Windows.Forms.TextBox txtEntityName;
         private System.Windows.Forms.TextBox txtEntitlementGroupId;
         private System.Windows.Forms.TextBox txtEntityId;
+        private Utils.ForcedFocusCheckBox chkReadOnly;
     }
 }

@@ -40,9 +40,6 @@
             this.txtCreatedOn = new System.Windows.Forms.TextBox();
             this.txtUpdatedOn = new System.Windows.Forms.TextBox();
             this.lookupButtonCity = new MVCHIS.Common.LookUpButton();
-            this.lblMetaDataCityCode = new System.Windows.Forms.Label();
-            this.lblMetaDataCityEnglish = new System.Windows.Forms.Label();
-            this.lblMetaDataCityArabic = new System.Windows.Forms.Label();
             this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.lookUpButtonNationality = new MVCHIS.Common.LookUpButton();
@@ -70,7 +67,6 @@
             // 
             // txtCityEnglish
             // 
-            this.txtCityEnglish.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtCityEnglish.Location = new System.Drawing.Point(140, 42);
             this.txtCityEnglish.Name = "txtCityEnglish";
             this.txtCityEnglish.Size = new System.Drawing.Size(191, 20);
@@ -150,7 +146,6 @@
             // 
             // txtCreatedBy
             // 
-            this.txtCreatedBy.BackColor = System.Drawing.SystemColors.Control;
             this.txtCreatedBy.Location = new System.Drawing.Point(140, 138);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -169,7 +164,6 @@
             // 
             // txtUpdatedBy
             // 
-            this.txtUpdatedBy.BackColor = System.Drawing.SystemColors.Control;
             this.txtUpdatedBy.Location = new System.Drawing.Point(140, 164);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -179,7 +173,6 @@
             // 
             // txtCreatedOn
             // 
-            this.txtCreatedOn.BackColor = System.Drawing.SystemColors.Control;
             this.txtCreatedOn.Location = new System.Drawing.Point(207, 138);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -189,7 +182,7 @@
             // 
             // txtUpdatedOn
             // 
-            this.txtUpdatedOn.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtUpdatedOn.Location = new System.Drawing.Point(207, 164);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -211,36 +204,6 @@
             this.lookupButtonCity.TabIndex = 2;
             this.lookupButtonCity.TabStop = false;
             this.lookupButtonCity.LookUpSelected += new System.EventHandler(this.CityCodeTextBoxLookUpSelected);
-            // 
-            // lblMetaDataCityCode
-            // 
-            this.lblMetaDataCityCode.AutoSize = true;
-            this.lblMetaDataCityCode.ForeColor = System.Drawing.Color.Red;
-            this.lblMetaDataCityCode.Location = new System.Drawing.Point(126, 97);
-            this.lblMetaDataCityCode.Name = "lblMetaDataCityCode";
-            this.lblMetaDataCityCode.Size = new System.Drawing.Size(12, 13);
-            this.lblMetaDataCityCode.TabIndex = 16;
-            this.lblMetaDataCityCode.Text = "?";
-            // 
-            // lblMetaDataCityEnglish
-            // 
-            this.lblMetaDataCityEnglish.AutoSize = true;
-            this.lblMetaDataCityEnglish.ForeColor = System.Drawing.Color.Red;
-            this.lblMetaDataCityEnglish.Location = new System.Drawing.Point(126, 46);
-            this.lblMetaDataCityEnglish.Name = "lblMetaDataCityEnglish";
-            this.lblMetaDataCityEnglish.Size = new System.Drawing.Size(12, 13);
-            this.lblMetaDataCityEnglish.TabIndex = 16;
-            this.lblMetaDataCityEnglish.Text = "?";
-            // 
-            // lblMetaDataCityArabic
-            // 
-            this.lblMetaDataCityArabic.AutoSize = true;
-            this.lblMetaDataCityArabic.ForeColor = System.Drawing.Color.Red;
-            this.lblMetaDataCityArabic.Location = new System.Drawing.Point(126, 71);
-            this.lblMetaDataCityArabic.Name = "lblMetaDataCityArabic";
-            this.lblMetaDataCityArabic.Size = new System.Drawing.Size(12, 13);
-            this.lblMetaDataCityArabic.TabIndex = 16;
-            this.lblMetaDataCityArabic.Text = "?";
             // 
             // chkReadOnly
             // 
@@ -279,7 +242,6 @@
             // 
             // txtCountryEnglish
             // 
-            this.txtCountryEnglish.BackColor = System.Drawing.SystemColors.Control;
             this.txtCountryEnglish.Enabled = false;
             this.txtCountryEnglish.Location = new System.Drawing.Point(223, 93);
             this.txtCountryEnglish.Name = "txtCountryEnglish";
@@ -288,7 +250,6 @@
             // 
             // txtCountryCode
             // 
-            this.txtCountryCode.BackColor = System.Drawing.SystemColors.Control;
             this.txtCountryCode.Enabled = false;
             this.txtCountryCode.Location = new System.Drawing.Point(185, 93);
             this.txtCountryCode.Name = "txtCountryCode";
@@ -318,9 +279,6 @@
             this.Controls.Add(this.txtCountryId);
             this.Controls.Add(this.chkReadOnly);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.lblMetaDataCityArabic);
-            this.Controls.Add(this.lblMetaDataCityEnglish);
-            this.Controls.Add(this.lblMetaDataCityCode);
             this.Controls.Add(this.lookupButtonCity);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
@@ -365,14 +323,11 @@
         private System.Windows.Forms.TextBox txtCreatedOn;
         private System.Windows.Forms.TextBox txtUpdatedOn;
         private Common.LookUpButton lookupButtonCity;
-        private System.Windows.Forms.Label lblMetaDataCityCode;
-        private System.Windows.Forms.Label lblMetaDataCityEnglish;
-        private System.Windows.Forms.Label lblMetaDataCityArabic;
-        private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
         private Common.LookUpButton lookUpButtonNationality;
         private System.Windows.Forms.TextBox txtCountryEnglish;
         private System.Windows.Forms.TextBox txtCountryCode;
         private System.Windows.Forms.TextBox txtCountryId;
+        private Utils.ForcedFocusCheckBox chkReadOnly;
     }
 }

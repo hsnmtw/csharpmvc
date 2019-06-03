@@ -36,5 +36,7 @@ namespace MVCHIS.Common {
         , VAT
         , City
         , DateConversion
+        , Reservation
+        , CurrencyFXRate
     }
 }

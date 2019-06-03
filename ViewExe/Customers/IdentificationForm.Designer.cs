@@ -39,7 +39,6 @@
             this.btnExpiryDate = new System.Windows.Forms.Button();
             this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -90,7 +89,7 @@
             // 
             // txtUpdatedOn
             // 
-            this.txtUpdatedOn.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtUpdatedOn.Location = new System.Drawing.Point(233, 259);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -100,7 +99,7 @@
             // 
             // txtUpdatedBy
             // 
-            this.txtUpdatedBy.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtUpdatedBy.Location = new System.Drawing.Point(159, 259);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -120,7 +119,7 @@
             // 
             // txtCreatedOn
             // 
-            this.txtCreatedOn.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtCreatedOn.Location = new System.Drawing.Point(233, 232);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -130,7 +129,7 @@
             // 
             // txtCreatedBy
             // 
-            this.txtCreatedBy.BackColor = System.Drawing.SystemColors.Control;
+            
             this.txtCreatedBy.Location = new System.Drawing.Point(159, 232);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -169,7 +168,6 @@
             // 
             // txtIdNumber
             // 
-            this.txtIdNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtIdNumber.Location = new System.Drawing.Point(159, 50);
             this.txtIdNumber.Name = "txtIdNumber";
             this.txtIdNumber.Size = new System.Drawing.Size(103, 20);
@@ -221,16 +219,6 @@
             this.label19.Size = new System.Drawing.Size(57, 13);
             this.label19.TabIndex = 50;
             this.label19.Text = "Read Only";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(145, 53);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(12, 13);
-            this.label10.TabIndex = 48;
-            this.label10.Text = "?";
             // 
             // label22
             // 
@@ -404,7 +392,6 @@
             // 
             // txtCityEnglish
             // 
-            this.txtCityEnglish.BackColor = System.Drawing.SystemColors.Control;
             this.txtCityEnglish.Location = new System.Drawing.Point(199, 156);
             this.txtCityEnglish.Name = "txtCityEnglish";
             this.txtCityEnglish.ReadOnly = true;
@@ -414,7 +401,6 @@
             // 
             // txtIdTypeEnglish
             // 
-            this.txtIdTypeEnglish.BackColor = System.Drawing.SystemColors.Control;
             this.txtIdTypeEnglish.Location = new System.Drawing.Point(198, 77);
             this.txtIdTypeEnglish.Name = "txtIdTypeEnglish";
             this.txtIdTypeEnglish.ReadOnly = true;
@@ -424,7 +410,6 @@
             // 
             // txtCountryEnglish
             // 
-            this.txtCountryEnglish.BackColor = System.Drawing.SystemColors.Control;
             this.txtCountryEnglish.Location = new System.Drawing.Point(159, 182);
             this.txtCountryEnglish.Name = "txtCountryEnglish";
             this.txtCountryEnglish.ReadOnly = true;
@@ -463,7 +448,6 @@
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtCreatedOn);
             this.Controls.Add(this.btnDelete);
@@ -493,8 +477,6 @@
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
         private Common.LookUpButton lookUpButtonShortName;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
@@ -508,7 +490,6 @@
         private System.Windows.Forms.TextBox txtCityId;
         private Common.LookUpButton lookUpButtonCountryOfIssue;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.CheckBox chkIsActive;
         private System.Windows.Forms.Button btnIssueDateCalendar;
         private System.Windows.Forms.TextBox txtIssueDate;
         private System.Windows.Forms.Label label29;
@@ -517,5 +498,7 @@
         private System.Windows.Forms.TextBox txtCityEnglish;
         private System.Windows.Forms.TextBox txtIdTypeEnglish;
         private System.Windows.Forms.TextBox txtCountryEnglish;
+        private Utils.ForcedFocusCheckBox chkReadOnly;
+        private Utils.ForcedFocusCheckBox chkIsActive;
     }
 }

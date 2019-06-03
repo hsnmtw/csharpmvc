@@ -30,17 +30,6 @@ namespace MVCHIS.Customers {
 
         private void CityFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
             CntrlCY = (CountryController)DBControllersFactory.GetController(MODELS.Country);
-
-            Label[] fieldsmarkers = { lblMetaDataCityArabic,lblMetaDataCityCode,lblMetaDataCityEnglish };
-
-            foreach(var required in fieldsmarkers) {
-                string field = required.Name.Replace("lblMetaData", "");
-                if (this.Controller.GetMetaData().RequiredFields.Contains(field)) {
-                    required.Text = "*";
-                } else {
-                    required.Text = "";
-                }
-            }
         }
 
         private void CityCodeTextBoxLookUpSelected(object sender, EventArgs e) {

@@ -237,7 +237,7 @@
     <value>True</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 177</value>
+    <value>17, 177</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 13</value>
@@ -306,7 +306,7 @@
     <value>True</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 151</value>
+    <value>17, 151</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 13</value>
@@ -333,7 +333,7 @@
     <value>True</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 45</value>
+    <value>17, 45</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 13</value>
@@ -384,7 +384,7 @@
     <value>True</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 18</value>
+    <value>17, 18</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 13</value>
@@ -474,7 +474,7 @@
     <value>chkReadOnly</value>
   </data>
   <data name="&gt;&gt;chkReadOnly.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MVCHIS.Utils.ForcedFocusCheckBox, ViewExe, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;chkReadOnly.Parent" xml:space="preserve">
     <value>$this</value>
@@ -486,7 +486,7 @@
     <value>True</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 205</value>
+    <value>17, 205</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
     <value>57, 13</value>
@@ -564,7 +564,7 @@
     <value>True</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 72</value>
+    <value>17, 72</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>123, 13</value>
@@ -591,7 +591,7 @@
     <value>True</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 98</value>
+    <value>17, 98</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 13</value>

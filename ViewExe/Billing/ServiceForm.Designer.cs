@@ -92,7 +92,6 @@
             // 
             // txtUpdatedOn
             // 
-            this.txtUpdatedOn.BackColor = System.Drawing.SystemColors.Control;
             this.txtUpdatedOn.Location = new System.Drawing.Point(227, 269);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -111,7 +110,6 @@
             // 
             // txtUpdatedBy
             // 
-            this.txtUpdatedBy.BackColor = System.Drawing.SystemColors.Control;
             this.txtUpdatedBy.Location = new System.Drawing.Point(152, 270);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -171,7 +169,6 @@
             // 
             // txtBillingCategoryCode
             // 
-            this.txtBillingCategoryCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtBillingCategoryCode.Location = new System.Drawing.Point(188, 74);
             this.txtBillingCategoryCode.Name = "txtBillingCategoryCode";
             this.txtBillingCategoryCode.ReadOnly = true;
@@ -181,7 +178,6 @@
             // 
             // txtCreatedOn
             // 
-            this.txtCreatedOn.BackColor = System.Drawing.SystemColors.Control;
             this.txtCreatedOn.Location = new System.Drawing.Point(227, 243);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -218,7 +214,6 @@
             // 
             // txtCreatedBy
             // 
-            this.txtCreatedBy.BackColor = System.Drawing.SystemColors.Control;
             this.txtCreatedBy.Location = new System.Drawing.Point(152, 241);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -245,7 +240,6 @@
             // 
             // txtContractCode
             // 
-            this.txtContractCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtContractCode.Location = new System.Drawing.Point(188, 45);
             this.txtContractCode.Name = "txtContractCode";
             this.txtContractCode.ReadOnly = true;
@@ -270,7 +264,6 @@
             // 
             // txtContractId
             // 
-            this.txtContractId.BackColor = System.Drawing.SystemColors.Window;
             this.txtContractId.Location = new System.Drawing.Point(152, 45);
             this.txtContractId.MaxLength = 4;
             this.txtContractId.Name = "txtContractId";
@@ -281,7 +274,6 @@
             // 
             // txtBillingCategoryId
             // 
-            this.txtBillingCategoryId.BackColor = System.Drawing.SystemColors.Window;
             this.txtBillingCategoryId.Location = new System.Drawing.Point(152, 74);
             this.txtBillingCategoryId.MaxLength = 4;
             this.txtBillingCategoryId.Name = "txtBillingCategoryId";
@@ -292,7 +284,6 @@
             // 
             // txtCurrencyId
             // 
-            this.txtCurrencyId.BackColor = System.Drawing.SystemColors.Window;
             this.txtCurrencyId.Location = new System.Drawing.Point(152, 132);
             this.txtCurrencyId.MaxLength = 4;
             this.txtCurrencyId.Name = "txtCurrencyId";
@@ -319,7 +310,6 @@
             // 
             // txtCurrencyCode
             // 
-            this.txtCurrencyCode.BackColor = System.Drawing.SystemColors.Control;
             this.txtCurrencyCode.Location = new System.Drawing.Point(188, 132);
             this.txtCurrencyCode.Name = "txtCurrencyCode";
             this.txtCurrencyCode.ReadOnly = true;
@@ -338,7 +328,6 @@
             // 
             // txtCurrencyEnglish
             // 
-            this.txtCurrencyEnglish.BackColor = System.Drawing.SystemColors.Control;
             this.txtCurrencyEnglish.Location = new System.Drawing.Point(232, 132);
             this.txtCurrencyEnglish.Name = "txtCurrencyEnglish";
             this.txtCurrencyEnglish.ReadOnly = true;
@@ -357,7 +346,6 @@
             // 
             // txtEffectiveFromDate
             // 
-            this.txtEffectiveFromDate.BackColor = System.Drawing.SystemColors.Window;
             this.txtEffectiveFromDate.Location = new System.Drawing.Point(152, 161);
             this.txtEffectiveFromDate.MaxLength = 10;
             this.txtEffectiveFromDate.Name = "txtEffectiveFromDate";
