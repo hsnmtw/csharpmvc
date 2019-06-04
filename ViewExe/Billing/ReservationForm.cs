@@ -54,7 +54,7 @@ namespace MVCHIS.Billing {
         }
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            Model = Controller.Find(new ReservationModel() { ReservationCode = txtReservationCode.Text }, "ReservationCode");
+            Model = Controller.Find(new ReservationModel() { Id = txtReservationCode.Text.ToInteger() }, "Id");
         }
 
         private void ReservationFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;

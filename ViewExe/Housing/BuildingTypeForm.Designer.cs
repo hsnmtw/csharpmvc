@@ -159,13 +159,13 @@
             // lookUpButton1
             // 
             this.lookUpButton1.AssociatedControl = "txtBuildingTypeCode";
-            this.lookUpButton1.Controller = "BuildingType";
+            this.lookUpButton1.Source = "BuildingType";
             this.lookUpButton1.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButton1.Location = new System.Drawing.Point(294, 45);
             this.lookUpButton1.Name = "lookUpButton1";
-            this.lookUpButton1.SelectedValueIndex = 0;
-            this.lookUpButton1.ShowFieldsInLookUp.Add("BuildingTypeCode");
-            this.lookUpButton1.ShowFieldsInLookUp.Add("Id");
+            //
+            //("BuildingTypeCode");
+            //("Id");
             this.lookUpButton1.Size = new System.Drawing.Size(22, 22);
             this.lookUpButton1.TabIndex = 2;
             this.lookUpButton1.TabStop = false;

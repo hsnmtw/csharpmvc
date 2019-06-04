@@ -201,13 +201,13 @@
             // lookUpButtonFoodType
             // 
             this.lookUpButtonFoodType.AssociatedControl = "txtFoodTypeCode";
-            this.lookUpButtonFoodType.Controller = "FoodType";
+            this.lookUpButtonFoodType.Source = "FoodType";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonFoodType.Location = new System.Drawing.Point(295, 60);
             this.lookUpButtonFoodType.Name = "lookUpButtonFoodType";
-            this.lookUpButtonFoodType.SelectedValueIndex = 0;
-            this.lookUpButtonFoodType.ShowFieldsInLookUp.Add("FoodTypeCode");
-            this.lookUpButtonFoodType.ShowFieldsInLookUp.Add("FoodTypeDesc");
+            // 0;
+            //("FoodTypeCode");
+            //("FoodTypeDesc");
             this.lookUpButtonFoodType.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonFoodType.TabIndex = 2;
             this.lookUpButtonFoodType.TabStop = false;

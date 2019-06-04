@@ -38,7 +38,7 @@ namespace MVCHIS.Customers {
 
         private void LookUpButtonProjectNameLookUpSelected(object sender, EventArgs e) {
             
-            Model = Controller.Find(new ProjectModel() { ProjectName = txtProjectName.Text }, "ProjectName");
+            Model = Controller.Find(new ProjectModel() { Id = txtProjectName.Text.ToInteger() }, "Id");
         }
 
         private void TxtClientId_TextChanged(object sender, EventArgs e) {

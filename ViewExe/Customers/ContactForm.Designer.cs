@@ -162,13 +162,13 @@
             // lookUpButtonContact
             // 
             this.lookUpButtonContact.AssociatedControl = "txtMobileNumber";
-            this.lookUpButtonContact.Controller = "Contact";
+            this.lookUpButtonContact.Source = "Contact";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonContact.Location = new System.Drawing.Point(305, 39);
             this.lookUpButtonContact.Name = "lookUpButtonContact";
-            this.lookUpButtonContact.SelectedValueIndex = 1;
-            this.lookUpButtonContact.ShowFieldsInLookUp.Add("FullName");
-            this.lookUpButtonContact.ShowFieldsInLookUp.Add("MobileNumber");
+            // 1;
+            //("FullName");
+            //("MobileNumber");
             this.lookUpButtonContact.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonContact.TabIndex = 2;
             this.lookUpButtonContact.TabStop = false;

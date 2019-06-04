@@ -165,12 +165,12 @@
             // CompoundNameLookupButton
             // 
             this.CompoundNameLookupButton.AssociatedControl = "txtCompoundName";
-            this.CompoundNameLookupButton.Controller = "Compound";
+            this.CompoundNameLookupButton.Source = "Compound";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.CompoundNameLookupButton.Location = new System.Drawing.Point(275, 50);
             this.CompoundNameLookupButton.Name = "CompoundNameLookupButton";
-            this.CompoundNameLookupButton.SelectedValueIndex = 0;
-            this.CompoundNameLookupButton.ShowFieldsInLookUp.Add("CompoundName");
+            //
+            //("CompoundName");
             this.CompoundNameLookupButton.Size = new System.Drawing.Size(22, 22);
             this.CompoundNameLookupButton.TabIndex = 2;
             this.CompoundNameLookupButton.TabStop = false;

@@ -163,14 +163,14 @@
             // lookUpButtonClient
             // 
             this.lookUpButtonClient.AssociatedControl = "txtClientId";
-            this.lookUpButtonClient.Controller = "Client";
+            this.lookUpButtonClient.Source = "Client";
             this.lookUpButtonClient.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonClient.Location = new System.Drawing.Point(341, 74);
             this.lookUpButtonClient.Name = "lookUpButtonClient";
-            this.lookUpButtonClient.SelectedValueIndex = 2;
-            this.lookUpButtonClient.ShowFieldsInLookUp.Add("ShortName");
-            this.lookUpButtonClient.ShowFieldsInLookUp.Add("LongName");
-            this.lookUpButtonClient.ShowFieldsInLookUp.Add("Id");
+            // 2;
+            //("ShortName");
+            //("LongName");
+            //("Id");
             this.lookUpButtonClient.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonClient.TabIndex = 4;
             this.lookUpButtonClient.TabStop = false;
@@ -215,12 +215,12 @@
             // lookUpButtonProjectName
             // 
             this.lookUpButtonProjectName.AssociatedControl = "txtProjectName";
-            this.lookUpButtonProjectName.Controller = "Project";
+            this.lookUpButtonProjectName.Source = "Project";
             this.lookUpButtonProjectName.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonProjectName.Location = new System.Drawing.Point(341, 46);
             this.lookUpButtonProjectName.Name = "lookUpButtonProjectName";
-            this.lookUpButtonProjectName.SelectedValueIndex = 0;
-            this.lookUpButtonProjectName.ShowFieldsInLookUp.Add("ProjectName");
+            // 0;
+            //("ProjectName");
             this.lookUpButtonProjectName.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonProjectName.TabIndex = 2;
             this.lookUpButtonProjectName.TabStop = false;

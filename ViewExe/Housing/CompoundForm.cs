@@ -1,4 +1,5 @@
 ﻿using MVCHIS.Common;
+using MVCHIS.Utils;
 using System;
 
 namespace MVCHIS.Housing {
@@ -27,7 +28,7 @@ namespace MVCHIS.Housing {
 
         private void CompoundNameLookupButtonLookUpSelected(object sender, EventArgs e) {
             
-            Model = Controller.Find(new CompoundModel() { CompoundName = txtCompoundName.Text }, "CompoundName");
+            Model = Controller.Find(new CompoundModel() { Id = txtCompoundName.Text.ToInteger() }, "Id");
         }
 
         private void CompoundForm_Load(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;

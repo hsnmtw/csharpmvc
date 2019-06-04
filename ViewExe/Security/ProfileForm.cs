@@ -1,4 +1,5 @@
 ﻿using MVCHIS.Common;
+using MVCHIS.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -123,7 +124,7 @@ namespace MVCHIS.Security {
 
         private void ProfileNameLookupLookUpSelected(object sender, EventArgs e) {
             
-            Model = Controller.Find(new ProfileModel() { ProfileName = txtProfileName.Text }, "ProfileName");
+            Model = Controller.Find(new ProfileModel() { Id = txtProfileName.Text.ToInteger() }, "Id");
         }
 
         private void BtnAllowAll_Click(object sender, EventArgs e) {

@@ -202,13 +202,13 @@
             // lookUpButtonVAT
             // 
             this.lookUpButtonVAT.AssociatedControl = "txtVATCode";
-            this.lookUpButtonVAT.Controller = "VAT";
+            this.lookUpButtonVAT.Source = "VAT";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonVAT.Location = new System.Drawing.Point(295, 60);
             this.lookUpButtonVAT.Name = "lookUpButtonVAT";
-            this.lookUpButtonVAT.SelectedValueIndex = 0;
-            this.lookUpButtonVAT.ShowFieldsInLookUp.Add("VATCode");
-            this.lookUpButtonVAT.ShowFieldsInLookUp.Add("VATDesc");
+            // 0;
+            //("VATCode");
+            //("VATDesc");
             this.lookUpButtonVAT.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonVAT.TabIndex = 2;
             this.lookUpButtonVAT.TabStop = false;

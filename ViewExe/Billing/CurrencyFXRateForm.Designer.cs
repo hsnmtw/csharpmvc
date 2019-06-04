@@ -232,15 +232,15 @@
             // lookUpButtonCurrency
             // 
             this.lookUpButtonCurrency.AssociatedControl = "txtFromCurrencyId";
-            this.lookUpButtonCurrency.Controller = "Currency";
+            this.lookUpButtonCurrency.Source = "Currency";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonCurrency.Location = new System.Drawing.Point(329, 63);
             this.lookUpButtonCurrency.Name = "lookUpButtonCurrency";
-            this.lookUpButtonCurrency.SelectedValueIndex = 0;
-            this.lookUpButtonCurrency.ShowFieldsInLookUp.Add("Id");
-            this.lookUpButtonCurrency.ShowFieldsInLookUp.Add("CurrencyCode");
-            this.lookUpButtonCurrency.ShowFieldsInLookUp.Add("CurrencyEnglish");
-            this.lookUpButtonCurrency.ShowFieldsInLookUp.Add("CurrencySymbol");
+            // 0;
+            //("Id");
+            //("CurrencyCode");
+            //("CurrencyEnglish");
+            //("CurrencySymbol");
             this.lookUpButtonCurrency.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonCurrency.TabIndex = 4;
             this.lookUpButtonCurrency.TabStop = false;
@@ -278,15 +278,15 @@
             // lookUpButton1
             // 
             this.lookUpButton1.AssociatedControl = "txtToCurrencyId";
-            this.lookUpButton1.Controller = "Currency";
+            this.lookUpButton1.Source = "Currency";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButton1.Location = new System.Drawing.Point(329, 89);
             this.lookUpButton1.Name = "lookUpButton1";
-            this.lookUpButton1.SelectedValueIndex = 0;
-            this.lookUpButton1.ShowFieldsInLookUp.Add("Id");
-            this.lookUpButton1.ShowFieldsInLookUp.Add("CurrencyCode");
-            this.lookUpButton1.ShowFieldsInLookUp.Add("CurrencyEnglish");
-            this.lookUpButton1.ShowFieldsInLookUp.Add("CurrencySymbol");
+            // 0;
+            //("Id");
+            //("CurrencyCode");
+            //("CurrencyEnglish");
+            //("CurrencySymbol");
             this.lookUpButton1.Size = new System.Drawing.Size(22, 22);
             this.lookUpButton1.TabIndex = 7;
             this.lookUpButton1.TabStop = false;
@@ -324,15 +324,15 @@
             // lookUpButtonRecordId
             // 
             this.lookUpButtonRecordId.AssociatedControl = "txtId";
-            this.lookUpButtonRecordId.Controller = "CurrencyFXRate";
+            this.lookUpButtonRecordId.Source = "CurrencyFXRate";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonRecordId.Location = new System.Drawing.Point(210, 27);
             this.lookUpButtonRecordId.Name = "lookUpButtonRecordId";
-            this.lookUpButtonRecordId.SelectedValueIndex = 0;
-            this.lookUpButtonRecordId.ShowFieldsInLookUp.Add("Id");
-            this.lookUpButtonRecordId.ShowFieldsInLookUp.Add("FromCurrencyId");
-            this.lookUpButtonRecordId.ShowFieldsInLookUp.Add("ToCurrencyId");
-            this.lookUpButtonRecordId.ShowFieldsInLookUp.Add("FXDate");
+            // 0;
+            //("Id");
+            //("FromCurrencyId");
+            //("ToCurrencyId");
+            //("FXDate");
             this.lookUpButtonRecordId.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonRecordId.TabIndex = 1;
             this.lookUpButtonRecordId.TabStop = false;

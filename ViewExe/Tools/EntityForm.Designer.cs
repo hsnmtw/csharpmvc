@@ -156,13 +156,13 @@
             // lookUpButtonEntity
             // 
             this.lookUpButtonEntity.AssociatedControl = "txtEntityName";
-            this.lookUpButtonEntity.Controller = "Entity";
+            this.lookUpButtonEntity.Source = "Entity";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonEntity.Location = new System.Drawing.Point(329, 45);
             this.lookUpButtonEntity.Name = "lookUpButtonEntity";
-            this.lookUpButtonEntity.SelectedValueIndex = 0;
-            this.lookUpButtonEntity.ShowFieldsInLookUp.Add("EntityName");
-            this.lookUpButtonEntity.ShowFieldsInLookUp.Add("EntityDesc");
+            //
+            //("EntityName");
+            //("EntityDesc");
             this.lookUpButtonEntity.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonEntity.TabIndex = 2;
             this.lookUpButtonEntity.TabStop = false;

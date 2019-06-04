@@ -147,13 +147,13 @@
             // lookUpButtonBillingCategory
             // 
             this.lookUpButtonBillingCategory.AssociatedControl = "txtBillingCategoryId";
-            this.lookUpButtonBillingCategory.Controller = "BillingCategory";
+            this.lookUpButtonBillingCategory.Source = "BillingCategory";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonBillingCategory.Location = new System.Drawing.Point(345, 73);
             this.lookUpButtonBillingCategory.Name = "lookUpButtonBillingCategory";
-            this.lookUpButtonBillingCategory.SelectedValueIndex = 1;
-            this.lookUpButtonBillingCategory.ShowFieldsInLookUp.Add("BillingCategoryCode");
-            this.lookUpButtonBillingCategory.ShowFieldsInLookUp.Add("Id");
+            // 1;
+            //("BillingCategoryCode");
+            //("Id");
             this.lookUpButtonBillingCategory.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonBillingCategory.TabIndex = 6;
             this.lookUpButtonBillingCategory.TabStop = false;
@@ -250,14 +250,14 @@
             // lookUpButtonContract
             // 
             this.lookUpButtonContract.AssociatedControl = "txtContractId";
-            this.lookUpButtonContract.Controller = "Contract";
+            this.lookUpButtonContract.Source = "Contract";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonContract.Location = new System.Drawing.Point(345, 44);
             this.lookUpButtonContract.Name = "lookUpButtonContract";
-            this.lookUpButtonContract.SelectedValueIndex = 2;
-            this.lookUpButtonContract.ShowFieldsInLookUp.Add("ContractCode");
-            this.lookUpButtonContract.ShowFieldsInLookUp.Add("ClientId");
-            this.lookUpButtonContract.ShowFieldsInLookUp.Add("Id");
+            // 2;
+            //("ContractCode");
+            //("ClientId");
+            //("Id");
             this.lookUpButtonContract.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonContract.TabIndex = 3;
             this.lookUpButtonContract.TabStop = false;
@@ -295,15 +295,15 @@
             // lookUpButtonCurrency
             // 
             this.lookUpButtonCurrency.AssociatedControl = "txtCurrencyId";
-            this.lookUpButtonCurrency.Controller = "Currency";
+            this.lookUpButtonCurrency.Source = "Currency";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonCurrency.Location = new System.Drawing.Point(345, 131);
             this.lookUpButtonCurrency.Name = "lookUpButtonCurrency";
-            this.lookUpButtonCurrency.SelectedValueIndex = 3;
-            this.lookUpButtonCurrency.ShowFieldsInLookUp.Add("CurrencyCode");
-            this.lookUpButtonCurrency.ShowFieldsInLookUp.Add("CurrencyEnglish");
-            this.lookUpButtonCurrency.ShowFieldsInLookUp.Add("CurrencyArabic");
-            this.lookUpButtonCurrency.ShowFieldsInLookUp.Add("Id");
+            // 3;
+            //("CurrencyCode");
+            //("CurrencyEnglish");
+            //("CurrencyArabic");
+            //("Id");
             this.lookUpButtonCurrency.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonCurrency.TabIndex = 11;
             this.lookUpButtonCurrency.TabStop = false;

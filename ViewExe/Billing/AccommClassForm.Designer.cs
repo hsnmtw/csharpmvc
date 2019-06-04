@@ -182,13 +182,13 @@
             // lookUpButtonAccommClass
             // 
             this.lookUpButtonAccommClass.AssociatedControl = "txtAccommClassCode";
-            this.lookUpButtonAccommClass.Controller = "AccommClass";
+            this.lookUpButtonAccommClass.Source = "AccommClass";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonAccommClass.Location = new System.Drawing.Point(355, 45);
             this.lookUpButtonAccommClass.Name = "lookUpButtonAccommClass";
-            this.lookUpButtonAccommClass.SelectedValueIndex = 0;
-            this.lookUpButtonAccommClass.ShowFieldsInLookUp.Add("AccommClassCode");
-            this.lookUpButtonAccommClass.ShowFieldsInLookUp.Add("AccommClassDesc");
+            // 0;
+            //("AccommClassCode");
+            //("AccommClassDesc");
             this.lookUpButtonAccommClass.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonAccommClass.TabIndex = 2;
             this.lookUpButtonAccommClass.TabStop = false;

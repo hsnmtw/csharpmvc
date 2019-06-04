@@ -58,7 +58,7 @@ namespace MVCHIS.Billing {
         }
 
         private void LookUpButtonRecordId_LookUpSelected(object sender, EventArgs e) {
-            Model = Controller.Find(new CurrencyFXRateModel() { Id = int.Parse($"0{txtId.Text}") }, "Id");
+            Model = Controller.Find(new CurrencyFXRateModel() { Id = txtId.Text.ToInteger() }, "Id");
         }
 
         private void TxtFromCurrencyId_TextChanged(object sender, EventArgs e) {

@@ -165,13 +165,13 @@
             // DictionaryNameLookupButton
             // 
             this.DictionaryNameLookupButton.AssociatedControl = "txtWordInEnglish";
-            this.DictionaryNameLookupButton.Controller = "Dictionary";
+            this.DictionaryNameLookupButton.Source = "Dictionary";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.DictionaryNameLookupButton.Location = new System.Drawing.Point(309, 48);
             this.DictionaryNameLookupButton.Name = "DictionaryNameLookupButton";
-            this.DictionaryNameLookupButton.SelectedValueIndex = 0;
-            this.DictionaryNameLookupButton.ShowFieldsInLookUp.Add("WordInEnglish");
-            this.DictionaryNameLookupButton.ShowFieldsInLookUp.Add("WordInArabic");
+            //
+            //("WordInEnglish");
+            //("WordInArabic");
             this.DictionaryNameLookupButton.Size = new System.Drawing.Size(22, 22);
             this.DictionaryNameLookupButton.TabIndex = 2;
             this.DictionaryNameLookupButton.TabStop = false;

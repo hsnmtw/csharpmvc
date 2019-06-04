@@ -30,7 +30,7 @@ namespace MVCHIS.Billing {
         }
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            Model = Controller.Find(new BillingCycleModel() { Id = int.Parse($"0{txtId.Text}") }, "Id");
+            Model = Controller.Find(new BillingCycleModel() { Id = txtId.Text.ToInteger() }, "Id");
         }
 
         private void BillingCycleFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;

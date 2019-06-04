@@ -1,4 +1,5 @@
 ﻿using MVCHIS.Common;
+using MVCHIS.Utils;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -33,7 +34,7 @@ namespace MVCHIS.Customers {
 
         private void CountryCodeTextBoxLookUpSelected(object sender, EventArgs e) {
             
-            Model = Controller.Find(new CountryModel() { CountryCode = txtCountryCode.Text }, "CountryCode");
+            Model = Controller.Find(new CountryModel() { Id = txtCountryCode.Text.ToInteger() }, "Id");
         }
     }
     

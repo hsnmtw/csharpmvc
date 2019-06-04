@@ -168,14 +168,14 @@
             // lookUpButtonIdentificationType
             // 
             this.lookUpButtonIdentificationType.AssociatedControl = "txtIdentificationTypeCode";
-            this.lookUpButtonIdentificationType.Controller = "IdentificationType";
+            this.lookUpButtonIdentificationType.Source = "IdentificationType";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonIdentificationType.Location = new System.Drawing.Point(193, 51);
             this.lookUpButtonIdentificationType.Name = "lookUpButtonIdentificationType";
-            this.lookUpButtonIdentificationType.SelectedValueIndex = 0;
-            this.lookUpButtonIdentificationType.ShowFieldsInLookUp.Add("IdentificationTypeCode");
-            this.lookUpButtonIdentificationType.ShowFieldsInLookUp.Add("IdentificationTypeEnglish");
-            this.lookUpButtonIdentificationType.ShowFieldsInLookUp.Add("IdentificationTypeArabic");
+            // 0;
+            //("IdentificationTypeCode");
+            //("IdentificationTypeEnglish");
+            //("IdentificationTypeArabic");
             this.lookUpButtonIdentificationType.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonIdentificationType.TabIndex = 2;
             this.lookUpButtonIdentificationType.TabStop = false;

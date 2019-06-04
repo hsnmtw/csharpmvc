@@ -190,13 +190,13 @@
             // lookupButtonCity
             // 
             this.lookupButtonCity.AssociatedControl = "txtCityEnglish";
-            this.lookupButtonCity.Controller = "City";
+            this.lookupButtonCity.Source = "City";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookupButtonCity.Location = new System.Drawing.Point(331, 41);
             this.lookupButtonCity.Name = "lookupButtonCity";
-            this.lookupButtonCity.SelectedValueIndex = 0;
-            this.lookupButtonCity.ShowFieldsInLookUp.Add("CityEnglish");
-            this.lookupButtonCity.ShowFieldsInLookUp.Add("CityArabic");
+            // 0;
+            //("CityEnglish");
+            //("CityArabic");
             this.lookupButtonCity.Size = new System.Drawing.Size(22, 22);
             this.lookupButtonCity.TabIndex = 2;
             this.lookupButtonCity.TabStop = false;
@@ -224,15 +224,15 @@
             // lookUpButtonNationality
             // 
             this.lookUpButtonNationality.AssociatedControl = "txtCountryId";
-            this.lookUpButtonNationality.Controller = "Country";
+            this.lookUpButtonNationality.Source = "Country";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonNationality.Location = new System.Drawing.Point(331, 92);
             this.lookUpButtonNationality.Name = "lookUpButtonNationality";
-            this.lookUpButtonNationality.SelectedValueIndex = 3;
-            this.lookUpButtonNationality.ShowFieldsInLookUp.Add("CountryCode");
-            this.lookUpButtonNationality.ShowFieldsInLookUp.Add("CountryEnglish");
-            this.lookUpButtonNationality.ShowFieldsInLookUp.Add("CountryArabic");
-            this.lookUpButtonNationality.ShowFieldsInLookUp.Add("Id");
+            // 3;
+            //("CountryCode");
+            //("CountryEnglish");
+            //("CountryArabic");
+            //("Id");
             this.lookUpButtonNationality.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonNationality.TabIndex = 7;
             this.lookUpButtonNationality.TabStop = false;

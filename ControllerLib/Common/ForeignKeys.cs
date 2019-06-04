@@ -69,5 +69,13 @@ namespace MVCHIS.Common {
             lookUps[key] = lookup;
             Console.WriteLine($" + [FK] {key}");
         }
+
+        public Dictionary<int,string> GetLookUp(string source) {
+            bool found = Enum.TryParse(source,out MODELS key);
+            if (found && ContainsKey(key)) {
+                return lookUps[key];
+            }
+            return null;
+        }
     }
 }

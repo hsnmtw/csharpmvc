@@ -276,13 +276,13 @@
             // lookuptxtProfile
             // 
             this.lookuptxtProfile.AssociatedControl = "txtProfileId";
-            this.lookuptxtProfile.Controller = "Profile";
+            this.lookuptxtProfile.Source = "Profile";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookuptxtProfile.Location = new System.Drawing.Point(356, 73);
             this.lookuptxtProfile.Name = "lookuptxtProfile";
-            this.lookuptxtProfile.SelectedValueIndex = 1;
-            this.lookuptxtProfile.ShowFieldsInLookUp.Add("ProfileName");
-            this.lookuptxtProfile.ShowFieldsInLookUp.Add("Id");
+            //
+            //("ProfileName");
+            //("Id");
             this.lookuptxtProfile.Size = new System.Drawing.Size(22, 22);
             this.lookuptxtProfile.TabIndex = 7;
             this.lookuptxtProfile.TabStop = false;
@@ -290,13 +290,13 @@
             // lookUpButtonEntitlement
             // 
             this.lookUpButtonEntitlement.AssociatedControl = "txtEntitlementId";
-            this.lookUpButtonEntitlement.Controller = "Entitlement";
+            this.lookUpButtonEntitlement.Source = "Entitlement";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonEntitlement.Location = new System.Drawing.Point(356, 42);
             this.lookUpButtonEntitlement.Name = "lookUpButtonEntitlement";
-            this.lookUpButtonEntitlement.SelectedValueIndex = 1;
-            this.lookUpButtonEntitlement.ShowFieldsInLookUp.Add("EntitlementName");
-            this.lookUpButtonEntitlement.ShowFieldsInLookUp.Add("Id");
+            //
+            //("EntitlementName");
+            //("Id");
             this.lookUpButtonEntitlement.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonEntitlement.TabIndex = 4;
             this.lookUpButtonEntitlement.TabStop = false;
@@ -322,14 +322,14 @@
             // lookupId
             // 
             this.lookupId.AssociatedControl = "txtId";
-            this.lookupId.Controller = "ProfileEntitlement";
+            this.lookupId.Source = "ProfileEntitlement";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookupId.Location = new System.Drawing.Point(230, 11);
             this.lookupId.Name = "lookupId";
-            this.lookupId.SelectedValueIndex = 2;
-            this.lookupId.ShowFieldsInLookUp.Add("EntitlementId");
-            this.lookupId.ShowFieldsInLookUp.Add("ProfileId");
-            this.lookupId.ShowFieldsInLookUp.Add("Id");
+            //
+            //("EntitlementId");
+            //("ProfileId");
+            //("Id");
             this.lookupId.Size = new System.Drawing.Size(22, 22);
             this.lookupId.TabIndex = 1;
             this.lookupId.TabStop = false;

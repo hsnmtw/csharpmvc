@@ -175,13 +175,13 @@
             // lookUpButtonAccomCategory
             // 
             this.lookUpButtonAccomCategory.AssociatedControl = "txtBillingCategoryCode";
-            this.lookUpButtonAccomCategory.Controller = "BillingCategory";
+            this.lookUpButtonAccomCategory.Source = "BillingCategory";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonAccomCategory.Location = new System.Drawing.Point(353, 41);
             this.lookUpButtonAccomCategory.Name = "lookUpButtonAccomCategory";
-            this.lookUpButtonAccomCategory.SelectedValueIndex = 0;
-            this.lookUpButtonAccomCategory.ShowFieldsInLookUp.Add("BillingCategoryCode");
-            this.lookUpButtonAccomCategory.ShowFieldsInLookUp.Add("BillingCategoryDesc");
+            // 0;
+            //("BillingCategoryCode");
+            //("BillingCategoryDesc");
             this.lookUpButtonAccomCategory.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonAccomCategory.TabIndex = 2;
             this.lookUpButtonAccomCategory.TabStop = false;
@@ -209,14 +209,14 @@
             // lookUpButtonFoodType
             // 
             this.lookUpButtonFoodType.AssociatedControl = "txtFoodTypeId";
-            this.lookUpButtonFoodType.Controller = "FoodType";
+            this.lookUpButtonFoodType.Source = "FoodType";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonFoodType.Location = new System.Drawing.Point(353, 149);
             this.lookUpButtonFoodType.Name = "lookUpButtonFoodType";
-            this.lookUpButtonFoodType.SelectedValueIndex = 2;
-            this.lookUpButtonFoodType.ShowFieldsInLookUp.Add("FoodTypeCode");
-            this.lookUpButtonFoodType.ShowFieldsInLookUp.Add("FoodTypeDesc");
-            this.lookUpButtonFoodType.ShowFieldsInLookUp.Add("Id");
+            // 2;
+            //("FoodTypeCode");
+            //("FoodTypeDesc");
+            //("Id");
             this.lookUpButtonFoodType.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonFoodType.TabIndex = 13;
             this.lookUpButtonFoodType.TabStop = false;
@@ -224,14 +224,14 @@
             // lookUpButtonFood
             // 
             this.lookUpButtonFood.AssociatedControl = "txtFoodClassId";
-            this.lookUpButtonFood.Controller = "FoodClass";
+            this.lookUpButtonFood.Source = "FoodClass";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonFood.Location = new System.Drawing.Point(353, 122);
             this.lookUpButtonFood.Name = "lookUpButtonFood";
-            this.lookUpButtonFood.SelectedValueIndex = 2;
-            this.lookUpButtonFood.ShowFieldsInLookUp.Add("FoodClassCode");
-            this.lookUpButtonFood.ShowFieldsInLookUp.Add("FoodClassDesc");
-            this.lookUpButtonFood.ShowFieldsInLookUp.Add("Id");
+            // 2;
+            //("FoodClassCode");
+            //("FoodClassDesc");
+            //("Id");
             this.lookUpButtonFood.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonFood.TabIndex = 9;
             this.lookUpButtonFood.TabStop = false;
@@ -239,14 +239,14 @@
             // lookUpButtonAccommClass
             // 
             this.lookUpButtonAccommClass.AssociatedControl = "txtAccommClassId";
-            this.lookUpButtonAccommClass.Controller = "AccommClass";
+            this.lookUpButtonAccommClass.Source = "AccommClass";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonAccommClass.Location = new System.Drawing.Point(353, 95);
             this.lookUpButtonAccommClass.Name = "lookUpButtonAccommClass";
-            this.lookUpButtonAccommClass.SelectedValueIndex = 2;
-            this.lookUpButtonAccommClass.ShowFieldsInLookUp.Add("AccommClassCode");
-            this.lookUpButtonAccommClass.ShowFieldsInLookUp.Add("AccommClassDesc");
-            this.lookUpButtonAccommClass.ShowFieldsInLookUp.Add("Id");
+            // 2;
+            //("AccommClassCode");
+            //("AccommClassDesc");
+            //("Id");
             this.lookUpButtonAccommClass.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonAccommClass.TabIndex = 5;
             this.lookUpButtonAccommClass.TabStop = false;

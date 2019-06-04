@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 
 namespace MVCHIS.Utils {
     public static class Strings {
+
+        public static string ARROW => "↓";
+        public static string CALENDAR => "📅";
+        public static string TICK => "✓";
+        public static string DATE_FORMAT => "yyyy-MM-dd";
+        public static string TIME_FORMAT => "HH:mm:ss";
+
         public static string FromCamelCaseToWords(this string word) {
             return Regex.Replace(word, "(\\B[A-Z])", " $1");
         }
@@ -21,7 +28,7 @@ namespace MVCHIS.Utils {
         }
 
         public static string ToSortableString(this DateTime datetime) {
-            return datetime.ToString("yyyy-MM-dd");
+            return datetime.ToString(DATE_FORMAT);
         }
 
         public static string ToSortableString(this double d) {
@@ -33,7 +40,14 @@ namespace MVCHIS.Utils {
         }
 
         public static string ToSortableString(this bool b) {
-            return b ? FormsHelper.TICK : "";
+            return b ? TICK : "";
+        }
+
+        public static int ToInteger(this string source) {
+            if(int.TryParse(source,out int test)) {
+                return test;
+            }
+            return default;
         }
     }
 }

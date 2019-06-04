@@ -222,13 +222,13 @@
             // lookUpButtonContract
             // 
             this.lookUpButtonContract.AssociatedControl = "txtContractCode";
-            this.lookUpButtonContract.Controller = "Contract";
+            this.lookUpButtonContract.Source = "Contract";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonContract.Location = new System.Drawing.Point(297, 48);
             this.lookUpButtonContract.Name = "lookUpButtonContract";
-            this.lookUpButtonContract.SelectedValueIndex = 0;
-            this.lookUpButtonContract.ShowFieldsInLookUp.Add("ContractCode");
-            this.lookUpButtonContract.ShowFieldsInLookUp.Add("Id");
+            // 0;
+            //("ContractCode");
+            //("Id");
             this.lookUpButtonContract.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonContract.TabIndex = 2;
             this.lookUpButtonContract.TabStop = false;
@@ -297,14 +297,14 @@
             // lookUpButton1
             // 
             this.lookUpButton1.AssociatedControl = "txtClientId";
-            this.lookUpButton1.Controller = "Client";
+            this.lookUpButton1.Source = "Client";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButton1.Location = new System.Drawing.Point(179, 131);
             this.lookUpButton1.Name = "lookUpButton1";
-            this.lookUpButton1.SelectedValueIndex = 2;
-            this.lookUpButton1.ShowFieldsInLookUp.Add("ShortName");
-            this.lookUpButton1.ShowFieldsInLookUp.Add("LongName");
-            this.lookUpButton1.ShowFieldsInLookUp.Add("Id");
+            // 2;
+            //("ShortName");
+            //("LongName");
+            //("Id");
             this.lookUpButton1.Size = new System.Drawing.Size(22, 22);
             this.lookUpButton1.TabIndex = 8;
             this.lookUpButton1.TabStop = false;

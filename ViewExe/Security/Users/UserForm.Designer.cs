@@ -354,13 +354,13 @@
             // ProfileNameLookup
             // 
             this.ProfileNameLookup.AssociatedControl = "txtProfileId";
-            this.ProfileNameLookup.Controller = "Profile";
+            this.ProfileNameLookup.Source = "Profile";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.ProfileNameLookup.Location = new System.Drawing.Point(359, 100);
             this.ProfileNameLookup.Name = "ProfileNameLookup";
-            this.ProfileNameLookup.SelectedValueIndex = 1;
-            this.ProfileNameLookup.ShowFieldsInLookUp.Add("ProfileName");
-            this.ProfileNameLookup.ShowFieldsInLookUp.Add("Id");
+            //
+            //("ProfileName");
+            //("Id");
             this.ProfileNameLookup.Size = new System.Drawing.Size(22, 22);
             this.ProfileNameLookup.TabIndex = 6;
             this.ProfileNameLookup.TabStop = false;
@@ -368,14 +368,14 @@
             // UserNameLookup
             // 
             this.UserNameLookup.AssociatedControl = "txtUserName";
-            this.UserNameLookup.Controller = "User";
+            this.UserNameLookup.Source = "User";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.UserNameLookup.Location = new System.Drawing.Point(359, 41);
             this.UserNameLookup.Name = "UserNameLookup";
-            this.UserNameLookup.SelectedValueIndex = 0;
-            this.UserNameLookup.ShowFieldsInLookUp.Add("UserName");
-            this.UserNameLookup.ShowFieldsInLookUp.Add("FullName");
-            this.UserNameLookup.ShowFieldsInLookUp.Add("IsActive");
+            //
+            //("UserName");
+            //("FullName");
+            //("IsActive");
             this.UserNameLookup.Size = new System.Drawing.Size(22, 22);
             this.UserNameLookup.TabIndex = 2;
             this.UserNameLookup.TabStop = false;

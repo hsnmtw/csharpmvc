@@ -172,12 +172,12 @@
             // lookUpButtonShortName
             // 
             this.lookUpButtonShortName.AssociatedControl = "txtIdentificationNumber";
-            this.lookUpButtonShortName.Controller = "Identification";
+            this.lookUpButtonShortName.Source = "Identification";
             this.lookUpButtonShortName.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonShortName.Location = new System.Drawing.Point(265, 49);
             this.lookUpButtonShortName.Name = "lookUpButtonShortName";
-            this.lookUpButtonShortName.SelectedValueIndex = 0;
-            this.lookUpButtonShortName.ShowFieldsInLookUp.Add("IdentificationNumber");
+            // 0;
+            //("IdentificationNumber");
             this.lookUpButtonShortName.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonShortName.TabIndex = 2;
             this.lookUpButtonShortName.TabStop = false;
@@ -264,15 +264,15 @@
             // lookUpButtonIdentificationType
             // 
             this.lookUpButtonIdentificationType.AssociatedControl = "txtIdentificationTypeId";
-            this.lookUpButtonIdentificationType.Controller = "IdentificationType";
+            this.lookUpButtonIdentificationType.Source = "IdentificationType";
             this.lookUpButtonIdentificationType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonIdentificationType.Location = new System.Drawing.Point(348, 76);
             this.lookUpButtonIdentificationType.Name = "lookUpButtonIdentificationType";
-            this.lookUpButtonIdentificationType.SelectedValueIndex = 3;
-            this.lookUpButtonIdentificationType.ShowFieldsInLookUp.Add("IdentificationTypeCode");
-            this.lookUpButtonIdentificationType.ShowFieldsInLookUp.Add("IdentificationTypeEnglish");
-            this.lookUpButtonIdentificationType.ShowFieldsInLookUp.Add("IdentificationTypeArabic");
-            this.lookUpButtonIdentificationType.ShowFieldsInLookUp.Add("Id");
+            // 3;
+            //("IdentificationTypeCode");
+            //("IdentificationTypeEnglish");
+            //("IdentificationTypeArabic");
+            //("Id");
             this.lookUpButtonIdentificationType.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonIdentificationType.TabIndex = 4;
             this.lookUpButtonIdentificationType.TabStop = false;
@@ -281,14 +281,14 @@
             // lookUpButtonCountryOfIssue
             // 
             this.lookUpButtonCountryOfIssue.AssociatedControl = "txtCityId";
-            this.lookUpButtonCountryOfIssue.Controller = "City";
+            this.lookUpButtonCountryOfIssue.Source = "City";
             this.lookUpButtonCountryOfIssue.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonCountryOfIssue.Location = new System.Drawing.Point(348, 155);
             this.lookUpButtonCountryOfIssue.Name = "lookUpButtonCountryOfIssue";
-            this.lookUpButtonCountryOfIssue.SelectedValueIndex = 2;
-            this.lookUpButtonCountryOfIssue.ShowFieldsInLookUp.Add("CityEnglish");
-            this.lookUpButtonCountryOfIssue.ShowFieldsInLookUp.Add("CityArabic");
-            this.lookUpButtonCountryOfIssue.ShowFieldsInLookUp.Add("Id");
+            // 2;
+            //("CityEnglish");
+            //("CityArabic");
+            //("Id");
             this.lookUpButtonCountryOfIssue.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonCountryOfIssue.TabIndex = 13;
             this.lookUpButtonCountryOfIssue.TabStop = false;

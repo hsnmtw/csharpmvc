@@ -28,7 +28,7 @@ namespace MVCHIS.Common {
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
             
             //this.txtEntityName.Text = selected;
-            Model = Controller.Find(new EntityModel() { EntityName = txtEntityName.Text }, "EntityName");
+            Model = Controller.Find(new EntityModel() { Id = txtEntityName.Text.ToInteger() }, "Id");
 
         }
 

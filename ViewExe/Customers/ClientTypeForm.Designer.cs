@@ -168,12 +168,12 @@
             // lookUpButtonClientType
             // 
             this.lookUpButtonClientType.AssociatedControl = "txtClientType";
-            this.lookUpButtonClientType.Controller = "ClientType";
+            this.lookUpButtonClientType.Source = "ClientType";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonClientType.Location = new System.Drawing.Point(302, 58);
             this.lookUpButtonClientType.Name = "lookUpButtonClientType";
-            this.lookUpButtonClientType.SelectedValueIndex = 0;
-            this.lookUpButtonClientType.ShowFieldsInLookUp.Add("ClientTypeCode");
+            // 0;
+            //("ClientTypeCode");
             this.lookUpButtonClientType.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonClientType.TabIndex = 2;
             this.lookUpButtonClientType.TabStop = false;

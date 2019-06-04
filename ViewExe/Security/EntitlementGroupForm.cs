@@ -1,4 +1,5 @@
 ﻿using MVCHIS.Common;
+using MVCHIS.Utils;
 using System;
 
 namespace MVCHIS.Security {
@@ -30,7 +31,7 @@ namespace MVCHIS.Security {
 
         private void EntitlementGroupNameLookupLookUpSelected(object sender, EventArgs e) {
             
-            Model = Controller.Find(new EntitlementGroupModel() { EntitlementGroupName = txtEntitlementGroupName.Text }, "EntitlementGroupName");
+            Model = Controller.Find(new EntitlementGroupModel() { Id = txtEntitlementGroupName.Text.ToInteger() }, "Id");
         }
     }
     

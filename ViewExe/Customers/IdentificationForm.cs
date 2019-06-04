@@ -37,7 +37,7 @@ namespace MVCHIS.Customers {
         }
 
         private void LookUpButtonShortNameLookUpSelected(object sender, EventArgs e) {
-            Model = Controller.Find(new IdentificationModel() { IdentificationNumber = txtIdentificationNumber.Text }, "IdentificationNumber");
+            Model = Controller.Find(new IdentificationModel() { Id = txtIdentificationNumber.Text.ToInteger() }, "Id");
         }
 
         private void TxtIssueDate_Leave(object sender, EventArgs e) {

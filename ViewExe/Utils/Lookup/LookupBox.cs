@@ -9,18 +9,13 @@ using System.Windows.Forms;
 namespace MVCHIS.Common {
     public partial class LookupBox : Form {
 
-        private Type modelType;
-        private DataTable source;
-        private int[] columnsWidths;
-
+        private DataTable source;// = new DataTable();
         public bool ValueHasBeenSelected => listView1.SelectedIndices.Count > 0;
 
         public LookupBox() {
             InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
-            //this.values = new Dictionary<string, string>();
         }
 
-        public int SelectedValueIndex       { get; set; }
 
         public string SearchText {
             set {
@@ -28,22 +23,14 @@ namespace MVCHIS.Common {
             }
         }
 
-        //private IDBController Controller;
-        private string[] shownColumns;
-
-        public LookupBox(Type modelType,DataTable data,params string[]shownColumns) : this() {
+        public LookupBox(string datasource,DataTable data) : this() {
             this.listView1.Columns.Clear();
             this.listView1.Items.Clear();
-            this.shownColumns = shownColumns;
-            //Controller = controller;
-            source = data;
-            //listView1.Columns.AddRange((from c in shownColumns select new ColumnHeader(c) { Text = c }).ToArray());
-            this.modelType = modelType;
+            this.Text = $"LookUp : [{datasource}]";
+            this.source = data;
         }
 
-
-
-        public string SelectedValue => ValueHasBeenSelected == false ? null : (SelectedValueIndex==0 ?  this.listView1.SelectedItems[0].Text : this.listView1.SelectedItems[0].SubItems[SelectedValueIndex].Text);
+        public string SelectedValue => ValueHasBeenSelected == false ? null : this.listView1.SelectedItems[0].Text;
 
         private void LookUpLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //this.lblSearch.Text = "";
@@ -53,7 +40,7 @@ namespace MVCHIS.Common {
         }
 
         public void Requery() {
-            listView1.LoadData(lblSearch.Text, source, shownColumns);
+            listView1.LoadData(lblSearch.Text, source,"Key","Value");
         }
 
         private void LookUpKeyDown(object sender, KeyEventArgs e) {
@@ -88,13 +75,9 @@ namespace MVCHIS.Common {
             
         }
 
-        private void DataGridView1KeyUp(object sender, KeyEventArgs e) {
-        }
-
         private void Label1TextChanged(object sender, EventArgs e) {
             Requery();
         }
-
 
         private void ListView1_DoubleClick(object sender, EventArgs e) {
             this.ListView1KeyDown(sender, new KeyEventArgs(Keys.Enter));

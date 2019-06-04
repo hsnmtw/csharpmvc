@@ -69,7 +69,7 @@ namespace MVCHIS.Billing {
         }
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            Model = Controller.Find(new ContractModel() { ContractCode = txtContractCode.Text }, "ContractCode");
+            Model = Controller.Find(new ContractModel() { Id = txtContractCode.Text.ToInteger() }, "Id");
         }
 
         private void ContractFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;

@@ -185,12 +185,12 @@
             // lookUpButton1
             // 
             this.lookUpButton1.AssociatedControl = "txtBuildingName";
-            this.lookUpButton1.Controller = "Building";
+            this.lookUpButton1.Source = "Building";
             this.lookUpButton1.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButton1.Location = new System.Drawing.Point(304, 45);
             this.lookUpButton1.Name = "lookUpButton1";
-            this.lookUpButton1.SelectedValueIndex = 0;
-            this.lookUpButton1.ShowFieldsInLookUp.Add("BuildingName");
+            //
+            //("BuildingName");
             this.lookUpButton1.Size = new System.Drawing.Size(22, 22);
             this.lookUpButton1.TabIndex = 2;
             this.lookUpButton1.TabStop = false;
@@ -199,13 +199,13 @@
             // lookupComound
             // 
             this.lookupComound.AssociatedControl = "txtCompoundId";
-            this.lookupComound.Controller = "Compound";
+            this.lookupComound.Source = "Compound";
             this.lookupComound.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookupComound.Location = new System.Drawing.Point(304, 104);
             this.lookupComound.Name = "lookupComound";
-            this.lookupComound.SelectedValueIndex = 1;
-            this.lookupComound.ShowFieldsInLookUp.Add("CompoundName");
-            this.lookupComound.ShowFieldsInLookUp.Add("Id");
+            //
+            //("CompoundName");
+            //("Id");
             this.lookupComound.Size = new System.Drawing.Size(22, 22);
             this.lookupComound.TabIndex = 6;
             this.lookupComound.TabStop = false;
@@ -241,13 +241,13 @@
             // lookUpButtonBuildingType
             // 
             this.lookUpButtonBuildingType.AssociatedControl = "txtBuildingTypeId";
-            this.lookUpButtonBuildingType.Controller = "BuildingType";
+            this.lookUpButtonBuildingType.Source = "BuildingType";
             this.lookUpButtonBuildingType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonBuildingType.Location = new System.Drawing.Point(304, 76);
             this.lookUpButtonBuildingType.Name = "lookUpButtonBuildingType";
-            this.lookUpButtonBuildingType.SelectedValueIndex = 1;
-            this.lookUpButtonBuildingType.ShowFieldsInLookUp.Add("BuildingTypeCode");
-            this.lookUpButtonBuildingType.ShowFieldsInLookUp.Add("Id");
+            //
+            //("BuildingTypeCode");
+            //("Id");
             this.lookUpButtonBuildingType.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonBuildingType.TabIndex = 4;
             this.lookUpButtonBuildingType.TabStop = false;

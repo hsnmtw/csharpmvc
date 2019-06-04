@@ -1,4 +1,5 @@
 ﻿using MVCHIS.Common;
+using MVCHIS.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -59,7 +60,7 @@ namespace MVCHIS.Security.Users {
         }
 
         private void UserNameLookup_LookUpSelected(object sender, EventArgs e) {
-            Model = Controller.Find(new UserModel() { UserName = txtUserName.Text }, "UserName");
+            Model = Controller.Find(new UserModel() { Id = txtUserName.Text.ToInteger() }, "Id");
         }
     }
 }

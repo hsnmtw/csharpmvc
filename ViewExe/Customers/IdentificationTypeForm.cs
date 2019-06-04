@@ -26,7 +26,7 @@ namespace MVCHIS.Customers {
         }
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            Model = Controller.Find(new IdentificationTypeModel() { IdentificationTypeCode = txtIdentificationTypeCode.Text }, "IdentificationTypeCode");
+            Model = Controller.Find(new IdentificationTypeModel() { Id = txtIdentificationTypeCode.Text.ToInteger() }, "Id");
         }
 
         private void IdentificationTypeFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;

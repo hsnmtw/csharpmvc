@@ -241,14 +241,14 @@
             // lookUpButton1
             // 
             this.lookUpButton1.AssociatedControl = "txtRoomName";
-            this.lookUpButton1.Controller = "Room";
+            this.lookUpButton1.Source = "Room";
             this.lookUpButton1.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButton1.Location = new System.Drawing.Point(284, 39);
             this.lookUpButton1.Name = "lookUpButton1";
-            this.lookUpButton1.SelectedValueIndex = 0;
-            this.lookUpButton1.ShowFieldsInLookUp.Add("RoomName");
-            this.lookUpButton1.ShowFieldsInLookUp.Add("CountryId");
-            this.lookUpButton1.ShowFieldsInLookUp.Add("BedCapacity");
+            //
+            //("RoomName");
+            //("CountryId");
+            //("BedCapacity");
             this.lookUpButton1.Size = new System.Drawing.Size(22, 22);
             this.lookUpButton1.TabIndex = 2;
             this.lookUpButton1.TabStop = false;
@@ -257,15 +257,15 @@
             // lookupCountry
             // 
             this.lookupCountry.AssociatedControl = "txtCountryId";
-            this.lookupCountry.Controller = "Country";
+            this.lookupCountry.Source = "Country";
             this.lookupCountry.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookupCountry.Location = new System.Drawing.Point(284, 96);
             this.lookupCountry.Name = "lookupCountry";
-            this.lookupCountry.SelectedValueIndex = 3;
-            this.lookupCountry.ShowFieldsInLookUp.Add("CountryCode");
-            this.lookupCountry.ShowFieldsInLookUp.Add("CountryEnglish");
-            this.lookupCountry.ShowFieldsInLookUp.Add("CountryArabic");
-            this.lookupCountry.ShowFieldsInLookUp.Add("Id");
+            //
+            //("CountryCode");
+            //("CountryEnglish");
+            //("CountryArabic");
+            //("Id");
             this.lookupCountry.Size = new System.Drawing.Size(22, 22);
             this.lookupCountry.TabIndex = 7;
             this.lookupCountry.TabStop = false;
@@ -273,13 +273,13 @@
             // lookupBuilding
             // 
             this.lookupBuilding.AssociatedControl = "txtBuildingId";
-            this.lookupBuilding.Controller = "Building";
+            this.lookupBuilding.Source = "Building";
             this.lookupBuilding.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookupBuilding.Location = new System.Drawing.Point(284, 69);
             this.lookupBuilding.Name = "lookupBuilding";
-            this.lookupBuilding.SelectedValueIndex = 1;
-            this.lookupBuilding.ShowFieldsInLookUp.Add("BuildingName");
-            this.lookupBuilding.ShowFieldsInLookUp.Add("Id");
+            //
+            //("BuildingName");
+            //("Id");
             this.lookupBuilding.Size = new System.Drawing.Size(22, 22);
             this.lookupBuilding.TabIndex = 4;
             this.lookupBuilding.TabStop = false;

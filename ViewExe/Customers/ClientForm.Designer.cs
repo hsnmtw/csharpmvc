@@ -203,12 +203,12 @@
             // lookUpButtonShortName
             // 
             this.lookUpButtonShortName.AssociatedControl = "txtShortName";
-            this.lookUpButtonShortName.Controller = "Client";
+            this.lookUpButtonShortName.Source = "Client";
             this.lookUpButtonShortName.Location = new System.Drawing.Point(291, 49);
             this.lookUpButtonShortName.Name = "lookUpButtonShortName";
-            this.lookUpButtonShortName.SelectedValueIndex = 0;
-            this.lookUpButtonShortName.ShowFieldsInLookUp.Add("ShortName");
-            this.lookUpButtonShortName.ShowFieldsInLookUp.Add("LongName");
+            // 0;
+            //("ShortName");
+            //("LongName");
             this.lookUpButtonShortName.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonShortName.TabIndex = 2;
             this.lookUpButtonShortName.TabStop = false;
@@ -292,12 +292,12 @@
             // lookUpButtonClientType
             // 
             this.lookUpButtonClientType.AssociatedControl = "txtClientTypeId";
-            this.lookUpButtonClientType.Controller = "ClientType";
+            this.lookUpButtonClientType.Source = "ClientType";
             this.lookUpButtonClientType.Location = new System.Drawing.Point(351, 127);
             this.lookUpButtonClientType.Name = "lookUpButtonClientType";
-            this.lookUpButtonClientType.SelectedValueIndex = 1;
-            this.lookUpButtonClientType.ShowFieldsInLookUp.Add("ClientTypeCode");
-            this.lookUpButtonClientType.ShowFieldsInLookUp.Add("Id");
+            // 1;
+            //("ClientTypeCode");
+            //("Id");
             this.lookUpButtonClientType.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonClientType.TabIndex = 5;
             this.lookUpButtonClientType.TabStop = false;
@@ -550,14 +550,14 @@
             // lookUpButtonNationality
             // 
             this.lookUpButtonNationality.AssociatedControl = "txtCountryId";
-            this.lookUpButtonNationality.Controller = "Country";
+            this.lookUpButtonNationality.Source = "Country";
             this.lookUpButtonNationality.Location = new System.Drawing.Point(351, 365);
             this.lookUpButtonNationality.Name = "lookUpButtonNationality";
-            this.lookUpButtonNationality.SelectedValueIndex = 3;
-            this.lookUpButtonNationality.ShowFieldsInLookUp.Add("CountryCode");
-            this.lookUpButtonNationality.ShowFieldsInLookUp.Add("CountryEnglish");
-            this.lookUpButtonNationality.ShowFieldsInLookUp.Add("CountryArabic");
-            this.lookUpButtonNationality.ShowFieldsInLookUp.Add("Id");
+            // 3;
+            //("CountryCode");
+            //("CountryEnglish");
+            //("CountryArabic");
+            //("Id");
             this.lookUpButtonNationality.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonNationality.TabIndex = 18;
             this.lookUpButtonNationality.TabStop = false;

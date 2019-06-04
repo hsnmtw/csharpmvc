@@ -94,12 +94,11 @@
             // UserNameLookup
             // 
             this.UserNameLookup.AssociatedControl = "txtUserName";
-            this.UserNameLookup.Controller = "User";
             resources.ApplyResources(this.UserNameLookup, "UserNameLookup");
             this.UserNameLookup.Name = "UserNameLookup";
-            this.UserNameLookup.SelectedValueIndex = 0;
-            this.UserNameLookup.ShowFieldsInLookUp.Add(resources.GetString("UserNameLookup.ShowFieldsInLookUp"));
+            this.UserNameLookup.Source = "User";
             this.UserNameLookup.TabStop = false;
+            this.UserNameLookup.LookUpSelected += new System.EventHandler(this.UserNameLookup_LookUpSelected);
             // 
             // pictureBox2
             // 

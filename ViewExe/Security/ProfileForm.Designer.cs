@@ -85,7 +85,6 @@
             // 
             // txtUpdatedOn
             // 
-            
             this.txtUpdatedOn.Location = new System.Drawing.Point(201, 470);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -95,7 +94,6 @@
             // 
             // txtUpdatedBy
             // 
-            
             this.txtUpdatedBy.Location = new System.Drawing.Point(126, 470);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -114,7 +112,6 @@
             // 
             // txtCreatedOn
             // 
-            
             this.txtCreatedOn.Location = new System.Drawing.Point(201, 444);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -124,7 +121,6 @@
             // 
             // txtCreatedBy
             // 
-            
             this.txtCreatedBy.Location = new System.Drawing.Point(126, 444);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -158,7 +154,6 @@
             this.txtId.Size = new System.Drawing.Size(68, 20);
             this.txtId.TabIndex = 0;
             this.txtId.TabStop = false;
-            
             // 
             // label1
             // 
@@ -197,14 +192,11 @@
             // ProfileNameLookup
             // 
             this.ProfileNameLookup.AssociatedControl = "txtProfileName";
-            this.ProfileNameLookup.Tag = null;
-            this.ProfileNameLookup.Controller = "Profile";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.ProfileNameLookup.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.ProfileNameLookup.Location = new System.Drawing.Point(342, 35);
             this.ProfileNameLookup.Name = "ProfileNameLookup";
-            this.ProfileNameLookup.SelectedValueIndex = 0;
-            this.ProfileNameLookup.ShowFieldsInLookUp.Add("ProfileName");
             this.ProfileNameLookup.Size = new System.Drawing.Size(22, 22);
+            this.ProfileNameLookup.Source = "Profile";
             this.ProfileNameLookup.TabIndex = 2;
             this.ProfileNameLookup.TabStop = false;
             this.ProfileNameLookup.LookUpSelected += new System.EventHandler(this.ProfileNameLookupLookUpSelected);
@@ -237,7 +229,7 @@
             // 
             // lstEntitlements
             // 
-            //new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstEntitlements.Font = new System.Drawing.Font("Consolas", 8F);
             this.lstEntitlements.FormattingEnabled = true;
             this.lstEntitlements.Location = new System.Drawing.Point(126, 118);
             this.lstEntitlements.Name = "lstEntitlements";
@@ -277,50 +269,45 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            //new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(389, 397);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 13);
+            this.label7.Size = new System.Drawing.Size(46, 13);
             this.label7.TabIndex = 50;
             this.label7.Text = "Legend:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            //new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(398, 436);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(49, 13);
+            this.label8.Size = new System.Drawing.Size(46, 13);
             this.label8.TabIndex = 51;
             this.label8.Text = "R: Read";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            //new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(398, 456);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(61, 13);
+            this.label9.Size = new System.Drawing.Size(56, 13);
             this.label9.TabIndex = 51;
             this.label9.Text = "U: Update";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            //new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(398, 476);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(61, 13);
+            this.label11.Size = new System.Drawing.Size(52, 13);
             this.label11.TabIndex = 51;
             this.label11.Text = "D: Delete";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            //new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(398, 416);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(61, 13);
+            this.label12.Size = new System.Drawing.Size(54, 13);
             this.label12.TabIndex = 51;
             this.label12.Text = "C: Create";
             // 
@@ -357,7 +344,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(483, 527);
             this.Controls.Add(this.cmbEntitelmentsGroup);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label9);
@@ -390,7 +376,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Name = "ProfileForm";
-            this.Text = "Profiles";
+            this.Size = new System.Drawing.Size(483, 527);
             this.Load += new System.EventHandler(this.ProfileFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();

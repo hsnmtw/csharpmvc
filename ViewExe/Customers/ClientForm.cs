@@ -71,7 +71,7 @@ namespace MVCHIS.Customers {
 
         private void LookUpButtonShortNameLookUpSelected(object sender, EventArgs e) {
             
-            Model = Controller.Find(new ClientModel() { ShortName = txtShortName.Text }, "ShortName");
+            Model = Controller.Find(new ClientModel() { Id = txtShortName.Text.ToInteger() }, "Id");
         }
 
         private void TxtClientTypeId_TextChanged(object sender, EventArgs e) {

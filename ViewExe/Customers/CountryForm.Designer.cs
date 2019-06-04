@@ -192,13 +192,13 @@
             // CountryCodeLookupButton
             // 
             this.CountryCodeLookupButton.AssociatedControl = "txtCountryCode";
-            this.CountryCodeLookupButton.Controller = "Country";
+            this.CountryCodeLookupButton.Source = "Country";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.CountryCodeLookupButton.Location = new System.Drawing.Point(213, 37);
             this.CountryCodeLookupButton.Name = "CountryCodeLookupButton";
-            this.CountryCodeLookupButton.SelectedValueIndex = 0;
-            this.CountryCodeLookupButton.ShowFieldsInLookUp.Add("CountryCode");
-            this.CountryCodeLookupButton.ShowFieldsInLookUp.Add("CountryEnglish");
+            // 0;
+            //("CountryCode");
+            //("CountryEnglish");
             this.CountryCodeLookupButton.Size = new System.Drawing.Size(22, 22);
             this.CountryCodeLookupButton.TabIndex = 2;
             this.CountryCodeLookupButton.TabStop = false;

@@ -43,9 +43,7 @@ namespace MVCHIS.Security {
         }
 
         private void LookUpButton2_LookUpSelected(object sender, EventArgs e) {
-            //this.Model = new ProfileEntitlementsModel();
-            int id = int.Parse($"0{txtId.Text}");
-            Model = Controller.Find(new ProfileEntitlementModel() { Id = id }, "Id");
+            Model = Controller.Find(new ProfileEntitlementModel() { Id = txtId.Text.ToInteger() }, "Id");
         }
 
         private void Button1_Click(object sender, EventArgs e) {

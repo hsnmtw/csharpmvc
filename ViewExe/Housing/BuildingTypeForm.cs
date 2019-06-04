@@ -28,7 +28,7 @@ namespace MVCHIS.Housing.BuildingTypes {
 
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            Model = Controller.Find(new BuildingTypeModel() { BuildingTypeCode = txtBuildingTypeCode.Text }, "BuildingTypeCode");
+            Model = Controller.Find(new BuildingTypeModel() { Id = txtBuildingTypeCode.Text.ToInteger() }, "Id");
         }
 
         private void BuildingTypeFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;

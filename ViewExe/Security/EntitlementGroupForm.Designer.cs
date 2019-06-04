@@ -165,11 +165,11 @@
             // EntitlementGroupNameLookup
             // 
             this.EntitlementGroupNameLookup.AssociatedControl = "txtEntitlementGroupName";
-            this.EntitlementGroupNameLookup.Controller = "EntitlementGroup";
+            this.EntitlementGroupNameLookup.Source = "EntitlementGroup";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.EntitlementGroupNameLookup.Location = new System.Drawing.Point(351, 41);
             this.EntitlementGroupNameLookup.Name = "EntitlementGroupNameLookup";
-            this.EntitlementGroupNameLookup.SelectedValueIndex = 0;
+            //
             this.EntitlementGroupNameLookup.Size = new System.Drawing.Size(22, 22);
             this.EntitlementGroupNameLookup.TabIndex = 2;
             this.EntitlementGroupNameLookup.TabStop = false;

@@ -16,6 +16,7 @@ namespace MVCHIS.Security.Users {
             Mapper["UserName"] = txtUserName;
             Mapper["UserPassword"] = txtPassword;
         }
+
         private void UsersLoginView_Load(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
 
         }
@@ -40,6 +41,8 @@ namespace MVCHIS.Security.Users {
             
         }
 
-
+        private void UserNameLookup_LookUpSelected(object sender, EventArgs e) {
+            txtUserName.Text = ForeignKeys.Instance[MODELS.User, txtUserName.Text];
+        }
     }
 }

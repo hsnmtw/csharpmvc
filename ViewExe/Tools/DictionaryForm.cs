@@ -1,4 +1,5 @@
 ﻿using MVCHIS.Common;
+using MVCHIS.Utils;
 using System;
 
 namespace MVCHIS.Tools {
@@ -34,7 +35,7 @@ namespace MVCHIS.Tools {
 
         private void DictionaryNameLookupButtonLookUpSelected(object sender, EventArgs e) {
             
-            Model = Controller.Find(new DictionaryModel() { WordInEnglish = txtWordInEnglish.Text }, "WordInEnglish");
+            Model = Controller.Find(new DictionaryModel() { Id = txtWordInEnglish.Text.ToInteger() }, "Id");
         }
     }
     

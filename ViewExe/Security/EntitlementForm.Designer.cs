@@ -131,11 +131,11 @@
             // EntitlementNameLookup
             // 
             this.EntitlementNameLookup.AssociatedControl = "txtEntitlementName";
-            this.EntitlementNameLookup.Controller = "Entitlement";
+            this.EntitlementNameLookup.Source = "Entitlement";
             resources.ApplyResources(this.EntitlementNameLookup, "EntitlementNameLookup");
             this.EntitlementNameLookup.Name = "EntitlementNameLookup";
-            this.EntitlementNameLookup.SelectedValueIndex = 0;
-            this.EntitlementNameLookup.ShowFieldsInLookUp.Add(resources.GetString("EntitlementNameLookup.ShowFieldsInLookUp"));
+            //
+            //(resources.GetString("EntitlementNameLookup.ShowFieldsInLookUp"));
             this.EntitlementNameLookup.TabStop = false;
             this.EntitlementNameLookup.LookUpSelected += new System.EventHandler(this.EntitlementNameLookupLookUpSelected);
             // 
@@ -160,12 +160,12 @@
             // EntitlementGroupNameLookup
             // 
             this.EntitlementGroupNameLookup.AssociatedControl = "txtEntitlementGroupId";
-            this.EntitlementGroupNameLookup.Controller = "EntitlementGroup";
+            this.EntitlementGroupNameLookup.Source = "EntitlementGroup";
             resources.ApplyResources(this.EntitlementGroupNameLookup, "EntitlementGroupNameLookup");
             this.EntitlementGroupNameLookup.Name = "EntitlementGroupNameLookup";
-            this.EntitlementGroupNameLookup.SelectedValueIndex = 1;
-            this.EntitlementGroupNameLookup.ShowFieldsInLookUp.Add(resources.GetString("EntitlementGroupNameLookup.ShowFieldsInLookUp"));
-            this.EntitlementGroupNameLookup.ShowFieldsInLookUp.Add(resources.GetString("EntitlementGroupNameLookup.ShowFieldsInLookUp1"));
+            //
+            //(resources.GetString("EntitlementGroupNameLookup.ShowFieldsInLookUp"));
+            //(resources.GetString("EntitlementGroupNameLookup.ShowFieldsInLookUp1"));
             this.EntitlementGroupNameLookup.TabStop = false;
             // 
             // label3
@@ -181,12 +181,12 @@
             // lookUpEntityName
             // 
             this.lookUpEntityName.AssociatedControl = "txtEntityId";
-            this.lookUpEntityName.Controller = "Entity";
+            this.lookUpEntityName.Source = "Entity";
             resources.ApplyResources(this.lookUpEntityName, "lookUpEntityName");
             this.lookUpEntityName.Name = "lookUpEntityName";
-            this.lookUpEntityName.SelectedValueIndex = 1;
-            this.lookUpEntityName.ShowFieldsInLookUp.Add(resources.GetString("lookUpEntityName.ShowFieldsInLookUp"));
-            this.lookUpEntityName.ShowFieldsInLookUp.Add(resources.GetString("lookUpEntityName.ShowFieldsInLookUp1"));
+            //
+            //(resources.GetString("lookUpEntityName.ShowFieldsInLookUp"));
+            //(resources.GetString("lookUpEntityName.ShowFieldsInLookUp1"));
             this.lookUpEntityName.TabStop = false;
             // 
             // txtEntityName

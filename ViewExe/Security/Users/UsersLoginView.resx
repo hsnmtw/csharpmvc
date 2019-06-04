@@ -379,9 +379,6 @@
   <data name="UserNameLookup.Location" type="System.Drawing.Point, System.Drawing">
     <value>350, 189</value>
   </data>
-  <data name="UserNameLookup.ShowFieldsInLookUp" xml:space="preserve">
-    <value>UserName</value>
-  </data>
   <data name="UserNameLookup.Size" type="System.Drawing.Size, System.Drawing">
     <value>22, 22</value>
   </data>
@@ -441,6 +438,6 @@
     <value>UsersLoginView</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>MVCHIS.Security.Users.UserView, ViewExe, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>MVCHIS.Common.UserView, ViewExe, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

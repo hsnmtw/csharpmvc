@@ -226,15 +226,15 @@
             // lookUpButtonRoom
             // 
             this.lookUpButtonRoom.AssociatedControl = "txtRoomId";
-            this.lookUpButtonRoom.Controller = "Room";
+            this.lookUpButtonRoom.Source = "Room";
             this.lookUpButtonRoom.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonRoom.Location = new System.Drawing.Point(329, 82);
             this.lookUpButtonRoom.Name = "lookUpButtonRoom";
-            this.lookUpButtonRoom.SelectedValueIndex = 0;
-            this.lookUpButtonRoom.ShowFieldsInLookUp.Add("Id");
-            this.lookUpButtonRoom.ShowFieldsInLookUp.Add("RoomName");
-            this.lookUpButtonRoom.ShowFieldsInLookUp.Add("BedCapacity");
-            this.lookUpButtonRoom.ShowFieldsInLookUp.Add("CountryId");
+            // 0;
+            //("Id");
+            //("RoomName");
+            //("BedCapacity");
+            //("CountryId");
             this.lookUpButtonRoom.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonRoom.TabIndex = 5;
             this.lookUpButtonRoom.TabStop = false;
@@ -280,13 +280,13 @@
             // lookUpButtonClient
             // 
             this.lookUpButtonClient.AssociatedControl = "txtClientId";
-            this.lookUpButtonClient.Controller = "Client";
+            this.lookUpButtonClient.Source = "Client";
             this.lookUpButtonClient.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonClient.Location = new System.Drawing.Point(329, 108);
             this.lookUpButtonClient.Name = "lookUpButtonClient";
-            this.lookUpButtonClient.SelectedValueIndex = 0;
-            this.lookUpButtonClient.ShowFieldsInLookUp.Add("Id");
-            this.lookUpButtonClient.ShowFieldsInLookUp.Add("ShortName");
+            // 0;
+            //("Id");
+            //("ShortName");
             this.lookUpButtonClient.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonClient.TabIndex = 10;
             this.lookUpButtonClient.TabStop = false;
@@ -365,15 +365,15 @@
             // lookUpButtonCurrency
             // 
             this.lookUpButtonCurrency.AssociatedControl = "txtCurrencyId";
-            this.lookUpButtonCurrency.Controller = "Currency";
+            this.lookUpButtonCurrency.Source = "Currency";
             this.lookUpButtonCurrency.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonCurrency.Location = new System.Drawing.Point(329, 223);
             this.lookUpButtonCurrency.Name = "lookUpButtonCurrency";
-            this.lookUpButtonCurrency.SelectedValueIndex = 0;
-            this.lookUpButtonCurrency.ShowFieldsInLookUp.Add("Id");
-            this.lookUpButtonCurrency.ShowFieldsInLookUp.Add("CurrencyCode");
-            this.lookUpButtonCurrency.ShowFieldsInLookUp.Add("CurrencyEnglish");
-            this.lookUpButtonCurrency.ShowFieldsInLookUp.Add("CurrencySymbol");
+            // 0;
+            //("Id");
+            //("CurrencyCode");
+            //("CurrencyEnglish");
+            //("CurrencySymbol");
             this.lookUpButtonCurrency.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonCurrency.TabIndex = 18;
             this.lookUpButtonCurrency.TabStop = false;
@@ -457,15 +457,15 @@
             // lookUpButton1
             // 
             this.lookUpButton1.AssociatedControl = "txtReservationCode";
-            this.lookUpButton1.Controller = "Reservation";
+            this.lookUpButton1.Source = "Reservation";
             this.lookUpButton1.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButton1.Location = new System.Drawing.Point(329, 55);
             this.lookUpButton1.Name = "lookUpButton1";
-            this.lookUpButton1.SelectedValueIndex = 0;
-            this.lookUpButton1.ShowFieldsInLookUp.Add("ReservationCode");
-            this.lookUpButton1.ShowFieldsInLookUp.Add("RoomId");
-            this.lookUpButton1.ShowFieldsInLookUp.Add("ClientId");
-            this.lookUpButton1.ShowFieldsInLookUp.Add("FromDate");
+            // 0;
+            //("ReservationCode");
+            //("RoomId");
+            //("ClientId");
+            //("FromDate");
             this.lookUpButton1.Size = new System.Drawing.Size(22, 22);
             this.lookUpButton1.TabIndex = 2;
             this.lookUpButton1.TabStop = false;

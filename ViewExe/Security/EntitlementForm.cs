@@ -3,6 +3,7 @@ using MVCHIS.Tools;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using MVCHIS.Utils;
 
 namespace MVCHIS.Security {
     //[ForModel(Common.MODELS.Entitlement)]
@@ -40,7 +41,7 @@ namespace MVCHIS.Security {
 
         private void EntitlementNameLookupLookUpSelected(object sender, EventArgs e) {
             
-            Model = Controller.Find(new EntitlementModel() { EntitlementName = txtEntitlementName.Text }, "EntitlementName");
+            Model = Controller.Find(new EntitlementModel() { Id = txtEntitlementName.Text.ToInteger() }, "Id");
         }
 
         private void TxtEntitlementGroupId_TextChanged(object sender, EventArgs e) {

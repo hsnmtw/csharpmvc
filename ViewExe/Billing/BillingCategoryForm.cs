@@ -39,7 +39,7 @@ namespace MVCHIS.Billing {
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
             
-            Model = Controller.Find(new BillingCategoryModel() { BillingCategoryCode = txtBillingCategoryCode.Text }, "BillingCategoryCode");
+            Model = Controller.Find(new BillingCategoryModel() { Id = txtBillingCategoryCode.Text.ToInteger() }, "Id");
 
         }
 

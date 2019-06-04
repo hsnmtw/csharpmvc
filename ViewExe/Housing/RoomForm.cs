@@ -39,7 +39,7 @@ namespace MVCHIS.Housing.Rooms {
 
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            Model = Controller.Find(new RoomModel() { RoomName = txtRoomName.Text }, "RoomName");
+            Model = Controller.Find(new RoomModel() { Id = txtRoomName.Text.ToInteger() }, "Id");
         }
 
         private void TxtBuildingId_TextChanged(object sender, EventArgs e) {

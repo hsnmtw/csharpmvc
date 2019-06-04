@@ -190,14 +190,14 @@
             // lookUpButtonBillingCycle
             // 
             this.lookUpButtonBillingCycle.AssociatedControl = "txtId";
-            this.lookUpButtonBillingCycle.Controller = "BillingCycle";
+            this.lookUpButtonBillingCycle.Source = "BillingCycle";
             //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonBillingCycle.Location = new System.Drawing.Point(210, 31);
             this.lookUpButtonBillingCycle.Name = "lookUpButtonBillingCycle";
-            this.lookUpButtonBillingCycle.SelectedValueIndex = 2;
-            this.lookUpButtonBillingCycle.ShowFieldsInLookUp.Add("BillingCycleYear");
-            this.lookUpButtonBillingCycle.ShowFieldsInLookUp.Add("BillingCycleMonth");
-            this.lookUpButtonBillingCycle.ShowFieldsInLookUp.Add("Id");
+            // 2;
+            //("BillingCycleYear");
+            //("BillingCycleMonth");
+            //("Id");
             this.lookUpButtonBillingCycle.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonBillingCycle.TabIndex = 1;
             this.lookUpButtonBillingCycle.TabStop = false;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,15 @@ namespace MVCHIS.Utils {
 
         public static IEnumerable<O> Map<I,O>(this IEnumerable<I> source,Func<I,O> func) {
             return source.Select(x => func(x));
+        }
+
+        public static DataTable ToDataTable<K,V>(this Dictionary<K,V> data) {
+            DataTable source = new DataTable();
+            source.Columns.AddRange(new[] { new DataColumn("Key"), new DataColumn("Value") });
+            foreach (var kv in data) {
+                source.Rows.Add(new object[] { kv.Key, kv.Value });
+            }
+            return source;
         }
     }
 }

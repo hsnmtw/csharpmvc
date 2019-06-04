@@ -206,15 +206,15 @@
             // lookUpButtonCurrency
             // 
             this.lookUpButtonCurrency.AssociatedControl = "txtCurrencyCode";
-            this.lookUpButtonCurrency.Controller = "Currency";
+            this.lookUpButtonCurrency.Source = "Currency";
             this.lookUpButtonCurrency.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonCurrency.Location = new System.Drawing.Point(183, 56);
             this.lookUpButtonCurrency.Name = "lookUpButtonCurrency";
-            this.lookUpButtonCurrency.SelectedValueIndex = 0;
-            this.lookUpButtonCurrency.ShowFieldsInLookUp.Add("CurrencyCode");
-            this.lookUpButtonCurrency.ShowFieldsInLookUp.Add("CurrencyEnglish");
-            this.lookUpButtonCurrency.ShowFieldsInLookUp.Add("CurrencyArabic");
-            this.lookUpButtonCurrency.ShowFieldsInLookUp.Add("CurrencySymbol");
+            // 0;
+            //("CurrencyCode");
+            //("CurrencyEnglish");
+            //("CurrencyArabic");
+            //("CurrencySymbol");
             this.lookUpButtonCurrency.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonCurrency.TabIndex = 2;
             this.lookUpButtonCurrency.TabStop = false;
@@ -257,15 +257,15 @@
             // lookUpButtonNationality
             // 
             this.lookUpButtonNationality.AssociatedControl = "txtCountryId";
-            this.lookUpButtonNationality.Controller = "Country";
+            this.lookUpButtonNationality.Source = "Country";
             this.lookUpButtonNationality.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonNationality.Location = new System.Drawing.Point(329, 171);
             this.lookUpButtonNationality.Name = "lookUpButtonNationality";
-            this.lookUpButtonNationality.SelectedValueIndex = 3;
-            this.lookUpButtonNationality.ShowFieldsInLookUp.Add("CountryCode");
-            this.lookUpButtonNationality.ShowFieldsInLookUp.Add("CountryEnglish");
-            this.lookUpButtonNationality.ShowFieldsInLookUp.Add("CountryArabic");
-            this.lookUpButtonNationality.ShowFieldsInLookUp.Add("Id");
+            // 3;
+            //("CountryCode");
+            //("CountryEnglish");
+            //("CountryArabic");
+            //("Id");
             this.lookUpButtonNationality.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonNationality.TabIndex = 52;
             this.lookUpButtonNationality.TabStop = false;

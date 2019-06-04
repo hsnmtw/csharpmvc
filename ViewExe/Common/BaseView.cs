@@ -43,7 +43,7 @@ namespace MVCHIS.Common {
                 M model;
                 if (value == null && Controller!=null) { model = Controller.NewModel(); } else { model = value; }
                 //model = value;
-                Console.WriteLine("++++"+model);
+                //Console.WriteLine("++++"+model);
                 foreach (var x in Mapper.Keys) {
                     if (isBoolean(x)) {
                         ((CheckBox)Mapper[x]).Checked = Convert.ToBoolean(Prop(x).GetValue(model));
@@ -63,7 +63,7 @@ namespace MVCHIS.Common {
                         else Mapper[x].Text = Convert.ToString(val);
                     }
                 }
-                Console.WriteLine("++++" + model);
+                //Console.WriteLine("++++" + model);
                 ModelChanged?.Invoke();
             }
         }
@@ -111,6 +111,7 @@ namespace MVCHIS.Common {
 
         public void ViewLoadingEvent(object sender, EventArgs e) {
             if (DesignMode || (Site != null && Site.DesignMode)) return;
+            Controller = (C)DBControllersFactory.GetController<M>();
             new Thread(delegate() {
                 BeginInvoke((Action) delegate() { InitializeView(); });
             }).Start();
@@ -121,9 +122,9 @@ namespace MVCHIS.Common {
 
         private void InitializeView() {
             SuspendLayout();
-            
+
             //Thread.Sleep(10);
-            Controller = (C)DBControllersFactory.GetController<M>();
+            ForeignKeys.Instance.Put(Controller);
 
             var md = Controller.GetMetaData();
             var uqkeys = md.UniqueKeyFields.Flatten();
