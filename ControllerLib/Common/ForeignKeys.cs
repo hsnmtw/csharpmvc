@@ -67,6 +67,7 @@ namespace MVCHIS.Common {
                 };
             }
             lookUps[key] = lookup;
+            Console.WriteLine($" + [FK] {key}");
         }
     }
 }

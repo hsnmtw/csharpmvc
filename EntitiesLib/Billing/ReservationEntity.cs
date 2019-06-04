@@ -24,8 +24,7 @@ namespace MVCHIS.Billing {
                 ["UpdatedBy"] = 10,
                 ["ReservationCode"] = 10
             }
-            , Source           = "BillingReservation"
-
+            , Source           = ENTITIES.Reservation
         };
     }
 }

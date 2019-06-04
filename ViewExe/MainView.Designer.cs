@@ -56,6 +56,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.treeViewMenu = new System.Windows.Forms.TreeView();
@@ -64,7 +65,6 @@
             this.lblHeading = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblActionStatus = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -255,6 +255,12 @@
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
+            // tabControl1
+            // 
+            resources.ApplyResources(this.tabControl1, "tabControl1");
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            // 
             // timer1
             // 
             this.timer1.Enabled = true;
@@ -299,7 +305,7 @@
             // 
             // lblHeading
             // 
-            this.lblHeading.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblHeading.BackColor = System.Drawing.Color.LightSteelBlue;
             resources.ApplyResources(this.lblHeading, "lblHeading");
             this.lblHeading.ForeColor = System.Drawing.Color.White;
             this.lblHeading.Name = "lblHeading";
@@ -320,17 +326,11 @@
             this.lblActionStatus.ForeColor = System.Drawing.Color.Black;
             this.lblActionStatus.Name = "lblActionStatus";
             // 
-            // tabControl1
-            // 
-            resources.ApplyResources(this.tabControl1, "tabControl1");
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            // 
             // MainView
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);

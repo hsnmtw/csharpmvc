@@ -6,21 +6,19 @@ namespace MVCHIS.Billing {
     //[ForModel(MODELS.FoodType)]
     public class FoodTypeEntity : AbstractDBEntity<FoodTypeModel> {
         public override MetaData MetaData => new MetaData() {
-            //  ModelType        = typeof(FoodTypeModel)
-              PrimaryKeyField  = "Id" 
-            , Fields           = new HashSet<string> {"ReadOnly", "Id", "CreatedBy", "CreatedOn", "UpdatedBy", "UpdatedOn", "FoodTypeCode", "FoodTypeDesc" }
-            , RequiredFields   = new HashSet<string> { "Id", "FoodTypeCode","FoodTypeDesc" }
-            , UniqueKeyFields = new HashSet<HashSet<string>> { new HashSet<string> { "FoodTypeCode" } }
-            , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
+              PrimaryKeyField    = "Id" 
+            , Fields             = new HashSet<string> {"ReadOnly", "Id", "CreatedBy", "CreatedOn", "UpdatedBy", "UpdatedOn", "FoodTypeCode", "FoodTypeDesc" }
+            , RequiredFields     = new HashSet<string> { "Id", "FoodTypeCode","FoodTypeDesc" }
+            , UniqueKeyFields    = new HashSet<HashSet<string>> { new HashSet<string> { "FoodTypeCode" } }
+            , ForeignKeys        = new Dictionary<string, Tuple<string, string>> {
             }
             , Sizes = new Dictionary<string, int> {
-                ["CreatedBy"] = 10,
-                ["UpdatedBy"] = 10,
-                ["FoodTypeCode"]      = 50,
-                ["FoodTypeDesc"]      = 100,
+                ["CreatedBy"   ] = 10,
+                ["UpdatedBy"   ] = 10,
+                ["FoodTypeCode"] = 10,
+                ["FoodTypeDesc"] = 100,
             }
-            , Source           = "BillingFoodType"
-            
+            , Source           = ENTITIES.FoodType
         };
     }
 }

@@ -30,7 +30,7 @@ namespace MVCHIS.Customers {
                 , ["Website"       ] = 100
                 , ["NameArabic"    ] = 150
             }
-            , Source           = "CustomersClient"            
+            , Source                 = ENTITIES.Client           
         };
     }
 }

@@ -19,8 +19,7 @@ namespace MVCHIS.Billing {
                 ["FoodClassCode"    ] = 50,
                 ["FoodClassDesc"    ] = 100,
             }  
-            , Source           = "BillingFoodClass"
-            
+            , Source           = ENTITIES.FoodClass
         };
     }
 }

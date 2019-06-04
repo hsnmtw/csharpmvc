@@ -57,6 +57,7 @@
     <Compile Include="Common\AbstractDBEntity.cs" />
     <Compile Include="Common\DBConnectionManager.cs" />
     <Compile Include="Common\DBEntitiesFactory.cs" />
+    <Compile Include="Common\ENTITIES.cs" />
     <Compile Include="Common\IDBEntity.cs" />
     <Compile Include="Common\IEntity.cs" />
     <Compile Include="Customers\ClientContactEntity.cs" />

@@ -7,7 +7,6 @@ namespace MVCHIS.Billing {
     //[ForModel(MODELS.BillingCategory)]
     public class BillingCategoryEntity : AbstractDBEntity<BillingCategoryModel> {
         public override MetaData MetaData => new MetaData() {
-            ////  ModelType        = typeof(BillingCategoryModel)
               PrimaryKeyField  = "Id"
             , Fields           = new HashSet<string> {"ReadOnly","Id","CreatedBy","CreatedOn","UpdatedBy","UpdatedOn",
                                                   "BillingCategoryCode","BillingCategoryDesc","AccommClassId",
@@ -25,7 +24,7 @@ namespace MVCHIS.Billing {
                 ,["BillingCategoryCode" ] = 150
                 ,["BillingCategoryDesc" ] = 250
             }
-            , Source           = "BillingCategory"
+            , Source           = ENTITIES.BillingCategory
         };
     }
 }

@@ -13,7 +13,7 @@ namespace MVCHIS.Common {
         public abstract MetaData MetaData { get; }
 
         public AbstractDBEntity() : base() {
-
+            ValidateMetaData();
         }
         public void ValidateMetaData() { 
             var mfields = new HashSet<string>(typeof(M).GetProperties().Select(x => x.Name));
@@ -153,7 +153,8 @@ namespace MVCHIS.Common {
         public string GetDDL() {
             var cols = from c in MetaData.Fields where c != "Id" select c;
             var size = MetaData.Sizes;
-            var dtps = from p in cols where p != "Id" select ddltype(typeof(M).GetProperty(p).PropertyType, size.ContainsKey(p) ? size[p] : -1); var rqrd = MetaData.RequiredFields;
+            var dtps = from p in cols where p != "Id" select ddltype(typeof(M).GetProperty(p).PropertyType, size.ContainsKey(p) ? size[p] : -1);
+            var rqrd = MetaData.RequiredFields;
             var ukey = string.Join(",", MetaData.UniqueKeyFields.Select((x, i) => $"CONSTRAINT {MetaData.Source}_UK{i + 1} UNIQUE ({string.Join(",", x)})"));
             var pkey = string.Join(",", MetaData.PrimaryKeyField);
             var cdef = from tpl in cols.Zip(dtps, (a, b) => new Tuple<string, string>(a, b)) select $@"{tpl.Item1} {tpl.Item2} {(rqrd.Contains(tpl.Item1) ? "NOT NULL" : "")}";

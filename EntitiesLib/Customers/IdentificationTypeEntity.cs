@@ -6,7 +6,6 @@ namespace MVCHIS.Customers {
     //[ForModel(MODELS.IdentificationType)]
     public class IdentificationTypeEntity : AbstractDBEntity<IdentificationTypeModel> {
         public override MetaData MetaData => new MetaData() {
-            //  ModelType        = typeof(IdentificationTypeModel)
               PrimaryKeyField  = "Id"
             , Fields           = new HashSet<string> {"ReadOnly","Id","CreatedBy","CreatedOn","UpdatedBy","UpdatedOn",
                                                       "IdentificationTypeCode","IdentificationTypeEnglish","IdentificationTypeArabic" }
@@ -21,7 +20,7 @@ namespace MVCHIS.Customers {
                 ,["IdentificationTypeEnglish"] = 100
                 ,["IdentificationTypeArabic" ] = 100
             }
-            , Source = "CustomersIdentificationType"
+            , Source = ENTITIES.IdentificationType
         };
     }
 }

@@ -45,11 +45,15 @@
             this.txtCurrencyArabic = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtCurrencySymbol = new System.Windows.Forms.TextBox();
+            this.lookUpButtonNationality = new MVCHIS.Common.LookUpButton();
+            this.txtCountryCode = new System.Windows.Forms.TextBox();
+            this.txtCountryId = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(60, 275);
+            this.btnDelete.Location = new System.Drawing.Point(60, 307);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 13;
@@ -58,7 +62,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(168, 275);
+            this.btnSave.Location = new System.Drawing.Point(168, 307);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 11;
@@ -67,7 +71,7 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(276, 275);
+            this.btnNew.Location = new System.Drawing.Point(276, 307);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 23);
             this.btnNew.TabIndex = 12;
@@ -76,7 +80,7 @@
             // 
             // txtUpdatedOn
             // 
-            this.txtUpdatedOn.Location = new System.Drawing.Point(214, 201);
+            this.txtUpdatedOn.Location = new System.Drawing.Point(214, 233);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
             this.txtUpdatedOn.Size = new System.Drawing.Size(137, 20);
@@ -85,7 +89,7 @@
             // 
             // txtUpdatedBy
             // 
-            this.txtUpdatedBy.Location = new System.Drawing.Point(141, 202);
+            this.txtUpdatedBy.Location = new System.Drawing.Point(140, 234);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
             this.txtUpdatedBy.Size = new System.Drawing.Size(69, 20);
@@ -95,7 +99,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 205);
+            this.label6.Location = new System.Drawing.Point(13, 237);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(63, 13);
             this.label6.TabIndex = 44;
@@ -103,7 +107,7 @@
             // 
             // txtCreatedOn
             // 
-            this.txtCreatedOn.Location = new System.Drawing.Point(214, 173);
+            this.txtCreatedOn.Location = new System.Drawing.Point(214, 205);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
             this.txtCreatedOn.Size = new System.Drawing.Size(137, 20);
@@ -112,7 +116,7 @@
             // 
             // txtCreatedBy
             // 
-            this.txtCreatedBy.Location = new System.Drawing.Point(141, 173);
+            this.txtCreatedBy.Location = new System.Drawing.Point(140, 205);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
             this.txtCreatedBy.Size = new System.Drawing.Size(69, 20);
@@ -122,7 +126,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 176);
+            this.label5.Location = new System.Drawing.Point(13, 208);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 13);
             this.label5.TabIndex = 45;
@@ -130,13 +134,12 @@
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(141, 28);
+            this.txtId.Location = new System.Drawing.Point(140, 28);
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(68, 20);
             this.txtId.TabIndex = 0;
             this.txtId.TabStop = false;
-            
             // 
             // label1
             // 
@@ -158,7 +161,7 @@
             // 
             // txtCurrencyCode
             // 
-            this.txtCurrencyCode.Location = new System.Drawing.Point(141, 57);
+            this.txtCurrencyCode.Location = new System.Drawing.Point(140, 57);
             this.txtCurrencyCode.MaxLength = 3;
             this.txtCurrencyCode.Name = "txtCurrencyCode";
             this.txtCurrencyCode.Size = new System.Drawing.Size(41, 20);
@@ -166,7 +169,7 @@
             // 
             // txtCurrencyEnglish
             // 
-            this.txtCurrencyEnglish.Location = new System.Drawing.Point(141, 86);
+            this.txtCurrencyEnglish.Location = new System.Drawing.Point(140, 86);
             this.txtCurrencyEnglish.MaxLength = 50;
             this.txtCurrencyEnglish.Name = "txtCurrencyEnglish";
             this.txtCurrencyEnglish.Size = new System.Drawing.Size(211, 20);
@@ -185,7 +188,7 @@
             // 
             this.chkReadOnly.AutoSize = true;
             this.chkReadOnly.Enabled = false;
-            this.chkReadOnly.Location = new System.Drawing.Point(141, 231);
+            this.chkReadOnly.Location = new System.Drawing.Point(140, 263);
             this.chkReadOnly.Name = "chkReadOnly";
             this.chkReadOnly.Size = new System.Drawing.Size(15, 14);
             this.chkReadOnly.TabIndex = 10;
@@ -194,7 +197,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(13, 232);
+            this.label10.Location = new System.Drawing.Point(13, 264);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(57, 13);
             this.label10.TabIndex = 47;
@@ -204,7 +207,7 @@
             // 
             this.lookUpButtonCurrency.AssociatedControl = "txtCurrencyCode";
             this.lookUpButtonCurrency.Controller = "Currency";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.lookUpButtonCurrency.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonCurrency.Location = new System.Drawing.Point(183, 56);
             this.lookUpButtonCurrency.Name = "lookUpButtonCurrency";
             this.lookUpButtonCurrency.SelectedValueIndex = 0;
@@ -228,7 +231,7 @@
             // 
             // txtCurrencyArabic
             // 
-            this.txtCurrencyArabic.Location = new System.Drawing.Point(141, 115);
+            this.txtCurrencyArabic.Location = new System.Drawing.Point(140, 115);
             this.txtCurrencyArabic.MaxLength = 50;
             this.txtCurrencyArabic.Name = "txtCurrencyArabic";
             this.txtCurrencyArabic.Size = new System.Drawing.Size(211, 20);
@@ -245,17 +248,67 @@
             // 
             // txtCurrencySymbol
             // 
-            this.txtCurrencySymbol.Location = new System.Drawing.Point(141, 144);
+            this.txtCurrencySymbol.Location = new System.Drawing.Point(140, 144);
             this.txtCurrencySymbol.MaxLength = 2;
             this.txtCurrencySymbol.Name = "txtCurrencySymbol";
             this.txtCurrencySymbol.Size = new System.Drawing.Size(27, 20);
             this.txtCurrencySymbol.TabIndex = 5;
             // 
+            // lookUpButtonNationality
+            // 
+            this.lookUpButtonNationality.AssociatedControl = "txtCountryId";
+            this.lookUpButtonNationality.Controller = "Country";
+            this.lookUpButtonNationality.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.lookUpButtonNationality.Location = new System.Drawing.Point(329, 171);
+            this.lookUpButtonNationality.Name = "lookUpButtonNationality";
+            this.lookUpButtonNationality.SelectedValueIndex = 3;
+            this.lookUpButtonNationality.ShowFieldsInLookUp.Add("CountryCode");
+            this.lookUpButtonNationality.ShowFieldsInLookUp.Add("CountryEnglish");
+            this.lookUpButtonNationality.ShowFieldsInLookUp.Add("CountryArabic");
+            this.lookUpButtonNationality.ShowFieldsInLookUp.Add("Id");
+            this.lookUpButtonNationality.Size = new System.Drawing.Size(22, 22);
+            this.lookUpButtonNationality.TabIndex = 52;
+            this.lookUpButtonNationality.TabStop = false;
+            // 
+            // txtCountryCode
+            // 
+            this.txtCountryCode.Enabled = false;
+            this.txtCountryCode.Location = new System.Drawing.Point(188, 172);
+            this.txtCountryCode.Name = "txtCountryCode";
+            this.txtCountryCode.ReadOnly = true;
+            this.txtCountryCode.Size = new System.Drawing.Size(140, 20);
+            this.txtCountryCode.TabIndex = 51;
+            this.txtCountryCode.Tag = "";
+            this.txtCountryCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtCountryId
+            // 
+            this.txtCountryId.Location = new System.Drawing.Point(140, 172);
+            this.txtCountryId.Name = "txtCountryId";
+            this.txtCountryId.ReadOnly = true;
+            this.txtCountryId.Size = new System.Drawing.Size(43, 20);
+            this.txtCountryId.TabIndex = 50;
+            this.txtCountryId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCountryId.TextChanged += new System.EventHandler(this.TxtCountryId_TextChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(13, 175);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(46, 13);
+            this.label8.TabIndex = 49;
+            this.label8.Text = "Country";
+            // 
             // CurrencyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lookUpButtonNationality);
+            this.Controls.Add(this.txtCountryCode);
+            this.Controls.Add(this.txtCountryId);
             this.Controls.Add(this.txtCurrencySymbol);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtCurrencyArabic);
             this.Controls.Add(this.label4);
@@ -278,7 +331,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtCreatedBy);
             this.Name = "CurrencyForm";
-            this.Size = new System.Drawing.Size(378, 311);
+            this.Size = new System.Drawing.Size(378, 356);
             this.Load += new System.EventHandler(this.CurrencyFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -308,5 +361,9 @@
         private System.Windows.Forms.TextBox txtCurrencyArabic;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtCurrencySymbol;
+        private Common.LookUpButton lookUpButtonNationality;
+        private System.Windows.Forms.TextBox txtCountryCode;
+        private System.Windows.Forms.TextBox txtCountryId;
+        private System.Windows.Forms.Label label8;
     }
 }

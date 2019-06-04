@@ -7,7 +7,6 @@ namespace MVCHIS.Tools {
     public class DictionaryEntity : AbstractDBEntity<DictionaryModel> {
 
         public override MetaData MetaData => new MetaData() {
-            //ModelType = typeof(DictionaryModel)
               PrimaryKeyField = "Id" 
             , Fields          = new HashSet<string> { "CreatedBy","CreatedOn","Id","ReadOnly","UpdatedBy","UpdatedOn","WordInArabic","WordInEnglish" }
             , RequiredFields  = new HashSet<string> { "Id", "WordInEnglish", "WordInArabic" }
@@ -20,7 +19,7 @@ namespace MVCHIS.Tools {
                 ["WordInEnglish"] = 250,
                 ["WordInArabic" ] = 250
             }
-            , Source = "ToolsDictionary"
+            , Source = ENTITIES.Dictionary
         };
     }
 }

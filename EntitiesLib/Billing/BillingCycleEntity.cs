@@ -19,7 +19,7 @@ namespace MVCHIS.Billing {
                 ["CreatedBy"] = 10,
                 ["UpdatedBy"] = 10,
             }
-            , Source           = "BillingCycle"
+            , Source           = ENTITIES.BillingCycle
         };
     }
 }

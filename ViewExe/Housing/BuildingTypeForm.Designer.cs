@@ -70,7 +70,6 @@
             // 
             // txtUpdatedOn
             // 
-            
             this.txtUpdatedOn.Location = new System.Drawing.Point(213, 169);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -80,7 +79,6 @@
             // 
             // txtUpdatedBy
             // 
-            
             this.txtUpdatedBy.Location = new System.Drawing.Point(139, 169);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -99,7 +97,6 @@
             // 
             // txtCreatedOn
             // 
-            
             this.txtCreatedOn.Location = new System.Drawing.Point(213, 143);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -109,7 +106,6 @@
             // 
             // txtCreatedBy
             // 
-            
             this.txtCreatedBy.Location = new System.Drawing.Point(139, 143);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -134,7 +130,6 @@
             this.txtId.Size = new System.Drawing.Size(68, 20);
             this.txtId.TabIndex = 0;
             this.txtId.TabStop = false;
-            
             // 
             // label1
             // 
@@ -163,14 +158,14 @@
             // 
             // lookUpButton1
             // 
-            this.lookUpButton1.AssociatedControl = "txtBuildingType";
-            this.lookUpButton1.Tag = null;
+            this.lookUpButton1.AssociatedControl = "txtBuildingTypeCode";
             this.lookUpButton1.Controller = "BuildingType";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.lookUpButton1.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButton1.Location = new System.Drawing.Point(294, 45);
             this.lookUpButton1.Name = "lookUpButton1";
             this.lookUpButton1.SelectedValueIndex = 0;
-            this.lookUpButton1.ShowFieldsInLookUp.Add("BuildingType");
+            this.lookUpButton1.ShowFieldsInLookUp.Add("BuildingTypeCode");
+            this.lookUpButton1.ShowFieldsInLookUp.Add("Id");
             this.lookUpButton1.Size = new System.Drawing.Size(22, 22);
             this.lookUpButton1.TabIndex = 2;
             this.lookUpButton1.TabStop = false;
@@ -199,7 +194,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(380, 287);
             this.Controls.Add(this.chkReadOnly);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label1);
@@ -217,7 +211,7 @@
             this.Controls.Add(this.txtCreatedBy);
             this.Controls.Add(this.btnDelete);
             this.Name = "BuildingTypeForm";
-            this.Text = "Building Types";
+            this.Size = new System.Drawing.Size(380, 287);
             this.Load += new System.EventHandler(this.BuildingTypeFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();

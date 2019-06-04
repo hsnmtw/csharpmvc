@@ -7,7 +7,6 @@ namespace MVCHIS.Housing {
     public class BuildingEntity : AbstractDBEntity<BuildingModel> {
 
         public override MetaData MetaData => new MetaData() {
-            //  ModelType = typeof(BuildingModel)
               PrimaryKeyField  = "Id"
             , Fields           = new HashSet<string> {"ReadOnly", "Id", "CreatedBy", "CreatedOn", "UpdatedBy", "UpdatedOn",
                                                        "BuildingName", "BuildingTypeId", "CompoundId" }
@@ -18,11 +17,9 @@ namespace MVCHIS.Housing {
             , Sizes = new Dictionary<string, int> {
                  ["CreatedBy"   ] = 10
                 ,["UpdatedBy"   ] = 10
-                ,["BuildingName"] = 50
-                //,["BuildingType"] = 50
-                //,["CompoundName"] = 50
+                ,["BuildingName"] = 10
             }
-            , Source = "HousingBuilding"
+            , Source = ENTITIES.Building
             
         };
     }

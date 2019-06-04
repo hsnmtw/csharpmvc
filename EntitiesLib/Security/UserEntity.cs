@@ -7,7 +7,6 @@ namespace MVCHIS.Security {
     public class UserEntity : AbstractDBEntity <UserModel> {
 
         public override MetaData MetaData => new MetaData() {
-            //ModelType = typeof(UserModel)
               PrimaryKeyField = "Id" 
             , Fields           = new HashSet<string> {"ReadOnly","Id","CreatedBy","CreatedOn","UpdatedBy","UpdatedOn",
                                                      "UserName", "FullName", "UserPassword", "ProfileId",
@@ -26,7 +25,7 @@ namespace MVCHIS.Security {
                 ["UserPassword"] = 100,
                 ["Email"       ] = 100,
             }
-            , Source = "SecurityUser"
+            , Source = ENTITIES.User
         };
     }
 }

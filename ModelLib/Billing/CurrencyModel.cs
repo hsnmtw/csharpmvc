@@ -11,5 +11,6 @@ namespace MVCHIS.Billing {
         public string CurrencyEnglish { get; set; }
         public string CurrencyArabic  { get; set; }
         public string CurrencySymbol  { get; set; }
+        public int    CountryId       { get; set; }
     }
 }

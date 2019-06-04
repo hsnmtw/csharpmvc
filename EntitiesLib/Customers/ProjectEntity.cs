@@ -6,7 +6,6 @@ namespace MVCHIS.Customers {
     //[ForModel(MODELS.Project)]
     public class ProjectEntity : AbstractDBEntity<ProjectModel> {
         public override MetaData MetaData => new MetaData() {
-            //  ModelType        = typeof(ProjectModel)
               PrimaryKeyField  = "Id"
             , Fields           = new HashSet<string> {"ReadOnly", "Id", "CreatedBy", "CreatedOn", "UpdatedBy", "UpdatedOn", "ProjectName", "ClientId" }
             , RequiredFields   = new HashSet<string> { "Id", "ProjectName", "ClientId" }
@@ -19,7 +18,7 @@ namespace MVCHIS.Customers {
                 , ["UpdatedBy"  ] = 10
                 , ["ProjectName"] = 50
             }
-            , Source           = "CustomersProject"
+            , Source           = ENTITIES.Project
             
         };
     }

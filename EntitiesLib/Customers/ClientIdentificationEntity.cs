@@ -19,7 +19,7 @@ namespace MVCHIS.Customers {
                 ["CreatedBy"] = 10,
                 ["UpdatedBy"] = 10,
             }
-            , Source           = "CustomersClientIdentification"
+            , Source           = ENTITIES.ClientIdentification
         };
     }
 }

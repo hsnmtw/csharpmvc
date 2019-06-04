@@ -7,7 +7,6 @@ namespace MVCHIS.Security {
     public class ProfileEntitlementEntity : AbstractDBEntity<ProfileEntitlementModel> {
 
         public override MetaData MetaData => new MetaData() {
-            //  ModelType       = typeof(ProfileEntitlementModel)
               PrimaryKeyField = "Id"
             , Fields           = new HashSet<string> {"ReadOnly","Id","CreatedBy","CreatedOn","UpdatedBy","UpdatedOn",
                                                      "ProfileId","EntitlementId","AllowCreate","AllowRead","AllowUpdate","AllowDelete" }
@@ -21,7 +20,7 @@ namespace MVCHIS.Security {
                 ["CreatedBy"      ] = 10,
                 ["UpdatedBy"      ] = 10,
             }
-            , Source = "SecurityProfileEntitlement"            
+            , Source = ENTITIES.ProfileEntitlement            
         };
     }
 }

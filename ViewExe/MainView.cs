@@ -180,12 +180,13 @@ namespace MVCHIS {
         }
 
         private void NewToolStripMenuItemClick(object sender, EventArgs e) {
-            ((IView)panel1.Controls[0])?.NewButton?.PerformClick();
-        }
+            ((IView)tabControl1.SelectedTab.Controls[0])?.NewButton?.PerformClick();
+        
+}
 
         private void SaveToolStripMenuItemClick(object sender, EventArgs e) {
             if (panel1.Controls.Count < 1) return;
-            ((IView)panel1.Controls[0])?.SaveButton?.PerformClick();
+            ((IView)tabControl1.SelectedTab.Controls[0])?.SaveButton?.PerformClick();
         }
 
         private void CloseToolStripMenuItemClick(object sender, EventArgs e) {
@@ -198,7 +199,7 @@ namespace MVCHIS {
 
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e) {
             if (panel1.Controls.Count < 1) return;
-            ((IView)panel1.Controls[0])?.DeleteButton?.PerformClick();
+            ((IView)tabControl1.SelectedTab.Controls[0])?.DeleteButton?.PerformClick();
         }
 
         private void EnglishToolStripMenuItem_Click(object sender, EventArgs e) {

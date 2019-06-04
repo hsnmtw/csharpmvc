@@ -21,7 +21,7 @@ namespace MVCHIS.Customers {
                 ,["CountryEnglish"] = 100
                 ,["CountryArabic" ]  = 100
             }
-            , Source           = "CustomersCountry"
+            , Source           = ENTITIES.Country
         };
     }
 }

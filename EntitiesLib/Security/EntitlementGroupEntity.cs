@@ -7,7 +7,6 @@ namespace MVCHIS.Security {
     public class EntitlementGroupEntity : AbstractDBEntity<EntitlementGroupModel> {
 
         public override MetaData MetaData => new MetaData() {
-            //  ModelType       = typeof(EntitlementGroupModel)
               PrimaryKeyField = "Id"
             , Fields           = new HashSet<string> {"ReadOnly","Id","CreatedBy","CreatedOn","UpdatedBy","UpdatedOn",
                                                       "EntitlementGroupName","Dynamic" }
@@ -20,7 +19,7 @@ namespace MVCHIS.Security {
                 ["UpdatedBy"           ] = 10,
                 ["EntitlementGroupName"] = 50
             }
-            , Source = "SecurityEntitlementGroup"
+            , Source = ENTITIES.EntitlementGroup
             
         };
     }

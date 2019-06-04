@@ -41,17 +41,18 @@
             this.panel1.Controls.Add(this.chkMSAccess);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(883, 100);
+            this.panel1.Padding = new System.Windows.Forms.Padding(5);
+            this.panel1.Size = new System.Drawing.Size(396, 301);
             this.panel1.TabIndex = 0;
             // 
             // chkMSAccess
             // 
             this.chkMSAccess.AutoSize = true;
             this.chkMSAccess.Enabled = false;
-            this.chkMSAccess.Location = new System.Drawing.Point(609, 52);
+            this.chkMSAccess.Location = new System.Drawing.Point(312, 49);
             this.chkMSAccess.Name = "chkMSAccess";
             this.chkMSAccess.Size = new System.Drawing.Size(76, 17);
             this.chkMSAccess.TabIndex = 2;
@@ -60,7 +61,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(610, 13);
+            this.button1.Location = new System.Drawing.Point(313, 13);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -70,20 +71,22 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(5, 3);
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.textBox1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(5, 5);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(599, 91);
+            this.textBox1.Size = new System.Drawing.Size(302, 291);
             this.textBox1.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.richTextBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 100);
+            this.panel2.Location = new System.Drawing.Point(396, 0);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(5);
-            this.panel2.Size = new System.Drawing.Size(883, 201);
+            this.panel2.Size = new System.Drawing.Size(487, 301);
             this.panel2.TabIndex = 1;
             // 
             // richTextBox1
@@ -91,9 +94,10 @@
             this.richTextBox1.BackColor = System.Drawing.SystemColors.Info;
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.Location = new System.Drawing.Point(5, 5);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(873, 191);
+            this.richTextBox1.Size = new System.Drawing.Size(477, 291);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.RichTextBox1_TextChanged);

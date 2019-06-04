@@ -25,19 +25,28 @@ namespace MVCHIS.Billing {
             Mapper["CurrencyEnglish"] = txtCurrencyEnglish;
             Mapper["CurrencyArabic"] = txtCurrencyArabic;
             Mapper["CurrencySymbol"] = txtCurrencySymbol;
+            Mapper["CountryId"] = txtCountryId;
             //actions
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
         }
 
+        public override void LoadForeignKeys(ForeignKeys FK) {
+            FK.Put(DBControllersFactory.GetController<CountryModel>());
+            base.LoadForeignKeys(FK);
+        }
+
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            
             Model = Controller.Find(new CurrencyModel() { CurrencyCode = txtCurrencyCode.Text }, "CurrencyCode");
         }
 
         private void CurrencyFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
 
+        }
+
+        private void TxtCountryId_TextChanged(object sender, EventArgs e) {
+            txtCountryCode.Text = ForeignKeys.Instance[MODELS.Country, txtCountryId.Text];
         }
     }
    

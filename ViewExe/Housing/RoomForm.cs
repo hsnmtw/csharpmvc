@@ -43,11 +43,11 @@ namespace MVCHIS.Housing.Rooms {
         }
 
         private void TxtBuildingId_TextChanged(object sender, EventArgs e) {
-            txtBuildingName.Text = ForeignKeys.Instance["BuildingId", txtBuildingId.Text];
+            txtBuildingName.Text = ForeignKeys.Instance[MODELS.Building, txtBuildingId.Text];
         }
 
         private void TxtCountryId_TextChanged(object sender, EventArgs e) {
-            txtCountryCode.Text = ForeignKeys.Instance["CountryId", txtCountryId.Text];
+            txtCountryCode.Text = ForeignKeys.Instance[MODELS.Country, txtCountryId.Text];
         }
 
 

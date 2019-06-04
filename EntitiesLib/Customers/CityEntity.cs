@@ -21,7 +21,7 @@ namespace MVCHIS.Customers {
                 ,["CityEnglish"   ] = 100
                 ,["CityArabic"    ] = 100
             }
-            , Source           = "CustomersCity"
+            , Source           = ENTITIES.City
         };
     }
 }

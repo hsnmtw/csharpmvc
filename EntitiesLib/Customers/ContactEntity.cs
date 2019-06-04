@@ -23,7 +23,7 @@ namespace MVCHIS.Customers {
                 ,["PhoneNumber" ] = 15
                 ,["FullName"    ] = 100
             }
-            , Source           = "CustomersContact"            
+            , Source           = ENTITIES.Contact            
         };
     }
 }

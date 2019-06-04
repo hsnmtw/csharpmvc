@@ -21,7 +21,7 @@ namespace MVCHIS.Customers {
                 ["ClientTypeEnglish"] = 50,
                 ["ClientTypeArabic"] = 50,
             }
-            , Source = "CustomersClientType"
+            , Source = ENTITIES.ClientType
         };
     }
 }

@@ -7,7 +7,6 @@ namespace MVCHIS.Security {
     public class ProfileEntity : AbstractDBEntity<ProfileModel> {
 
         public override MetaData MetaData => new MetaData() {
-            //ModelType = typeof(ProfileModel)
               PrimaryKeyField = "Id"
             , Fields          = new HashSet<string> { "ReadOnly","Id", "CreatedBy", "CreatedOn", "UpdatedBy", "UpdatedOn", "ProfileName", "ProfileDesc" }
             , RequiredFields  = new HashSet<string> { "Id", "ProfileName" }
@@ -20,7 +19,7 @@ namespace MVCHIS.Security {
                 ["ProfileName"] = 50,
                 ["ProfileDesc"] = 100,
             }
-            , Source = "SecurityProfile"
+            , Source = ENTITIES.Profile
             
         };
     }

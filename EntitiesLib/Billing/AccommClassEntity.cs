@@ -21,7 +21,7 @@ namespace MVCHIS.Billing {
                 ["AccommClassDesc"] = 100,
 
             }
-            , Source           = "BillingAccommClass"
+            , Source           = ENTITIES.AccommClass
 
         };
     }

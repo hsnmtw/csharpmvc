@@ -7,7 +7,6 @@ namespace MVCHIS.Housing {
     //[ForModel(MODELS.Room)]
     public class RoomEntity : AbstractDBEntity<RoomModel> {
         public override MetaData MetaData => new MetaData() {
-            //  ModelType        = typeof(RoomModel)
               PrimaryKeyField  = "Id"
             , Fields           = new HashSet<string> {"ReadOnly","Id","CreatedBy","CreatedOn","UpdatedBy","UpdatedOn",
                                                       "RoomName","BuildingId","BedCapacity","CountryId","NumberOfWindows" }
@@ -22,7 +21,7 @@ namespace MVCHIS.Housing {
                 ,["UpdatedBy"   ] = 10
                 ,["RoomName"    ] = 10
             }
-            , Source = "HousingRoom"
+            , Source = ENTITIES.Room
         };
     }
 }

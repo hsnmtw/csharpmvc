@@ -5,6 +5,7 @@ using System.Collections.Generic;
 namespace MVCHIS.Billing {
     //[ForModel(MODELS.CurrencyFXRate)]
     public class CurrencyFXRateEntity : AbstractDBEntity<CurrencyFXRateModel> {
+        public static readonly string SOURCE = "BillingContract";
         public override MetaData MetaData => new MetaData() {
             //  ModelType        = typeof(CurrencyFXRateModel)
               PrimaryKeyField  = "Id" 
@@ -20,8 +21,7 @@ namespace MVCHIS.Billing {
                 ["CreatedBy"   ] = 10,
                 ["UpdatedBy"   ] = 10,
             }
-            , Source           = "BillingCurrencyFXRate"
-
+            , Source             = ENTITIES.CurrencyFXRate
         };
     }
 }

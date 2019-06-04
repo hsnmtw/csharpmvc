@@ -6,7 +6,6 @@ namespace MVCHIS.Billing {
     //[ForModel(MODELS.Service)]
     public class ServiceEntity : AbstractDBEntity<ServiceModel> {
         public override MetaData MetaData => new MetaData() {
-            //  ModelType        = typeof(ServiceModel)
               PrimaryKeyField  = "Id" 
             , Fields           = new HashSet<string> {"ReadOnly","Id","CreatedBy","CreatedOn","UpdatedBy","UpdatedOn",
                                                   "BillingCategoryId","ContractId","Price","CurrencyId","EffectiveFromDate","Expired","VATId" }
@@ -22,7 +21,7 @@ namespace MVCHIS.Billing {
                 ["CreatedBy"   ] = 10,
                 ["UpdatedBy"   ] = 10,
             }
-            , Source           = "BillingService"
+            , Source           = ENTITIES.Service
 
         };
     }

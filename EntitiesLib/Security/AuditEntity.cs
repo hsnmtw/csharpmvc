@@ -6,7 +6,6 @@ namespace MVCHIS.Security {
     //[ForModel(MODELS.Audit)]
     public class AuditEntity : AbstractDBEntity<AuditModel> {
         public override MetaData MetaData => new MetaData() {
-            //  ModelType = typeof(AuditModel)
               PrimaryKeyField  = "Id"
             , Fields           = new HashSet<string> {"ReadOnly","Id","CreatedBy","CreatedOn","UpdatedBy","UpdatedOn",
                                                       "UserName","EventDate", "EventComments" }
@@ -21,7 +20,7 @@ namespace MVCHIS.Security {
                 ["EventComments"] = 200,
                 ["UserName"     ] = 10 
             }
-            , Source = "SecurityAudit"
+            , Source = ENTITIES.Audit
         };
     }
 }   

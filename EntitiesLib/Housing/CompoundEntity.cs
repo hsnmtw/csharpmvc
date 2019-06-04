@@ -7,7 +7,6 @@ namespace MVCHIS.Housing {
     public class CompoundEntity : AbstractDBEntity<CompoundModel> {
 
         public override MetaData MetaData => new MetaData() {
-            ////  ModelType        = typeof(CompoundModel)
               PrimaryKeyField  = "Id"
             , Fields           = new HashSet<string> {"ReadOnly", "Id", "CreatedBy", "CreatedOn", "UpdatedBy", "UpdatedOn",
                                                        "CompoundName", "CompoundLocation" }
@@ -21,7 +20,7 @@ namespace MVCHIS.Housing {
                 ["CompoundName"    ] = 50,
                 ["CompoundLocation"] = 100
             }
-            , Source = "HousingCompound"
+            , Source = ENTITIES.Compound
             };
     }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 namespace MVCHIS.Billing {
     //[ForModel(MODELS.Contract)]
     public class ContractEntity : AbstractDBEntity<ContractModel> {
+        public static readonly string SOURCE = "BillingContract";
         public override MetaData MetaData => new MetaData() {
             //  ModelType        = typeof(ContractModel)
               PrimaryKeyField  = "Id" 
@@ -22,7 +23,7 @@ namespace MVCHIS.Billing {
                 ["ContractCode"] = 20,
                 ["Conditions"  ] = 1000,
             }
-            , Source           = "BillingContract"
+            , Source           = ENTITIES.Contract
 
         };
     }
