@@ -100,7 +100,7 @@
             // 
             // txtUserName
             // 
-            this.txtUserName.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserName.Location = new System.Drawing.Point(109, 191);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.ReadOnly = true;
@@ -119,7 +119,7 @@
             // 
             // txtId
             // 
-            this.txtId.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtId.Location = new System.Drawing.Point(275, 191);
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;

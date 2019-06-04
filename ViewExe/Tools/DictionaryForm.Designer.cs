@@ -37,7 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtWordInEnglish = new System.Windows.Forms.TextBox();
             this.DictionaryNameLookupButton = new MVCHIS.Common.LookUpButton();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtWordInArabic = new System.Windows.Forms.TextBox();
@@ -166,7 +166,7 @@
             // 
             this.DictionaryNameLookupButton.AssociatedControl = "txtWordInEnglish";
             this.DictionaryNameLookupButton.Controller = "Dictionary";
-            this.DictionaryNameLookupButton.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.DictionaryNameLookupButton.Location = new System.Drawing.Point(309, 48);
             this.DictionaryNameLookupButton.Name = "DictionaryNameLookupButton";
             this.DictionaryNameLookupButton.SelectedValueIndex = 0;
@@ -207,7 +207,7 @@
             // 
             // txtWordInArabic
             // 
-            this.txtWordInArabic.BackColor = System.Drawing.Color.White;
+            
             this.txtWordInArabic.Location = new System.Drawing.Point(120, 77);
             this.txtWordInArabic.Name = "txtWordInArabic";
             this.txtWordInArabic.Size = new System.Drawing.Size(211, 20);
@@ -261,7 +261,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtWordInArabic;
-        private Utils.ForcedFocusCheckBox chkReadOnly;
+        private System.Windows.Forms.CheckBox chkReadOnly;
         //private Common.LookUpButton DictionaryNameLookupButton;
     }
 }

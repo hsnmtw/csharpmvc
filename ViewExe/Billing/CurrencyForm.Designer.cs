@@ -38,7 +38,7 @@
             this.txtCurrencyCode = new System.Windows.Forms.TextBox();
             this.txtCurrencyEnglish = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.lookUpButtonCurrency = new MVCHIS.Common.LookUpButton();
             this.label4 = new System.Windows.Forms.Label();
@@ -204,7 +204,7 @@
             // 
             this.lookUpButtonCurrency.AssociatedControl = "txtCurrencyCode";
             this.lookUpButtonCurrency.Controller = "Currency";
-            this.lookUpButtonCurrency.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonCurrency.Location = new System.Drawing.Point(183, 56);
             this.lookUpButtonCurrency.Name = "lookUpButtonCurrency";
             this.lookUpButtonCurrency.SelectedValueIndex = 0;

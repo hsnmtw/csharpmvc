@@ -32,8 +32,8 @@ namespace MVCHIS.Customers {
         }
 
         private void CountryCodeTextBoxLookUpSelected(object sender, EventArgs e) {
-            var selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            Model = Controller.Find(new CountryModel() { CountryCode = selected }, "CountryCode");
+            
+            Model = Controller.Find(new CountryModel() { CountryCode = txtCountryCode.Text }, "CountryCode");
         }
     }
     

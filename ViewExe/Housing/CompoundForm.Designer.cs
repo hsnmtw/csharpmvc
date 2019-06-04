@@ -37,7 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtCompoundName = new System.Windows.Forms.TextBox();
             this.CompoundNameLookupButton = new MVCHIS.Common.LookUpButton();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtCompoundLocation = new System.Windows.Forms.TextBox();
@@ -166,7 +166,7 @@
             // 
             this.CompoundNameLookupButton.AssociatedControl = "txtCompoundName";
             this.CompoundNameLookupButton.Controller = "Compound";
-            this.CompoundNameLookupButton.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.CompoundNameLookupButton.Location = new System.Drawing.Point(275, 50);
             this.CompoundNameLookupButton.Name = "CompoundNameLookupButton";
             this.CompoundNameLookupButton.SelectedValueIndex = 0;
@@ -206,7 +206,6 @@
             // 
             // txtCompoundLocation
             // 
-            this.txtCompoundLocation.BackColor = System.Drawing.Color.White;
             this.txtCompoundLocation.Location = new System.Drawing.Point(120, 77);
             this.txtCompoundLocation.Name = "txtCompoundLocation";
             this.txtCompoundLocation.Size = new System.Drawing.Size(211, 20);

@@ -87,7 +87,7 @@
             // listViewControl1
             // 
             this.listViewControl1.Filter = null;
-            this.listViewControl1.Font = new System.Drawing.Font("Consolas", 9F);
+            //new System.Drawing.Font("Consolas", 9F);
             this.listViewControl1.FullRowSelect = true;
             this.listViewControl1.GridLines = true;
             this.listViewControl1.HideSelection = false;

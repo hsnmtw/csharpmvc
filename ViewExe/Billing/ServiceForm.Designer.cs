@@ -25,7 +25,7 @@
         private void InitializeComponent() {
             this.label2 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.txtUpdatedOn = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtUpdatedBy = new System.Windows.Forms.TextBox();
@@ -54,7 +54,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtEffectiveFromDate = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.chkExpired = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkExpired = new System.Windows.Forms.CheckBox();
             this.btnDateOfBirth = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.cmbVATId = new System.Windows.Forms.ComboBox();
@@ -148,7 +148,7 @@
             // 
             this.lookUpButtonBillingCategory.AssociatedControl = "txtBillingCategoryId";
             this.lookUpButtonBillingCategory.Controller = "BillingCategory";
-            this.lookUpButtonBillingCategory.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonBillingCategory.Location = new System.Drawing.Point(345, 73);
             this.lookUpButtonBillingCategory.Name = "lookUpButtonBillingCategory";
             this.lookUpButtonBillingCategory.SelectedValueIndex = 1;
@@ -251,7 +251,7 @@
             // 
             this.lookUpButtonContract.AssociatedControl = "txtContractId";
             this.lookUpButtonContract.Controller = "Contract";
-            this.lookUpButtonContract.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonContract.Location = new System.Drawing.Point(345, 44);
             this.lookUpButtonContract.Name = "lookUpButtonContract";
             this.lookUpButtonContract.SelectedValueIndex = 2;
@@ -296,7 +296,7 @@
             // 
             this.lookUpButtonCurrency.AssociatedControl = "txtCurrencyId";
             this.lookUpButtonCurrency.Controller = "Currency";
-            this.lookUpButtonCurrency.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonCurrency.Location = new System.Drawing.Point(345, 131);
             this.lookUpButtonCurrency.Name = "lookUpButtonCurrency";
             this.lookUpButtonCurrency.SelectedValueIndex = 3;
@@ -498,7 +498,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cmbVATId;
         private System.Windows.Forms.Label lblVATId;
-        private Utils.ForcedFocusCheckBox chkReadOnly;
-        private Utils.ForcedFocusCheckBox chkExpired;
+        private System.Windows.Forms.CheckBox chkReadOnly;
+        private System.Windows.Forms.CheckBox chkExpired;
     }
 }

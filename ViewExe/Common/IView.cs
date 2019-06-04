@@ -16,7 +16,7 @@ namespace MVCHIS.Common {
         Button SaveButton { get; set; }
         Button NewButton { get; set; }
         Button DeleteButton { get; set; }
-
+        void LoadForeignKeys(ForeignKeys FK);
         bool   SaveButtonEnabled { get; set; }
         bool    NewButtonEnabled { get; set; }
         bool DeleteButtonEnabled { get; set; }

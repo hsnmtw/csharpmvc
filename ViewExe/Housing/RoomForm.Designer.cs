@@ -48,13 +48,12 @@
             this.lookUpButton1 = new MVCHIS.Common.LookUpButton();
             this.lookupCountry = new MVCHIS.Common.LookUpButton();
             this.lookupBuilding = new MVCHIS.Common.LookUpButton();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtNumberOfWindows = new System.Windows.Forms.TextBox();
             this.txtBedCapacity = new System.Windows.Forms.TextBox();
             this.txtCountryCode = new System.Windows.Forms.TextBox();
             this.txtBuildingName = new System.Windows.Forms.TextBox();
-            this.txtCountryEnglish = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtRoomName
@@ -202,7 +201,7 @@
             // 
             // txtCountryId
             // 
-            this.txtCountryId.Location = new System.Drawing.Point(129, 98);
+            this.txtCountryId.Location = new System.Drawing.Point(129, 97);
             this.txtCountryId.Name = "txtCountryId";
             this.txtCountryId.ReadOnly = true;
             this.txtCountryId.Size = new System.Drawing.Size(30, 20);
@@ -260,7 +259,7 @@
             this.lookupCountry.AssociatedControl = "txtCountryId";
             this.lookupCountry.Controller = "Country";
             this.lookupCountry.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookupCountry.Location = new System.Drawing.Point(160, 97);
+            this.lookupCountry.Location = new System.Drawing.Point(284, 96);
             this.lookupCountry.Name = "lookupCountry";
             this.lookupCountry.SelectedValueIndex = 3;
             this.lookupCountry.ShowFieldsInLookUp.Add("CountryCode");
@@ -276,7 +275,7 @@
             this.lookupBuilding.AssociatedControl = "txtBuildingId";
             this.lookupBuilding.Controller = "Building";
             this.lookupBuilding.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookupBuilding.Location = new System.Drawing.Point(160, 69);
+            this.lookupBuilding.Location = new System.Drawing.Point(284, 69);
             this.lookupBuilding.Name = "lookupBuilding";
             this.lookupBuilding.SelectedValueIndex = 1;
             this.lookupBuilding.ShowFieldsInLookUp.Add("BuildingName");
@@ -325,32 +324,22 @@
             // txtCountryCode
             // 
             this.txtCountryCode.Enabled = false;
-            this.txtCountryCode.Location = new System.Drawing.Point(184, 97);
+            this.txtCountryCode.Location = new System.Drawing.Point(162, 97);
             this.txtCountryCode.Name = "txtCountryCode";
             this.txtCountryCode.ReadOnly = true;
-            this.txtCountryCode.Size = new System.Drawing.Size(33, 20);
+            this.txtCountryCode.Size = new System.Drawing.Size(121, 20);
             this.txtCountryCode.TabIndex = 8;
             this.txtCountryCode.TabStop = false;
             // 
             // txtBuildingName
             // 
             this.txtBuildingName.Enabled = false;
-            this.txtBuildingName.Location = new System.Drawing.Point(184, 71);
+            this.txtBuildingName.Location = new System.Drawing.Point(162, 70);
             this.txtBuildingName.Name = "txtBuildingName";
             this.txtBuildingName.ReadOnly = true;
-            this.txtBuildingName.Size = new System.Drawing.Size(162, 20);
+            this.txtBuildingName.Size = new System.Drawing.Size(121, 20);
             this.txtBuildingName.TabIndex = 5;
             this.txtBuildingName.TabStop = false;
-            // 
-            // txtCountryEnglish
-            // 
-            this.txtCountryEnglish.Enabled = false;
-            this.txtCountryEnglish.Location = new System.Drawing.Point(220, 97);
-            this.txtCountryEnglish.Name = "txtCountryEnglish";
-            this.txtCountryEnglish.ReadOnly = true;
-            this.txtCountryEnglish.Size = new System.Drawing.Size(126, 20);
-            this.txtCountryEnglish.TabIndex = 9;
-            this.txtCountryEnglish.TabStop = false;
             // 
             // RoomForm
             // 
@@ -374,7 +363,6 @@
             this.Controls.Add(this.lookUpButton1);
             this.Controls.Add(this.txtBuildingId);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtCountryEnglish);
             this.Controls.Add(this.txtCreatedOn);
             this.Controls.Add(this.txtRoomName);
             this.Controls.Add(this.txtCountryId);
@@ -423,7 +411,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtCountryCode;
         private System.Windows.Forms.TextBox txtBuildingName;
-        private System.Windows.Forms.TextBox txtCountryEnglish;
-        private Utils.ForcedFocusCheckBox chkReadOnly;
+        private System.Windows.Forms.CheckBox chkReadOnly;
     }
 }

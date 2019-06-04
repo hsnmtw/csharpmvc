@@ -34,18 +34,18 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtEntitlementName = new System.Windows.Forms.TextBox();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.chkAllowDelete = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkAllowDelete = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.chkAllowUpdate = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkAllowUpdate = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.chkAllowRead = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkAllowRead = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtProfileName = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.chkAllowCreate = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkAllowCreate = new System.Windows.Forms.CheckBox();
             this.lookuptxtProfile = new MVCHIS.Common.LookUpButton();
             this.lookUpButtonEntitlement = new MVCHIS.Common.LookUpButton();
             this.btnNew = new System.Windows.Forms.Button();
@@ -277,7 +277,7 @@
             // 
             this.lookuptxtProfile.AssociatedControl = "txtProfileId";
             this.lookuptxtProfile.Controller = "Profile";
-            this.lookuptxtProfile.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookuptxtProfile.Location = new System.Drawing.Point(356, 73);
             this.lookuptxtProfile.Name = "lookuptxtProfile";
             this.lookuptxtProfile.SelectedValueIndex = 1;
@@ -291,7 +291,7 @@
             // 
             this.lookUpButtonEntitlement.AssociatedControl = "txtEntitlementId";
             this.lookUpButtonEntitlement.Controller = "Entitlement";
-            this.lookUpButtonEntitlement.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonEntitlement.Location = new System.Drawing.Point(356, 42);
             this.lookUpButtonEntitlement.Name = "lookUpButtonEntitlement";
             this.lookUpButtonEntitlement.SelectedValueIndex = 1;
@@ -323,7 +323,7 @@
             // 
             this.lookupId.AssociatedControl = "txtId";
             this.lookupId.Controller = "ProfileEntitlement";
-            this.lookupId.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookupId.Location = new System.Drawing.Point(230, 11);
             this.lookupId.Name = "lookupId";
             this.lookupId.SelectedValueIndex = 2;
@@ -418,18 +418,18 @@
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtEntitlementName;
-        private MVCHIS.Utils.ForcedFocusCheckBox chkReadOnly;
+        private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label3;
-        private MVCHIS.Utils.ForcedFocusCheckBox chkAllowDelete;
+        private System.Windows.Forms.CheckBox chkAllowDelete;
         private System.Windows.Forms.Label label4;
-        private MVCHIS.Utils.ForcedFocusCheckBox chkAllowUpdate;
+        private System.Windows.Forms.CheckBox chkAllowUpdate;
         private System.Windows.Forms.Label label7;
-        private MVCHIS.Utils.ForcedFocusCheckBox chkAllowRead;
+        private System.Windows.Forms.CheckBox chkAllowRead;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtProfileName;
         private System.Windows.Forms.Label label9;
-        private MVCHIS.Utils.ForcedFocusCheckBox chkAllowCreate;
+        private System.Windows.Forms.CheckBox chkAllowCreate;
         private Common.LookUpButton lookuptxtProfile;
         private Common.LookUpButton lookUpButtonEntitlement;
         private System.Windows.Forms.Button btnNew;

@@ -114,8 +114,11 @@ namespace MVCHIS.Common {
             new Thread(delegate() {
                 BeginInvoke((Action) delegate() { InitializeView(); });
             }).Start();
-            
+            new Thread(delegate() {
+                LoadForeignKeys(ForeignKeys.Instance);
+            }).Start();
         }
+
         private void InitializeView() {
             SuspendLayout();
             
@@ -201,6 +204,8 @@ namespace MVCHIS.Common {
                 textbox.Text = "";
             }
         }
+
+        public virtual void LoadForeignKeys(ForeignKeys FK) { }
 
         public void SetModel(BaseModel model) {
             Model = (M)model;// Controller.FindById<M>(new int[] { Model.Id }).FirstOrDefault();

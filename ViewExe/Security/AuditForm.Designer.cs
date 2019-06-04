@@ -31,13 +31,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtEventComments
             // 
-            this.txtEventComments.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEventComments.Location = new System.Drawing.Point(127, 123);
             this.txtEventComments.Multiline = true;
             this.txtEventComments.Name = "txtEventComments";
@@ -56,7 +56,7 @@
             // 
             // txtEventDate
             // 
-            this.txtEventDate.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEventDate.Location = new System.Drawing.Point(127, 97);
             this.txtEventDate.Name = "txtEventDate";
             this.txtEventDate.ReadOnly = true;
@@ -74,7 +74,7 @@
             // 
             // txtUserName
             // 
-            this.txtUserName.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserName.Location = new System.Drawing.Point(127, 71);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.ReadOnly = true;
@@ -92,7 +92,7 @@
             // 
             // txtId
             // 
-            this.txtId.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtId.Location = new System.Drawing.Point(127, 45);
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;

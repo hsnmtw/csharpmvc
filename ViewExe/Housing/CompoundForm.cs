@@ -26,8 +26,8 @@ namespace MVCHIS.Housing {
         }
 
         private void CompoundNameLookupButtonLookUpSelected(object sender, EventArgs e) {
-            var selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            Model = Controller.Find(new CompoundModel() { CompoundName = selected }, "CompoundName");
+            
+            Model = Controller.Find(new CompoundModel() { CompoundName = txtCompoundName.Text }, "CompoundName");
         }
 
         private void CompoundForm_Load(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;

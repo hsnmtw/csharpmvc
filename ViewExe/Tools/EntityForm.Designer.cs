@@ -39,7 +39,7 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.txtEntityDesc = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
@@ -157,7 +157,7 @@
             // 
             this.lookUpButtonEntity.AssociatedControl = "txtEntityName";
             this.lookUpButtonEntity.Controller = "Entity";
-            this.lookUpButtonEntity.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonEntity.Location = new System.Drawing.Point(329, 45);
             this.lookUpButtonEntity.Name = "lookUpButtonEntity";
             this.lookUpButtonEntity.SelectedValueIndex = 0;

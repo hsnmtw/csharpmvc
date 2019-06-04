@@ -38,7 +38,7 @@
             this.txtRoomId = new System.Windows.Forms.TextBox();
             this.txtClientName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.lookUpButtonRoom = new MVCHIS.Common.LookUpButton();
             this.label4 = new System.Windows.Forms.Label();
@@ -50,10 +50,6 @@
             this.txtRoomName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtRate = new System.Windows.Forms.TextBox();
-            this.txtBuildingName = new System.Windows.Forms.TextBox();
-            this.txtCompoundName = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.btnFromDate = new System.Windows.Forms.Button();
             this.btnToDate = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
@@ -61,7 +57,7 @@
             this.txtCurrencyEnglish = new System.Windows.Forms.TextBox();
             this.txtCurrencyId = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.chkConfirmed = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkConfirmed = new System.Windows.Forms.CheckBox();
             this.lblFromDateHijri = new System.Windows.Forms.Label();
             this.lblToDateHijri = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -71,7 +67,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(60, 420);
+            this.btnDelete.Location = new System.Drawing.Point(60, 365);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 27;
@@ -80,7 +76,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(168, 420);
+            this.btnSave.Location = new System.Drawing.Point(168, 365);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 25;
@@ -89,7 +85,7 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(276, 420);
+            this.btnNew.Location = new System.Drawing.Point(276, 365);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 23);
             this.btnNew.TabIndex = 26;
@@ -98,7 +94,7 @@
             // 
             // txtUpdatedOn
             // 
-            this.txtUpdatedOn.Location = new System.Drawing.Point(214, 362);
+            this.txtUpdatedOn.Location = new System.Drawing.Point(214, 307);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
             this.txtUpdatedOn.Size = new System.Drawing.Size(137, 20);
@@ -107,7 +103,7 @@
             // 
             // txtUpdatedBy
             // 
-            this.txtUpdatedBy.Location = new System.Drawing.Point(141, 363);
+            this.txtUpdatedBy.Location = new System.Drawing.Point(141, 308);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
             this.txtUpdatedBy.Size = new System.Drawing.Size(69, 20);
@@ -117,7 +113,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 366);
+            this.label6.Location = new System.Drawing.Point(13, 311);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(63, 13);
             this.label6.TabIndex = 44;
@@ -125,7 +121,7 @@
             // 
             // txtCreatedOn
             // 
-            this.txtCreatedOn.Location = new System.Drawing.Point(214, 334);
+            this.txtCreatedOn.Location = new System.Drawing.Point(214, 279);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
             this.txtCreatedOn.Size = new System.Drawing.Size(137, 20);
@@ -134,7 +130,7 @@
             // 
             // txtCreatedBy
             // 
-            this.txtCreatedBy.Location = new System.Drawing.Point(141, 334);
+            this.txtCreatedBy.Location = new System.Drawing.Point(141, 279);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
             this.txtCreatedBy.Size = new System.Drawing.Size(69, 20);
@@ -144,7 +140,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 337);
+            this.label5.Location = new System.Drawing.Point(13, 282);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 13);
             this.label5.TabIndex = 45;
@@ -179,7 +175,6 @@
             // 
             // txtRoomId
             // 
-            this.txtRoomId.BackColor = System.Drawing.Color.White;
             this.txtRoomId.Location = new System.Drawing.Point(141, 83);
             this.txtRoomId.MaxLength = 3;
             this.txtRoomId.Name = "txtRoomId";
@@ -191,9 +186,10 @@
             // txtClientName
             // 
             this.txtClientName.Enabled = false;
-            this.txtClientName.Location = new System.Drawing.Point(174, 164);
+            this.txtClientName.Location = new System.Drawing.Point(174, 109);
             this.txtClientName.MaxLength = 50;
             this.txtClientName.Name = "txtClientName";
+            this.txtClientName.ReadOnly = true;
             this.txtClientName.Size = new System.Drawing.Size(154, 20);
             this.txtClientName.TabIndex = 9;
             this.txtClientName.TabStop = false;
@@ -201,7 +197,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 167);
+            this.label2.Location = new System.Drawing.Point(13, 112);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 13);
             this.label2.TabIndex = 49;
@@ -211,7 +207,7 @@
             // 
             this.chkReadOnly.AutoSize = true;
             this.chkReadOnly.Enabled = false;
-            this.chkReadOnly.Location = new System.Drawing.Point(141, 392);
+            this.chkReadOnly.Location = new System.Drawing.Point(141, 337);
             this.chkReadOnly.Name = "chkReadOnly";
             this.chkReadOnly.Size = new System.Drawing.Size(15, 14);
             this.chkReadOnly.TabIndex = 24;
@@ -221,7 +217,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(13, 393);
+            this.label10.Location = new System.Drawing.Point(13, 338);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(57, 13);
             this.label10.TabIndex = 47;
@@ -246,7 +242,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 196);
+            this.label4.Location = new System.Drawing.Point(13, 141);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 13);
             this.label4.TabIndex = 49;
@@ -254,7 +250,7 @@
             // 
             // txtFromDate
             // 
-            this.txtFromDate.Location = new System.Drawing.Point(141, 193);
+            this.txtFromDate.Location = new System.Drawing.Point(141, 138);
             this.txtFromDate.MaxLength = 10;
             this.txtFromDate.Name = "txtFromDate";
             this.txtFromDate.Size = new System.Drawing.Size(85, 20);
@@ -265,7 +261,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 225);
+            this.label7.Location = new System.Drawing.Point(13, 170);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(45, 13);
             this.label7.TabIndex = 49;
@@ -273,7 +269,7 @@
             // 
             // txtToDate
             // 
-            this.txtToDate.Location = new System.Drawing.Point(141, 222);
+            this.txtToDate.Location = new System.Drawing.Point(141, 167);
             this.txtToDate.MaxLength = 10;
             this.txtToDate.Name = "txtToDate";
             this.txtToDate.Size = new System.Drawing.Size(85, 20);
@@ -286,7 +282,7 @@
             this.lookUpButtonClient.AssociatedControl = "txtClientId";
             this.lookUpButtonClient.Controller = "Client";
             this.lookUpButtonClient.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonClient.Location = new System.Drawing.Point(329, 163);
+            this.lookUpButtonClient.Location = new System.Drawing.Point(329, 108);
             this.lookUpButtonClient.Name = "lookUpButtonClient";
             this.lookUpButtonClient.SelectedValueIndex = 0;
             this.lookUpButtonClient.ShowFieldsInLookUp.Add("Id");
@@ -297,7 +293,7 @@
             // 
             // txtClientId
             // 
-            this.txtClientId.Location = new System.Drawing.Point(141, 164);
+            this.txtClientId.Location = new System.Drawing.Point(141, 109);
             this.txtClientId.MaxLength = 2;
             this.txtClientId.Name = "txtClientId";
             this.txtClientId.ReadOnly = true;
@@ -311,6 +307,7 @@
             this.txtRoomName.Location = new System.Drawing.Point(174, 83);
             this.txtRoomName.MaxLength = 50;
             this.txtRoomName.Name = "txtRoomName";
+            this.txtRoomName.ReadOnly = true;
             this.txtRoomName.Size = new System.Drawing.Size(154, 20);
             this.txtRoomName.TabIndex = 4;
             this.txtRoomName.TabStop = false;
@@ -318,7 +315,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(13, 254);
+            this.label8.Location = new System.Drawing.Point(13, 199);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(30, 13);
             this.label8.TabIndex = 49;
@@ -326,54 +323,16 @@
             // 
             // txtRate
             // 
-            this.txtRate.Location = new System.Drawing.Point(141, 251);
+            this.txtRate.Location = new System.Drawing.Point(141, 196);
             this.txtRate.MaxLength = 6;
             this.txtRate.Name = "txtRate";
             this.txtRate.Size = new System.Drawing.Size(47, 20);
             this.txtRate.TabIndex = 15;
             // 
-            // txtBuildingName
-            // 
-            this.txtBuildingName.Enabled = false;
-            this.txtBuildingName.Location = new System.Drawing.Point(141, 110);
-            this.txtBuildingName.MaxLength = 50;
-            this.txtBuildingName.Name = "txtBuildingName";
-            this.txtBuildingName.Size = new System.Drawing.Size(210, 20);
-            this.txtBuildingName.TabIndex = 6;
-            this.txtBuildingName.TabStop = false;
-            // 
-            // txtCompoundName
-            // 
-            this.txtCompoundName.Enabled = false;
-            this.txtCompoundName.Location = new System.Drawing.Point(141, 138);
-            this.txtCompoundName.MaxLength = 50;
-            this.txtCompoundName.Name = "txtCompoundName";
-            this.txtCompoundName.Size = new System.Drawing.Size(210, 20);
-            this.txtCompoundName.TabIndex = 7;
-            this.txtCompoundName.TabStop = false;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(13, 113);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(43, 13);
-            this.label9.TabIndex = 43;
-            this.label9.Text = "Building";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(13, 141);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(58, 13);
-            this.label11.TabIndex = 43;
-            this.label11.Text = "Compound";
-            // 
             // btnFromDate
             // 
             this.btnFromDate.Enabled = false;
-            this.btnFromDate.Location = new System.Drawing.Point(229, 192);
+            this.btnFromDate.Location = new System.Drawing.Point(229, 137);
             this.btnFromDate.Name = "btnFromDate";
             this.btnFromDate.Size = new System.Drawing.Size(23, 22);
             this.btnFromDate.TabIndex = 12;
@@ -385,7 +344,7 @@
             // btnToDate
             // 
             this.btnToDate.Enabled = false;
-            this.btnToDate.Location = new System.Drawing.Point(229, 221);
+            this.btnToDate.Location = new System.Drawing.Point(229, 166);
             this.btnToDate.Name = "btnToDate";
             this.btnToDate.Size = new System.Drawing.Size(23, 22);
             this.btnToDate.TabIndex = 14;
@@ -397,7 +356,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(13, 282);
+            this.label12.Location = new System.Drawing.Point(13, 227);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(51, 13);
             this.label12.TabIndex = 49;
@@ -408,7 +367,7 @@
             this.lookUpButtonCurrency.AssociatedControl = "txtCurrencyId";
             this.lookUpButtonCurrency.Controller = "Currency";
             this.lookUpButtonCurrency.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonCurrency.Location = new System.Drawing.Point(329, 278);
+            this.lookUpButtonCurrency.Location = new System.Drawing.Point(329, 223);
             this.lookUpButtonCurrency.Name = "lookUpButtonCurrency";
             this.lookUpButtonCurrency.SelectedValueIndex = 0;
             this.lookUpButtonCurrency.ShowFieldsInLookUp.Add("Id");
@@ -422,27 +381,28 @@
             // txtCurrencyEnglish
             // 
             this.txtCurrencyEnglish.Enabled = false;
-            this.txtCurrencyEnglish.Location = new System.Drawing.Point(174, 279);
+            this.txtCurrencyEnglish.Location = new System.Drawing.Point(174, 224);
             this.txtCurrencyEnglish.MaxLength = 50;
             this.txtCurrencyEnglish.Name = "txtCurrencyEnglish";
+            this.txtCurrencyEnglish.ReadOnly = true;
             this.txtCurrencyEnglish.Size = new System.Drawing.Size(154, 20);
             this.txtCurrencyEnglish.TabIndex = 17;
             this.txtCurrencyEnglish.TabStop = false;
             // 
             // txtCurrencyId
             // 
-            this.txtCurrencyId.Location = new System.Drawing.Point(141, 279);
+            this.txtCurrencyId.Location = new System.Drawing.Point(141, 224);
             this.txtCurrencyId.MaxLength = 2;
             this.txtCurrencyId.Name = "txtCurrencyId";
             this.txtCurrencyId.ReadOnly = true;
             this.txtCurrencyId.Size = new System.Drawing.Size(31, 20);
             this.txtCurrencyId.TabIndex = 16;
-            this.txtCurrencyId.TextChanged += new System.EventHandler(this.TxtClientId_TextChanged);
+            this.txtCurrencyId.TextChanged += new System.EventHandler(this.TxtCurrencyId_TextChanged);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(14, 310);
+            this.label13.Location = new System.Drawing.Point(14, 255);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(56, 13);
             this.label13.TabIndex = 47;
@@ -451,7 +411,7 @@
             // chkConfirmed
             // 
             this.chkConfirmed.AutoSize = true;
-            this.chkConfirmed.Location = new System.Drawing.Point(142, 309);
+            this.chkConfirmed.Location = new System.Drawing.Point(142, 254);
             this.chkConfirmed.Name = "chkConfirmed";
             this.chkConfirmed.Size = new System.Drawing.Size(15, 14);
             this.chkConfirmed.TabIndex = 19;
@@ -461,7 +421,7 @@
             // lblFromDateHijri
             // 
             this.lblFromDateHijri.AutoSize = true;
-            this.lblFromDateHijri.Location = new System.Drawing.Point(258, 196);
+            this.lblFromDateHijri.Location = new System.Drawing.Point(258, 141);
             this.lblFromDateHijri.Name = "lblFromDateHijri";
             this.lblFromDateHijri.Size = new System.Drawing.Size(11, 13);
             this.lblFromDateHijri.TabIndex = 49;
@@ -470,7 +430,7 @@
             // lblToDateHijri
             // 
             this.lblToDateHijri.AutoSize = true;
-            this.lblToDateHijri.Location = new System.Drawing.Point(258, 225);
+            this.lblToDateHijri.Location = new System.Drawing.Point(258, 170);
             this.lblToDateHijri.Name = "lblToDateHijri";
             this.lblToDateHijri.Size = new System.Drawing.Size(11, 13);
             this.lblToDateHijri.TabIndex = 49;
@@ -528,8 +488,6 @@
             this.Controls.Add(this.txtFromDate);
             this.Controls.Add(this.lblFromDateHijri);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtCompoundName);
-            this.Controls.Add(this.txtBuildingName);
             this.Controls.Add(this.txtRoomName);
             this.Controls.Add(this.txtCurrencyEnglish);
             this.Controls.Add(this.txtClientName);
@@ -554,9 +512,7 @@
             this.Controls.Add(this.txtCreatedOn);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtCreatedBy);
             this.Name = "ReservationForm";
@@ -592,13 +548,9 @@
         private Common.LookUpButton lookUpButtonClient;
         private System.Windows.Forms.TextBox txtClientId;
         private System.Windows.Forms.TextBox txtRoomName;
-        private Utils.ForcedFocusCheckBox chkReadOnly;
+        private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtRate;
-        private System.Windows.Forms.TextBox txtBuildingName;
-        private System.Windows.Forms.TextBox txtCompoundName;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnFromDate;
         private System.Windows.Forms.Button btnToDate;
         private System.Windows.Forms.Label label12;
@@ -606,7 +558,7 @@
         private System.Windows.Forms.TextBox txtCurrencyEnglish;
         private System.Windows.Forms.TextBox txtCurrencyId;
         private System.Windows.Forms.Label label13;
-        private Utils.ForcedFocusCheckBox chkConfirmed;
+        private System.Windows.Forms.CheckBox chkConfirmed;
         private System.Windows.Forms.Label lblFromDateHijri;
         private System.Windows.Forms.Label lblToDateHijri;
         private System.Windows.Forms.Label label14;

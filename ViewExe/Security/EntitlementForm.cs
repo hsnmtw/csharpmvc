@@ -8,12 +8,6 @@ namespace MVCHIS.Security {
     //[ForModel(Common.MODELS.Entitlement)]
     public partial class EntitlementForm: EntitlementView {
 
-        private Dictionary<int, EntitlementGroupModel> egs;
-        private Dictionary<int, EntityModel> ets;
-
-        private IDBController<EntitlementGroupModel> CntrlEG;// = DBControllersFactory.GetController<EntitlementGroupModel>();
-        private IDBController<EntityModel>           CntrlET;// = DBControllersFactory.GetController<EntityModel>();
-
         public EntitlementForm() {
             InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //template
@@ -34,35 +28,27 @@ namespace MVCHIS.Security {
             NewButton = btnNew;
         }
 
-
+        public override void LoadForeignKeys(ForeignKeys FK) {
+            FK.Put(DBControllersFactory.GetController<EntitlementGroupModel>());
+            FK.Put(DBControllersFactory.GetController<EntityModel>());
+            base.LoadForeignKeys(FK);
+        }
 
 
         private void EntitlementFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
-            
-            CntrlEG = DBControllersFactory.GetController<EntitlementGroupModel>();
-            CntrlET = DBControllersFactory.GetController<EntityModel>();
-
-
-
-            egs = CntrlEG.Read().ToDictionary(x => x.Id, x => x);
-            ets = CntrlET.Read().ToDictionary(x => x.Id, x => x);
         }
 
         private void EntitlementNameLookupLookUpSelected(object sender, EventArgs e) {
-            var selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            Model = Controller.Find(new EntitlementModel() { EntitlementName = selected }, "EntitlementName");
+            
+            Model = Controller.Find(new EntitlementModel() { EntitlementName = txtEntitlementName.Text }, "EntitlementName");
         }
 
         private void TxtEntitlementGroupId_TextChanged(object sender, EventArgs e) {
-            try {
-                txtEntitlementGroupName.Text = egs[int.Parse(txtEntitlementGroupId.Text)].EntitlementGroupName;
-            } catch { }
+            txtEntitlementGroupName.Text = ForeignKeys.Instance[MODELS.EntitlementGroup, txtEntitlementGroupId.Text];
         }
 
         private void TxtEntityId_TextChanged(object sender, EventArgs e) {
-            try {
-                txtEntityName.Text = ets[int.Parse(txtEntityId.Text)].EntityName;
-            } catch { }
+            txtEntityName.Text = ForeignKeys.Instance[MODELS.Entity, txtEntityId.Text];
         }
     }
     

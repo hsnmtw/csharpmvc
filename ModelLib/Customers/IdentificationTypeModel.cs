@@ -2,8 +2,8 @@
 
 namespace MVCHIS.Customers {
     public class IdentificationTypeModel : BaseModel {
-        public string IdTypeCode      { get; set; }
-        public string IdTypeEnglish   { get; set; }
-        public string IdTypeArabic    { get; set; }
+        public string IdentificationTypeCode      { get; set; }
+        public string IdentificationTypeEnglish   { get; set; }
+        public string IdentificationTypeArabic    { get; set; }
     }
 }

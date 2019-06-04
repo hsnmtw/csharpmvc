@@ -36,7 +36,7 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtGregorianDate = new System.Windows.Forms.TextBox();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtHijriYear = new System.Windows.Forms.TextBox();
@@ -200,7 +200,7 @@
             // 
             // txtHijriYear
             // 
-            this.txtHijriYear.BackColor = System.Drawing.Color.White;
+            
             this.txtHijriYear.Location = new System.Drawing.Point(120, 91);
             this.txtHijriYear.MaxLength = 4;
             this.txtHijriYear.Name = "txtHijriYear";
@@ -218,7 +218,7 @@
             // 
             // txtHijriMonth
             // 
-            this.txtHijriMonth.BackColor = System.Drawing.Color.White;
+            
             this.txtHijriMonth.Location = new System.Drawing.Point(120, 118);
             this.txtHijriMonth.MaxLength = 2;
             this.txtHijriMonth.Name = "txtHijriMonth";
@@ -236,7 +236,7 @@
             // 
             // txtHijriDay
             // 
-            this.txtHijriDay.BackColor = System.Drawing.Color.White;
+            
             this.txtHijriDay.Location = new System.Drawing.Point(120, 145);
             this.txtHijriDay.MaxLength = 2;
             this.txtHijriDay.Name = "txtHijriDay";
@@ -254,7 +254,7 @@
             // 
             // txtGregorianYear
             // 
-            this.txtGregorianYear.BackColor = System.Drawing.Color.White;
+            
             this.txtGregorianYear.Enabled = false;
             this.txtGregorianYear.Location = new System.Drawing.Point(120, 64);
             this.txtGregorianYear.MaxLength = 4;
@@ -318,7 +318,7 @@
         private System.Windows.Forms.TextBox txtHijriMonth;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtHijriDay;
-        private Utils.ForcedFocusCheckBox chkReadOnly;
+        private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtGregorianYear;
         //private Common.LookUpButton DictionaryNameLookupButton;

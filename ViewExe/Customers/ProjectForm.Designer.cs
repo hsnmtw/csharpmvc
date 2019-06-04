@@ -37,7 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtProjectName = new System.Windows.Forms.TextBox();
             this.lookUpButtonClient = new MVCHIS.Common.LookUpButton();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtClientId = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -74,7 +74,6 @@
             // 
             // txtUpdatedOn
             // 
-            
             this.txtUpdatedOn.Location = new System.Drawing.Point(226, 138);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -84,7 +83,6 @@
             // 
             // txtUpdatedBy
             // 
-            
             this.txtUpdatedBy.Location = new System.Drawing.Point(151, 138);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -103,7 +101,6 @@
             // 
             // txtCreatedOn
             // 
-            
             this.txtCreatedOn.Location = new System.Drawing.Point(226, 111);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -113,7 +110,6 @@
             // 
             // txtCreatedBy
             // 
-            
             this.txtCreatedBy.Location = new System.Drawing.Point(151, 111);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -161,7 +157,7 @@
             // 
             this.txtProjectName.Location = new System.Drawing.Point(151, 48);
             this.txtProjectName.Name = "txtProjectName";
-            this.txtProjectName.Size = new System.Drawing.Size(186, 20);
+            this.txtProjectName.Size = new System.Drawing.Size(188, 20);
             this.txtProjectName.TabIndex = 1;
             // 
             // lookUpButtonClient
@@ -169,7 +165,7 @@
             this.lookUpButtonClient.AssociatedControl = "txtClientId";
             this.lookUpButtonClient.Controller = "Client";
             this.lookUpButtonClient.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonClient.Location = new System.Drawing.Point(194, 74);
+            this.lookUpButtonClient.Location = new System.Drawing.Point(341, 74);
             this.lookUpButtonClient.Name = "lookUpButtonClient";
             this.lookUpButtonClient.SelectedValueIndex = 2;
             this.lookUpButtonClient.ShowFieldsInLookUp.Add("ShortName");
@@ -200,7 +196,6 @@
             // 
             // txtClientId
             // 
-            this.txtClientId.BackColor = System.Drawing.Color.White;
             this.txtClientId.Location = new System.Drawing.Point(151, 75);
             this.txtClientId.Name = "txtClientId";
             this.txtClientId.ReadOnly = true;
@@ -222,7 +217,7 @@
             this.lookUpButtonProjectName.AssociatedControl = "txtProjectName";
             this.lookUpButtonProjectName.Controller = "Project";
             this.lookUpButtonProjectName.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonProjectName.Location = new System.Drawing.Point(340, 47);
+            this.lookUpButtonProjectName.Location = new System.Drawing.Point(341, 46);
             this.lookUpButtonProjectName.Name = "lookUpButtonProjectName";
             this.lookUpButtonProjectName.SelectedValueIndex = 0;
             this.lookUpButtonProjectName.ShowFieldsInLookUp.Add("ProjectName");
@@ -233,7 +228,7 @@
             // 
             // txtClientShortName
             // 
-            this.txtClientShortName.Location = new System.Drawing.Point(218, 75);
+            this.txtClientShortName.Location = new System.Drawing.Point(194, 75);
             this.txtClientShortName.Name = "txtClientShortName";
             this.txtClientShortName.ReadOnly = true;
             this.txtClientShortName.Size = new System.Drawing.Size(145, 20);
@@ -292,6 +287,6 @@
         private Common.LookUpButton lookUpButtonProjectName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtClientShortName;
-        private Utils.ForcedFocusCheckBox chkReadOnly;
+        private System.Windows.Forms.CheckBox chkReadOnly;
     }
 }

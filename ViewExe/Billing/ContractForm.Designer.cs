@@ -41,7 +41,7 @@
             this.txtContractCode = new System.Windows.Forms.TextBox();
             this.txtStartDate = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.lookUpButtonContract = new MVCHIS.Common.LookUpButton();
             this.btnDateOfBirth = new System.Windows.Forms.Button();
@@ -60,7 +60,7 @@
             this.btnAddService = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.label11 = new System.Windows.Forms.Label();
-            this.chkIsActive = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkIsActive = new System.Windows.Forms.CheckBox();
             this.listViewControl1 = new MVCHIS.Utils.ListViewControl();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -95,7 +95,6 @@
             // 
             // txtUpdatedOn
             // 
-            
             this.txtUpdatedOn.Location = new System.Drawing.Point(221, 346);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -105,7 +104,6 @@
             // 
             // txtUpdatedBy
             // 
-            
             this.txtUpdatedBy.Location = new System.Drawing.Point(141, 346);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -124,7 +122,6 @@
             // 
             // txtCreatedOn
             // 
-            
             this.txtCreatedOn.Location = new System.Drawing.Point(221, 320);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -134,7 +131,6 @@
             // 
             // txtCreatedBy
             // 
-            
             this.txtCreatedBy.Location = new System.Drawing.Point(141, 320);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -227,7 +223,7 @@
             // 
             this.lookUpButtonContract.AssociatedControl = "txtContractCode";
             this.lookUpButtonContract.Controller = "Contract";
-            this.lookUpButtonContract.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonContract.Location = new System.Drawing.Point(297, 48);
             this.lookUpButtonContract.Name = "lookUpButtonContract";
             this.lookUpButtonContract.SelectedValueIndex = 0;
@@ -302,7 +298,7 @@
             // 
             this.lookUpButton1.AssociatedControl = "txtClientId";
             this.lookUpButton1.Controller = "Client";
-            this.lookUpButton1.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButton1.Location = new System.Drawing.Point(179, 131);
             this.lookUpButton1.Name = "lookUpButton1";
             this.lookUpButton1.SelectedValueIndex = 2;
@@ -318,6 +314,7 @@
             this.txtClientShortName.Enabled = false;
             this.txtClientShortName.Location = new System.Drawing.Point(204, 132);
             this.txtClientShortName.Name = "txtClientShortName";
+            this.txtClientShortName.ReadOnly = true;
             this.txtClientShortName.Size = new System.Drawing.Size(186, 20);
             this.txtClientShortName.TabIndex = 9;
             // 
@@ -332,7 +329,7 @@
             // 
             // txtConditions
             // 
-            this.txtConditions.Font = new System.Drawing.Font("Consolas", 8F);
+            //new System.Drawing.Font("Consolas", 8F);
             this.txtConditions.Location = new System.Drawing.Point(402, 30);
             this.txtConditions.Multiline = true;
             this.txtConditions.Name = "txtConditions";
@@ -354,7 +351,7 @@
             // 
             this.btnDeleteService.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDeleteService.Enabled = false;
-            this.btnDeleteService.Font = new System.Drawing.Font("Tahoma", 13F);
+            //new System.Drawing.Font("Tahoma", 13F);
             this.btnDeleteService.ForeColor = System.Drawing.Color.Red;
             this.btnDeleteService.Location = new System.Drawing.Point(740, 167);
             this.btnDeleteService.Name = "btnDeleteService";
@@ -370,7 +367,7 @@
             // 
             this.btnEditService.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditService.Enabled = false;
-            this.btnEditService.Font = new System.Drawing.Font("Tahoma", 13F);
+            //new System.Drawing.Font("Tahoma", 13F);
             this.btnEditService.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnEditService.Location = new System.Drawing.Point(740, 208);
             this.btnEditService.Name = "btnEditService";
@@ -386,7 +383,7 @@
             // 
             this.btnAddService.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddService.Enabled = false;
-            this.btnAddService.Font = new System.Drawing.Font("Tahoma", 13F);
+            //new System.Drawing.Font("Tahoma", 13F);
             this.btnAddService.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnAddService.Location = new System.Drawing.Point(740, 249);
             this.btnAddService.Name = "btnAddService";
@@ -422,7 +419,7 @@
             this.columnHeader1,
             this.columnHeader2});
             this.listViewControl1.Filter = null;
-            this.listViewControl1.Font = new System.Drawing.Font("Consolas", 9F);
+            //new System.Drawing.Font("Consolas", 9F);
             this.listViewControl1.FullRowSelect = true;
             this.listViewControl1.GridLines = true;
             this.listViewControl1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -529,8 +526,8 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button btnAddService;
         private System.Windows.Forms.Label label11;
-        private Utils.ForcedFocusCheckBox chkReadOnly;
-        private Utils.ForcedFocusCheckBox chkIsActive;
+        private System.Windows.Forms.CheckBox chkReadOnly;
+        private System.Windows.Forms.CheckBox chkIsActive;
         private Utils.ListViewControl listViewControl1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;

@@ -34,7 +34,7 @@ namespace MVCHIS.Utils {
             tsmi.Click += (xs, xe) => {
                 Control lcntrl = ((ContextMenuStrip)((ToolStripMenuItem)xs).Owner).SourceControl;
                 var txt = lcntrl.Text;
-                var trn = InputBoxForm.Prompt("Translate", $"Translate [{txt}] to:");
+                var trn = InputBox.Prompt("Translate", $"Translate [{txt}] to:");
                 if (trn != null) {
                     int result = MainView.Instance.CntrlDC.Save(new Tools.DictionaryModel() {
                         WordInEnglish = txt,

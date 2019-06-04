@@ -37,7 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtBuildingTypeCode = new System.Windows.Forms.TextBox();
             this.lookUpButton1 = new MVCHIS.Common.LookUpButton();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -166,7 +166,7 @@
             this.lookUpButton1.AssociatedControl = "txtBuildingType";
             this.lookUpButton1.Tag = null;
             this.lookUpButton1.Controller = "BuildingType";
-            this.lookUpButton1.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButton1.Location = new System.Drawing.Point(294, 45);
             this.lookUpButton1.Name = "lookUpButton1";
             this.lookUpButton1.SelectedValueIndex = 0;

@@ -93,10 +93,10 @@ namespace MVCHIS {
 
         Dictionary<string, List<TreeNode>> menu = new Dictionary<string, List<TreeNode>>();
         public void WhenAuthenticated(UserModel model) {
-            Session.Instance.CurrentUser = model;
+            MVCHISSession.Instance.CurrentUser = model;
 
             var pes = CntrlPE.Read(new ProfileEntitlementModel() {
-                ProfileId = Session.Instance.CurrentUser.ProfileId,
+                ProfileId = MVCHISSession.Instance.CurrentUser.ProfileId,
                 AllowRead = true
             }, "ProfileId", "AllowRead");
 
@@ -120,7 +120,7 @@ namespace MVCHIS {
                 }
             }
 
-            Session.Instance.UserEntitlements = pes;
+            MVCHISSession.Instance.UserEntitlements = pes;
             tsslCurrentUser.Text = model.UserName;
             setProgress("Login successful", 0);
             this.treeViewMenu.ExpandAll();
@@ -140,12 +140,12 @@ namespace MVCHIS {
         }
 
         private void PasswordResetToolStripMenuItemClick(object sender, EventArgs e) {
-            if(Session.Instance.CurrentUser == null) {
+            if(MVCHISSession.Instance.CurrentUser == null) {
                 Utils.FormsHelper.Error("Not logged in");
                 return;
             }
             var userPasswordResetView = new Security.Users.UserPasswordResetView();
-            userPasswordResetView.Model = (Session.Instance.CurrentUser);
+            userPasswordResetView.Model = (MVCHISSession.Instance.CurrentUser);
             userPasswordResetView.Show();
         }
 
@@ -319,18 +319,13 @@ namespace MVCHIS {
         private void TreeViewMenu_DrawNode(object sender, DrawTreeNodeEventArgs e) {
 
         }
-        TreeNode previous = null;
+ 
         private void TreeViewMenu_BeforeSelect(object sender, TreeViewCancelEventArgs e) {
             
         }
 
         private void TreeViewMenu_AfterSelect(object sender, TreeViewEventArgs e) {
-            treeViewMenu.BeginUpdate();
-            if (previous != null) previous.NodeFont = new Font("Verdana", 8, FontStyle.Regular);
-            e.Node.NodeFont = new Font("Verdana", 8, FontStyle.Bold);
-            previous = e.Node;
-            treeViewMenu.EndUpdate();
-            treeViewMenu.Invalidate();
+
         }
     }
 }

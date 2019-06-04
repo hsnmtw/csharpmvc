@@ -37,7 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtShortName = new System.Windows.Forms.TextBox();
             this.lookUpButtonShortName = new MVCHIS.Common.LookUpButton();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label19 = new System.Windows.Forms.Label();
             this.txtBillingAddress = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -51,7 +51,7 @@
             this.txtNameArabic = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.chkIsActive = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkIsActive = new System.Windows.Forms.CheckBox();
             this.label30 = new System.Windows.Forms.Label();
             this.txtClientTypeCode = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -60,12 +60,11 @@
             this.txtFaxNumber = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpIdentifications = new System.Windows.Forms.TabPage();
-            this.lstIdentifications = new MVCHIS.Utils.FixedWidthListBox();
             this.btnUnassociateIdentification = new System.Windows.Forms.Button();
             this.btnAddIdentification = new System.Windows.Forms.Button();
             this.btnOpenIdentification = new System.Windows.Forms.Button();
             this.tpContacts = new System.Windows.Forms.TabPage();
-            this.lstContacts = new MVCHIS.Utils.FixedWidthListBox();
+            this.lstContact = new MVCHIS.Utils.ListViewControl();
             this.btnUnassociateContact = new System.Windows.Forms.Button();
             this.btnOpenContact = new System.Windows.Forms.Button();
             this.btnAddContact = new System.Windows.Forms.Button();
@@ -75,7 +74,7 @@
             this.lookUpButtonNationality = new MVCHIS.Common.LookUpButton();
             this.txtDateOfBirth = new System.Windows.Forms.TextBox();
             this.btnDateOfBirth = new System.Windows.Forms.Button();
-            this.txtCountryEnglish = new System.Windows.Forms.TextBox();
+            this.lstIdentification = new MVCHIS.Utils.ListViewControl();
             this.tabControl1.SuspendLayout();
             this.tpIdentifications.SuspendLayout();
             this.tpContacts.SuspendLayout();
@@ -110,7 +109,6 @@
             // 
             // txtUpdatedOn
             // 
-            
             this.txtUpdatedOn.Location = new System.Drawing.Point(608, 301);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -120,7 +118,6 @@
             // 
             // txtUpdatedBy
             // 
-            
             this.txtUpdatedBy.Location = new System.Drawing.Point(534, 301);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -140,7 +137,6 @@
             // 
             // txtCreatedOn
             // 
-            
             this.txtCreatedOn.Location = new System.Drawing.Point(608, 275);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -151,7 +147,6 @@
             // 
             // txtCreatedBy
             // 
-            
             this.txtCreatedBy.Location = new System.Drawing.Point(534, 275);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -209,8 +204,7 @@
             // 
             this.lookUpButtonShortName.AssociatedControl = "txtShortName";
             this.lookUpButtonShortName.Controller = "Client";
-            this.lookUpButtonShortName.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonShortName.Location = new System.Drawing.Point(290, 49);
+            this.lookUpButtonShortName.Location = new System.Drawing.Point(291, 49);
             this.lookUpButtonShortName.Name = "lookUpButtonShortName";
             this.lookUpButtonShortName.SelectedValueIndex = 0;
             this.lookUpButtonShortName.ShowFieldsInLookUp.Add("ShortName");
@@ -242,7 +236,6 @@
             // 
             // txtBillingAddress
             // 
-            this.txtBillingAddress.BackColor = System.Drawing.Color.White;
             this.txtBillingAddress.Location = new System.Drawing.Point(161, 155);
             this.txtBillingAddress.Multiline = true;
             this.txtBillingAddress.Name = "txtBillingAddress";
@@ -261,7 +254,6 @@
             // 
             // txtClientTypeId
             // 
-            this.txtClientTypeId.BackColor = System.Drawing.Color.White;
             this.txtClientTypeId.Location = new System.Drawing.Point(161, 128);
             this.txtClientTypeId.Name = "txtClientTypeId";
             this.txtClientTypeId.ReadOnly = true;
@@ -282,7 +274,6 @@
             // 
             // txtLongName
             // 
-            this.txtLongName.BackColor = System.Drawing.Color.White;
             this.txtLongName.Location = new System.Drawing.Point(161, 75);
             this.txtLongName.Name = "txtLongName";
             this.txtLongName.Size = new System.Drawing.Size(212, 20);
@@ -302,8 +293,7 @@
             // 
             this.lookUpButtonClientType.AssociatedControl = "txtClientTypeId";
             this.lookUpButtonClientType.Controller = "ClientType";
-            this.lookUpButtonClientType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonClientType.Location = new System.Drawing.Point(195, 127);
+            this.lookUpButtonClientType.Location = new System.Drawing.Point(351, 127);
             this.lookUpButtonClientType.Name = "lookUpButtonClientType";
             this.lookUpButtonClientType.SelectedValueIndex = 1;
             this.lookUpButtonClientType.ShowFieldsInLookUp.Add("ClientTypeCode");
@@ -314,7 +304,6 @@
             // 
             // txtWebsite
             // 
-            this.txtWebsite.BackColor = System.Drawing.Color.White;
             this.txtWebsite.Location = new System.Drawing.Point(161, 236);
             this.txtWebsite.Name = "txtWebsite";
             this.txtWebsite.Size = new System.Drawing.Size(211, 20);
@@ -332,7 +321,6 @@
             // 
             // txtNameArabic
             // 
-            this.txtNameArabic.BackColor = System.Drawing.Color.White;
             this.txtNameArabic.Location = new System.Drawing.Point(161, 101);
             this.txtNameArabic.Name = "txtNameArabic";
             this.txtNameArabic.Size = new System.Drawing.Size(212, 20);
@@ -379,8 +367,9 @@
             // txtClientTypeCode
             // 
             this.txtClientTypeCode.Enabled = false;
-            this.txtClientTypeCode.Location = new System.Drawing.Point(218, 128);
+            this.txtClientTypeCode.Location = new System.Drawing.Point(196, 128);
             this.txtClientTypeCode.Name = "txtClientTypeCode";
+            this.txtClientTypeCode.ReadOnly = true;
             this.txtClientTypeCode.Size = new System.Drawing.Size(154, 20);
             this.txtClientTypeCode.TabIndex = 7;
             this.txtClientTypeCode.Tag = "ClientTypeCode";
@@ -396,7 +385,6 @@
             // 
             // txtPhoneNumber
             // 
-            this.txtPhoneNumber.BackColor = System.Drawing.Color.White;
             this.txtPhoneNumber.Location = new System.Drawing.Point(161, 262);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(211, 20);
@@ -414,7 +402,6 @@
             // 
             // txtFaxNumber
             // 
-            this.txtFaxNumber.BackColor = System.Drawing.Color.White;
             this.txtFaxNumber.Location = new System.Drawing.Point(161, 288);
             this.txtFaxNumber.Name = "txtFaxNumber";
             this.txtFaxNumber.Size = new System.Drawing.Size(211, 20);
@@ -433,7 +420,7 @@
             // 
             // tpIdentifications
             // 
-            this.tpIdentifications.Controls.Add(this.lstIdentifications);
+            this.tpIdentifications.Controls.Add(this.lstIdentification);
             this.tpIdentifications.Controls.Add(this.btnUnassociateIdentification);
             this.tpIdentifications.Controls.Add(this.btnAddIdentification);
             this.tpIdentifications.Controls.Add(this.btnOpenIdentification);
@@ -444,20 +431,6 @@
             this.tpIdentifications.TabIndex = 0;
             this.tpIdentifications.Text = "Identification";
             this.tpIdentifications.UseVisualStyleBackColor = true;
-            // 
-            // lstIdentifications
-            // 
-            this.lstIdentifications.DataSource = null;
-            this.lstIdentifications.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lstIdentifications.Filter = null;
-            this.lstIdentifications.Location = new System.Drawing.Point(3, 3);
-            this.lstIdentifications.Name = "lstIdentifications";
-            this.lstIdentifications.ShownColumns.Add("IdNumber");
-            this.lstIdentifications.ShownColumns.Add("IdTypeId");
-            this.lstIdentifications.ShownColumns.Add("ExpiryDate");
-            this.lstIdentifications.ShownColumns.Add("CityId");
-            this.lstIdentifications.Size = new System.Drawing.Size(322, 180);
-            this.lstIdentifications.TabIndex = 0;
             // 
             // btnUnassociateIdentification
             // 
@@ -489,7 +462,7 @@
             // 
             // tpContacts
             // 
-            this.tpContacts.Controls.Add(this.lstContacts);
+            this.tpContacts.Controls.Add(this.lstContact);
             this.tpContacts.Controls.Add(this.btnUnassociateContact);
             this.tpContacts.Controls.Add(this.btnOpenContact);
             this.tpContacts.Controls.Add(this.btnAddContact);
@@ -501,18 +474,20 @@
             this.tpContacts.Text = "Contact";
             this.tpContacts.UseVisualStyleBackColor = true;
             // 
-            // lstContacts
+            // lstContact
             // 
-            this.lstContacts.DataSource = null;
-            this.lstContacts.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lstContacts.Filter = null;
-            this.lstContacts.Location = new System.Drawing.Point(3, 3);
-            this.lstContacts.Name = "lstContacts";
-            this.lstContacts.ShownColumns.Add("MobileNumber");
-            this.lstContacts.ShownColumns.Add("FullName");
-            this.lstContacts.ShownColumns.Add("PhoneNumber");
-            this.lstContacts.Size = new System.Drawing.Size(322, 180);
-            this.lstContacts.TabIndex = 6;
+            this.lstContact.Filter = null;
+            this.lstContact.FullRowSelect = true;
+            this.lstContact.GridLines = true;
+            this.lstContact.HideSelection = false;
+            this.lstContact.LabelWrap = false;
+            this.lstContact.Location = new System.Drawing.Point(6, 6);
+            this.lstContact.MultiSelect = false;
+            this.lstContact.Name = "lstContact";
+            this.lstContact.Size = new System.Drawing.Size(314, 180);
+            this.lstContact.TabIndex = 6;
+            this.lstContact.UseCompatibleStateImageBehavior = false;
+            this.lstContact.View = System.Windows.Forms.View.Details;
             // 
             // btnUnassociateContact
             // 
@@ -544,7 +519,6 @@
             // 
             // txtCountryId
             // 
-            this.txtCountryId.BackColor = System.Drawing.Color.White;
             this.txtCountryId.Location = new System.Drawing.Point(161, 366);
             this.txtCountryId.Name = "txtCountryId";
             this.txtCountryId.ReadOnly = true;
@@ -558,7 +532,8 @@
             this.txtCountryCode.Enabled = false;
             this.txtCountryCode.Location = new System.Drawing.Point(205, 366);
             this.txtCountryCode.Name = "txtCountryCode";
-            this.txtCountryCode.Size = new System.Drawing.Size(37, 20);
+            this.txtCountryCode.ReadOnly = true;
+            this.txtCountryCode.Size = new System.Drawing.Size(145, 20);
             this.txtCountryCode.TabIndex = 16;
             this.txtCountryCode.Tag = "";
             this.txtCountryCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -576,7 +551,6 @@
             // 
             this.lookUpButtonNationality.AssociatedControl = "txtCountryId";
             this.lookUpButtonNationality.Controller = "Country";
-            this.lookUpButtonNationality.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonNationality.Location = new System.Drawing.Point(351, 365);
             this.lookUpButtonNationality.Name = "lookUpButtonNationality";
             this.lookUpButtonNationality.SelectedValueIndex = 3;
@@ -590,7 +564,6 @@
             // 
             // txtDateOfBirth
             // 
-            this.txtDateOfBirth.BackColor = System.Drawing.Color.White;
             this.txtDateOfBirth.Location = new System.Drawing.Point(161, 338);
             this.txtDateOfBirth.Name = "txtDateOfBirth";
             this.txtDateOfBirth.Size = new System.Drawing.Size(103, 20);
@@ -611,13 +584,20 @@
             this.btnDateOfBirth.UseVisualStyleBackColor = true;
             this.btnDateOfBirth.Click += new System.EventHandler(this.BtnDateOfBirth_Click);
             // 
-            // txtCountryEnglish
+            // lstIdentification
             // 
-            this.txtCountryEnglish.Enabled = false;
-            this.txtCountryEnglish.Location = new System.Drawing.Point(243, 366);
-            this.txtCountryEnglish.Name = "txtCountryEnglish";
-            this.txtCountryEnglish.Size = new System.Drawing.Size(108, 20);
-            this.txtCountryEnglish.TabIndex = 17;
+            this.lstIdentification.Filter = null;
+            this.lstIdentification.FullRowSelect = true;
+            this.lstIdentification.GridLines = true;
+            this.lstIdentification.HideSelection = false;
+            this.lstIdentification.LabelWrap = false;
+            this.lstIdentification.Location = new System.Drawing.Point(6, 6);
+            this.lstIdentification.MultiSelect = false;
+            this.lstIdentification.Name = "lstIdentification";
+            this.lstIdentification.Size = new System.Drawing.Size(314, 180);
+            this.lstIdentification.TabIndex = 7;
+            this.lstIdentification.UseCompatibleStateImageBehavior = false;
+            this.lstIdentification.View = System.Windows.Forms.View.Details;
             // 
             // ClientForm
             // 
@@ -661,7 +641,6 @@
             this.Controls.Add(this.txtLongName);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label17);
-            this.Controls.Add(this.txtCountryEnglish);
             this.Controls.Add(this.txtCountryCode);
             this.Controls.Add(this.txtCountryId);
             this.Controls.Add(this.txtClientTypeCode);
@@ -717,8 +696,6 @@
         private System.Windows.Forms.Button btnUnassociateIdentification;
         private System.Windows.Forms.Button btnOpenIdentification;
         private System.Windows.Forms.Button btnAddIdentification;
-        private MVCHIS.Utils.FixedWidthListBox lstIdentifications;
-        private MVCHIS.Utils.FixedWidthListBox lstContacts;
         private System.Windows.Forms.Button btnUnassociateContact;
         private System.Windows.Forms.Button btnOpenContact;
         private System.Windows.Forms.Button btnAddContact;
@@ -728,8 +705,9 @@
         private Common.LookUpButton lookUpButtonNationality;
         private System.Windows.Forms.TextBox txtDateOfBirth;
         private System.Windows.Forms.Button btnDateOfBirth;
-        private System.Windows.Forms.TextBox txtCountryEnglish;
-        private Utils.ForcedFocusCheckBox chkReadOnly;
-        private Utils.ForcedFocusCheckBox chkIsActive;
+        private System.Windows.Forms.CheckBox chkReadOnly;
+        private System.Windows.Forms.CheckBox chkIsActive;
+        private Utils.ListViewControl lstContact;
+        private Utils.ListViewControl lstIdentification;
     }
 }

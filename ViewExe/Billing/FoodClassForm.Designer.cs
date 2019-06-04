@@ -36,7 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtFoodClassCode = new System.Windows.Forms.TextBox();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.lookUpButtonFoodClass = new MVCHIS.Common.LookUpButton();
             this.txtFoodClassDesc = new System.Windows.Forms.TextBox();
@@ -182,7 +182,7 @@
             // 
             this.lookUpButtonFoodClass.AssociatedControl = "txtFoodClassCode";
             this.lookUpButtonFoodClass.Controller = "FoodClass";
-            this.lookUpButtonFoodClass.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonFoodClass.Location = new System.Drawing.Point(305, 56);
             this.lookUpButtonFoodClass.Name = "lookUpButtonFoodClass";
             this.lookUpButtonFoodClass.SelectedValueIndex = 0;

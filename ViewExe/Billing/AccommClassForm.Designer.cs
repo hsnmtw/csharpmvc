@@ -36,7 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtAccommClassCode = new System.Windows.Forms.TextBox();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.lookUpButtonAccommClass = new MVCHIS.Common.LookUpButton();
             this.label2 = new System.Windows.Forms.Label();
@@ -183,7 +183,7 @@
             // 
             this.lookUpButtonAccommClass.AssociatedControl = "txtAccommClassCode";
             this.lookUpButtonAccommClass.Controller = "AccommClass";
-            this.lookUpButtonAccommClass.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonAccommClass.Location = new System.Drawing.Point(355, 45);
             this.lookUpButtonAccommClass.Name = "lookUpButtonAccommClass";
             this.lookUpButtonAccommClass.SelectedValueIndex = 0;
@@ -258,6 +258,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtAccommClassDesc;
-        private Utils.ForcedFocusCheckBox chkReadOnly;
+        private System.Windows.Forms.CheckBox chkReadOnly;
     }
 }

@@ -31,8 +31,7 @@ namespace MVCHIS.Billing {
         }
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            Model = Controller.Find(new VATModel() { VATCode = selected }, "VATCode");
+            Model = Controller.Find(new VATModel() { VATCode = txtVATCode.Text }, "VATCode");
         }
 
         private void VATFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;

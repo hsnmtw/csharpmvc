@@ -60,12 +60,19 @@ namespace MVCHIS.Billing {
             };
         }
 
+
+        public override void LoadForeignKeys(ForeignKeys FK) {
+            FK.Put(CntrlCU);
+            FK.Put(CntrlVT);
+            FK.Put(CntrlCG);
+            FK.Put(CntrlCL);
+        }
+
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
             Model = Controller.Find(new ContractModel() { ContractCode = txtContractCode.Text }, "ContractCode");
         }
 
         private void ContractFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
-            new Thread(LoadFKs).Start();
             SuspendLayout();
             this.listViewControl1.Items.Clear();
             this.listViewControl1.Columns.Clear();
@@ -73,23 +80,8 @@ namespace MVCHIS.Billing {
             ResumeLayout();
         }
 
-        private void LoadFKs() {
-            if (!new string[] { "CurrencyId", "FromCurrencyId", "ToCurrencyId" }.All(x => ListViewControl.FK.ContainsKey(x))) {
-                ListViewControl.FK["CurrencyId"] = CntrlCU.Read().ToDictionary(x => x.Id, x => x.CurrencyCode);
-                ListViewControl.FK["FromCurrencyId"] = ListViewControl.FK["CurrencyId"];
-                ListViewControl.FK["ToCurrencyId"] = ListViewControl.FK["CurrencyId"];
-            }
-            if (!ListViewControl.FK.ContainsKey("VATId")) {
-                ListViewControl.FK["VATId"] = CntrlVT.Read().ToDictionary(x => x.Id, x => x.VATCode);
-            }
-            if (!ListViewControl.FK.ContainsKey("BillingCategoryId")) {
-                ListViewControl.FK["BillingCategoryId"] = CntrlCG.Read().ToDictionary(x => x.Id, x => x.BillingCategoryCode);
-            }
-        }
-
         private void TxtClient_TextChanged(object sender, EventArgs e) {
-            int.TryParse(txtClientId.Text,out int selected);
-            txtClientShortName.Text = CntrlCL.Find(new ClientModel() { Id = selected }, "Id")?.ShortName;
+            txtClientShortName.Text = ForeignKeys.Instance[MODELS.Client,txtClientId.Text];
         }
 
         private void TxtId_TextChanged(object sender, EventArgs e) {

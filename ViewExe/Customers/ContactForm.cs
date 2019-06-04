@@ -29,9 +29,7 @@ namespace MVCHIS.Customers {
         }
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            //this.txtMobileNumber.Text = selected;
-            Model = Controller.Find(new ContactModel() { MobileNumber=selected }, "MobileNumber");
+            Model = Controller.Find(new ContactModel() { MobileNumber = txtMobileNumber.Text }, "MobileNumber");
         }
 
         private void ContactFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;

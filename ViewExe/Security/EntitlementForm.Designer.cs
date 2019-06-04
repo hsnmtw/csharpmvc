@@ -38,7 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtEntitlementName = new System.Windows.Forms.TextBox();
             this.EntitlementNameLookup = new MVCHIS.Common.LookUpButton();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtEntitlementGroupName = new System.Windows.Forms.TextBox();
             this.EntitlementGroupNameLookup = new MVCHIS.Common.LookUpButton();
@@ -70,7 +70,6 @@
             // 
             // txtUpdatedOn
             // 
-            
             resources.ApplyResources(this.txtUpdatedOn, "txtUpdatedOn");
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -78,7 +77,6 @@
             // 
             // txtUpdatedBy
             // 
-            
             resources.ApplyResources(this.txtUpdatedBy, "txtUpdatedBy");
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -91,7 +89,6 @@
             // 
             // txtCreatedOn
             // 
-            
             resources.ApplyResources(this.txtCreatedOn, "txtCreatedOn");
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -99,7 +96,6 @@
             // 
             // txtCreatedBy
             // 
-            
             resources.ApplyResources(this.txtCreatedBy, "txtCreatedBy");
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -158,6 +154,7 @@
             // 
             resources.ApplyResources(this.txtEntitlementGroupName, "txtEntitlementGroupName");
             this.txtEntitlementGroupName.Name = "txtEntitlementGroupName";
+            this.txtEntitlementGroupName.ReadOnly = true;
             this.txtEntitlementGroupName.TabStop = false;
             // 
             // EntitlementGroupNameLookup
@@ -196,6 +193,7 @@
             // 
             resources.ApplyResources(this.txtEntityName, "txtEntityName");
             this.txtEntityName.Name = "txtEntityName";
+            this.txtEntityName.ReadOnly = true;
             this.txtEntityName.TabStop = false;
             // 
             // txtEntitlementGroupId
@@ -272,6 +270,6 @@
         private System.Windows.Forms.TextBox txtEntityName;
         private System.Windows.Forms.TextBox txtEntitlementGroupId;
         private System.Windows.Forms.TextBox txtEntityId;
-        private Utils.ForcedFocusCheckBox chkReadOnly;
+        private System.Windows.Forms.CheckBox chkReadOnly;
     }
 }

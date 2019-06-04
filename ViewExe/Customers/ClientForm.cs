@@ -9,12 +9,12 @@ namespace MVCHIS.Customers {
     //[ForModel(Common.MODELS.Client)]
     public partial class ClientForm: ClientView {
 
-        private ClientTypeController            CntrlCT;
+        //private ClientTypeController            CntrlCT;
         private ContactController               CntrlCO;
         private ClientContactController         CntrlCC;
         private IdentificationController        CntrlID;
         private ClientIdentificationController  CntrlCI;
-        private CountryController               CntrlCY;
+        //private CountryController               CntrlCY;
 
 
         public ClientForm() {
@@ -42,16 +42,24 @@ namespace MVCHIS.Customers {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
+
+            CntrlCO = (ContactController)DBControllersFactory.GetController<ContactModel>();
+            CntrlCI = (ClientIdentificationController)DBControllersFactory.GetController<ClientIdentificationModel>();
+            CntrlID = (IdentificationController)DBControllersFactory.GetController<IdentificationModel>();
+            CntrlCC = (ClientContactController)DBControllersFactory.GetController<ClientContactModel>();
+        }
+
+        public override void LoadForeignKeys(ForeignKeys FK) {
+            FK.Put(DBControllersFactory.GetController<ClientTypeModel>());
+            FK.Put(DBControllersFactory.GetController<CountryModel>());
+            FK.Put(CntrlCO);
+            FK.Put(CntrlCC);
+            FK.Put(CntrlID);
+            FK.Put(CntrlCI);
+            base.LoadForeignKeys(FK);
         }
 
         private void ClientTypeFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
-
-            CntrlCT = (ClientTypeController)DBControllersFactory.GetController<ClientTypeModel>();
-            CntrlCO = (ContactController)DBControllersFactory.GetController<ContactModel>();
-            CntrlCC = (ClientContactController)DBControllersFactory.GetController<ClientContactModel>();
-            CntrlID = (IdentificationController)DBControllersFactory.GetController<IdentificationModel>();
-            CntrlCI = (ClientIdentificationController)DBControllersFactory.GetController<ClientIdentificationModel>();
-            CntrlCY = (CountryController)DBControllersFactory.GetController<CountryModel>();
 
             ModelChanged = delegate () {
                 RequeryIdentification();
@@ -62,13 +70,12 @@ namespace MVCHIS.Customers {
         }
 
         private void LookUpButtonShortNameLookUpSelected(object sender, EventArgs e) {
-            string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            Model = Controller.Find(new ClientModel() { ShortName = selected }, "ShortName");
+            
+            Model = Controller.Find(new ClientModel() { ShortName = txtShortName.Text }, "ShortName");
         }
 
         private void TxtClientTypeId_TextChanged(object sender, EventArgs e) {
-           // txtClientType.Text = "";
-            txtClientTypeCode.Text = CntrlCT.Find(new ClientTypeModel() { Id = int.Parse($"0{txtClientTypeId.Text}") }, "Id")?.ClientTypeCode;
+            txtClientTypeCode.Text = ForeignKeys.Instance[MODELS.ClientType, txtClientTypeId.Text];
         }
 
         private void BtnAddIdentification_Click(object sender, EventArgs e) {
@@ -93,8 +100,7 @@ namespace MVCHIS.Customers {
                         in CntrlCI.Read(new ClientIdentificationModel() { ClientId = Model.Id }, "ClientId")
                                   select record.IdentificationId;
             var source = CntrlID.GetDataById(identifications);
-            this.lstIdentifications.DataSource = source;
-            this.lstIdentifications.Requery();
+            this.lstIdentification.LoadData("", source, "Id","IdentificationNumber","IdentificationTypeId","ExpiryDate");
         }
 
         private void RequeryContact() {
@@ -102,8 +108,7 @@ namespace MVCHIS.Customers {
                         in CntrlCC.Read(new ClientContactModel() { ClientId = Model.Id }, "ClientId")
                                   select record.ContactId;
             var source = CntrlCO.GetDataById(contacts);
-            this.lstContacts.DataSource = source;
-            this.lstContacts.Requery();
+            lstContact.LoadData("", source, "Id", "FullName","MobileNumber");
         }
 
         private ContactForm ContactFormView;
@@ -127,9 +132,7 @@ namespace MVCHIS.Customers {
         }
 
         private void TxtNationalityCode_TextChanged(object sender, EventArgs e) {
-            var country = CntrlCY.FindById(new int[] { int.Parse($"0{txtCountryId.Text}") } ).FirstOrDefault();
-            txtCountryCode.Text = country?.CountryCode;
-            txtCountryEnglish.Text = country?.CountryEnglish;
+            txtCountryCode.Text = ForeignKeys.Instance[MODELS.Country, txtCountryId.Text];
         }
 
         private void BtnDateOfBirth_Click(object sender, EventArgs e) {

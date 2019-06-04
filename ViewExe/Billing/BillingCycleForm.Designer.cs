@@ -37,7 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtBillingCycleYear = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.lookUpButtonBillingCycle = new MVCHIS.Common.LookUpButton();
             this.txtBillingCycleMonth = new System.Windows.Forms.TextBox();
@@ -191,7 +191,7 @@
             // 
             this.lookUpButtonBillingCycle.AssociatedControl = "txtId";
             this.lookUpButtonBillingCycle.Controller = "BillingCycle";
-            this.lookUpButtonBillingCycle.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonBillingCycle.Location = new System.Drawing.Point(210, 31);
             this.lookUpButtonBillingCycle.Name = "lookUpButtonBillingCycle";
             this.lookUpButtonBillingCycle.SelectedValueIndex = 2;

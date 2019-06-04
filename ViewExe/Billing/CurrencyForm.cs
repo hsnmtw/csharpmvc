@@ -32,8 +32,8 @@ namespace MVCHIS.Billing {
         }
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            Model = Controller.Find(new CurrencyModel() { CurrencyCode = selected }, "CurrencyCode");
+            
+            Model = Controller.Find(new CurrencyModel() { CurrencyCode = txtCurrencyCode.Text }, "CurrencyCode");
         }
 
         private void CurrencyFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;

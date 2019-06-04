@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace MVCHIS.Common {
@@ -16,5 +17,7 @@ namespace MVCHIS.Common {
         object Dispatch(string action, params object[] arguments);
         //DataTable GetData();
         bool Validate(M model);
+        Action<M> OnSaveAction { get; set; }
+        Action<M> OnDeleteAction { get; set; }
     }
 }

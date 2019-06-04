@@ -9,6 +9,8 @@ using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
+using System.Net;
+using MVCHIS.Utils.Net;
 
 namespace MVCHIS {
     /// <summary>
@@ -26,22 +28,17 @@ namespace MVCHIS {
         [STAThread]
         static void Main()
         {
-           // AttachConsole(ATTACHPARENTPROCESS);
-            Session.Instance.Initialize();
+            // AttachConsole(ATTACHPARENTPROCESS);
 
+            //CURL.Read("http://localhost:8080/HIS.asmx/Test", delegate(string response) {
+            //    Console.WriteLine(response);
+            //});
 
-
+            MVCHISSession.Instance.Initialize();
             Application.CurrentCulture = Thread.CurrentThread.CurrentUICulture;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(MainView.Instance);
-
-            //DateTime dt = new DateTime(1981, 8, 24);
-            //Console.WriteLine(dt.ToSortableString());
-            //Console.WriteLine(new DateConversionController().ToSystemHijri(dt).Month);
-            //Console.WriteLine(dt.ToSortableString());
-
-
         }
 
     }

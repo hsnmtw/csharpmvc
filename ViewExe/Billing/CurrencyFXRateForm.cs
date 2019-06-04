@@ -14,8 +14,6 @@ namespace MVCHIS.Billing {
     //[ForModel(Common.MODELS.CurrencyFXRate)]
     public partial class CurrencyFXRateForm: CurrencyFXRateView {
 
-        private CurrencyController CntrlCR;
-
         public CurrencyFXRateForm() {
             InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //template
@@ -35,8 +33,7 @@ namespace MVCHIS.Billing {
             DeleteButton = btnDelete;
             NewButton = btnNew;
 
-            CntrlCR = (CurrencyController)DBControllersFactory.GetController<CurrencyModel>();
-
+            
             AfterNew += AfterNewButtonClick;
         }
 
@@ -47,15 +44,11 @@ namespace MVCHIS.Billing {
         }
 
         private void CurrencyFXRateFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
-            new Thread(LoadFKs).Start();
+            
         }
 
-        private void LoadFKs() {
-            if (!new string[] { "CurrencyId", "FromCurrencyId", "ToCurrencyId" }.All(x => ListViewControl.FK.ContainsKey(x))) {
-                ListViewControl.FK["CurrencyId"] = CntrlCR.Read().ToDictionary(x => x.Id, x => x.CurrencyCode);
-                ListViewControl.FK["FromCurrencyId"] = ListViewControl.FK["CurrencyId"];
-                ListViewControl.FK["ToCurrencyId"] = ListViewControl.FK["CurrencyId"];
-            }
+        public override void LoadForeignKeys(ForeignKeys FK) {
+            FK.Put(DBControllersFactory.GetController<CurrencyModel>());
         }
 
         private void TxtFromDate_Leave(object sender, EventArgs e) {
@@ -70,15 +63,13 @@ namespace MVCHIS.Billing {
 
         private void TxtFromCurrencyId_TextChanged(object sender, EventArgs e) {
             if (int.TryParse(txtFromCurrencyId.Text, out int currencyid)) {
-                CurrencyModel currency = CntrlCR.Find(new CurrencyModel() { Id = currencyid }, "Id");
-                txtFromCurrencyEnglish.Text = currency?.CurrencyEnglish;
+                txtFromCurrencyEnglish.Text = ForeignKeys.Instance[MODELS.Currency,currencyid];
             }
         }
 
         private void TxtToCurrencyId_TextChanged(object sender, EventArgs e) {
             if (int.TryParse(txtToCurrencyId.Text, out int currencyid)) {
-                CurrencyModel currency = CntrlCR.Find(new CurrencyModel() { Id = currencyid }, "Id");
-                txtToCurrencyEnglish.Text = currency?.CurrencyEnglish;
+                txtToCurrencyEnglish.Text = ForeignKeys.Instance[MODELS.Currency,currencyid];
             }
         }
     }

@@ -40,17 +40,15 @@
             this.txtCreatedOn = new System.Windows.Forms.TextBox();
             this.txtUpdatedOn = new System.Windows.Forms.TextBox();
             this.lookupButtonCity = new MVCHIS.Common.LookUpButton();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.lookUpButtonNationality = new MVCHIS.Common.LookUpButton();
-            this.txtCountryEnglish = new System.Windows.Forms.TextBox();
             this.txtCountryCode = new System.Windows.Forms.TextBox();
             this.txtCountryId = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtCityArabic
             // 
-            this.txtCityArabic.BackColor = System.Drawing.Color.White;
             this.txtCityArabic.Location = new System.Drawing.Point(140, 68);
             this.txtCityArabic.Name = "txtCityArabic";
             this.txtCityArabic.Size = new System.Drawing.Size(209, 20);
@@ -182,7 +180,6 @@
             // 
             // txtUpdatedOn
             // 
-            
             this.txtUpdatedOn.Location = new System.Drawing.Point(207, 164);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -194,7 +191,7 @@
             // 
             this.lookupButtonCity.AssociatedControl = "txtCityEnglish";
             this.lookupButtonCity.Controller = "City";
-            this.lookupButtonCity.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookupButtonCity.Location = new System.Drawing.Point(331, 41);
             this.lookupButtonCity.Name = "lookupButtonCity";
             this.lookupButtonCity.SelectedValueIndex = 0;
@@ -228,7 +225,7 @@
             // 
             this.lookUpButtonNationality.AssociatedControl = "txtCountryId";
             this.lookUpButtonNationality.Controller = "Country";
-            this.lookUpButtonNationality.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonNationality.Location = new System.Drawing.Point(331, 92);
             this.lookUpButtonNationality.Name = "lookUpButtonNationality";
             this.lookUpButtonNationality.SelectedValueIndex = 3;
@@ -240,27 +237,19 @@
             this.lookUpButtonNationality.TabIndex = 7;
             this.lookUpButtonNationality.TabStop = false;
             // 
-            // txtCountryEnglish
-            // 
-            this.txtCountryEnglish.Enabled = false;
-            this.txtCountryEnglish.Location = new System.Drawing.Point(223, 93);
-            this.txtCountryEnglish.Name = "txtCountryEnglish";
-            this.txtCountryEnglish.Size = new System.Drawing.Size(108, 20);
-            this.txtCountryEnglish.TabIndex = 6;
-            // 
             // txtCountryCode
             // 
             this.txtCountryCode.Enabled = false;
             this.txtCountryCode.Location = new System.Drawing.Point(185, 93);
             this.txtCountryCode.Name = "txtCountryCode";
-            this.txtCountryCode.Size = new System.Drawing.Size(37, 20);
+            this.txtCountryCode.ReadOnly = true;
+            this.txtCountryCode.Size = new System.Drawing.Size(146, 20);
             this.txtCountryCode.TabIndex = 5;
             this.txtCountryCode.Tag = "";
             this.txtCountryCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtCountryId
             // 
-            this.txtCountryId.BackColor = System.Drawing.Color.White;
             this.txtCountryId.Location = new System.Drawing.Point(141, 93);
             this.txtCountryId.Name = "txtCountryId";
             this.txtCountryId.ReadOnly = true;
@@ -274,7 +263,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.lookUpButtonNationality);
-            this.Controls.Add(this.txtCountryEnglish);
             this.Controls.Add(this.txtCountryCode);
             this.Controls.Add(this.txtCountryId);
             this.Controls.Add(this.chkReadOnly);
@@ -325,9 +313,8 @@
         private Common.LookUpButton lookupButtonCity;
         private System.Windows.Forms.Label label10;
         private Common.LookUpButton lookUpButtonNationality;
-        private System.Windows.Forms.TextBox txtCountryEnglish;
         private System.Windows.Forms.TextBox txtCountryCode;
         private System.Windows.Forms.TextBox txtCountryId;
-        private Utils.ForcedFocusCheckBox chkReadOnly;
+        private System.Windows.Forms.CheckBox chkReadOnly;
     }
 }

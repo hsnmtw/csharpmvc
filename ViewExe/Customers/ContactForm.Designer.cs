@@ -36,7 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtMobileNumber = new System.Windows.Forms.TextBox();
             this.lookUpButtonContact = new MVCHIS.Common.LookUpButton();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtFullName = new System.Windows.Forms.TextBox();
             this.txtFaxNumber = new System.Windows.Forms.TextBox();
@@ -163,7 +163,7 @@
             // 
             this.lookUpButtonContact.AssociatedControl = "txtMobileNumber";
             this.lookUpButtonContact.Controller = "Contact";
-            this.lookUpButtonContact.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonContact.Location = new System.Drawing.Point(305, 39);
             this.lookUpButtonContact.Name = "lookUpButtonContact";
             this.lookUpButtonContact.SelectedValueIndex = 1;
@@ -195,7 +195,6 @@
             // 
             // txtFullName
             // 
-            this.txtFullName.BackColor = System.Drawing.Color.White;
             this.txtFullName.Location = new System.Drawing.Point(149, 68);
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Size = new System.Drawing.Size(211, 20);
@@ -204,7 +203,6 @@
             // 
             // txtFaxNumber
             // 
-            this.txtFaxNumber.BackColor = System.Drawing.Color.White;
             this.txtFaxNumber.Location = new System.Drawing.Point(149, 124);
             this.txtFaxNumber.Name = "txtFaxNumber";
             this.txtFaxNumber.Size = new System.Drawing.Size(211, 20);
@@ -213,7 +211,6 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.BackColor = System.Drawing.Color.White;
             this.txtEmail.Location = new System.Drawing.Point(149, 96);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(211, 20);
@@ -231,7 +228,6 @@
             // 
             // txtPhoneNumber
             // 
-            this.txtPhoneNumber.BackColor = System.Drawing.Color.White;
             this.txtPhoneNumber.Location = new System.Drawing.Point(149, 152);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(211, 20);
@@ -334,6 +330,6 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label8;
-        private Utils.ForcedFocusCheckBox chkReadOnly;
+        private System.Windows.Forms.CheckBox chkReadOnly;
     }
 }

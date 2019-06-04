@@ -40,7 +40,7 @@
             this.txtProfileDesc = new System.Windows.Forms.TextBox();
             this.ProfileNameLookup = new MVCHIS.Common.LookUpButton();
             this.txtProfileName = new System.Windows.Forms.TextBox();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.lstEntitlements = new System.Windows.Forms.ListBox();
             this.btnOpen = new System.Windows.Forms.Button();
@@ -199,7 +199,7 @@
             this.ProfileNameLookup.AssociatedControl = "txtProfileName";
             this.ProfileNameLookup.Tag = null;
             this.ProfileNameLookup.Controller = "Profile";
-            this.ProfileNameLookup.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.ProfileNameLookup.Location = new System.Drawing.Point(342, 35);
             this.ProfileNameLookup.Name = "ProfileNameLookup";
             this.ProfileNameLookup.SelectedValueIndex = 0;
@@ -237,7 +237,7 @@
             // 
             // lstEntitlements
             // 
-            this.lstEntitlements.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstEntitlements.FormattingEnabled = true;
             this.lstEntitlements.Location = new System.Drawing.Point(126, 118);
             this.lstEntitlements.Name = "lstEntitlements";
@@ -277,7 +277,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(389, 397);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 13);
@@ -287,7 +287,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(398, 436);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(49, 13);
@@ -297,7 +297,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(398, 456);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(61, 13);
@@ -307,7 +307,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(398, 476);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(61, 13);
@@ -317,7 +317,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(398, 416);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(61, 13);

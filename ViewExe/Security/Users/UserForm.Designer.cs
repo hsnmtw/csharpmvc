@@ -49,7 +49,7 @@
             this.txtUserPassword = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.chkIsActive = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkIsActive = new System.Windows.Forms.CheckBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtUserPasswordConfirm = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -57,7 +57,7 @@
             this.txtProfileName = new System.Windows.Forms.TextBox();
             this.ProfileNameLookup = new MVCHIS.Common.LookUpButton();
             this.UserNameLookup = new MVCHIS.Common.LookUpButton();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtProfileId = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -355,7 +355,7 @@
             // 
             this.ProfileNameLookup.AssociatedControl = "txtProfileId";
             this.ProfileNameLookup.Controller = "Profile";
-            this.ProfileNameLookup.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.ProfileNameLookup.Location = new System.Drawing.Point(359, 100);
             this.ProfileNameLookup.Name = "ProfileNameLookup";
             this.ProfileNameLookup.SelectedValueIndex = 1;
@@ -369,7 +369,7 @@
             // 
             this.UserNameLookup.AssociatedControl = "txtUserName";
             this.UserNameLookup.Controller = "User";
-            this.UserNameLookup.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.UserNameLookup.Location = new System.Drawing.Point(359, 41);
             this.UserNameLookup.Name = "UserNameLookup";
             this.UserNameLookup.SelectedValueIndex = 0;

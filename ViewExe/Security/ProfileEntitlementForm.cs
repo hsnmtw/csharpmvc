@@ -2,16 +2,13 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using MVCHIS.Utils;
 
 namespace MVCHIS.Security {
     //[ForModel(Common.MODELS.ProfileEntitlement)]
     public partial class ProfileEntitlementForm: ProfileEntitlementsView {
 
-        private ProfileController     CntrlPR;
-        private EntitlementController CntrlEN;
 
-        private Dictionary<int, string> entitlements;
-        private Dictionary<int, string> profiles;
 
         public ProfileEntitlementForm() {
             InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
@@ -34,20 +31,20 @@ namespace MVCHIS.Security {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
-        }        
+        }
+
+        public override void LoadForeignKeys(ForeignKeys FK) {
+            FK.Put(DBControllersFactory.GetController<ProfileModel>());
+            FK.Put(DBControllersFactory.GetController<EntitlementModel>());
+        }
+
 
         private void EntitlementFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
-            CntrlPR = (ProfileController)DBControllersFactory.GetController<ProfileModel>();
-            CntrlEN = (EntitlementController)DBControllersFactory.GetController<EntitlementModel>();
-
-
-            entitlements = CntrlEN.Read().ToDictionary(x => x.Id, x => x.EntitlementName);
-            profiles = CntrlPR.Read().ToDictionary(x => x.Id, x => x.ProfileName);
         }
 
         private void LookUpButton2_LookUpSelected(object sender, EventArgs e) {
             //this.Model = new ProfileEntitlementsModel();
-            int id = int.Parse($"0{((LookupEventArgs)e).SelectedValueFromLookup}");
+            int id = int.Parse($"0{txtId.Text}");
             Model = Controller.Find(new ProfileEntitlementModel() { Id = id }, "Id");
         }
 
@@ -56,13 +53,11 @@ namespace MVCHIS.Security {
         }
 
         private void TxtEntitlementId_TextChanged(object sender, EventArgs e) {
-            int.TryParse(txtEntitlementId.Text, out int eid);
-            txtEntitlementName.Text = entitlements[eid];
+            txtEntitlementName.Text = ForeignKeys.Instance[MODELS.Entitlement,txtEntitlementId.Text];
         }
 
         private void TxtProfileId_TextChanged(object sender, EventArgs e) {
-            int.TryParse(txtProfileId.Text, out int pid);
-            txtProfileName.Text = profiles[pid];
+            txtProfileName.Text = ForeignKeys.Instance[MODELS.Profile, txtProfileId.Text];
         }
 
         bool current = false;

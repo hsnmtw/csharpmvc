@@ -37,7 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtClientTypeCode = new System.Windows.Forms.TextBox();
             this.lookUpButtonClientType = new MVCHIS.Common.LookUpButton();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtClientTypeEnglish = new System.Windows.Forms.TextBox();
             this.txtClientTypeArabic = new System.Windows.Forms.TextBox();
@@ -169,7 +169,7 @@
             // 
             this.lookUpButtonClientType.AssociatedControl = "txtClientType";
             this.lookUpButtonClientType.Controller = "ClientType";
-            this.lookUpButtonClientType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonClientType.Location = new System.Drawing.Point(302, 58);
             this.lookUpButtonClientType.Name = "lookUpButtonClientType";
             this.lookUpButtonClientType.SelectedValueIndex = 0;
@@ -200,7 +200,6 @@
             // 
             // txtClientTypeEnglish
             // 
-            this.txtClientTypeEnglish.BackColor = System.Drawing.Color.White;
             this.txtClientTypeEnglish.Location = new System.Drawing.Point(147, 87);
             this.txtClientTypeEnglish.MaxLength = 50;
             this.txtClientTypeEnglish.Name = "txtClientTypeEnglish";
@@ -210,7 +209,6 @@
             // 
             // txtClientTypeArabic
             // 
-            this.txtClientTypeArabic.BackColor = System.Drawing.Color.White;
             this.txtClientTypeArabic.Location = new System.Drawing.Point(147, 115);
             this.txtClientTypeArabic.MaxLength = 50;
             this.txtClientTypeArabic.Name = "txtClientTypeArabic";
@@ -288,6 +286,6 @@
         private System.Windows.Forms.TextBox txtClientTypeArabic;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label8;
-        private Utils.ForcedFocusCheckBox chkReadOnly;
+        private System.Windows.Forms.CheckBox chkReadOnly;
     }
 }

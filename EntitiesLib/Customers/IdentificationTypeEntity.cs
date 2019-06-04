@@ -9,17 +9,17 @@ namespace MVCHIS.Customers {
             //  ModelType        = typeof(IdentificationTypeModel)
               PrimaryKeyField  = "Id"
             , Fields           = new HashSet<string> {"ReadOnly","Id","CreatedBy","CreatedOn","UpdatedBy","UpdatedOn",
-                                                      "IdTypeCode","IdTypeEnglish","IdTypeArabic" }
-            , RequiredFields   = new HashSet<string> { "Id", "IdTypeCode" }
-            , UniqueKeyFields  = new HashSet<HashSet<string>> { new HashSet<string> { "IdTypeCode" } }
+                                                      "IdentificationTypeCode","IdentificationTypeEnglish","IdentificationTypeArabic" }
+            , RequiredFields   = new HashSet<string> { "Id", "IdentificationTypeCode" }
+            , UniqueKeyFields  = new HashSet<HashSet<string>> { new HashSet<string> { "IdentificationTypeCode" } }
             , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
             }
             , Sizes = new Dictionary<string, int> {
                  ["CreatedBy"    ] = 10
                 ,["UpdatedBy"    ] = 10
-                ,["IdTypeCode"   ] = 50
-                ,["IdTypeEnglish"] = 100
-                ,["IdTypeArabic" ] = 100
+                ,["IdentificationTypeCode"   ] = 50
+                ,["IdentificationTypeEnglish"] = 100
+                ,["IdentificationTypeArabic" ] = 100
             }
             , Source = "CustomersIdentificationType"
         };

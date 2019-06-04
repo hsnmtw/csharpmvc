@@ -59,13 +59,14 @@
     <Compile Include="Common\ControllersInitializer.cs" />
     <Compile Include="Common\ControllersRegistery.cs" />
     <Compile Include="Common\DBControllersFactory.cs" />
+    <Compile Include="Common\ForeignKeys.cs" />
     <Compile Include="Customers\CityController.cs" />
     <Compile Include="Tools\DateConversionController.cs" />
     <Compile Include="Tools\EntityController.cs" />
     <Compile Include="Common\IController.cs" />
     <Compile Include="Common\ICrypto.cs" />
     <Compile Include="Common\IDBController.cs" />
-    <Compile Include="Common\Session.cs" />
+    <Compile Include="Common\MVCHISSession.cs" />
     <Compile Include="Common\SQLController.cs" />
     <Compile Include="Configurations\CryptoController.cs" />
     <Compile Include="Configurations\CryptoFactory.cs" />

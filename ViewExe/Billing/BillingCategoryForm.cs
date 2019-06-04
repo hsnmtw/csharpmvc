@@ -9,14 +9,6 @@ namespace MVCHIS.Billing {
     //[ForModel(Common.MODELS.BillingCategory)]
     public partial class BillingCategoryForm: BillingCategoryView {
 
-        //private FoodClassController fcController;
-        //private FoodTypeController ftController;
-        //private AccommClassController acController;
-
-        private FoodClassController   CntrlFC;
-        private FoodTypeController    CntrlFT;
-        private AccommClassController CntrlAC;
-
         public BillingCategoryForm() {
             InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //template
@@ -39,34 +31,32 @@ namespace MVCHIS.Billing {
             NewButton = btnNew;
         }
 
+        public override void LoadForeignKeys(ForeignKeys FK) {
+            FK.Put(DBControllersFactory.GetController<FoodClassModel>()  );
+            FK.Put(DBControllersFactory.GetController<FoodTypeModel>()   );
+            FK.Put(DBControllersFactory.GetController<AccommClassModel>());
+        }
+
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            Model = Controller.Find(new BillingCategoryModel() { BillingCategoryCode = selected }, "BillingCategoryCode");
+            
+            Model = Controller.Find(new BillingCategoryModel() { BillingCategoryCode = txtBillingCategoryCode.Text }, "BillingCategoryCode");
 
         }
 
         private void AccomCategoryFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
-            CntrlFC = (FoodClassController)DBControllersFactory.GetController<FoodClassModel>();
-            CntrlFT = (FoodTypeController)DBControllersFactory.GetController<FoodTypeModel>();
-            CntrlAC = (AccommClassController)DBControllersFactory.GetController<AccommClassModel>();
+
         }
 
         private void TxtAccommClassId_TextChanged(object sender, EventArgs e) {
-            var acmodel = CntrlAC.Find(new AccommClassModel { Id = int.Parse($"0{txtAccommClassId.Text}") },"Id");
-            txtAccommClassDesc.Text = acmodel?.AccommClassDesc;
-            txtAccommClassCode.Text = acmodel?.AccommClassCode;
+            txtAccommClassCode.Text = ForeignKeys.Instance[MODELS.AccommClass, txtAccommClassId.Text];
         }
 
         private void TxtFoodClassId_TextChanged(object sender, EventArgs e) {
-            var fcmodel = CntrlFC.Find(new FoodClassModel { Id = int.Parse($"0{txtFoodClassId.Text}") },"Id");
-            txtFoodClassDesc.Text = fcmodel?.FoodClassDesc;
-            txtFoodClassCode.Text = fcmodel?.FoodClassCode;
+            txtFoodClassCode.Text = ForeignKeys.Instance[MODELS.FoodClass, txtFoodClassId.Text];
         }
 
         private void TxtFoodTypeId_TextChanged(object sender, EventArgs e) {
-            var ftmodel = CntrlFT.Find(new FoodTypeModel { Id = int.Parse($"0{txtFoodTypeId.Text}") },"Id");
-            txtFoodTypeDesc.Text = ftmodel?.FoodTypeDesc;
-            txtFoodTypeCode.Text = ftmodel?.FoodTypeCode;
+            txtFoodTypeCode.Text = ForeignKeys.Instance[MODELS.FoodType, txtFoodTypeId.Text];
         }
     }
     

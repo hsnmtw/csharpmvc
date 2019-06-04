@@ -34,7 +34,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtFXDate = new System.Windows.Forms.TextBox();
@@ -82,7 +82,6 @@
             // 
             // txtUpdatedOn
             // 
-            
             this.txtUpdatedOn.Location = new System.Drawing.Point(214, 204);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -92,7 +91,6 @@
             // 
             // txtUpdatedBy
             // 
-            
             this.txtUpdatedBy.Location = new System.Drawing.Point(141, 205);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -111,7 +109,6 @@
             // 
             // txtCreatedOn
             // 
-            
             this.txtCreatedOn.Location = new System.Drawing.Point(214, 176);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -121,7 +118,6 @@
             // 
             // txtCreatedBy
             // 
-            
             this.txtCreatedBy.Location = new System.Drawing.Point(141, 176);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -237,7 +233,7 @@
             // 
             this.lookUpButtonCurrency.AssociatedControl = "txtFromCurrencyId";
             this.lookUpButtonCurrency.Controller = "Currency";
-            this.lookUpButtonCurrency.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonCurrency.Location = new System.Drawing.Point(329, 63);
             this.lookUpButtonCurrency.Name = "lookUpButtonCurrency";
             this.lookUpButtonCurrency.SelectedValueIndex = 0;
@@ -255,6 +251,7 @@
             this.txtFromCurrencyEnglish.Location = new System.Drawing.Point(174, 64);
             this.txtFromCurrencyEnglish.MaxLength = 50;
             this.txtFromCurrencyEnglish.Name = "txtFromCurrencyEnglish";
+            this.txtFromCurrencyEnglish.ReadOnly = true;
             this.txtFromCurrencyEnglish.Size = new System.Drawing.Size(154, 20);
             this.txtFromCurrencyEnglish.TabIndex = 3;
             this.txtFromCurrencyEnglish.TabStop = false;
@@ -282,7 +279,7 @@
             // 
             this.lookUpButton1.AssociatedControl = "txtToCurrencyId";
             this.lookUpButton1.Controller = "Currency";
-            this.lookUpButton1.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButton1.Location = new System.Drawing.Point(329, 89);
             this.lookUpButton1.Name = "lookUpButton1";
             this.lookUpButton1.SelectedValueIndex = 0;
@@ -300,6 +297,7 @@
             this.txtToCurrencyEnglish.Location = new System.Drawing.Point(174, 90);
             this.txtToCurrencyEnglish.MaxLength = 50;
             this.txtToCurrencyEnglish.Name = "txtToCurrencyEnglish";
+            this.txtToCurrencyEnglish.ReadOnly = true;
             this.txtToCurrencyEnglish.Size = new System.Drawing.Size(154, 20);
             this.txtToCurrencyEnglish.TabIndex = 6;
             this.txtToCurrencyEnglish.TabStop = false;
@@ -327,7 +325,7 @@
             // 
             this.lookUpButtonRecordId.AssociatedControl = "txtId";
             this.lookUpButtonRecordId.Controller = "CurrencyFXRate";
-            this.lookUpButtonRecordId.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonRecordId.Location = new System.Drawing.Point(210, 27);
             this.lookUpButtonRecordId.Name = "lookUpButtonRecordId";
             this.lookUpButtonRecordId.SelectedValueIndex = 0;
@@ -395,7 +393,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtFXDate;
-        private Utils.ForcedFocusCheckBox chkReadOnly;
+        private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtRate;
         private System.Windows.Forms.Button btnFromDate;

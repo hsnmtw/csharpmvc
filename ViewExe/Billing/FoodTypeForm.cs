@@ -30,8 +30,7 @@ namespace MVCHIS.Billing {
         }
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            Model = Controller.Find(new FoodTypeModel() { FoodTypeCode = selected }, "FoodTypeCode");
+            Model = Controller.Find(new FoodTypeModel() { FoodTypeCode = txtFoodTypeCode.Text }, "FoodTypeCode");
         }
 
         private void FoodTypeFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;

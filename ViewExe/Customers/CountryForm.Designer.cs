@@ -41,13 +41,12 @@
             this.txtUpdatedOn = new System.Windows.Forms.TextBox();
             this.CountryCodeLookupButton = new MVCHIS.Common.LookUpButton();
             this.txtCountryCode = new System.Windows.Forms.TextBox();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtCountryArabic
             // 
-            this.txtCountryArabic.BackColor = System.Drawing.Color.White;
             this.txtCountryArabic.Location = new System.Drawing.Point(140, 91);
             this.txtCountryArabic.Name = "txtCountryArabic";
             this.txtCountryArabic.Size = new System.Drawing.Size(204, 20);
@@ -64,7 +63,6 @@
             // 
             // txtCountryEnglish
             // 
-            this.txtCountryEnglish.BackColor = System.Drawing.Color.White;
             this.txtCountryEnglish.Location = new System.Drawing.Point(140, 65);
             this.txtCountryEnglish.Name = "txtCountryEnglish";
             this.txtCountryEnglish.Size = new System.Drawing.Size(204, 20);
@@ -195,7 +193,7 @@
             // 
             this.CountryCodeLookupButton.AssociatedControl = "txtCountryCode";
             this.CountryCodeLookupButton.Controller = "Country";
-            this.CountryCodeLookupButton.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.CountryCodeLookupButton.Location = new System.Drawing.Point(213, 37);
             this.CountryCodeLookupButton.Name = "CountryCodeLookupButton";
             this.CountryCodeLookupButton.SelectedValueIndex = 0;
@@ -285,6 +283,6 @@
         private Common.LookUpButton CountryCodeLookupButton;
         private System.Windows.Forms.TextBox txtCountryCode;
         private System.Windows.Forms.Label label10;
-        private Utils.ForcedFocusCheckBox chkReadOnly;
+        private System.Windows.Forms.CheckBox chkReadOnly;
     }
 }

@@ -13,11 +13,6 @@ namespace MVCHIS.Billing {
     //[ForModel(Common.MODELS.Reservation)]
     public partial class ReservationForm: ReservationView {
 
-        private BuildingController CntrlBD;
-        private CompoundController CntrlCM;
-        private RoomController     CntrlRM;
-        private ClientController   CntrlCL;
-        private CurrencyController CntrlCR;
 
         public ReservationForm() {
             InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
@@ -42,13 +37,14 @@ namespace MVCHIS.Billing {
             DeleteButton = btnDelete;
             NewButton = btnNew;
 
-            CntrlBD = (BuildingController)DBControllersFactory.GetController<BuildingModel>();
-            CntrlRM = (RoomController)DBControllersFactory.GetController<RoomModel>();
-            CntrlCL = (ClientController)DBControllersFactory.GetController<ClientModel>();
-            CntrlCM = (CompoundController)DBControllersFactory.GetController<CompoundModel>();
-            CntrlCR = (CurrencyController)DBControllersFactory.GetController<CurrencyModel>();
 
             AfterNew += AfterNewButtonClick;
+        }
+
+        public override void LoadForeignKeys(ForeignKeys FK) {
+            FK.Put(DBControllersFactory.GetController<RoomModel>());
+            FK.Put(DBControllersFactory.GetController<ClientModel>());
+            FK.Put(DBControllersFactory.GetController<CurrencyModel>());
         }
 
         private void AfterNewButtonClick(bool obj) {
@@ -66,29 +62,13 @@ namespace MVCHIS.Billing {
         }
 
         private void TxtRoomId_TextChanged(object sender, EventArgs e) {
-            if(int.TryParse(txtRoomId.Text,out int roomid)) {
-                RoomModel     room     = CntrlRM.Find(new RoomModel()     { Id = roomid              }, "Id");
-                BuildingModel building = CntrlBD.Find(new BuildingModel() { Id = room.BuildingId     }, "Id");
-                CompoundModel compound = CntrlCM.Find(new CompoundModel() { Id = building.CompoundId }, "Id");
-                txtRoomName.Text     = room?.RoomName;
-                txtBuildingName.Text = building?.BuildingName;
-                txtCompoundName.Text = compound?.CompoundName;
-            }
+            txtRoomName.Text = ForeignKeys.Instance[MODELS.Room, txtRoomId.Text];
         }
 
         private void TxtClientId_TextChanged(object sender, EventArgs e) {
-            if(int.TryParse(txtClientId.Text,out int clientid)) {
-                ClientModel client   = CntrlCL.Find(new ClientModel() { Id = clientid }, "Id");
-                txtClientName.Text = client?.ShortName;
-            }
+            txtClientName.Text = ForeignKeys.Instance[MODELS.Client, txtClientId.Text];
         }
 
-        private void LookUpButtonCurrency_LookUpSelected(object sender, EventArgs e) {
-            if (int.TryParse(txtCurrencyId.Text, out int currencyid)) {
-                CurrencyModel currency = CntrlCR.Find(new CurrencyModel() { Id = currencyid }, "Id");
-                txtCurrencyEnglish.Text = currency?.CurrencyEnglish;
-            }
-        }
 
         private void TxtFromDate_Leave(object sender, EventArgs e) {
             if(DateTime.TryParse(txtFromDate.Text,out DateTime fromdate)) {
@@ -100,6 +80,10 @@ namespace MVCHIS.Billing {
             if (DateTime.TryParse(txtToDate.Text, out DateTime todate)) {
                 txtToDate.Text = todate.ToSortableString();
             }
+        }
+
+        private void TxtCurrencyId_TextChanged(object sender, EventArgs e) {
+            txtCurrencyEnglish.Text = ForeignKeys.Instance[MODELS.Currency, txtCurrencyId.Text];
         }
     }
    

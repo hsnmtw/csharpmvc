@@ -38,7 +38,7 @@
             this.txtVATCode = new System.Windows.Forms.TextBox();
             this.txtVATDesc = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.lookUpButtonVAT = new MVCHIS.Common.LookUpButton();
             this.label4 = new System.Windows.Forms.Label();
@@ -203,7 +203,7 @@
             // 
             this.lookUpButtonVAT.AssociatedControl = "txtVATCode";
             this.lookUpButtonVAT.Controller = "VAT";
-            this.lookUpButtonVAT.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonVAT.Location = new System.Drawing.Point(295, 60);
             this.lookUpButtonVAT.Name = "lookUpButtonVAT";
             this.lookUpButtonVAT.SelectedValueIndex = 0;
@@ -283,6 +283,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.MaskedTextBox txtVATAmount;
-        private Utils.ForcedFocusCheckBox chkReadOnly;
+        private System.Windows.Forms.CheckBox chkReadOnly;
     }
 }

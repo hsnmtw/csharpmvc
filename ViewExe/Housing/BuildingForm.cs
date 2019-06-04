@@ -8,11 +8,6 @@ namespace MVCHIS.Housing.Buildings {
     //[ForModel(Common.MODELS.Building)]
     public partial class BuildingForm: BuildingView {
 
-        //private IDBController roomCntrlr;
-        private BuildingTypeController CntrlBT;//= (BuildingTypeController)DBControllersFactory.GetController<BuildingTypeModel>();
-        private CompoundController     CntrlCM;//= (CompoundController)DBControllersFactory.GetController<CompoundModel>();
-
-
         public BuildingForm() {
             InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //template
@@ -32,27 +27,26 @@ namespace MVCHIS.Housing.Buildings {
             NewButton = btnNew;
         }
 
-        private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            Model = Controller.Find(new BuildingModel() { BuildingName = selected }, "BuildingName");
+        public override void LoadForeignKeys(ForeignKeys FK) {
+            FK.Put(DBControllersFactory.GetController<BuildingTypeModel>());
+            FK.Put(DBControllersFactory.GetController<CompoundModel>());
 
+            base.LoadForeignKeys(FK);
+        }
+
+        private void LookUpButton1LookUpSelected(object sender, EventArgs e) {            
+            Model = Controller.Find(new BuildingModel() { BuildingName = txtBuildingName.Text }, "BuildingName");
         }
 
         private void BuildingFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
-            CntrlBT = (BuildingTypeController)DBControllersFactory.GetController<BuildingTypeModel>();
-            CntrlCM = (CompoundController)DBControllersFactory.GetController<CompoundModel>();
-
-
         }
 
         private void TxtBuildingTypeId_TextChanged(object sender, EventArgs e) {
-            int id = int.Parse($"0{txtBuildingTypeId.Text}");
-            txtBuildingTypeCode.Text = CntrlBT.Find(new BuildingTypeModel() { Id = id }, "Id")?.BuildingTypeCode;
+            txtBuildingTypeCode.Text = ForeignKeys.Instance[MODELS.BuildingType, txtBuildingTypeId.Text];
         }
 
         private void TxtCompoundId_TextChanged(object sender, EventArgs e) {
-            int id = int.Parse($"0{txtCompoundId.Text}");
-            txtCompoundName.Text = CntrlCM.Find(new CompoundModel() { Id = id }, "Id")?.CompoundName;
+            txtCompoundName.Text = ForeignKeys.Instance[MODELS.Compound, txtCompoundId.Text];
         }
     }
     

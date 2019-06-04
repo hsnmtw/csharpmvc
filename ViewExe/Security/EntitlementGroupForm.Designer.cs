@@ -37,9 +37,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtEntitlementGroupName = new System.Windows.Forms.TextBox();
             this.EntitlementGroupNameLookup = new MVCHIS.Common.LookUpButton();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.chkDynamic = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkDynamic = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -166,7 +166,7 @@
             // 
             this.EntitlementGroupNameLookup.AssociatedControl = "txtEntitlementGroupName";
             this.EntitlementGroupNameLookup.Controller = "EntitlementGroup";
-            this.EntitlementGroupNameLookup.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.EntitlementGroupNameLookup.Location = new System.Drawing.Point(351, 41);
             this.EntitlementGroupNameLookup.Name = "EntitlementGroupNameLookup";
             this.EntitlementGroupNameLookup.SelectedValueIndex = 0;

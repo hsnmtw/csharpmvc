@@ -28,8 +28,7 @@ namespace MVCHIS.Billing {
         }
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            Model = Controller.Find(new FoodClassModel() { FoodClassCode = selected }, "FoodClassCode");
+            Model = Controller.Find(new FoodClassModel() { FoodClassCode = txtFoodClassCode.Text }, "FoodClassCode");
 
         }
 

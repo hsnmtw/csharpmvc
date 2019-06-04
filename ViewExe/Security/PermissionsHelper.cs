@@ -19,7 +19,7 @@ namespace MVCHIS.Security {
             var pc  = DBControllersFactory.GetController<ProfileModel>(); //ODELS.Profile);
             var enc = DBControllersFactory.GetController<EntityModel>(); //MODELS.Entity);
 
-            var usr = Session.Instance.CurrentUser;
+            var usr = MVCHISSession.Instance.CurrentUser;
 
             if (usr == null) return;
             //var mdl = view?.GetType().GetCustomAttributes().OfType<ForModelAttribute>().FirstOrDefault();

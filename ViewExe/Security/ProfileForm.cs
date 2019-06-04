@@ -122,8 +122,8 @@ namespace MVCHIS.Security {
         }
 
         private void ProfileNameLookupLookUpSelected(object sender, EventArgs e) {
-            string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            Model = Controller.Find(new ProfileModel() { ProfileName = selected }, "ProfileName");
+            
+            Model = Controller.Find(new ProfileModel() { ProfileName = txtProfileName.Text }, "ProfileName");
         }
 
         private void BtnAllowAll_Click(object sender, EventArgs e) {

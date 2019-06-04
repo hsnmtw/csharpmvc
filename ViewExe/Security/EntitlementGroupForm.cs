@@ -29,8 +29,8 @@ namespace MVCHIS.Security {
         }
 
         private void EntitlementGroupNameLookupLookUpSelected(object sender, EventArgs e) {
-            var selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            Model = Controller.Find(new EntitlementGroupModel() { EntitlementGroupName = selected }, "EntitlementGroupName");
+            
+            Model = Controller.Find(new EntitlementGroupModel() { EntitlementGroupName = txtEntitlementGroupName.Text }, "EntitlementGroupName");
         }
     }
     

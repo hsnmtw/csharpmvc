@@ -16,9 +16,9 @@ namespace MVCHIS.Customers {
             Mapper["UpdatedOn"] = txtUpdatedOn;
             Mapper["ReadOnly"] = chkReadOnly;
             //data
-            Mapper["IdTypeCode"] = txtIdTypeCode;
-            Mapper["IdTypeEnglish"] = txtIdTypeEnglish;
-            Mapper["IdTypeArabic"] = txtIdTypeArabic;
+            Mapper["IdentificationTypeCode"] = txtIdentificationTypeCode;
+            Mapper["IdentificationTypeEnglish"] = txtIdentificationTypeEnglish;
+            Mapper["IdentificationTypeArabic"] = txtIdentificationTypeArabic;
             //actions
             SaveButton = btnSave;
             DeleteButton = btnDelete;
@@ -26,8 +26,7 @@ namespace MVCHIS.Customers {
         }
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            Model = Controller.Find(new IdentificationTypeModel() { IdTypeCode = selected }, "IdTypeCode");
+            Model = Controller.Find(new IdentificationTypeModel() { IdentificationTypeCode = txtIdentificationTypeCode.Text }, "IdentificationTypeCode");
         }
 
         private void IdentificationTypeFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;

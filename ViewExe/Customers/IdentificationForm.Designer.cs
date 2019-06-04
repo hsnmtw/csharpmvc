@@ -34,16 +34,16 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtIdNumber = new System.Windows.Forms.TextBox();
+            this.txtIdentificationNumber = new System.Windows.Forms.TextBox();
             this.lookUpButtonShortName = new MVCHIS.Common.LookUpButton();
             this.btnExpiryDate = new System.Windows.Forms.Button();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.txtExpiryDate = new System.Windows.Forms.TextBox();
-            this.txtIdTypeId = new System.Windows.Forms.TextBox();
+            this.txtIdentificationTypeId = new System.Windows.Forms.TextBox();
             this.lookUpButtonIdentificationType = new MVCHIS.Common.LookUpButton();
             this.lookUpButtonCountryOfIssue = new MVCHIS.Common.LookUpButton();
             this.txtCityId = new System.Windows.Forms.TextBox();
@@ -52,12 +52,11 @@
             this.txtIssueDate = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.chkIsActive = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkIsActive = new System.Windows.Forms.CheckBox();
             this.lblIssueDateHG = new System.Windows.Forms.Label();
             this.lblExpiryDateHG = new System.Windows.Forms.Label();
             this.txtCityEnglish = new System.Windows.Forms.TextBox();
-            this.txtIdTypeEnglish = new System.Windows.Forms.TextBox();
-            this.txtCountryEnglish = new System.Windows.Forms.TextBox();
+            this.txtIdentificationTypeEnglish = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnDelete
@@ -89,7 +88,6 @@
             // 
             // txtUpdatedOn
             // 
-            
             this.txtUpdatedOn.Location = new System.Drawing.Point(233, 259);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -99,7 +97,6 @@
             // 
             // txtUpdatedBy
             // 
-            
             this.txtUpdatedBy.Location = new System.Drawing.Point(159, 259);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -111,7 +108,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(31, 260);
+            this.label6.Location = new System.Drawing.Point(19, 260);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(63, 13);
             this.label6.TabIndex = 44;
@@ -119,7 +116,6 @@
             // 
             // txtCreatedOn
             // 
-            
             this.txtCreatedOn.Location = new System.Drawing.Point(233, 232);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -129,7 +125,6 @@
             // 
             // txtCreatedBy
             // 
-            
             this.txtCreatedBy.Location = new System.Drawing.Point(159, 232);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -141,7 +136,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(31, 234);
+            this.label5.Location = new System.Drawing.Point(19, 234);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 13);
             this.label5.TabIndex = 45;
@@ -160,29 +155,29 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 26);
+            this.label1.Location = new System.Drawing.Point(19, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 42;
             this.label1.Text = "Record Id";
             // 
-            // txtIdNumber
+            // txtIdentificationNumber
             // 
-            this.txtIdNumber.Location = new System.Drawing.Point(159, 50);
-            this.txtIdNumber.Name = "txtIdNumber";
-            this.txtIdNumber.Size = new System.Drawing.Size(103, 20);
-            this.txtIdNumber.TabIndex = 1;
-            this.txtIdNumber.Tag = "ShortName";
+            this.txtIdentificationNumber.Location = new System.Drawing.Point(159, 50);
+            this.txtIdentificationNumber.Name = "txtIdentificationNumber";
+            this.txtIdentificationNumber.Size = new System.Drawing.Size(103, 20);
+            this.txtIdentificationNumber.TabIndex = 1;
+            this.txtIdentificationNumber.Tag = "ShortName";
             // 
             // lookUpButtonShortName
             // 
-            this.lookUpButtonShortName.AssociatedControl = "txtIdNumber";
+            this.lookUpButtonShortName.AssociatedControl = "txtIdentificationNumber";
             this.lookUpButtonShortName.Controller = "Identification";
             this.lookUpButtonShortName.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonShortName.Location = new System.Drawing.Point(265, 49);
             this.lookUpButtonShortName.Name = "lookUpButtonShortName";
             this.lookUpButtonShortName.SelectedValueIndex = 0;
-            this.lookUpButtonShortName.ShowFieldsInLookUp.Add("IdNumber");
+            this.lookUpButtonShortName.ShowFieldsInLookUp.Add("IdentificationNumber");
             this.lookUpButtonShortName.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonShortName.TabIndex = 2;
             this.lookUpButtonShortName.TabStop = false;
@@ -214,7 +209,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(31, 286);
+            this.label19.Location = new System.Drawing.Point(19, 286);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(57, 13);
             this.label19.TabIndex = 50;
@@ -223,7 +218,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(31, 130);
+            this.label22.Location = new System.Drawing.Point(19, 135);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(63, 13);
             this.label22.TabIndex = 47;
@@ -232,24 +227,23 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(31, 78);
+            this.label21.Location = new System.Drawing.Point(19, 80);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(31, 13);
+            this.label21.Size = new System.Drawing.Size(97, 13);
             this.label21.TabIndex = 47;
-            this.label21.Text = "Type";
+            this.label21.Text = "Identification Type";
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(31, 52);
+            this.label20.Location = new System.Drawing.Point(19, 53);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(44, 13);
+            this.label20.Size = new System.Drawing.Size(110, 13);
             this.label20.TabIndex = 47;
-            this.label20.Text = "Number";
+            this.label20.Text = "Identification Number";
             // 
             // txtExpiryDate
             // 
-            this.txtExpiryDate.BackColor = System.Drawing.Color.White;
             this.txtExpiryDate.Location = new System.Drawing.Point(159, 131);
             this.txtExpiryDate.Name = "txtExpiryDate";
             this.txtExpiryDate.Size = new System.Drawing.Size(103, 20);
@@ -257,33 +251,32 @@
             this.txtExpiryDate.Tag = "yyyy-MM-dd";
             this.txtExpiryDate.Leave += new System.EventHandler(this.TxtExpiryDate_Leave);
             // 
-            // txtIdTypeId
+            // txtIdentificationTypeId
             // 
-            this.txtIdTypeId.BackColor = System.Drawing.Color.White;
-            this.txtIdTypeId.Location = new System.Drawing.Point(159, 77);
-            this.txtIdTypeId.Name = "txtIdTypeId";
-            this.txtIdTypeId.ReadOnly = true;
-            this.txtIdTypeId.Size = new System.Drawing.Size(36, 20);
-            this.txtIdTypeId.TabIndex = 3;
-            this.txtIdTypeId.Tag = "PhoneNumber";
-            this.txtIdTypeId.TextChanged += new System.EventHandler(this.TxtIdType_TextChanged);
+            this.txtIdentificationTypeId.Location = new System.Drawing.Point(159, 77);
+            this.txtIdentificationTypeId.Name = "txtIdentificationTypeId";
+            this.txtIdentificationTypeId.ReadOnly = true;
+            this.txtIdentificationTypeId.Size = new System.Drawing.Size(36, 20);
+            this.txtIdentificationTypeId.TabIndex = 3;
+            this.txtIdentificationTypeId.Tag = "PhoneNumber";
+            this.txtIdentificationTypeId.TextChanged += new System.EventHandler(this.TxtIdentificationType_TextChanged);
             // 
             // lookUpButtonIdentificationType
             // 
-            this.lookUpButtonIdentificationType.AssociatedControl = "txtIdTypeId";
+            this.lookUpButtonIdentificationType.AssociatedControl = "txtIdentificationTypeId";
             this.lookUpButtonIdentificationType.Controller = "IdentificationType";
             this.lookUpButtonIdentificationType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonIdentificationType.Location = new System.Drawing.Point(348, 76);
             this.lookUpButtonIdentificationType.Name = "lookUpButtonIdentificationType";
             this.lookUpButtonIdentificationType.SelectedValueIndex = 3;
-            this.lookUpButtonIdentificationType.ShowFieldsInLookUp.Add("IdTypeCode");
-            this.lookUpButtonIdentificationType.ShowFieldsInLookUp.Add("IdTypeEnglish");
-            this.lookUpButtonIdentificationType.ShowFieldsInLookUp.Add("IdTypeArabic");
+            this.lookUpButtonIdentificationType.ShowFieldsInLookUp.Add("IdentificationTypeCode");
+            this.lookUpButtonIdentificationType.ShowFieldsInLookUp.Add("IdentificationTypeEnglish");
+            this.lookUpButtonIdentificationType.ShowFieldsInLookUp.Add("IdentificationTypeArabic");
             this.lookUpButtonIdentificationType.ShowFieldsInLookUp.Add("Id");
             this.lookUpButtonIdentificationType.Size = new System.Drawing.Size(22, 22);
             this.lookUpButtonIdentificationType.TabIndex = 4;
             this.lookUpButtonIdentificationType.TabStop = false;
-            this.lookUpButtonIdentificationType.Tag = "lblIdTypeEnglish";
+            this.lookUpButtonIdentificationType.Tag = "lblIdentificationTypeEnglish";
             // 
             // lookUpButtonCountryOfIssue
             // 
@@ -303,19 +296,18 @@
             // 
             // txtCityId
             // 
-            this.txtCityId.BackColor = System.Drawing.Color.White;
             this.txtCityId.Location = new System.Drawing.Point(159, 156);
             this.txtCityId.Name = "txtCityId";
             this.txtCityId.ReadOnly = true;
             this.txtCityId.Size = new System.Drawing.Size(36, 20);
             this.txtCityId.TabIndex = 12;
             this.txtCityId.Tag = "";
-            this.txtCityId.TextChanged += new System.EventHandler(this.TxtIssuingCountry_TextChanged);
+            this.txtCityId.TextChanged += new System.EventHandler(this.TxtCityId_TextChanged);
             // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(31, 156);
+            this.label23.Location = new System.Drawing.Point(19, 159);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(52, 13);
             this.label23.TabIndex = 47;
@@ -335,7 +327,6 @@
             // 
             // txtIssueDate
             // 
-            this.txtIssueDate.BackColor = System.Drawing.Color.White;
             this.txtIssueDate.Location = new System.Drawing.Point(159, 104);
             this.txtIssueDate.Name = "txtIssueDate";
             this.txtIssueDate.Size = new System.Drawing.Size(103, 20);
@@ -346,7 +337,7 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(31, 104);
+            this.label29.Location = new System.Drawing.Point(19, 108);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(59, 13);
             this.label29.TabIndex = 47;
@@ -355,7 +346,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(31, 208);
+            this.label26.Location = new System.Drawing.Point(19, 211);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(49, 13);
             this.label26.TabIndex = 50;
@@ -399,36 +390,26 @@
             this.txtCityEnglish.TabIndex = 53;
             this.txtCityEnglish.TabStop = false;
             // 
-            // txtIdTypeEnglish
+            // txtIdentificationTypeEnglish
             // 
-            this.txtIdTypeEnglish.Location = new System.Drawing.Point(198, 77);
-            this.txtIdTypeEnglish.Name = "txtIdTypeEnglish";
-            this.txtIdTypeEnglish.ReadOnly = true;
-            this.txtIdTypeEnglish.Size = new System.Drawing.Size(147, 20);
-            this.txtIdTypeEnglish.TabIndex = 52;
-            this.txtIdTypeEnglish.TabStop = false;
-            // 
-            // txtCountryEnglish
-            // 
-            this.txtCountryEnglish.Location = new System.Drawing.Point(159, 182);
-            this.txtCountryEnglish.Name = "txtCountryEnglish";
-            this.txtCountryEnglish.ReadOnly = true;
-            this.txtCountryEnglish.Size = new System.Drawing.Size(211, 20);
-            this.txtCountryEnglish.TabIndex = 53;
-            this.txtCountryEnglish.TabStop = false;
+            this.txtIdentificationTypeEnglish.Location = new System.Drawing.Point(198, 77);
+            this.txtIdentificationTypeEnglish.Name = "txtIdentificationTypeEnglish";
+            this.txtIdentificationTypeEnglish.ReadOnly = true;
+            this.txtIdentificationTypeEnglish.Size = new System.Drawing.Size(147, 20);
+            this.txtIdentificationTypeEnglish.TabIndex = 52;
+            this.txtIdentificationTypeEnglish.TabStop = false;
             // 
             // IdentificationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.txtCountryEnglish);
             this.Controls.Add(this.txtCityEnglish);
-            this.Controls.Add(this.txtIdTypeEnglish);
+            this.Controls.Add(this.txtIdentificationTypeEnglish);
             this.Controls.Add(this.lblExpiryDateHG);
             this.Controls.Add(this.lblIssueDateHG);
             this.Controls.Add(this.btnIssueDateCalendar);
             this.Controls.Add(this.btnExpiryDate);
-            this.Controls.Add(this.txtIdTypeId);
+            this.Controls.Add(this.txtIdentificationTypeId);
             this.Controls.Add(this.txtCityId);
             this.Controls.Add(this.chkIsActive);
             this.Controls.Add(this.txtIssueDate);
@@ -453,7 +434,7 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.txtCreatedBy);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtIdNumber);
+            this.Controls.Add(this.txtIdentificationNumber);
             this.Controls.Add(this.lookUpButtonShortName);
             this.Controls.Add(this.txtId);
             this.Name = "IdentificationForm";
@@ -482,8 +463,8 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtExpiryDate;
-        private System.Windows.Forms.TextBox txtIdTypeId;
-        private System.Windows.Forms.TextBox txtIdNumber;
+        private System.Windows.Forms.TextBox txtIdentificationTypeId;
+        private System.Windows.Forms.TextBox txtIdentificationNumber;
         private Common.LookUpButton lookUpButtonIdentificationType;
         private System.Windows.Forms.Button btnExpiryDate;
         private System.Windows.Forms.Label label23;
@@ -496,9 +477,8 @@
         private System.Windows.Forms.Label lblIssueDateHG;
         private System.Windows.Forms.Label lblExpiryDateHG;
         private System.Windows.Forms.TextBox txtCityEnglish;
-        private System.Windows.Forms.TextBox txtIdTypeEnglish;
-        private System.Windows.Forms.TextBox txtCountryEnglish;
-        private Utils.ForcedFocusCheckBox chkReadOnly;
-        private Utils.ForcedFocusCheckBox chkIsActive;
+        private System.Windows.Forms.TextBox txtIdentificationTypeEnglish;
+        private System.Windows.Forms.CheckBox chkReadOnly;
+        private System.Windows.Forms.CheckBox chkIsActive;
     }
 }

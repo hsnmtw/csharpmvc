@@ -8,9 +8,7 @@ namespace MVCHIS.Security.Users {
     //[ForModel(Common.MODELS.User)]
     public partial class UserForm: UserView {
 
-        private ProfileController CntrlPR;
-
-
+        
         public UserForm() {
             InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //template
@@ -36,10 +34,12 @@ namespace MVCHIS.Security.Users {
             NewButton = btnNew;
         }
 
+        public override void LoadForeignKeys(ForeignKeys FK) {
+            FK.Put(DBControllersFactory.GetController<ProfileModel>());
+            base.LoadForeignKeys(FK);
+        }
+
         private void UserFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
-            CntrlPR = (ProfileController)DBControllersFactory.GetController<ProfileModel>();
-
-
         }
 
         private void Button1Click(object sender, EventArgs e) {
@@ -52,17 +52,14 @@ namespace MVCHIS.Security.Users {
         }
 
         private void ProfileNameTextBoxTextChanged(object sender, EventArgs e) {
-
         }
 
         private void TxtProfileId_TextChanged(object sender, EventArgs e) {
-            int.TryParse(txtProfileId.Text, out int profileId);
-            txtProfileName.Text = CntrlPR.Find(new ProfileModel() { Id = profileId }, "Id")?.ProfileName;
+            txtProfileName.Text = ForeignKeys.Instance[MODELS.Profile, txtProfileId.Text];
         }
 
         private void UserNameLookup_LookUpSelected(object sender, EventArgs e) {
-            var selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            Model = Controller.Find(new UserModel() { UserName = selected }, "UserName");
+            Model = Controller.Find(new UserModel() { UserName = txtUserName.Text }, "UserName");
         }
     }
 }

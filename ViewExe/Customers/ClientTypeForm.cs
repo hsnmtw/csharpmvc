@@ -29,8 +29,7 @@ namespace MVCHIS.Customers {
         }
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            Model = Controller.Find(new ClientTypeModel() { ClientTypeCode=selected }, "ClientTypeCode");
+            Model = Controller.Find(new ClientTypeModel() { ClientTypeCode = txtClientTypeCode.Text }, "ClientTypeCode");
 
         }
 

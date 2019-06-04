@@ -7,8 +7,7 @@ namespace MVCHIS.Customers {
     //[ForModel(Common.MODELS.City)]
     public partial class CityForm: CityView {
 
-        private CountryController CntrlCY;
-
+        
         public CityForm() {
             InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //template
@@ -28,20 +27,20 @@ namespace MVCHIS.Customers {
             NewButton = btnNew;
         }
 
+        public override void LoadForeignKeys(ForeignKeys FK) {
+            FK.Put(DBControllersFactory.GetController<CountryModel>());
+        }
+
         private void CityFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
-            CntrlCY = (CountryController)DBControllersFactory.GetController(MODELS.Country);
+            
         }
 
         private void CityCodeTextBoxLookUpSelected(object sender, EventArgs e) {
-            var selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            Model = Controller.Find(new CityModel() { CityEnglish = selected }, "CityEnglish");
+            Model = Controller.Find(new CityModel() { CityEnglish = txtCityEnglish.Text }, "CityEnglish");
         }
 
         private void TxtCountryId_TextChanged(object sender, EventArgs e) {
-            int.TryParse($"0{txtCountryId.Text}", out int id);
-            var country = CntrlCY.Find(new CountryModel() { Id = id }, "Id");
-            txtCountryCode.Text = country?.CountryCode;
-            txtCountryEnglish.Text = country?.CountryEnglish;
+            txtCountryCode.Text = ForeignKeys.Instance[MODELS.Country, txtCountryId.Text];
         }
     }
     

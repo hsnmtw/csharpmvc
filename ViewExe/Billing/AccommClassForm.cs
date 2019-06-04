@@ -28,8 +28,7 @@ namespace MVCHIS.Billing {
         }
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            Model = Controller.Find(new AccommClassModel() { AccommClassCode = selected }, "AccommClassCode");
+            Model = Controller.Find(new AccommClassModel() { AccommClassCode = txtAccommClassCode.Text }, "AccommClassCode");
         }
 
         private void AccommClassFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;

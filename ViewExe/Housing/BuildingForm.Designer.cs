@@ -40,7 +40,7 @@
             this.txtBuildingName = new System.Windows.Forms.TextBox();
             this.lookUpButton1 = new MVCHIS.Common.LookUpButton();
             this.lookupComound = new MVCHIS.Common.LookUpButton();
-            this.chkReadOnly = new MVCHIS.Utils.ForcedFocusCheckBox();
+            this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lookUpButtonBuildingType = new MVCHIS.Common.LookUpButton();
@@ -87,7 +87,6 @@
             // 
             // txtUpdatedOn
             // 
-            
             this.txtUpdatedOn.Location = new System.Drawing.Point(223, 173);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -97,7 +96,6 @@
             // 
             // txtUpdatedBy
             // 
-            
             this.txtUpdatedBy.Location = new System.Drawing.Point(149, 173);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -116,7 +114,6 @@
             // 
             // txtCreatedOn
             // 
-            
             this.txtCreatedOn.Location = new System.Drawing.Point(223, 147);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -126,7 +123,6 @@
             // 
             // txtCreatedBy
             // 
-            
             this.txtCreatedBy.Location = new System.Drawing.Point(149, 147);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -205,7 +201,7 @@
             this.lookupComound.AssociatedControl = "txtCompoundId";
             this.lookupComound.Controller = "Compound";
             this.lookupComound.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookupComound.Location = new System.Drawing.Point(184, 104);
+            this.lookupComound.Location = new System.Drawing.Point(304, 104);
             this.lookupComound.Name = "lookupComound";
             this.lookupComound.SelectedValueIndex = 1;
             this.lookupComound.ShowFieldsInLookUp.Add("CompoundName");
@@ -247,7 +243,7 @@
             this.lookUpButtonBuildingType.AssociatedControl = "txtBuildingTypeId";
             this.lookUpButtonBuildingType.Controller = "BuildingType";
             this.lookUpButtonBuildingType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonBuildingType.Location = new System.Drawing.Point(184, 76);
+            this.lookUpButtonBuildingType.Location = new System.Drawing.Point(304, 76);
             this.lookUpButtonBuildingType.Name = "lookUpButtonBuildingType";
             this.lookUpButtonBuildingType.SelectedValueIndex = 1;
             this.lookUpButtonBuildingType.ShowFieldsInLookUp.Add("BuildingTypeCode");
@@ -268,19 +264,19 @@
             // txtCompoundName
             // 
             this.txtCompoundName.Enabled = false;
-            this.txtCompoundName.Location = new System.Drawing.Point(208, 105);
+            this.txtCompoundName.Location = new System.Drawing.Point(185, 105);
             this.txtCompoundName.Name = "txtCompoundName";
             this.txtCompoundName.ReadOnly = true;
-            this.txtCompoundName.Size = new System.Drawing.Size(152, 20);
+            this.txtCompoundName.Size = new System.Drawing.Size(118, 20);
             this.txtCompoundName.TabIndex = 5;
             // 
             // txtBuildingTypeCode
             // 
             this.txtBuildingTypeCode.Enabled = false;
-            this.txtBuildingTypeCode.Location = new System.Drawing.Point(208, 77);
+            this.txtBuildingTypeCode.Location = new System.Drawing.Point(185, 77);
             this.txtBuildingTypeCode.Name = "txtBuildingTypeCode";
             this.txtBuildingTypeCode.ReadOnly = true;
-            this.txtBuildingTypeCode.Size = new System.Drawing.Size(152, 20);
+            this.txtBuildingTypeCode.Size = new System.Drawing.Size(118, 20);
             this.txtBuildingTypeCode.TabIndex = 3;
             // 
             // BuildingForm

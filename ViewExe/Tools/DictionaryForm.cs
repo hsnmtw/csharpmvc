@@ -33,8 +33,8 @@ namespace MVCHIS.Tools {
         }
 
         private void DictionaryNameLookupButtonLookUpSelected(object sender, EventArgs e) {
-            var selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            Model = Controller.Find(new DictionaryModel() { WordInEnglish = selected }, "WordInEnglish");
+            
+            Model = Controller.Find(new DictionaryModel() { WordInEnglish = txtWordInEnglish.Text }, "WordInEnglish");
         }
     }
     

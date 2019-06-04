@@ -7,7 +7,7 @@ namespace MVCHIS.Customers {
     //[ForModel(Common.MODELS.Project)]
     public partial class ProjectForm: ProjectView {
 
-        private ClientController CntrlCL;
+        //private ClientController CntrlCL;
 
         public ProjectForm() {
             InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
@@ -27,19 +27,22 @@ namespace MVCHIS.Customers {
             NewButton = btnNew;
         }
 
+        public override void LoadForeignKeys(ForeignKeys FK) {
+            FK.Put(DBControllersFactory.GetController<ClientModel>());
+            base.LoadForeignKeys(FK);
+        }
 
         private void ProjectTypeFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
-            CntrlCL = (ClientController)DBControllersFactory.GetController<ClientModel>();
-
+            
         }
 
         private void LookUpButtonProjectNameLookUpSelected(object sender, EventArgs e) {
-            string selected = ((LookupEventArgs)e).SelectedValueFromLookup;
-            Model = Controller.Find(new ProjectModel() { ProjectName = selected }, "ProjectName");
+            
+            Model = Controller.Find(new ProjectModel() { ProjectName = txtProjectName.Text }, "ProjectName");
         }
 
         private void TxtClientId_TextChanged(object sender, EventArgs e) {
-            txtClientShortName.Text = CntrlCL.FindById(new int[] { int.Parse($"0{txtClientId.Text}") }).FirstOrDefault()?.ShortName;
+            txtClientShortName.Text = ForeignKeys.Instance[MODELS.Client, txtClientId.Text];
         }
     }
     
