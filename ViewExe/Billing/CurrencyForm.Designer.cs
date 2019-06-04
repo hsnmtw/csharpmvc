@@ -56,7 +56,7 @@
             this.btnDelete.Location = new System.Drawing.Point(60, 307);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 13;
+            this.btnDelete.TabIndex = 16;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
@@ -65,7 +65,7 @@
             this.btnSave.Location = new System.Drawing.Point(168, 307);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 11;
+            this.btnSave.TabIndex = 14;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             // 
@@ -74,7 +74,7 @@
             this.btnNew.Location = new System.Drawing.Point(276, 307);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 23);
-            this.btnNew.TabIndex = 12;
+            this.btnNew.TabIndex = 15;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = true;
             // 
@@ -84,7 +84,7 @@
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
             this.txtUpdatedOn.Size = new System.Drawing.Size(137, 20);
-            this.txtUpdatedOn.TabIndex = 9;
+            this.txtUpdatedOn.TabIndex = 12;
             this.txtUpdatedOn.TabStop = false;
             // 
             // txtUpdatedBy
@@ -93,7 +93,7 @@
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
             this.txtUpdatedBy.Size = new System.Drawing.Size(69, 20);
-            this.txtUpdatedBy.TabIndex = 8;
+            this.txtUpdatedBy.TabIndex = 11;
             this.txtUpdatedBy.TabStop = false;
             // 
             // label6
@@ -111,7 +111,7 @@
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
             this.txtCreatedOn.Size = new System.Drawing.Size(137, 20);
-            this.txtCreatedOn.TabIndex = 7;
+            this.txtCreatedOn.TabIndex = 10;
             this.txtCreatedOn.TabStop = false;
             // 
             // txtCreatedBy
@@ -120,7 +120,7 @@
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
             this.txtCreatedBy.Size = new System.Drawing.Size(69, 20);
-            this.txtCreatedBy.TabIndex = 6;
+            this.txtCreatedBy.TabIndex = 9;
             this.txtCreatedBy.TabStop = false;
             // 
             // label5
@@ -191,7 +191,7 @@
             this.chkReadOnly.Location = new System.Drawing.Point(140, 263);
             this.chkReadOnly.Name = "chkReadOnly";
             this.chkReadOnly.Size = new System.Drawing.Size(15, 14);
-            this.chkReadOnly.TabIndex = 10;
+            this.chkReadOnly.TabIndex = 13;
             this.chkReadOnly.UseVisualStyleBackColor = true;
             // 
             // label10
@@ -206,16 +206,11 @@
             // lookUpButtonCurrency
             // 
             this.lookUpButtonCurrency.AssociatedControl = "txtCurrencyCode";
-            this.lookUpButtonCurrency.Source = "Currency";
             this.lookUpButtonCurrency.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonCurrency.Location = new System.Drawing.Point(183, 56);
             this.lookUpButtonCurrency.Name = "lookUpButtonCurrency";
-            // 0;
-            //("CurrencyCode");
-            //("CurrencyEnglish");
-            //("CurrencyArabic");
-            //("CurrencySymbol");
             this.lookUpButtonCurrency.Size = new System.Drawing.Size(22, 22);
+            this.lookUpButtonCurrency.Source = "Currency";
             this.lookUpButtonCurrency.TabIndex = 2;
             this.lookUpButtonCurrency.TabStop = false;
             this.lookUpButtonCurrency.LookUpSelected += new System.EventHandler(this.LookUpButton1LookUpSelected);
@@ -257,17 +252,12 @@
             // lookUpButtonNationality
             // 
             this.lookUpButtonNationality.AssociatedControl = "txtCountryId";
-            this.lookUpButtonNationality.Source = "Country";
             this.lookUpButtonNationality.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonNationality.Location = new System.Drawing.Point(329, 171);
             this.lookUpButtonNationality.Name = "lookUpButtonNationality";
-            // 3;
-            //("CountryCode");
-            //("CountryEnglish");
-            //("CountryArabic");
-            //("Id");
             this.lookUpButtonNationality.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonNationality.TabIndex = 52;
+            this.lookUpButtonNationality.Source = "Country";
+            this.lookUpButtonNationality.TabIndex = 8;
             this.lookUpButtonNationality.TabStop = false;
             // 
             // txtCountryCode
@@ -277,7 +267,7 @@
             this.txtCountryCode.Name = "txtCountryCode";
             this.txtCountryCode.ReadOnly = true;
             this.txtCountryCode.Size = new System.Drawing.Size(140, 20);
-            this.txtCountryCode.TabIndex = 51;
+            this.txtCountryCode.TabIndex = 7;
             this.txtCountryCode.Tag = "";
             this.txtCountryCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -287,7 +277,7 @@
             this.txtCountryId.Name = "txtCountryId";
             this.txtCountryId.ReadOnly = true;
             this.txtCountryId.Size = new System.Drawing.Size(43, 20);
-            this.txtCountryId.TabIndex = 50;
+            this.txtCountryId.TabIndex = 6;
             this.txtCountryId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtCountryId.TextChanged += new System.EventHandler(this.TxtCountryId_TextChanged);
             // 

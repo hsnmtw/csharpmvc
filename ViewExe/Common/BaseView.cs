@@ -18,6 +18,8 @@ using System.Threading;
 namespace MVCHIS.Common {
 
     public class BaseView<M,C> : UserControl, IView where C:IDBController<M> where M:BaseModel  {
+        public static readonly Color GREEN = Color.FromArgb(192, 255, 192);
+
         [Browsable(false),EditorBrowsable(EditorBrowsableState.Never),DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Action<bool> AfterSave { get; set; }
         [Browsable(false),EditorBrowsable(EditorBrowsableState.Never),DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -132,7 +134,7 @@ namespace MVCHIS.Common {
             var sizes  = md.Sizes;
 
             foreach(var cntrl in uqkeys.Where(x => Mapper.ContainsKey(x))) {
-                Mapper[cntrl].BackColor = Color.FromArgb(192, 255, 192);
+                Mapper[cntrl].BackColor = GREEN;
             }
             foreach(var cntrl in rqkeys.Where(x => Mapper.ContainsKey(x))) {
                 Controls.Add(new Label() { Name = $"RQ_{cntrl}", Text = "*", ForeColor = Color.Red, Top = Mapper[cntrl].Top + 5, Left = Mapper[cntrl].Left - 15 });
@@ -155,10 +157,11 @@ namespace MVCHIS.Common {
                 NewButton.Click += NewModelEvent;
             }
             //var controls = (from cntrl in Mapper.Values orderby cntrl.TabIndex where cntrl.TabStop select cntrl);
-            
+            var xcld = new[] { "Id","CreatedBy","CreatedOn","UpdatedBy","UpdatedOn" };
             foreach (string cntrl in Mapper.Keys) {
                 Mapper[cntrl].Name = cntrl;
                 Mapper[cntrl].KeyDown += MapperControlKeyDownEvent;
+                if ((xcld.Contains(cntrl) || Mapper[cntrl].BackColor.Equals(GREEN)) == false) Mapper[cntrl].BackColor = Color.White;
             }
             DefaultControl = Mapper.Values.Where(x => x.TabStop).OrderBy(x => x.TabIndex).FirstOrDefault();
             DefaultControl?.Focus();
@@ -169,11 +172,11 @@ namespace MVCHIS.Common {
 
 
         private void SaveModelEvent(object sender, EventArgs e) {
-            //try {
+            try {
             int saveresult = Controller.Save(Model);
             if (saveresult > 0) Model = Controller.Find(Model, Controller.GetMetaData().UniqueKeyFields.FirstOrDefault().ToArray());
             AfterSave?.Invoke(saveresult > 0);
-            try { } catch (Exception ex) {
+            } catch (Exception ex) {
                 FormsHelper.Error(ex.Message);
             };
         }

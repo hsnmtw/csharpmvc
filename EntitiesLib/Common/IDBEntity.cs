@@ -12,7 +12,7 @@ namespace MVCHIS.Common {
         int Update(M model, params string[] whereFields);
         int Delete(M model, params string[] whereFields);
         DataTable GetData(M model, bool like = false, params string[] whereFields);
-        
+        M Exists(M model);
         bool Validate(M model);
         string GetDDL();
     }

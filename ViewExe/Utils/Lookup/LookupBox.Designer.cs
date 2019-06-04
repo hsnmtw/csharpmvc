@@ -42,7 +42,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(3);
-            this.panel1.Size = new System.Drawing.Size(407, 26);
+            this.panel1.Size = new System.Drawing.Size(249, 26);
             this.panel1.TabIndex = 0;
             // 
             // lblSearch
@@ -50,7 +50,7 @@
             this.lblSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblSearch.Location = new System.Drawing.Point(3, 3);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(401, 20);
+            this.lblSearch.Size = new System.Drawing.Size(243, 20);
             this.lblSearch.TabIndex = 0;
             this.lblSearch.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblSearch.TextChanged += new System.EventHandler(this.Label1TextChanged);
@@ -62,7 +62,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 26);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(3);
-            this.panel2.Size = new System.Drawing.Size(407, 289);
+            this.panel2.Size = new System.Drawing.Size(249, 289);
             this.panel2.TabIndex = 0;
             // 
             // listView1
@@ -72,7 +72,6 @@
             this.columnHeader2});
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.Filter = null;
-            //new System.Drawing.Font("Consolas", 9F);
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -84,7 +83,7 @@
             this.listView1.Location = new System.Drawing.Point(3, 3);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(401, 283);
+            this.listView1.Size = new System.Drawing.Size(243, 283);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -95,23 +94,23 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "c1";
-            this.columnHeader1.Width = 226;
+            this.columnHeader1.Width = 138;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "c2";
             // 
-            // LookUpForm2
+            // LookupBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(407, 315);
+            this.ClientSize = new System.Drawing.Size(249, 315);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "LookUpForm2";
+            this.Name = "LookupBox";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LookUp";
             this.Load += new System.EventHandler(this.LookUpLoad);

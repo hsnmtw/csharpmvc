@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MVCHIS.Utils;
 
 
 namespace MVCHIS.Common {
@@ -53,10 +54,12 @@ namespace MVCHIS.Common {
             if (ContainsKey(key)) return;
 
             var uk  = controller.GetMetaData().UniqueKeyFields.SelectMany(x => x).Distinct();
+            var ufs = uk.Select(f => f.FromCamelCaseToWords().Split(' '));
+            var uf  = ufs.Select(x => x.Length > 1 && x[x.Length - 1] == "Id" ? x[x.Length - 2] : null).ToArray();
             var MT  = typeof(M);
             var lookup = controller
                             .Read()
-                            .ToDictionary(x => x.Id, x => string.Join(" | ", uk.Select(y => MT.GetProperty(y).GetValue(x))));
+                            .ToDictionary(x => x.Id, x => string.Join(" | ", uk.Select( (y,i) => (uf[i]==null ? MT.GetProperty(y).GetValue(x) : this[uf[i], MT.GetProperty(y).GetValue(x)]).ToSortableString()  )));
 
             if (!lookUps.ContainsKey(key)) {
                 controller.OnSaveAction += delegate (M model) {

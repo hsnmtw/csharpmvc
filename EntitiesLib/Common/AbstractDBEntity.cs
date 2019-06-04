@@ -66,6 +66,7 @@ namespace MVCHIS.Common {
         public M NewModel() {
             return Activator.CreateInstance<M>();
         }
+
         public virtual M Find(M model, params string[] whereFields) {
             var mdl = NewModel();
             var prp = (from PropertyInfo pinfo in mdl.GetType().GetProperties() orderby pinfo.Name select pinfo.Name);
@@ -79,7 +80,17 @@ namespace MVCHIS.Common {
             return rsl;// == null ? rsl : NewModel();
         }
 
+        public virtual M Exists(M model) {
+            var unq = MetaData.UniqueKeyFields;
+            var whr = from us in unq select string.Join(" AND ", from u in us select $"[{u}]=@{u}" ); // [[s]]
+            var exs = $"SELECT * FROM {MetaData.Source} WHERE ({string.Join(") OR (", whr )})";
+            var prm = unq.SelectMany(x => x).Distinct().Select(c => new KeyValuePair<string, object>($"@{c}", PrepareParameter(model.GetType().GetProperty(c).GetValue(model))))?.ToArray();
+            return DBConnectionManager.Instance.Query(model,exs,prm).FirstOrDefault();
+        }
+
         public virtual int Create(M model) {
+            var exs = Exists(model);
+            if (exs != null) throw new Exception($"DB ERROR : UNIQUE KEY VIOLATION -- Model with same Unique Key exists with Id ({exs.Id})");
             var xcl = new string[] { "Id", "UpdatedBy", "UpdatedOn" };
             var prp = (from pinfo in model.GetType().GetProperties() where !xcl.Contains(pinfo.Name) select pinfo.Name);
             var src = MetaData.Source;
