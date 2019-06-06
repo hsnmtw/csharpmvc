@@ -10,7 +10,7 @@ namespace MVCHIS.Security {
     public partial class ProfileForm: ProfileView {
         const char C = 'C', R = 'R', U = 'U', D = 'D', E = '-';
         private Dictionary<string, List<EntitlementModel>> entitlementsByGroup = new Dictionary<string, List<EntitlementModel>>();
-        private Dictionary<int,EntitlementModel> allEntitlements;
+        private Dictionary<int, EntitlementModel> allEntitlements;
         private Dictionary<int, EntitlementGroupModel> entitlementmentGroups;
 
         private EntitlementController        CntrlEN;
@@ -36,9 +36,9 @@ namespace MVCHIS.Security {
         }        
 
         private void ProfileFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
-            CntrlEN = (EntitlementController)DBControllersFactory.GetController<EntitlementModel>();
-            CntrlPE = (ProfileEntitlementController)DBControllersFactory.GetController<ProfileEntitlementModel>();
-            CntrlEG = (EntitlementGroupController)DBControllersFactory.GetController<EntitlementGroupModel>();
+            CntrlEN = DBControllersFactory.GetEntitlementController();
+            CntrlPE = DBControllersFactory.GetProfileEntitlementController();
+            CntrlEG = DBControllersFactory.GetEntitlementGroupController();
 
             cmbEntitelmentsGroup.Items.Clear();
             cmbEntitelmentsGroup.Items.Add("All");
@@ -133,7 +133,8 @@ namespace MVCHIS.Security {
             string entitlement = $"{this.lstEntitlements.Items[this.lstEntitlements.SelectedIndex]}".Substring(6).Trim();
             int entitlementId = (from EntitlementModel ent in allEntitlements.Values where ent.EntitlementName.Equals(entitlement) select ent).FirstOrDefault().Id;
             int.TryParse(txtId.Text, out int profileId);
-            ((ProfileEntitlementController)CntrlPE).ChangePermissions(profileId, entitlementId, true, true, true, true);
+
+            CntrlPE.ChangePermissions(profileId, entitlementId, true, true, true, true);
             this.lstEntitlements.Items[this.lstEntitlements.SelectedIndex] = $"{C}{R}{U}{D}  {entitlement}";
             //Utils.FormsHelper.Success("All entitlements were allowed");
             MainView.Instance.setProgress("All entitlements were allowed", 100);
@@ -146,7 +147,7 @@ namespace MVCHIS.Security {
             int entitlementId = (from EntitlementModel ent in allEntitlements where ent.EntitlementName.Equals(entitlement) select ent).FirstOrDefault().Id;
             int.TryParse(txtId.Text, out int profileId);
 
-            ((ProfileEntitlementController)CntrlPE).ChangePermissions(profileId, entitlementId, false, false, false, false);
+            CntrlPE.ChangePermissions(profileId, entitlementId, false, false, false, false);
             this.lstEntitlements.Items[this.lstEntitlements.SelectedIndex] = $"{E}{E}{E}{E}  {entitlement}";
             //Utils.FormsHelper.Success("All entitlements were un-allowed");
             MainView.Instance.setProgress("All entitlements were un-allowed", 100);

@@ -8,8 +8,8 @@ namespace MVCHIS.Security {
     public class ProfileEntitlementController : AbstractDBController<ProfileEntitlementModel> {
         public void InitializeDBValues() {
             foreach (var pe in Read()) { Delete(pe); }
-            var es = DBControllersFactory.GetController<EntitlementModel>().Read();
-            var ps = DBControllersFactory.GetController<ProfileModel>().Read();
+            var es = DBControllersFactory.GetEntitlementController().Read();
+            var ps = DBControllersFactory.GetProfileController().Read();
             foreach(ProfileModel p in ps) {
                 foreach(EntitlementModel e in es) {
                     Save(new ProfileEntitlementModel() {

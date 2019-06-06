@@ -28,8 +28,8 @@ namespace MVCHIS.Housing.Buildings {
         }
 
         public override void LoadForeignKeys(ForeignKeys FK) {
-            FK.Put(DBControllersFactory.GetController<BuildingTypeModel>());
-            FK.Put(DBControllersFactory.GetController<CompoundModel>());
+            FK.Put(DBControllersFactory.GetBuildingTypeController());
+            FK.Put(DBControllersFactory.GetCompoundController());
 
             base.LoadForeignKeys(FK);
         }

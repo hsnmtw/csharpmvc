@@ -32,9 +32,9 @@ namespace MVCHIS.Billing {
         }
 
         public override void LoadForeignKeys(ForeignKeys FK) {
-            FK.Put(DBControllersFactory.GetController<FoodClassModel>()  );
-            FK.Put(DBControllersFactory.GetController<FoodTypeModel>()   );
-            FK.Put(DBControllersFactory.GetController<AccommClassModel>());
+            FK.Put(DBControllersFactory.GetFoodClassController());
+            FK.Put(DBControllersFactory.GetFoodTypeController());
+            FK.Put(DBControllersFactory.GetAccommClassController());
         }
 
         private void LookUpButton1LookUpSelected(object sender, EventArgs e) {

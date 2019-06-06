@@ -12,8 +12,8 @@ namespace MVCHIS.Customers {
             , RequiredFields   = new HashSet<string> { "Id", "ClientId", "ContactId" }
             , UniqueKeyFields = new HashSet<HashSet<string>> { new HashSet<string> { "ClientId", "ContactId" } }
             , ForeignKeys = new Dictionary<string, Tuple<string, string>> {
-                ["ClientId"]  = new Tuple<string, string>(DBEntitiesFactory.GetEntity<ClientModel >().MetaData.Source, "Id"),
-                ["ContactId"] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<ContactModel>().MetaData.Source, "Id"),
+                ["ClientId"]  = new Tuple<string, string>(ENTITIES.Client, "Id"),
+                ["ContactId"] = new Tuple<string, string>(ENTITIES.Contact, "Id"),
             }
             , Sizes = new Dictionary<string, int> {
                 ["CreatedBy"] = 10,

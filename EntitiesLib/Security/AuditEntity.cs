@@ -12,7 +12,7 @@ namespace MVCHIS.Security {
             , RequiredFields   = new HashSet<string> { "Id", "EventDate", "EventComments" }
             , UniqueKeyFields  = new HashSet<HashSet<string>> { new HashSet<string> { "Id" } }
             , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
-                ["UserName"]   = new Tuple<string, string>(DBEntitiesFactory.GetEntity<UserModel>().MetaData.Source,"UserName")
+                ["UserName"]   = new Tuple<string, string>(ENTITIES.User,"UserName")
             }
             , Sizes = new Dictionary<string, int> {
                 ["CreatedBy"    ] = 10,
@@ -22,5 +22,13 @@ namespace MVCHIS.Security {
             }
             , Source = ENTITIES.Audit
         };
+
+        public override string Validate(AuditModel model) {
+            return "[]"; //disable validation
+        }
+        public override int Create(AuditModel model) {
+            if (model.EventComments.Length > 200) model.EventComments = model.EventComments.Substring(0, 200);
+            return base.Create(model);
+        }
     }
 }   

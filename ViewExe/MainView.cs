@@ -17,6 +17,7 @@ namespace MVCHIS {
     {
 
         public   DictionaryController         CntrlDC;
+        private  UserController               CntrlUS;
         private  EntitlementGroupController   CntrlEG;
         private  EntitlementController        CntrlEN;
         private  EntityController             CntrlET;
@@ -40,12 +41,13 @@ namespace MVCHIS {
 
         private MainView()
         {
-            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return; //(); if(DesignMode || (Site != null && Site.DesignMode)) return;
-            this.CntrlDC = (DictionaryController)DBControllersFactory.GetController(Common.MODELS.Dictionary);
-            this.CntrlEG = (EntitlementGroupController)DBControllersFactory.GetController(Common.MODELS.EntitlementGroup);
-            this.CntrlEN = (EntitlementController)DBControllersFactory.GetController(Common.MODELS.Entitlement);
-            this.CntrlET = (EntityController)DBControllersFactory.GetController(Common.MODELS.Entity);
-            this.CntrlPE = ((ProfileEntitlementController)DBControllersFactory.GetController(MODELS.ProfileEntitlement));
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return; 
+            CntrlDC = DBControllersFactory.GetDictionaryController();
+            CntrlEG = DBControllersFactory.GetEntitlementGroupController();
+            CntrlEN = DBControllersFactory.GetEntitlementController();
+            CntrlET = DBControllersFactory.GetEntityController();
+            CntrlPE = DBControllersFactory.GetProfileEntitlementController();
+            CntrlUS = DBControllersFactory.GetUserController();
         }
 
 
@@ -65,12 +67,6 @@ namespace MVCHIS {
         }
 
         public void LoadForm() {
-           ;
-            initializeToolStripMenuItem.Visible = false;
-            initializeToolStripMenuItem.Visible = (null == CntrlEN.Find(new EntitlementModel() { EntitlementName = "Profile" }, "EntitlementName"));
-
-
-
 
             tsProgressBar.Value = 0;
 
@@ -80,8 +76,18 @@ namespace MVCHIS {
             //LogOutToolStripMenuItemClick(sender, e);
             //LogInToolStripMenuItemClick(sender, e);
             tsProgressBar.Value = 100;
-
-            ShowView(new UsersLoginView() { Dock = DockStyle.Top },"Main");
+            var login = new UsersLoginView();
+            
+            login.GoClicked += delegate (UserModel um) {
+                um = CntrlUS.Autheniticate(um);
+                if (um == null) {
+                    FormsHelper.Error("Login denied");
+                    return;
+                }
+                login.Visible = false;
+                WhenAuthenticated(um);
+            };
+            ShowView(login,"Main");
         }
 
 
@@ -95,32 +101,22 @@ namespace MVCHIS {
         public void WhenAuthenticated(UserModel model) {
             MVCHISSession.Instance.CurrentUser = model;
 
-            var pes = CntrlPE.Read(new ProfileEntitlementModel() {
-                ProfileId = MVCHISSession.Instance.CurrentUser.ProfileId,
-                AllowRead = true
-            }, "ProfileId", "AllowRead");
-
-            
-            var entitlements = CntrlEN.Read().Where(x => pes.Any(y => y.EntitlementId==x.Id) ).OrderBy(x => x.EntitlementName);
-            var egroups = CntrlEG.Read().Where(r => r.Dynamic).Where(x => entitlements.Any(y => y.EntitlementGroupId == x.Id)).OrderBy(x => x.EntitlementGroupName);
-            var entities = CntrlET.Read().ToDictionary(x => x.Id, x => x);
-
-            foreach (var row in egroups) {
-                var egn = row.EntitlementGroupName;
-
-                TreeNode node = this.treeViewMenu.Nodes.Add(egn);
-                node.ForeColor = Color.Red;
-                menu[egn] = new List<TreeNode>();
-                foreach (var crow in entitlements.Where(x => x.EntitlementGroupId == row.Id)) {
-                    crow.EntitlementName = crow.EntitlementName.FromCamelCaseToWords();
-                    
-                    TreeNode ce = node.Nodes.Add(crow.EntitlementName);
-                    ce.Tag = entities[crow.EntityId];
-                    menu[egn].Add(ce);
+            string prev = "";
+            TreeNode node = null;
+            foreach (var stuple in CntrlUS.GetMenu(model).OrderBy(x => x.Item1)) {
+                var egn = stuple.Item1;
+                if (prev.Equals(egn) == false) {
+                    node = this.treeViewMenu.Nodes.Add(egn);
+                    node.ForeColor = Color.Red;
+                    menu[egn] = new List<TreeNode>();
+                    prev = egn;
                 }
+                TreeNode child = node.Nodes.Add(stuple.Item2);
+                child.Tag = stuple.Item3;
+                menu[egn].Add(child);
             }
 
-            MVCHISSession.Instance.UserEntitlements = pes;
+            MVCHISSession.Instance.UserEntitlements = CntrlPE.Read(new ProfileEntitlementModel { ProfileId = model.ProfileId },"ProfileId");
             tsslCurrentUser.Text = model.UserName;
             setProgress("Login successful", 0);
             this.treeViewMenu.ExpandAll();
@@ -215,23 +211,6 @@ namespace MVCHIS {
             }).Start();
         }
 
-        private void InitializeToolStripMenuItem_Click(object sender, EventArgs ea) {
-
-            var ec = new Security.EntitlementController();
-            var pec = new Security.ProfileEntitlementController();
-            foreach (var e in pec.Read()) { pec.Delete(e); }
-            foreach (var e in ec.Read()) { ec.Delete(e); }
-
-            CntrlET.InitializeDBValues();
-            CntrlEG.InitializeDBValues();
-            CntrlEN.InitializeDBValues();
-            CntrlPE.InitializeDBValues();
-
-            FormsHelper.Success("Initialization compeleted !");
-            setProgress("Initialization compeleted !", 0);
-            initializeToolStripMenuItem.Visible = false;
-        }
-
         private void Timer1_Tick(object sender, EventArgs e) {
             tsDateTime.Text = DateTime.Now.ToString(ConfigLoader.CultureInfoDateTimeFormatLongDatePattern);
         }
@@ -240,7 +219,7 @@ namespace MVCHIS {
 
         }
 
-        public void ShowView(Control view,string name) {
+        public void ShowView(Control view,string name,Action whenCompleted = null) {
             //panel1.Controls.Clear();
             //panel1.Controls.Add(view);
             FormsHelper.ApplyLanguageLocalization(view);
@@ -253,16 +232,22 @@ namespace MVCHIS {
             }
             var tpx = new TabPage(name);
             tpx.Text = name;
+            
             tabControl1.TabPages.Add(tpx);
+            tpx.SuspendLayout();
             tpx.Controls.Add(view);
             tabControl1.SelectedTab = tpx;
+            tpx.ResumeLayout();
+            whenCompleted?.Invoke();
         }
 
 
         private void TreeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e) {
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
             TreeNode node = e.Node;
             if (node.Tag == null) return;
-            var entity = (EntityModel)node.Tag;
+            var entity = CntrlET.Find(new EntityModel { EntityName = node.Tag.ToString() }, "EntityName");
             // = (UserControl)DBViewsFactory.GetView((MODELS)Enum.Parse(typeof(MODELS), entity.EntityName));
             foreach (TabPage tp in tabControl1.TabPages) {
                 Control c = tp.Controls[0];
@@ -271,11 +256,24 @@ namespace MVCHIS {
                     return;
                 }
             }
-
-            UserControl view = (UserControl)DBViewsFactory.GetView((MODELS)Enum.Parse(typeof(MODELS), entity.EntityName));
-            view.Tag = node.Tag;
-            lblHeading.Text = node.Text;
-            ShowView(view,node.Text);
+            SuspendLayout();
+            tabControl1.SuspendLayout();
+            //new Thread(() => {
+            //    BeginInvoke((Action)(() => {                    
+                    Application.DoEvents();
+                    UserControl view = (UserControl)DBViewsFactory.GetView((MODELS)Enum.Parse(typeof(MODELS), entity.EntityName));
+                    view.SuspendLayout();
+                    view.Tag = node.Tag;
+                    lblHeading.Text = node.Text;
+                    ShowView(view, node.Text, () => {
+                        Thread.Sleep(1000);
+                        Cursor.Current = Cursors.Default;
+                        view.ResumeLayout();
+                        tabControl1.ResumeLayout();
+                        ResumeLayout();
+                    });
+            //    }));
+            //}).Start();
         }
 
         private void ViewModelChanged() {
@@ -327,6 +325,10 @@ namespace MVCHIS {
 
         private void TreeViewMenu_AfterSelect(object sender, TreeViewEventArgs e) {
 
+        }
+
+        private void TabControl1_TabIndexChanged(object sender, EventArgs e) {
+            lblHeading.Text = tabControl1.SelectedTab.Text;
         }
     }
 }

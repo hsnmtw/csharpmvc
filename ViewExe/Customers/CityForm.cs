@@ -29,7 +29,7 @@ namespace MVCHIS.Customers {
         }
 
         public override void LoadForeignKeys(ForeignKeys FK) {
-            FK.Put(DBControllersFactory.GetController<CountryModel>());
+            FK.Put(DBControllersFactory.GetCountryController());
         }
 
         private void CityFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;

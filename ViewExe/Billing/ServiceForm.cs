@@ -17,10 +17,10 @@ namespace MVCHIS.Billing {
         private VATController             CntrlVT;
         public ServiceForm() {
             InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
-            CntrlCN = (ContractController)DBControllersFactory.GetController<ContractModel>();
-            CntrlCG = (BillingCategoryController)DBControllersFactory.GetController<BillingCategoryModel>();
-            CntrlCU = (CurrencyController)DBControllersFactory.GetController<CurrencyModel>();
-            CntrlVT = (VATController)DBControllersFactory.GetController<VATModel>();
+            CntrlCN = DBControllersFactory.GetContractController();
+            CntrlCG = DBControllersFactory.GetBillingCategoryController();
+            CntrlCU = DBControllersFactory.GetCurrencyController();
+            CntrlVT = DBControllersFactory.GetVATController();
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;

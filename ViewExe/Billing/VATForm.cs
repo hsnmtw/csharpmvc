@@ -37,6 +37,12 @@ namespace MVCHIS.Billing {
         private void VATFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
 
         }
+
+        private void BtnSave_Click(object sender, EventArgs e) {
+            if (double.TryParse(txtVATAmount.Text,out double vat) == false) {
+                txtVATAmount.Text = "0.00";
+            }
+        }
     }
    
 }

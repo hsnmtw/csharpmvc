@@ -14,8 +14,8 @@ namespace MVCHIS.Billing {
             , RequiredFields   = new HashSet<string> { "Id", "FromCurrencyId", "ToCurrencyId", "FXDate", "FXRate" }
             , UniqueKeyFields  = new HashSet<HashSet<string>> { new HashSet<string> { "FromCurrencyId", "ToCurrencyId", "FXDate" } }
             , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
-                ["FromCurrencyId"] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<CurrencyModel>().MetaData.Source, "Id"),
-                ["ToCurrencyId"  ] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<CurrencyModel>().MetaData.Source, "Id"),
+                ["FromCurrencyId"] = new Tuple<string, string>(ENTITIES.Currency, "Id"),
+                ["ToCurrencyId"  ] = new Tuple<string, string>(ENTITIES.Currency, "Id"),
             }
             , Sizes = new Dictionary<string, int> {
                 ["CreatedBy"   ] = 10,

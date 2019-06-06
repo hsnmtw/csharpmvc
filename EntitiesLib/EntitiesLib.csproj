@@ -32,7 +32,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentValidation, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.8.4.0\lib\net45\FluentValidation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -55,9 +59,12 @@
     <Compile Include="Billing\FoodClassEntity.cs" />
     <Compile Include="Billing\FoodTypeEntity.cs" />
     <Compile Include="Common\AbstractDBEntity.cs" />
+    <Compile Include="Common\BaseValidator.cs" />
     <Compile Include="Common\DBConnectionManager.cs" />
+    <Compile Include="Common\DBEntitiesFactory - Copy.cs" />
     <Compile Include="Common\DBEntitiesFactory.cs" />
     <Compile Include="Common\ENTITIES.cs" />
+    <Compile Include="Common\ErrorCodes.cs" />
     <Compile Include="Common\IDBEntity.cs" />
     <Compile Include="Common\IEntity.cs" />
     <Compile Include="Customers\ClientContactEntity.cs" />
@@ -81,9 +88,11 @@
     <Compile Include="Security\ProfileEntitlementEntity.cs" />
     <Compile Include="Security\ProfileEntity.cs" />
     <Compile Include="Security\UserEntity.cs" />
+    <Compile Include="Security\UserValidator.cs" />
     <Compile Include="Tools\DictionaryEntity.cs" />
     <Compile Include="Tools\DateConversionEntity.cs" />
     <Compile Include="Tools\EntityEntity.cs" />
+    <Compile Include="Utils\Extensions\ValidatorExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Configurations\" />
@@ -93,6 +102,9 @@
       <Project>{7d2e5380-fe05-4fc9-8d62-2189ff6b31ec}</Project>
       <Name>ModelLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

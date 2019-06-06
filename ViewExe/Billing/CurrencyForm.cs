@@ -33,7 +33,7 @@ namespace MVCHIS.Billing {
         }
 
         public override void LoadForeignKeys(ForeignKeys FK) {
-            FK.Put(DBControllersFactory.GetController<CountryModel>());
+            FK.Put(DBControllersFactory.GetCountryController());
             base.LoadForeignKeys(FK);
         }
 

@@ -43,15 +43,15 @@ namespace MVCHIS.Customers {
             DeleteButton = btnDelete;
             NewButton = btnNew;
 
-            CntrlCO = (ContactController)DBControllersFactory.GetController<ContactModel>();
-            CntrlCI = (ClientIdentificationController)DBControllersFactory.GetController<ClientIdentificationModel>();
-            CntrlID = (IdentificationController)DBControllersFactory.GetController<IdentificationModel>();
-            CntrlCC = (ClientContactController)DBControllersFactory.GetController<ClientContactModel>();
+            CntrlCO = DBControllersFactory.GetContactController();
+            CntrlCI = DBControllersFactory.GetClientIdentificationController();
+            CntrlID = DBControllersFactory.GetIdentificationController();
+            CntrlCC = DBControllersFactory.GetClientContactController();
         }
 
         public override void LoadForeignKeys(ForeignKeys FK) {
-            FK.Put(DBControllersFactory.GetController<ClientTypeModel>());
-            FK.Put(DBControllersFactory.GetController<CountryModel>());
+            FK.Put(DBControllersFactory.GetClientTypeController());
+            FK.Put(DBControllersFactory.GetCountryController());
             FK.Put(CntrlCO);
             FK.Put(CntrlCC);
             FK.Put(CntrlID);

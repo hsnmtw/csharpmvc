@@ -13,8 +13,8 @@ namespace MVCHIS.Housing {
             , RequiredFields   = new HashSet<string> { "Id", "RoomName", "BuildingId", "BedCapacity" }
             , UniqueKeyFields = new HashSet<HashSet<string>> { new HashSet<string> { "RoomName" } }
             , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
-                ["BuildingId"] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<BuildingModel>().MetaData.Source,"Id"),
-                ["CountryId" ] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<CountryModel>().MetaData.Source, "Id"),
+                ["BuildingId"] = new Tuple<string, string>(ENTITIES.Building,"Id"),
+                ["CountryId" ] = new Tuple<string, string>(ENTITIES.Country, "Id"),
             }
             , Sizes = new Dictionary<string, int> {
                  ["CreatedBy"   ] = 10

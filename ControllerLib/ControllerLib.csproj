@@ -95,8 +95,6 @@
     <Compile Include="Tools\DictionaryController.cs" />
     <Compile Include="Tools\LanguageState.cs" />
     <Compile Include="Tools\SupportedCalendar.cs" />
-    <Compile Include="Utils\Extensions\Functional.cs" />
-    <Compile Include="Utils\Extensions\Strings.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EntitiesLib\EntitiesLib.csproj">
@@ -107,6 +105,9 @@
       <Project>{7d2e5380-fe05-4fc9-8d62-2189ff6b31ec}</Project>
       <Name>ModelLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utils\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

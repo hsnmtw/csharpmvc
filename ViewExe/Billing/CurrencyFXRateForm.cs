@@ -48,7 +48,7 @@ namespace MVCHIS.Billing {
         }
 
         public override void LoadForeignKeys(ForeignKeys FK) {
-            FK.Put(DBControllersFactory.GetController<CurrencyModel>());
+            FK.Put(DBControllersFactory.GetCurrencyController());
         }
 
         private void TxtFromDate_Leave(object sender, EventArgs e) {

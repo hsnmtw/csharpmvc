@@ -14,9 +14,9 @@ namespace MVCHIS.Billing {
             , RequiredFields   = new HashSet<string> { "Id","BillingCategoryCode","BillingCategoryDesc","AccommClassId", "FoodClassId", "FoodTypeId" }
             , UniqueKeyFields  = new HashSet<HashSet<string>> { new HashSet<string> { "BillingCategoryCode" } }
             , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
-                ["FoodTypeId"   ] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<FoodTypeModel>().MetaData.Source, "Id"),
-                ["FoodClassId"  ] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<FoodClassModel>().MetaData.Source,"Id"),
-                ["AccommClassId"] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<AccommClassModel>().MetaData.Source, "Id")
+                ["FoodTypeId"   ] = new Tuple<string, string>(ENTITIES.FoodType, "Id"),
+                ["FoodClassId"  ] = new Tuple<string, string>(ENTITIES.FoodClass,"Id"),
+                ["AccommClassId"] = new Tuple<string, string>(ENTITIES.AccommClass, "Id")
             }
             , Sizes = new Dictionary<string, int> {
                  ["CreatedBy"           ] = 10

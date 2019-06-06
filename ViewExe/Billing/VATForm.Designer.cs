@@ -62,6 +62,7 @@
             this.btnSave.TabIndex = 10;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // btnNew
             // 
@@ -74,7 +75,6 @@
             // 
             // txtUpdatedOn
             // 
-            
             this.txtUpdatedOn.Location = new System.Drawing.Point(214, 181);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -84,7 +84,6 @@
             // 
             // txtUpdatedBy
             // 
-            
             this.txtUpdatedBy.Location = new System.Drawing.Point(141, 181);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -103,7 +102,6 @@
             // 
             // txtCreatedOn
             // 
-            
             this.txtCreatedOn.Location = new System.Drawing.Point(214, 155);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -113,7 +111,6 @@
             // 
             // txtCreatedBy
             // 
-            
             this.txtCreatedBy.Location = new System.Drawing.Point(141, 155);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -202,14 +199,11 @@
             // lookUpButtonVAT
             // 
             this.lookUpButtonVAT.AssociatedControl = "txtVATCode";
-            this.lookUpButtonVAT.Source = "VAT";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.lookUpButtonVAT.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.lookUpButtonVAT.Location = new System.Drawing.Point(295, 60);
             this.lookUpButtonVAT.Name = "lookUpButtonVAT";
-            // 0;
-            //("VATCode");
-            //("VATDesc");
             this.lookUpButtonVAT.Size = new System.Drawing.Size(22, 22);
+            this.lookUpButtonVAT.Source = "VAT";
             this.lookUpButtonVAT.TabIndex = 2;
             this.lookUpButtonVAT.TabStop = false;
             this.lookUpButtonVAT.LookUpSelected += new System.EventHandler(this.LookUpButton1LookUpSelected);
@@ -219,17 +213,18 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(13, 122);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 13);
+            this.label4.Size = new System.Drawing.Size(106, 13);
             this.label4.TabIndex = 49;
-            this.label4.Text = "VAT Amount";
+            this.label4.Text = "VAT Percentage (%)";
             // 
             // txtVATAmount
             // 
             this.txtVATAmount.Location = new System.Drawing.Point(141, 121);
-            this.txtVATAmount.Mask = "0.00";
+            this.txtVATAmount.Mask = "\\0.00";
             this.txtVATAmount.Name = "txtVATAmount";
             this.txtVATAmount.Size = new System.Drawing.Size(58, 20);
             this.txtVATAmount.TabIndex = 4;
+            this.txtVATAmount.Text = "00";
             // 
             // VATForm
             // 

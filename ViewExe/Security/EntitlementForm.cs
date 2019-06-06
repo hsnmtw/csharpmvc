@@ -30,8 +30,8 @@ namespace MVCHIS.Security {
         }
 
         public override void LoadForeignKeys(ForeignKeys FK) {
-            FK.Put(DBControllersFactory.GetController<EntitlementGroupModel>());
-            FK.Put(DBControllersFactory.GetController<EntityModel>());
+            FK.Put(DBControllersFactory.GetEntitlementGroupController());
+            FK.Put(DBControllersFactory.GetEntityController());
             base.LoadForeignKeys(FK);
         }
 

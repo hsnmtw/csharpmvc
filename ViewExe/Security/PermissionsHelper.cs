@@ -14,10 +14,10 @@ namespace MVCHIS.Security {
         public PermissionsHelper(BaseView<M,C> view) {
             if(view==null) throw new ArgumentException("view cannot be null");
             //if(model==default) throw new ArgumentException("model cannot be null");
-            var ecn = DBControllersFactory.GetController<EntitlementModel>(); //ODELS.Entitlement);
-            var pec = DBControllersFactory.GetController<ProfileEntitlementModel>(); //ODELS.ProfileEntitlement);
-            var pc  = DBControllersFactory.GetController<ProfileModel>(); //ODELS.Profile);
-            var enc = DBControllersFactory.GetController<EntityModel>(); //MODELS.Entity);
+            var CntrlEN = DBControllersFactory.GetEntitlementController(); 
+            var CntrlPE = DBControllersFactory.GetProfileEntitlementController(); 
+            var CntrlPR = DBControllersFactory.GetProfileController(); 
+            var CntrlET = DBControllersFactory.GetEntityController(); 
 
             var usr = MVCHISSession.Instance.CurrentUser;
 
@@ -25,12 +25,12 @@ namespace MVCHIS.Security {
             //var mdl = view?.GetType().GetCustomAttributes().OfType<ForModelAttribute>().FirstOrDefault();
             //if (mdl == null) return;
 
-            var entity = enc.Find(new EntityModel() { EntityName = $"{typeof(M).Name}".Replace("Model", "") }, "EntityName");
+            var entity = CntrlET.Find(new EntityModel() { EntityName = $"{typeof(M).Name}".Replace("Model", "") }, "EntityName");
 
-            var ent = ecn.Find(new EntitlementModel() { EntityId = entity.Id }, "EntityId");
+            var ent = CntrlEN.Find(new EntitlementModel() { EntityId = entity.Id }, "EntityId");
             if (ent == null) return;
             
-            var pen = pec.Find(new ProfileEntitlementModel() {
+            var pen = CntrlPE.Find(new ProfileEntitlementModel() {
                 ProfileId = usr.ProfileId ,
                 EntitlementId = ent.Id
             }, "ProfileId", "EntitlementId");

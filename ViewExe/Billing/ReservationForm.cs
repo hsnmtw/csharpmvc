@@ -42,9 +42,9 @@ namespace MVCHIS.Billing {
         }
 
         public override void LoadForeignKeys(ForeignKeys FK) {
-            FK.Put(DBControllersFactory.GetController<RoomModel>());
-            FK.Put(DBControllersFactory.GetController<ClientModel>());
-            FK.Put(DBControllersFactory.GetController<CurrencyModel>());
+            FK.Put(DBControllersFactory.GetRoomController());
+            FK.Put(DBControllersFactory.GetClientController());
+            FK.Put(DBControllersFactory.GetCurrencyController());
         }
 
         private void AfterNewButtonClick(bool obj) {

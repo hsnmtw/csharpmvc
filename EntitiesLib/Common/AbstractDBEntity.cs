@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVCHIS.Utils.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -41,12 +42,10 @@ namespace MVCHIS.Common {
 
         }
 
-        public virtual bool Validate(M model) {
-            var p = MetaData.RequiredFields;
-            var i = p.Select(x => x.EndsWith("Id") && x.Length>2 && "0".Equals($"{model.GetType().GetProperty(x).GetValue(model)}".Trim()));
-            var q = p.Select(x => "".Equals($"{model.GetType().GetProperty(x).GetValue(model)}".Trim()));
-            var w = q.All(y => !y) && i.All(y => !y);
-            return w;
+        public virtual string Validate(M model) {
+            BaseValidator<M> validator = new BaseValidator<M>(MetaData);
+            var vresult = validator.Validate(model);
+            return vresult.Errors.Select(x => x.ErrorMessage).ToList().Print().Replace(",",",\n");
         }
 
         public DataTable GetDataById(M model, IEnumerable<int> Ids) {

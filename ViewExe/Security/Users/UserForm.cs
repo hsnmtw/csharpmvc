@@ -36,7 +36,7 @@ namespace MVCHIS.Security.Users {
         }
 
         public override void LoadForeignKeys(ForeignKeys FK) {
-            FK.Put(DBControllersFactory.GetController<ProfileModel>());
+            FK.Put(DBControllersFactory.GetProfileController());
             base.LoadForeignKeys(FK);
         }
 

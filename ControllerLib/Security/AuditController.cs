@@ -6,10 +6,6 @@ namespace MVCHIS.Security {
     //[ForModel(MODELS.Audit, Enabled = true)]
     public class AuditController : AbstractDBController<AuditModel> {
 
-        public override bool Validate(AuditModel model) {
-            return base.Validate(model);
-        }
-
         public void RegisterEvent(AuditModel model) {
             model.UpdatedBy = "SYSTEM";
             model.CreatedBy = "SYSTEM";

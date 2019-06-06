@@ -23,7 +23,7 @@ namespace web {
         public void Test() {
             MVCHIS.Common.MVCHISSession.Instance.Initialize();
 
-            json(DBControllersFactory.GetController<RoomModel>().Read());
+            json(DBControllersFactory.GetRoomController().Read());
         }
 
 

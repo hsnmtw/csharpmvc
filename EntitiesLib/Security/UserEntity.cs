@@ -15,7 +15,7 @@ namespace MVCHIS.Security {
             , RequiredFields  = new HashSet<string> {"Id","UserName","FullName","UserPassword","ProfileId"}
             , UniqueKeyFields = new HashSet<HashSet<string>> { new HashSet<string> { "UserName" } }
             , ForeignKeys     = new Dictionary<string, Tuple<string, string>> {
-                ["ProfileId"] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<ProfileModel>().MetaData.Source,"Id") 
+                ["ProfileId"] = new Tuple<string, string>(ENTITIES.Profile,"Id") 
             }
             , Sizes = new Dictionary<string, int> {
                 ["CreatedBy"   ] = 10,

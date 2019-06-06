@@ -82,6 +82,10 @@
     <Compile Include="Security\ProfileModel.cs" />
     <Compile Include="Security\UserModel.cs" />
     <Compile Include="Tools\DictionaryModel.cs" />
+    <Compile Include="Utils\Extensions\DateExtensions.cs" />
+    <Compile Include="Utils\Extensions\ListExtensions.cs" />
+    <Compile Include="Utils\Extensions\ReflexionExtensions.cs" />
+    <Compile Include="Utils\Extensions\Strings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Tables.txt" />

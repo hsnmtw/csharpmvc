@@ -15,7 +15,7 @@ namespace MVCHIS.Billing {
             , RequiredFields   = new HashSet<string> { "Id", "ContractCode","ClientId", "StartDate" }
             , UniqueKeyFields = new HashSet<HashSet<string>> { new HashSet<string> { "ContractCode" } }
             , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
-                ["ClientId"] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<ClientModel>().MetaData.Source,"Id")
+                ["ClientId"] = new Tuple<string, string>(ENTITIES.Client,"Id")
             }
             , Sizes = new Dictionary<string, int> {
                 ["CreatedBy"   ] = 10,

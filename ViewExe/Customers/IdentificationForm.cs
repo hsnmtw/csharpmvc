@@ -28,8 +28,8 @@ namespace MVCHIS.Customers {
         }
 
         public override void LoadForeignKeys(ForeignKeys FK) {
-            FK.Put(DBControllersFactory.GetController<CityModel>());
-            FK.Put(DBControllersFactory.GetController<IdentificationTypeModel>());
+            FK.Put(DBControllersFactory.GetCityController());
+            FK.Put(DBControllersFactory.GetIdentificationTypeController());
             base.LoadForeignKeys(FK);
         }
 

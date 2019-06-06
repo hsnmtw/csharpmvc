@@ -12,10 +12,10 @@ namespace MVCHIS.Billing {
             , RequiredFields   = new HashSet<string> { "Id", "BillingCategoryId", "ContractId", "Price", "CurrencyId","EffectiveFromDate","VATId" }
             , UniqueKeyFields  = new HashSet<HashSet<string>> { new HashSet<string> { "BillingCategoryId", "ContractId" } }
             , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
-                ["ContractId"       ] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<ContractModel>().MetaData.Source,"Id"),
-                ["BillingCategoryId"] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<BillingCategoryModel>().MetaData.Source, "Id"),
-                ["CurrencyId"       ] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<CurrencyModel>().MetaData.Source, "Id"),
-                ["VATId"            ] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<VATModel>().MetaData.Source, "Id")
+                ["ContractId"       ] = new Tuple<string, string>(ENTITIES.Contract,"Id"),
+                ["BillingCategoryId"] = new Tuple<string, string>(ENTITIES.BillingCategory, "Id"),
+                ["CurrencyId"       ] = new Tuple<string, string>(ENTITIES.Currency, "Id"),
+                ["VATId"            ] = new Tuple<string, string>(ENTITIES.VAT, "Id")
             }
             , Sizes = new Dictionary<string, int> {
                 ["CreatedBy"   ] = 10,

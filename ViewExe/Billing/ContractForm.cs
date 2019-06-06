@@ -27,11 +27,11 @@ namespace MVCHIS.Billing {
         public ContractForm() {
             InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
 
-            CntrlCL = (ClientController)DBControllersFactory.GetController<ClientModel>();
-            CntrlCG = (BillingCategoryController)DBControllersFactory.GetController<BillingCategoryModel>();
-            CntrlSR = (ServiceController)DBControllersFactory.GetController<ServiceModel>();
-            CntrlCU = (CurrencyController)DBControllersFactory.GetController<CurrencyModel>();
-            CntrlVT = (VATController)DBControllersFactory.GetController<VATModel>();
+            CntrlCL = DBControllersFactory.GetClientController();
+            CntrlCG = DBControllersFactory.GetBillingCategoryController();
+            CntrlSR = DBControllersFactory.GetServiceController();
+            CntrlCU = DBControllersFactory.GetCurrencyController();
+            CntrlVT = DBControllersFactory.GetVATController();
 
             //template
             Mapper["Id"] = txtId;

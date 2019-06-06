@@ -30,8 +30,8 @@ namespace MVCHIS.Housing.Rooms {
             NewButton = btnNew;
         }
         public override void LoadForeignKeys(ForeignKeys FK) {
-            FK.Put(DBControllersFactory.GetController<CountryModel>());
-            FK.Put(DBControllersFactory.GetController<BuildingModel>());
+            FK.Put(DBControllersFactory.GetCountryController());
+            FK.Put(DBControllersFactory.GetBuildingController());
         }
 
         private void RoomForm_Load(object sender, EventArgs e) { if (DesignMode || (Site != null && Site.DesignMode)) return;

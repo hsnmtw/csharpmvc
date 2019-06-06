@@ -1,6 +1,10 @@
 ﻿using MVCHIS.Common;
 using MVCHIS.Configurations;
+using MVCHIS.Tools;
+using MVCHIS.Utils.Extensions;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MVCHIS.Security {
     //[ForModel(MODELS.User, Enabled = true)]
@@ -12,6 +16,34 @@ namespace MVCHIS.Security {
                 model.UserPassword = CryptoFactory.Encrypt(model.UserPassword);
             }
             return base.Save(model);
+        }
+
+        private AuditController CntrlAU;
+        private EntitlementGroupController CntrlEG;
+        private EntityController CntrlET;
+        private EntitlementController CntrlEN;
+        private ProfileEntitlementController CntrlPE;
+
+        public UserController() {
+            CntrlAU = DBControllersFactory.GetAuditController();
+            CntrlEG = DBControllersFactory.GetEntitlementGroupController();
+            CntrlET = DBControllersFactory.GetEntityController();
+            CntrlEN = DBControllersFactory.GetEntitlementController();
+            CntrlPE = DBControllersFactory.GetProfileEntitlementController();
+        }
+
+        public IEnumerable<STriple> GetMenu(UserModel model) {
+            var FK = ForeignKeys.Instance;
+            FK.Put(CntrlPE);
+            FK.Put(CntrlEN);
+            FK.Put(CntrlET);
+            FK.Put(CntrlEG);
+            
+            var eids = CntrlPE.Read(new ProfileEntitlementModel {
+                ProfileId = model.ProfileId,
+                AllowRead =true
+            }).Select(x => x.EntitlementId);
+            return CntrlEN.FindById(eids).Select(x => new STriple(FK[MODELS.EntitlementGroup,x.EntitlementGroupId],x.EntitlementName, FK[MODELS.Entity, x.EntityId])).Ordered();
         }
 
         public override int Delete(UserModel model) {
@@ -28,8 +60,6 @@ namespace MVCHIS.Security {
                 model.UserPassword = new CryptoController().Process(new CryptoModel() { InputText = model.UserPassword }).Encrypted;
             }
 
-            var audit = (AuditController)DBControllersFactory.GetController<AuditModel>();
-
             model.IsActive = true;
             UserModel modelf = Find(model, "UserName", "UserPassword", "IsActive");
 
@@ -43,7 +73,7 @@ namespace MVCHIS.Security {
                     }
                     Save(user);
                     
-                    audit.RegisterEvent(new AuditModel() {
+                    CntrlAU.RegisterEvent(new AuditModel() {
                         UserName = model.UserName,
                         EventComments = $"Login denied : {user}"
                     });
@@ -56,7 +86,7 @@ namespace MVCHIS.Security {
             model.LastLoginDate = DateTime.Now;
             Save(model);
 
-            audit.RegisterEvent(new AuditModel() {
+            CntrlAU.RegisterEvent(new AuditModel() {
                 UserName = model.UserName,
                 EventComments = "Login successful"
             });
@@ -71,14 +101,14 @@ namespace MVCHIS.Security {
             if (modelf == null) return false;
             model = (UserModel)modelf;
             model.FailedLoginAttempts = 0;
-            this.Save(model);
+            int save = Save(model);
 
-            var audit = (AuditController)DBControllersFactory.GetController<AuditModel>();
-            audit.RegisterEvent(new AuditModel() {
+           
+            CntrlAU.RegisterEvent(new AuditModel() {
                 UserName = model.UserName,
                 EventComments = $"reset login counter : {model.UserName}"
             });
-            return base.Validate(model);
+            return save > 0;
         }
 
         public void ResetPassword(UserModel model) {
@@ -88,8 +118,8 @@ namespace MVCHIS.Security {
             model.UserPassword = password;
             model.LastChangePassword = DateTime.Now;
             Save(model);
-            var audit = (AuditController)DBControllersFactory.GetController<AuditModel>();
-            audit.RegisterEvent(new AuditModel() {
+            
+            CntrlAU.RegisterEvent(new AuditModel() {
                 UserName = model.UserName,
                 EventComments = "password reset for user : " + model.UserName
             });

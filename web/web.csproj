@@ -73,6 +73,9 @@
     <Content Include="Global.asax" />
     <Content Include="HIS.asmx" />
     <Content Include="HIS.aspx" />
+    <Content Include="Main.aspx" />
+    <Content Include="Views\Security\Login.ascx" />
+    <Content Include="Views\Tools\DictionaryUC.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -90,7 +93,28 @@
     <Compile Include="HIS.aspx.designer.cs">
       <DependentUpon>HIS.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Main.aspx.cs">
+      <DependentUpon>Main.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Main.aspx.designer.cs">
+      <DependentUpon>Main.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Security\Login.ascx.cs">
+      <DependentUpon>Login.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Security\Login.ascx.designer.cs">
+      <DependentUpon>Login.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tools\DictionaryUC.ascx.cs">
+      <DependentUpon>DictionaryUC.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Tools\DictionaryUC.ascx.designer.cs">
+      <DependentUpon>DictionaryUC.ascx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ControllerLib\ControllerLib.csproj">
@@ -102,6 +126,7 @@
       <Name>ModelLib</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

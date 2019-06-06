@@ -28,7 +28,7 @@ namespace MVCHIS.Customers {
         }
 
         public override void LoadForeignKeys(ForeignKeys FK) {
-            FK.Put(DBControllersFactory.GetController<ClientModel>());
+            FK.Put(DBControllersFactory.GetClientContactController());
             base.LoadForeignKeys(FK);
         }
 

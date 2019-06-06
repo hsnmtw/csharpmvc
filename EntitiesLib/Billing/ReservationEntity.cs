@@ -15,9 +15,9 @@ namespace MVCHIS.Billing {
             , RequiredFields   = new HashSet<string> { "Id", "FromDate", "ToDate", "RoomId", "ClientId" }
             , UniqueKeyFields  = new HashSet<HashSet<string>> { new HashSet<string> { "ReservationCode" } }
             , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
-                ["RoomId"]     = new Tuple<string, string>(DBEntitiesFactory.GetEntity<RoomModel>().MetaData.Source, "Id"),
-                ["ClientId"]   = new Tuple<string, string>(DBEntitiesFactory.GetEntity<ClientModel>().MetaData.Source, "Id"),
-                ["CurrencyId"] = new Tuple<string, string>(DBEntitiesFactory.GetEntity<CurrencyModel>().MetaData.Source, "Id"),
+                ["RoomId"]     = new Tuple<string, string>(ENTITIES.Room, "Id"),
+                ["ClientId"]   = new Tuple<string, string>(ENTITIES.Client, "Id"),
+                ["CurrencyId"] = new Tuple<string, string>(ENTITIES.Currency, "Id"),
             }
             , Sizes = new Dictionary<string, int> {
                 ["CreatedBy"] = 10,

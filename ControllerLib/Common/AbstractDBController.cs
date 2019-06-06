@@ -10,9 +10,9 @@ namespace MVCHIS.Common {
         public Action<M> OnDeleteAction { get; set; }
 
         public AbstractDBController() : base() {
-            BaseEntity = DBEntitiesFactory.GetEntity<M>();
+            BaseEntity = DBEntitiesFactory.GetEntityOfModel<M>();
         }
-        public virtual bool Validate(M model) {
+        public virtual string Validate(M model) {
             return BaseEntity.Validate(model);
         }
         //public abstract void Initialize();
@@ -30,7 +30,8 @@ namespace MVCHIS.Common {
         public virtual IEnumerable<M> Read(M model, params string[] whereFields) => BaseEntity.Read(model, false, whereFields);
         public virtual IEnumerable<M> Read(M model, bool like = false, params string[] whereFields) => BaseEntity.Read(model, like, whereFields);
         public virtual int Save(M model){
-            if (!Validate(model)) throw new Exception("Validation error.");
+            var validation = Validate(model);
+            if (!"[]".Equals(validation)) throw new Exception(validation);
             int result;
             if (model.Id == 0) {
                 model.CreatedBy = (MVCHISSession.Instance.CurrentUser==null ? "SYSTEM" : MVCHISSession.Instance.CurrentUser.UserName);

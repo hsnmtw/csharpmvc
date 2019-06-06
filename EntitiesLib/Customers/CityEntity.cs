@@ -13,7 +13,7 @@ namespace MVCHIS.Customers {
             , RequiredFields   = new HashSet<string> { "Id", "CityArabic", "CityEnglish", "CountryId" }
             , UniqueKeyFields = new HashSet<HashSet<string>> { new HashSet<string> { "CityEnglish" } }
             , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
-                ["CountryId"]  = new Tuple<string, string> (DBEntitiesFactory.GetEntity<CountryModel>().MetaData.Source,"Id")
+                ["CountryId"]  = new Tuple<string, string> (ENTITIES.Country,"Id")
             }
             , Sizes = new Dictionary<string, int> {
                  ["CreatedBy"     ] = 10

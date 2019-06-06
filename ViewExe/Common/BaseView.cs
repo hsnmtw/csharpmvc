@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using System.Drawing;
 using System.Threading;
+using MVCHIS.Utils.Extensions;
 
 namespace MVCHIS.Common {
 
@@ -113,7 +114,7 @@ namespace MVCHIS.Common {
 
         public void ViewLoadingEvent(object sender, EventArgs e) {
             if (DesignMode || (Site != null && Site.DesignMode)) return;
-            Controller = (C)DBControllersFactory.GetController<M>();
+            Controller = DBControllersFactory.GetController<C>();
             new Thread(delegate() {
                 BeginInvoke((Action) delegate() { InitializeView(); });
             }).Start();

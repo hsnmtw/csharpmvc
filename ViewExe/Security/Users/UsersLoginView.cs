@@ -8,8 +8,8 @@ using System.Windows.Forms;
 namespace MVCHIS.Security.Users {
     public partial class UsersLoginView: UserView
     {
-        
-       // public CryptoController Encryption;
+
+        public Action<UserModel> GoClicked;
 
         public UsersLoginView(){
             InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
@@ -23,22 +23,7 @@ namespace MVCHIS.Security.Users {
 
         private void Button1Click(object sender, EventArgs e)
         {
-            
-            var model = ((UserController)Controller).Autheniticate(this.Model);
-            if (model != null)
-            {
-                this.Model = model;
-                MainView.Instance.WhenAuthenticated(model);
-                //this.DialogResult = DialogResult.OK;
-                MainView.Instance.Show();
-                this.Hide();
-                
-            }
-            else
-            {
-                Utils.FormsHelper.Error(@"Login denied");
-            }
-            
+            GoClicked?.Invoke(Model);
         }
 
         private void UserNameLookup_LookUpSelected(object sender, EventArgs e) {
