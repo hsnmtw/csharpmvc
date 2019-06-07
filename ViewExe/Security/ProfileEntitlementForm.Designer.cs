@@ -36,15 +36,11 @@
             this.txtEntitlementName = new System.Windows.Forms.TextBox();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.chkAllowDelete = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.chkAllowUpdate = new System.Windows.Forms.CheckBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.chkAllowRead = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtProfileName = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.chkAllowCreate = new System.Windows.Forms.CheckBox();
             this.btnPLProfile = new MVCHIS.Common.PickListButton();
             this.btnPLEntitlement = new MVCHIS.Common.PickListButton();
@@ -179,58 +175,34 @@
             this.label10.TabIndex = 51;
             this.label10.Text = "Read Only";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(294, 129);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 13);
-            this.label3.TabIndex = 51;
-            this.label3.Text = "Allow Delete";
-            // 
             // chkAllowDelete
             // 
             this.chkAllowDelete.AutoSize = true;
             this.chkAllowDelete.Location = new System.Drawing.Point(273, 129);
             this.chkAllowDelete.Name = "chkAllowDelete";
-            this.chkAllowDelete.Size = new System.Drawing.Size(15, 14);
+            this.chkAllowDelete.Size = new System.Drawing.Size(85, 17);
             this.chkAllowDelete.TabIndex = 11;
+            this.chkAllowDelete.Text = "Allow Delete";
             this.chkAllowDelete.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(294, 105);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 13);
-            this.label4.TabIndex = 51;
-            this.label4.Text = "Allow Update";
             // 
             // chkAllowUpdate
             // 
             this.chkAllowUpdate.AutoSize = true;
             this.chkAllowUpdate.Location = new System.Drawing.Point(273, 104);
             this.chkAllowUpdate.Name = "chkAllowUpdate";
-            this.chkAllowUpdate.Size = new System.Drawing.Size(15, 14);
+            this.chkAllowUpdate.Size = new System.Drawing.Size(89, 17);
             this.chkAllowUpdate.TabIndex = 9;
+            this.chkAllowUpdate.Text = "Allow Update";
             this.chkAllowUpdate.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(183, 130);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(60, 13);
-            this.label7.TabIndex = 51;
-            this.label7.Text = "Allow Read";
             // 
             // chkAllowRead
             // 
             this.chkAllowRead.AutoSize = true;
             this.chkAllowRead.Location = new System.Drawing.Point(161, 130);
             this.chkAllowRead.Name = "chkAllowRead";
-            this.chkAllowRead.Size = new System.Drawing.Size(15, 14);
+            this.chkAllowRead.Size = new System.Drawing.Size(79, 17);
             this.chkAllowRead.TabIndex = 10;
+            this.chkAllowRead.Text = "Allow Read";
             this.chkAllowRead.UseVisualStyleBackColor = true;
             // 
             // label8
@@ -251,22 +223,14 @@
             this.txtProfileName.TabIndex = 3;
             this.txtProfileName.TabStop = false;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(183, 105);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(68, 13);
-            this.label9.TabIndex = 51;
-            this.label9.Text = "Allow Create";
-            // 
             // chkAllowCreate
             // 
             this.chkAllowCreate.AutoSize = true;
             this.chkAllowCreate.Location = new System.Drawing.Point(161, 105);
             this.chkAllowCreate.Name = "chkAllowCreate";
-            this.chkAllowCreate.Size = new System.Drawing.Size(15, 14);
+            this.chkAllowCreate.Size = new System.Drawing.Size(87, 17);
             this.chkAllowCreate.TabIndex = 8;
+            this.chkAllowCreate.Text = "Allow Create";
             this.chkAllowCreate.UseVisualStyleBackColor = true;
             // 
             // btnPLProfile
@@ -358,12 +322,8 @@
             this.Controls.Add(this.btnPLProfile);
             this.Controls.Add(this.chkAllowCreate);
             this.Controls.Add(this.chkAllowRead);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.chkAllowUpdate);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.chkAllowDelete);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.chkReadOnly);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtProfileId);
@@ -405,15 +365,11 @@
         private System.Windows.Forms.TextBox txtEntitlementName;
         private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox chkAllowDelete;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox chkAllowUpdate;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox chkAllowRead;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtProfileName;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox chkAllowCreate;
         private Common.PickListButton btnPLProfile;
         private Common.PickListButton btnPLEntitlement;

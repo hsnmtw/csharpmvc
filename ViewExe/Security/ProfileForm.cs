@@ -75,7 +75,10 @@ namespace MVCHIS.Security {
         }
 
         private void BtnDeletePE_Click(object sender, EventArgs e) {
-            DBControllersFactory.ProfileEntitlement().Delete(new ProfileEntitlementModel { Id = lstProfileEntitlements.SelectedValue.ToInteger() });
+            int peId = lstProfileEntitlements.SelectedValue.ToInteger();
+            DBControllersFactory.ProfileEntitlement().Delete(new ProfileEntitlementModel { Id = peId });
+            profileEntitlements.RemoveAt(profileEntitlements.IndexOf(profileEntitlements.Where(x => x.Id == peId).First()));
+            lstProfileEntitlements.Items.RemoveAt(lstProfileEntitlements.SelectedIndices[0]);
         }
 
         private void BtnAddPE_Click(object sender, EventArgs e) {
@@ -102,11 +105,13 @@ namespace MVCHIS.Security {
             view.DisableChangeProfile();
             bool isnew = pe.Id == 0;
             view.AfterSave += (b) => {
-                
+                pe.EntitlementId = view.Model.EntitlementId;
+                pe.ProfileId = view.Model.ProfileId;
+                var model = DBControllersFactory.ProfileEntitlement().Find(pe, "ProfileId", "EntitlementId");
                 if (isnew) {
-                    profileEntitlements.Add(view.Model);
+                    profileEntitlements.Add(model);
                 } else {
-                    profileEntitlements[profileEntitlements.IndexOf(profileEntitlements.Where(x => x.Id == pe.Id).First())]=view.Model;
+                    profileEntitlements[profileEntitlements.IndexOf(profileEntitlements.Where(x => x.Id == pe.Id).First())]=model;
                 }
                 RequeryEntitlements();
                 form.Close();
