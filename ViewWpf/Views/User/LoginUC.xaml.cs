@@ -29,7 +29,7 @@ namespace ViewWpf.Views.User {
                 UserName = txtUserName.Text,
                 UserPassword = txtPassword.Password
             };
-            UserController controller = DBControllersFactory.GetUserController();
+            UserController controller = DBControllersFactory.User();
             if (controller.Autheniticate(um) == null) {
                 MessageBox.Show("Access Denied");
             } else {

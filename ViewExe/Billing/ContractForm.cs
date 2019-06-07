@@ -27,11 +27,11 @@ namespace MVCHIS.Billing {
         public ContractForm() {
             InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
 
-            CntrlCL = DBControllersFactory.GetClientController();
-            CntrlCG = DBControllersFactory.GetBillingCategoryController();
-            CntrlSR = DBControllersFactory.GetServiceController();
-            CntrlCU = DBControllersFactory.GetCurrencyController();
-            CntrlVT = DBControllersFactory.GetVATController();
+            CntrlCL = DBControllersFactory.Client();
+            CntrlCG = DBControllersFactory.BillingCategory();
+            CntrlSR = DBControllersFactory.Service();
+            CntrlCU = DBControllersFactory.Currency();
+            CntrlVT = DBControllersFactory.VAT();
 
             //template
             Mapper["Id"] = txtId;
@@ -51,6 +51,9 @@ namespace MVCHIS.Billing {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
+            //pick lists
+            PickList[btnPLClient] = txtClientId;
+            PickList[btnPLContract] = txtId;
 
             Services = new List<ServiceModel>();
 
@@ -61,27 +64,16 @@ namespace MVCHIS.Billing {
         }
 
 
-        public override void LoadForeignKeys(ForeignKeys FK) {
-            FK.Put(CntrlCU);
-            FK.Put(CntrlVT);
-            FK.Put(CntrlCG);
-            FK.Put(CntrlCL);
-        }
-
-        private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            Model = Controller.Find(new ContractModel() { Id = txtContractCode.Text.ToInteger() }, "Id");
-        }
-
         private void ContractFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
             SuspendLayout();
-            this.listViewControl1.Items.Clear();
-            this.listViewControl1.Columns.Clear();
-            this.listViewControl1.LoadData("", new ServiceModel[] { }, SERVICE_COLUMNS) ;
+            this.lstServices.Items.Clear();
+            this.lstServices.Columns.Clear();
+            this.lstServices.LoadData("", new ServiceModel[] { }, SERVICE_COLUMNS) ;
             ResumeLayout();
         }
 
         private void TxtClient_TextChanged(object sender, EventArgs e) {
-            txtClientShortName.Text = ForeignKeys.Instance[MODELS.Client,txtClientId.Text];
+            txtClientShortName.Text = DBControllersFactory.FK(MODELS.Client,txtClientId.Text);
         }
 
         private void TxtId_TextChanged(object sender, EventArgs e) {
@@ -100,7 +92,7 @@ namespace MVCHIS.Billing {
                 Services = new List<ServiceModel>();
             }
 
-            this.listViewControl1.LoadData("", Services, SERVICE_COLUMNS);
+            this.lstServices.LoadData("", Services, SERVICE_COLUMNS);
         }
 
         private ServiceView OpenService(ServiceModel service) {
@@ -113,8 +105,8 @@ namespace MVCHIS.Billing {
             form.FormBorderStyle = FormBorderStyle.FixedToolWindow;
             form.StartPosition = FormStartPosition.CenterScreen;
             form.Size = new System.Drawing.Size(430, 430);
-            view.NewButtonEnabled = false;
-            view.DeleteButtonEnabled = false;
+            view.SetNewButtonEnabled    ( false );
+            view.SetDeleteButtonEnabled ( false );
             view.DisableChangeContract();
             view.AfterNew = delegate (bool status) {
                 view.SetModel(new ServiceModel() { ContractId = Model.Id });
@@ -124,33 +116,35 @@ namespace MVCHIS.Billing {
         }
 
         private void BtnAddService_Click(object sender, EventArgs e) {
+            if (txtId.Text.ToInteger() == 0) return;
             var view = OpenService(new ServiceModel());
             view.AfterSave += delegate(bool status) {
                 if (status) {
                     Services.Add(view.Model);
-                    listViewControl1.AddRowFromModel(view.Model);
-                    listViewControl1.Items[Services.Count - 1].Selected = true;
+                    lstServices.AddRowFromModel(view.Model);
+                    lstServices.Items[Services.Count - 1].Selected = true;
                 }
             };
         }
 
         private void BtnEditService_Click(object sender, EventArgs e) {
-            if (listViewControl1.SelectedIndices.Count < 1) return;
-            var view = OpenService(Services[listViewControl1.SelectedIndices[0]]);
+            if (lstServices.SelectedIndices.Count < 1) return;
+            var view = OpenService(Services[lstServices.SelectedIndices[0]]);
             view.AfterSave += delegate (bool status) {
                 //RequeryGrid();
                 if (status) {
-                    listViewControl1.Items.RemoveAt(listViewControl1.SelectedIndices[0]);
-                    listViewControl1.AddRowFromModel(view.Model);
-                    listViewControl1.Items[Services.Count - 1].Selected = true;
+                    lstServices.Items.RemoveAt(lstServices.SelectedIndices[0]);
+                    lstServices.AddRowFromModel(view.Model);
+                    lstServices.Items[Services.Count - 1].Selected = true;
                 }
             };
         }
 
         private void BtnDeleteService_Click(object sender, EventArgs e) {
-            if (listViewControl1.SelectedIndices.Count < 1) return;
-            CntrlSR.Delete(Services[listViewControl1.SelectedIndices[0]]);
-            listViewControl1.Items.RemoveAt(listViewControl1.SelectedIndices[0]);
+            if (lstServices.SelectedIndices.Count < 1) return;
+            if (Controller.DeleteService(lstServices.SelectedValue.ToInteger()) > 0) {
+                lstServices.Items.RemoveAt(lstServices.SelectedIndices[0]);
+            }
         }
 
         private void TxtStartDate_Leave(object sender, EventArgs e) {
@@ -159,6 +153,12 @@ namespace MVCHIS.Billing {
 
         private void TxtEndDate_Leave(object sender, EventArgs e) {
             ValidateDate(txtEndDate);
+        }
+
+        
+
+        private void PickListButton1_LookUpSelected(int obj) {
+            txtClientId.Text = obj.ToString();
         }
     }
    

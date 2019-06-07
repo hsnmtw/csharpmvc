@@ -25,19 +25,16 @@ namespace MVCHIS.Customers {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
-        }
-
-        public override void LoadForeignKeys(ForeignKeys FK) {
-            FK.Put(DBControllersFactory.GetCityController());
-            FK.Put(DBControllersFactory.GetIdentificationTypeController());
-            base.LoadForeignKeys(FK);
+            //pick lists
+            PickList[btnPLCity] = txtCityId;
+            PickList[btnPLIdentification] = txtId;
+            PickList[btnPLIdentificationType] = txtIdentificationTypeId;
         }
 
         private void ClientTypeFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
         }
 
-        private void LookUpButtonShortNameLookUpSelected(object sender, EventArgs e) {
-            Model = Controller.Find(new IdentificationModel() { Id = txtIdentificationNumber.Text.ToInteger() }, "Id");
+        private void PickListButtonShortNameLookUpSelected(int id) {
         }
 
         private void TxtIssueDate_Leave(object sender, EventArgs e) {
@@ -49,12 +46,14 @@ namespace MVCHIS.Customers {
         }
 
         private void TxtIdentificationType_TextChanged(object sender, EventArgs e) {
-            txtIdentificationTypeEnglish.Text = ForeignKeys.Instance[MODELS.IdentificationType, txtIdentificationTypeId.Text];
+            txtIdentificationTypeEnglish.Text = DBControllersFactory.FK(MODELS.IdentificationType, txtIdentificationTypeId.Text);
         }
 
         private void TxtCityId_TextChanged(object sender, EventArgs e) {
-            txtCityEnglish.Text = ForeignKeys.Instance[MODELS.City, txtCityId.Text];
+            txtCityEnglish.Text = DBControllersFactory.FK(MODELS.City, txtCityId.Text);
         }
+
+        
     }
     
 }

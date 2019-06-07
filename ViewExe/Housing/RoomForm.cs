@@ -28,29 +28,24 @@ namespace MVCHIS.Housing.Rooms {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
+            //pick lists
+            PickList[btnPLBuilding] = txtBuildingId;
+            PickList[btnPLCountry] = txtCountryId;
+            PickList[btnPLRoom] = txtId;
         }
-        public override void LoadForeignKeys(ForeignKeys FK) {
-            FK.Put(DBControllersFactory.GetCountryController());
-            FK.Put(DBControllersFactory.GetBuildingController());
-        }
-
+        
         private void RoomForm_Load(object sender, EventArgs e) { if (DesignMode || (Site != null && Site.DesignMode)) return;
         }
 
-
-        private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            Model = Controller.Find(new RoomModel() { Id = txtRoomName.Text.ToInteger() }, "Id");
-        }
-
         private void TxtBuildingId_TextChanged(object sender, EventArgs e) {
-            txtBuildingName.Text = ForeignKeys.Instance[MODELS.Building, txtBuildingId.Text];
+            txtBuildingName.Text = DBControllersFactory.FK(MODELS.Building, txtBuildingId.Text);
         }
 
         private void TxtCountryId_TextChanged(object sender, EventArgs e) {
-            txtCountryCode.Text = ForeignKeys.Instance[MODELS.Country, txtCountryId.Text];
+            txtCountryCode.Text = DBControllersFactory.FK(MODELS.Country, txtCountryId.Text);
         }
 
-
+        
     }
     
 }

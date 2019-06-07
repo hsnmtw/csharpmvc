@@ -36,7 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtBuildingTypeCode = new System.Windows.Forms.TextBox();
-            this.lookUpButton1 = new MVCHIS.Common.LookUpButton();
+            this.btnPLBuildingType = new MVCHIS.Common.PickListButton();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -153,23 +153,19 @@
             // 
             this.txtBuildingTypeCode.Location = new System.Drawing.Point(139, 46);
             this.txtBuildingTypeCode.Name = "txtBuildingTypeCode";
-            this.txtBuildingTypeCode.Size = new System.Drawing.Size(154, 20);
+            this.txtBuildingTypeCode.Size = new System.Drawing.Size(211, 20);
             this.txtBuildingTypeCode.TabIndex = 1;
             // 
-            // lookUpButton1
+            // btnPLBuildingType
             // 
-            this.lookUpButton1.AssociatedControl = "txtBuildingTypeCode";
-            this.lookUpButton1.Source = "BuildingType";
-            this.lookUpButton1.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButton1.Location = new System.Drawing.Point(294, 45);
-            this.lookUpButton1.Name = "lookUpButton1";
-            //
-            //("BuildingTypeCode");
-            //("Id");
-            this.lookUpButton1.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButton1.TabIndex = 2;
-            this.lookUpButton1.TabStop = false;
-            this.lookUpButton1.LookUpSelected += new System.EventHandler(this.LookUpButton1LookUpSelected);
+            this.btnPLBuildingType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLBuildingType.Location = new System.Drawing.Point(210, 12);
+            this.btnPLBuildingType.Name = "btnPLBuildingType";
+            this.btnPLBuildingType.Size = new System.Drawing.Size(22, 22);
+            this.btnPLBuildingType.Source = "BuildingType";
+            this.btnPLBuildingType.TabIndex = 2;
+            this.btnPLBuildingType.TabStop = false;
+            this.btnPLBuildingType.Text = "↓";
             // 
             // chkReadOnly
             // 
@@ -200,7 +196,7 @@
             this.Controls.Add(this.txtUpdatedOn);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.txtUpdatedBy);
-            this.Controls.Add(this.lookUpButton1);
+            this.Controls.Add(this.btnPLBuildingType);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.txtBuildingTypeCode);
             this.Controls.Add(this.label6);
@@ -232,7 +228,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtBuildingTypeCode;
-        private Common.LookUpButton lookUpButton1;
+        private Common.PickListButton btnPLBuildingType;
         private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
     }

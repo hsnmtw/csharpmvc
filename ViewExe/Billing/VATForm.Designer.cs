@@ -40,7 +40,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.lookUpButtonVAT = new MVCHIS.Common.LookUpButton();
+            this.btnPLVAT = new MVCHIS.Common.PickListButton();
             this.label4 = new System.Windows.Forms.Label();
             this.txtVATAmount = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
@@ -158,7 +158,7 @@
             // 
             this.txtVATCode.Location = new System.Drawing.Point(141, 61);
             this.txtVATCode.Name = "txtVATCode";
-            this.txtVATCode.Size = new System.Drawing.Size(154, 20);
+            this.txtVATCode.Size = new System.Drawing.Size(58, 20);
             this.txtVATCode.TabIndex = 1;
             // 
             // txtVATDesc
@@ -196,17 +196,16 @@
             this.label10.TabIndex = 47;
             this.label10.Text = "Read Only";
             // 
-            // lookUpButtonVAT
+            // btnPLVAT
             // 
-            this.lookUpButtonVAT.AssociatedControl = "txtVATCode";
-            this.lookUpButtonVAT.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonVAT.Location = new System.Drawing.Point(295, 60);
-            this.lookUpButtonVAT.Name = "lookUpButtonVAT";
-            this.lookUpButtonVAT.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonVAT.Source = "VAT";
-            this.lookUpButtonVAT.TabIndex = 2;
-            this.lookUpButtonVAT.TabStop = false;
-            this.lookUpButtonVAT.LookUpSelected += new System.EventHandler(this.LookUpButton1LookUpSelected);
+            this.btnPLVAT.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLVAT.Location = new System.Drawing.Point(211, 27);
+            this.btnPLVAT.Name = "btnPLVAT";
+            this.btnPLVAT.Size = new System.Drawing.Size(22, 22);
+            this.btnPLVAT.Source = "VAT";
+            this.btnPLVAT.TabIndex = 2;
+            this.btnPLVAT.TabStop = false;
+            this.btnPLVAT.Text = "↓";
             // 
             // label4
             // 
@@ -224,7 +223,6 @@
             this.txtVATAmount.Name = "txtVATAmount";
             this.txtVATAmount.Size = new System.Drawing.Size(58, 20);
             this.txtVATAmount.TabIndex = 4;
-            this.txtVATAmount.Text = "00";
             // 
             // VATForm
             // 
@@ -242,7 +240,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.lookUpButtonVAT);
+            this.Controls.Add(this.btnPLVAT);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtVATCode);
             this.Controls.Add(this.txtCreatedOn);
@@ -272,7 +270,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtVATCode;
-        private Common.LookUpButton lookUpButtonVAT;
+        private Common.PickListButton btnPLVAT;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtVATDesc;
         private System.Windows.Forms.Label label2;

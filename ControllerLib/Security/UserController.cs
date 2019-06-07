@@ -25,25 +25,24 @@ namespace MVCHIS.Security {
         private ProfileEntitlementController CntrlPE;
 
         public UserController() {
-            CntrlAU = DBControllersFactory.GetAuditController();
-            CntrlEG = DBControllersFactory.GetEntitlementGroupController();
-            CntrlET = DBControllersFactory.GetEntityController();
-            CntrlEN = DBControllersFactory.GetEntitlementController();
-            CntrlPE = DBControllersFactory.GetProfileEntitlementController();
+            CntrlAU = DBControllersFactory.Audit();
+            CntrlEG = DBControllersFactory.EntitlementGroup();
+            CntrlET = DBControllersFactory.Entity();
+            CntrlEN = DBControllersFactory.Entitlement();
+            CntrlPE = DBControllersFactory.ProfileEntitlement();
         }
 
         public IEnumerable<STriple> GetMenu(UserModel model) {
-            var FK = ForeignKeys.Instance;
-            FK.Put(CntrlPE);
-            FK.Put(CntrlEN);
-            FK.Put(CntrlET);
-            FK.Put(CntrlEG);
             
             var eids = CntrlPE.Read(new ProfileEntitlementModel {
                 ProfileId = model.ProfileId,
                 AllowRead =true
             }).Select(x => x.EntitlementId);
-            return CntrlEN.FindById(eids).Select(x => new STriple(FK[MODELS.EntitlementGroup,x.EntitlementGroupId],x.EntitlementName, FK[MODELS.Entity, x.EntityId])).Ordered();
+
+            var eg = CntrlEG.Select(new EntitlementGroupModel(), "Id,EntitlementGroupName").ToDictionary(x=>x.Id,x=>x.EntitlementGroupName);
+            var et = CntrlET.Select(new EntityModel(), "Id,EntityName").ToDictionary(x => x.Id, x => x.EntityName);
+            
+            return CntrlEN.FindById(eids).Select(x => new STriple(eg[x.EntitlementGroupId],x.EntitlementName, et[x.EntityId])).Ordered();
         }
 
         public override int Delete(UserModel model) {

@@ -40,7 +40,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.lookUpButtonFoodType = new MVCHIS.Common.LookUpButton();
+            this.btnPLFoodType = new MVCHIS.Common.PickListButton();
             this.SuspendLayout();
             // 
             // btnDelete
@@ -72,7 +72,6 @@
             // 
             // txtUpdatedOn
             // 
-            
             this.txtUpdatedOn.Location = new System.Drawing.Point(214, 181);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -82,7 +81,6 @@
             // 
             // txtUpdatedBy
             // 
-            
             this.txtUpdatedBy.Location = new System.Drawing.Point(140, 181);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -101,7 +99,6 @@
             // 
             // txtCreatedOn
             // 
-            
             this.txtCreatedOn.Location = new System.Drawing.Point(214, 155);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -111,7 +108,6 @@
             // 
             // txtCreatedBy
             // 
-            
             this.txtCreatedBy.Location = new System.Drawing.Point(140, 155);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -136,7 +132,6 @@
             this.txtId.Size = new System.Drawing.Size(68, 20);
             this.txtId.TabIndex = 0;
             this.txtId.TabStop = false;
-            
             // 
             // label1
             // 
@@ -160,7 +155,7 @@
             // 
             this.txtFoodTypeCode.Location = new System.Drawing.Point(140, 61);
             this.txtFoodTypeCode.Name = "txtFoodTypeCode";
-            this.txtFoodTypeCode.Size = new System.Drawing.Size(154, 20);
+            this.txtFoodTypeCode.Size = new System.Drawing.Size(211, 20);
             this.txtFoodTypeCode.TabIndex = 1;
             // 
             // txtFoodTypeDesc
@@ -198,20 +193,16 @@
             this.label10.TabIndex = 47;
             this.label10.Text = "Read Only";
             // 
-            // lookUpButtonFoodType
+            // btnPLFoodType
             // 
-            this.lookUpButtonFoodType.AssociatedControl = "txtFoodTypeCode";
-            this.lookUpButtonFoodType.Source = "FoodType";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonFoodType.Location = new System.Drawing.Point(295, 60);
-            this.lookUpButtonFoodType.Name = "lookUpButtonFoodType";
-            // 0;
-            //("FoodTypeCode");
-            //("FoodTypeDesc");
-            this.lookUpButtonFoodType.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonFoodType.TabIndex = 2;
-            this.lookUpButtonFoodType.TabStop = false;
-            this.lookUpButtonFoodType.LookUpSelected += new System.EventHandler(this.LookUpButton1LookUpSelected);
+            this.btnPLFoodType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLFoodType.Location = new System.Drawing.Point(211, 27);
+            this.btnPLFoodType.Name = "btnPLFoodType";
+            this.btnPLFoodType.Size = new System.Drawing.Size(22, 22);
+            this.btnPLFoodType.Source = "FoodType";
+            this.btnPLFoodType.TabIndex = 2;
+            this.btnPLFoodType.TabStop = false;
+            this.btnPLFoodType.Text = "↓";
             // 
             // FoodTypeForm
             // 
@@ -227,7 +218,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.lookUpButtonFoodType);
+            this.Controls.Add(this.btnPLFoodType);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtFoodTypeCode);
             this.Controls.Add(this.txtCreatedOn);
@@ -257,7 +248,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtFoodTypeCode;
-        private Common.LookUpButton lookUpButtonFoodType;
+        private Common.PickListButton btnPLFoodType;
         private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtFoodTypeDesc;

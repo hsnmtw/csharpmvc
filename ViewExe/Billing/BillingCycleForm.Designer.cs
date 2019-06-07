@@ -39,7 +39,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.lookUpButtonBillingCycle = new MVCHIS.Common.LookUpButton();
+            this.btnPLBillingCycle = new MVCHIS.Common.PickListButton();
             this.txtBillingCycleMonth = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
@@ -132,7 +132,6 @@
             this.txtId.Size = new System.Drawing.Size(68, 20);
             this.txtId.TabIndex = 0;
             this.txtId.TabStop = false;
-            
             // 
             // label1
             // 
@@ -187,21 +186,17 @@
             this.label10.TabIndex = 47;
             this.label10.Text = "Read Only";
             // 
-            // lookUpButtonBillingCycle
+            // btnPLBillingCycle
             // 
-            this.lookUpButtonBillingCycle.AssociatedControl = "txtId";
-            this.lookUpButtonBillingCycle.Source = "BillingCycle";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonBillingCycle.Location = new System.Drawing.Point(210, 31);
-            this.lookUpButtonBillingCycle.Name = "lookUpButtonBillingCycle";
-            // 2;
-            //("BillingCycleYear");
-            //("BillingCycleMonth");
-            //("Id");
-            this.lookUpButtonBillingCycle.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonBillingCycle.TabIndex = 1;
-            this.lookUpButtonBillingCycle.TabStop = false;
-            this.lookUpButtonBillingCycle.LookUpSelected += new System.EventHandler(this.LookUpButton1LookUpSelected);
+            this.btnPLBillingCycle.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLBillingCycle.Location = new System.Drawing.Point(210, 31);
+            this.btnPLBillingCycle.Name = "btnPLBillingCycle";
+            this.btnPLBillingCycle.Size = new System.Drawing.Size(22, 22);
+            this.btnPLBillingCycle.Source = "BillingCycle";
+            this.btnPLBillingCycle.TabIndex = 1;
+            this.btnPLBillingCycle.TabStop = false;
+            this.btnPLBillingCycle.Text = "↓";
+            
             // 
             // txtBillingCycleMonth
             // 
@@ -214,7 +209,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(378, 311);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.chkReadOnly);
@@ -224,7 +218,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.lookUpButtonBillingCycle);
+            this.Controls.Add(this.btnPLBillingCycle);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtBillingCycleMonth);
             this.Controls.Add(this.txtBillingCycleYear);
@@ -234,7 +228,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtCreatedBy);
             this.Name = "BillingCycleForm";
-            this.Text = "Food Types";
+            this.Size = new System.Drawing.Size(378, 311);
             this.Load += new System.EventHandler(this.BillingCycleFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -255,7 +249,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtBillingCycleYear;
-        private Common.LookUpButton lookUpButtonBillingCycle;
+        private Common.PickListButton btnPLBillingCycle;
         private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label2;

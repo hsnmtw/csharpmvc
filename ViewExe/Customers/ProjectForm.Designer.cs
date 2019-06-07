@@ -36,12 +36,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtProjectName = new System.Windows.Forms.TextBox();
-            this.lookUpButtonClient = new MVCHIS.Common.LookUpButton();
+            this.btnPLClient = new MVCHIS.Common.PickListButton();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtClientId = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.lookUpButtonProjectName = new MVCHIS.Common.LookUpButton();
+            this.btnPLProject = new MVCHIS.Common.PickListButton();
             this.txtClientShortName = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
@@ -157,23 +157,19 @@
             // 
             this.txtProjectName.Location = new System.Drawing.Point(151, 48);
             this.txtProjectName.Name = "txtProjectName";
-            this.txtProjectName.Size = new System.Drawing.Size(188, 20);
+            this.txtProjectName.Size = new System.Drawing.Size(212, 20);
             this.txtProjectName.TabIndex = 1;
             // 
-            // lookUpButtonClient
+            // btnPLClient
             // 
-            this.lookUpButtonClient.AssociatedControl = "txtClientId";
-            this.lookUpButtonClient.Source = "Client";
-            this.lookUpButtonClient.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonClient.Location = new System.Drawing.Point(341, 74);
-            this.lookUpButtonClient.Name = "lookUpButtonClient";
-            // 2;
-            //("ShortName");
-            //("LongName");
-            //("Id");
-            this.lookUpButtonClient.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonClient.TabIndex = 4;
-            this.lookUpButtonClient.TabStop = false;
+            this.btnPLClient.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLClient.Location = new System.Drawing.Point(341, 74);
+            this.btnPLClient.Name = "btnPLClient";
+            this.btnPLClient.Size = new System.Drawing.Size(22, 22);
+            this.btnPLClient.Source = "Client";
+            this.btnPLClient.TabIndex = 4;
+            this.btnPLClient.TabStop = false;
+            this.btnPLClient.Text = "↓";
             // 
             // chkReadOnly
             // 
@@ -212,19 +208,16 @@
             this.label2.TabIndex = 47;
             this.label2.Text = "Client";
             // 
-            // lookUpButtonProjectName
+            // btnPLProject
             // 
-            this.lookUpButtonProjectName.AssociatedControl = "txtProjectName";
-            this.lookUpButtonProjectName.Source = "Project";
-            this.lookUpButtonProjectName.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonProjectName.Location = new System.Drawing.Point(341, 46);
-            this.lookUpButtonProjectName.Name = "lookUpButtonProjectName";
-            // 0;
-            //("ProjectName");
-            this.lookUpButtonProjectName.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonProjectName.TabIndex = 2;
-            this.lookUpButtonProjectName.TabStop = false;
-            this.lookUpButtonProjectName.LookUpSelected += new System.EventHandler(this.LookUpButtonProjectNameLookUpSelected);
+            this.btnPLProject.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLProject.Location = new System.Drawing.Point(221, 20);
+            this.btnPLProject.Name = "btnPLProject";
+            this.btnPLProject.Size = new System.Drawing.Size(22, 22);
+            this.btnPLProject.Source = "Project";
+            this.btnPLProject.TabIndex = 2;
+            this.btnPLProject.TabStop = false;
+            this.btnPLProject.Text = "↓";
             // 
             // txtClientShortName
             // 
@@ -252,9 +245,9 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.txtCreatedOn);
-            this.Controls.Add(this.lookUpButtonProjectName);
+            this.Controls.Add(this.btnPLProject);
             this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.lookUpButtonClient);
+            this.Controls.Add(this.btnPLClient);
             this.Controls.Add(this.txtCreatedBy);
             this.Controls.Add(this.txtProjectName);
             this.Controls.Add(this.label3);
@@ -281,10 +274,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtProjectName;
-        private Common.LookUpButton lookUpButtonClient;
+        private Common.PickListButton btnPLClient;
         private System.Windows.Forms.TextBox txtClientId;
         private System.Windows.Forms.Label label2;
-        private Common.LookUpButton lookUpButtonProjectName;
+        private Common.PickListButton btnPLProject;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtClientShortName;
         private System.Windows.Forms.CheckBox chkReadOnly;

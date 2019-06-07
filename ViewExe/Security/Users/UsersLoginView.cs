@@ -15,10 +15,10 @@ namespace MVCHIS.Security.Users {
             InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             Mapper["UserName"] = txtUserName;
             Mapper["UserPassword"] = txtPassword;
+            PickList[btnPLUser] = txtId;
         }
 
         private void UsersLoginView_Load(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
-
         }
 
         private void Button1Click(object sender, EventArgs e)
@@ -26,8 +26,8 @@ namespace MVCHIS.Security.Users {
             GoClicked?.Invoke(Model);
         }
 
-        private void UserNameLookup_LookUpSelected(object sender, EventArgs e) {
-            txtUserName.Text = ForeignKeys.Instance[MODELS.User, txtUserName.Text];
+        private void TxtId_TextChanged(object sender, EventArgs e) {
+            txtUserName.Text = DBControllersFactory.FK(MODELS.User, txtId.Text);
         }
     }
 }

@@ -32,6 +32,10 @@ namespace MVCHIS.Billing {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
+            //pick lists
+            PickList[btnPLCurrencyFXRate] = txtId;
+            PickList[btnPLFromCurrency] = txtFromCurrencyId;
+            PickList[btnPLToCurrency] = txtToCurrencyId;
 
             
             AfterNew += AfterNewButtonClick;
@@ -47,31 +51,25 @@ namespace MVCHIS.Billing {
             
         }
 
-        public override void LoadForeignKeys(ForeignKeys FK) {
-            FK.Put(DBControllersFactory.GetCurrencyController());
-        }
-
         private void TxtFromDate_Leave(object sender, EventArgs e) {
             if(DateTime.TryParse(txtFXDate.Text,out DateTime fromdate)) {
                 txtFXDate.Text = fromdate.ToSortableString();
             }
         }
 
-        private void LookUpButtonRecordId_LookUpSelected(object sender, EventArgs e) {
-            Model = Controller.Find(new CurrencyFXRateModel() { Id = txtId.Text.ToInteger() }, "Id");
-        }
-
         private void TxtFromCurrencyId_TextChanged(object sender, EventArgs e) {
             if (int.TryParse(txtFromCurrencyId.Text, out int currencyid)) {
-                txtFromCurrencyEnglish.Text = ForeignKeys.Instance[MODELS.Currency,currencyid];
+                txtFromCurrencyEnglish.Text = DBControllersFactory.FK(MODELS.Currency,currencyid);
             }
         }
 
         private void TxtToCurrencyId_TextChanged(object sender, EventArgs e) {
             if (int.TryParse(txtToCurrencyId.Text, out int currencyid)) {
-                txtToCurrencyEnglish.Text = ForeignKeys.Instance[MODELS.Currency,currencyid];
+                txtToCurrencyEnglish.Text = DBControllersFactory.FK(MODELS.Currency,currencyid);
             }
         }
+
+        
     }
    
 }

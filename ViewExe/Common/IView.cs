@@ -13,15 +13,16 @@ namespace MVCHIS.Common {
         Action<bool> AfterDelete   { get; set; }
         Action ModelChanged { get; set; }
         Dictionary<string, Control> Mapper { get; }
+        Dictionary<PickListButton, TextBox> PickList { get; }
         Button SaveButton { get; set; }
         Button NewButton { get; set; }
         Button DeleteButton { get; set; }
-        void LoadForeignKeys(ForeignKeys FK);
-        bool   SaveButtonEnabled { get; set; }
-        bool    NewButtonEnabled { get; set; }
-        bool DeleteButtonEnabled { get; set; }
+        void SetSaveButtonEnabled  (bool Enabled);
+        void SetNewButtonEnabled   (bool Enabled);
+        void SetDeleteButtonEnabled(bool Enabled);
         void SetModel(BaseModel model);
         BaseModel GetModel();
         Control DefaultControl { get; set; }
+        void SetModel(int id);
     }
 }

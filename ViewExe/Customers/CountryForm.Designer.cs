@@ -39,7 +39,7 @@
             this.txtUpdatedBy = new System.Windows.Forms.TextBox();
             this.txtCreatedOn = new System.Windows.Forms.TextBox();
             this.txtUpdatedOn = new System.Windows.Forms.TextBox();
-            this.CountryCodeLookupButton = new MVCHIS.Common.LookUpButton();
+            this.btnPLCountry = new MVCHIS.Common.PickListButton();
             this.txtCountryCode = new System.Windows.Forms.TextBox();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -142,7 +142,6 @@
             // 
             // txtCreatedBy
             // 
-            
             this.txtCreatedBy.Location = new System.Drawing.Point(140, 138);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -161,7 +160,6 @@
             // 
             // txtUpdatedBy
             // 
-            
             this.txtUpdatedBy.Location = new System.Drawing.Point(140, 164);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -171,7 +169,6 @@
             // 
             // txtCreatedOn
             // 
-            
             this.txtCreatedOn.Location = new System.Drawing.Point(207, 138);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -181,7 +178,6 @@
             // 
             // txtUpdatedOn
             // 
-            
             this.txtUpdatedOn.Location = new System.Drawing.Point(207, 164);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -189,26 +185,22 @@
             this.txtUpdatedOn.TabIndex = 8;
             this.txtUpdatedOn.TabStop = false;
             // 
-            // CountryCodeLookupButton
+            // btnPLCountry
             // 
-            this.CountryCodeLookupButton.AssociatedControl = "txtCountryCode";
-            this.CountryCodeLookupButton.Source = "Country";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.CountryCodeLookupButton.Location = new System.Drawing.Point(213, 37);
-            this.CountryCodeLookupButton.Name = "CountryCodeLookupButton";
-            // 0;
-            //("CountryCode");
-            //("CountryEnglish");
-            this.CountryCodeLookupButton.Size = new System.Drawing.Size(22, 22);
-            this.CountryCodeLookupButton.TabIndex = 2;
-            this.CountryCodeLookupButton.TabStop = false;
-            this.CountryCodeLookupButton.LookUpSelected += new System.EventHandler(this.CountryCodeTextBoxLookUpSelected);
+            this.btnPLCountry.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLCountry.Location = new System.Drawing.Point(203, 11);
+            this.btnPLCountry.Name = "btnPLCountry";
+            this.btnPLCountry.Size = new System.Drawing.Size(22, 22);
+            this.btnPLCountry.Source = "Country";
+            this.btnPLCountry.TabIndex = 2;
+            this.btnPLCountry.TabStop = false;
+            this.btnPLCountry.Text = "↓";
             // 
             // txtCountryCode
             // 
             this.txtCountryCode.Location = new System.Drawing.Point(140, 38);
             this.txtCountryCode.Name = "txtCountryCode";
-            this.txtCountryCode.Size = new System.Drawing.Size(72, 20);
+            this.txtCountryCode.Size = new System.Drawing.Size(85, 20);
             this.txtCountryCode.TabIndex = 1;
             // 
             // chkReadOnly
@@ -236,7 +228,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.chkReadOnly);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.CountryCodeLookupButton);
+            this.Controls.Add(this.btnPLCountry);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnNew);
@@ -280,7 +272,7 @@
         private System.Windows.Forms.TextBox txtUpdatedBy;
         private System.Windows.Forms.TextBox txtCreatedOn;
         private System.Windows.Forms.TextBox txtUpdatedOn;
-        private Common.LookUpButton CountryCodeLookupButton;
+        private Common.PickListButton btnPLCountry;
         private System.Windows.Forms.TextBox txtCountryCode;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.CheckBox chkReadOnly;

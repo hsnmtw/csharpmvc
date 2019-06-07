@@ -14,10 +14,10 @@ namespace MVCHIS.Billing {
                                                       "FromDate", "ToDate", "RoomId", "ClientId", "Confirmed", "Rate", "CurrencyId","ReservationCode" }
             , RequiredFields   = new HashSet<string> { "Id", "FromDate", "ToDate", "RoomId", "ClientId" }
             , UniqueKeyFields  = new HashSet<HashSet<string>> { new HashSet<string> { "ReservationCode" } }
-            , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
-                ["RoomId"]     = new Tuple<string, string>(ENTITIES.Room, "Id"),
-                ["ClientId"]   = new Tuple<string, string>(ENTITIES.Client, "Id"),
-                ["CurrencyId"] = new Tuple<string, string>(ENTITIES.Currency, "Id"),
+            , ForeignKeys      = new Dictionary<string, Tuple<MODELS, string>> {
+                ["RoomId"]     = new Tuple<MODELS, string>(MODELS.Room, "Id"),
+                ["ClientId"]   = new Tuple<MODELS, string>(MODELS.Client, "Id"),
+                ["CurrencyId"] = new Tuple<MODELS, string>(MODELS.Currency, "Id"),
             }
             , Sizes = new Dictionary<string, int> {
                 ["CreatedBy"] = 10,

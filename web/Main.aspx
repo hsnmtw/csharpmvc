@@ -2,7 +2,7 @@
 
 <%@ Register src="Views/Security/Login.ascx" tagname="Login" tagprefix="uc1" %>
 
-<%@ Register src="Views/Tools/DictionaryUC.ascx" tagname="DictionaryUC" tagprefix="uc2" %>
+<%@ Register src="Views/Tools/DictionaryUC.ascx" tagname="WordUC" tagprefix="uc2" %>
 
 <!DOCTYPE html>
 
@@ -23,7 +23,7 @@
                     </asp:TreeView>
                 </td>
                 <td>
-                    <uc2:DictionaryUC ID="DictionaryUC1" runat="server"  Visible="False" />
+                    <uc2:DictionaryUC ID="WordUC1" runat="server"  Visible="False" />
                 </td>
             </tr>
         </table>

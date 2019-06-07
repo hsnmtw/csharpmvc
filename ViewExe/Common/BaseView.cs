@@ -74,16 +74,15 @@ namespace MVCHIS.Common {
         private Func<string, bool> isDouble,isInt32,isInt64,isBoolean,isDateTime;
         private Func<string, PropertyInfo> Prop;
 
-        private Dictionary<string, Control> mapper = new Dictionary<string, Control>();
-        [Browsable(false),EditorBrowsable(EditorBrowsableState.Never),DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Dictionary<string, Control> Mapper => mapper;
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public Dictionary<string, Control> Mapper { get; private set; }
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public Dictionary<PickListButton, TextBox> PickList { get; private set; }
+
         public Button SaveButton { get; set; }
         public Button NewButton { get; set; }
         public Button DeleteButton { get; set; }
 
-        public bool   SaveButtonEnabled { get; set; }
-        public bool    NewButtonEnabled { get; set; }
-        public bool DeleteButtonEnabled { get; set; }
         [Browsable(false),EditorBrowsable(EditorBrowsableState.Never),DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Action ModelChanged { get; set; }
         public Control DefaultControl { get; set; }
@@ -93,6 +92,9 @@ namespace MVCHIS.Common {
         public Action<bool> AfterDelete { get; set; }
 
         public BaseView() : base() {
+            Mapper = new Dictionary<string, Control>();
+            PickList = new Dictionary<PickListButton, TextBox>();
+
             Name = GetType().Name;
             if (DesignMode || (Site != null && Site.DesignMode)) return;
 
@@ -118,16 +120,13 @@ namespace MVCHIS.Common {
             new Thread(delegate() {
                 BeginInvoke((Action) delegate() { InitializeView(); });
             }).Start();
-            new Thread(delegate() {
-                LoadForeignKeys(ForeignKeys.Instance);
-            }).Start();
         }
 
         private void InitializeView() {
             SuspendLayout();
 
             //Thread.Sleep(10);
-            ForeignKeys.Instance.Put(Controller);
+            
 
             var md = Controller.GetMetaData();
             var uqkeys = md.UniqueKeyFields.Flatten();
@@ -146,15 +145,12 @@ namespace MVCHIS.Common {
 
             new PermissionsHelper<M, C>(this);
             if (SaveButton != null) {
-                SaveButton.Enabled = SaveButtonEnabled;
                 SaveButton.Click += SaveModelEvent;
             }
             if (DeleteButton != null) {
-                DeleteButton.Enabled = DeleteButtonEnabled;
                 DeleteButton.Click += DeleteModelEvent;
             }
             if (NewButton != null) {
-                NewButton.Enabled = NewButtonEnabled;
                 NewButton.Click += NewModelEvent;
             }
             //var controls = (from cntrl in Mapper.Values orderby cntrl.TabIndex where cntrl.TabStop select cntrl);
@@ -163,6 +159,22 @@ namespace MVCHIS.Common {
                 Mapper[cntrl].Name = cntrl;
                 Mapper[cntrl].KeyDown += MapperControlKeyDownEvent;
                 if ((xcld.Contains(cntrl) || Mapper[cntrl].BackColor.Equals(GREEN)) == false) Mapper[cntrl].BackColor = Color.White;
+                if ("Id".Equals(cntrl)) {
+                    (Mapper[cntrl] as TextBox).ReadOnly = true;
+                    Mapper[cntrl].TextChanged += (ts, te) => {
+                        SetModel(Mapper[cntrl].Text.ToInteger());
+                    };
+                }
+            }
+            foreach(var lookup in PickList) {
+                lookup.Value.ReadOnly = true;
+                lookup.Key.PickListItemSelected += (int id) => {
+                    lookup.Value.Text = id.ToString();
+                };
+                lookup.Value.KeyPress += (ls, le) => {
+                    lookup.Key.PerformClick();
+                    lookup.Key.SetFilter(le.KeyChar);
+                };
             }
             DefaultControl = Mapper.Values.Where(x => x.TabStop).OrderBy(x => x.TabIndex).FirstOrDefault();
             DefaultControl?.Focus();
@@ -173,13 +185,13 @@ namespace MVCHIS.Common {
 
 
         private void SaveModelEvent(object sender, EventArgs e) {
-            try {
+            //try {
             int saveresult = Controller.Save(Model);
             if (saveresult > 0) Model = Controller.Find(Model, Controller.GetMetaData().UniqueKeyFields.FirstOrDefault().ToArray());
             AfterSave?.Invoke(saveresult > 0);
-            } catch (Exception ex) {
-                FormsHelper.Error(ex.Message);
-            };
+            //} catch (Exception ex) {
+            //    FormsHelper.Error(ex.Message);
+            //}
         }
 
         private void MapperControlKeyDownEvent(object sender, KeyEventArgs ee) {
@@ -210,12 +222,22 @@ namespace MVCHIS.Common {
             }
         }
 
-        public virtual void LoadForeignKeys(ForeignKeys FK) { }
+
 
         public void SetModel(BaseModel model) {
             Model = (M)model;// Controller.FindById<M>(new int[] { Model.Id }).FirstOrDefault();
         }
         [Browsable(false),EditorBrowsable(EditorBrowsableState.Never),DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public BaseModel GetModel() => Model;
+
+        public void SetModel(int id) {
+            Model = Controller.FindById(new int[] { id }).FirstOrDefault();
+        }
+
+        public void SetSaveButtonEnabled(bool Enabled) => SaveButton.Enabled = Enabled;
+
+        public void SetNewButtonEnabled(bool Enabled) => NewButton.Enabled = Enabled;
+
+        public void SetDeleteButtonEnabled(bool Enabled) => DeleteButton.Enabled = Enabled;
     }
 }

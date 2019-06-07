@@ -35,7 +35,7 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtMobileNumber = new System.Windows.Forms.TextBox();
-            this.lookUpButtonContact = new MVCHIS.Common.LookUpButton();
+            this.btnPLContact = new MVCHIS.Common.PickListButton();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtFullName = new System.Windows.Forms.TextBox();
@@ -78,7 +78,6 @@
             // 
             // txtUpdatedOn
             // 
-            
             this.txtUpdatedOn.Location = new System.Drawing.Point(223, 208);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -88,7 +87,6 @@
             // 
             // txtUpdatedBy
             // 
-            
             this.txtUpdatedBy.Location = new System.Drawing.Point(149, 208);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -107,7 +105,6 @@
             // 
             // txtCreatedOn
             // 
-            
             this.txtCreatedOn.Location = new System.Drawing.Point(223, 180);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -117,7 +114,6 @@
             // 
             // txtCreatedBy
             // 
-            
             this.txtCreatedBy.Location = new System.Drawing.Point(149, 180);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -159,20 +155,16 @@
             this.txtMobileNumber.Size = new System.Drawing.Size(154, 20);
             this.txtMobileNumber.TabIndex = 1;
             // 
-            // lookUpButtonContact
+            // btnPLContact
             // 
-            this.lookUpButtonContact.AssociatedControl = "txtMobileNumber";
-            this.lookUpButtonContact.Source = "Contact";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonContact.Location = new System.Drawing.Point(305, 39);
-            this.lookUpButtonContact.Name = "lookUpButtonContact";
-            // 1;
-            //("FullName");
-            //("MobileNumber");
-            this.lookUpButtonContact.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonContact.TabIndex = 2;
-            this.lookUpButtonContact.TabStop = false;
-            this.lookUpButtonContact.LookUpSelected += new System.EventHandler(this.LookUpButton1LookUpSelected);
+            this.btnPLContact.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLContact.Location = new System.Drawing.Point(219, 11);
+            this.btnPLContact.Name = "btnPLContact";
+            this.btnPLContact.Size = new System.Drawing.Size(22, 22);
+            this.btnPLContact.Source = "Contact";
+            this.btnPLContact.TabIndex = 2;
+            this.btnPLContact.TabStop = false;
+            this.btnPLContact.Text = "↓";
             // 
             // chkReadOnly
             // 
@@ -289,7 +281,7 @@
             this.Controls.Add(this.txtUpdatedOn);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.txtUpdatedBy);
-            this.Controls.Add(this.lookUpButtonContact);
+            this.Controls.Add(this.btnPLContact);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.txtMobileNumber);
             this.Controls.Add(this.label6);
@@ -319,7 +311,7 @@
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtMobileNumber;
-        private Common.LookUpButton lookUpButtonContact;
+        private Common.PickListButton btnPLContact;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtFullName;
         private System.Windows.Forms.TextBox txtFaxNumber;

@@ -41,5 +41,10 @@ namespace MVCHIS.Common {
             }
             return sb.ToString();
         }
+
+        public string GetDLL(string entityName) {
+            var entity = DBEntitiesFactory.GetEntityByName(entityName);
+            return ((IEntity)entity).GetDDL();
+        }
     }
 }

@@ -25,6 +25,13 @@ namespace MVCHIS.Utils {
 
         public string Filter { get; set; }
 
+        public string SelectedValue {
+            get {
+                if (SelectedItems.Count == 0) return null;
+                return SelectedItems[0].SubItems[0].Text;
+            }
+        }
+
         public ListViewControl() {
             FullRowSelect = true;
             GridLines = true;
@@ -40,22 +47,12 @@ namespace MVCHIS.Utils {
             AddRowFromArray((from ColumnHeader c in Columns select typeof(M).GetProperty(c.Name).GetValue(model))?.ToArray());
         }
 
-        public void AddRowFromArray(object[] cells) {
-            var FK = ForeignKeys.Instance;
-            var val = cells[0];
-            var mky = FK.GetMatchingKey(Columns[0].Name);
-            if (mky > 0) {
-                val = FK[mky,val];
-            }
-            var item = new ListViewItem(val.ToSortableString());
-            for (int i = 1; i < Columns.Count; i++) {
-                val = cells[i];
-                mky = FK.GetMatchingKey(Columns[i].Name);
-                if (mky > 0) {
-                    val = FK[mky, val];
-                }
-                item.SubItems.Add(val.ToSortableString());
 
+
+        public void AddRowFromArray(object[] cells) {
+            var item = new ListViewItem(DBControllersFactory.GetFKSource(Columns[0].Name, cells[0].ToString()));
+            for (int i = 1; i < Columns.Count; i++) {
+                item.SubItems.Add(DBControllersFactory.GetFKSource(Columns[i].Name, cells[i]));
             }
             if ("".Equals(Filter) || (item + ":" + string.Join("|", item.SubItems.OfType<ListViewItem.ListViewSubItem>().Select(x => x.Text))).ToLower().Contains(Filter.ToLower())) {
                 Items.Add(item);

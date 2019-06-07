@@ -55,8 +55,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.txtProfileName = new System.Windows.Forms.TextBox();
-            this.ProfileNameLookup = new MVCHIS.Common.LookUpButton();
-            this.UserNameLookup = new MVCHIS.Common.LookUpButton();
+            this.btnPLProfile = new MVCHIS.Common.PickListButton();
+            this.btnPLUser = new MVCHIS.Common.PickListButton();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtProfileId = new System.Windows.Forms.TextBox();
@@ -91,7 +91,6 @@
             // 
             // txtUpdatedOn
             // 
-            
             this.txtUpdatedOn.Location = new System.Drawing.Point(233, 366);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -101,7 +100,6 @@
             // 
             // txtUpdatedBy
             // 
-            
             this.txtUpdatedBy.Location = new System.Drawing.Point(157, 366);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -120,7 +118,6 @@
             // 
             // txtCreatedOn
             // 
-            
             this.txtCreatedOn.Location = new System.Drawing.Point(233, 336);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -130,7 +127,6 @@
             // 
             // txtCreatedBy
             // 
-            
             this.txtCreatedBy.Location = new System.Drawing.Point(157, 336);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -164,7 +160,6 @@
             this.txtId.Size = new System.Drawing.Size(68, 20);
             this.txtId.TabIndex = 0;
             this.txtId.TabStop = false;
-            
             // 
             // label1
             // 
@@ -338,7 +333,7 @@
             // 
             this.txtUserName.Location = new System.Drawing.Point(157, 42);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(199, 20);
+            this.txtUserName.Size = new System.Drawing.Size(94, 20);
             this.txtUserName.TabIndex = 1;
             // 
             // txtProfileName
@@ -351,35 +346,27 @@
             this.txtProfileName.TabStop = false;
             this.txtProfileName.TextChanged += new System.EventHandler(this.ProfileNameTextBoxTextChanged);
             // 
-            // ProfileNameLookup
+            // btnPLProfile
             // 
-            this.ProfileNameLookup.AssociatedControl = "txtProfileId";
-            this.ProfileNameLookup.Source = "Profile";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.ProfileNameLookup.Location = new System.Drawing.Point(359, 100);
-            this.ProfileNameLookup.Name = "ProfileNameLookup";
-            //
-            //("ProfileName");
-            //("Id");
-            this.ProfileNameLookup.Size = new System.Drawing.Size(22, 22);
-            this.ProfileNameLookup.TabIndex = 6;
-            this.ProfileNameLookup.TabStop = false;
+            this.btnPLProfile.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLProfile.Location = new System.Drawing.Point(359, 100);
+            this.btnPLProfile.Name = "btnPLProfile";
+            this.btnPLProfile.Size = new System.Drawing.Size(22, 22);
+            this.btnPLProfile.Source = "Profile";
+            this.btnPLProfile.TabIndex = 6;
+            this.btnPLProfile.TabStop = false;
+            this.btnPLProfile.Text = "↓";
             // 
-            // UserNameLookup
+            // btnPLUser
             // 
-            this.UserNameLookup.AssociatedControl = "txtUserName";
-            this.UserNameLookup.Source = "User";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.UserNameLookup.Location = new System.Drawing.Point(359, 41);
-            this.UserNameLookup.Name = "UserNameLookup";
-            //
-            //("UserName");
-            //("FullName");
-            //("IsActive");
-            this.UserNameLookup.Size = new System.Drawing.Size(22, 22);
-            this.UserNameLookup.TabIndex = 2;
-            this.UserNameLookup.TabStop = false;
-            this.UserNameLookup.LookUpSelected += new System.EventHandler(this.UserNameLookup_LookUpSelected);
+            this.btnPLUser.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLUser.Location = new System.Drawing.Point(229, 11);
+            this.btnPLUser.Name = "btnPLUser";
+            this.btnPLUser.Size = new System.Drawing.Size(22, 22);
+            this.btnPLUser.Source = "User";
+            this.btnPLUser.TabIndex = 2;
+            this.btnPLUser.TabStop = false;
+            this.btnPLUser.Text = "↓";
             // 
             // chkReadOnly
             // 
@@ -416,9 +403,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.chkReadOnly);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.ProfileNameLookup);
+            this.Controls.Add(this.btnPLProfile);
             this.Controls.Add(this.txtProfileName);
-            this.Controls.Add(this.UserNameLookup);
+            this.Controls.Add(this.btnPLUser);
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.chkIsActive);
@@ -490,10 +477,10 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtUserPasswordConfirm;
         private System.Windows.Forms.Button button1;
-        private Common.LookUpButton UserNameLookup;
+        private Common.PickListButton btnPLUser;
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.TextBox txtProfileName;
-        private Common.LookUpButton ProfileNameLookup;
+        private Common.PickListButton btnPLProfile;
         private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtProfileId;

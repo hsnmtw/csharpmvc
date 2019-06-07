@@ -14,9 +14,9 @@ namespace MVCHIS.Customers {
                                                   "FaxNumber","Website","CountryId" }
             , RequiredFields  = new HashSet<string> { "Id", "ShortName", "LongName", "ClientTypeId" }
             , UniqueKeyFields = new HashSet<HashSet<string>> { new HashSet<string> { "ShortName" } }
-            , ForeignKeys     = new Dictionary<string, Tuple<string, string>> {
-                ["ClientTypeId"] = new Tuple<string, string>(ENTITIES.ClientType,"Id"),
-                ["CountryId"]    = new Tuple<string, string>(ENTITIES.Country, "Id"),
+            , ForeignKeys     = new Dictionary<string, Tuple<MODELS, string>> {
+                ["ClientTypeId"] = new Tuple<MODELS, string>(MODELS.ClientType,"Id"),
+                ["CountryId"]    = new Tuple<MODELS, string>(MODELS.Country, "Id"),
             }
             , Sizes = new Dictionary<string, int> {
                   ["CreatedBy"     ] = 10

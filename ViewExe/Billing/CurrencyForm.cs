@@ -30,24 +30,21 @@ namespace MVCHIS.Billing {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
+            //pick lists
+            PickList[btnPLCountry] = txtCountryId;
+            PickList[btnPLCurrency] = txtId;
         }
 
-        public override void LoadForeignKeys(ForeignKeys FK) {
-            FK.Put(DBControllersFactory.GetCountryController());
-            base.LoadForeignKeys(FK);
-        }
-
-        private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            Model = Controller.Find(new CurrencyModel() { Id = txtCurrencyCode.Text.ToInteger() }, "Id");
-        }
 
         private void CurrencyFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
 
         }
 
         private void TxtCountryId_TextChanged(object sender, EventArgs e) {
-            txtCountryCode.Text = ForeignKeys.Instance[MODELS.Country, txtCountryId.Text];
+            txtCountryCode.Text = DBControllersFactory.FK(MODELS.Country, txtCountryId.Text);
         }
+
+        
     }
    
 }

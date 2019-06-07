@@ -13,10 +13,10 @@ namespace MVCHIS.Billing {
                                                   "FoodClassId","FoodTypeId","ReservationOnly"}
             , RequiredFields   = new HashSet<string> { "Id","BillingCategoryCode","BillingCategoryDesc","AccommClassId", "FoodClassId", "FoodTypeId" }
             , UniqueKeyFields  = new HashSet<HashSet<string>> { new HashSet<string> { "BillingCategoryCode" } }
-            , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
-                ["FoodTypeId"   ] = new Tuple<string, string>(ENTITIES.FoodType, "Id"),
-                ["FoodClassId"  ] = new Tuple<string, string>(ENTITIES.FoodClass,"Id"),
-                ["AccommClassId"] = new Tuple<string, string>(ENTITIES.AccommClass, "Id")
+            , ForeignKeys      = new Dictionary<string, Tuple<MODELS, string>> {
+                ["FoodTypeId"   ] = new Tuple<MODELS, string>(MODELS.FoodType, "Id"),
+                ["FoodClassId"  ] = new Tuple<MODELS, string>(MODELS.FoodClass,"Id"),
+                ["AccommClassId"] = new Tuple<MODELS, string>(MODELS.AccommClass, "Id")
             }
             , Sizes = new Dictionary<string, int> {
                  ["CreatedBy"           ] = 10

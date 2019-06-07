@@ -14,8 +14,8 @@ namespace MVCHIS.Security {
                                                      "LastLoginDate", "LastChangePassword" }
             , RequiredFields  = new HashSet<string> {"Id","UserName","FullName","UserPassword","ProfileId"}
             , UniqueKeyFields = new HashSet<HashSet<string>> { new HashSet<string> { "UserName" } }
-            , ForeignKeys     = new Dictionary<string, Tuple<string, string>> {
-                ["ProfileId"] = new Tuple<string, string>(ENTITIES.Profile,"Id") 
+            , ForeignKeys     = new Dictionary<string, Tuple<MODELS, string>> {
+                ["ProfileId"] = new Tuple<MODELS, string>(MODELS.Profile,"Id") 
             }
             , Sizes = new Dictionary<string, int> {
                 ["CreatedBy"   ] = 10,

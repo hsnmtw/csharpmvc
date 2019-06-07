@@ -11,8 +11,8 @@ namespace MVCHIS.Security {
                                                       "UserName","EventDate", "EventComments" }
             , RequiredFields   = new HashSet<string> { "Id", "EventDate", "EventComments" }
             , UniqueKeyFields  = new HashSet<HashSet<string>> { new HashSet<string> { "Id" } }
-            , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
-                ["UserName"]   = new Tuple<string, string>(ENTITIES.User,"UserName")
+            , ForeignKeys      = new Dictionary<string, Tuple<MODELS, string>> {
+                ["UserName"]   = new Tuple<MODELS, string>(MODELS.User,"UserName")
             }
             , Sizes = new Dictionary<string, int> {
                 ["CreatedBy"    ] = 10,

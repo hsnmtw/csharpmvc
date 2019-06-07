@@ -33,11 +33,10 @@ namespace MVCHIS.Security.Users {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
-        }
-
-        public override void LoadForeignKeys(ForeignKeys FK) {
-            FK.Put(DBControllersFactory.GetProfileController());
-            base.LoadForeignKeys(FK);
+            //pick lists
+            PickList[btnPLProfile] = txtProfileId;
+            PickList[btnPLUser] = txtId;
+            
         }
 
         private void UserFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
@@ -56,11 +55,9 @@ namespace MVCHIS.Security.Users {
         }
 
         private void TxtProfileId_TextChanged(object sender, EventArgs e) {
-            txtProfileName.Text = ForeignKeys.Instance[MODELS.Profile, txtProfileId.Text];
+            txtProfileName.Text = DBControllersFactory.FK(MODELS.Profile, txtProfileId.Text);
         }
 
-        private void UserNameLookup_LookUpSelected(object sender, EventArgs e) {
-            Model = Controller.Find(new UserModel() { Id = txtUserName.Text.ToInteger() }, "Id");
-        }
+        
     }
 }

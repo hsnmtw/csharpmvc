@@ -25,25 +25,20 @@ namespace MVCHIS.Customers {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
-        }
-
-        public override void LoadForeignKeys(ForeignKeys FK) {
-            FK.Put(DBControllersFactory.GetClientContactController());
-            base.LoadForeignKeys(FK);
+            //pick list
+            PickList[btnPLClient] = txtClientId;
+            PickList[btnPLProject] = txtId;
         }
 
         private void ProjectTypeFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
             
         }
 
-        private void LookUpButtonProjectNameLookUpSelected(object sender, EventArgs e) {
-            
-            Model = Controller.Find(new ProjectModel() { Id = txtProjectName.Text.ToInteger() }, "Id");
+        private void TxtClientId_TextChanged(object sender, EventArgs e) {
+            txtClientShortName.Text = DBControllersFactory.FK(MODELS.Client, txtClientId.Text);
         }
 
-        private void TxtClientId_TextChanged(object sender, EventArgs e) {
-            txtClientShortName.Text = ForeignKeys.Instance[MODELS.Client, txtClientId.Text];
-        }
+        
     }
     
 }

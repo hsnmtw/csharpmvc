@@ -13,7 +13,7 @@ namespace MVCHIS.Billing {
                                                    "BillingCycleYear", "BillingCycleMonth" }
             , RequiredFields   = new HashSet<string> { "Id", "BillingCycleYear", "BillingCycleMonth" }
             , UniqueKeyFields = new HashSet<HashSet<string>> { new HashSet<string> { "BillingCycleYear", "BillingCycleMonth" } }
-            , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
+            , ForeignKeys      = new Dictionary<string, Tuple<MODELS, string>> {
             }
             , Sizes = new Dictionary<string, int> {
                 ["CreatedBy"] = 10,

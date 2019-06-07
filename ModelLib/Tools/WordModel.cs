@@ -1,10 +1,8 @@
 ﻿using MVCHIS.Common;
 
 namespace MVCHIS.Tools {
-    public class DictionaryModel : BaseModel
+    public class WordModel : BaseModel
     {
         public string WordInEnglish { get; set; }
-        public string WordInArabic { get; set; }
-
     }
 }

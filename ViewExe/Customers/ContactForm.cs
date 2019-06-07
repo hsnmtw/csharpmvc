@@ -25,14 +25,15 @@ namespace MVCHIS.Customers {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
-
-        }
-
-        private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            Model = Controller.Find(new ContactModel() { Id = txtMobileNumber.Text.ToInteger() }, "Id");
+            //pick list
+            PickList[btnPLContact] = txtId;
         }
 
         private void ContactFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
+        }
+
+        private void PickListButtonContact_LookUpSelected(int obj) {
+            Model = Controller.Find(new ContactModel() { Id = obj }, "Id");
         }
     }
     

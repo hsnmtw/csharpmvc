@@ -25,14 +25,12 @@ namespace MVCHIS.Billing {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
-        }
-
-        private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            Model = Controller.Find(new AccommClassModel() { Id = txtAccommClassCode.Text.ToInteger() }, "Id");
+            //pick lists
+            PickList[btnPLAccommClass] = txtId;
         }
 
         private void AccommClassFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
-
         }
+
     }    
 }

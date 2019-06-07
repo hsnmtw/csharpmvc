@@ -24,16 +24,14 @@ namespace MVCHIS.Housing {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
-        }
-
-        private void CompoundNameLookupButtonLookUpSelected(object sender, EventArgs e) {
-            
-            Model = Controller.Find(new CompoundModel() { Id = txtCompoundName.Text.ToInteger() }, "Id");
+            //pick lists
+            PickList[btnPLCompound] = txtId;
         }
 
         private void CompoundForm_Load(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
-
         }
+
+        
     }
     
 }

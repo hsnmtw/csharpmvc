@@ -59,10 +59,11 @@
     <Compile Include="Billing\FoodClassEntity.cs" />
     <Compile Include="Billing\FoodTypeEntity.cs" />
     <Compile Include="Common\AbstractDBEntity.cs" />
+    <Compile Include="Common\AbstractInMemoryEntity.cs" />
     <Compile Include="Common\BaseValidator.cs" />
     <Compile Include="Common\DBConnectionManager.cs" />
-    <Compile Include="Common\DBEntitiesFactory - Copy.cs" />
     <Compile Include="Common\DBEntitiesFactory.cs" />
+    <Compile Include="Common\DBEntity.cs" />
     <Compile Include="Common\ENTITIES.cs" />
     <Compile Include="Common\ErrorCodes.cs" />
     <Compile Include="Common\IDBEntity.cs" />
@@ -89,7 +90,9 @@
     <Compile Include="Security\ProfileEntity.cs" />
     <Compile Include="Security\UserEntity.cs" />
     <Compile Include="Security\UserValidator.cs" />
-    <Compile Include="Tools\DictionaryEntity.cs" />
+    <Compile Include="Tools\WordLanguageEntity.cs" />
+    <Compile Include="Tools\LanguageEntity.cs" />
+    <Compile Include="Tools\WordEntity.cs" />
     <Compile Include="Tools\DateConversionEntity.cs" />
     <Compile Include="Tools\EntityEntity.cs" />
     <Compile Include="Utils\Extensions\ValidatorExtensions.cs" />

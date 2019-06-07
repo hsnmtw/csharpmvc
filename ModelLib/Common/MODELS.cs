@@ -22,7 +22,7 @@ namespace MVCHIS.Common {
         , Currency             =    1016
         , CurrencyFXRate       =    1017
         , DateConversion       =    1018
-        , Dictionary           =    1019
+        , Word                 =    1019
         , Entitlement          =    1020
         , EntitlementGroup     =    1021
         , Entity               =    1022
@@ -38,6 +38,7 @@ namespace MVCHIS.Common {
         , Service              =    1032
         , User                 =    1033
         , VAT                  =    1034
-      
+        , Language             =    1035
+        , WordLanguage         =    1036
     }
 }

@@ -17,10 +17,10 @@ namespace MVCHIS.Billing {
         private VATController             CntrlVT;
         public ServiceForm() {
             InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
-            CntrlCN = DBControllersFactory.GetContractController();
-            CntrlCG = DBControllersFactory.GetBillingCategoryController();
-            CntrlCU = DBControllersFactory.GetCurrencyController();
-            CntrlVT = DBControllersFactory.GetVATController();
+            CntrlCN = DBControllersFactory.Contract();
+            CntrlCG = DBControllersFactory.BillingCategory();
+            CntrlCU = DBControllersFactory.Currency();
+            CntrlVT = DBControllersFactory.VAT();
             //template
             Mapper["Id"] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
@@ -35,42 +35,37 @@ namespace MVCHIS.Billing {
             Mapper["Price"] = txtPrice;
             Mapper["Expired"] = chkExpired;
             Mapper["EffectiveFromDate"] = txtEffectiveFromDate;
-            Mapper["VATId"] = lblVATId;
+            Mapper["VATId"] = txtVATId;
             //actions
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
+            //pick lists
+            PickList[btnPLContract] = txtContractId;
+            PickList[btnPLCurrency] = txtCurrencyId;
+            PickList[btnPLService] = txtId;
+            PickList[btnPLVAT] = txtVATId;
         }
 
         public void DisableChangeContract() {
-            lookUpButtonContract.Enabled = false;
+            btnPLContract.Enabled = false;
             txtContractId.Enabled = false;
             txtContractCode.Enabled = false;
         }
 
         private void TxtContractId_TextChanged(object sender, EventArgs e) {
-            int.TryParse(txtContractId.Text,out int id);
-            txtContractCode.Text = CntrlCN.Find(new ContractModel() { Id = id }, "Id")?.ContractCode;
+            txtContractCode.Text = DBControllersFactory.FK(MODELS.Contact, txtContractId.Text);
         }
 
         private void TxtBillingCategoryId_TextChanged(object sender, EventArgs e) {
-            int.TryParse(txtBillingCategoryId.Text, out int id);
-            txtBillingCategoryCode.Text = CntrlCG.Find(new BillingCategoryModel() { Id = id }, "Id")?.BillingCategoryCode;
+            txtBillingCategoryCode.Text = DBControllersFactory.FK(MODELS.BillingCategory, txtBillingCategoryId.Text);
         }
 
         private void TxtCurrencyId_TextChanged(object sender, EventArgs e) {
-            //int selected = Convert.ToInt32(txtCurrencyId.Text);
-            int.TryParse(txtCurrencyId.Text, out int id);
-            var currency = CntrlCU.Find(new CurrencyModel() { Id = id }, "Id");
-            txtCurrencyCode.Text = currency?.CurrencyCode;
-            txtCurrencyEnglish.Text = currency?.CurrencyEnglish;
+            txtCurrencyCode.Text = DBControllersFactory.FK(MODELS.Currency, txtCurrencyId.Text);
         }
 
         private void ServiceForm_Load(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
-            cmbVATId.DataSource = CntrlVT.Read().OrderBy(x => -x.VATAmount).ToList();
-            cmbVATId.DisplayMember = "VATCode";
-            cmbVATId.ValueMember = "Id";
-            cmbVATId.SelectedIndex = 0;
         }
 
         private void TxtEffectiveFromDate_Leave(object sender, EventArgs e) {
@@ -78,16 +73,29 @@ namespace MVCHIS.Billing {
         }
 
         private void TxtId_TextChanged(object sender, EventArgs e) {
-            cmbVATId.SelectedIndex = 0;
         }
 
-        private void CmbVATId_SelectedIndexChanged(object sender, EventArgs e) {
-            if (cmbVATId.SelectedValue is VATModel) {
-                lblVATId.Text = ((VATModel)cmbVATId.SelectedValue)?.Id.ToString();
-            } else {
-                lblVATId.Text = cmbVATId.SelectedValue?.ToString();
-            }
-
+        private void PickListButtonContract_LookUpSelected(int obj) {
+            txtContractId.Text = obj.ToString();
         }
+
+        private void PickListButtonBillingCategory_LookUpSelected(int obj) {
+            txtBillingCategoryId.Text = obj.ToString();
+        }
+
+        private void PickListButtonCurrency_LookUpSelected(int obj) {
+            txtContractId.Text = obj.ToString();
+        }
+
+        private void TxtVATId_TextChanged(object sender, EventArgs e) {
+            txtVATCode.Text = DBControllersFactory.FK(MODELS.VAT, txtVATId.Text);
+        }
+
+        private void PickListButtonVAT_LookUpSelected(int obj) {
+            txtVATId.Text = obj.ToString();
+        }
+
+        
+
     }
 }

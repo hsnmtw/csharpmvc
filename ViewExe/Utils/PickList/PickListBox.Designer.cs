@@ -1,5 +1,5 @@
 ﻿namespace MVCHIS.Common {
-    partial class LookupBox {
+    partial class PickListBox {
         /// <summary>
         /// Required designer variable.
         /// </summary>

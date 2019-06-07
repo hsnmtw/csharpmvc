@@ -23,15 +23,15 @@ namespace MVCHIS.Customers {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
-        }
-
-        private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            Model = Controller.Find(new IdentificationTypeModel() { Id = txtIdentificationTypeCode.Text.ToInteger() }, "Id");
+            //pick lists
+            PickList[btnPLIdentificationType] = txtId;
         }
 
         private void IdentificationTypeFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
 
         }
+
+        
     }
     
 }

@@ -12,8 +12,8 @@ namespace MVCHIS.Billing {
                                                      "CurrencyCode","CurrencyEnglish","CurrencyArabic","CurrencySymbol","CountryId" }
             , RequiredFields   = new HashSet<string> { "Id", "CurrencyCode", "CurrencyEnglish", "CurrencyArabic", "CountryId" }
             , UniqueKeyFields  = new HashSet<HashSet<string>> { new HashSet<string> { "CurrencyCode" } }
-            , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
-                ["CountryId"]  = new Tuple<string, string>(ENTITIES.Country, "Id")
+            , ForeignKeys      = new Dictionary<string, Tuple<MODELS, string>> {
+                ["CountryId"]  = new Tuple<MODELS, string>(MODELS.Country, "Id")
             }
             , Sizes = new Dictionary<string, int> {
                 ["CreatedBy"      ] = 10,

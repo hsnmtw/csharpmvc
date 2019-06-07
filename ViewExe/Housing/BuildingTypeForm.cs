@@ -24,16 +24,19 @@ namespace MVCHIS.Housing.BuildingTypes {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
+            //pick list
+            PickList[btnPLBuildingType] = txtId;
         }
 
 
-        private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            Model = Controller.Find(new BuildingTypeModel() { Id = txtBuildingTypeCode.Text.ToInteger() }, "Id");
+        private void PickListButton1LookUpSelected(int id) {
         }
 
         private void BuildingTypeFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
 
         }
+
+        
     }
     
 }

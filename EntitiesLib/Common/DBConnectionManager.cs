@@ -32,6 +32,7 @@ namespace MVCHIS.Common {
         }
 
         public int Execute(string sql, params KeyValuePair<string, object>[] parameters) {
+            Console.WriteLine(sql);
             int result=-1;
             if (connection == null || connection.State != ConnectionState.Open) Open();
             using(var command = connection.CreateCommand()) {

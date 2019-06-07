@@ -46,11 +46,11 @@
             this.txtProfileName = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.chkAllowCreate = new System.Windows.Forms.CheckBox();
-            this.lookuptxtProfile = new MVCHIS.Common.LookUpButton();
-            this.lookUpButtonEntitlement = new MVCHIS.Common.LookUpButton();
+            this.btnPLProfile = new MVCHIS.Common.PickListButton();
+            this.btnPLEntitlement = new MVCHIS.Common.PickListButton();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.lookupId = new MVCHIS.Common.LookUpButton();
+            this.btnPLProfileEntitlement = new MVCHIS.Common.PickListButton();
             this.txtEntitlementId = new System.Windows.Forms.TextBox();
             this.txtProfileId = new System.Windows.Forms.TextBox();
             this.btnSelectUnselectAll = new System.Windows.Forms.Button();
@@ -67,7 +67,6 @@
             // 
             // txtUpdatedOn
             // 
-            
             this.txtUpdatedOn.Enabled = false;
             this.txtUpdatedOn.Location = new System.Drawing.Point(236, 236);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
@@ -78,7 +77,6 @@
             // 
             // txtUpdatedBy
             // 
-            
             this.txtUpdatedBy.Enabled = false;
             this.txtUpdatedBy.Location = new System.Drawing.Point(161, 236);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
@@ -98,7 +96,6 @@
             // 
             // txtCreatedOn
             // 
-            
             this.txtCreatedOn.Enabled = false;
             this.txtCreatedOn.Location = new System.Drawing.Point(236, 205);
             this.txtCreatedOn.Name = "txtCreatedOn";
@@ -109,7 +106,6 @@
             // 
             // txtCreatedBy
             // 
-            
             this.txtCreatedBy.Enabled = false;
             this.txtCreatedBy.Location = new System.Drawing.Point(161, 205);
             this.txtCreatedBy.Name = "txtCreatedBy";
@@ -273,33 +269,29 @@
             this.chkAllowCreate.TabIndex = 8;
             this.chkAllowCreate.UseVisualStyleBackColor = true;
             // 
-            // lookuptxtProfile
+            // btnPLProfile
             // 
-            this.lookuptxtProfile.AssociatedControl = "txtProfileId";
-            this.lookuptxtProfile.Source = "Profile";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookuptxtProfile.Location = new System.Drawing.Point(356, 73);
-            this.lookuptxtProfile.Name = "lookuptxtProfile";
-            //
-            //("ProfileName");
-            //("Id");
-            this.lookuptxtProfile.Size = new System.Drawing.Size(22, 22);
-            this.lookuptxtProfile.TabIndex = 7;
-            this.lookuptxtProfile.TabStop = false;
+            this.btnPLProfile.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLProfile.Location = new System.Drawing.Point(356, 73);
+            this.btnPLProfile.Name = "btnPLProfile";
+            this.btnPLProfile.Size = new System.Drawing.Size(22, 22);
+            this.btnPLProfile.Source = "Profile";
+            this.btnPLProfile.TabIndex = 7;
+            this.btnPLProfile.TabStop = false;
+            this.btnPLProfile.Text = "↓";
+            
             // 
-            // lookUpButtonEntitlement
+            // btnPLEntitlement
             // 
-            this.lookUpButtonEntitlement.AssociatedControl = "txtEntitlementId";
-            this.lookUpButtonEntitlement.Source = "Entitlement";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonEntitlement.Location = new System.Drawing.Point(356, 42);
-            this.lookUpButtonEntitlement.Name = "lookUpButtonEntitlement";
-            //
-            //("EntitlementName");
-            //("Id");
-            this.lookUpButtonEntitlement.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonEntitlement.TabIndex = 4;
-            this.lookUpButtonEntitlement.TabStop = false;
+            this.btnPLEntitlement.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLEntitlement.Location = new System.Drawing.Point(356, 42);
+            this.btnPLEntitlement.Name = "btnPLEntitlement";
+            this.btnPLEntitlement.Size = new System.Drawing.Size(22, 22);
+            this.btnPLEntitlement.Source = "Entitlement";
+            this.btnPLEntitlement.TabIndex = 4;
+            this.btnPLEntitlement.TabStop = false;
+            this.btnPLEntitlement.Text = "↓";
+            
             // 
             // btnNew
             // 
@@ -319,21 +311,17 @@
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
-            // lookupId
+            // btnPLProfileEntitlement
             // 
-            this.lookupId.AssociatedControl = "txtId";
-            this.lookupId.Source = "ProfileEntitlement";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookupId.Location = new System.Drawing.Point(230, 11);
-            this.lookupId.Name = "lookupId";
-            //
-            //("EntitlementId");
-            //("ProfileId");
-            //("Id");
-            this.lookupId.Size = new System.Drawing.Size(22, 22);
-            this.lookupId.TabIndex = 1;
-            this.lookupId.TabStop = false;
-            this.lookupId.LookUpSelected += new System.EventHandler(this.LookUpButton2_LookUpSelected);
+            this.btnPLProfileEntitlement.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLProfileEntitlement.Location = new System.Drawing.Point(230, 11);
+            this.btnPLProfileEntitlement.Name = "btnPLProfileEntitlement";
+            this.btnPLProfileEntitlement.Size = new System.Drawing.Size(22, 22);
+            this.btnPLProfileEntitlement.Source = "ProfileEntitlement";
+            this.btnPLProfileEntitlement.TabIndex = 1;
+            this.btnPLProfileEntitlement.TabStop = false;
+            this.btnPLProfileEntitlement.Text = "↓";
+            
             // 
             // txtEntitlementId
             // 
@@ -368,9 +356,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnSelectUnselectAll);
-            this.Controls.Add(this.lookUpButtonEntitlement);
-            this.Controls.Add(this.lookupId);
-            this.Controls.Add(this.lookuptxtProfile);
+            this.Controls.Add(this.btnPLEntitlement);
+            this.Controls.Add(this.btnPLProfileEntitlement);
+            this.Controls.Add(this.btnPLProfile);
             this.Controls.Add(this.chkAllowCreate);
             this.Controls.Add(this.chkAllowRead);
             this.Controls.Add(this.label9);
@@ -430,11 +418,11 @@
         private System.Windows.Forms.TextBox txtProfileName;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox chkAllowCreate;
-        private Common.LookUpButton lookuptxtProfile;
-        private Common.LookUpButton lookUpButtonEntitlement;
+        private Common.PickListButton btnPLProfile;
+        private Common.PickListButton btnPLEntitlement;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnDelete;
-        private Common.LookUpButton lookupId;
+        private Common.PickListButton btnPLProfileEntitlement;
         private System.Windows.Forms.TextBox txtEntitlementId;
         private System.Windows.Forms.TextBox txtProfileId;
         private System.Windows.Forms.Button btnSelectUnselectAll;

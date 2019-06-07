@@ -57,7 +57,13 @@
     <Compile Include="Common\MODELS.cs" />
     <Compile Include="Customers\CityModel.cs" />
     <Compile Include="Billing\ReservationModel.cs" />
+    <Compile Include="Tools\ConfigurationDomainModel.cs" />
+    <Compile Include="Tools\ConfigurationTypeModel.cs" />
+    <Compile Include="Tools\ConfigurationKeyModel.cs" />
     <Compile Include="Tools\DateConversionModel.cs" />
+    <Compile Include="Tools\ConfigurationModel.cs" />
+    <Compile Include="Tools\WordLanguageModel.cs" />
+    <Compile Include="Tools\LanguageModel.cs" />
     <Compile Include="Tools\EntityModel.cs" />
     <Compile Include="Common\IModel.cs" />
     <Compile Include="Configurations\CryptoModel.cs" />
@@ -81,7 +87,7 @@
     <Compile Include="Security\ProfileEntitlementModel.cs" />
     <Compile Include="Security\ProfileModel.cs" />
     <Compile Include="Security\UserModel.cs" />
-    <Compile Include="Tools\DictionaryModel.cs" />
+    <Compile Include="Tools\WordModel.cs" />
     <Compile Include="Utils\Extensions\DateExtensions.cs" />
     <Compile Include="Utils\Extensions\ListExtensions.cs" />
     <Compile Include="Utils\Extensions\ReflexionExtensions.cs" />

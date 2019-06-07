@@ -23,16 +23,13 @@ namespace MVCHIS.Security {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
+            //pick lists
+            PickList[btnPLEntitlementGroup] = txtId;
         }
 
         private void EntitlementGroupFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
 
-        }
-
-        private void EntitlementGroupNameLookupLookUpSelected(object sender, EventArgs e) {
-            
-            Model = Controller.Find(new EntitlementGroupModel() { Id = txtEntitlementGroupName.Text.ToInteger() }, "Id");
-        }
+        }        
     }
     
 }

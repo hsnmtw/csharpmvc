@@ -27,15 +27,12 @@ namespace MVCHIS.Billing {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
-        }
-
-        private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            Model = Controller.Find(new BillingCycleModel() { Id = txtId.Text.ToInteger() }, "Id");
+            //pick lists
+            PickList[btnPLBillingCycle] = txtId;
         }
 
         private void BillingCycleFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
             var type = typeof(BillingCycleModel);
         }
-    }
-    
+    }    
 }

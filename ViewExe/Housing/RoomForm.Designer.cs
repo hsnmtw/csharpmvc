@@ -45,9 +45,9 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.label8 = new System.Windows.Forms.Label();
-            this.lookUpButton1 = new MVCHIS.Common.LookUpButton();
-            this.lookupCountry = new MVCHIS.Common.LookUpButton();
-            this.lookupBuilding = new MVCHIS.Common.LookUpButton();
+            this.btnPLRoom = new MVCHIS.Common.PickListButton();
+            this.btnPLCountry = new MVCHIS.Common.PickListButton();
+            this.btnPLBuilding = new MVCHIS.Common.PickListButton();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtNumberOfWindows = new System.Windows.Forms.TextBox();
@@ -58,9 +58,9 @@
             // 
             // txtRoomName
             // 
-            this.txtRoomName.Location = new System.Drawing.Point(129, 40);
+            this.txtRoomName.Location = new System.Drawing.Point(129, 43);
             this.txtRoomName.Name = "txtRoomName";
-            this.txtRoomName.Size = new System.Drawing.Size(154, 20);
+            this.txtRoomName.Size = new System.Drawing.Size(177, 20);
             this.txtRoomName.TabIndex = 1;
             // 
             // txtBuildingId
@@ -148,7 +148,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(22, 46);
+            this.label3.Location = new System.Drawing.Point(22, 49);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 13);
             this.label3.TabIndex = 59;
@@ -238,51 +238,38 @@
             this.label8.TabIndex = 60;
             this.label8.Text = "Windows";
             // 
-            // lookUpButton1
+            // btnPLRoom
             // 
-            this.lookUpButton1.AssociatedControl = "txtRoomName";
-            this.lookUpButton1.Source = "Room";
-            this.lookUpButton1.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButton1.Location = new System.Drawing.Point(284, 39);
-            this.lookUpButton1.Name = "lookUpButton1";
-            //
-            //("RoomName");
-            //("CountryId");
-            //("BedCapacity");
-            this.lookUpButton1.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButton1.TabIndex = 2;
-            this.lookUpButton1.TabStop = false;
-            this.lookUpButton1.LookUpSelected += new System.EventHandler(this.LookUpButton1LookUpSelected);
+            this.btnPLRoom.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLRoom.Location = new System.Drawing.Point(199, 11);
+            this.btnPLRoom.Name = "btnPLRoom";
+            this.btnPLRoom.Size = new System.Drawing.Size(22, 22);
+            this.btnPLRoom.Source = "Room";
+            this.btnPLRoom.TabIndex = 2;
+            this.btnPLRoom.TabStop = false;
+            this.btnPLRoom.Text = "↓";
             // 
-            // lookupCountry
+            // btnPLCountry
             // 
-            this.lookupCountry.AssociatedControl = "txtCountryId";
-            this.lookupCountry.Source = "Country";
-            this.lookupCountry.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookupCountry.Location = new System.Drawing.Point(284, 96);
-            this.lookupCountry.Name = "lookupCountry";
-            //
-            //("CountryCode");
-            //("CountryEnglish");
-            //("CountryArabic");
-            //("Id");
-            this.lookupCountry.Size = new System.Drawing.Size(22, 22);
-            this.lookupCountry.TabIndex = 7;
-            this.lookupCountry.TabStop = false;
+            this.btnPLCountry.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLCountry.Location = new System.Drawing.Point(284, 96);
+            this.btnPLCountry.Name = "btnPLCountry";
+            this.btnPLCountry.Size = new System.Drawing.Size(22, 22);
+            this.btnPLCountry.Source = "Country";
+            this.btnPLCountry.TabIndex = 7;
+            this.btnPLCountry.TabStop = false;
+            this.btnPLCountry.Text = "↓";
             // 
-            // lookupBuilding
+            // btnPLBuilding
             // 
-            this.lookupBuilding.AssociatedControl = "txtBuildingId";
-            this.lookupBuilding.Source = "Building";
-            this.lookupBuilding.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookupBuilding.Location = new System.Drawing.Point(284, 69);
-            this.lookupBuilding.Name = "lookupBuilding";
-            //
-            //("BuildingName");
-            //("Id");
-            this.lookupBuilding.Size = new System.Drawing.Size(22, 22);
-            this.lookupBuilding.TabIndex = 4;
-            this.lookupBuilding.TabStop = false;
+            this.btnPLBuilding.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLBuilding.Location = new System.Drawing.Point(284, 69);
+            this.btnPLBuilding.Name = "btnPLBuilding";
+            this.btnPLBuilding.Size = new System.Drawing.Size(22, 22);
+            this.btnPLBuilding.Source = "Building";
+            this.btnPLBuilding.TabIndex = 4;
+            this.btnPLBuilding.TabStop = false;
+            this.btnPLBuilding.Text = "↓";
             // 
             // chkReadOnly
             // 
@@ -360,7 +347,7 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.lookUpButton1);
+            this.Controls.Add(this.btnPLRoom);
             this.Controls.Add(this.txtBuildingId);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtCreatedOn);
@@ -368,13 +355,13 @@
             this.Controls.Add(this.txtCountryId);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.lookupCountry);
+            this.Controls.Add(this.btnPLCountry);
             this.Controls.Add(this.txtCreatedBy);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.lookupBuilding);
+            this.Controls.Add(this.btnPLBuilding);
             this.Name = "RoomForm";
-            this.Size = new System.Drawing.Size(382, 340);
+            this.Size = new System.Drawing.Size(364, 326);
             this.Load += new System.EventHandler(this.RoomForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -383,7 +370,7 @@
 
         #endregion
         private System.Windows.Forms.TextBox txtRoomName;
-        private Common.LookUpButton lookupBuilding;
+        private Common.PickListButton btnPLBuilding;
         private System.Windows.Forms.TextBox txtBuildingId;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
@@ -400,9 +387,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtCountryId;
-        private Common.LookUpButton lookupCountry;
+        private Common.PickListButton btnPLCountry;
         private System.Windows.Forms.Label label7;
-        private Common.LookUpButton lookUpButton1;
+        private Common.PickListButton btnPLRoom;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.Label label8;

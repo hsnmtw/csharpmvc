@@ -36,7 +36,7 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCompoundName = new System.Windows.Forms.TextBox();
-            this.CompoundNameLookupButton = new MVCHIS.Common.LookUpButton();
+            this.btnPLCompound = new MVCHIS.Common.PickListButton();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -72,7 +72,6 @@
             // 
             // txtUpdatedOn
             // 
-            
             this.txtUpdatedOn.Location = new System.Drawing.Point(194, 136);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -82,7 +81,6 @@
             // 
             // txtUpdatedBy
             // 
-            
             this.txtUpdatedBy.Location = new System.Drawing.Point(120, 136);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -101,7 +99,6 @@
             // 
             // txtCreatedOn
             // 
-            
             this.txtCreatedOn.Location = new System.Drawing.Point(194, 110);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -111,7 +108,6 @@
             // 
             // txtCreatedBy
             // 
-            
             this.txtCreatedBy.Location = new System.Drawing.Point(120, 110);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -159,22 +155,19 @@
             // 
             this.txtCompoundName.Location = new System.Drawing.Point(120, 51);
             this.txtCompoundName.Name = "txtCompoundName";
-            this.txtCompoundName.Size = new System.Drawing.Size(154, 20);
+            this.txtCompoundName.Size = new System.Drawing.Size(211, 20);
             this.txtCompoundName.TabIndex = 1;
             // 
-            // CompoundNameLookupButton
+            // btnPLCompound
             // 
-            this.CompoundNameLookupButton.AssociatedControl = "txtCompoundName";
-            this.CompoundNameLookupButton.Source = "Compound";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.CompoundNameLookupButton.Location = new System.Drawing.Point(275, 50);
-            this.CompoundNameLookupButton.Name = "CompoundNameLookupButton";
-            //
-            //("CompoundName");
-            this.CompoundNameLookupButton.Size = new System.Drawing.Size(22, 22);
-            this.CompoundNameLookupButton.TabIndex = 2;
-            this.CompoundNameLookupButton.TabStop = false;
-            this.CompoundNameLookupButton.LookUpSelected += new System.EventHandler(this.CompoundNameLookupButtonLookUpSelected);
+            this.btnPLCompound.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLCompound.Location = new System.Drawing.Point(191, 20);
+            this.btnPLCompound.Name = "btnPLCompound";
+            this.btnPLCompound.Size = new System.Drawing.Size(22, 22);
+            this.btnPLCompound.Source = "Compound";
+            this.btnPLCompound.TabIndex = 2;
+            this.btnPLCompound.TabStop = false;
+            this.btnPLCompound.Text = "↓";
             // 
             // chkReadOnly
             // 
@@ -217,7 +210,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.chkReadOnly);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.CompoundNameLookupButton);
+            this.Controls.Add(this.btnPLCompound);
             this.Controls.Add(this.txtCompoundLocation);
             this.Controls.Add(this.txtCompoundName);
             this.Controls.Add(this.btnDelete);
@@ -255,11 +248,11 @@
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCompoundName;
-        private Common.LookUpButton CompoundNameLookupButton;
+        private Common.PickListButton btnPLCompound;
         private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtCompoundLocation;
-        //private Common.LookUpButton CompoundNameLookupButton;
+        //private Common.PickListButton CompoundNameLookupButton;
     }
 }

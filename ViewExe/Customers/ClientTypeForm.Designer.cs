@@ -36,7 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtClientTypeCode = new System.Windows.Forms.TextBox();
-            this.lookUpButtonClientType = new MVCHIS.Common.LookUpButton();
+            this.btnPLClientType = new MVCHIS.Common.PickListButton();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtClientTypeEnglish = new System.Windows.Forms.TextBox();
@@ -74,7 +74,6 @@
             // 
             // txtUpdatedOn
             // 
-            
             this.txtUpdatedOn.Location = new System.Drawing.Point(221, 177);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -84,7 +83,6 @@
             // 
             // txtUpdatedBy
             // 
-            
             this.txtUpdatedBy.Location = new System.Drawing.Point(147, 177);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -103,7 +101,6 @@
             // 
             // txtCreatedOn
             // 
-            
             this.txtCreatedOn.Location = new System.Drawing.Point(221, 151);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -113,7 +110,6 @@
             // 
             // txtCreatedBy
             // 
-            
             this.txtCreatedBy.Location = new System.Drawing.Point(147, 151);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -162,22 +158,19 @@
             this.txtClientTypeCode.Location = new System.Drawing.Point(147, 59);
             this.txtClientTypeCode.MaxLength = 10;
             this.txtClientTypeCode.Name = "txtClientTypeCode";
-            this.txtClientTypeCode.Size = new System.Drawing.Size(154, 20);
+            this.txtClientTypeCode.Size = new System.Drawing.Size(94, 20);
             this.txtClientTypeCode.TabIndex = 1;
             // 
-            // lookUpButtonClientType
+            // btnPLClientType
             // 
-            this.lookUpButtonClientType.AssociatedControl = "txtClientType";
-            this.lookUpButtonClientType.Source = "ClientType";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonClientType.Location = new System.Drawing.Point(302, 58);
-            this.lookUpButtonClientType.Name = "lookUpButtonClientType";
-            // 0;
-            //("ClientTypeCode");
-            this.lookUpButtonClientType.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonClientType.TabIndex = 2;
-            this.lookUpButtonClientType.TabStop = false;
-            this.lookUpButtonClientType.LookUpSelected += new System.EventHandler(this.LookUpButton1LookUpSelected);
+            this.btnPLClientType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLClientType.Location = new System.Drawing.Point(219, 25);
+            this.btnPLClientType.Name = "btnPLClientType";
+            this.btnPLClientType.Size = new System.Drawing.Size(22, 22);
+            this.btnPLClientType.Source = "ClientType";
+            this.btnPLClientType.TabIndex = 2;
+            this.btnPLClientType.TabStop = false;
+            this.btnPLClientType.Text = "↓";
             // 
             // chkReadOnly
             // 
@@ -248,7 +241,7 @@
             this.Controls.Add(this.txtUpdatedOn);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.txtUpdatedBy);
-            this.Controls.Add(this.lookUpButtonClientType);
+            this.Controls.Add(this.btnPLClientType);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.txtClientTypeCode);
             this.Controls.Add(this.label6);
@@ -280,7 +273,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtClientTypeCode;
-        private Common.LookUpButton lookUpButtonClientType;
+        private Common.PickListButton btnPLClientType;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtClientTypeEnglish;
         private System.Windows.Forms.TextBox txtClientTypeArabic;

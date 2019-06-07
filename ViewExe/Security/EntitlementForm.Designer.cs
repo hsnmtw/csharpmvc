@@ -37,14 +37,14 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtEntitlementName = new System.Windows.Forms.TextBox();
-            this.EntitlementNameLookup = new MVCHIS.Common.LookUpButton();
+            this.btnPLEntitlement = new MVCHIS.Common.PickListButton();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtEntitlementGroupName = new System.Windows.Forms.TextBox();
-            this.EntitlementGroupNameLookup = new MVCHIS.Common.LookUpButton();
+            this.btnPLEntitlementGroup = new MVCHIS.Common.PickListButton();
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.lookUpEntityName = new MVCHIS.Common.LookUpButton();
+            this.btnPLEntity = new MVCHIS.Common.PickListButton();
             this.txtEntityName = new System.Windows.Forms.TextBox();
             this.txtEntitlementGroupId = new System.Windows.Forms.TextBox();
             this.txtEntityId = new System.Windows.Forms.TextBox();
@@ -128,16 +128,12 @@
             resources.ApplyResources(this.txtEntitlementName, "txtEntitlementName");
             this.txtEntitlementName.Name = "txtEntitlementName";
             // 
-            // EntitlementNameLookup
+            // btnPLEntitlement
             // 
-            this.EntitlementNameLookup.AssociatedControl = "txtEntitlementName";
-            this.EntitlementNameLookup.Source = "Entitlement";
-            resources.ApplyResources(this.EntitlementNameLookup, "EntitlementNameLookup");
-            this.EntitlementNameLookup.Name = "EntitlementNameLookup";
-            //
-            //(resources.GetString("EntitlementNameLookup.ShowFieldsInLookUp"));
-            this.EntitlementNameLookup.TabStop = false;
-            this.EntitlementNameLookup.LookUpSelected += new System.EventHandler(this.EntitlementNameLookupLookUpSelected);
+            resources.ApplyResources(this.btnPLEntitlement, "btnPLEntitlement");
+            this.btnPLEntitlement.Name = "btnPLEntitlement";
+            this.btnPLEntitlement.Source = "Entitlement";
+            this.btnPLEntitlement.TabStop = false;
             // 
             // chkReadOnly
             // 
@@ -157,16 +153,12 @@
             this.txtEntitlementGroupName.ReadOnly = true;
             this.txtEntitlementGroupName.TabStop = false;
             // 
-            // EntitlementGroupNameLookup
+            // btnPLEntitlementGroup
             // 
-            this.EntitlementGroupNameLookup.AssociatedControl = "txtEntitlementGroupId";
-            this.EntitlementGroupNameLookup.Source = "EntitlementGroup";
-            resources.ApplyResources(this.EntitlementGroupNameLookup, "EntitlementGroupNameLookup");
-            this.EntitlementGroupNameLookup.Name = "EntitlementGroupNameLookup";
-            //
-            //(resources.GetString("EntitlementGroupNameLookup.ShowFieldsInLookUp"));
-            //(resources.GetString("EntitlementGroupNameLookup.ShowFieldsInLookUp1"));
-            this.EntitlementGroupNameLookup.TabStop = false;
+            resources.ApplyResources(this.btnPLEntitlementGroup, "btnPLEntitlementGroup");
+            this.btnPLEntitlementGroup.Name = "btnPLEntitlementGroup";
+            this.btnPLEntitlementGroup.Source = "EntitlementGroup";
+            this.btnPLEntitlementGroup.TabStop = false;
             // 
             // label3
             // 
@@ -178,16 +170,12 @@
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
             // 
-            // lookUpEntityName
+            // btnPLEntity
             // 
-            this.lookUpEntityName.AssociatedControl = "txtEntityId";
-            this.lookUpEntityName.Source = "Entity";
-            resources.ApplyResources(this.lookUpEntityName, "lookUpEntityName");
-            this.lookUpEntityName.Name = "lookUpEntityName";
-            //
-            //(resources.GetString("lookUpEntityName.ShowFieldsInLookUp"));
-            //(resources.GetString("lookUpEntityName.ShowFieldsInLookUp1"));
-            this.lookUpEntityName.TabStop = false;
+            resources.ApplyResources(this.btnPLEntity, "btnPLEntity");
+            this.btnPLEntity.Name = "btnPLEntity";
+            this.btnPLEntity.Source = "Entity";
+            this.btnPLEntity.TabStop = false;
             // 
             // txtEntityName
             // 
@@ -218,14 +206,14 @@
             this.Controls.Add(this.txtEntityName);
             this.Controls.Add(this.txtEntitlementGroupId);
             this.Controls.Add(this.txtEntitlementGroupName);
-            this.Controls.Add(this.lookUpEntityName);
-            this.Controls.Add(this.EntitlementGroupNameLookup);
+            this.Controls.Add(this.btnPLEntity);
+            this.Controls.Add(this.btnPLEntitlementGroup);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.chkReadOnly);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtEntitlementName);
-            this.Controls.Add(this.EntitlementNameLookup);
+            this.Controls.Add(this.btnPLEntitlement);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnNew);
@@ -247,7 +235,7 @@
 
         #endregion
 
-        private Common.LookUpButton EntitlementNameLookup;
+        private Common.PickListButton btnPLEntitlement;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnNew;
@@ -263,10 +251,10 @@
         private System.Windows.Forms.TextBox txtEntitlementName;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtEntitlementGroupName;
-        private Common.LookUpButton EntitlementGroupNameLookup;
+        private Common.PickListButton btnPLEntitlementGroup;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;
-        private Common.LookUpButton lookUpEntityName;
+        private Common.PickListButton btnPLEntity;
         private System.Windows.Forms.TextBox txtEntityName;
         private System.Windows.Forms.TextBox txtEntitlementGroupId;
         private System.Windows.Forms.TextBox txtEntityId;

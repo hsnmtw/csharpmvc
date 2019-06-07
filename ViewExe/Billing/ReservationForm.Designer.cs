@@ -40,12 +40,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.lookUpButtonRoom = new MVCHIS.Common.LookUpButton();
+            this.btnPLRoom = new MVCHIS.Common.PickListButton();
             this.label4 = new System.Windows.Forms.Label();
             this.txtFromDate = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtToDate = new System.Windows.Forms.TextBox();
-            this.lookUpButtonClient = new MVCHIS.Common.LookUpButton();
+            this.btnPLClient = new MVCHIS.Common.PickListButton();
             this.txtClientId = new System.Windows.Forms.TextBox();
             this.txtRoomName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -53,7 +53,7 @@
             this.btnFromDate = new System.Windows.Forms.Button();
             this.btnToDate = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
-            this.lookUpButtonCurrency = new MVCHIS.Common.LookUpButton();
+            this.btnPLCurrency = new MVCHIS.Common.PickListButton();
             this.txtCurrencyEnglish = new System.Windows.Forms.TextBox();
             this.txtCurrencyId = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -62,7 +62,7 @@
             this.lblToDateHijri = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.txtReservationCode = new System.Windows.Forms.TextBox();
-            this.lookUpButton1 = new MVCHIS.Common.LookUpButton();
+            this.btnPLReservation = new MVCHIS.Common.PickListButton();
             this.SuspendLayout();
             // 
             // btnDelete
@@ -223,21 +223,17 @@
             this.label10.TabIndex = 47;
             this.label10.Text = "Read Only";
             // 
-            // lookUpButtonRoom
+            // btnPLRoom
             // 
-            this.lookUpButtonRoom.AssociatedControl = "txtRoomId";
-            this.lookUpButtonRoom.Source = "Room";
-            this.lookUpButtonRoom.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonRoom.Location = new System.Drawing.Point(329, 82);
-            this.lookUpButtonRoom.Name = "lookUpButtonRoom";
-            // 0;
-            //("Id");
-            //("RoomName");
-            //("BedCapacity");
-            //("CountryId");
-            this.lookUpButtonRoom.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonRoom.TabIndex = 5;
-            this.lookUpButtonRoom.TabStop = false;
+            this.btnPLRoom.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLRoom.Location = new System.Drawing.Point(329, 82);
+            this.btnPLRoom.Name = "btnPLRoom";
+            this.btnPLRoom.Size = new System.Drawing.Size(22, 22);
+            this.btnPLRoom.Source = "Room";
+            this.btnPLRoom.TabIndex = 5;
+            this.btnPLRoom.TabStop = false;
+            this.btnPLRoom.Text = "↓";
+            
             // 
             // label4
             // 
@@ -277,19 +273,17 @@
             this.txtToDate.Tag = "yyyy-MM-dd";
             this.txtToDate.Leave += new System.EventHandler(this.TxtToDate_Leave);
             // 
-            // lookUpButtonClient
+            // btnPLClient
             // 
-            this.lookUpButtonClient.AssociatedControl = "txtClientId";
-            this.lookUpButtonClient.Source = "Client";
-            this.lookUpButtonClient.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonClient.Location = new System.Drawing.Point(329, 108);
-            this.lookUpButtonClient.Name = "lookUpButtonClient";
-            // 0;
-            //("Id");
-            //("ShortName");
-            this.lookUpButtonClient.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonClient.TabIndex = 10;
-            this.lookUpButtonClient.TabStop = false;
+            this.btnPLClient.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLClient.Location = new System.Drawing.Point(329, 108);
+            this.btnPLClient.Name = "btnPLClient";
+            this.btnPLClient.Size = new System.Drawing.Size(22, 22);
+            this.btnPLClient.Source = "Client";
+            this.btnPLClient.TabIndex = 10;
+            this.btnPLClient.TabStop = false;
+            this.btnPLClient.Text = "↓";
+            
             // 
             // txtClientId
             // 
@@ -362,21 +356,17 @@
             this.label12.TabIndex = 49;
             this.label12.Text = "Currency";
             // 
-            // lookUpButtonCurrency
+            // btnPLCurrency
             // 
-            this.lookUpButtonCurrency.AssociatedControl = "txtCurrencyId";
-            this.lookUpButtonCurrency.Source = "Currency";
-            this.lookUpButtonCurrency.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonCurrency.Location = new System.Drawing.Point(329, 223);
-            this.lookUpButtonCurrency.Name = "lookUpButtonCurrency";
-            // 0;
-            //("Id");
-            //("CurrencyCode");
-            //("CurrencyEnglish");
-            //("CurrencySymbol");
-            this.lookUpButtonCurrency.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonCurrency.TabIndex = 18;
-            this.lookUpButtonCurrency.TabStop = false;
+            this.btnPLCurrency.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLCurrency.Location = new System.Drawing.Point(329, 223);
+            this.btnPLCurrency.Name = "btnPLCurrency";
+            this.btnPLCurrency.Size = new System.Drawing.Size(22, 22);
+            this.btnPLCurrency.Source = "Currency";
+            this.btnPLCurrency.TabIndex = 18;
+            this.btnPLCurrency.TabStop = false;
+            this.btnPLCurrency.Text = "↓";
+            
             // 
             // txtCurrencyEnglish
             // 
@@ -454,22 +444,17 @@
             this.txtReservationCode.TabIndex = 1;
             this.txtReservationCode.TextChanged += new System.EventHandler(this.TxtRoomId_TextChanged);
             // 
-            // lookUpButton1
+            // btnPLReservation
             // 
-            this.lookUpButton1.AssociatedControl = "txtReservationCode";
-            this.lookUpButton1.Source = "Reservation";
-            this.lookUpButton1.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButton1.Location = new System.Drawing.Point(329, 55);
-            this.lookUpButton1.Name = "lookUpButton1";
-            // 0;
-            //("ReservationCode");
-            //("RoomId");
-            //("ClientId");
-            //("FromDate");
-            this.lookUpButton1.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButton1.TabIndex = 2;
-            this.lookUpButton1.TabStop = false;
-            this.lookUpButton1.LookUpSelected += new System.EventHandler(this.LookUpButton1LookUpSelected);
+            this.btnPLReservation.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLReservation.Location = new System.Drawing.Point(329, 55);
+            this.btnPLReservation.Name = "btnPLReservation";
+            this.btnPLReservation.Size = new System.Drawing.Size(22, 22);
+            this.btnPLReservation.Source = "Reservation";
+            this.btnPLReservation.TabIndex = 2;
+            this.btnPLReservation.TabStop = false;
+            this.btnPLReservation.Text = "↓";
+            
             // 
             // ReservationForm
             // 
@@ -501,11 +486,11 @@
             this.Controls.Add(this.txtUpdatedBy);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnNew);
-            this.Controls.Add(this.lookUpButtonCurrency);
+            this.Controls.Add(this.btnPLCurrency);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.lookUpButtonClient);
-            this.Controls.Add(this.lookUpButton1);
-            this.Controls.Add(this.lookUpButtonRoom);
+            this.Controls.Add(this.btnPLClient);
+            this.Controls.Add(this.btnPLReservation);
+            this.Controls.Add(this.btnPLRoom);
             this.Controls.Add(this.txtReservationCode);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtRoomId);
@@ -537,7 +522,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtRoomId;
-        private Common.LookUpButton lookUpButtonRoom;
+        private Common.PickListButton btnPLRoom;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtClientName;
         private System.Windows.Forms.Label label2;
@@ -545,7 +530,7 @@
         private System.Windows.Forms.TextBox txtFromDate;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtToDate;
-        private Common.LookUpButton lookUpButtonClient;
+        private Common.PickListButton btnPLClient;
         private System.Windows.Forms.TextBox txtClientId;
         private System.Windows.Forms.TextBox txtRoomName;
         private System.Windows.Forms.CheckBox chkReadOnly;
@@ -554,7 +539,7 @@
         private System.Windows.Forms.Button btnFromDate;
         private System.Windows.Forms.Button btnToDate;
         private System.Windows.Forms.Label label12;
-        private Common.LookUpButton lookUpButtonCurrency;
+        private Common.PickListButton btnPLCurrency;
         private System.Windows.Forms.TextBox txtCurrencyEnglish;
         private System.Windows.Forms.TextBox txtCurrencyId;
         private System.Windows.Forms.Label label13;
@@ -563,6 +548,6 @@
         private System.Windows.Forms.Label lblToDateHijri;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtReservationCode;
-        private Common.LookUpButton lookUpButton1;
+        private Common.PickListButton btnPLReservation;
     }
 }

@@ -29,18 +29,11 @@ namespace MVCHIS.Billing {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
-        }
-
-        public override void LoadForeignKeys(ForeignKeys FK) {
-            FK.Put(DBControllersFactory.GetFoodClassController());
-            FK.Put(DBControllersFactory.GetFoodTypeController());
-            FK.Put(DBControllersFactory.GetAccommClassController());
-        }
-
-        private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            
-            Model = Controller.Find(new BillingCategoryModel() { Id = txtBillingCategoryCode.Text.ToInteger() }, "Id");
-
+            //pick lists
+            PickList[btnPLAccommClass] = txtAccommClassId;
+            PickList[btnPLFoodClass] = txtFoodClassId;
+            PickList[btnPLFoodType] = txtFoodTypeId;
+            PickList[btnPLBillingCategory] = txtId;
         }
 
         private void AccomCategoryFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
@@ -48,15 +41,15 @@ namespace MVCHIS.Billing {
         }
 
         private void TxtAccommClassId_TextChanged(object sender, EventArgs e) {
-            txtAccommClassCode.Text = ForeignKeys.Instance[MODELS.AccommClass, txtAccommClassId.Text];
+            txtAccommClassCode.Text = DBControllersFactory.FK(MODELS.AccommClass, txtAccommClassId.Text);
         }
 
         private void TxtFoodClassId_TextChanged(object sender, EventArgs e) {
-            txtFoodClassCode.Text = ForeignKeys.Instance[MODELS.FoodClass, txtFoodClassId.Text];
+            txtFoodClassCode.Text = DBControllersFactory.FK(MODELS.FoodClass, txtFoodClassId.Text);
         }
 
         private void TxtFoodTypeId_TextChanged(object sender, EventArgs e) {
-            txtFoodTypeCode.Text = ForeignKeys.Instance[MODELS.FoodType, txtFoodTypeId.Text];
+            txtFoodTypeCode.Text = DBControllersFactory.FK(MODELS.FoodType, txtFoodTypeId.Text);
         }
     }
     

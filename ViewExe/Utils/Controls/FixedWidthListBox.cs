@@ -12,7 +12,7 @@ namespace MVCHIS.Utils {
     public partial class FixedWidthListBox : UserControl {
         private DataTable source;
         private bool columnsInitialized;
-        [Category("(Lookup)")]
+        [Category("(PickList)")]
         [Description("Shown columns.")]
         [Editor("System.Windows.Forms.Design.ListControlStringCollectionEditor, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
@@ -24,7 +24,7 @@ namespace MVCHIS.Utils {
             set { source = value; if (DesignMode||(Site!=null && Site.DesignMode)) return; }
         }
         private string filter;
-        [Category("(Lookup)")]
+        [Category("(PickList)")]
         [Description("Filter")]
         [Browsable(true)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
@@ -33,7 +33,7 @@ namespace MVCHIS.Utils {
             set { filter = value; if (DesignMode||(Site!=null && Site.DesignMode)) return; }
         }
 
-        [Category("(Lookup)")]
+        [Category("(PickList)")]
         [Description("The selected fields to be shown in the lookup.")]
         [Editor("System.Windows.Forms.Design.ListControlStringCollectionEditor, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]

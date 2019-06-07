@@ -16,7 +16,8 @@ namespace MVCHIS {
     public partial class MainView : Form, IDisposable
     {
 
-        public   DictionaryController         CntrlDC;
+        public   WordController               CntrlWD;
+        private  LanguageController           CntrlLG;
         private  UserController               CntrlUS;
         private  EntitlementGroupController   CntrlEG;
         private  EntitlementController        CntrlEN;
@@ -41,26 +42,27 @@ namespace MVCHIS {
 
         private MainView()
         {
-            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return; 
-            CntrlDC = DBControllersFactory.GetDictionaryController();
-            CntrlEG = DBControllersFactory.GetEntitlementGroupController();
-            CntrlEN = DBControllersFactory.GetEntitlementController();
-            CntrlET = DBControllersFactory.GetEntityController();
-            CntrlPE = DBControllersFactory.GetProfileEntitlementController();
-            CntrlUS = DBControllersFactory.GetUserController();
+            InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
+            CntrlLG = DBControllersFactory.Language();
+            CntrlWD = DBControllersFactory.Word();
+            CntrlEG = DBControllersFactory.EntitlementGroup();
+            CntrlEN = DBControllersFactory.Entitlement();
+            CntrlET = DBControllersFactory.Entity();
+            CntrlPE = DBControllersFactory.ProfileEntitlement();
+            CntrlUS = DBControllersFactory.User();
         }
 
 
 
         private void MainViewLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //tsDateTime.Alignment = ToolStripItemAlignment.Right;
-            try {
+            //try {
                 //this.StartPosition = FormStartPosition.CenterScreen;
                 SetBounds(100, 50, 1200, 680);
                 
                 LoadForm();
             
-              }
+              try{}
             catch(Exception ex) {
                 FormsHelper.Error(ex.Message);
             }
@@ -68,9 +70,26 @@ namespace MVCHIS {
 
         public void LoadForm() {
 
+            tsddbLanguage.DropDownItems.Clear();
+            foreach(var l in CntrlLG.Select(new LanguageModel { }, "Id,LanguageName").Concat(new[] { new LanguageModel { LanguageName="English" } })) {
+                tsddbLanguage.DropDownItems.Add(l.LanguageName).Click += (s, e) => {
+                    //new Thread(delegate () {
+                        if (WordController.CurrentLanguage == LanguageState.Translation) {
+                            CntrlWD.SetToDefault();
+                            FormsHelper.ApplyLanguageLocalization(this);
+                        }
+                        CntrlWD.ReadDictionary(l.Id);
+                        tsddbLanguage.Text = l.LanguageName;
+                        //BeginInvoke((Action)delegate () {
+                        FormsHelper.ApplyLanguageLocalization(this);
+                        //});
+                    //}).Start();
+                };
+            }
+
             tsProgressBar.Value = 0;
 
-            FormsHelper.ApplyLanguageLocalization(this);
+            //FormsHelper.ApplyLanguageLocalization(this);
 
             tssLabelStatus.Text = "Loading Menus";
             //LogOutToolStripMenuItemClick(sender, e);
@@ -104,14 +123,14 @@ namespace MVCHIS {
             string prev = "";
             TreeNode node = null;
             foreach (var stuple in CntrlUS.GetMenu(model).OrderBy(x => x.Item1)) {
-                var egn = stuple.Item1;
+                var egn = stuple.Item1.FromCamelCaseToWords();
                 if (prev.Equals(egn) == false) {
                     node = this.treeViewMenu.Nodes.Add(egn);
                     node.ForeColor = Color.Red;
                     menu[egn] = new List<TreeNode>();
                     prev = egn;
                 }
-                TreeNode child = node.Nodes.Add(stuple.Item2);
+                TreeNode child = node.Nodes.Add(stuple.Item2.FromCamelCaseToWords());
                 child.Tag = stuple.Item3;
                 menu[egn].Add(child);
             }
@@ -186,9 +205,11 @@ namespace MVCHIS {
         }
 
         private void CloseToolStripMenuItemClick(object sender, EventArgs e) {
-            try {
-                this.ActiveMdiChild.Close();
-            } catch { }
+            if (tabControl1.SelectedIndex >= 0) {
+                tabControl1.SelectedTab.Controls.Clear();
+                tabControl1.TabPages.RemoveAt(tabControl1.SelectedIndex);
+            }
+
         }
 
         
@@ -196,19 +217,6 @@ namespace MVCHIS {
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e) {
             if (panel1.Controls.Count < 1) return;
             ((IView)tabControl1.SelectedTab.Controls[0])?.DeleteButton?.PerformClick();
-        }
-
-        private void EnglishToolStripMenuItem_Click(object sender, EventArgs e) {
-
-        }
-
-        private void ArabicToolStripMenuItem_Click(object sender, EventArgs e) {
-            new Thread(delegate () {
-                DictionaryController.LanguageState = DictionaryController.LanguageState == LanguageState.Arabic ? LanguageState.English : LanguageState.Arabic;
-                BeginInvoke((Action)delegate () {
-                    FormsHelper.ApplyLanguageLocalization(this);
-                });
-            }).Start();
         }
 
         private void Timer1_Tick(object sender, EventArgs e) {
@@ -220,9 +228,7 @@ namespace MVCHIS {
         }
 
         public void ShowView(Control view,string name,Action whenCompleted = null) {
-            //panel1.Controls.Clear();
-            //panel1.Controls.Add(view);
-            FormsHelper.ApplyLanguageLocalization(view);
+            
             if (view is IView) {
                 var iview = (IView)view;
                 iview.AfterSave += AfterViewSave;
@@ -230,6 +236,7 @@ namespace MVCHIS {
                 iview.AfterNew += AfterViewNew;
                 iview.ModelChanged += ViewModelChanged;
             }
+
             var tpx = new TabPage(name);
             tpx.Text = name;
             
@@ -239,6 +246,8 @@ namespace MVCHIS {
             tabControl1.SelectedTab = tpx;
             tpx.ResumeLayout();
             whenCompleted?.Invoke();
+            FormsHelper.ApplyLanguageLocalization(view);
+
         }
 
 
@@ -264,7 +273,7 @@ namespace MVCHIS {
                     UserControl view = (UserControl)DBViewsFactory.GetView((MODELS)Enum.Parse(typeof(MODELS), entity.EntityName));
                     view.SuspendLayout();
                     view.Tag = node.Tag;
-                    lblHeading.Text = node.Text;
+                    //lblHeading.Text = node.Text;
                     ShowView(view, node.Text, () => {
                         Thread.Sleep(1000);
                         Cursor.Current = Cursors.Default;
@@ -277,7 +286,7 @@ namespace MVCHIS {
         }
 
         private void ViewModelChanged() {
-            lblActionStatus.Visible = false;
+            //lblActionStatus.Visible = false;
         }
 
         private void AfterViewNew(bool status) {
@@ -285,11 +294,11 @@ namespace MVCHIS {
         }
 
         private void AfterViewDelete(bool status) {
-            lblActionStatus.Visible = status;
+            //lblActionStatus.Visible = status;
         }
 
         private void AfterViewSave(bool status) {
-            lblActionStatus.Visible = status;
+            //lblActionStatus.Visible = status;
         }
 
         private void TreeView1_KeyDown(object sender, KeyEventArgs e) {
@@ -328,7 +337,7 @@ namespace MVCHIS {
         }
 
         private void TabControl1_TabIndexChanged(object sender, EventArgs e) {
-            lblHeading.Text = tabControl1.SelectedTab.Text;
+            //lblHeading.Text = tabControl1.SelectedTab.Text;
         }
     }
 }

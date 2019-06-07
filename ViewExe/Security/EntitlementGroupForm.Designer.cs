@@ -36,7 +36,7 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtEntitlementGroupName = new System.Windows.Forms.TextBox();
-            this.EntitlementGroupNameLookup = new MVCHIS.Common.LookUpButton();
+            this.btnPLEntitlementGroup = new MVCHIS.Common.PickListButton();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.chkDynamic = new System.Windows.Forms.CheckBox();
@@ -72,17 +72,15 @@
             // 
             // txtUpdatedOn
             // 
-            
-            this.txtUpdatedOn.Location = new System.Drawing.Point(233, 131);
+            this.txtUpdatedOn.Location = new System.Drawing.Point(234, 131);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
-            this.txtUpdatedOn.Size = new System.Drawing.Size(137, 20);
+            this.txtUpdatedOn.Size = new System.Drawing.Size(139, 20);
             this.txtUpdatedOn.TabIndex = 7;
             this.txtUpdatedOn.TabStop = false;
             // 
             // txtUpdatedBy
             // 
-            
             this.txtUpdatedBy.Location = new System.Drawing.Point(159, 131);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -101,17 +99,15 @@
             // 
             // txtCreatedOn
             // 
-            
-            this.txtCreatedOn.Location = new System.Drawing.Point(233, 105);
+            this.txtCreatedOn.Location = new System.Drawing.Point(234, 105);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
-            this.txtCreatedOn.Size = new System.Drawing.Size(137, 20);
+            this.txtCreatedOn.Size = new System.Drawing.Size(139, 20);
             this.txtCreatedOn.TabIndex = 5;
             this.txtCreatedOn.TabStop = false;
             // 
             // txtCreatedBy
             // 
-            
             this.txtCreatedBy.Location = new System.Drawing.Point(159, 105);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -162,18 +158,17 @@
             this.txtEntitlementGroupName.Size = new System.Drawing.Size(192, 20);
             this.txtEntitlementGroupName.TabIndex = 1;
             // 
-            // EntitlementGroupNameLookup
+            // btnPLEntitlementGroup
             // 
-            this.EntitlementGroupNameLookup.AssociatedControl = "txtEntitlementGroupName";
-            this.EntitlementGroupNameLookup.Source = "EntitlementGroup";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.EntitlementGroupNameLookup.Location = new System.Drawing.Point(351, 41);
-            this.EntitlementGroupNameLookup.Name = "EntitlementGroupNameLookup";
-            //
-            this.EntitlementGroupNameLookup.Size = new System.Drawing.Size(22, 22);
-            this.EntitlementGroupNameLookup.TabIndex = 2;
-            this.EntitlementGroupNameLookup.TabStop = false;
-            this.EntitlementGroupNameLookup.LookUpSelected += new System.EventHandler(this.EntitlementGroupNameLookupLookUpSelected);
+            this.btnPLEntitlementGroup.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLEntitlementGroup.Location = new System.Drawing.Point(351, 41);
+            this.btnPLEntitlementGroup.Name = "btnPLEntitlementGroup";
+            this.btnPLEntitlementGroup.Size = new System.Drawing.Size(22, 22);
+            this.btnPLEntitlementGroup.Source = "EntitlementGroup";
+            this.btnPLEntitlementGroup.TabIndex = 2;
+            this.btnPLEntitlementGroup.TabStop = false;
+            this.btnPLEntitlementGroup.Text = "↓";
+            
             // 
             // chkReadOnly
             // 
@@ -221,7 +216,7 @@
             this.Controls.Add(this.chkReadOnly);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtEntitlementGroupName);
-            this.Controls.Add(this.EntitlementGroupNameLookup);
+            this.Controls.Add(this.btnPLEntitlementGroup);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnNew);
@@ -244,7 +239,7 @@
 
         #endregion
 
-        private Common.LookUpButton EntitlementGroupNameLookup;
+        private Common.PickListButton btnPLEntitlementGroup;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnNew;

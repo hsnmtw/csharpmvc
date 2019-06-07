@@ -38,7 +38,7 @@
             this.txtFoodClassCode = new System.Windows.Forms.TextBox();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.lookUpButtonFoodClass = new MVCHIS.Common.LookUpButton();
+            this.btnPLFoodClass = new MVCHIS.Common.PickListButton();
             this.txtFoodClassDesc = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -132,7 +132,6 @@
             this.txtId.Size = new System.Drawing.Size(68, 20);
             this.txtId.TabIndex = 0;
             this.txtId.TabStop = false;
-            
             // 
             // label1
             // 
@@ -156,7 +155,7 @@
             // 
             this.txtFoodClassCode.Location = new System.Drawing.Point(149, 57);
             this.txtFoodClassCode.Name = "txtFoodClassCode";
-            this.txtFoodClassCode.Size = new System.Drawing.Size(154, 20);
+            this.txtFoodClassCode.Size = new System.Drawing.Size(211, 20);
             this.txtFoodClassCode.TabIndex = 1;
             // 
             // chkReadOnly
@@ -178,19 +177,16 @@
             this.label10.TabIndex = 47;
             this.label10.Text = "Read Only";
             // 
-            // lookUpButtonFoodClass
+            // btnPLFoodClass
             // 
-            this.lookUpButtonFoodClass.AssociatedControl = "txtFoodClassCode";
-            this.lookUpButtonFoodClass.Source = "FoodClass";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonFoodClass.Location = new System.Drawing.Point(305, 56);
-            this.lookUpButtonFoodClass.Name = "lookUpButtonFoodClass";
-            // 0;
-            //("FoodClassCode");
-            this.lookUpButtonFoodClass.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonFoodClass.TabIndex = 2;
-            this.lookUpButtonFoodClass.TabStop = false;
-            this.lookUpButtonFoodClass.LookUpSelected += new System.EventHandler(this.LookUpButton1LookUpSelected);
+            this.btnPLFoodClass.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLFoodClass.Location = new System.Drawing.Point(219, 23);
+            this.btnPLFoodClass.Name = "btnPLFoodClass";
+            this.btnPLFoodClass.Size = new System.Drawing.Size(22, 22);
+            this.btnPLFoodClass.Source = "FoodClass";
+            this.btnPLFoodClass.TabIndex = 2;
+            this.btnPLFoodClass.TabStop = false;
+            this.btnPLFoodClass.Text = "↓";
             // 
             // txtFoodClassDesc
             // 
@@ -222,7 +218,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.lookUpButtonFoodClass);
+            this.Controls.Add(this.btnPLFoodClass);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtFoodClassCode);
             this.Controls.Add(this.txtCreatedOn);
@@ -231,7 +227,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtCreatedBy);
             this.Name = "FoodClassForm";
-            this.Size = new System.Drawing.Size(399, 311);
+            this.Size = new System.Drawing.Size(379, 293);
             this.Load += new System.EventHandler(this.FoodClassFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -252,7 +248,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtFoodClassCode;
-        private Common.LookUpButton lookUpButtonFoodClass;
+        private Common.PickListButton btnPLFoodClass;
         private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtFoodClassDesc;

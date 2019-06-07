@@ -37,8 +37,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.UserNameLookup = new MVCHIS.Common.LookUpButton();
+            this.btnPLUser = new MVCHIS.Common.PickListButton();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.txtId = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -91,14 +92,12 @@
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
             // 
-            // UserNameLookup
+            // btnPLUser
             // 
-            this.UserNameLookup.AssociatedControl = "txtUserName";
-            resources.ApplyResources(this.UserNameLookup, "UserNameLookup");
-            this.UserNameLookup.Name = "UserNameLookup";
-            this.UserNameLookup.Source = "User";
-            this.UserNameLookup.TabStop = false;
-            this.UserNameLookup.LookUpSelected += new System.EventHandler(this.UserNameLookup_LookUpSelected);
+            resources.ApplyResources(this.btnPLUser, "btnPLUser");
+            this.btnPLUser.Name = "btnPLUser";
+            this.btnPLUser.Source = "User";
+            this.btnPLUser.TabStop = false;
             // 
             // pictureBox2
             // 
@@ -106,16 +105,24 @@
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.TabStop = false;
             // 
+            // txtId
+            // 
+            resources.ApplyResources(this.txtId, "txtId");
+            this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
+            this.txtId.TextChanged += new System.EventHandler(this.TxtId_TextChanged);
+            // 
             // UsersLoginView
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtId);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.UserNameLookup);
+            this.Controls.Add(this.btnPLUser);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.txtPassword);
@@ -136,12 +143,13 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private Common.LookUpButton UserNameLookup;
+        private Common.PickListButton btnPLUser;
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.TextBox txtId;
     }
 }

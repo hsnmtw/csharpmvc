@@ -25,29 +25,27 @@ namespace MVCHIS.Housing.Buildings {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
+            //pick list
+            PickList[btnPLBuilding] = txtId;
+            PickList[btnPLBuildingType] = txtBuildingTypeId;
+            PickList[btnPLComound] = txtCompoundId;
         }
 
-        public override void LoadForeignKeys(ForeignKeys FK) {
-            FK.Put(DBControllersFactory.GetBuildingTypeController());
-            FK.Put(DBControllersFactory.GetCompoundController());
-
-            base.LoadForeignKeys(FK);
-        }
-
-        private void LookUpButton1LookUpSelected(object sender, EventArgs e) {            
-            Model = Controller.Find(new BuildingModel() { Id = txtBuildingName.Text.ToInteger() }, "Id");
+        private void PickListButton1LookUpSelected(int id) {            
         }
 
         private void BuildingFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
         }
 
         private void TxtBuildingTypeId_TextChanged(object sender, EventArgs e) {
-            txtBuildingTypeCode.Text = ForeignKeys.Instance[MODELS.BuildingType, txtBuildingTypeId.Text];
+            txtBuildingTypeCode.Text = DBControllersFactory.FK(MODELS.BuildingType, txtBuildingTypeId.Text);
         }
 
         private void TxtCompoundId_TextChanged(object sender, EventArgs e) {
-            txtCompoundName.Text = ForeignKeys.Instance[MODELS.Compound, txtCompoundId.Text];
+            txtCompoundName.Text = DBControllersFactory.FK(MODELS.Compound, txtCompoundId.Text);
         }
+
+        
     }
     
 }

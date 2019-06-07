@@ -26,15 +26,16 @@ namespace MVCHIS.Customers {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
+            //pick lists
+            PickList[btnPLClientType] = txtId;
         }
 
-        private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            Model = Controller.Find(new ClientTypeModel() { Id = txtClientTypeCode.Text.ToInteger() }, "Id");
-
-        }
 
         private void ClientTypeFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
         }
+
+        
+
     }
     
 }

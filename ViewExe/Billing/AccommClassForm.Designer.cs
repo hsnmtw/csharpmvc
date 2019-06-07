@@ -38,14 +38,14 @@
             this.txtAccommClassCode = new System.Windows.Forms.TextBox();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.lookUpButtonAccommClass = new MVCHIS.Common.LookUpButton();
+            this.btnPLAccommClass = new MVCHIS.Common.PickListButton();
             this.label2 = new System.Windows.Forms.Label();
             this.txtAccommClassDesc = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(152, 264);
+            this.btnDelete.Location = new System.Drawing.Point(120, 264);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 11;
@@ -54,7 +54,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(260, 264);
+            this.btnSave.Location = new System.Drawing.Point(228, 264);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 9;
@@ -63,7 +63,7 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(368, 264);
+            this.btnNew.Location = new System.Drawing.Point(336, 264);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 23);
             this.btnNew.TabIndex = 10;
@@ -72,7 +72,6 @@
             // 
             // txtUpdatedOn
             // 
-            
             this.txtUpdatedOn.Location = new System.Drawing.Point(274, 190);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -82,7 +81,6 @@
             // 
             // txtUpdatedBy
             // 
-            
             this.txtUpdatedBy.Location = new System.Drawing.Point(199, 190);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -157,7 +155,7 @@
             // 
             this.txtAccommClassCode.Location = new System.Drawing.Point(200, 46);
             this.txtAccommClassCode.Name = "txtAccommClassCode";
-            this.txtAccommClassCode.Size = new System.Drawing.Size(154, 20);
+            this.txtAccommClassCode.Size = new System.Drawing.Size(211, 20);
             this.txtAccommClassCode.TabIndex = 1;
             // 
             // chkReadOnly
@@ -179,20 +177,17 @@
             this.label10.TabIndex = 45;
             this.label10.Text = "Read Only";
             // 
-            // lookUpButtonAccommClass
+            // btnPLAccommClass
             // 
-            this.lookUpButtonAccommClass.AssociatedControl = "txtAccommClassCode";
-            this.lookUpButtonAccommClass.Source = "AccommClass";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonAccommClass.Location = new System.Drawing.Point(355, 45);
-            this.lookUpButtonAccommClass.Name = "lookUpButtonAccommClass";
-            // 0;
-            //("AccommClassCode");
-            //("AccommClassDesc");
-            this.lookUpButtonAccommClass.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonAccommClass.TabIndex = 2;
-            this.lookUpButtonAccommClass.TabStop = false;
-            this.lookUpButtonAccommClass.LookUpSelected += new System.EventHandler(this.LookUpButton1LookUpSelected);
+            this.btnPLAccommClass.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLAccommClass.Location = new System.Drawing.Point(269, 19);
+            this.btnPLAccommClass.Name = "btnPLAccommClass";
+            this.btnPLAccommClass.Size = new System.Drawing.Size(22, 22);
+            this.btnPLAccommClass.Source = "AccommClass";
+            this.btnPLAccommClass.TabIndex = 2;
+            this.btnPLAccommClass.TabStop = false;
+            this.btnPLAccommClass.Text = "↓";
+            
             // 
             // label2
             // 
@@ -220,7 +215,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtUpdatedOn);
             this.Controls.Add(this.txtUpdatedBy);
-            this.Controls.Add(this.lookUpButtonAccommClass);
+            this.Controls.Add(this.btnPLAccommClass);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.txtAccommClassDesc);
             this.Controls.Add(this.txtAccommClassCode);
@@ -233,7 +228,7 @@
             this.Controls.Add(this.txtCreatedBy);
             this.Controls.Add(this.btnDelete);
             this.Name = "AccommClassForm";
-            this.Size = new System.Drawing.Size(460, 305);
+            this.Size = new System.Drawing.Size(427, 299);
             this.Load += new System.EventHandler(this.AccommClassFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -254,7 +249,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtAccommClassCode;
-        private Common.LookUpButton lookUpButtonAccommClass;
+        private Common.PickListButton btnPLAccommClass;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtAccommClassDesc;

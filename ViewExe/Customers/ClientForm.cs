@@ -42,21 +42,15 @@ namespace MVCHIS.Customers {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
+            //pick lists
+            PickList[btnPLCountry] = txtCountryId;
+            PickList[btnPLClientType] = txtClientTypeId;
+            PickList[btnPLClientShortName] = txtId;
 
-            CntrlCO = DBControllersFactory.GetContactController();
-            CntrlCI = DBControllersFactory.GetClientIdentificationController();
-            CntrlID = DBControllersFactory.GetIdentificationController();
-            CntrlCC = DBControllersFactory.GetClientContactController();
-        }
-
-        public override void LoadForeignKeys(ForeignKeys FK) {
-            FK.Put(DBControllersFactory.GetClientTypeController());
-            FK.Put(DBControllersFactory.GetCountryController());
-            FK.Put(CntrlCO);
-            FK.Put(CntrlCC);
-            FK.Put(CntrlID);
-            FK.Put(CntrlCI);
-            base.LoadForeignKeys(FK);
+            CntrlCO = DBControllersFactory.Contact();
+            CntrlCI = DBControllersFactory.ClientIdentification();
+            CntrlID = DBControllersFactory.Identification();
+            CntrlCC = DBControllersFactory.ClientContact();
         }
 
         private void ClientTypeFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
@@ -69,13 +63,8 @@ namespace MVCHIS.Customers {
             foreach (Control tab in this.tabControl1.TabPages) FormsHelper.ApplyLanguageLocalization(tab);
         }
 
-        private void LookUpButtonShortNameLookUpSelected(object sender, EventArgs e) {
-            
-            Model = Controller.Find(new ClientModel() { Id = txtShortName.Text.ToInteger() }, "Id");
-        }
-
         private void TxtClientTypeId_TextChanged(object sender, EventArgs e) {
-            txtClientTypeCode.Text = ForeignKeys.Instance[MODELS.ClientType, txtClientTypeId.Text];
+            txtClientTypeCode.Text = DBControllersFactory.FK(MODELS.ClientType, txtClientTypeId.Text);
         }
 
         private void BtnAddIdentification_Click(object sender, EventArgs e) {
@@ -132,7 +121,7 @@ namespace MVCHIS.Customers {
         }
 
         private void TxtNationalityCode_TextChanged(object sender, EventArgs e) {
-            txtCountryCode.Text = ForeignKeys.Instance[MODELS.Country, txtCountryId.Text];
+            txtCountryCode.Text = DBControllersFactory.FK(MODELS.Country, txtCountryId.Text);
         }
 
         private void BtnDateOfBirth_Click(object sender, EventArgs e) {
@@ -141,6 +130,16 @@ namespace MVCHIS.Customers {
 
         private void TxtDateOfBirth_Leave(object sender, EventArgs e) {
             ValidateDate(txtDateOfBirth);
+        }
+
+        
+
+        private void PickListButtonClientType_LookUpSelected(int obj) {
+            txtClientTypeId.Text = obj.ToString();
+        }
+
+        private void PickListButtonNationality_LookUpSelected(int obj) {
+            txtCountryId.Text = obj.ToString();
         }
     }
     

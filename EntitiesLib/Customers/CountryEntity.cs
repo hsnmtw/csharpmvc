@@ -11,8 +11,9 @@ namespace MVCHIS.Customers {
             , Fields           = new HashSet<string> {"ReadOnly","Id","CreatedBy","CreatedOn","UpdatedBy","UpdatedOn",
                                                       "CountryCode", "CountryEnglish","CountryArabic" }
             , RequiredFields   = new HashSet<string> { "Id", "CountryCode", "CountryEnglish" }
-            , UniqueKeyFields  = new HashSet<HashSet<string>> { new HashSet<string> { "CountryCode" } }
-            , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
+            , UniqueKeyFields  = new HashSet<HashSet<string>> { new HashSet<string> { "CountryCode"    },
+                                                                new HashSet<string> { "CountryEnglish" } }
+            , ForeignKeys      = new Dictionary<string, Tuple<MODELS, string>> {
             }
             , Sizes = new Dictionary<string, int> {
                  ["CreatedBy"     ] = 10

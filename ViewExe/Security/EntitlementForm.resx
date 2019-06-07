@@ -192,7 +192,7 @@
     <value>14</value>
   </data>
   <data name="txtUpdatedOn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>233, 174</value>
+    <value>236, 174</value>
   </data>
   <data name="txtUpdatedOn.Size" type="System.Drawing.Size, System.Drawing">
     <value>137, 20</value>
@@ -261,7 +261,7 @@
     <value>17</value>
   </data>
   <data name="txtCreatedOn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>233, 148</value>
+    <value>236, 148</value>
   </data>
   <data name="txtCreatedOn.Size" type="System.Drawing.Size, System.Drawing">
     <value>137, 20</value>
@@ -411,10 +411,10 @@
     <value>159, 42</value>
   </data>
   <data name="txtEntitlementName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 20</value>
+    <value>214, 20</value>
   </data>
   <data name="txtEntitlementName.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;txtEntitlementName.Name" xml:space="preserve">
     <value>txtEntitlementName</value>
@@ -428,31 +428,31 @@
   <data name="&gt;&gt;txtEntitlementName.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="EntitlementNameLookup.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="btnPLEntitlement.Font" type="System.Drawing.Font, System.Drawing">
     <value>Consolas, 10pt, style=Bold</value>
   </data>
-  <data name="EntitlementNameLookup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>351, 41</value>
+  <data name="btnPLEntitlement.Location" type="System.Drawing.Point, System.Drawing">
+    <value>229, 11</value>
   </data>
-  <data name="EntitlementNameLookup.ShowFieldsInLookUp" xml:space="preserve">
-    <value>EntitlementName</value>
-  </data>
-  <data name="EntitlementNameLookup.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btnPLEntitlement.Size" type="System.Drawing.Size, System.Drawing">
     <value>22, 22</value>
   </data>
-  <data name="EntitlementNameLookup.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="btnPLEntitlement.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;EntitlementNameLookup.Name" xml:space="preserve">
-    <value>EntitlementNameLookup</value>
+  <data name="btnPLEntitlement.Text" xml:space="preserve">
+    <value>↓</value>
   </data>
-  <data name="&gt;&gt;EntitlementNameLookup.Type" xml:space="preserve">
-    <value>MVCHIS.Common.LookUpButton, ViewExe, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;btnPLEntitlement.Name" xml:space="preserve">
+    <value>btnPLEntitlement</value>
   </data>
-  <data name="&gt;&gt;EntitlementNameLookup.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnPLEntitlement.Type" xml:space="preserve">
+    <value>MVCHIS.Common.PickListButton, ViewExe, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnPLEntitlement.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;EntitlementNameLookup.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnPLEntitlement.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
   <data name="chkReadOnly.AutoSize" type="System.Boolean, mscorlib">
@@ -510,10 +510,10 @@
     <value>9</value>
   </data>
   <data name="txtEntitlementGroupName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 69</value>
+    <value>203, 69</value>
   </data>
   <data name="txtEntitlementGroupName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 20</value>
+    <value>145, 20</value>
   </data>
   <data name="txtEntitlementGroupName.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -530,34 +530,35 @@
   <data name="&gt;&gt;txtEntitlementGroupName.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="EntitlementGroupNameLookup.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="btnPLEntitlementGroup.Font" type="System.Drawing.Font, System.Drawing">
     <value>Consolas, 10pt, style=Bold</value>
   </data>
-  <data name="EntitlementGroupNameLookup.Location" type="System.Drawing.Point, System.Drawing">
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnPLEntitlementGroup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnPLEntitlementGroup.Location" type="System.Drawing.Point, System.Drawing">
     <value>351, 68</value>
   </data>
-  <data name="EntitlementGroupNameLookup.ShowFieldsInLookUp" xml:space="preserve">
-    <value>EntitlementGroupName</value>
-  </data>
-  <data name="EntitlementGroupNameLookup.ShowFieldsInLookUp1" xml:space="preserve">
-    <value>Id</value>
-  </data>
-  <data name="EntitlementGroupNameLookup.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btnPLEntitlementGroup.Size" type="System.Drawing.Size, System.Drawing">
     <value>22, 22</value>
   </data>
-  <data name="EntitlementGroupNameLookup.TabIndex" type="System.Int32, mscorlib">
+  <data name="btnPLEntitlementGroup.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="&gt;&gt;EntitlementGroupNameLookup.Name" xml:space="preserve">
-    <value>EntitlementGroupNameLookup</value>
+  <data name="btnPLEntitlementGroup.Text" xml:space="preserve">
+    <value>↓</value>
   </data>
-  <data name="&gt;&gt;EntitlementGroupNameLookup.Type" xml:space="preserve">
-    <value>MVCHIS.Common.LookUpButton, ViewExe, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;btnPLEntitlementGroup.Name" xml:space="preserve">
+    <value>btnPLEntitlementGroup</value>
   </data>
-  <data name="&gt;&gt;EntitlementGroupNameLookup.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnPLEntitlementGroup.Type" xml:space="preserve">
+    <value>MVCHIS.Common.PickListButton, ViewExe, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnPLEntitlementGroup.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;EntitlementGroupNameLookup.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnPLEntitlementGroup.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
@@ -614,41 +615,38 @@
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="lookUpEntityName.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="btnPLEntity.Font" type="System.Drawing.Font, System.Drawing">
     <value>Consolas, 10pt, style=Bold</value>
   </data>
-  <data name="lookUpEntityName.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="btnPLEntity.Location" type="System.Drawing.Point, System.Drawing">
     <value>351, 94</value>
   </data>
-  <data name="lookUpEntityName.ShowFieldsInLookUp" xml:space="preserve">
-    <value>EntityName</value>
-  </data>
-  <data name="lookUpEntityName.ShowFieldsInLookUp1" xml:space="preserve">
-    <value>Id</value>
-  </data>
-  <data name="lookUpEntityName.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btnPLEntity.Size" type="System.Drawing.Size, System.Drawing">
     <value>22, 22</value>
   </data>
-  <data name="lookUpEntityName.TabIndex" type="System.Int32, mscorlib">
+  <data name="btnPLEntity.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="&gt;&gt;lookUpEntityName.Name" xml:space="preserve">
-    <value>lookUpEntityName</value>
+  <data name="btnPLEntity.Text" xml:space="preserve">
+    <value>↓</value>
   </data>
-  <data name="&gt;&gt;lookUpEntityName.Type" xml:space="preserve">
-    <value>MVCHIS.Common.LookUpButton, ViewExe, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;btnPLEntity.Name" xml:space="preserve">
+    <value>btnPLEntity</value>
   </data>
-  <data name="&gt;&gt;lookUpEntityName.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnPLEntity.Type" xml:space="preserve">
+    <value>MVCHIS.Common.PickListButton, ViewExe, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnPLEntity.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;lookUpEntityName.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnPLEntity.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="txtEntityName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 95</value>
+    <value>203, 95</value>
   </data>
   <data name="txtEntityName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 20</value>
+    <value>145, 20</value>
   </data>
   <data name="txtEntityName.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>

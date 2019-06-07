@@ -8,12 +8,12 @@ namespace MVCHIS.Common {
         M Find(M model, params string[] whereFields);
         IEnumerable<M> FindById(M model, IEnumerable<int> Ids);
         DataTable GetDataById(M model, IEnumerable<int> Ids);
-        IEnumerable<M> Read(M model, bool like = false, params string[] whereFields);
+        IEnumerable<M> Select(M model,string fields="*", bool like = false, params string[] whereFields);
         int Update(M model, params string[] whereFields);
         int Delete(M model, params string[] whereFields);
-        DataTable GetData(M model, bool like = false, params string[] whereFields);
+        DataTable GetData(M model,string fields="*", bool like = false, params string[] whereFields);
         M Exists(M model);
         string Validate(M model);
-        string GetDDL();
+        
     }
 }

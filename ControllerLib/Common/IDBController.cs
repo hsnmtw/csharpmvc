@@ -11,13 +11,10 @@ namespace MVCHIS.Common {
         IEnumerable<M> Read();
         IEnumerable<M> Read(M model, params string[] whereFields);
         IEnumerable<M> Read(M model, bool like = false, params string[] whereFields);
+        IEnumerable<M> Select(M model,string fields="*", bool like = false, params string[] whereFields);
         int Save(M model);
         int Delete(M model);
         M NewModel();
-        object Dispatch(string action, params object[] arguments);
-        //DataTable GetData();
         string Validate(M model);
-        Action<M> OnSaveAction { get; set; }
-        Action<M> OnDeleteAction { get; set; }
     }
 }

@@ -24,16 +24,16 @@ namespace ViewWpf.Views.Tools {
     /// </summary>
     public partial class DictionaryUC : UserControl {
 
-        public DictionaryModel Model {
-            get => new DictionaryModel {
+        public WordModel Model {
+            get => new WordModel {
                 Id = id.Text.ToInteger(),
                 WordInEnglish = english.Text,
-                WordInArabic = arabic.Text
+                //WordInArabic = arabic.Text
             };
             set {
                 id.Text = value.Id.ToString();
                 english.Text = value.WordInEnglish;
-                arabic.Text = value.WordInArabic;
+                //arabic.Text = value.WordInArabic;
                 cb.Text = value.CreatedBy;
                 co.Text = value.CreatedOn.ToString();
                 ub.Text = value.UpdatedBy;
@@ -50,13 +50,13 @@ namespace ViewWpf.Views.Tools {
         }
 
         private void Find_Click(object sender, RoutedEventArgs e) {
-            var CntrlDC = DBControllersFactory.GetDictionaryController();
-            ForeignKeys.Instance.Put(CntrlDC);
+            var CntrlDC = DBControllersFactory.Word();
+            
             PickListWindow picklist = new PickListWindow();
-            picklist.SetData(ForeignKeys.Instance.GetLookUp("Dictionary"));
+            picklist.SetData(CntrlDC.GetKeysAndValues());
             picklist.Show();
             picklist.Selected += (id) => {
-                Model = CntrlDC.Find(new DictionaryModel { Id=id }, "Id");
+                Model = CntrlDC.Find(new WordModel { Id=id }, "Id");
                 picklist.Close();
             };
         }

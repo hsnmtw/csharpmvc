@@ -36,15 +36,11 @@ namespace MVCHIS.Billing {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
-
+            //pick lists
+            PickList[btnPLClient] = txtClientId;
+            //PickList[btnPLClient]
 
             AfterNew += AfterNewButtonClick;
-        }
-
-        public override void LoadForeignKeys(ForeignKeys FK) {
-            FK.Put(DBControllersFactory.GetRoomController());
-            FK.Put(DBControllersFactory.GetClientController());
-            FK.Put(DBControllersFactory.GetCurrencyController());
         }
 
         private void AfterNewButtonClick(bool obj) {
@@ -53,8 +49,7 @@ namespace MVCHIS.Billing {
             }
         }
 
-        private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            Model = Controller.Find(new ReservationModel() { Id = txtReservationCode.Text.ToInteger() }, "Id");
+        private void PickListButton1LookUpSelected(int id) {
         }
 
         private void ReservationFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
@@ -62,11 +57,11 @@ namespace MVCHIS.Billing {
         }
 
         private void TxtRoomId_TextChanged(object sender, EventArgs e) {
-            txtRoomName.Text = ForeignKeys.Instance[MODELS.Room, txtRoomId.Text];
+            txtRoomName.Text = DBControllersFactory.FK(MODELS.Room, txtRoomId.Text);
         }
 
         private void TxtClientId_TextChanged(object sender, EventArgs e) {
-            txtClientName.Text = ForeignKeys.Instance[MODELS.Client, txtClientId.Text];
+            txtClientName.Text = DBControllersFactory.FK(MODELS.Client, txtClientId.Text);
         }
 
 
@@ -83,7 +78,21 @@ namespace MVCHIS.Billing {
         }
 
         private void TxtCurrencyId_TextChanged(object sender, EventArgs e) {
-            txtCurrencyEnglish.Text = ForeignKeys.Instance[MODELS.Currency, txtCurrencyId.Text];
+            txtCurrencyEnglish.Text = DBControllersFactory.FK(MODELS.Currency, txtCurrencyId.Text);
+        }
+
+        
+
+        private void PickListButtonRoom_LookUpSelected(int obj) {
+            txtRoomId.Text = obj.ToString();
+        }
+
+        private void PickListButtonClient_LookUpSelected(int obj) {
+            txtClientId.Text = obj.ToString();
+        }
+
+        private void PickListButtonCurrency_LookUpSelected(int obj) {
+            txtCurrencyId.Text = obj.ToString();
         }
     }
    

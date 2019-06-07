@@ -36,9 +36,9 @@ namespace MVCHIS.Security {
         }        
 
         private void ProfileFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
-            CntrlEN = DBControllersFactory.GetEntitlementController();
-            CntrlPE = DBControllersFactory.GetProfileEntitlementController();
-            CntrlEG = DBControllersFactory.GetEntitlementGroupController();
+            CntrlEN = DBControllersFactory.Entitlement();
+            CntrlPE = DBControllersFactory.ProfileEntitlement();
+            CntrlEG = DBControllersFactory.EntitlementGroup();
 
             cmbEntitelmentsGroup.Items.Clear();
             cmbEntitelmentsGroup.Items.Add("All");
@@ -106,6 +106,8 @@ namespace MVCHIS.Security {
             this.Model = this.Model;
         }
 
+        
+
         private void BtnOpen_Click(object sender, EventArgs e) {
             if (this.lstEntitlements.SelectedIndex < 0) return;
             int.TryParse( this.txtId.Text, out int profile);
@@ -120,11 +122,6 @@ namespace MVCHIS.Security {
             pef.Model = pem;
             pef.Show();
 
-        }
-
-        private void ProfileNameLookupLookUpSelected(object sender, EventArgs e) {
-            
-            Model = Controller.Find(new ProfileModel() { Id = txtProfileName.Text.ToInteger() }, "Id");
         }
 
         private void BtnAllowAll_Click(object sender, EventArgs e) {

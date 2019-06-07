@@ -23,17 +23,14 @@ namespace MVCHIS.Common {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
-        }
-
-        private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            
-            //this.txtEntityName.Text = selected;
-            Model = Controller.Find(new EntityModel() { Id = txtEntityName.Text.ToInteger() }, "Id");
-
+            //pick lists
+            PickList[btnPLEntity] = txtId;
         }
 
         private void EntityFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
         }
+
+        
     }
     
 }

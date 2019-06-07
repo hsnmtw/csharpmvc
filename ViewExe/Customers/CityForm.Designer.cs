@@ -39,10 +39,10 @@
             this.txtUpdatedBy = new System.Windows.Forms.TextBox();
             this.txtCreatedOn = new System.Windows.Forms.TextBox();
             this.txtUpdatedOn = new System.Windows.Forms.TextBox();
-            this.lookupButtonCity = new MVCHIS.Common.LookUpButton();
+            this.btnPLCity = new MVCHIS.Common.PickListButton();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.lookUpButtonNationality = new MVCHIS.Common.LookUpButton();
+            this.btnPLCountry = new MVCHIS.Common.PickListButton();
             this.txtCountryCode = new System.Windows.Forms.TextBox();
             this.txtCountryId = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -67,7 +67,7 @@
             // 
             this.txtCityEnglish.Location = new System.Drawing.Point(140, 42);
             this.txtCityEnglish.Name = "txtCityEnglish";
-            this.txtCityEnglish.Size = new System.Drawing.Size(191, 20);
+            this.txtCityEnglish.Size = new System.Drawing.Size(209, 20);
             this.txtCityEnglish.TabIndex = 1;
             // 
             // label3
@@ -187,20 +187,16 @@
             this.txtUpdatedOn.TabIndex = 11;
             this.txtUpdatedOn.TabStop = false;
             // 
-            // lookupButtonCity
+            // btnPLCity
             // 
-            this.lookupButtonCity.AssociatedControl = "txtCityEnglish";
-            this.lookupButtonCity.Source = "City";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookupButtonCity.Location = new System.Drawing.Point(331, 41);
-            this.lookupButtonCity.Name = "lookupButtonCity";
-            // 0;
-            //("CityEnglish");
-            //("CityArabic");
-            this.lookupButtonCity.Size = new System.Drawing.Size(22, 22);
-            this.lookupButtonCity.TabIndex = 2;
-            this.lookupButtonCity.TabStop = false;
-            this.lookupButtonCity.LookUpSelected += new System.EventHandler(this.CityCodeTextBoxLookUpSelected);
+            this.btnPLCity.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLCity.Location = new System.Drawing.Point(202, 11);
+            this.btnPLCity.Name = "btnPLCity";
+            this.btnPLCity.Size = new System.Drawing.Size(22, 22);
+            this.btnPLCity.Source = "City";
+            this.btnPLCity.TabIndex = 2;
+            this.btnPLCity.TabStop = false;
+            this.btnPLCity.Text = "↓";
             // 
             // chkReadOnly
             // 
@@ -221,29 +217,24 @@
             this.label10.TabIndex = 45;
             this.label10.Text = "Read Only";
             // 
-            // lookUpButtonNationality
+            // btnPLCountry
             // 
-            this.lookUpButtonNationality.AssociatedControl = "txtCountryId";
-            this.lookUpButtonNationality.Source = "Country";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonNationality.Location = new System.Drawing.Point(331, 92);
-            this.lookUpButtonNationality.Name = "lookUpButtonNationality";
-            // 3;
-            //("CountryCode");
-            //("CountryEnglish");
-            //("CountryArabic");
-            //("Id");
-            this.lookUpButtonNationality.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonNationality.TabIndex = 7;
-            this.lookUpButtonNationality.TabStop = false;
+            this.btnPLCountry.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLCountry.Location = new System.Drawing.Point(327, 92);
+            this.btnPLCountry.Name = "btnPLCountry";
+            this.btnPLCountry.Size = new System.Drawing.Size(22, 22);
+            this.btnPLCountry.Source = "Country";
+            this.btnPLCountry.TabIndex = 7;
+            this.btnPLCountry.TabStop = false;
+            this.btnPLCountry.Text = "↓";
             // 
             // txtCountryCode
             // 
             this.txtCountryCode.Enabled = false;
-            this.txtCountryCode.Location = new System.Drawing.Point(185, 93);
+            this.txtCountryCode.Location = new System.Drawing.Point(187, 93);
             this.txtCountryCode.Name = "txtCountryCode";
             this.txtCountryCode.ReadOnly = true;
-            this.txtCountryCode.Size = new System.Drawing.Size(146, 20);
+            this.txtCountryCode.Size = new System.Drawing.Size(138, 20);
             this.txtCountryCode.TabIndex = 5;
             this.txtCountryCode.Tag = "";
             this.txtCountryCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -262,12 +253,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lookUpButtonNationality);
+            this.Controls.Add(this.btnPLCountry);
             this.Controls.Add(this.txtCountryCode);
             this.Controls.Add(this.txtCountryId);
             this.Controls.Add(this.chkReadOnly);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.lookupButtonCity);
+            this.Controls.Add(this.btnPLCity);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnNew);
@@ -310,9 +301,9 @@
         private System.Windows.Forms.TextBox txtUpdatedBy;
         private System.Windows.Forms.TextBox txtCreatedOn;
         private System.Windows.Forms.TextBox txtUpdatedOn;
-        private Common.LookUpButton lookupButtonCity;
+        private Common.PickListButton btnPLCity;
         private System.Windows.Forms.Label label10;
-        private Common.LookUpButton lookUpButtonNationality;
+        private Common.PickListButton btnPLCountry;
         private System.Windows.Forms.TextBox txtCountryCode;
         private System.Windows.Forms.TextBox txtCountryId;
         private System.Windows.Forms.CheckBox chkReadOnly;

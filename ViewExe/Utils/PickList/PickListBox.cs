@@ -7,12 +7,12 @@ using System.Threading;
 using System.Windows.Forms;
 
 namespace MVCHIS.Common {
-    public partial class LookupBox : Form {
+    public partial class PickListBox : Form {
 
         private DataTable source;// = new DataTable();
         public bool ValueHasBeenSelected => listView1.SelectedIndices.Count > 0;
 
-        public LookupBox() {
+        public PickListBox() {
             InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
         }
 
@@ -23,17 +23,18 @@ namespace MVCHIS.Common {
             }
         }
 
-        public LookupBox(string datasource,DataTable data) : this() {
+        public PickListBox(string datasource,DataTable data) : this() {
             this.listView1.Columns.Clear();
             this.listView1.Items.Clear();
             this.Text = $"LookUp : [{datasource}]";
             this.source = data;
         }
 
-        public string SelectedValue => ValueHasBeenSelected == false ? null : this.listView1.SelectedItems[0].Text;
+        public string SelectedValue => listView1.SelectedValue;
+
+        public string Filter { get { return lblSearch.Text; } internal set { lblSearch.Text = value; } }
 
         private void LookUpLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
-            //this.lblSearch.Text = "";
             Requery();
             listView1.Select();
             listView1.Focus();

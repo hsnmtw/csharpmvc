@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="DictionaryUC.ascx.cs" Inherits="web.Views.Tools.DictionaryUC" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="WordUC.ascx.cs" Inherits="web.Views.Tools.DictionaryUC" %>
 <style type="text/css">
     .auto-style1 {
         width: 526px;

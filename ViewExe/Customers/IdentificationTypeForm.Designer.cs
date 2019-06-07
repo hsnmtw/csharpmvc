@@ -36,7 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtIdentificationTypeCode = new System.Windows.Forms.TextBox();
-            this.lookUpButtonIdentificationType = new MVCHIS.Common.LookUpButton();
+            this.btnPLIdentificationType = new MVCHIS.Common.PickListButton();
             this.txtIdentificationTypeArabic = new System.Windows.Forms.TextBox();
             this.txtIdentificationTypeEnglish = new System.Windows.Forms.TextBox();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
@@ -74,7 +74,6 @@
             // 
             // txtUpdatedOn
             // 
-            
             this.txtUpdatedOn.Location = new System.Drawing.Point(213, 167);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -84,8 +83,7 @@
             // 
             // txtUpdatedBy
             // 
-            
-            this.txtUpdatedBy.Location = new System.Drawing.Point(139, 167);
+            this.txtUpdatedBy.Location = new System.Drawing.Point(140, 167);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
             this.txtUpdatedBy.Size = new System.Drawing.Size(69, 20);
@@ -103,7 +101,6 @@
             // 
             // txtCreatedOn
             // 
-            
             this.txtCreatedOn.Location = new System.Drawing.Point(213, 141);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -113,8 +110,7 @@
             // 
             // txtCreatedBy
             // 
-            
-            this.txtCreatedBy.Location = new System.Drawing.Point(139, 141);
+            this.txtCreatedBy.Location = new System.Drawing.Point(140, 141);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
             this.txtCreatedBy.Size = new System.Drawing.Size(69, 20);
@@ -132,13 +128,12 @@
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(139, 16);
+            this.txtId.Location = new System.Drawing.Point(140, 16);
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(68, 20);
             this.txtId.TabIndex = 0;
             this.txtId.TabStop = false;
-            
             // 
             // label1
             // 
@@ -152,7 +147,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 52);
+            this.label3.Location = new System.Drawing.Point(12, 43);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 13);
             this.label3.TabIndex = 43;
@@ -160,37 +155,32 @@
             // 
             // txtIdentificationTypeCode
             // 
-            this.txtIdentificationTypeCode.Location = new System.Drawing.Point(140, 52);
+            this.txtIdentificationTypeCode.Location = new System.Drawing.Point(140, 43);
             this.txtIdentificationTypeCode.Name = "txtIdentificationTypeCode";
-            this.txtIdentificationTypeCode.Size = new System.Drawing.Size(52, 20);
+            this.txtIdentificationTypeCode.Size = new System.Drawing.Size(91, 20);
             this.txtIdentificationTypeCode.TabIndex = 1;
             // 
-            // lookUpButtonIdentificationType
+            // btnPLIdentificationType
             // 
-            this.lookUpButtonIdentificationType.AssociatedControl = "txtIdentificationTypeCode";
-            this.lookUpButtonIdentificationType.Source = "IdentificationType";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonIdentificationType.Location = new System.Drawing.Point(193, 51);
-            this.lookUpButtonIdentificationType.Name = "lookUpButtonIdentificationType";
-            // 0;
-            //("IdentificationTypeCode");
-            //("IdentificationTypeEnglish");
-            //("IdentificationTypeArabic");
-            this.lookUpButtonIdentificationType.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonIdentificationType.TabIndex = 2;
-            this.lookUpButtonIdentificationType.TabStop = false;
-            this.lookUpButtonIdentificationType.LookUpSelected += new System.EventHandler(this.LookUpButton1LookUpSelected);
+            this.btnPLIdentificationType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLIdentificationType.Location = new System.Drawing.Point(209, 15);
+            this.btnPLIdentificationType.Name = "btnPLIdentificationType";
+            this.btnPLIdentificationType.Size = new System.Drawing.Size(22, 22);
+            this.btnPLIdentificationType.Source = "IdentificationType";
+            this.btnPLIdentificationType.TabIndex = 2;
+            this.btnPLIdentificationType.TabStop = false;
+            this.btnPLIdentificationType.Text = "↓";
             // 
             // txtIdentificationTypeArabic
             // 
-            this.txtIdentificationTypeArabic.Location = new System.Drawing.Point(140, 102);
+            this.txtIdentificationTypeArabic.Location = new System.Drawing.Point(140, 93);
             this.txtIdentificationTypeArabic.Name = "txtIdentificationTypeArabic";
             this.txtIdentificationTypeArabic.Size = new System.Drawing.Size(210, 20);
             this.txtIdentificationTypeArabic.TabIndex = 4;
             // 
             // txtIdentificationTypeEnglish
             // 
-            this.txtIdentificationTypeEnglish.Location = new System.Drawing.Point(140, 76);
+            this.txtIdentificationTypeEnglish.Location = new System.Drawing.Point(140, 67);
             this.txtIdentificationTypeEnglish.Name = "txtIdentificationTypeEnglish";
             this.txtIdentificationTypeEnglish.Size = new System.Drawing.Size(210, 20);
             this.txtIdentificationTypeEnglish.TabIndex = 3;
@@ -217,7 +207,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 105);
+            this.label4.Location = new System.Drawing.Point(12, 96);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 13);
             this.label4.TabIndex = 43;
@@ -226,7 +216,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 79);
+            this.label2.Location = new System.Drawing.Point(12, 70);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 13);
             this.label2.TabIndex = 43;
@@ -236,7 +226,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(375, 287);
             this.Controls.Add(this.txtIdentificationTypeArabic);
             this.Controls.Add(this.txtIdentificationTypeEnglish);
             this.Controls.Add(this.label1);
@@ -247,7 +236,7 @@
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.lookUpButtonIdentificationType);
+            this.Controls.Add(this.btnPLIdentificationType);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtIdentificationTypeCode);
             this.Controls.Add(this.txtCreatedOn);
@@ -258,7 +247,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Name = "IdentificationTypeForm";
-            this.Text = "Identification Type";
+            this.Size = new System.Drawing.Size(375, 287);
             this.Load += new System.EventHandler(this.IdentificationTypeFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -279,7 +268,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtIdentificationTypeCode;
-        private Common.LookUpButton lookUpButtonIdentificationType;
+        private Common.PickListButton btnPLIdentificationType;
         private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtIdentificationTypeArabic;

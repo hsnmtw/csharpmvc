@@ -43,7 +43,7 @@ namespace ViewWpf {
         }
 
         internal void WhenAuthenticated(UserModel um) {
-            UserController CntrlUS = DBControllersFactory.GetUserController();
+            UserController CntrlUS = DBControllersFactory.User();
             var menu = CntrlUS.GetMenu(um);
             var megs = new Dictionary<string,TreeViewItem>();
             foreach(var t in menu) {
@@ -53,14 +53,14 @@ namespace ViewWpf {
                 }
                 TreeViewItem mitem = new TreeViewItem { Name = t.Item3, Header = t.Item2 };
                 megs[t.Item1].Items.Add(mitem);
-                if ("Dictionary".Equals(mitem.Header)) {
+                if ("Word".Equals(mitem.Header)) {
                     mitem.Foreground = Brushes.Red;
                     mitem.MouseDoubleClick += (s, e) => {
                         TabItem tabItem = new TabItem() {
                             Content = new DictionaryUC()
                         };
                         Tab.Items.Add(tabItem);
-                        tabItem.Header = "Dictionary";
+                        tabItem.Header = "Word";
                         tabItem.IsSelected = true;
                     };
                 }

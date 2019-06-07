@@ -12,7 +12,7 @@ namespace MVCHIS.Common {
         /// </summary>
         /// <returns></returns>
         public HashSet<string> Fields { get; set; }//=> (from propinfo in ModelType.GetProperties() orderby propinfo.Name select propinfo.Name).ToArray();
-        public Dictionary<string, Tuple<string,string>> ForeignKeys { get; set; }
+        public Dictionary<string, Tuple<MODELS,string>> ForeignKeys { get; set; }
 
         public Dictionary<string, int> Sizes  {get;set;}
         /// <summary>

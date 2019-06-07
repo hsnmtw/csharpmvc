@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace MVCHIS.Common {
     [Serializable]
-    public abstract class BaseModel : IModel { //, IComparable, ICloneable {
+    public class BaseModel : IModel { //, IComparable, ICloneable {
         //Database table properties
         public int   Id            { get; set; }
         public string CreatedBy    { get; set; }

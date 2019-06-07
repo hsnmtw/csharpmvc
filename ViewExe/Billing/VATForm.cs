@@ -28,11 +28,10 @@ namespace MVCHIS.Billing {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
+            //pick lists
+            PickList[btnPLVAT] = txtId;
         }
 
-        private void LookUpButton1LookUpSelected(object sender, EventArgs e) {
-            Model = Controller.Find(new VATModel() { Id = txtVATCode.Text.ToInteger() }, "Id");
-        }
 
         private void VATFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
 
@@ -43,6 +42,8 @@ namespace MVCHIS.Billing {
                 txtVATAmount.Text = "0.00";
             }
         }
+
+        
     }
    
 }

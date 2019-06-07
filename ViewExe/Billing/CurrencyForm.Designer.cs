@@ -40,12 +40,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.lookUpButtonCurrency = new MVCHIS.Common.LookUpButton();
+            this.btnPLCurrency = new MVCHIS.Common.PickListButton();
             this.label4 = new System.Windows.Forms.Label();
             this.txtCurrencyArabic = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtCurrencySymbol = new System.Windows.Forms.TextBox();
-            this.lookUpButtonNationality = new MVCHIS.Common.LookUpButton();
+            this.btnPLCountry = new MVCHIS.Common.PickListButton();
             this.txtCountryCode = new System.Windows.Forms.TextBox();
             this.txtCountryId = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -203,17 +203,16 @@
             this.label10.TabIndex = 47;
             this.label10.Text = "Read Only";
             // 
-            // lookUpButtonCurrency
+            // btnPLCurrency
             // 
-            this.lookUpButtonCurrency.AssociatedControl = "txtCurrencyCode";
-            this.lookUpButtonCurrency.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonCurrency.Location = new System.Drawing.Point(183, 56);
-            this.lookUpButtonCurrency.Name = "lookUpButtonCurrency";
-            this.lookUpButtonCurrency.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonCurrency.Source = "Currency";
-            this.lookUpButtonCurrency.TabIndex = 2;
-            this.lookUpButtonCurrency.TabStop = false;
-            this.lookUpButtonCurrency.LookUpSelected += new System.EventHandler(this.LookUpButton1LookUpSelected);
+            this.btnPLCurrency.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLCurrency.Location = new System.Drawing.Point(209, 27);
+            this.btnPLCurrency.Name = "btnPLCurrency";
+            this.btnPLCurrency.Size = new System.Drawing.Size(22, 22);
+            this.btnPLCurrency.Source = "Currency";
+            this.btnPLCurrency.TabIndex = 2;
+            this.btnPLCurrency.TabStop = false;
+            this.btnPLCurrency.Text = "↓";
             // 
             // label4
             // 
@@ -249,16 +248,16 @@
             this.txtCurrencySymbol.Size = new System.Drawing.Size(27, 20);
             this.txtCurrencySymbol.TabIndex = 5;
             // 
-            // lookUpButtonNationality
+            // btnPLCountry
             // 
-            this.lookUpButtonNationality.AssociatedControl = "txtCountryId";
-            this.lookUpButtonNationality.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonNationality.Location = new System.Drawing.Point(329, 171);
-            this.lookUpButtonNationality.Name = "lookUpButtonNationality";
-            this.lookUpButtonNationality.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonNationality.Source = "Country";
-            this.lookUpButtonNationality.TabIndex = 8;
-            this.lookUpButtonNationality.TabStop = false;
+            this.btnPLCountry.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLCountry.Location = new System.Drawing.Point(329, 171);
+            this.btnPLCountry.Name = "btnPLCountry";
+            this.btnPLCountry.Size = new System.Drawing.Size(22, 22);
+            this.btnPLCountry.Source = "Country";
+            this.btnPLCountry.TabIndex = 8;
+            this.btnPLCountry.TabStop = false;
+            this.btnPLCountry.Text = "↓";
             // 
             // txtCountryCode
             // 
@@ -294,7 +293,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lookUpButtonNationality);
+            this.Controls.Add(this.btnPLCountry);
             this.Controls.Add(this.txtCountryCode);
             this.Controls.Add(this.txtCountryId);
             this.Controls.Add(this.txtCurrencySymbol);
@@ -312,7 +311,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.lookUpButtonCurrency);
+            this.Controls.Add(this.btnPLCurrency);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtCurrencyCode);
             this.Controls.Add(this.txtCreatedOn);
@@ -342,7 +341,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtCurrencyCode;
-        private Common.LookUpButton lookUpButtonCurrency;
+        private Common.PickListButton btnPLCurrency;
         private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtCurrencyEnglish;
@@ -351,7 +350,7 @@
         private System.Windows.Forms.TextBox txtCurrencyArabic;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtCurrencySymbol;
-        private Common.LookUpButton lookUpButtonNationality;
+        private Common.PickListButton btnPLCountry;
         private System.Windows.Forms.TextBox txtCountryCode;
         private System.Windows.Forms.TextBox txtCountryId;
         private System.Windows.Forms.Label label8;

@@ -31,31 +31,21 @@ namespace MVCHIS.Security {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
+            //pick lists
+            PickList[btnPLEntitlement] = txtEntitlementId;
+            PickList[btnPLProfile] = txtProfileId;
+            PickList[btnPLProfileEntitlement] = txtId;
         }
-
-        public override void LoadForeignKeys(ForeignKeys FK) {
-            FK.Put(DBControllersFactory.GetProfileController());
-            FK.Put(DBControllersFactory.GetEntitlementController());
-        }
-
 
         private void EntitlementFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
         }
 
-        private void LookUpButton2_LookUpSelected(object sender, EventArgs e) {
-            Model = Controller.Find(new ProfileEntitlementModel() { Id = txtId.Text.ToInteger() }, "Id");
-        }
-
-        private void Button1_Click(object sender, EventArgs e) {
-            //this.Close();
-        }
-
         private void TxtEntitlementId_TextChanged(object sender, EventArgs e) {
-            txtEntitlementName.Text = ForeignKeys.Instance[MODELS.Entitlement,txtEntitlementId.Text];
+            txtEntitlementName.Text = DBControllersFactory.FK(MODELS.Entitlement, txtEntitlementId.Text);
         }
 
         private void TxtProfileId_TextChanged(object sender, EventArgs e) {
-            txtProfileName.Text = ForeignKeys.Instance[MODELS.Profile, txtProfileId.Text];
+            txtProfileName.Text = DBControllersFactory.FK(MODELS.Profile, txtProfileId.Text);
         }
 
         bool current = false;
@@ -64,7 +54,6 @@ namespace MVCHIS.Security {
             var chkboxes = new System.Windows.Forms.CheckBox[] { chkAllowCreate,chkAllowDelete,chkAllowRead,chkAllowUpdate };
             foreach (var c in chkboxes) c.Checked = current;
             
-        }
-    }
-    
+        }        
+    }    
 }

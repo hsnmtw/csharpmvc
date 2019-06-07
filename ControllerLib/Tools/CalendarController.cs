@@ -25,6 +25,9 @@ namespace MVCHIS.Tools {
             [DayOfWeek.Saturday ] = 6,
         };
 
+        public Action<int> OnSaveAction { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Action<int> OnDeleteAction { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public DataTable GetMonthDays(int year, int month) {
             DataTable table = new DataTable();
             var calendar = GetMonthCalendar(year, month);
@@ -61,6 +64,14 @@ namespace MVCHIS.Tools {
         }
 
         public Type GetModelType() {
+            throw new NotImplementedException();
+        }
+
+        public string GetValues(int id) {
+            throw new NotImplementedException();
+        }
+
+        public Dictionary<int,string> GetKeysAndValues() {
             throw new NotImplementedException();
         }
     }

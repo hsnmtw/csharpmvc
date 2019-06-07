@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using MVCHIS.Billing;
 using MVCHIS.Common;
 using MVCHIS.Customers;
@@ -25,10 +26,11 @@ namespace MVCHIS.Common {
 
         private static void InitializeView(MODELS model) {
             
-            var view = AppDomain.CurrentDomain.GetAssemblies()
-                        .SelectMany(s => s.GetTypes())
-                        .Where(x => x.Name.Equals($"{model}Form"))
-                        .FirstOrDefault();
+            var view = Assembly
+                       .GetExecutingAssembly()
+                       .GetTypes()
+                       .Where(x => x.Name.Equals($"{model}Form"))
+                       .FirstOrDefault();
 
             if (view != null) {
                 if (Enum.TryParse(view.Name.Substring(0, (view.Name.Length) - ("Form".Length)), out MODELS num)) {

@@ -10,18 +10,18 @@ using MVCHIS.Utils;
 
 namespace web.Views.Tools {
     public partial class DictionaryUC : System.Web.UI.UserControl {
-        private DictionaryController CntrlDC;
-        public DictionaryModel Model {
+        private WordController CntrlDC;
+        public WordModel Model {
             get {
-                return new DictionaryModel {
+                return new WordModel {
                     WordInEnglish=en.Text,
-                    WordInArabic=ar.Text,
+                    //WordInArabic=ar.Text,
                     Id=id.Text.ToInteger()
                 };
             }
             set {
                 en.Text = value.WordInEnglish;
-                ar.Text = value.WordInArabic;
+                //ar.Text = value.WordInArabic;
                 id.Text = value.Id.ToString();
                 cb.Text = value.CreatedBy;
                 co.Text = value.CreatedOn.ToString();
@@ -33,7 +33,7 @@ namespace web.Views.Tools {
 
         protected void Page_Load(object sender, EventArgs e) {
             MVCHISSession.Instance.Initialize();
-            CntrlDC = DBControllersFactory.GetDictionaryController();
+            CntrlDC = DBControllersFactory.Word();
 
             foreach(var dm in CntrlDC.Read()) {
                 DropDownList1.Items.Add(dm.Id.ToString());
@@ -45,12 +45,12 @@ namespace web.Views.Tools {
         }
 
         protected void Button1_Click(object sender, EventArgs e) {
-            Model = new DictionaryModel();
+            Model = new WordModel();
         }
 
         protected void Button2_Click(object sender, EventArgs e) {
             if (CntrlDC.Save(Model) > 0) {
-                Model = CntrlDC.Find(new DictionaryModel { WordInEnglish = Model.WordInEnglish }, "WordInEnglish");
+                Model = CntrlDC.Find(new WordModel { WordInEnglish = Model.WordInEnglish }, "WordInEnglish");
             }
         }
 
@@ -59,11 +59,11 @@ namespace web.Views.Tools {
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e) {
-            Model = CntrlDC.Find(new DictionaryModel { Id = DropDownList1.SelectedValue.ToString().ToInteger() }, "Id");
+            Model = CntrlDC.Find(new WordModel { Id = DropDownList1.SelectedValue.ToString().ToInteger() }, "Id");
         }
 
         protected void Button4_Click(object sender, EventArgs e) {
-            Model = CntrlDC.Find(new DictionaryModel { Id = DropDownList1.SelectedValue.ToString().ToInteger() }, "Id");
+            Model = CntrlDC.Find(new WordModel { Id = DropDownList1.SelectedValue.ToString().ToInteger() }, "Id");
         }
     }
 }

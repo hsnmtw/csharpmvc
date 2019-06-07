@@ -29,8 +29,8 @@ namespace MVCHIS.Tools {
                 
             };
 
-            DeleteButtonEnabled = false;
-            NewButtonEnabled = false;
+            SetDeleteButtonEnabled (false);
+            SetNewButtonEnabled (false);
         }
         
 
@@ -38,7 +38,7 @@ namespace MVCHIS.Tools {
 
         }
 
-        private void DateConversionUCNameLookupButtonLookUpSelected(object sender, EventArgs e) {
+        private void DateConversionUCNameLookupButtonLookUpSelected(int id) {
             
         }
     }

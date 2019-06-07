@@ -10,8 +10,8 @@ namespace MVCHIS.Customers {
             , Fields           = new HashSet<string> {"ReadOnly", "Id", "CreatedBy", "CreatedOn", "UpdatedBy", "UpdatedOn", "ProjectName", "ClientId" }
             , RequiredFields   = new HashSet<string> { "Id", "ProjectName", "ClientId" }
             , UniqueKeyFields  = new HashSet<HashSet<string>> { new HashSet<string> { "ProjectName" } }
-            , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
-                ["ClientId"]   = new Tuple<string, string>(ENTITIES.Client,"Id")
+            , ForeignKeys      = new Dictionary<string, Tuple<MODELS, string>> {
+                ["ClientId"]   = new Tuple<MODELS, string>(MODELS.Client,"Id")
             }
             , Sizes = new Dictionary<string, int> {
                   ["CreatedBy"  ] = 10

@@ -35,7 +35,7 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtIdentificationNumber = new System.Windows.Forms.TextBox();
-            this.lookUpButtonShortName = new MVCHIS.Common.LookUpButton();
+            this.btnPLIdentification = new MVCHIS.Common.PickListButton();
             this.btnExpiryDate = new System.Windows.Forms.Button();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -44,8 +44,8 @@
             this.label20 = new System.Windows.Forms.Label();
             this.txtExpiryDate = new System.Windows.Forms.TextBox();
             this.txtIdentificationTypeId = new System.Windows.Forms.TextBox();
-            this.lookUpButtonIdentificationType = new MVCHIS.Common.LookUpButton();
-            this.lookUpButtonCountryOfIssue = new MVCHIS.Common.LookUpButton();
+            this.btnPLIdentificationType = new MVCHIS.Common.PickListButton();
+            this.btnPLCity = new MVCHIS.Common.PickListButton();
             this.txtCityId = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.btnIssueDateCalendar = new System.Windows.Forms.Button();
@@ -165,23 +165,20 @@
             // 
             this.txtIdentificationNumber.Location = new System.Drawing.Point(159, 50);
             this.txtIdentificationNumber.Name = "txtIdentificationNumber";
-            this.txtIdentificationNumber.Size = new System.Drawing.Size(103, 20);
+            this.txtIdentificationNumber.Size = new System.Drawing.Size(211, 20);
             this.txtIdentificationNumber.TabIndex = 1;
             this.txtIdentificationNumber.Tag = "ShortName";
             // 
-            // lookUpButtonShortName
+            // btnPLIdentification
             // 
-            this.lookUpButtonShortName.AssociatedControl = "txtIdentificationNumber";
-            this.lookUpButtonShortName.Source = "Identification";
-            this.lookUpButtonShortName.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonShortName.Location = new System.Drawing.Point(265, 49);
-            this.lookUpButtonShortName.Name = "lookUpButtonShortName";
-            // 0;
-            //("IdentificationNumber");
-            this.lookUpButtonShortName.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonShortName.TabIndex = 2;
-            this.lookUpButtonShortName.TabStop = false;
-            this.lookUpButtonShortName.LookUpSelected += new System.EventHandler(this.LookUpButtonShortNameLookUpSelected);
+            this.btnPLIdentification.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLIdentification.Location = new System.Drawing.Point(229, 22);
+            this.btnPLIdentification.Name = "btnPLIdentification";
+            this.btnPLIdentification.Size = new System.Drawing.Size(22, 22);
+            this.btnPLIdentification.Source = "Identification";
+            this.btnPLIdentification.TabIndex = 2;
+            this.btnPLIdentification.TabStop = false;
+            this.btnPLIdentification.Text = "↓";
             // 
             // btnExpiryDate
             // 
@@ -261,38 +258,29 @@
             this.txtIdentificationTypeId.Tag = "PhoneNumber";
             this.txtIdentificationTypeId.TextChanged += new System.EventHandler(this.TxtIdentificationType_TextChanged);
             // 
-            // lookUpButtonIdentificationType
+            // btnPLIdentificationType
             // 
-            this.lookUpButtonIdentificationType.AssociatedControl = "txtIdentificationTypeId";
-            this.lookUpButtonIdentificationType.Source = "IdentificationType";
-            this.lookUpButtonIdentificationType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonIdentificationType.Location = new System.Drawing.Point(348, 76);
-            this.lookUpButtonIdentificationType.Name = "lookUpButtonIdentificationType";
-            // 3;
-            //("IdentificationTypeCode");
-            //("IdentificationTypeEnglish");
-            //("IdentificationTypeArabic");
-            //("Id");
-            this.lookUpButtonIdentificationType.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonIdentificationType.TabIndex = 4;
-            this.lookUpButtonIdentificationType.TabStop = false;
-            this.lookUpButtonIdentificationType.Tag = "lblIdentificationTypeEnglish";
+            this.btnPLIdentificationType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLIdentificationType.Location = new System.Drawing.Point(348, 76);
+            this.btnPLIdentificationType.Name = "btnPLIdentificationType";
+            this.btnPLIdentificationType.Size = new System.Drawing.Size(22, 22);
+            this.btnPLIdentificationType.Source = "IdentificationType";
+            this.btnPLIdentificationType.TabIndex = 4;
+            this.btnPLIdentificationType.TabStop = false;
+            this.btnPLIdentificationType.Tag = "lblIdentificationTypeEnglish";
+            this.btnPLIdentificationType.Text = "↓";
             // 
-            // lookUpButtonCountryOfIssue
+            // btnPLCity
             // 
-            this.lookUpButtonCountryOfIssue.AssociatedControl = "txtCityId";
-            this.lookUpButtonCountryOfIssue.Source = "City";
-            this.lookUpButtonCountryOfIssue.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonCountryOfIssue.Location = new System.Drawing.Point(348, 155);
-            this.lookUpButtonCountryOfIssue.Name = "lookUpButtonCountryOfIssue";
-            // 2;
-            //("CityEnglish");
-            //("CityArabic");
-            //("Id");
-            this.lookUpButtonCountryOfIssue.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonCountryOfIssue.TabIndex = 13;
-            this.lookUpButtonCountryOfIssue.TabStop = false;
-            this.lookUpButtonCountryOfIssue.Tag = "lblIssuingCountryEnglish";
+            this.btnPLCity.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLCity.Location = new System.Drawing.Point(348, 155);
+            this.btnPLCity.Name = "btnPLCity";
+            this.btnPLCity.Size = new System.Drawing.Size(22, 22);
+            this.btnPLCity.Source = "City";
+            this.btnPLCity.TabIndex = 13;
+            this.btnPLCity.TabStop = false;
+            this.btnPLCity.Tag = "";
+            this.btnPLCity.Text = "↓";
             // 
             // txtCityId
             // 
@@ -346,7 +334,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(19, 211);
+            this.label26.Location = new System.Drawing.Point(19, 184);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(49, 13);
             this.label26.TabIndex = 50;
@@ -355,8 +343,7 @@
             // chkIsActive
             // 
             this.chkIsActive.AutoSize = true;
-            this.chkIsActive.Enabled = false;
-            this.chkIsActive.Location = new System.Drawing.Point(159, 211);
+            this.chkIsActive.Location = new System.Drawing.Point(159, 184);
             this.chkIsActive.Name = "chkIsActive";
             this.chkIsActive.Size = new System.Drawing.Size(15, 14);
             this.chkIsActive.TabIndex = 15;
@@ -416,10 +403,10 @@
             this.Controls.Add(this.chkReadOnly);
             this.Controls.Add(this.txtExpiryDate);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.lookUpButtonCountryOfIssue);
+            this.Controls.Add(this.btnPLCity);
             this.Controls.Add(this.label26);
             this.Controls.Add(this.label20);
-            this.Controls.Add(this.lookUpButtonIdentificationType);
+            this.Controls.Add(this.btnPLIdentificationType);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.txtUpdatedOn);
@@ -435,10 +422,10 @@
             this.Controls.Add(this.txtCreatedBy);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtIdentificationNumber);
-            this.Controls.Add(this.lookUpButtonShortName);
+            this.Controls.Add(this.btnPLIdentification);
             this.Controls.Add(this.txtId);
             this.Name = "IdentificationForm";
-            this.Size = new System.Drawing.Size(402, 359);
+            this.Size = new System.Drawing.Size(384, 359);
             this.Load += new System.EventHandler(this.ClientTypeFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -457,7 +444,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
-        private Common.LookUpButton lookUpButtonShortName;
+        private Common.PickListButton btnPLIdentification;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
@@ -465,11 +452,11 @@
         private System.Windows.Forms.TextBox txtExpiryDate;
         private System.Windows.Forms.TextBox txtIdentificationTypeId;
         private System.Windows.Forms.TextBox txtIdentificationNumber;
-        private Common.LookUpButton lookUpButtonIdentificationType;
+        private Common.PickListButton btnPLIdentificationType;
         private System.Windows.Forms.Button btnExpiryDate;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox txtCityId;
-        private Common.LookUpButton lookUpButtonCountryOfIssue;
+        private Common.PickListButton btnPLCity;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Button btnIssueDateCalendar;
         private System.Windows.Forms.TextBox txtIssueDate;

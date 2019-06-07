@@ -38,12 +38,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtBuildingName = new System.Windows.Forms.TextBox();
-            this.lookUpButton1 = new MVCHIS.Common.LookUpButton();
-            this.lookupComound = new MVCHIS.Common.LookUpButton();
+            this.btnPLBuilding = new MVCHIS.Common.PickListButton();
+            this.btnPLComound = new MVCHIS.Common.PickListButton();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.lookUpButtonBuildingType = new MVCHIS.Common.LookUpButton();
+            this.btnPLBuildingType = new MVCHIS.Common.PickListButton();
             this.txtBuildingTypeId = new System.Windows.Forms.TextBox();
             this.txtCompoundName = new System.Windows.Forms.TextBox();
             this.txtBuildingTypeCode = new System.Windows.Forms.TextBox();
@@ -169,7 +169,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(21, 49);
+            this.label3.Location = new System.Drawing.Point(21, 53);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 13);
             this.label3.TabIndex = 43;
@@ -177,38 +177,32 @@
             // 
             // txtBuildingName
             // 
-            this.txtBuildingName.Location = new System.Drawing.Point(149, 46);
+            this.txtBuildingName.Location = new System.Drawing.Point(149, 50);
             this.txtBuildingName.Name = "txtBuildingName";
-            this.txtBuildingName.Size = new System.Drawing.Size(154, 20);
+            this.txtBuildingName.Size = new System.Drawing.Size(177, 20);
             this.txtBuildingName.TabIndex = 1;
             // 
-            // lookUpButton1
+            // btnPLBuilding
             // 
-            this.lookUpButton1.AssociatedControl = "txtBuildingName";
-            this.lookUpButton1.Source = "Building";
-            this.lookUpButton1.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButton1.Location = new System.Drawing.Point(304, 45);
-            this.lookUpButton1.Name = "lookUpButton1";
-            //
-            //("BuildingName");
-            this.lookUpButton1.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButton1.TabIndex = 2;
-            this.lookUpButton1.TabStop = false;
-            this.lookUpButton1.LookUpSelected += new System.EventHandler(this.LookUpButton1LookUpSelected);
+            this.btnPLBuilding.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLBuilding.Location = new System.Drawing.Point(218, 12);
+            this.btnPLBuilding.Name = "btnPLBuilding";
+            this.btnPLBuilding.Size = new System.Drawing.Size(22, 22);
+            this.btnPLBuilding.Source = "Building";
+            this.btnPLBuilding.TabIndex = 2;
+            this.btnPLBuilding.TabStop = false;
+            this.btnPLBuilding.Text = "↓";
             // 
-            // lookupComound
+            // btnPLComound
             // 
-            this.lookupComound.AssociatedControl = "txtCompoundId";
-            this.lookupComound.Source = "Compound";
-            this.lookupComound.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookupComound.Location = new System.Drawing.Point(304, 104);
-            this.lookupComound.Name = "lookupComound";
-            //
-            //("CompoundName");
-            //("Id");
-            this.lookupComound.Size = new System.Drawing.Size(22, 22);
-            this.lookupComound.TabIndex = 6;
-            this.lookupComound.TabStop = false;
+            this.btnPLComound.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLComound.Location = new System.Drawing.Point(304, 104);
+            this.btnPLComound.Name = "btnPLComound";
+            this.btnPLComound.Size = new System.Drawing.Size(22, 22);
+            this.btnPLComound.Source = "Compound";
+            this.btnPLComound.TabIndex = 6;
+            this.btnPLComound.TabStop = false;
+            this.btnPLComound.Text = "↓";
             // 
             // chkReadOnly
             // 
@@ -238,19 +232,16 @@
             this.label4.TabIndex = 43;
             this.label4.Text = "Building Type";
             // 
-            // lookUpButtonBuildingType
+            // btnPLBuildingType
             // 
-            this.lookUpButtonBuildingType.AssociatedControl = "txtBuildingTypeId";
-            this.lookUpButtonBuildingType.Source = "BuildingType";
-            this.lookUpButtonBuildingType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonBuildingType.Location = new System.Drawing.Point(304, 76);
-            this.lookUpButtonBuildingType.Name = "lookUpButtonBuildingType";
-            //
-            //("BuildingTypeCode");
-            //("Id");
-            this.lookUpButtonBuildingType.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonBuildingType.TabIndex = 4;
-            this.lookUpButtonBuildingType.TabStop = false;
+            this.btnPLBuildingType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLBuildingType.Location = new System.Drawing.Point(304, 76);
+            this.btnPLBuildingType.Name = "btnPLBuildingType";
+            this.btnPLBuildingType.Size = new System.Drawing.Size(22, 22);
+            this.btnPLBuildingType.Source = "BuildingType";
+            this.btnPLBuildingType.TabIndex = 4;
+            this.btnPLBuildingType.TabStop = false;
+            this.btnPLBuildingType.Text = "↓";
             // 
             // txtBuildingTypeId
             // 
@@ -289,11 +280,11 @@
             this.Controls.Add(this.txtUpdatedOn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtUpdatedBy);
-            this.Controls.Add(this.lookupComound);
+            this.Controls.Add(this.btnPLComound);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.btnNew);
-            this.Controls.Add(this.lookUpButtonBuildingType);
-            this.Controls.Add(this.lookUpButton1);
+            this.Controls.Add(this.btnPLBuildingType);
+            this.Controls.Add(this.btnPLBuilding);
             this.Controls.Add(this.txtCreatedBy);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -317,7 +308,7 @@
 
         #endregion
 
-        private Common.LookUpButton lookupComound;
+        private Common.PickListButton btnPLComound;
         private System.Windows.Forms.TextBox txtCompoundId;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
@@ -333,9 +324,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtBuildingName;
-        private Common.LookUpButton lookUpButton1;
+        private Common.PickListButton btnPLBuilding;
         private System.Windows.Forms.Label label4;
-        private Common.LookUpButton lookUpButtonBuildingType;
+        private Common.PickListButton btnPLBuildingType;
         private System.Windows.Forms.TextBox txtBuildingTypeId;
         private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;

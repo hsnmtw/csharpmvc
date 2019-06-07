@@ -42,15 +42,15 @@
             this.txtRate = new System.Windows.Forms.TextBox();
             this.btnFromDate = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
-            this.lookUpButtonCurrency = new MVCHIS.Common.LookUpButton();
+            this.btnPLFromCurrency = new MVCHIS.Common.PickListButton();
             this.txtFromCurrencyEnglish = new System.Windows.Forms.TextBox();
             this.txtFromCurrencyId = new System.Windows.Forms.TextBox();
             this.lblFXDateHijri = new System.Windows.Forms.Label();
-            this.lookUpButton1 = new MVCHIS.Common.LookUpButton();
+            this.btnPLToCurrency = new MVCHIS.Common.PickListButton();
             this.txtToCurrencyEnglish = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtToCurrencyId = new System.Windows.Forms.TextBox();
-            this.lookUpButtonRecordId = new MVCHIS.Common.LookUpButton();
+            this.btnPLCurrencyFXRate = new MVCHIS.Common.PickListButton();
             this.SuspendLayout();
             // 
             // btnDelete
@@ -229,21 +229,16 @@
             this.label12.TabIndex = 49;
             this.label12.Text = "From Currency";
             // 
-            // lookUpButtonCurrency
+            // btnPLFromCurrency
             // 
-            this.lookUpButtonCurrency.AssociatedControl = "txtFromCurrencyId";
-            this.lookUpButtonCurrency.Source = "Currency";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonCurrency.Location = new System.Drawing.Point(329, 63);
-            this.lookUpButtonCurrency.Name = "lookUpButtonCurrency";
-            // 0;
-            //("Id");
-            //("CurrencyCode");
-            //("CurrencyEnglish");
-            //("CurrencySymbol");
-            this.lookUpButtonCurrency.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonCurrency.TabIndex = 4;
-            this.lookUpButtonCurrency.TabStop = false;
+            this.btnPLFromCurrency.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLFromCurrency.Location = new System.Drawing.Point(329, 63);
+            this.btnPLFromCurrency.Name = "btnPLFromCurrency";
+            this.btnPLFromCurrency.Size = new System.Drawing.Size(22, 22);
+            this.btnPLFromCurrency.Source = "Currency";
+            this.btnPLFromCurrency.TabIndex = 4;
+            this.btnPLFromCurrency.TabStop = false;
+            this.btnPLFromCurrency.Text = "↓";
             // 
             // txtFromCurrencyEnglish
             // 
@@ -275,21 +270,16 @@
             this.lblFXDateHijri.TabIndex = 10;
             this.lblFXDateHijri.Text = "-";
             // 
-            // lookUpButton1
+            // btnPLToCurrency
             // 
-            this.lookUpButton1.AssociatedControl = "txtToCurrencyId";
-            this.lookUpButton1.Source = "Currency";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButton1.Location = new System.Drawing.Point(329, 89);
-            this.lookUpButton1.Name = "lookUpButton1";
-            // 0;
-            //("Id");
-            //("CurrencyCode");
-            //("CurrencyEnglish");
-            //("CurrencySymbol");
-            this.lookUpButton1.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButton1.TabIndex = 7;
-            this.lookUpButton1.TabStop = false;
+            this.btnPLToCurrency.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLToCurrency.Location = new System.Drawing.Point(329, 89);
+            this.btnPLToCurrency.Name = "btnPLToCurrency";
+            this.btnPLToCurrency.Size = new System.Drawing.Size(22, 22);
+            this.btnPLToCurrency.Source = "Currency";
+            this.btnPLToCurrency.TabIndex = 7;
+            this.btnPLToCurrency.TabStop = false;
+            this.btnPLToCurrency.Text = "↓";
             // 
             // txtToCurrencyEnglish
             // 
@@ -321,22 +311,17 @@
             this.txtToCurrencyId.TabIndex = 5;
             this.txtToCurrencyId.TextChanged += new System.EventHandler(this.TxtToCurrencyId_TextChanged);
             // 
-            // lookUpButtonRecordId
+            // btnPLCurrencyFXRate
             // 
-            this.lookUpButtonRecordId.AssociatedControl = "txtId";
-            this.lookUpButtonRecordId.Source = "CurrencyFXRate";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonRecordId.Location = new System.Drawing.Point(210, 27);
-            this.lookUpButtonRecordId.Name = "lookUpButtonRecordId";
-            // 0;
-            //("Id");
-            //("FromCurrencyId");
-            //("ToCurrencyId");
-            //("FXDate");
-            this.lookUpButtonRecordId.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonRecordId.TabIndex = 1;
-            this.lookUpButtonRecordId.TabStop = false;
-            this.lookUpButtonRecordId.LookUpSelected += new System.EventHandler(this.LookUpButtonRecordId_LookUpSelected);
+            this.btnPLCurrencyFXRate.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLCurrencyFXRate.Location = new System.Drawing.Point(210, 27);
+            this.btnPLCurrencyFXRate.Name = "btnPLCurrencyFXRate";
+            this.btnPLCurrencyFXRate.Size = new System.Drawing.Size(22, 22);
+            this.btnPLCurrencyFXRate.Source = "CurrencyFXRate";
+            this.btnPLCurrencyFXRate.TabIndex = 1;
+            this.btnPLCurrencyFXRate.TabStop = false;
+            this.btnPLCurrencyFXRate.Text = "↓";
+            
             // 
             // CurrencyFXRateForm
             // 
@@ -360,10 +345,10 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtUpdatedBy);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.lookUpButton1);
+            this.Controls.Add(this.btnPLToCurrency);
             this.Controls.Add(this.btnNew);
-            this.Controls.Add(this.lookUpButtonRecordId);
-            this.Controls.Add(this.lookUpButtonCurrency);
+            this.Controls.Add(this.btnPLCurrencyFXRate);
+            this.Controls.Add(this.btnPLFromCurrency);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtCreatedOn);
@@ -398,14 +383,14 @@
         private System.Windows.Forms.TextBox txtRate;
         private System.Windows.Forms.Button btnFromDate;
         private System.Windows.Forms.Label label12;
-        private Common.LookUpButton lookUpButtonCurrency;
+        private Common.PickListButton btnPLFromCurrency;
         private System.Windows.Forms.TextBox txtFromCurrencyEnglish;
         private System.Windows.Forms.TextBox txtFromCurrencyId;
         private System.Windows.Forms.Label lblFXDateHijri;
-        private Common.LookUpButton lookUpButton1;
+        private Common.PickListButton btnPLToCurrency;
         private System.Windows.Forms.TextBox txtToCurrencyEnglish;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtToCurrencyId;
-        private Common.LookUpButton lookUpButtonRecordId;
+        private Common.PickListButton btnPLCurrencyFXRate;
     }
 }

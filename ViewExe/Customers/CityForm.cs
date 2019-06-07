@@ -26,22 +26,17 @@ namespace MVCHIS.Customers {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
-        }
-
-        public override void LoadForeignKeys(ForeignKeys FK) {
-            FK.Put(DBControllersFactory.GetCountryController());
+            //pick lists
+            PickList[btnPLCity] = txtId;
+            PickList[btnPLCountry] = txtCountryId;
         }
 
         private void CityFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
             
         }
 
-        private void CityCodeTextBoxLookUpSelected(object sender, EventArgs e) {
-            Model = Controller.Find(new CityModel() { Id = txtCityEnglish.Text.ToInteger() }, "Id");
-        }
-
         private void TxtCountryId_TextChanged(object sender, EventArgs e) {
-            txtCountryCode.Text = ForeignKeys.Instance[MODELS.Country, txtCountryId.Text];
+            txtCountryCode.Text = DBControllersFactory.FK(MODELS.Country, txtCountryId.Text);
         }
     }
     

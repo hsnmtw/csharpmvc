@@ -12,7 +12,7 @@ namespace MVCHIS.Customers {
                                                       "MobileNumber","Email","FaxNumber","PhoneNumber","FullName" }
             , RequiredFields   = new HashSet<string> { "Id", "MobileNumber", "FullName" }
             , UniqueKeyFields  = new HashSet<HashSet<string>> { new HashSet<string> { "MobileNumber" } }
-            , ForeignKeys      = new Dictionary<string, Tuple<string, string>> {
+            , ForeignKeys      = new Dictionary<string, Tuple<MODELS, string>> {
             }
             , Sizes = new Dictionary<string, int> {
                  ["CreatedBy"   ] = 10

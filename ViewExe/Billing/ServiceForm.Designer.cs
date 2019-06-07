@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnNew = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.lookUpButtonBillingCategory = new MVCHIS.Common.LookUpButton();
+            this.btnPLBillingCategory = new MVCHIS.Common.PickListButton();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtBillingCategoryCode = new System.Windows.Forms.TextBox();
             this.txtCreatedOn = new System.Windows.Forms.TextBox();
@@ -43,22 +43,23 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.txtContractCode = new System.Windows.Forms.TextBox();
-            this.lookUpButtonContract = new MVCHIS.Common.LookUpButton();
+            this.btnPLContract = new MVCHIS.Common.PickListButton();
             this.txtContractId = new System.Windows.Forms.TextBox();
             this.txtBillingCategoryId = new System.Windows.Forms.TextBox();
             this.txtCurrencyId = new System.Windows.Forms.TextBox();
-            this.lookUpButtonCurrency = new MVCHIS.Common.LookUpButton();
+            this.btnPLCurrency = new MVCHIS.Common.PickListButton();
             this.txtCurrencyCode = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtCurrencyEnglish = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtEffectiveFromDate = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.chkExpired = new System.Windows.Forms.CheckBox();
             this.btnDateOfBirth = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.cmbVATId = new System.Windows.Forms.ComboBox();
-            this.lblVATId = new System.Windows.Forms.Label();
+            this.lblVAT = new System.Windows.Forms.Label();
+            this.txtVATCode = new System.Windows.Forms.TextBox();
+            this.btnPLVAT = new MVCHIS.Common.PickListButton();
+            this.txtVATId = new System.Windows.Forms.TextBox();
+            this.btnPLService = new MVCHIS.Common.PickListButton();
             this.SuspendLayout();
             // 
             // label2
@@ -144,19 +145,17 @@
             this.label6.TabIndex = 64;
             this.label6.Text = "Updated by";
             // 
-            // lookUpButtonBillingCategory
+            // btnPLBillingCategory
             // 
-            this.lookUpButtonBillingCategory.AssociatedControl = "txtBillingCategoryId";
-            this.lookUpButtonBillingCategory.Source = "BillingCategory";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonBillingCategory.Location = new System.Drawing.Point(345, 73);
-            this.lookUpButtonBillingCategory.Name = "lookUpButtonBillingCategory";
-            // 1;
-            //("BillingCategoryCode");
-            //("Id");
-            this.lookUpButtonBillingCategory.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonBillingCategory.TabIndex = 6;
-            this.lookUpButtonBillingCategory.TabStop = false;
+            this.btnPLBillingCategory.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLBillingCategory.Location = new System.Drawing.Point(345, 73);
+            this.btnPLBillingCategory.Name = "btnPLBillingCategory";
+            this.btnPLBillingCategory.Size = new System.Drawing.Size(22, 22);
+            this.btnPLBillingCategory.Source = "BillingCategory";
+            this.btnPLBillingCategory.TabIndex = 6;
+            this.btnPLBillingCategory.TabStop = false;
+            this.btnPLBillingCategory.Text = "↓";
+            
             // 
             // btnSave
             // 
@@ -247,20 +246,17 @@
             this.txtContractCode.TabIndex = 2;
             this.txtContractCode.TabStop = false;
             // 
-            // lookUpButtonContract
+            // btnPLContract
             // 
-            this.lookUpButtonContract.AssociatedControl = "txtContractId";
-            this.lookUpButtonContract.Source = "Contract";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonContract.Location = new System.Drawing.Point(345, 44);
-            this.lookUpButtonContract.Name = "lookUpButtonContract";
-            // 2;
-            //("ContractCode");
-            //("ClientId");
-            //("Id");
-            this.lookUpButtonContract.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonContract.TabIndex = 3;
-            this.lookUpButtonContract.TabStop = false;
+            this.btnPLContract.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLContract.Location = new System.Drawing.Point(345, 44);
+            this.btnPLContract.Name = "btnPLContract";
+            this.btnPLContract.Size = new System.Drawing.Size(22, 22);
+            this.btnPLContract.Source = "Contract";
+            this.btnPLContract.TabIndex = 3;
+            this.btnPLContract.TabStop = false;
+            this.btnPLContract.Text = "↓";
+            
             // 
             // txtContractId
             // 
@@ -284,7 +280,7 @@
             // 
             // txtCurrencyId
             // 
-            this.txtCurrencyId.Location = new System.Drawing.Point(152, 132);
+            this.txtCurrencyId.Location = new System.Drawing.Point(152, 160);
             this.txtCurrencyId.MaxLength = 4;
             this.txtCurrencyId.Name = "txtCurrencyId";
             this.txtCurrencyId.ReadOnly = true;
@@ -292,53 +288,40 @@
             this.txtCurrencyId.TabIndex = 8;
             this.txtCurrencyId.TextChanged += new System.EventHandler(this.TxtCurrencyId_TextChanged);
             // 
-            // lookUpButtonCurrency
+            // btnPLCurrency
             // 
-            this.lookUpButtonCurrency.AssociatedControl = "txtCurrencyId";
-            this.lookUpButtonCurrency.Source = "Currency";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonCurrency.Location = new System.Drawing.Point(345, 131);
-            this.lookUpButtonCurrency.Name = "lookUpButtonCurrency";
-            // 3;
-            //("CurrencyCode");
-            //("CurrencyEnglish");
-            //("CurrencyArabic");
-            //("Id");
-            this.lookUpButtonCurrency.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonCurrency.TabIndex = 11;
-            this.lookUpButtonCurrency.TabStop = false;
+            this.btnPLCurrency.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLCurrency.Location = new System.Drawing.Point(345, 159);
+            this.btnPLCurrency.Name = "btnPLCurrency";
+            this.btnPLCurrency.Size = new System.Drawing.Size(22, 22);
+            this.btnPLCurrency.Source = "Currency";
+            this.btnPLCurrency.TabIndex = 11;
+            this.btnPLCurrency.TabStop = false;
+            this.btnPLCurrency.Text = "↓";
+            
             // 
             // txtCurrencyCode
             // 
-            this.txtCurrencyCode.Location = new System.Drawing.Point(188, 132);
+            this.txtCurrencyCode.Location = new System.Drawing.Point(188, 160);
             this.txtCurrencyCode.Name = "txtCurrencyCode";
             this.txtCurrencyCode.ReadOnly = true;
-            this.txtCurrencyCode.Size = new System.Drawing.Size(43, 20);
+            this.txtCurrencyCode.Size = new System.Drawing.Size(156, 20);
             this.txtCurrencyCode.TabIndex = 9;
             this.txtCurrencyCode.TabStop = false;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(27, 135);
+            this.label7.Location = new System.Drawing.Point(27, 163);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(51, 13);
             this.label7.TabIndex = 71;
             this.label7.Text = "Currency";
             // 
-            // txtCurrencyEnglish
-            // 
-            this.txtCurrencyEnglish.Location = new System.Drawing.Point(232, 132);
-            this.txtCurrencyEnglish.Name = "txtCurrencyEnglish";
-            this.txtCurrencyEnglish.ReadOnly = true;
-            this.txtCurrencyEnglish.Size = new System.Drawing.Size(112, 20);
-            this.txtCurrencyEnglish.TabIndex = 10;
-            this.txtCurrencyEnglish.TabStop = false;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(27, 164);
+            this.label8.Location = new System.Drawing.Point(27, 192);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(103, 13);
             this.label8.TabIndex = 64;
@@ -346,7 +329,7 @@
             // 
             // txtEffectiveFromDate
             // 
-            this.txtEffectiveFromDate.Location = new System.Drawing.Point(152, 161);
+            this.txtEffectiveFromDate.Location = new System.Drawing.Point(152, 189);
             this.txtEffectiveFromDate.MaxLength = 10;
             this.txtEffectiveFromDate.Name = "txtEffectiveFromDate";
             this.txtEffectiveFromDate.Size = new System.Drawing.Size(79, 20);
@@ -357,7 +340,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(27, 190);
+            this.label9.Location = new System.Drawing.Point(27, 218);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(43, 13);
             this.label9.TabIndex = 66;
@@ -366,7 +349,7 @@
             // chkExpired
             // 
             this.chkExpired.AutoSize = true;
-            this.chkExpired.Location = new System.Drawing.Point(152, 190);
+            this.chkExpired.Location = new System.Drawing.Point(152, 218);
             this.chkExpired.Name = "chkExpired";
             this.chkExpired.Size = new System.Drawing.Size(15, 14);
             this.chkExpired.TabIndex = 14;
@@ -375,7 +358,7 @@
             // btnDateOfBirth
             // 
             this.btnDateOfBirth.Enabled = false;
-            this.btnDateOfBirth.Location = new System.Drawing.Point(232, 160);
+            this.btnDateOfBirth.Location = new System.Drawing.Point(232, 188);
             this.btnDateOfBirth.Name = "btnDateOfBirth";
             this.btnDateOfBirth.Size = new System.Drawing.Size(23, 22);
             this.btnDateOfBirth.TabIndex = 13;
@@ -384,47 +367,69 @@
             this.btnDateOfBirth.Text = "📅";
             this.btnDateOfBirth.UseVisualStyleBackColor = true;
             // 
-            // label11
+            // lblVAT
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(27, 213);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(26, 13);
-            this.label11.TabIndex = 66;
-            this.label11.Text = "VAT";
+            this.lblVAT.AutoSize = true;
+            this.lblVAT.Location = new System.Drawing.Point(27, 134);
+            this.lblVAT.Name = "lblVAT";
+            this.lblVAT.Size = new System.Drawing.Size(84, 13);
+            this.lblVAT.TabIndex = 71;
+            this.lblVAT.Text = "VAT Percentage";
             // 
-            // cmbVATId
+            // txtVATCode
             // 
-            this.cmbVATId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbVATId.FormattingEnabled = true;
-            this.cmbVATId.Items.AddRange(new object[] {
-            "0%",
-            "5%"});
-            this.cmbVATId.Location = new System.Drawing.Point(152, 210);
-            this.cmbVATId.Name = "cmbVATId";
-            this.cmbVATId.Size = new System.Drawing.Size(69, 21);
-            this.cmbVATId.TabIndex = 15;
-            this.cmbVATId.SelectedIndexChanged += new System.EventHandler(this.CmbVATId_SelectedIndexChanged);
+            this.txtVATCode.Location = new System.Drawing.Point(188, 131);
+            this.txtVATCode.Name = "txtVATCode";
+            this.txtVATCode.ReadOnly = true;
+            this.txtVATCode.Size = new System.Drawing.Size(156, 20);
+            this.txtVATCode.TabIndex = 9;
+            this.txtVATCode.TabStop = false;
             // 
-            // lblVATId
+            // btnPLVAT
             // 
-            this.lblVATId.AutoSize = true;
-            this.lblVATId.Location = new System.Drawing.Point(229, 213);
-            this.lblVATId.Name = "lblVATId";
-            this.lblVATId.Size = new System.Drawing.Size(13, 13);
-            this.lblVATId.TabIndex = 72;
-            this.lblVATId.Text = "0";
+            this.btnPLVAT.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLVAT.Location = new System.Drawing.Point(345, 130);
+            this.btnPLVAT.Name = "btnPLVAT";
+            this.btnPLVAT.Size = new System.Drawing.Size(22, 22);
+            this.btnPLVAT.Source = "Currency";
+            this.btnPLVAT.TabIndex = 11;
+            this.btnPLVAT.TabStop = false;
+            this.btnPLVAT.Text = "↓";
+            
+            // 
+            // txtVATId
+            // 
+            this.txtVATId.Location = new System.Drawing.Point(152, 131);
+            this.txtVATId.MaxLength = 4;
+            this.txtVATId.Name = "txtVATId";
+            this.txtVATId.ReadOnly = true;
+            this.txtVATId.Size = new System.Drawing.Size(35, 20);
+            this.txtVATId.TabIndex = 8;
+            this.txtVATId.TextChanged += new System.EventHandler(this.TxtVATId_TextChanged);
+            // 
+            // btnPLService
+            // 
+            this.btnPLService.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLService.Location = new System.Drawing.Point(222, 15);
+            this.btnPLService.Name = "btnPLService";
+            this.btnPLService.Size = new System.Drawing.Size(22, 22);
+            this.btnPLService.Source = "Service";
+            this.btnPLService.TabIndex = 3;
+            this.btnPLService.TabStop = false;
+            this.btnPLService.Text = "↓";
+            
             // 
             // ServiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lblVATId);
-            this.Controls.Add(this.cmbVATId);
             this.Controls.Add(this.btnDateOfBirth);
+            this.Controls.Add(this.txtVATId);
+            this.Controls.Add(this.btnPLVAT);
             this.Controls.Add(this.txtCurrencyId);
-            this.Controls.Add(this.lookUpButtonCurrency);
-            this.Controls.Add(this.txtCurrencyEnglish);
+            this.Controls.Add(this.txtVATCode);
+            this.Controls.Add(this.btnPLCurrency);
+            this.Controls.Add(this.lblVAT);
             this.Controls.Add(this.txtCurrencyCode);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtBillingCategoryId);
@@ -436,7 +441,6 @@
             this.Controls.Add(this.chkExpired);
             this.Controls.Add(this.chkReadOnly);
             this.Controls.Add(this.txtUpdatedOn);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtEffectiveFromDate);
@@ -445,8 +449,9 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.lookUpButtonContract);
-            this.Controls.Add(this.lookUpButtonBillingCategory);
+            this.Controls.Add(this.btnPLService);
+            this.Controls.Add(this.btnPLContract);
+            this.Controls.Add(this.btnPLBillingCategory);
             this.Controls.Add(this.txtContractCode);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtBillingCategoryCode);
@@ -472,7 +477,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Label label6;
-        private Common.LookUpButton lookUpButtonBillingCategory;
+        private Common.PickListButton btnPLBillingCategory;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtBillingCategoryCode;
         private System.Windows.Forms.TextBox txtCreatedOn;
@@ -483,22 +488,23 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.TextBox txtContractCode;
-        private Common.LookUpButton lookUpButtonContract;
+        private Common.PickListButton btnPLContract;
         private System.Windows.Forms.TextBox txtContractId;
         private System.Windows.Forms.TextBox txtBillingCategoryId;
         private System.Windows.Forms.TextBox txtCurrencyId;
-        private Common.LookUpButton lookUpButtonCurrency;
+        private Common.PickListButton btnPLCurrency;
         private System.Windows.Forms.TextBox txtCurrencyCode;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtCurrencyEnglish;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtEffectiveFromDate;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnDateOfBirth;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox cmbVATId;
-        private System.Windows.Forms.Label lblVATId;
         private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.CheckBox chkExpired;
+        private System.Windows.Forms.Label lblVAT;
+        private System.Windows.Forms.TextBox txtVATCode;
+        private Common.PickListButton btnPLVAT;
+        private System.Windows.Forms.TextBox txtVATId;
+        private Common.PickListButton btnPLService;
     }
 }

@@ -36,12 +36,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtBillingCategoryCode = new System.Windows.Forms.TextBox();
-            this.lookUpButtonAccomCategory = new MVCHIS.Common.LookUpButton();
+            this.btnPLBillingCategory = new MVCHIS.Common.PickListButton();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.chkReservationOnly = new System.Windows.Forms.CheckBox();
-            this.lookUpButtonFoodType = new MVCHIS.Common.LookUpButton();
-            this.lookUpButtonFood = new MVCHIS.Common.LookUpButton();
-            this.lookUpButtonAccommClass = new MVCHIS.Common.LookUpButton();
+            this.btnPLFoodType = new MVCHIS.Common.PickListButton();
+            this.btnPLFoodClass = new MVCHIS.Common.PickListButton();
+            this.btnPLAccommClass = new MVCHIS.Common.PickListButton();
             this.txtFoodTypeId = new System.Windows.Forms.TextBox();
             this.txtFoodClassId = new System.Windows.Forms.TextBox();
             this.txtBillingCategoryDesc = new System.Windows.Forms.TextBox();
@@ -172,20 +172,17 @@
             this.txtBillingCategoryCode.Size = new System.Drawing.Size(212, 20);
             this.txtBillingCategoryCode.TabIndex = 1;
             // 
-            // lookUpButtonAccomCategory
+            // btnPLBillingCategory
             // 
-            this.lookUpButtonAccomCategory.AssociatedControl = "txtBillingCategoryCode";
-            this.lookUpButtonAccomCategory.Source = "BillingCategory";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonAccomCategory.Location = new System.Drawing.Point(353, 41);
-            this.lookUpButtonAccomCategory.Name = "lookUpButtonAccomCategory";
-            // 0;
-            //("BillingCategoryCode");
-            //("BillingCategoryDesc");
-            this.lookUpButtonAccomCategory.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonAccomCategory.TabIndex = 2;
-            this.lookUpButtonAccomCategory.TabStop = false;
-            this.lookUpButtonAccomCategory.LookUpSelected += new System.EventHandler(this.LookUpButton1LookUpSelected);
+            this.btnPLBillingCategory.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLBillingCategory.Location = new System.Drawing.Point(211, 14);
+            this.btnPLBillingCategory.Name = "btnPLBillingCategory";
+            this.btnPLBillingCategory.Size = new System.Drawing.Size(22, 22);
+            this.btnPLBillingCategory.Source = "BillingCategory";
+            this.btnPLBillingCategory.TabIndex = 2;
+            this.btnPLBillingCategory.TabStop = false;
+            this.btnPLBillingCategory.Text = "↓";
+            
             // 
             // chkReadOnly
             // 
@@ -206,50 +203,41 @@
             this.chkReservationOnly.TabIndex = 16;
             this.chkReservationOnly.UseVisualStyleBackColor = true;
             // 
-            // lookUpButtonFoodType
+            // btnPLFoodType
             // 
-            this.lookUpButtonFoodType.AssociatedControl = "txtFoodTypeId";
-            this.lookUpButtonFoodType.Source = "FoodType";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonFoodType.Location = new System.Drawing.Point(353, 149);
-            this.lookUpButtonFoodType.Name = "lookUpButtonFoodType";
-            // 2;
-            //("FoodTypeCode");
-            //("FoodTypeDesc");
-            //("Id");
-            this.lookUpButtonFoodType.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonFoodType.TabIndex = 13;
-            this.lookUpButtonFoodType.TabStop = false;
+            this.btnPLFoodType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLFoodType.Location = new System.Drawing.Point(353, 149);
+            this.btnPLFoodType.Name = "btnPLFoodType";
+            this.btnPLFoodType.Size = new System.Drawing.Size(22, 22);
+            this.btnPLFoodType.Source = "FoodType";
+            this.btnPLFoodType.TabIndex = 13;
+            this.btnPLFoodType.TabStop = false;
+            this.btnPLFoodType.Text = "↓";
+            
             // 
-            // lookUpButtonFood
+            // btnPLFoodClass
             // 
-            this.lookUpButtonFood.AssociatedControl = "txtFoodClassId";
-            this.lookUpButtonFood.Source = "FoodClass";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonFood.Location = new System.Drawing.Point(353, 122);
-            this.lookUpButtonFood.Name = "lookUpButtonFood";
-            // 2;
-            //("FoodClassCode");
-            //("FoodClassDesc");
-            //("Id");
-            this.lookUpButtonFood.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonFood.TabIndex = 9;
-            this.lookUpButtonFood.TabStop = false;
+            this.btnPLFoodClass.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLFoodClass.Location = new System.Drawing.Point(353, 122);
+            this.btnPLFoodClass.Name = "btnPLFoodClass";
+            this.btnPLFoodClass.Size = new System.Drawing.Size(22, 22);
+            this.btnPLFoodClass.Source = "FoodClass";
+            this.btnPLFoodClass.TabIndex = 9;
+            this.btnPLFoodClass.TabStop = false;
+            this.btnPLFoodClass.Text = "↓";
+            
             // 
-            // lookUpButtonAccommClass
+            // btnPLAccommClass
             // 
-            this.lookUpButtonAccommClass.AssociatedControl = "txtAccommClassId";
-            this.lookUpButtonAccommClass.Source = "AccommClass";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonAccommClass.Location = new System.Drawing.Point(353, 95);
-            this.lookUpButtonAccommClass.Name = "lookUpButtonAccommClass";
-            // 2;
-            //("AccommClassCode");
-            //("AccommClassDesc");
-            //("Id");
-            this.lookUpButtonAccommClass.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonAccommClass.TabIndex = 5;
-            this.lookUpButtonAccommClass.TabStop = false;
+            this.btnPLAccommClass.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLAccommClass.Location = new System.Drawing.Point(353, 95);
+            this.btnPLAccommClass.Name = "btnPLAccommClass";
+            this.btnPLAccommClass.Size = new System.Drawing.Size(22, 22);
+            this.btnPLAccommClass.Source = "AccommClass";
+            this.btnPLAccommClass.TabIndex = 5;
+            this.btnPLAccommClass.TabStop = false;
+            this.btnPLAccommClass.Text = "↓";
+            
             // 
             // txtFoodTypeId
             // 
@@ -376,16 +364,16 @@
             this.Controls.Add(this.txtUpdatedOn);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.txtUpdatedBy);
-            this.Controls.Add(this.lookUpButtonFoodType);
+            this.Controls.Add(this.btnPLFoodType);
             this.Controls.Add(this.btnNew);
-            this.Controls.Add(this.lookUpButtonFood);
+            this.Controls.Add(this.btnPLFoodClass);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.lookUpButtonAccommClass);
+            this.Controls.Add(this.btnPLAccommClass);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtFoodTypeCode);
             this.Controls.Add(this.txtFoodTypeId);
             this.Controls.Add(this.txtCreatedOn);
-            this.Controls.Add(this.lookUpButtonAccomCategory);
+            this.Controls.Add(this.btnPLBillingCategory);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.txtFoodClassCode);
             this.Controls.Add(this.txtFoodClassId);
@@ -424,9 +412,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtBillingCategoryCode;
-        private Common.LookUpButton lookUpButtonAccomCategory;
-        private Common.LookUpButton lookUpButtonFood;
-        private Common.LookUpButton lookUpButtonAccommClass;
+        private Common.PickListButton btnPLBillingCategory;
+        private Common.PickListButton btnPLFoodClass;
+        private Common.PickListButton btnPLAccommClass;
         private System.Windows.Forms.TextBox txtFoodClassId;
         private System.Windows.Forms.TextBox txtAccommClassId;
         private System.Windows.Forms.Label label4;
@@ -435,7 +423,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox chkReservationOnly;
         private System.Windows.Forms.Label label8;
-        private Common.LookUpButton lookUpButtonFoodType;
+        private Common.PickListButton btnPLFoodType;
         private System.Windows.Forms.TextBox txtFoodTypeId;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox chkReadOnly;

@@ -321,6 +321,6 @@
         private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtGregorianYear;
-        //private Common.LookUpButton DictionaryNameLookupButton;
+        //private Common.PickListButton DictionaryNameLookupButton;
     }
 }

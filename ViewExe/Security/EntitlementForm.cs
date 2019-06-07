@@ -12,7 +12,7 @@ namespace MVCHIS.Security {
         public EntitlementForm() {
             InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //template
-            Mapper["Id"] = txtId;
+            Mapper["Id"] = PickList[btnPLEntitlement] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
             Mapper["CreatedOn"] = txtCreatedOn;
             Mapper["UpdatedBy"] = txtUpdatedBy;
@@ -27,29 +27,30 @@ namespace MVCHIS.Security {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
+            //pick lists
+            PickList[btnPLEntitlementGroup] = txtEntitlementGroupId;
+            PickList[btnPLEntity] = txtEntityId;
         }
-
-        public override void LoadForeignKeys(ForeignKeys FK) {
-            FK.Put(DBControllersFactory.GetEntitlementGroupController());
-            FK.Put(DBControllersFactory.GetEntityController());
-            base.LoadForeignKeys(FK);
-        }
-
 
         private void EntitlementFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
         }
 
-        private void EntitlementNameLookupLookUpSelected(object sender, EventArgs e) {
-            
-            Model = Controller.Find(new EntitlementModel() { Id = txtEntitlementName.Text.ToInteger() }, "Id");
-        }
-
         private void TxtEntitlementGroupId_TextChanged(object sender, EventArgs e) {
-            txtEntitlementGroupName.Text = ForeignKeys.Instance[MODELS.EntitlementGroup, txtEntitlementGroupId.Text];
+            txtEntitlementGroupName.Text = DBControllersFactory.FK(MODELS.EntitlementGroup, txtEntitlementGroupId.Text);
         }
 
         private void TxtEntityId_TextChanged(object sender, EventArgs e) {
-            txtEntityName.Text = ForeignKeys.Instance[MODELS.Entity, txtEntityId.Text];
+            txtEntityName.Text = DBControllersFactory.FK(MODELS.Entity, txtEntityId.Text);
+        }
+
+        
+
+        private void EntitlementGroupNameLookup_LookUpSelected(int obj) {
+            txtEntitlementGroupId.Text = obj.ToString();
+        }
+
+        private void LookUpEntityName_LookUpSelected(int obj) {
+            txtEntityId.Text = obj.ToString();
         }
     }
     

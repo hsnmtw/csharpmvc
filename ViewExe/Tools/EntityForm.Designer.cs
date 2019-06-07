@@ -35,7 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtEntityName = new System.Windows.Forms.TextBox();
-            this.lookUpButtonEntity = new MVCHIS.Common.LookUpButton();
+            this.btnPLEntity = new MVCHIS.Common.PickListButton();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -45,7 +45,6 @@
             // 
             // txtUpdatedOn
             // 
-            
             this.txtUpdatedOn.Location = new System.Drawing.Point(213, 161);
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
@@ -55,7 +54,6 @@
             // 
             // txtUpdatedBy
             // 
-            
             this.txtUpdatedBy.Location = new System.Drawing.Point(139, 161);
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
@@ -92,7 +90,6 @@
             // 
             // txtCreatedOn
             // 
-            
             this.txtCreatedOn.Location = new System.Drawing.Point(213, 135);
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
@@ -111,7 +108,6 @@
             // 
             // txtCreatedBy
             // 
-            
             this.txtCreatedBy.Location = new System.Drawing.Point(139, 135);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
@@ -122,7 +118,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 46);
+            this.label3.Location = new System.Drawing.Point(12, 49);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 13);
             this.label3.TabIndex = 43;
@@ -150,23 +146,19 @@
             // 
             this.txtEntityName.Location = new System.Drawing.Point(140, 46);
             this.txtEntityName.Name = "txtEntityName";
-            this.txtEntityName.Size = new System.Drawing.Size(188, 20);
-            this.txtEntityName.TabIndex = 1;
+            this.txtEntityName.Size = new System.Drawing.Size(210, 20);
+            this.txtEntityName.TabIndex = 2;
             // 
-            // lookUpButtonEntity
+            // btnPLEntity
             // 
-            this.lookUpButtonEntity.AssociatedControl = "txtEntityName";
-            this.lookUpButtonEntity.Source = "Entity";
-            //new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.lookUpButtonEntity.Location = new System.Drawing.Point(329, 45);
-            this.lookUpButtonEntity.Name = "lookUpButtonEntity";
-            //
-            //("EntityName");
-            //("EntityDesc");
-            this.lookUpButtonEntity.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonEntity.TabIndex = 2;
-            this.lookUpButtonEntity.TabStop = false;
-            this.lookUpButtonEntity.LookUpSelected += new System.EventHandler(this.LookUpButton1LookUpSelected);
+            this.btnPLEntity.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLEntity.Location = new System.Drawing.Point(209, 9);
+            this.btnPLEntity.Name = "btnPLEntity";
+            this.btnPLEntity.Size = new System.Drawing.Size(22, 22);
+            this.btnPLEntity.Source = "Entity";
+            this.btnPLEntity.TabIndex = 1;
+            this.btnPLEntity.TabStop = false;
+            this.btnPLEntity.Text = "↓";
             // 
             // txtId
             // 
@@ -224,7 +216,7 @@
             this.Controls.Add(this.txtUpdatedBy);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.btnNew);
-            this.Controls.Add(this.lookUpButtonEntity);
+            this.Controls.Add(this.btnPLEntity);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtEntityName);
             this.Controls.Add(this.btnSave);
@@ -256,7 +248,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtEntityName;
-        private LookUpButton lookUpButtonEntity;
+        private PickListButton btnPLEntity;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label10;

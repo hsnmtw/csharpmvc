@@ -1,6 +1,6 @@
 ﻿namespace MVCHIS.Tools {
     public enum LanguageState {
-        English = 0,
-        Arabic  = 1
+        Default = 0,
+        Translation  = 1
     }
 }

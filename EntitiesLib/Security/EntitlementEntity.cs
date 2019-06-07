@@ -13,9 +13,9 @@ namespace MVCHIS.Security {
                                                      "EntitlementName","EntitlementGroupId","EntityId" }
             , RequiredFields  = new HashSet<string> { "Id","EntitlementName","EntitlementGroupId","EntityId" }
             , UniqueKeyFields = new HashSet<HashSet<string>> { new HashSet<string> { "EntitlementName" } }
-            , ForeignKeys     = new Dictionary<string, Tuple<string, string>> {
-                ["EntityId"          ] = new Tuple<string, string>(ENTITIES.Entity,"Id"),
-                ["EntitlementGroupId"] = new Tuple<string, string>(ENTITIES.EntitlementGroup, "Id")
+            , ForeignKeys     = new Dictionary<string, Tuple<MODELS, string>> {
+                ["EntityId"          ] = new Tuple<MODELS, string>(MODELS.Entity,"Id"),
+                ["EntitlementGroupId"] = new Tuple<MODELS, string>(MODELS.EntitlementGroup, "Id")
             }
             , Sizes = new Dictionary<string, int> {
                 ["CreatedBy"           ] = 10,

@@ -44,5 +44,7 @@ namespace MVCHIS.Common {
     public class BuildingTypeView           : BaseView<BuildingTypeModel         ,BuildingTypeController      >{}
     public class EntitlementView            : BaseView<EntitlementModel          ,EntitlementController       >{}
     public class EntitlementGroupView       : BaseView<EntitlementGroupModel     ,EntitlementGroupController  >{}
-    public class DictionaryView             : BaseView<DictionaryModel           ,DictionaryController        >{}
+    public class WordView                   : BaseView<WordModel                 ,WordController        >{}
+    public class LanguageView               : BaseView<LanguageModel             ,LanguageController          >{}
+    public class WordLanguageView           : BaseView<WordLanguageModel         ,WordLanguageController>{}
 }

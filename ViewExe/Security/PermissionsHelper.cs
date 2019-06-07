@@ -14,10 +14,10 @@ namespace MVCHIS.Security {
         public PermissionsHelper(BaseView<M,C> view) {
             if(view==null) throw new ArgumentException("view cannot be null");
             //if(model==default) throw new ArgumentException("model cannot be null");
-            var CntrlEN = DBControllersFactory.GetEntitlementController(); 
-            var CntrlPE = DBControllersFactory.GetProfileEntitlementController(); 
-            var CntrlPR = DBControllersFactory.GetProfileController(); 
-            var CntrlET = DBControllersFactory.GetEntityController(); 
+            var CntrlEN = DBControllersFactory.Entitlement(); 
+            var CntrlPE = DBControllersFactory.ProfileEntitlement(); 
+            var CntrlPR = DBControllersFactory.Profile(); 
+            var CntrlET = DBControllersFactory.Entity(); 
 
             var usr = MVCHISSession.Instance.CurrentUser;
 
@@ -35,9 +35,9 @@ namespace MVCHIS.Security {
                 EntitlementId = ent.Id
             }, "ProfileId", "EntitlementId");
 
-            view.NewButtonEnabled = pen.AllowCreate;
-            view.SaveButtonEnabled = pen.AllowUpdate;
-            view.DeleteButtonEnabled = pen.AllowDelete;
+            if (view.NewButton != null)    view.SetNewButtonEnabled    ( view.NewButton.Enabled && pen.AllowCreate );
+            if (view.SaveButton != null)   view.SetSaveButtonEnabled   ( view.SaveButton.Enabled && pen.AllowUpdate );
+            if (view.DeleteButton != null) view.SetDeleteButtonEnabled ( view.DeleteButton.Enabled && pen.AllowDelete );
 
             if (!pen.AllowRead) {
                 FormsHelper.Error($"You don't have enough permissions to open {view}.");

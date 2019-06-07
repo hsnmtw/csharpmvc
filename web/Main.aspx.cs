@@ -14,13 +14,13 @@ namespace web {
         private UserController CntrlUS;
 
         protected void Page_Load(object sender, EventArgs e) {
-            CntrlUS = DBControllersFactory.GetUserController();
-            CntrlPE = DBControllersFactory.GetProfileEntitlementController();
+            CntrlUS = DBControllersFactory.User();
+            CntrlPE = DBControllersFactory.ProfileEntitlement();
             MVCHIS.Common.MVCHISSession.Instance.Initialize();
             Login1.Visible = MVCHISSession.Instance.CurrentUser == null;
             //DictionaryUC1.Visible = false;
             Login1.GoClicked += (um) => {
-                UserController uc = DBControllersFactory.GetUserController();
+                UserController uc = DBControllersFactory.User();
                 um = uc.Autheniticate(um);
                 if (um == null) {
                     ScriptManager.RegisterStartupScript(this,GetType(),"error","alert('Login denied')",true);
@@ -54,9 +54,9 @@ namespace web {
 
         protected void TreeView2_SelectedNodeChanged(object sender, EventArgs e) {
             TreeNode node = TreeView2.SelectedNode;
-            if (node.Text.Equals("Dictionary")) {
+            if (node.Text.Equals("Word")) {
                 DictionaryUC1.Visible = true;
-                DictionaryUC1.Model = new DictionaryModel();
+                DictionaryUC1.Model = new WordModel();
             }
         }
     }

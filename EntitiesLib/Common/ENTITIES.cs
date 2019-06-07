@@ -50,10 +50,12 @@ namespace MVCHIS.Common {
         public static string ProfileEntitlement       => "SecurityProfileEntitlement";
         public static string User                     => "SecurityUser";
 
-         // Tools
-         //---------------------------------------------------------------------------------
-         public static string Entity                   => "ToolsEntity";
-         public static string DateConversion           => "ToolsDateConversion";
-         public static string Dictionary               => "ToolsDictionary";		 		 
+        // Tools
+        //---------------------------------------------------------------------------------
+        public static string Entity                   => "ToolsEntity";
+        public static string DateConversion           => "ToolsDateConversion";
+        public static string Word                     => "ToolsWord";
+        public static string Language                 => "ToolsLanguage";
+        public static string WordLanguage             => "ToolsWordLanguage";
     }
 }

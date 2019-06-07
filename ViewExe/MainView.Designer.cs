@@ -44,8 +44,6 @@
             this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripSeparator();
             this.passwordResetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
-            this.ArabicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sQLViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,16 +58,13 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.treeViewMenu = new System.Windows.Forms.TreeView();
             this.txtSearchMenu = new System.Windows.Forms.TextBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.lblHeading = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.lblActionStatus = new System.Windows.Forms.Label();
+            this.tsddbLanguage = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -79,11 +74,11 @@
             this.toolStripStatusLabel2,
             this.tsProgressBar,
             this.tssLabelStatus,
-            this.tsDateTime});
+            this.tsDateTime,
+            this.tsddbLanguage});
             resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.statusStrip1.ShowItemToolTips = true;
             // 
             // tsslCurrentUser
             // 
@@ -133,8 +128,6 @@
             this.toolStripMenuItem11,
             this.passwordResetToolStripMenuItem,
             this.toolStripMenuItem8,
-            this.ArabicToolStripMenuItem,
-            this.toolStripMenuItem2,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
@@ -178,17 +171,6 @@
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
             resources.ApplyResources(this.toolStripMenuItem8, "toolStripMenuItem8");
-            // 
-            // ArabicToolStripMenuItem
-            // 
-            this.ArabicToolStripMenuItem.Name = "ArabicToolStripMenuItem";
-            resources.ApplyResources(this.ArabicToolStripMenuItem, "ArabicToolStripMenuItem");
-            this.ArabicToolStripMenuItem.Click += new System.EventHandler(this.ArabicToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
             // 
             // exitToolStripMenuItem
             // 
@@ -290,34 +272,24 @@
             this.txtSearchMenu.Name = "txtSearchMenu";
             this.txtSearchMenu.TextChanged += new System.EventHandler(this.TxtSearchMenu_TextChanged);
             // 
-            // panel3
+            // tsddbLanguage
             // 
-            this.panel3.Controls.Add(this.lblHeading);
-            resources.ApplyResources(this.panel3, "panel3");
-            this.panel3.Name = "panel3";
+            this.tsddbLanguage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsddbLanguage.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2});
+            resources.ApplyResources(this.tsddbLanguage, "tsddbLanguage");
+            this.tsddbLanguage.Name = "tsddbLanguage";
             // 
-            // lblHeading
+            // toolStripMenuItem1
             // 
-            this.lblHeading.BackColor = System.Drawing.Color.LightSteelBlue;
-            resources.ApplyResources(this.lblHeading, "lblHeading");
-            this.lblHeading.ForeColor = System.Drawing.Color.White;
-            this.lblHeading.Name = "lblHeading";
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
             // 
-            // panel4
+            // toolStripMenuItem2
             // 
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.lblActionStatus);
-            resources.ApplyResources(this.panel4, "panel4");
-            this.panel4.Name = "panel4";
-            // 
-            // lblActionStatus
-            // 
-            this.lblActionStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.lblActionStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.lblActionStatus, "lblActionStatus");
-            this.lblActionStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblActionStatus.ForeColor = System.Drawing.Color.Black;
-            this.lblActionStatus.Name = "lblActionStatus";
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
             // 
             // MainView
             // 
@@ -325,8 +297,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -341,8 +311,6 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -372,19 +340,16 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ArabicToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripStatusLabel tsDateTime;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TreeView treeViewMenu;
         private System.Windows.Forms.TextBox txtSearchMenu;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label lblHeading;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label lblActionStatus;
         private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.ToolStripDropDownButton tsddbLanguage;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
     }
 }
 

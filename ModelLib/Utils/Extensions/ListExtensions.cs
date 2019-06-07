@@ -18,6 +18,16 @@ namespace MVCHIS.Utils.Extensions {
 
     public static class ListExtensions {
 
+        public static DataTable ToDataTable<M>(this IEnumerable<M> source) {
+            var table = new DataTable();
+            var pis = typeof(M).GetProperties();
+            table.Columns.AddRange(pis.Select(x => new DataColumn(x.Name)).ToArray());
+            foreach(M m in source) {
+                table.Rows.Add((from DataColumn c in table.Columns select typeof(M).GetProperty(c.ColumnName).GetValue(m))?.ToArray());
+            }
+            return table;
+        }
+
         public static bool Empty<T>(IEnumerable<T> source) {
             return source.Count() == 0;
         }

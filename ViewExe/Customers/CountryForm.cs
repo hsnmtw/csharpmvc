@@ -27,15 +27,15 @@ namespace MVCHIS.Customers {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
+            //pick lists
+            PickList[btnPLCountry] = txtId;
         }
 
         private void CountryFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
         }
 
-        private void CountryCodeTextBoxLookUpSelected(object sender, EventArgs e) {
-            
-            Model = Controller.Find(new CountryModel() { Id = txtCountryCode.Text.ToInteger() }, "Id");
-        }
+
+        
     }
     
 }

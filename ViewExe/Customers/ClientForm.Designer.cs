@@ -36,7 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtShortName = new System.Windows.Forms.TextBox();
-            this.lookUpButtonShortName = new MVCHIS.Common.LookUpButton();
+            this.btnPLClientShortName = new MVCHIS.Common.PickListButton();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label19 = new System.Windows.Forms.Label();
             this.txtBillingAddress = new System.Windows.Forms.TextBox();
@@ -45,7 +45,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.txtLongName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.lookUpButtonClientType = new MVCHIS.Common.LookUpButton();
+            this.btnPLClientType = new MVCHIS.Common.PickListButton();
             this.txtWebsite = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
             this.txtNameArabic = new System.Windows.Forms.TextBox();
@@ -60,6 +60,7 @@
             this.txtFaxNumber = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpIdentifications = new System.Windows.Forms.TabPage();
+            this.lstIdentification = new MVCHIS.Utils.ListViewControl();
             this.btnUnassociateIdentification = new System.Windows.Forms.Button();
             this.btnAddIdentification = new System.Windows.Forms.Button();
             this.btnOpenIdentification = new System.Windows.Forms.Button();
@@ -71,10 +72,9 @@
             this.txtCountryId = new System.Windows.Forms.TextBox();
             this.txtCountryCode = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.lookUpButtonNationality = new MVCHIS.Common.LookUpButton();
+            this.btnPLCountry = new MVCHIS.Common.PickListButton();
             this.txtDateOfBirth = new System.Windows.Forms.TextBox();
             this.btnDateOfBirth = new System.Windows.Forms.Button();
-            this.lstIdentification = new MVCHIS.Utils.ListViewControl();
             this.tabControl1.SuspendLayout();
             this.tpIdentifications.SuspendLayout();
             this.tpContacts.SuspendLayout();
@@ -194,25 +194,22 @@
             // 
             // txtShortName
             // 
-            this.txtShortName.Location = new System.Drawing.Point(161, 50);
+            this.txtShortName.Location = new System.Drawing.Point(161, 49);
             this.txtShortName.Name = "txtShortName";
-            this.txtShortName.Size = new System.Drawing.Size(129, 20);
+            this.txtShortName.Size = new System.Drawing.Size(211, 20);
             this.txtShortName.TabIndex = 1;
             this.txtShortName.Tag = "ShortName";
             // 
-            // lookUpButtonShortName
+            // btnPLClientShortName
             // 
-            this.lookUpButtonShortName.AssociatedControl = "txtShortName";
-            this.lookUpButtonShortName.Source = "Client";
-            this.lookUpButtonShortName.Location = new System.Drawing.Point(291, 49);
-            this.lookUpButtonShortName.Name = "lookUpButtonShortName";
-            // 0;
-            //("ShortName");
-            //("LongName");
-            this.lookUpButtonShortName.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonShortName.TabIndex = 2;
-            this.lookUpButtonShortName.TabStop = false;
-            this.lookUpButtonShortName.LookUpSelected += new System.EventHandler(this.LookUpButtonShortNameLookUpSelected);
+            this.btnPLClientShortName.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLClientShortName.Location = new System.Drawing.Point(231, 22);
+            this.btnPLClientShortName.Name = "btnPLClientShortName";
+            this.btnPLClientShortName.Size = new System.Drawing.Size(22, 22);
+            this.btnPLClientShortName.Source = "Client";
+            this.btnPLClientShortName.TabIndex = 2;
+            this.btnPLClientShortName.TabStop = false;
+            this.btnPLClientShortName.Text = "↓";
             // 
             // chkReadOnly
             // 
@@ -257,7 +254,7 @@
             this.txtClientTypeId.Location = new System.Drawing.Point(161, 128);
             this.txtClientTypeId.Name = "txtClientTypeId";
             this.txtClientTypeId.ReadOnly = true;
-            this.txtClientTypeId.Size = new System.Drawing.Size(33, 20);
+            this.txtClientTypeId.Size = new System.Drawing.Size(43, 20);
             this.txtClientTypeId.TabIndex = 6;
             this.txtClientTypeId.Tag = "ClientTypeCode";
             this.txtClientTypeId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -289,18 +286,16 @@
             this.label2.TabIndex = 47;
             this.label2.Text = "Long Name";
             // 
-            // lookUpButtonClientType
+            // btnPLClientType
             // 
-            this.lookUpButtonClientType.AssociatedControl = "txtClientTypeId";
-            this.lookUpButtonClientType.Source = "ClientType";
-            this.lookUpButtonClientType.Location = new System.Drawing.Point(351, 127);
-            this.lookUpButtonClientType.Name = "lookUpButtonClientType";
-            // 1;
-            //("ClientTypeCode");
-            //("Id");
-            this.lookUpButtonClientType.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonClientType.TabIndex = 5;
-            this.lookUpButtonClientType.TabStop = false;
+            this.btnPLClientType.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLClientType.Location = new System.Drawing.Point(351, 127);
+            this.btnPLClientType.Name = "btnPLClientType";
+            this.btnPLClientType.Size = new System.Drawing.Size(22, 22);
+            this.btnPLClientType.Source = "ClientType";
+            this.btnPLClientType.TabIndex = 5;
+            this.btnPLClientType.TabStop = false;
+            this.btnPLClientType.Text = "↓";
             // 
             // txtWebsite
             // 
@@ -367,10 +362,10 @@
             // txtClientTypeCode
             // 
             this.txtClientTypeCode.Enabled = false;
-            this.txtClientTypeCode.Location = new System.Drawing.Point(196, 128);
+            this.txtClientTypeCode.Location = new System.Drawing.Point(210, 128);
             this.txtClientTypeCode.Name = "txtClientTypeCode";
             this.txtClientTypeCode.ReadOnly = true;
-            this.txtClientTypeCode.Size = new System.Drawing.Size(154, 20);
+            this.txtClientTypeCode.Size = new System.Drawing.Size(140, 20);
             this.txtClientTypeCode.TabIndex = 7;
             this.txtClientTypeCode.Tag = "ClientTypeCode";
             // 
@@ -431,6 +426,21 @@
             this.tpIdentifications.TabIndex = 0;
             this.tpIdentifications.Text = "Identification";
             this.tpIdentifications.UseVisualStyleBackColor = true;
+            // 
+            // lstIdentification
+            // 
+            this.lstIdentification.Filter = null;
+            this.lstIdentification.FullRowSelect = true;
+            this.lstIdentification.GridLines = true;
+            this.lstIdentification.HideSelection = false;
+            this.lstIdentification.LabelWrap = false;
+            this.lstIdentification.Location = new System.Drawing.Point(6, 6);
+            this.lstIdentification.MultiSelect = false;
+            this.lstIdentification.Name = "lstIdentification";
+            this.lstIdentification.Size = new System.Drawing.Size(314, 180);
+            this.lstIdentification.TabIndex = 7;
+            this.lstIdentification.UseCompatibleStateImageBehavior = false;
+            this.lstIdentification.View = System.Windows.Forms.View.Details;
             // 
             // btnUnassociateIdentification
             // 
@@ -530,10 +540,10 @@
             // txtCountryCode
             // 
             this.txtCountryCode.Enabled = false;
-            this.txtCountryCode.Location = new System.Drawing.Point(205, 366);
+            this.txtCountryCode.Location = new System.Drawing.Point(210, 366);
             this.txtCountryCode.Name = "txtCountryCode";
             this.txtCountryCode.ReadOnly = true;
-            this.txtCountryCode.Size = new System.Drawing.Size(145, 20);
+            this.txtCountryCode.Size = new System.Drawing.Size(140, 20);
             this.txtCountryCode.TabIndex = 16;
             this.txtCountryCode.Tag = "";
             this.txtCountryCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -547,20 +557,16 @@
             this.label13.TabIndex = 47;
             this.label13.Text = "Nationality";
             // 
-            // lookUpButtonNationality
+            // btnPLCountry
             // 
-            this.lookUpButtonNationality.AssociatedControl = "txtCountryId";
-            this.lookUpButtonNationality.Source = "Country";
-            this.lookUpButtonNationality.Location = new System.Drawing.Point(351, 365);
-            this.lookUpButtonNationality.Name = "lookUpButtonNationality";
-            // 3;
-            //("CountryCode");
-            //("CountryEnglish");
-            //("CountryArabic");
-            //("Id");
-            this.lookUpButtonNationality.Size = new System.Drawing.Size(22, 22);
-            this.lookUpButtonNationality.TabIndex = 18;
-            this.lookUpButtonNationality.TabStop = false;
+            this.btnPLCountry.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLCountry.Location = new System.Drawing.Point(351, 365);
+            this.btnPLCountry.Name = "btnPLCountry";
+            this.btnPLCountry.Size = new System.Drawing.Size(22, 22);
+            this.btnPLCountry.Source = "Country";
+            this.btnPLCountry.TabIndex = 18;
+            this.btnPLCountry.TabStop = false;
+            this.btnPLCountry.Text = "↓";
             // 
             // txtDateOfBirth
             // 
@@ -583,21 +589,6 @@
             this.btnDateOfBirth.Text = "📅";
             this.btnDateOfBirth.UseVisualStyleBackColor = true;
             this.btnDateOfBirth.Click += new System.EventHandler(this.BtnDateOfBirth_Click);
-            // 
-            // lstIdentification
-            // 
-            this.lstIdentification.Filter = null;
-            this.lstIdentification.FullRowSelect = true;
-            this.lstIdentification.GridLines = true;
-            this.lstIdentification.HideSelection = false;
-            this.lstIdentification.LabelWrap = false;
-            this.lstIdentification.Location = new System.Drawing.Point(6, 6);
-            this.lstIdentification.MultiSelect = false;
-            this.lstIdentification.Name = "lstIdentification";
-            this.lstIdentification.Size = new System.Drawing.Size(314, 180);
-            this.lstIdentification.TabIndex = 7;
-            this.lstIdentification.UseCompatibleStateImageBehavior = false;
-            this.lstIdentification.View = System.Windows.Forms.View.Details;
             // 
             // ClientForm
             // 
@@ -631,9 +622,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtShortName);
-            this.Controls.Add(this.lookUpButtonShortName);
-            this.Controls.Add(this.lookUpButtonNationality);
-            this.Controls.Add(this.lookUpButtonClientType);
+            this.Controls.Add(this.btnPLClientShortName);
+            this.Controls.Add(this.btnPLCountry);
+            this.Controls.Add(this.btnPLClientType);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.label2);
@@ -670,14 +661,14 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtShortName;
-        private Common.LookUpButton lookUpButtonShortName;
+        private Common.PickListButton btnPLClientShortName;
         private System.Windows.Forms.TextBox txtLongName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtBillingAddress;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtClientTypeId;
         private System.Windows.Forms.Label label17;
-        private Common.LookUpButton lookUpButtonClientType;
+        private Common.PickListButton btnPLClientType;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox txtNameArabic;
         private System.Windows.Forms.Label label24;
@@ -702,7 +693,7 @@
         private System.Windows.Forms.TextBox txtCountryId;
         private System.Windows.Forms.TextBox txtCountryCode;
         private System.Windows.Forms.Label label13;
-        private Common.LookUpButton lookUpButtonNationality;
+        private Common.PickListButton btnPLCountry;
         private System.Windows.Forms.TextBox txtDateOfBirth;
         private System.Windows.Forms.Button btnDateOfBirth;
         private System.Windows.Forms.CheckBox chkReadOnly;

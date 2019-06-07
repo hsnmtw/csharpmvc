@@ -265,11 +265,23 @@
     <Compile Include="Tools\DateConversionUC.Designer.cs">
       <DependentUpon>DateConversionUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tools\DictionaryForm.cs">
+    <Compile Include="Tools\WordForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Tools\DictionaryForm.Designer.cs">
-      <DependentUpon>DictionaryForm.cs</DependentUpon>
+    <Compile Include="Tools\WordForm.Designer.cs">
+      <DependentUpon>WordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\WordLanguageForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tools\WordLanguageForm.Designer.cs">
+      <DependentUpon>WordLanguageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\LanguageForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tools\LanguageForm.Designer.cs">
+      <DependentUpon>LanguageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Tools\EntityForm.cs">
       <SubType>UserControl</SubType>
@@ -299,17 +311,14 @@
     <Compile Include="Utils\Controls\ListViewControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Utils\Lookup\LookUpButton.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Utils\PickList\PickListButton.cs">
+      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Utils\Lookup\LookUpButton.Designer.cs">
-      <DependentUpon>LookUpButton.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Utils\Lookup\LookupBox.cs">
+    <Compile Include="Utils\PickList\PickListBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\Lookup\LookupBox.Designer.cs">
-      <DependentUpon>LookupBox.cs</DependentUpon>
+    <Compile Include="Utils\PickList\PickListBox.Designer.cs">
+      <DependentUpon>PickListBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\Net\CURL.cs" />
     <Compile Include="Utils\Controls\ReportTemplate.cs" />
@@ -433,8 +442,14 @@
     <EmbeddedResource Include="Tools\DateConversionUC.resx">
       <DependentUpon>DateConversionUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tools\DictionaryForm.resx">
-      <DependentUpon>DictionaryForm.cs</DependentUpon>
+    <EmbeddedResource Include="Tools\WordForm.resx">
+      <DependentUpon>WordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\WordLanguageForm.resx">
+      <DependentUpon>WordLanguageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\LanguageForm.resx">
+      <DependentUpon>LanguageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\EntityForm.resx">
       <DependentUpon>EntityForm.cs</DependentUpon>
@@ -448,11 +463,8 @@
     <EmbeddedResource Include="Utils\Controls\InputBox.resx">
       <DependentUpon>InputBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Utils\Lookup\LookUpButton.resx">
-      <DependentUpon>LookUpButton.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Utils\Lookup\LookupBox.resx">
-      <DependentUpon>LookupBox.cs</DependentUpon>
+    <EmbeddedResource Include="Utils\PickList\PickListBox.resx">
+      <DependentUpon>PickListBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\SQLView.resx">
       <DependentUpon>SQLView.cs</DependentUpon>

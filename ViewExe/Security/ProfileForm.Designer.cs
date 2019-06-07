@@ -38,7 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtProfileDesc = new System.Windows.Forms.TextBox();
-            this.ProfileNameLookup = new MVCHIS.Common.LookUpButton();
+            this.btnPLProfile = new MVCHIS.Common.PickListButton();
             this.txtProfileName = new System.Windows.Forms.TextBox();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -189,17 +189,16 @@
             this.txtProfileDesc.Size = new System.Drawing.Size(341, 20);
             this.txtProfileDesc.TabIndex = 3;
             // 
-            // ProfileNameLookup
+            // btnPLProfile
             // 
-            this.ProfileNameLookup.AssociatedControl = "txtProfileName";
-            this.ProfileNameLookup.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.ProfileNameLookup.Location = new System.Drawing.Point(342, 35);
-            this.ProfileNameLookup.Name = "ProfileNameLookup";
-            this.ProfileNameLookup.Size = new System.Drawing.Size(22, 22);
-            this.ProfileNameLookup.Source = "Profile";
-            this.ProfileNameLookup.TabIndex = 2;
-            this.ProfileNameLookup.TabStop = false;
-            this.ProfileNameLookup.LookUpSelected += new System.EventHandler(this.ProfileNameLookupLookUpSelected);
+            this.btnPLProfile.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPLProfile.Location = new System.Drawing.Point(197, 7);
+            this.btnPLProfile.Name = "btnPLProfile";
+            this.btnPLProfile.Size = new System.Drawing.Size(22, 22);
+            this.btnPLProfile.Source = "Profile";
+            this.btnPLProfile.TabIndex = 2;
+            this.btnPLProfile.TabStop = false;
+            this.btnPLProfile.Text = "↓";
             // 
             // txtProfileName
             // 
@@ -332,6 +331,7 @@
             // 
             // btnInitializeEntitlements
             // 
+            this.btnInitializeEntitlements.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInitializeEntitlements.Location = new System.Drawing.Point(370, 34);
             this.btnInitializeEntitlements.Name = "btnInitializeEntitlements";
             this.btnInitializeEntitlements.Size = new System.Drawing.Size(97, 23);
@@ -357,7 +357,7 @@
             this.Controls.Add(this.lstEntitlements);
             this.Controls.Add(this.chkReadOnly);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.ProfileNameLookup);
+            this.Controls.Add(this.btnPLProfile);
             this.Controls.Add(this.txtProfileName);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
@@ -399,7 +399,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtProfileDesc;
-        private Common.LookUpButton ProfileNameLookup;
+        private Common.PickListButton btnPLProfile;
         private System.Windows.Forms.TextBox txtProfileName;
         private System.Windows.Forms.CheckBox chkReadOnly;
         private System.Windows.Forms.Label label10;
