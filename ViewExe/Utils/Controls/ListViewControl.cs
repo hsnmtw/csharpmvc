@@ -80,9 +80,9 @@ namespace MVCHIS.Utils {
             foreach (M row in data) {
                 AddRowFromModel(row);
             }
-            
-            AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-            AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+
+            AutoFitColumns();
+
             if (Columns.Count > 0) {
                 Columns[Columns.Count - 1].Width -= 5;
             }
@@ -93,7 +93,11 @@ namespace MVCHIS.Utils {
             }
             EndUpdate();
         }
-
+        
+        public void AutoFitColumns() {
+            AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
 
 
         private void LoadColumns(params string[] columns) {
@@ -135,8 +139,8 @@ namespace MVCHIS.Utils {
                 AddRowFromArray((from string col in shownColumns select row[col]).ToArray<object>());                
             }
 
-            AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-            AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            AutoFitColumns();
+
             if (Columns.Count > 0) {
                 Columns[Columns.Count - 1].Width -= 5;
             }

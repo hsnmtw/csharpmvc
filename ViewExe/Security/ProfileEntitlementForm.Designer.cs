@@ -61,7 +61,7 @@
             this.btnSave.Location = new System.Drawing.Point(199, 308);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 17;
+            this.btnSave.TabIndex = 18;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             // 
@@ -72,7 +72,7 @@
             this.txtUpdatedOn.Name = "txtUpdatedOn";
             this.txtUpdatedOn.ReadOnly = true;
             this.txtUpdatedOn.Size = new System.Drawing.Size(137, 20);
-            this.txtUpdatedOn.TabIndex = 15;
+            this.txtUpdatedOn.TabIndex = 16;
             this.txtUpdatedOn.TabStop = false;
             // 
             // txtUpdatedBy
@@ -82,7 +82,7 @@
             this.txtUpdatedBy.Name = "txtUpdatedBy";
             this.txtUpdatedBy.ReadOnly = true;
             this.txtUpdatedBy.Size = new System.Drawing.Size(69, 20);
-            this.txtUpdatedBy.TabIndex = 14;
+            this.txtUpdatedBy.TabIndex = 15;
             this.txtUpdatedBy.TabStop = false;
             // 
             // label6
@@ -101,7 +101,7 @@
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.ReadOnly = true;
             this.txtCreatedOn.Size = new System.Drawing.Size(137, 20);
-            this.txtCreatedOn.TabIndex = 13;
+            this.txtCreatedOn.TabIndex = 14;
             this.txtCreatedOn.TabStop = false;
             // 
             // txtCreatedBy
@@ -111,7 +111,7 @@
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.ReadOnly = true;
             this.txtCreatedBy.Size = new System.Drawing.Size(69, 20);
-            this.txtCreatedBy.TabIndex = 12;
+            this.txtCreatedBy.TabIndex = 13;
             this.txtCreatedBy.TabStop = false;
             // 
             // label5
@@ -126,11 +126,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 46);
+            this.label2.Location = new System.Drawing.Point(33, 78);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 13);
+            this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 42;
-            this.label2.Text = "Entitlement Name";
+            this.label2.Text = "Entitlement";
             // 
             // txtId
             // 
@@ -153,11 +153,11 @@
             // 
             // txtEntitlementName
             // 
-            this.txtEntitlementName.Location = new System.Drawing.Point(203, 43);
+            this.txtEntitlementName.Location = new System.Drawing.Point(203, 74);
             this.txtEntitlementName.Name = "txtEntitlementName";
             this.txtEntitlementName.ReadOnly = true;
             this.txtEntitlementName.Size = new System.Drawing.Size(151, 20);
-            this.txtEntitlementName.TabIndex = 3;
+            this.txtEntitlementName.TabIndex = 6;
             this.txtEntitlementName.TabStop = false;
             // 
             // chkReadOnly
@@ -167,7 +167,7 @@
             this.chkReadOnly.Location = new System.Drawing.Point(161, 267);
             this.chkReadOnly.Name = "chkReadOnly";
             this.chkReadOnly.Size = new System.Drawing.Size(15, 14);
-            this.chkReadOnly.TabIndex = 16;
+            this.chkReadOnly.TabIndex = 17;
             this.chkReadOnly.UseVisualStyleBackColor = true;
             // 
             // label10
@@ -212,13 +212,13 @@
             this.chkAllowUpdate.Location = new System.Drawing.Point(273, 104);
             this.chkAllowUpdate.Name = "chkAllowUpdate";
             this.chkAllowUpdate.Size = new System.Drawing.Size(15, 14);
-            this.chkAllowUpdate.TabIndex = 10;
+            this.chkAllowUpdate.TabIndex = 9;
             this.chkAllowUpdate.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(182, 130);
+            this.label7.Location = new System.Drawing.Point(183, 130);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(60, 13);
             this.label7.TabIndex = 51;
@@ -230,31 +230,31 @@
             this.chkAllowRead.Location = new System.Drawing.Point(161, 130);
             this.chkAllowRead.Name = "chkAllowRead";
             this.chkAllowRead.Size = new System.Drawing.Size(15, 14);
-            this.chkAllowRead.TabIndex = 9;
+            this.chkAllowRead.TabIndex = 10;
             this.chkAllowRead.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(32, 74);
+            this.label8.Location = new System.Drawing.Point(33, 47);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(67, 13);
+            this.label8.Size = new System.Drawing.Size(37, 13);
             this.label8.TabIndex = 42;
-            this.label8.Text = "Profile Name";
+            this.label8.Text = "Profile";
             // 
             // txtProfileName
             // 
-            this.txtProfileName.Location = new System.Drawing.Point(203, 74);
+            this.txtProfileName.Location = new System.Drawing.Point(204, 43);
             this.txtProfileName.Name = "txtProfileName";
             this.txtProfileName.ReadOnly = true;
             this.txtProfileName.Size = new System.Drawing.Size(151, 20);
-            this.txtProfileName.TabIndex = 6;
+            this.txtProfileName.TabIndex = 3;
             this.txtProfileName.TabStop = false;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(182, 105);
+            this.label9.Location = new System.Drawing.Point(183, 105);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(68, 13);
             this.label9.TabIndex = 51;
@@ -272,33 +272,31 @@
             // btnPLProfile
             // 
             this.btnPLProfile.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.btnPLProfile.Location = new System.Drawing.Point(356, 73);
+            this.btnPLProfile.Location = new System.Drawing.Point(357, 42);
             this.btnPLProfile.Name = "btnPLProfile";
             this.btnPLProfile.Size = new System.Drawing.Size(22, 22);
             this.btnPLProfile.Source = "Profile";
-            this.btnPLProfile.TabIndex = 7;
+            this.btnPLProfile.TabIndex = 4;
             this.btnPLProfile.TabStop = false;
             this.btnPLProfile.Text = "↓";
-            
             // 
             // btnPLEntitlement
             // 
             this.btnPLEntitlement.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.btnPLEntitlement.Location = new System.Drawing.Point(356, 42);
+            this.btnPLEntitlement.Location = new System.Drawing.Point(356, 73);
             this.btnPLEntitlement.Name = "btnPLEntitlement";
             this.btnPLEntitlement.Size = new System.Drawing.Size(22, 22);
             this.btnPLEntitlement.Source = "Entitlement";
-            this.btnPLEntitlement.TabIndex = 4;
+            this.btnPLEntitlement.TabIndex = 7;
             this.btnPLEntitlement.TabStop = false;
             this.btnPLEntitlement.Text = "↓";
-            
             // 
             // btnNew
             // 
             this.btnNew.Location = new System.Drawing.Point(297, 308);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 23);
-            this.btnNew.TabIndex = 18;
+            this.btnNew.TabIndex = 19;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = true;
             // 
@@ -307,7 +305,7 @@
             this.btnDelete.Location = new System.Drawing.Point(101, 308);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 19;
+            this.btnDelete.TabIndex = 20;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
@@ -321,32 +319,31 @@
             this.btnPLProfileEntitlement.TabIndex = 1;
             this.btnPLProfileEntitlement.TabStop = false;
             this.btnPLProfileEntitlement.Text = "↓";
-            
             // 
             // txtEntitlementId
             // 
-            this.txtEntitlementId.Location = new System.Drawing.Point(161, 43);
+            this.txtEntitlementId.Location = new System.Drawing.Point(161, 74);
             this.txtEntitlementId.Name = "txtEntitlementId";
             this.txtEntitlementId.ReadOnly = true;
             this.txtEntitlementId.Size = new System.Drawing.Size(36, 20);
-            this.txtEntitlementId.TabIndex = 2;
+            this.txtEntitlementId.TabIndex = 5;
             this.txtEntitlementId.TextChanged += new System.EventHandler(this.TxtEntitlementId_TextChanged);
             // 
             // txtProfileId
             // 
-            this.txtProfileId.Location = new System.Drawing.Point(161, 74);
+            this.txtProfileId.Location = new System.Drawing.Point(161, 43);
             this.txtProfileId.Name = "txtProfileId";
             this.txtProfileId.ReadOnly = true;
             this.txtProfileId.Size = new System.Drawing.Size(36, 20);
-            this.txtProfileId.TabIndex = 5;
+            this.txtProfileId.TabIndex = 2;
             this.txtProfileId.TextChanged += new System.EventHandler(this.TxtProfileId_TextChanged);
             // 
             // btnSelectUnselectAll
             // 
-            this.btnSelectUnselectAll.Location = new System.Drawing.Point(161, 163);
+            this.btnSelectUnselectAll.Location = new System.Drawing.Point(161, 161);
             this.btnSelectUnselectAll.Name = "btnSelectUnselectAll";
             this.btnSelectUnselectAll.Size = new System.Drawing.Size(144, 23);
-            this.btnSelectUnselectAll.TabIndex = 52;
+            this.btnSelectUnselectAll.TabIndex = 12;
             this.btnSelectUnselectAll.Text = "Select / Unselect all";
             this.btnSelectUnselectAll.UseVisualStyleBackColor = true;
             this.btnSelectUnselectAll.Click += new System.EventHandler(this.BtnSelectUnselectAll_Click);

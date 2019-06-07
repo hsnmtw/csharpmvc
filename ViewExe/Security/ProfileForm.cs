@@ -4,23 +4,19 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace MVCHIS.Security {
     //[ForModel(Common.MODELS.Profile)]
     public partial class ProfileForm: ProfileView {
-        const char C = 'C', R = 'R', U = 'U', D = 'D', E = '-';
-        private Dictionary<string, List<EntitlementModel>> entitlementsByGroup = new Dictionary<string, List<EntitlementModel>>();
-        private Dictionary<int, EntitlementModel> allEntitlements;
-        private Dictionary<int, EntitlementGroupModel> entitlementmentGroups;
 
-        private EntitlementController        CntrlEN;
-        private ProfileEntitlementController CntrlPE;
-        private EntitlementGroupController   CntrlEG;
-
+        private List<EntitlementModel> entitlements;
+        private List<ProfileEntitlementModel> profileEntitlements;
+        
         public ProfileForm() {
             InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //template
-            Mapper["Id"] = txtId;
+            Mapper["Id"] = PickList[btnPLProfile] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
             Mapper["CreatedOn"] = txtCreatedOn;
             Mapper["UpdatedBy"] = txtUpdatedBy;
@@ -33,121 +29,90 @@ namespace MVCHIS.Security {
             SaveButton = btnSave;
             DeleteButton = btnDelete;
             NewButton = btnNew;
+            //pick lists
+            PickList[btnPLEntitlementGroup] = txtEntitlementGroupId;
+
+            entitlements = DBControllersFactory.Entitlement().Read().ToList();
         }        
 
         private void ProfileFormLoad(object sender, EventArgs e) { if (DesignMode||(Site!=null && Site.DesignMode)) return;
-            CntrlEN = DBControllersFactory.Entitlement();
-            CntrlPE = DBControllersFactory.ProfileEntitlement();
-            CntrlEG = DBControllersFactory.EntitlementGroup();
+        }
 
-            cmbEntitelmentsGroup.Items.Clear();
-            cmbEntitelmentsGroup.Items.Add("All");
-            cmbEntitelmentsGroup.Text = "All";
+        private void TxtId_TextChanged(object sender, EventArgs e) {
+            profileEntitlements = DBControllersFactory.ProfileEntitlement().Read(new ProfileEntitlementModel() {ProfileId = Model.Id}, "ProfileId").ToList();
+            txtEntitlementGroupId.Text = "";
+            RequeryEntitlements();
+            RequeryUsers();
+        }
 
-            allEntitlements = CntrlEN.Read().ToDictionary(x => x.Id, x => x);
+        private void RequeryUsers() {
+            lstUsers.LoadData("", DBControllersFactory.User().Select(new UserModel { ProfileId=Model.Id }, "UserName,FullName",false,"ProfileId"),"UserName","FullName");
+        }
 
-            cmbEntitelmentsGroup.Items.AddRange((
-               from eg
-               in CntrlEG.Read()
-               orderby eg.EntitlementGroupName
-               select eg.EntitlementGroupName
-            ).ToArray());
+        private void TxtEntitlementGroupId_TextChanged(object sender, EventArgs e) {
+            txtEntitlementGroupName.Text = DBControllersFactory.FK(MODELS.EntitlementGroup, txtEntitlementGroupId.Text);
+            RequeryEntitlements();
+        }
 
-            entitlementmentGroups = CntrlEG.Read().ToDictionary(x => x.Id, x => x);
-            
-            foreach (var em in CntrlEN.Read().OrderBy(x => x.EntitlementName)) {
-                var egname = entitlementmentGroups[em.EntitlementGroupId].EntitlementGroupName;
-                if (entitlementsByGroup.ContainsKey(egname) == false) {
-                    entitlementsByGroup[egname] = new List<EntitlementModel>();
+        private void RequeryEntitlements() {
+            btnAddPE.Enabled = btnEditPE.Enabled = btnDeletePE.Enabled = false;
+            var ents = from x in entitlements where x.EntitlementGroupId == txtEntitlementGroupId.Text.ToInteger() select x.Id;
+            lstProfileEntitlements.LoadData("", profileEntitlements.Where(pe => "" == txtEntitlementGroupId.Text || ents.Contains(pe.EntitlementId))
+                , "Id"
+                , "EntitlementId"
+                , "AllowCreate"
+                , "AllowRead"
+                , "AllowUpdate"
+                , "AllowDelete");
+            foreach(ColumnHeader c in lstProfileEntitlements.Columns) { c.Text = c.Text.Replace("Allow","").Trim(); }
+            btnAddPE.Enabled = Model.Id > 0;
+            lstProfileEntitlements.AutoFitColumns();
+        }
+
+        private void LstProfileEntitlements_SelectedIndexChanged(object sender, EventArgs e) {
+            btnEditPE.Enabled = Model.Id > 0 && lstProfileEntitlements.SelectedIndices.Count > 0;
+            btnDeletePE.Enabled = Model.Id > 0 && lstProfileEntitlements.SelectedIndices.Count > 0;
+        }
+
+        private void BtnDeletePE_Click(object sender, EventArgs e) {
+            DBControllersFactory.ProfileEntitlement().Delete(new ProfileEntitlementModel { Id = lstProfileEntitlements.SelectedValue.ToInteger() });
+        }
+
+        private void BtnAddPE_Click(object sender, EventArgs e) {
+            OpenProfileEntitlement(new ProfileEntitlementModel { });
+        }
+
+        private void BtnEditPE_Click(object sender, EventArgs e) {
+            var model = new ProfileEntitlementModel { Id = lstProfileEntitlements.SelectedValue.ToInteger() };
+            OpenProfileEntitlement(model).SetModel(DBControllersFactory.ProfileEntitlement().Find(model, "Id"));
+        }
+
+        private ProfileEntitlementView OpenProfileEntitlement(ProfileEntitlementModel pe) {
+            var form = new Form();
+            var view = (ProfileEntitlementForm)DBViewsFactory.GetView(MODELS.ProfileEntitlement);
+            pe.ProfileId = Model.Id;
+            view.SetModel(pe);
+            view.Dock = DockStyle.Fill;
+            form.Controls.Add(view);
+            form.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.Size = new System.Drawing.Size(430, 430);
+            view.SetNewButtonEnabled(false);
+            view.SetDeleteButtonEnabled(false);
+            view.DisableChangeProfile();
+            bool isnew = pe.Id == 0;
+            view.AfterSave += (b) => {
+                
+                if (isnew) {
+                    profileEntitlements.Add(view.Model);
+                } else {
+                    profileEntitlements[profileEntitlements.IndexOf(profileEntitlements.Where(x => x.Id == pe.Id).First())]=view.Model;
                 }
-                entitlementsByGroup[egname].Add(em);
-                allEntitlements[em.Id] = em;
-            }
-        }
-        public void RequeryEntitlements() {
-            this.lstEntitlements.Items.Clear();
-            List<EntitlementModel> filter;
-            string eg = $"{this.cmbEntitelmentsGroup.SelectedItem}";
-            if ("All".Equals(eg)) {
-                filter = allEntitlements.Values.ToList();
-            } else if (this.entitlementsByGroup.ContainsKey(eg)) { 
-                filter = this.entitlementsByGroup[eg];
-            } else {
-                filter = new List<EntitlementModel>();
-            }
-            this.lstEntitlements.Items.AddRange((
-                    from ProfileEntitlementModel row
-                      in CntrlPE.Read(new ProfileEntitlementModel() { ProfileId= Model.Id }, "ProfileId" )
-                   where filter.Exists(x => x.Id == row.EntitlementId)
-                  select $"{(row.AllowCreate?C:E)}{(row.AllowRead?R:E)}{(row.AllowUpdate?U:E)}{(row.AllowDelete?D:E)}  {allEntitlements[row.EntitlementId].EntitlementName}"
-            ).ToArray());
-        }
-
-
-
-        private void CmbEntitelmentsGroup_SelectedIndexChanged(object sender, EventArgs e) {
-            try {
                 RequeryEntitlements();
-            } catch { }
-        }
-
-        private void BtnInitializeEntitlements_Click(object sender, EventArgs e) {
-            //remove all existing records for this profile
-            foreach (var pemodel in CntrlPE.Read(new ProfileEntitlementModel() { ProfileId=Model.Id },"ProfileId")) {
-                CntrlPE.Delete(pemodel);
-            }
-            foreach(var entitlement in CntrlEN.Read()) {
-                CntrlPE.Save(new ProfileEntitlementModel() {
-                    ProfileId = Model.Id,
-                    EntitlementId = entitlement.Id,
-                    AllowRead = entitlementmentGroups[entitlement.EntitlementGroupId].EntitlementGroupName.Equals("Security") == false
-                });
-            }
-            this.Model = this.Model;
-        }
-
-        
-
-        private void BtnOpen_Click(object sender, EventArgs e) {
-            if (this.lstEntitlements.SelectedIndex < 0) return;
-            int.TryParse( this.txtId.Text, out int profile);
-            string entitlement = $"{this.lstEntitlements.Items[this.lstEntitlements.SelectedIndex]}".Substring(6).Trim();
-            int entitlementId = (from EntitlementModel ent in allEntitlements where ent.EntitlementName.Equals(entitlement) select ent).FirstOrDefault().Id;
-            var pef = new ProfileEntitlementForm();
-            var pem = pef.Controller.Find(new ProfileEntitlementModel() {
-                ProfileId = profile,
-                EntitlementId = entitlementId
-            }, "ProfileName", "EntitlementName" );
-            
-            pef.Model = pem;
-            pef.Show();
-
-        }
-
-        private void BtnAllowAll_Click(object sender, EventArgs e) {
-            if (this.lstEntitlements.SelectedIndex < 0) return;
-            string profile = this.txtProfileName.Text;
-            string entitlement = $"{this.lstEntitlements.Items[this.lstEntitlements.SelectedIndex]}".Substring(6).Trim();
-            int entitlementId = (from EntitlementModel ent in allEntitlements.Values where ent.EntitlementName.Equals(entitlement) select ent).FirstOrDefault().Id;
-            int.TryParse(txtId.Text, out int profileId);
-
-            CntrlPE.ChangePermissions(profileId, entitlementId, true, true, true, true);
-            this.lstEntitlements.Items[this.lstEntitlements.SelectedIndex] = $"{C}{R}{U}{D}  {entitlement}";
-            //Utils.FormsHelper.Success("All entitlements were allowed");
-            MainView.Instance.setProgress("All entitlements were allowed", 100);
-        }
-
-        private void BtnUnallowAll_Click(object sender, EventArgs e) {
-            if (this.lstEntitlements.SelectedIndex < 0) return;
-            string profile = this.txtProfileName.Text;
-            string entitlement = $"{this.lstEntitlements.Items[this.lstEntitlements.SelectedIndex]}".Substring(6).Trim();
-            int entitlementId = (from EntitlementModel ent in allEntitlements where ent.EntitlementName.Equals(entitlement) select ent).FirstOrDefault().Id;
-            int.TryParse(txtId.Text, out int profileId);
-
-            CntrlPE.ChangePermissions(profileId, entitlementId, false, false, false, false);
-            this.lstEntitlements.Items[this.lstEntitlements.SelectedIndex] = $"{E}{E}{E}{E}  {entitlement}";
-            //Utils.FormsHelper.Success("All entitlements were un-allowed");
-            MainView.Instance.setProgress("All entitlements were un-allowed", 100);
+                form.Close();
+            };
+            form.Show();
+            return view;
         }
     }
     

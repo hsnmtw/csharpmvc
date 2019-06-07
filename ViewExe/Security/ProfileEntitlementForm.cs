@@ -6,7 +6,7 @@ using MVCHIS.Utils;
 
 namespace MVCHIS.Security {
     //[ForModel(Common.MODELS.ProfileEntitlement)]
-    public partial class ProfileEntitlementForm: ProfileEntitlementsView {
+    public partial class ProfileEntitlementForm: ProfileEntitlementView {
 
 
 
@@ -54,6 +54,15 @@ namespace MVCHIS.Security {
             var chkboxes = new System.Windows.Forms.CheckBox[] { chkAllowCreate,chkAllowDelete,chkAllowRead,chkAllowUpdate };
             foreach (var c in chkboxes) c.Checked = current;
             
-        }        
+        }
+
+        internal void DisableChangeProfile() {
+            btnPLProfileEntitlement.Enabled 
+                = btnPLProfile.Enabled 
+                = txtId.Enabled 
+                = txtProfileId.Enabled 
+                = txtProfileName.Enabled
+                = false;
+        }
     }    
 }
