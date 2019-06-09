@@ -233,7 +233,6 @@
             this.btnPLRoom.TabIndex = 5;
             this.btnPLRoom.TabStop = false;
             this.btnPLRoom.Text = "↓";
-            
             // 
             // label4
             // 
@@ -283,7 +282,6 @@
             this.btnPLClient.TabIndex = 10;
             this.btnPLClient.TabStop = false;
             this.btnPLClient.Text = "↓";
-            
             // 
             // txtClientId
             // 
@@ -366,7 +364,6 @@
             this.btnPLCurrency.TabIndex = 18;
             this.btnPLCurrency.TabStop = false;
             this.btnPLCurrency.Text = "↓";
-            
             // 
             // txtCurrencyEnglish
             // 
@@ -447,14 +444,13 @@
             // btnPLReservation
             // 
             this.btnPLReservation.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
-            this.btnPLReservation.Location = new System.Drawing.Point(329, 55);
+            this.btnPLReservation.Location = new System.Drawing.Point(210, 27);
             this.btnPLReservation.Name = "btnPLReservation";
             this.btnPLReservation.Size = new System.Drawing.Size(22, 22);
             this.btnPLReservation.Source = "Reservation";
             this.btnPLReservation.TabIndex = 2;
             this.btnPLReservation.TabStop = false;
             this.btnPLReservation.Text = "↓";
-            
             // 
             // ReservationForm
             // 

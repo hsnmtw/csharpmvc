@@ -17,7 +17,7 @@ namespace MVCHIS.Billing {
         public ReservationForm() {
             InitializeComponent(); if (DesignMode||(Site!=null && Site.DesignMode)) return;
             //template
-            Mapper["Id"] = txtId;
+            Mapper["Id"] = PickList[btnPLReservation] = txtId;
             Mapper["CreatedBy"] = txtCreatedBy;
             Mapper["CreatedOn"] = txtCreatedOn;
             Mapper["UpdatedBy"] = txtUpdatedBy;
@@ -38,7 +38,7 @@ namespace MVCHIS.Billing {
             NewButton = btnNew;
             //pick lists
             PickList[btnPLClient] = txtClientId;
-            //PickList[btnPLClient]
+            PickList[btnPLRoom] = txtRoomId;
 
             AfterNew += AfterNewButtonClick;
         }
